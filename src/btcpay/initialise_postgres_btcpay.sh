@@ -32,7 +32,7 @@ fi
 counter=$((counter + 1))
 set_terminal ; echo -e "
 
-    Some computers are slow.
+    Some computers are slow, or may be busy multitasking.
     Parmanode will try 45 times with a 2 second pause for each try to give slow
     computers a chance to build the databases necessary for BTCPay to work.
     For most computers, the job should be done in under 5 seconds.
