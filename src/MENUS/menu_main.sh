@@ -137,7 +137,6 @@ remove|REMOVE)
 l|L|log) 
     menu_log_config ;;
 icon)
-    [[ ! -e $desktopfile ]] || { invalid && continue ; }
     desktop_icon && echo "hide_desktop_icon=1" >> $hm ;;
 dx)
     echo "hide_desktop_icon=1" >> $hm ;;
