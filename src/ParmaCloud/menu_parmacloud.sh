@@ -39,9 +39,9 @@ $orange
                       pass)$blue          Show setup passphrase
 $orange
                       reset)$blue         Reset a user account password
-$orange
+$red
                       start)$blue         Start NextCloud Docker container
-$orange
+$green
                       stop)$blue          Stop NextCloud Docker container
 $orange
                       refresh)$blue       Run if you manually modified the docker volume 
