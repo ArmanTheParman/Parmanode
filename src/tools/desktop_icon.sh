@@ -1,8 +1,6 @@
 function desktop_icon {
 file=$HOME/Desktop/xxx
 
-[[ -e $file ]] && { announce "An icon on the desktop alread exits" ; return 1 ; }
-
 yesorno "This will add an icon called 'run parmanode shortcut.sh' on the desktop
     There's no point for Ubuntu users, as Ubuntu doesn't allow desktop icons.
 
