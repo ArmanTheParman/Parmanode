@@ -46,8 +46,6 @@ $orange
 $orange
                       refresh)$blue       Run if you manually modified the docker volume 
 $orange
-                      restart)$blue       Restart (do after config changes)
-$orange
                       rerun)$blue         Destroy container and rerun (no data loss, be cool) 
 $orange
                       data)$blue          Information about data storage and backups
