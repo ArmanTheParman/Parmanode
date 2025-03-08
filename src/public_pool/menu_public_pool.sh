@@ -92,7 +92,8 @@ sudo systemctl restart tor
 announce "You need to wait about 30 seconds to a minute for the onion address to appear.
     Just refresh the menu after a while."
 ;;
-
+"")
+continue ;;
 *)
 invalid
 ;;

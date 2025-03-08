@@ -165,6 +165,8 @@ sudo less /var/log/nginx/error.log
 next)
 menu_parmaweb2
 ;;
+"")
+continue ;;
 *)
 invalid ;;
 esac
@@ -251,6 +253,8 @@ sudo systemctl list-timers | grep certbot
 enter_continue
 return 0
 ;;
+"")
+continue ;;
 *)
 invalid ;;
 esac

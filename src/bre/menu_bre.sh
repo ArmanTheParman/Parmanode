@@ -157,6 +157,11 @@ if [[ $OS == "Linux" ]] ; then
     continue
 fi
 ;;
+"")
+continue ;;
+*)
+invalid
+;;
 esac
 done
 }

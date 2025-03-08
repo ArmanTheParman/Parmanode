@@ -84,7 +84,8 @@ qr)
 which qrencode >$dn || install_qrencode || continue
 menu_qrencode
 ;;
-
+"")
+continue ;;
 *)
 invalid 
 ;;

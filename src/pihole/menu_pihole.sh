@@ -60,6 +60,8 @@ read piholepassword
 docker exec -it pihole /bin/bash -c "pihole -a -p $piholepassword" 
 debug "look"
 success "Your PiHole password has been set" ;;
+"")
+continue ;;
 *)
 invalid
 ;;

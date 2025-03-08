@@ -39,7 +39,8 @@ restart|RESTART|Restart)
 restart_lnbits
 return 0 
 ;;
-
+"")
+continue ;;
 *)
 invalid
 ;;

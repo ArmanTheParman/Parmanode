@@ -304,7 +304,8 @@ menu_btcpay_manr
 tips)
 bitcoin_tips
 ;;
-
+"")
+continue ;;
 *)
 invalid
 continue

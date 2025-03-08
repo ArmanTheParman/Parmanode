@@ -46,6 +46,8 @@ announce "Your nsec (private key) is:
 $cyan
     $(cat $dp/.nostr_keys/nsec.txt) $orange"
 ;;
+"")
+continue ;;
 *)
 invalid
 ;;

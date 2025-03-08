@@ -60,7 +60,8 @@ stop_tor
 restart|RESTART)
 restart_tor
 ;;
-
+"")
+continue ;;
 *)
 invalid ;;
 esac  

@@ -65,6 +65,8 @@ sleep 2
 rf)
 parmabox_refresh
 ;;
+"")
+continue ;;
 *)
 invalid
 ;;

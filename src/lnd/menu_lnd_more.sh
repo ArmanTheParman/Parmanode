@@ -56,7 +56,8 @@ reset_lnd_conf
 mm|MM|Mm)
 lnd_macaroons
 ;;
-
+"")
+continue ;;
 *)
 invalid ;;
 esac

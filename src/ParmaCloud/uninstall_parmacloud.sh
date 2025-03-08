@@ -46,6 +46,8 @@ break
 l)
 break
 ;;
+"")
+continue ;;
 *)
 invalid
 ;;

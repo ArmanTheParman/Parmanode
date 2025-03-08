@@ -20,7 +20,8 @@ check_SSH || return 0
 please_wait ; echo "" ; echo "A Specter window should open soon."
 run_specter
 return 0 ;;
-
+"")
+continue ;;
 *)
 invalid
 ;;

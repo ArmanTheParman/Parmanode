@@ -305,7 +305,8 @@ TMUX=$TMUX2
 pub)
 public_orderbook
 ;;
-
+"")
+continue ;;
 *)
 invalid
 ;;

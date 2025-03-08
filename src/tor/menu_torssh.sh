@@ -42,6 +42,8 @@ case $choice in
 m|M) back2main ;; q|Q|QUIT|Quit) exit 0 ;; p|P) menu_use ;; 
 rt|RT|Rt) sudo systemctl restart tor.service ;;
 rs) sudo systemctl restart ssh ;;
+"")
+continue ;;
 *)
 invalid
 ;;

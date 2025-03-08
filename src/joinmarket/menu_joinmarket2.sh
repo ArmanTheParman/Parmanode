@@ -135,7 +135,8 @@ tmux a -t man_jm
 
 TMUX=$TMUX2
 ;;
-
+"")
+continue ;;
 *)
 invalid
 ;;

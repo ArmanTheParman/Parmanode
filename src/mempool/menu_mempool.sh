@@ -180,6 +180,8 @@ announce "Choosee api$cyan (1)$orange, db$cyan (2)$orange, or web$cyan (3)$orang
     esac
 done
 ;;
+"")
+continue ;;
 *)
 invalid
 ;;
@@ -263,6 +265,8 @@ shoosh)
 echo "test_mempool_config_core_rpc_host=off" | tee -a $hm >$dn 2>&1
 break
 ;;
+"")
+continue ;;
 *)
 invalid
 ;;
@@ -314,6 +318,8 @@ shoosh)
 echo "test_mempool_config_electrum_host=off" | tee -a $hm >$dn 2>&1
 break
 ;;
+"")
+continue ;;
 *)
 invalid
 ;;
@@ -364,6 +370,8 @@ shoosh)
 echo "test_mempool_btcusername=off" | tee -a $hm >$dn 2>&1
 break
 ;;
+"")
+continue ;;
 *)
 invalid
 ;;
@@ -415,6 +423,8 @@ shoosh)
 echo "test_mempool_btcpassword=off" | tee -a $hm >$dn 2>&1
 break
 ;;
+"")
+continue ;;
 *)
 invalid
 ;;

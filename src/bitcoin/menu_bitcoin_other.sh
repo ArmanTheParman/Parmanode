@@ -131,7 +131,8 @@ hack_tips
 disable)
 disable_bitcoin
 ;;
-
+"")
+continue ;;
 *)
 invalid
 continue

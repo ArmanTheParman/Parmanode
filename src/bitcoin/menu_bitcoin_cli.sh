@@ -238,6 +238,8 @@ p)
     set_terminal
     return 0
     ;;
+"")
+continue ;;
 *)
     set_terminal
     Invalid

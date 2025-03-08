@@ -79,6 +79,8 @@ mm)
 mount_RAID
 debug "after mm"
 ;;
+"")
+continue ;;
 *)
 invalid
 ;;

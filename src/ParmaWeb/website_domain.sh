@@ -56,7 +56,8 @@ r)
 remove_domain
 continue
 ;;
-
+"")
+continue ;;
 *)
 invalid
 ;;
@@ -122,6 +123,8 @@ export www="true"
 debug "export www"
 break
 ;;
+"")
+continue ;;
 *)
 invalid
 ;;

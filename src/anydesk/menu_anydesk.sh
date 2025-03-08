@@ -22,7 +22,8 @@ start|Start|START|S|s)
 check_SSH || return 0
 start_anydesk
 return 0 ;;
-
+"")
+continue ;;
 *)
 invalid
 ;;

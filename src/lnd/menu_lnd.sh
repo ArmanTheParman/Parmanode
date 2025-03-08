@@ -44,6 +44,8 @@ please_wait
 restart_lnd
 break
 ;;
+"")
+continue ;;
 *)
 invalid
 ;;

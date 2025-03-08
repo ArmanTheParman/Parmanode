@@ -103,7 +103,8 @@ docker stop $(docker ps --format "{{.Names}}" | grep nextcloud) || enter_continu
 docker rm $(docker ps -a --format "{{.Names}}" | grep nextcloud) || enter_continue
 parmacloud_run
 ;;
-
+"")
+continue ;;
 *)
 invalid
 ;;

@@ -168,7 +168,8 @@ fi
 
 nostrrelay_ssl_on
 ;;
-
+"")
+continue ;;
 *)
 invalid ;;
 esac
@@ -232,6 +233,8 @@ curl -i -N -H "Connection: Upgrade" -H "Upgrade: websocket" -H "Host: $location"
 enter_continue
 break
 ;;
+"")
+continue ;;
 *)
 invalid
 ;;

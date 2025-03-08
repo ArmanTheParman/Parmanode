@@ -71,7 +71,8 @@ t)
 set_terminal ; sudo nginx -t
 enter_continue
 ;;
-
+"")
+continue ;;
 *)
 invalid
 ;;

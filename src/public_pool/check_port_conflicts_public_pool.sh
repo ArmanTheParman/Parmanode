@@ -29,6 +29,8 @@ q|Q) exit 0 ;; p|P|M|m|a) back2main ;;
 y) 
 break
 ;;
+"")
+continue ;;
 *)
 invalid
 ;;

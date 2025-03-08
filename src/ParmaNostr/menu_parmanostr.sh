@@ -18,6 +18,8 @@ q|Q|QUIT|Quit) exit 0 ;; p|P) menu_use ;; m|M) back2main ;;
 w)
 parmanostr_wallet_info
 ;;
+"")
+continue ;;
 *)
 invalid
 ;;

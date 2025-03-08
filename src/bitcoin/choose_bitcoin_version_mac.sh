@@ -53,6 +53,8 @@ export btcdockerchoice=yes
 export bitcoin_compile="false"
 break
 ;;
+"")
+continue ;;
 *)
 invalid
 ;;

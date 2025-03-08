@@ -98,6 +98,8 @@ ss)
     jmvenv "deactivate"
     enter_continue
     ;;
+"")
+continue ;;
 *)
 invalid
 ;;

@@ -236,6 +236,8 @@ yesorno "Do you want to backup BTCPay or restore?" "bk" "Backup" "res" "Restore"
       announce "Restoration is only possible if you uninstall BTCPay Server first, 
                 \r    then choose to restore during the install process."
 ;;
+"")
+continue ;;
 *)
 invalid ;;
 esac  
@@ -406,7 +408,8 @@ else
     return 1
 fi
 ;;
-
+"")
+continue ;;
 *)
 invalid
 ;;

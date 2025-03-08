@@ -42,6 +42,8 @@ announce "Phoenix is a daemon (background process) running inside a Tmux contain
 uninstall)
 uninstall_phoenix
 ;;
+"")
+continue ;;
 *)
 invalid
 ;;

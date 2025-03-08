@@ -85,7 +85,8 @@ index_off ;;
 
 on|ON|On) 
 index_on ;;
-
+"")
+continue ;;
 *)
 invalid
 ;;

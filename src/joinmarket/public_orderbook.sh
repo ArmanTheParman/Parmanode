@@ -44,6 +44,8 @@ q|Q) exit ;; p|P|n) return 1 ;; m|M) back2main ;;
 y)
 break
 ;;
+"")
+continue ;;
 *)
 invalid 
 ;;

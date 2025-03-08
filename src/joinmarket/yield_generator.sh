@@ -50,6 +50,8 @@ sleep 1
 jmvenv "deactivate"
 break
 ;;
+"")
+continue ;;
 *)
 invalid
 ;;

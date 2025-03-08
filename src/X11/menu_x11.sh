@@ -55,6 +55,8 @@ rs)
 restart_sshd
 set_terminal ; echo "SSHD restarted" ; sleep 1
 ;;
+"")
+continue ;;
 *)
 invalid
 ;;

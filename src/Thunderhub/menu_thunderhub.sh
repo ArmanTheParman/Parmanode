@@ -69,6 +69,8 @@ docker logs thunderhub | tee $th_log 2>&1
 NODAEMON="true" ; pn_tmux "less -R $th_log"  ; unset NODAEMON
 rm $th_log >$dn 2>&1
 ;;
+"")
+continue ;;
 *)
 invalid
 ;;

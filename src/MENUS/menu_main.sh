@@ -215,7 +215,8 @@ debugon)
 export debug=1 ;;
 debugoff) 
 export debug=0 ;;
-
+"")
+continue ;;
 *)
 invalid ; clear ;;
 

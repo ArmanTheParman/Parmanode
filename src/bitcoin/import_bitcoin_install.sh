@@ -284,6 +284,8 @@ break
 2)
 break
 ;;
+"")
+continue ;;
 *)
 invalid
 ;;

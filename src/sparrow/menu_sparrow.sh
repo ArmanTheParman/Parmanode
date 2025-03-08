@@ -130,6 +130,8 @@ usp)
 [[ $updateavailable != "true" ]] && continue
 update_sparrow
 ;;
+"")
+continue ;;
 *)
 invalid
 ;;
