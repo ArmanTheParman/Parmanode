@@ -1,4 +1,5 @@
 function menu_mempool {
+
 if ! grep -q "mempool-end" $ic ; then return 0 ; fi
 
 grep -q "rpcbind=0.0.0.0" $bc || echo "rpcbind=0.0.0.0" | sudo tee -a $bc >$dn 2>&1
@@ -13,8 +14,6 @@ rm "${mempoolconf}E" >$dn 2>&1
 while true ; do 
 set_terminal
 
-
-
 if docker ps 2>$dn | grep -q mempool_web && \
    docker ps 2>$dn | grep -q mempool/backend && \
    docker ps 2>$dn | grep maria | grep -q docker-db ; then
@@ -23,13 +22,13 @@ else
 running="                           MEMPOOL IS$red    Not Running$orange"
 fi
 
-if tmux ls  | grep "stopping_mempool" ; then
+if tmux ls   | grep -q "stopping_mempool" ; then
 running="                           MEMPOOL IS$red    Stopping...$orange"
-elif tmux ls | grep "starting_mempool" ; then
+elif tmux ls | grep -q "starting_mempool" ; then
 running="                           MEMPOOL IS$green    Starting...$orange"
-elif tmux ls | grep "restarting_mempool" ; then
+elif tmux ls | grep -q "restarting_mempool" ; then
 running="                           MEMPOOL IS$cyan    Re-starting...$orange"
-if
+fi
 
 unset ONION_ADDR_MEM tor_mempool tor_mempool_status output_tor
 
