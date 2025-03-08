@@ -12,6 +12,9 @@ rm "${mempoolconf}E" >$dn 2>&1
 
 while true ; do 
 set_terminal
+
+
+
 if docker ps 2>$dn | grep -q mempool_web && \
    docker ps 2>$dn | grep -q mempool/backend && \
    docker ps 2>$dn | grep maria | grep -q docker-db ; then
@@ -19,6 +22,14 @@ running="                           MEMPOOL IS$green    Running$orange"
 else
 running="                           MEMPOOL IS$red    Not Running$orange"
 fi
+
+if tmux ls  | grep "stopping_mempool" ; then
+running="                           MEMPOOL IS$red    Stopping...$orange"
+elif tmux ls | grep "starting_mempool" ; then
+running="                           MEMPOOL IS$green    Starting...$orange"
+elif tmux ls | grep "restarting_mempool" ; then
+running="                           MEMPOOL IS$cyan    Re-starting...$orange"
+if
 
 unset ONION_ADDR_MEM tor_mempool tor_mempool_status output_tor
 
