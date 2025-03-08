@@ -72,7 +72,7 @@ $running
 
 
 $cyan
-               s)$orange           Start
+               start)$orange       Start
 $cyan
                stop)$orange        Stop
 $cyan
