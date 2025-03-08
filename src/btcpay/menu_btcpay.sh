@@ -61,7 +61,9 @@ $output2"
 echo -e "
 
 $cyan
-             s)$orange            Start/Stop Docker container and BTCPay
+             start)$orange        Start Docker container and BTCPay
+$cyan
+             stop)$orange         Start Docker container and BTCPay
 $cyan
              rs)$orange           Restart BTCPay Docker container
 $cyan
@@ -147,12 +149,11 @@ menu_btcpay_conf_selection ncv
 c|C|Connect|connect)
 connect_btcpay_to_lnd
 ;;
-s|S)
-if [[ $btcpayrunning == "false" ]] ; then
+start)
 start_btcpay
-else
+;;
+stop)
 stop_btcpay
-fi
 ;;
 exp)
 btcpay_menu_advanced || return 1
