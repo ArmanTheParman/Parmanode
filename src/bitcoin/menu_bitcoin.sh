@@ -16,17 +16,19 @@ if ! grep -q "bitcoin-end" $HOME/.parmanode/installed.conf >$dn 2>&1 ; then retu
 while true ; do
 unset output1 output2 choice external8333 bitcoin_tor_status
 source $pc >$dn
-grep -q hide_port_8333 $hm || {
-if    [[ $bitcoin_tor_status == t || $bitcoin_tor_status == tonlyout ]] ; then
-    external8333="${blue}Node is NOT reachable to the world via port 8333 due to TOR status$orange hit 1 to refresh"
-elif  grep -q "_8333reachable=true" $pc ; then
-    external8333="${green}Node is reachable to the world via port 8333$orange hit 1 to refresh"
-else
-    external8333="${red}Node is NOT reachable via port 8333.$orange hit 1 to refresh$red
-Requires port forwarding on your router - Parman can be hired to help.
-endthefed to hide this message.$orange"
-fi
-}
+
+#Might bring this back later, causing too much confustion
+# grep -q hide_port_8333 $hm || {
+# if    [[ $bitcoin_tor_status == t || $bitcoin_tor_status == tonlyout ]] ; then
+#     external8333="${blue}Node is NOT reachable to the world via port 8333 due to TOR status$orange hit 1 to refresh"
+# elif  grep -q "_8333reachable=true" $pc ; then
+#     external8333="${green}Node is reachable to the world via port 8333$orange hit 1 to refresh"
+# else
+#     external8333="${red}Node is NOT reachable via port 8333.$orange hit 1 to refresh$red
+# Requires port forwarding on your router - Parman can be hired to help.
+# endthefed to hide this message.$orange"
+# fi
+# }
 
 if [[ -e $debuglogfile ]] && tail -n50 $debuglogfile | grep -q "Corrupt" ; then
 
@@ -105,8 +107,6 @@ echo -en "
                                 ${cyan}Bitcoin Menu${orange}                               
 $dockerbitcoinmenu
 ########################################################################################
-$external8333
-
 
 "
 echo -e "$output1"
