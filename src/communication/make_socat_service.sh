@@ -13,7 +13,7 @@ KillMode=process
 
 [Install]
 WantedBy=multi-user.target
-}" | sudo tee /etc/systemd/system/socat.service >$dn 2>&1
+" | sudo tee /etc/systemd/system/socat.service >$dn 2>&1
 
 sudo systemctl daemon-reload >$dn 2>&1
 sudo systemctl enable socat.service >$dn 2>&1
