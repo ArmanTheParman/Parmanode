@@ -74,11 +74,9 @@ if [[ -e $hp/electrs/electrs_db ]] ; then
 mv $HOME/parmanode/electrs/electrs_db_backup* $HOME/parmanode/                        >$dn 2>&1
 fi
 sudo rm -rf $HOME/parmanode/electrs && sudo rm -rf $HOME/.electrs                        >$dn 2>&1
-sudo systemctl stop socat_listen.service >$dn 2>&1
-sudo systemctl stop socat_publish.service >$dn 2>&1
-sudo systemctl disable socat_listen.service socat_publish.service >$dn 2>&1
-sudo rm -rf /etc/systemd/socat_listen* /etc/systemd/socat_publish* >$dn 2>&1
-sudo rm $dp/*socat_electrs.sh >$dn 2>&1
+sudo systemctl stop socat.service >$dn 2>&1
+sudo systemctl disable socat.service >$dn 2>&1
+sudo rm -rf /etc/systemd/socat.service >$dn 2>&1
 parmanode_conf_remove "drive_electrs"
 installed_config_remove "electrs2-" 
 success "electrs" "being uninstalled."
