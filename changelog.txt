@@ -1,6 +1,7 @@
 Version 3.54.2
     -Fixed an issue where strict Tor rules for Bitcoin was preventing Mempool and
      wallet RPC connection
+    -noatime added to fstab on parmanode drives
 Version 3.54.1
     -LND 18.5
     -Precompiled Bitcoin Knots made available
