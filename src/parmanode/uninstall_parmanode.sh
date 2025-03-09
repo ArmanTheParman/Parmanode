@@ -83,9 +83,15 @@ uninstall_specter
 set_terminal
 fi
 
-if grep -q "electrs" $ic
+if grep -q "electrs-" $ic
 then
 uninstall_electrs
+set_terminal
+fi
+
+if grep -q "electrs2" $ic
+then
+uninstall_electrs2
 set_terminal
 fi
 
