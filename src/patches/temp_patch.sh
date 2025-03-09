@@ -97,6 +97,13 @@ fi
     echo "rpcbind=127.0.0.1" | tee -a $bc >$dn 2>&1
 fi
 
+if [[ $OS == Linux ]] && [[ -e /etc/systemd/system/socat.service  ]] ; then
+    if grep '}' /etc/systemd/system/socat.service ; then
+        sudo gsed -i '/}/d' /etc/systemd/system/socat.service >/dev/null 2>&1
+        sudoo systemctl daemon-reload >/dev/null 2>&1
+        sudo systemctl restart socat.service >/dev/null 2>&1
+    fi
+fi
 
 debug temppatchend
 }
