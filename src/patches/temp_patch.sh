@@ -98,7 +98,7 @@ fi
 fi
 
 if [[ $OS == Linux ]] && [[ -e /etc/systemd/system/socat.service  ]] ; then
-    if grep '}' /etc/systemd/system/socat.service ; then
+    if grep -q '}' /etc/systemd/system/socat.service ; then
         sudo gsed -i '/}/d' /etc/systemd/system/socat.service >/dev/null 2>&1
         sudoo systemctl daemon-reload >/dev/null 2>&1
         sudo systemctl restart socat.service >/dev/null 2>&1
