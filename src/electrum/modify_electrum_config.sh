@@ -25,6 +25,17 @@ server="127.0.0.1:50006:s"
 x=electrsSSL
 fi
 
+if [[ $1 == electrumxtcp || -z $1 ]] ; then
+server="127.0.0.1:50007:t"
+x=electrumxTCP
+fi
+
+if [[ $1 == electrumxssl ]] ; then
+debug "electrumxssl"
+server="127.0.0.1:50008:s"
+x=electrumxSSL
+fi
+
 echo "{
     \"auto_connect\": false,
     \"check_updates\": false,

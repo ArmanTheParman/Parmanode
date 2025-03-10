@@ -153,23 +153,27 @@ case $choice in
 q|Q) exit ;; p|P) return 0 ;; m|M) back2main ;;
 
 fs|FS)
-check_fulcrum_ssl
 modify_electrum_config fulcrumssl
 return 0
 ;;
 ft|FT|Ft|Ft)
-check_fulcrum_tcp
 modify_electrum_config fulcrumtcp
 return 0
 ;;
 es|ES|Es)
-check_electrs_ssl
 modify_electrum_config electrsssl
 return 0
 ;;
 et|ET|Et)
-check_electrs_tcp
 modify_electrum_config electrstcp 
+return 0
+;;
+exs)
+modify_electrum_config electrumxssl
+return 0
+;;
+ext)
+modify_electrum_config electrumxtcp 
 return 0
 ;;
 ftor|FTOR|Ftor)
