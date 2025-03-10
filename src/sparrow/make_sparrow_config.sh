@@ -93,6 +93,14 @@ echo "connection=electrsTCP" > $HOME/.parmanode/sparrow.connection
 return 0
 fi
 
+if [[ $1 == "electrsssl" ]] ; then
+sudo gsed -i "/serverType/c\\  \"serverType\": \"ELECTRUM_SERVER\","  $sparrowconf
+sudo gsed -i "/electrumServer/c\\  \"electrumServer\": \"ssl:\/\/127.0.0.1:50006\"," $sparrowconf
+sudo gsed -i "/useProxy/c\\  \"useProxy\": false," $sparrowconf
+echo "connection=electrsSSL" > $HOME/.parmanode/sparrow.connection
+return 0
+fi
+
 if [[ $1 == "electrumxtcp" ]] ; then
 sudo gsed -i "/serverType/c\\  \"serverType\": \"ELECTRUM_SERVER\","  $sparrowconf
 sudo gsed -i "/electrumServer/c\\  \"electrumServer\": \"tcp:\/\/127.0.0.1:50007\"," $sparrowconf
@@ -103,7 +111,7 @@ fi
     
 if [[ $1 == "electrumxssl" ]] ; then
 sudo gsed -i "/serverType/c\\  \"serverType\": \"ELECTRUM_SERVER\","  $sparrowconf
-sudo gsed -i "/electrumServer/c\\  \"electrumServer\": \"tcp:\/\/127.0.0.1:50008\"," $sparrowconf
+sudo gsed -i "/electrumServer/c\\  \"electrumServer\": \"ssl:\/\/127.0.0.1:50008\"," $sparrowconf
 sudo gsed -i "/useProxy/c\\  \"useProxy\": false," $sparrowconf
 echo "connection=electrumxSSL" > $HOME/.parmanode/sparrow.connection
 return 0
