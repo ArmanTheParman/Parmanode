@@ -54,7 +54,6 @@ bitcoin_status #get running text variable.
 isbitcoinrunning 
    if [[ -e $debuglogfile ]] && tail $debuglogfile | grep -q "Shutdown: done" ; then bitcoinrunning="false" ; fi
 
-source $oc
 if [[ $bitcoinrunning != "false" ]] ; then running="true" ; fi
 if [[ $bitcoinrunning == "true" ]] ; then
 

@@ -29,7 +29,7 @@ unset fulcrum_status fulcrum_sync
 menu_fulcrum_status
 fulcrum_message="${blinkon}Type$red r$orange to refresh${blinkoff}$orange"
 
-isfulcrumrunning ; source $oc >$dn 2>&1
+isfulcrumrunning 
 
 if is_fulcrum_shutting_down ; then
 RUNNING="SHUTTING DOWN..."
