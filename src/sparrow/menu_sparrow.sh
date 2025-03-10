@@ -167,9 +167,9 @@ $cyan                et)    $orange  electrs via tcp (port 50005)
                 
 $cyan                N/A   $orange   electrs via SSL (Not available)
 
-$cyan                xs)   $orange   ElextrumX via ssl (port 50002)
+$cyan                xs)   $orange   ElextrumX via ssl (port 50008)
 
-$cyan                xt)    $orange  ElextrumX via tcp (port 50001)
+$cyan                xt)    $orange  ElextrumX via tcp (port 50007)
 
 $blue                etor)    electrs via Tor (port 7004) 
 
