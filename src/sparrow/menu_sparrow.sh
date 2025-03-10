@@ -155,25 +155,25 @@ $cyan
                CURRENT SPARROW CONNECTION TYPE: $cyan$connection$orange
 
 
-$cyan                d)  $orange     Bitcoin Core via tcp (default)
+$cyan             d)  $orange     Bitcoin Core via tcp (default)
 
-$cyan                fs)   $orange   Fulcrum via ssl (port 50002)
+$cyan             fs)   $orange   Fulcrum via ssl (port 50002)
 
-$cyan                ft)    $orange  Fulcrum via tcp (port 50001)
+$cyan             ft)    $orange  Fulcrum via tcp (port 50001)
 
-$cyan                ftor) $orange   Fulcrum via Tor (port 7002)
+$cyan             ftor) $orange   Fulcrum via Tor (port 7002)
 
-$cyan                et)    $orange  electrs via tcp (port 50005)
+$cyan             et)    $orange  electrs via tcp (port 50005)
                 
-$cyan                es)   $orange   electrs via SSL (experimental at this stage)
+$cyan             es)   $orange   electrs via SSL (experimental at this stage, port 50006)
 
-$cyan                xs)   $orange   ElextrumX via ssl (port 50008)
+$cyan             xs)   $orange   ElextrumX via ssl (port 50008)
 
-$cyan                xt)    $orange  ElextrumX via tcp (port 50007)
+$cyan             xt)    $orange  ElextrumX via tcp (port 50007)
 
-$blue                etor)    electrs via Tor (port 7004) 
+$blue             etor)    electrs via Tor (port 7004) 
 
-$blue                rtor)    To a remote Electrum/Fulcrum server via Tor (eg a friend's)
+$blue             rtor)    To a remote Electrum/Fulcrum server via Tor (eg a friend's)
 $orange 
 
 ########################################################################################
