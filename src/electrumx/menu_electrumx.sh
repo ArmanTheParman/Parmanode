@@ -293,3 +293,11 @@ elif [[ $bsync == "false" ]] ; then
     fi
 fi
 }
+
+function iselectrumxrunning {
+if pgrep electrumx >$dn 2>&1 ; then
+export electrumxrunning="true"
+else
+export electrumxrunning="false"
+fi
+}

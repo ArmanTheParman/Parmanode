@@ -243,15 +243,7 @@ overview_conf_add "mempoolrunning=false" "mempoolrunning="
 fi
 }
 
-function iselectrumxrunning {
-if pgrep electrumx >$dn 2>&1 ; then
-export electrumxrunning="true"
-overview_conf_add "electrumxrunning=true" "electrumxrunning="
-else
-export electrumxrunning="false"
-overview_conf_add "electrumxrunning=false" "electrumxrunning="
-fi
-}
+
 
 }
 function isthunderhubrunning {
