@@ -45,7 +45,7 @@ make_dot_parmanode # NEW INSTALL FLAG ADDED HERE
 parmanode_conf_add # With no argument after the function, this will create a 
                    # parmanode.conf file if it doesnt' exist.
 if [[ ! -e $ic ]] ; then touch $ic ; fi
-
+debug " line 48"
 # Load config variables
 source $HOME/.parmanode/parmanode.conf >$dn 2>&1 
 
@@ -62,11 +62,13 @@ if [[ -f $ic ]] ; then #execute only if an installed config file exits otherwise
 fi
 #add to run count
 [[ $premium == 1 ]] || rp_counter
+debug lin65
 test_internet_connected || exit
 #btcpayinstallsbitcoin is for a docker container installation initiated by btcpay installation.
 [[ $premium == 1 ]] || if [[ $1 != menu ]] ; then
    if [[ $skip_intro != "true" && $btcpayinstallsbitcoin != "true" ]] ; then intro ; instructions ; fi
 fi
+debug "line 70"
 #If the new_install file exists (created at install) then offer to update computer.
 #then delete the file so it doesn't ask again. 
 # .new_install created inside a function that creates .parmanode directory for the first time
@@ -75,12 +77,13 @@ if [[ -e $HOME/.parmanode/.new_install ]] ; then
 	# If Parmanode has never run before, make sure to get latest version of Parmanode
 	cd $HOME/parman_programs/parmanode && git config pull.rebase false >$dn 2>&1 
 	git pull >$dn 2>&1 && needs_restart="true" >$dn 2>&1
-
+debug line79
 	update_computer new_install 
 	rm $HOME/.parmanode/.new_install
 else
     [[ $premium == 1 ]] || autoupdate
 fi
+debug "line 85"
 if [[ $needs_restart == "true" ]] ; then
 announce "An update to Parmanode was made to the latest version. Please restart Parmanode
     by typing 'rp' and <enter> at the prompt."
@@ -88,11 +91,13 @@ exit
 fi
 fi #end btcpayinstallsbitcoin
 #Health check
+debug "line 92"
 parmanode1_fix
 #prompts every 20 times parmanode is run (reducing load up time of Parmanode)
 [[ $premium == 1 ]] || if [[ $rp_count == 1 || $((rp_count % 20 )) == 0 ]] ; then
    #environment checks
    bash_check 
+debug "line97"
    check_architecture 
 fi
 debug "bash_check and check_architecture" 
