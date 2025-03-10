@@ -17,12 +17,13 @@ set_terminal
 #get iselectrumxrunning variable
 unset running runningd
 iselectrumxrunning
+debug "ex status: $electrumxrunning"
 
 unset ONION_ADDR_ELECTRUMX E_tor E_tor_logic drive_electrumx electrumx_version electrumx_sync 
 source $dp/parmanode.conf >$dn 2>&1
 
 if [[ $refresh == "true" ]] ; then
-    if [[ $iselectrumxrunning == "true" ]] ; then 
+    if [[ $electrumxrunning == "true" ]] ; then 
         menu_electrumx_status # get electrs_sync variable (block number)
     fi
 else
@@ -66,7 +67,7 @@ if [[ -n $log_size && $log_size -gt 100000000 ]] ; then echo -e "$red
     $orange"
 fi
 
-if [[ $iselectrumxrunning == "true" ]] ; then
+if [[ $electrumxrunning == "true" ]] ; then
 echo -en "
       ELECTRUM X IS:$green RUNNING$orange
 
@@ -85,7 +86,7 @@ echo -en "
                   $ONION_ADDR_ELECTRUMX:7006:t $orange
          $yellow \e[G\e[41G(From any computer in the world)$orange"
       fi
-elif [[ $iselectrumxrunning == "false" ]] ; then
+elif [[ $electrumxrunning == "false" ]] ; then
 echo -en "
       ELECTRUMX IS:$red NOT RUNNING$orange -- CHOOSE \"start\" TO RUN
 
