@@ -165,7 +165,7 @@ $cyan             ftor) $orange   Fulcrum via Tor (port 7002)
 
 $cyan             et)    $orange  electrs via tcp (port 50005)
                 
-$cyan             es)   $orange   electrs via SSL (experimental at this stage, port 50006)
+$cyan             es)   $orange   electrs via SSL (port 50006)
 
 $cyan             xs)   $orange   ElextrumX via ssl (port 50008)
 
