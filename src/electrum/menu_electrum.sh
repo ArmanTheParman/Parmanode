@@ -136,6 +136,10 @@ $green            et)     $orange  Connect to electrs via TCP (port 50005)
 
 $green            es)$orange       Connect to electrs via SSL (port 50006)
 
+$green            ext)    $orange  Connect to ElectrumX via TCP (port 50007)
+
+$green            exs)$orange      Connect to ElectrumX via SSL (port 50008)
+
 $green            ftor)    $orange Connect to Fulcrum via Tor 
 
 $green            etor)$orange     Connect to electrs via Tor 
