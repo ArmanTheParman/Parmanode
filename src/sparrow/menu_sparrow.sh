@@ -165,7 +165,7 @@ $cyan                ftor) $orange   Fulcrum via Tor (port 7002)
 
 $cyan                et)    $orange  electrs via tcp (port 50005)
                 
-$cyan                N/A   $orange   electrs via SSL (Not available)
+$cyan                es)   $orange   electrs via SSL (experimental at this stage)
 
 $cyan                xs)   $orange   ElextrumX via ssl (port 50008)
 
@@ -217,6 +217,12 @@ et)
 make_sparrow_config "electrstcp"
 return 0
 ;;
+
+es)
+make_sparrow_config "electrsssl"
+return 0
+;;
+
 
 xt)
 make_sparrow_config "electrumxtcp"
