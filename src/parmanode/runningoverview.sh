@@ -250,7 +250,6 @@ else
 export electrumxrunning="false"
 overview_conf_add "electrumxrunning=false" "electrumxrunning="
 fi
-
 }
 
 }
