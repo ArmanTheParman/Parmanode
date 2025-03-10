@@ -15,6 +15,7 @@ ismempoolrunning
 ispublicpoolrunning
 iselectrumxrunning
 isthunderhubrunning
+debug end-running-overview
 }
 
 function ispublicpoolrunning {

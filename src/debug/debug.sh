@@ -17,7 +17,7 @@ if [[ $debug == 1 ]] ; then
 echo -e "${FUNCNAME[1]} <-- ${FUNCNAME[2]}" 
 echo -e "Debug point. Message:
 
-$1
+$@
 "
 unset enter_cont ; enter_continue ; export enter_cont
 if [[ $enter_cont == q || $enter_cont == "exit" ]] ; then exit 0 ; fi
