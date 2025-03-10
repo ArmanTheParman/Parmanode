@@ -24,12 +24,6 @@ m|M) back2main ;; q|Q) exit 0 ;; p|P) return 0 ;;
 n|N|NO|No|no) return 0 ;;
 y|Y|YES|Yes|yes) 
 
-if grep -q electrumxdkr $dp/installed.conf ; then
-docker_stop_electrumx
-else
-stop_electrumx
-fi
-
 if [[ $drive_electrumx == external ]] ; then 
          sudo rm -rf $parmanode_drive/electrumx_db
          sudo mkdir $parmanode_drive/electrumx_db
