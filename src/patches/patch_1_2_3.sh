@@ -3,6 +3,7 @@ function patch_1 {
 turn_off_spotlight
 add_rp_function
 parmanode_conf_add "patch=1"
+debug end patch 1
 }
 
 function patch_2 {
@@ -15,11 +16,11 @@ check_chip
 
 parmanode_conf_remove "patch=1"
 parmanode_conf_add "patch=2"
+debug end patch  2
 }
 
 function patch_3 {
 
-debug "patch 3"
 
 if [[ -e $ic ]] ; then
 
@@ -40,4 +41,5 @@ fi
 #needed to fix a variable bug in lnd log trap
 parmanode_conf_remove "patch="
 parmanode_conf_add "patch=3"
+debug "patch 3"
 }

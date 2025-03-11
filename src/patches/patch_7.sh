@@ -1,17 +1,14 @@
 function patch_7 {
-
 set_github_config
-debug "line4 patch 7"
 make_parmanode_ssh_keys
-debug "line6 patch 7"
 fix_bitcoin_conf
-debug "line8 patch 7"
+debug patch7 line 5
 
 #log file location has changed, delete the old one. Update has changed electrs start command.
 if cat $ic 2>$dn | grep -q "electrsdkr" ; then
 docker exec -d electrs /bin/bash -c "rm /home/parman/run_electrs.log" >$dn 2>&1
 fi
-debug "line14 patch 7"
+debug "line11 patch 7"
 
 #add bc command - needed for future joimarket app
 if [[ $btcpayinstallsbitcoin != "true" ]] ; then 
@@ -24,7 +21,7 @@ if [[ $btcpayinstallsbitcoin != "true" ]] ; then
         fi
     fi
 fi
-debug "line27 patch 7"
+debug "line24 patch 7"
 
 rm $dp/.debug2.log >$dn 2>&1
 
@@ -35,7 +32,7 @@ sudo gsed -i 's/8332/8333/g' $torrc >$dn 2.>&1
 sudo gsed -i 's/500001/50001/' $torrc >$dn 2>&1
 }
 fi
-debug "line38 patch 7"
+debug "line35 patch 7"
 
 if cat $ic 2>$dn | grep -q "lnd" ; then make_lnd_service_tor ; fi
 
@@ -43,7 +40,7 @@ if cat $ic 2>$dn | grep -q "lnd" ; then make_lnd_service_tor ; fi
 if [[ -e $HOME/.electrs ]] && [[ ! -e $HOME/.electrs/cert.pem ]] ; then
 make_ssl_certificates "electrs"
 fi
-debug "line46 patch 7"
+debug "line43 patch 7"
 
 if [[ $OS == Linux ]] ; then 
 
@@ -69,10 +66,10 @@ if [[ $OS == Linux ]] && cat $ic 2>$dn | grep -q "btcpay" ; then
     make_btcpay_service_file make_script_only
 fi
 
-debug "line72 patch 7"
 
 parmanode_conf_remove "patch="
 parmanode_conf_add "patch=7"
+debug end patch 7
 }
 
 

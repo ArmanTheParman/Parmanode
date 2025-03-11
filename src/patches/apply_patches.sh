@@ -3,17 +3,22 @@ function apply_patches {
 #patch=n
 #get $patch from parmanode.conf
 temp_patch
+debug line 6
 openssh_patch
+debug line 8
 suggest_tor
+deub line 10
 make_parmanode_tor_service  #makes parmanode tor onion address ; put in next patch
+debug line 12
 hello
+deub line 14
 #make sure debug file doesn't get too big
 truncatedebuglog
-
+debug line 17
 if ! cat $bashrc 2>$dn | grep -q "parmashell_functions" ; then
 echo "function rp { cd $HOME/parman_programs/parmanode ; ./run_parmanode.sh \$@ ; }" | sudo tee -a $bashrc >$dn 2>&1
 fi
-
+deub line 21
 debug "before patch sequence"
 
 case $patch in #case 0 is lase "*"

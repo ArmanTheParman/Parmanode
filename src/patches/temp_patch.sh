@@ -1,10 +1,14 @@
 function temp_patch {
 cleanup_parmanode_service
+debug temppatch 3
 truncatedebuglog
+debug temppatch 5
 truncatexsessions
+debug temppatch 7
 if [[ -e /.dockerenv ]] && ! netstat -tuln | grep -q 9050 ; then
 enable_tor_general
 fi
+debug tp  11
 remove_tor_log_patch
 #move to next patch, patch 9  
     fulcrum_service_patch 
@@ -14,7 +18,7 @@ remove_tor_log_patch
     sudo test -e /etc/sudoers.d/parmanode_extend_sudo_timeout ||
         echo "Defaults:$USER timestamp_timeout=45" | sudo tee /etc/sudoers.d/parmanode_extend_sudo_timeout >/dev/null
 
-debug "line17 temp patch"
+debug "line21 temp patch"
 fulcrum_delete_old_log 
 #Docker containers sometimes won't have $USER variable set...
 if [[ -e /.dockerenv && -z $USER ]] ; then
