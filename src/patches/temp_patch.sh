@@ -5,7 +5,6 @@ truncatexsessions
 if [[ -e /.dockerenv ]] && ! netstat -tuln | grep -q 9050 ; then
 enable_tor_general
 fi
-debug tp 8(11) 
  
 #Docker containers sometimes won't have $USER variable set...
 if [[ -e /.dockerenv && -z $USER ]] ; then
