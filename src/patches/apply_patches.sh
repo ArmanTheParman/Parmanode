@@ -18,7 +18,7 @@ debug line 17
 if ! cat $bashrc 2>$dn | grep -q "parmashell_functions" ; then
 echo "function rp { cd $HOME/parman_programs/parmanode ; ./run_parmanode.sh \$@ ; }" | sudo tee -a $bashrc >$dn 2>&1
 fi
-deub line 21
+debug line 21
 debug "before patch sequence"
 
 case $patch in #case 0 is lase "*"
