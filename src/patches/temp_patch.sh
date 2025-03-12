@@ -152,14 +152,14 @@ if [[ -e $torrc ]] && grep -q "tornoticefile" $torrc ; then
 sudo gsed -i '/^.*tornoticefile\.log.*$/d' $torrc >$dn 2>&1
 needrestarttor="true"
 fi
-
+debug "tp 155"
 if [[ -e $torrc ]] && grep -q "torinfofile" $torrc ; then
 needrestarttor="true"
 sudo gsed -i '/^.*torinfofile\.log.*$/d' $torrc >$dn 2>&1
 fi
-
+debug tp 160
 if [[ -n $needrestarttor ]] ; then restart_tor ; fi
-
+debug tp 162
 unset needrestarttor
 }
 
