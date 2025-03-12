@@ -15,4 +15,7 @@ sudo test -e /etc/sudoers.d/parmanode_extend_sudo_timeout || echo "Defaults:$USE
 deub p9 15
 parmanode_conf_remove "lndlogfirsttime"
 debug p9 17
+parmanode_conf_remove "patch="
+parmanode_conf_add "patch=9"
+debug end p9
 }
