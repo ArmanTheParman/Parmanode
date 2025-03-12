@@ -24,30 +24,33 @@ debug "before patch sequence"
 case $patch in #case 0 is lase "*"
 1) 
 debug "case1"
-patch_2 ; patch_3 ; patch_4 ; patch_5 ; patch_6 ; patch_7 ; patch_8 ;; #patch 2 to last
+patch_2 ; patch_3 ; patch_4 ; patch_5 ; patch_6 ; patch_7 ; patch_8 ; patch_9 ;; #patch 2 to last
 2)
 debug "case2"
-patch_3 ; patch_4 ; patch_5 ; patch_6 ; patch_7 ; patch_8 ;; #patch 3 to last
+patch_3 ; patch_4 ; patch_5 ; patch_6 ; patch_7 ; patch_8 ; patch_9 ;; #patch 3 to last
 3)
 debug "case3"
-patch_4 ; patch_5 ; patch_6 ; patch_7 ; patch_8 ;;
+patch_4 ; patch_5 ; patch_6 ; patch_7 ; patch_8 ; patch_9 ;;
 4)
 debug "case4"
-patch_5 ; patch_6; patch_7 ; patch_8  ;;
+patch_5 ; patch_6; patch_7 ; patch_8 ; patch_9 ;;
 5)
 debug "case5"
-patch_6 ; patch_7 ; patch_8 ;;
+patch_6 ; patch_7 ; patch_8 ; patch_9 ;;
 6)
 debug "case6"
-patch_7 ; patch_8 ;;
+patch_7 ; patch_8 ; patch_9 ;;
 7)
 debug "case7"
-patch_8 ;;
+patch_8 ; patch_9 ;;
 8)
-debug "patch_8 already done before"
+patch_9 ;
 return 0 ;;
+9)
+debug "patch_9 already done defore"
+return 0;;
 *) 
-patch_1 ; patch_2 ; patch_3 ; patch_4 ; patch_5 ; patch_6 ; patch_7 ; patch_8 ;; 
+patch_1 ; patch_2 ; patch_3 ; patch_4 ; patch_5 ; patch_6 ; patch_7 ; patch_8 ; patch_9 ;;
 esac
 debug "end apply_patches :)"
 }
