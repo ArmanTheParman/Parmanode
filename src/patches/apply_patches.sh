@@ -7,7 +7,7 @@ debug line 6
 openssh_patch
 debug line 8
 suggest_tor
-deub line 10
+debug line 10
 make_parmanode_tor_service  #makes parmanode tor onion address ; put in next patch
 debug line 12
 hello
