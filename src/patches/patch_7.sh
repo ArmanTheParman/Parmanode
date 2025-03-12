@@ -1,14 +1,16 @@
 function patch_7 {
 set_github_config
+debug patch7 line 3
 make_parmanode_ssh_keys
+debug patch7 line 5-a
 fix_bitcoin_conf
-debug patch7 line 5
+debug patch7 line 7
 
 #log file location has changed, delete the old one. Update has changed electrs start command.
 if cat $ic 2>$dn | grep -q "electrsdkr" ; then
 docker exec -d electrs /bin/bash -c "rm /home/parman/run_electrs.log" >$dn 2>&1
 fi
-debug "line11 patch 7"
+debug "line11 patch 13"
 
 #add bc command - needed for future joimarket app
 if [[ $btcpayinstallsbitcoin != "true" ]] ; then 
@@ -21,7 +23,7 @@ if [[ $btcpayinstallsbitcoin != "true" ]] ; then
         fi
     fi
 fi
-debug "line24 patch 7"
+debug "line24 patch 26"
 
 rm $dp/.debug2.log >$dn 2>&1
 
@@ -32,7 +34,7 @@ sudo gsed -i 's/8332/8333/g' $torrc >$dn 2.>&1
 sudo gsed -i 's/500001/50001/' $torrc >$dn 2>&1
 }
 fi
-debug "line35 patch 7"
+debug "line35 patch 37"
 
 if cat $ic 2>$dn | grep -q "lnd" ; then make_lnd_service_tor ; fi
 
@@ -40,7 +42,7 @@ if cat $ic 2>$dn | grep -q "lnd" ; then make_lnd_service_tor ; fi
 if [[ -e $HOME/.electrs ]] && [[ ! -e $HOME/.electrs/cert.pem ]] ; then
 make_ssl_certificates "electrs"
 fi
-debug "line43 patch 7"
+debug "line43 patch 45"
 
 if [[ $OS == Linux ]] ; then 
 
@@ -51,7 +53,7 @@ if [[ $OS == Linux ]] ; then
     sudo chown $USER:$(id -gn) /media/$USER >$dn 2>&1
     sudo setfacl -m g::r-x /media/parman >$dn 2>&1 #make sure group has access
 fi
-debug "line57 patch 7"
+debug "line57 patch 56"
 
 #Move Fulcrum conf
 if [[ -f "$hp/fulcrum/fulcrum.conf" && ! -L "$hp/fulcrum/fulcrum.conf" ]] ; then
