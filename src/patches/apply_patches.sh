@@ -11,7 +11,7 @@ debug line 10
 make_parmanode_tor_service  #makes parmanode tor onion address ; put in next patch
 debug line 12
 hello
-deub line 14
+debug line 14
 #make sure debug file doesn't get too big
 truncatedebuglog
 debug line 17
