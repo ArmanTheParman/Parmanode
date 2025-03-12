@@ -1,31 +1,18 @@
 function temp_patch {
 cleanup_parmanode_service
-debug temppatch 3
 truncatedebuglog
-debug temppatch 5
 truncatexsessions
-debug temppatch 7
 if [[ -e /.dockerenv ]] && ! netstat -tuln | grep -q 9050 ; then
 enable_tor_general
 fi
-debug tp  11
-remove_tor_log_patch
-#move to next patch, patch 9  
-    fulcrum_service_patch 
-    make_external_IP_script
-    which tor >$dn && ! grep -q tor-end $ic && installed_conf_add "tor-end"
-    pn_tmux "sudo strip /usr/local/bin/* >/dev/null 2>&1" "stripping_binaries" >/dev/null 2>&1
-    sudo test -e /etc/sudoers.d/parmanode_extend_sudo_timeout ||
-        echo "Defaults:$USER timestamp_timeout=45" | sudo tee /etc/sudoers.d/parmanode_extend_sudo_timeout >/dev/null
-
-debug "line21 temp patch"
-fulcrum_delete_old_log 
+debug tp 8(11) 
+ 
 #Docker containers sometimes won't have $USER variable set...
 if [[ -e /.dockerenv && -z $USER ]] ; then
     USER=$(whoami) >$dn 2>&1
     echo "USER=$USER ##added by Parmanode" | sudo tee -a $HOME/.bashrc >$dn 2>&1
 fi
-
+debug 15
 
 #delete Nov 2026
 rm -rf $dp/temp >$dn 2>&1
