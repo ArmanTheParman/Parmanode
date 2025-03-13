@@ -1,16 +1,17 @@
 function patch_7 {
+debug "starting patch 7
+pc...
+
+$(cat $pc)
+"
 set_github_config
-debug patch7 line 3
 make_parmanode_ssh_keys
-debug patch7 line 5-a
 fix_bitcoin_conf
-debug patch7 line 7
 
 #log file location has changed, delete the old one. Update has changed electrs start command.
 if cat $ic 2>$dn | grep -q "electrsdkr" ; then
 docker exec -d electrs /bin/bash -c "rm /home/parman/run_electrs.log" >$dn 2>&1
 fi
-debug "line11 patch 13"
 
 #add bc command - needed for future joimarket app
 if [[ $btcpayinstallsbitcoin != "true" ]] ; then 
@@ -34,7 +35,6 @@ sudo gsed -i 's/8332/8333/g' $torrc >$dn 2>&1
 sudo gsed -i 's/500001/50001/' $torrc >$dn 2>&1
 }
 fi
-debug "line35 patch 37"
 
 [[ -f $ic ]] && grep -q "lnd" $ic && make_lnd_service_tor 
 
@@ -42,7 +42,6 @@ debug "line35 patch 37"
 if [[ -e $HOME/.electrs ]] && [[ ! -e $HOME/.electrs/cert.pem ]] ; then
 make_ssl_certificates "electrs"
 fi
-debug "line43 patch 45"
 
 if [[ $OS == Linux ]] ; then 
 

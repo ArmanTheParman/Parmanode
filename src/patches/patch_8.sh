@@ -1,4 +1,5 @@
 function patch_8 {
+debug "starting patch 8"
 if [[ $OS == Linux ]] ; then
 
     rm $hp/startup_scripts/rtl_startup.sh >$dn 2>&1
