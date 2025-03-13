@@ -1,5 +1,6 @@
 function set_terminal {
 # sets terminal size
+debug "pre set_terminal"
 while true ; do
 
 [[ -n $2 ]] && {
@@ -10,7 +11,6 @@ break
 [[ -n $1 && -z $2 ]] && {
     reap -p "n1 z2" 
 printf "\033[8;%s;88t" "$1" 
-    reap -p pause
 break
 }
 
