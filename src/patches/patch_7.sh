@@ -36,7 +36,7 @@ sudo gsed -i 's/500001/50001/' $torrc >$dn 2>&1
 fi
 debug "line35 patch 37"
 
-if cat $ic 2>$dn | grep -q "lnd" ; then make_lnd_service_tor ; fi
+[[ -f $ic ]] && grep -q "lnd" $ic && make_lnd_service_tor 
 
 #correct electrs cert
 if [[ -e $HOME/.electrs ]] && [[ ! -e $HOME/.electrs/cert.pem ]] ; then
@@ -53,7 +53,7 @@ if [[ $OS == Linux ]] ; then
     sudo chown $USER:$(id -gn) /media/$USER >$dn 2>&1
     sudo setfacl -m g::r-x /media/parman >$dn 2>&1 #make sure group has access
 fi
-debug "line57 patch 56"
+debug "line56 patch 7"
 
 #Move Fulcrum conf
 if [[ -f "$hp/fulcrum/fulcrum.conf" && ! -L "$hp/fulcrum/fulcrum.conf" ]] ; then
@@ -64,7 +64,7 @@ if [[ -f "$hp/fulcrum/fulcrum.conf" && ! -L "$hp/fulcrum/fulcrum.conf" ]] ; then
     start_fulcrum
 fi
 
-if [[ $OS == Linux ]] && cat $ic 2>$dn | grep -q "btcpay" ; then 
+if [[ $OS == Linux ]] && grep -q "btcpay" $ic ; then 
     make_btcpay_service_file make_script_only
 fi
 
