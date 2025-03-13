@@ -9,9 +9,7 @@ make_parmanode_ssh_keys
 fix_bitcoin_conf
 
 #log file location has changed, delete the old one. Update has changed electrs start command.
-if cat $ic 2>$dn | grep -q "electrsdkr" ; then
-docker exec -d electrs /bin/bash -c "rm /home/parman/run_electrs.log" >$dn 2>&1
-fi
+[[ -e $ic ]] && grep -q "electrsdkr" $ic && docker exec -d electrs /bin/bash -c "rm /home/parman/run_electrs.log" >$dn 2>&1
 
 #add bc command - needed for future joimarket app
 if [[ $btcpayinstallsbitcoin != "true" ]] ; then 
