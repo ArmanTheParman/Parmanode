@@ -1,7 +1,8 @@
 function patch_9 {
 remove_tor_log_patch
 debug p9 3
-sudo strip /usr/local/bin/* >/dev/null 2>&1 
+please_wait
+[[ -d /usr/local/bin ]] && sudo strip /usr/local/bin/* >/dev/null 2>&1 
 debug p9 5
 make_external_IP_script
 debug p9 7 
