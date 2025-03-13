@@ -97,6 +97,9 @@ debug "bash_check and check_architecture"
 
 ########################################################################################
 ########################################################################################
+debug "pc...
+$(cat $pc)
+"
 [[ $premium == 1 ]] || apply_patches
 #Add Parmashell (do after patches)
 [[ $premium == 1 ]] || install_parmashell 
