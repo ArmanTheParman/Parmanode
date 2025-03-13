@@ -15,6 +15,7 @@ if [[ $OS == Linux ]] ; then
 fi
 
 fix_thecommandlinebook >$dn 2>&2
+debug after-command-line-book-fix
 
 parmanode_conf_remove "patch="
 parmanode_conf_add "patch=8"
