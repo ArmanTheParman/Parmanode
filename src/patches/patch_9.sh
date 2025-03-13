@@ -13,7 +13,7 @@ debug p9 11
 which tor >$dn && ! grep -q tor-end $ic && installed_conf_add "tor-end"
 debug p9 13
 sudo test -e /etc/sudoers.d/parmanode_extend_sudo_timeout || echo "Defaults:$USER timestamp_timeout=45" | sudo tee /etc/sudoers.d/parmanode_extend_sudo_timeout >/dev/null
-deub p9 15
+debub p9 15
 parmanode_conf_remove "lndlogfirsttime"
 debug p9 17
 parmanode_conf_remove "patch="

@@ -144,7 +144,7 @@ sudo e2label $disk parmanode 2>&1
 sleep 1
 sudo partprobe 2>/dev/null
 done
-deub "label done"
+debub "label done"
 # fstab configuration
 while grep -q parmanode < /etc/fstab ; do
 set_terminal ; echo -e "
