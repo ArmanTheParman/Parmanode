@@ -26,6 +26,9 @@ if [[ -e $pp/parmanas ]] ; then
 if [[ -e $pp/parminer ]] ; then 
                        echo -e "                   $cyan       (pm)$blue         ParMiner$orange
                             " ; parminerapp=1 ; fi
+if [[ -e $pp/datum ]] ; then 
+                       echo -e "                   $cyan       (dt)$blue         Datum$orange
+                            " ; datumapp=1 ; fi
 if grep -q "parmacloud-end" $HOME/.parmanode/installed.conf ; then parmacloudapp=1
                        echo -e "                        $cyan  (cloud)$blue      ParmaCloud$orange
                             " ; fi
@@ -521,6 +524,16 @@ if [[ $parminerapp == 1 ]] ; then
 please_wait
 cd $pp/parminer/ && git pull >$dn 2>&1
 $pp/parminer/run_parminer.sh
+if [[ -n $1 ]] ; then clear ; return 0 ; fi
+else invalid
+fi
+;;
+
+dt)
+if [[ $datumapp == 1 ]] ; then
+please_wait
+cd $pp/datum/ && git pull >$dn 2>&1
+$pp/datum/run_parminer.sh
 if [[ -n $1 ]] ; then clear ; return 0 ; fi
 else invalid
 fi
