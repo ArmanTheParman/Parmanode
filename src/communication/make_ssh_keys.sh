@@ -82,6 +82,26 @@ IdentitiesOnly yes" | sudo tee -a ~/.ssh/config >$dn
 debug end make_parmanas_ssh_keys
 }
 
+function make_datum_ssh_keys {
+debug start make_datum_ssh_keys
+#usage...
+#make_datum_ssh_keys && { announce_blue "Datum SSH keys made. Please contact Parman to enable." ; continue ; }
+
+sudo test -f $HOME/.ssh/datum-key.pub && return 1 # 1 is logically success here for the calling function
+
+mkdir -p ~/.ssh
+ssh-keygen -t rsa -b 4096 -f $HOME/.ssh/datum-key -N "" -C "$USER parmanas"
+
+grep -q "github-datum" ~/.ssh/config >$dn 2>&1 || 
+echo "
+Host github-datum
+HostName github.com
+User git
+IdentityFile ~/.ssh/datum-key
+IdentitiesOnly yes" | sudo tee -a ~/.ssh/config >$dn
+debug end make_datum_ssh_keys
+}
+
 function get_all_ssh_keys {
 
 make_parmanode_ssh_keys
@@ -89,6 +109,7 @@ make_parmacloud_ssh_keys
 make_parmaweb_ssh_keys
 make_parmanas_ssh_keys
 make_parmaraid_ssh_keys
+make_datum_ssh_keys
 
 sudo cat $HOME/.ssh/*.pub >> $HOME/Desktop/all_ssh_keys.txt
 echo "" >> $HOME/Desktop/all_ssh_keys.txt
