@@ -22,7 +22,7 @@ elif [[ $usecount == 20 ]] ; then height=52
 else
 height=52
 fi
-
+debug "height is $height"
 set_terminal_custom $height 
 echo -e "
 ########################################################################################
