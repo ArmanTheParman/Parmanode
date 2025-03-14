@@ -151,7 +151,7 @@ clear ; echo -e "
 
     Then, format the drive...
 $green
-    sudo mkfs.ext4 -F -L \"parmanode\" /dev/sdb
+    sudo mkfs.ext4 -E nodiscard -F -L \"parmanode\" /dev/sdb
 $orange
     Remember to put the right name, don't just blindly copy /dev/sdb
 

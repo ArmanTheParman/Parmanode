@@ -41,7 +41,7 @@ function format_sda {
 unmount_sda
 partition_drive "$installer" 
 remove_parmanode_fstab
-sudo mkfs.ext4 -F -L "parmanode" $disk 
+sudo mkfs.ext4 -E nodiscard -F -L "parmanode" $disk 
 get_UUID
 parmanode_conf_add "UUID=$UUID"
 write_to_fstab "$UUID"
