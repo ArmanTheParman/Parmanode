@@ -148,8 +148,9 @@ cd $pp/datum && git pull >$dn 2>&1 ; } || \
 for file in $pp/datum/src/*.sh ; do
 source $file
 done
-
+debug before menu datum
 menu_datum
+debug after menu datum
 return 0
 ;;
 
