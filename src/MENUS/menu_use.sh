@@ -16,11 +16,11 @@ if [[ $usecount -lt 16 ]] then height=46
 elif [[ -z $usecount ]] ; then height=46
 elif [[ $usecount == 16 ]] ; then height=48
 elif [[ $usecount == 17 ]] ; then height=49
-elif [[ $usecount == 18 ]] ; then height=50
-elif [[ $usecount == 19 ]] ; then height=51
-elif [[ $usecount == 20 ]] ; then height=52
+elif [[ $usecount == 18 ]] ; then height=52
+elif [[ $usecount == 19 ]] ; then height=53
+elif [[ $usecount == 20 ]] ; then height=54
 else
-height=52
+height=54
 fi
 debug "height is $height"
 set_terminal_custom $height 
