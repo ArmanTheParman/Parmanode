@@ -547,7 +547,11 @@ dt)
 if [[ $datumapp == 1 ]] ; then
 please_wait
 cd $pp/datum/ && git pull >$dn 2>&1
-$pp/datum/menu_datum.sh
+
+for i in $pp/datum/*/*.sh ; do
+    source $i
+done
+menu_datum
 if [[ -n $1 ]] ; then clear ; return 0 ; fi
 else invalid
 fi
