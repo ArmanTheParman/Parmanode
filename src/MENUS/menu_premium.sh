@@ -17,6 +17,8 @@ another="true"
 fi
 [[ ! -e $pp/parmaraid ]] &&        parmaraid="\n#$orange                pr)$blue        ParmaRAID                                                  #
 #                                                                                      #"
+[[ ! -e $pp/datum ]] &&        datum="\n#$orange                dt)$blue        Datum-Gateway-Parmanode                                                  #
+#                                                                                      #"
 
 
 set_terminal
@@ -25,7 +27,7 @@ echo -en "$blue
 #$orange               PREMIUM FEATURES AVAILABLE FOR A FEE:$green CONACT PARMAN          $blue          #
 ########################################################################################
 #                                                                                      #
-#                                                                                      #$parmanas$parminer$parmacloud$parmaweb$parmaraid
+#                                                                                      #$parmanas$parminer$parmacloud$parmaweb$parmaraid$datum
 #                                                                                      #
 #                                                                                      #
 ########################################################################################
@@ -130,6 +132,24 @@ source $file
 done
 
 install_raid
+return 0
+;;
+
+dt)
+[[ ! -e $dp/.datum_enabled ]] && announce_blue "Datum-Gateway-Parmanode is only available
+    with a ParmanodL or ParmaDrive system. Contact Parman for info." && continue
+
+make_datum_ssh_keys && { announce_blue "Datum SSH keys made" ; continue ; }
+
+git clone git@github-datum:armantheparman/datum_parmanode.git $pp/dataum 2>$dn || {
+cd $pp/datum && git pull >$dn 2>&1 ; } || \
+{ enter_continue "Please contact Parman to enable Datum on your machine.\n$orange" ; continue ; } #requires SSH key authority
+
+for file in $pp/datum/src/*.sh ; do
+source $file
+done
+
+menu_datum
 return 0
 ;;
 
