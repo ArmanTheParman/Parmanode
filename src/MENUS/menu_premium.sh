@@ -141,7 +141,7 @@ dt)
 
 make_datum_ssh_keys && { announce_blue "Datum SSH keys made" ; continue ; }
 
-git clone git@github-datum:armantheparman/datum_parmanode.git $pp/dataum 2>$dn || {
+git clone git@github-datum:armantheparman/datum_parmanode.git $pp/datum 2>$dn || {
 cd $pp/datum && git pull >$dn 2>&1 ; } || \
 { enter_continue "Please contact Parman to enable Datum on your machine.\n$orange" ; continue ; } #requires SSH key authority
 
