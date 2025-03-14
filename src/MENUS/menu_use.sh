@@ -11,7 +11,7 @@ unset electrumxapp thunderhubapp websiteapp lnddockerapp nostrrelay litdapp parm
 unset parmanostrapp btcrecoverapp joinmarketapp greenapp parman_booksapp X11app phoenixapp
 unset parminerapp parmanasapp
 
-souce $pc
+source $pc
 if [[ $usecount -lt 16 ]] then height=46 
 elif [[ -z $usecount ]] ; then height=46
 elif [[ $usecount == 16 ]] ; then height=48
@@ -30,7 +30,6 @@ echo -e "
      P A R M A N O D E --> Main Menu --> ${cyan}USE (installed)$orange                               
 
 ########################################################################################          
-
 
 "
 if [[ -e $pp/parmanas ]] ; then
