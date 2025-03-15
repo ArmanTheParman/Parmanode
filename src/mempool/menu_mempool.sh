@@ -22,11 +22,11 @@ else
 running="                           MEMPOOL IS$red    Not Running$orange"
 fi
 
-if tmux ls   | grep -q "stopping_mempool" ; then
+if tmux ls 2>$dn | grep -q "stopping_mempool" ; then
 running="                           MEMPOOL IS$red    Stopping...$orange"
-elif tmux ls | grep -q "starting_mempool" ; then
+elif tmux ls 2>$dn | grep -q "starting_mempool" ; then
 running="                           MEMPOOL IS$green    Starting...$orange"
-elif tmux ls | grep -q "restarting_mempool" ; then
+elif tmux ls 2>$dn | grep -q "restarting_mempool" ; then
 running="                           MEMPOOL IS$cyan    Re-starting...$orange"
 fi
 
