@@ -1,5 +1,5 @@
 function enter_continue {
-if [[ $1 -gt 0 ]] ; then 
+if [[ $1 -gt 0 ]] 2>/dev/null ; then 
     echo -e "${yellow}Hit ${cyan}<enter>${yellow} to continue.$orange\n"  
     read -t $1 enter_cont || enter_cont="" 
 else
