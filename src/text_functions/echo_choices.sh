@@ -1,4 +1,8 @@
 function enter_continue {
+if [[ $1 -gt 0 ]] ; then 
+    echo -e "${yellow}Hit ${cyan}<enter>${yellow} to continue.$orange\n"  
+    read -t $1 enter_cont || enter_cont="" 
+else
 echo -en "$1\n"
 unset enter_cont
 if [[ $installer == parmanodl ]] ; then return 0 ; fi
@@ -10,6 +14,7 @@ read -s enter_cont
 else
 read enter_cont 
 fi
+fi #end -gt 0
 
 export enter_cont
 if [[ $enter_cont == q ]] ; then exit ; fi
@@ -196,3 +201,13 @@ fi
 if [[ $2 == enter || $3 == enter ]] ; then return 0 ; else enter_continue ; return 0 ; fi
 }
 
+function short_announce {
+set_terminal ; echo -e "
+########################################################################################
+
+    $1
+
+########################################################################################
+"
+enter_continue
+}
