@@ -1,5 +1,5 @@
 function enter_continue {
-if [[ $1 -gt 0 ]] 2>/dev/null ; then 
+if [[ $1 -gt 0 ]] 2>$dn ; then 
     echo -e "${yellow}Hit ${cyan}<enter>${yellow} to continue.$orange\n"  
     read -t $1 enter_cont || enter_cont="" 
 else
@@ -12,7 +12,7 @@ if [[ $installer == parmanodl ]] ; then return 0 ; fi
 if [[ $silentecho == "true" ]] ; then
 read -s enter_cont
 else
-    if [[ $2 -gt 0 ]] ; then read -t $2 enter_cont ; else read enter_cont ; fi
+    if [[ $2 -gt 0 ]] 2>$dn ; then read -t $2 enter_cont ; else read enter_cont ; fi
 fi
 fi #end -gt 0
 
