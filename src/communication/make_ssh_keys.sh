@@ -3,7 +3,7 @@ debug start make_parmanode_ssh_keys
 #if a .pub key does not exist in $HOME/.ssh, make one
 if ! sudo test -f $HOME/.ssh/id_rsa.pub >$dn 2>&1 ; then
 mkdir -p $HOME/.ssh >$dn 2>&1
-ssh-keygen -t rsa -b 4096 -N "" -C "$USER parmanode" 
+ssh-keygen -t rsa -b 4096 -f $HOME/.ssh/id_rsa -N "" -C "$USER parmanode" 
 debug end make_parmanode_ssh_keys
 fi
 }
