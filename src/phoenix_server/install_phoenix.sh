@@ -50,7 +50,7 @@ unzip -j *.zip
 function verify_phoenix {
 gpg --import $pn/src/phoenix_server/phoenix_gpg_key.asc
 gpg --verify S*.asc || { enter_continue "Something went wrong with importing the phoenix public key." ; return 1 ; }
-enter_continue "gpg verification$green passed$orange"
+enter_continue "gpg verification$green passed$orange" "5"
 shasum --check --ignore-missing ./SHA256SUMS.asc || { enter_continue "SHA256 verification$red failed." ; return 1 ; }
-enter_continue "SHA256 check passed"
+enter_continue "SHA256 check passed" "5"
 }
