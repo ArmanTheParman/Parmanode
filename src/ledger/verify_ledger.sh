@@ -11,7 +11,7 @@ if ! openssl dgst -sha256 -verify $pem -signature $sig $shasum ; then
 announce "Verification failed. Aborting." 
 return 1
 else
-announce "Verification$green PASSED$orange."
+short_announce "Verification$green PASSED$orange." "5"
 fi
 
 #Regular shasum --check not possible because Ledger fucked up the spacing in the SHA file
@@ -27,7 +27,7 @@ sha_check=$(grep 'AppImage' $shasum | awk '{print $1}') >$dn
 fi
 
 if [[ $sha_check == $sha_ledger_result ]] ; then
-announce "SHA512 test$green PASSED$orange."
+short_announce "SHA512 test$green PASSED$orange." "5"
 else
 announce "SHA512 test$red FAILD. Aborting$orange."
 return 1

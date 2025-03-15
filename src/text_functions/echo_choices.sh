@@ -12,7 +12,7 @@ if [[ $installer == parmanodl ]] ; then return 0 ; fi
 if [[ $silentecho == "true" ]] ; then
 read -s enter_cont
 else
-read enter_cont 
+    if [[ $2 -gt 0 ]] ; then read -t $2 enter_cont ; else read enter_cont ; fi
 fi
 fi #end -gt 0
 
@@ -202,6 +202,7 @@ if [[ $2 == enter || $3 == enter ]] ; then return 0 ; else enter_continue ; retu
 }
 
 function short_announce {
+# $1 is the message $2 is the time before continuing automatically
 set_terminal ; echo -e "
 ########################################################################################
 
@@ -209,5 +210,5 @@ set_terminal ; echo -e "
 
 ########################################################################################
 "
-enter_continue
+enter_continue $2
 }

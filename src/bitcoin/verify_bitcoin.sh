@@ -41,7 +41,7 @@ curl https://raw.githubusercontent.com/bitcoin-core/guix.sigs/main/builder-keys/
     if gpg --verify --status-fd 1 SHA256SUMS.asc 2>&1 | grep -iq GOOD
     then
         echo -e "\nGPG verification of the SHA256SUMS file$green passed$orange.\n"
-        [[ $btcpayinstallsbitcoin == "true" ]] || enter_continue
+        [[ $btcpayinstallsbitcoin == "true" ]] || enter_continue 5
     else 
         echo -e "\nGPG verification$red failed$orange. Aborting.\n" 
         enter_continue

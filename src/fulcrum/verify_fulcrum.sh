@@ -58,7 +58,7 @@ jdzE/g==
 
 if gpg --verify --status-fd 1 $HOME/parmanode/fulcrum/F*shasums.txt.asc $HOME/parmanode/fulcrum/F*shasums.txt 2>&1 | grep -qi "GOOD" 
     then 
-        announce "${green}gpg verification passed.$orange" 
+        short_announce "${green}gpg verification passed.$orange" "5"
         return 0
     else
         announce "${red}gpg verification fail. Aborting.$orange" 
