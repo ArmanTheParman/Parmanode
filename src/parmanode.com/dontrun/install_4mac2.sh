@@ -141,8 +141,10 @@ You can delete this file once you've absorbed the information.
 EOF
 clear
 
-echo "#Added by Parmanode..." | tee -a $HOME/.zshrc >$dn 2>&1
+if ! grep -q "#Added by Parmanode..." $HOME/.zshrc >$dn 2>&1 ; then
+echo "#Added by Parmanode..." | tee -a $HOME/.zshrc >$dn 2>&1 
 echo 'function rp { cd $HOME/parman_programs/parmanode ; ./run_parmanode.sh $@ ; }' | tee -a $HOME/.zshrc >$dn 2>&1
+fi
 
 echo "
 ########################################################################################

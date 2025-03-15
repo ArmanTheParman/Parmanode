@@ -37,9 +37,10 @@ git clone https://github.com/armantheparman/parmanode.git
 # sudo chown $USER:$(id -gn) $HOME/Desktop/parmanode.desktop
 clear
 
+if ! grep -q "#Added by Parmanode..." ~/.bashrc >/dev/null 2>&1 ; then
 echo "#Added by Parmanode..." | tee -a ~/.bashrc >/dev/null 2>&1
 echo 'function rp { cd $HOME/parman_programs/parmanode ; ./run_parmanode.sh $@ ; }' | tee -a ~/.bashrc >/dev/null 2>&1
-
+fi
 
 echo -e "
 ########################################################################################
