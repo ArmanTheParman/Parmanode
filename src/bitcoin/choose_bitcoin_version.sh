@@ -20,7 +20,7 @@ $orange
 $green
 
    hit <enter>)       Pre-compiled Bitcoin KNOTS, v$knotsversion, verified with gpg $blinkon(recommended)$blinkoff
-
+$green
          knots)       Guided compile Bitcoin KNOTS, v$knotsversion
 $yellow
           core)       Pre-compiled Bitcoin CORE v$version, verified with gpg
