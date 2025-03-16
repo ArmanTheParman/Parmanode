@@ -140,11 +140,11 @@ please_wait
 make_datum_ssh_keys
 announce_blue "
     To install Datum with Parmanode, please send$orange 42 sats over lightning via 
-    NOSTR zap, or the donation app:
+    NOSTR zap, or the donations page:
 
-$cyan    https://armantheparman.com/donations $blue
+$orange    https://armantheparman.com/donations $blue
 
-    Then send lightning invoice to Parman by email armantheparman@protonmail.com, and 
+    Then send lightning invoice to Parman by email$cyan armantheparman@protonmail.com$blue, and 
     send the following custom ssh key...
    "
 enter_continue   
