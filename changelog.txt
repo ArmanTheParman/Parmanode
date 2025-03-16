@@ -1,5 +1,6 @@
 Version 3.54.3
      -smol bug fixes
+     -Datum
 Version 3.54.2
     -Fixed an issue where strict Tor rules for Bitcoin was preventing Mempool and
      wallet RPC connection
