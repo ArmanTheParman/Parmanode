@@ -87,7 +87,7 @@ function make_datum_ssh_keys {
 sudo test -f $HOME/.ssh/datum-key.pub && return 1 # 1 is logically success here for the calling function
 
 mkdir -p ~/.ssh
-ssh-keygen -t rsa -b 4096 -f $HOME/.ssh/datum-key -N "" -C "$USER parmanas"
+ssh-keygen -t rsa -b 4096 -f $HOME/.ssh/datum-key -N "" -C "$USER datum"
 
 grep -q "github-datum" ~/.ssh/config >$dn 2>&1 || 
 echo "
