@@ -5,7 +5,7 @@ function install_bitcoin {
 
 #set compile to false, and make true later depending on choices
 export bitcoin_compile="false"
-
+export knotsversion=28.1
 if [[ $version != "self" ]] ; then
     export version="28.1"
 fi

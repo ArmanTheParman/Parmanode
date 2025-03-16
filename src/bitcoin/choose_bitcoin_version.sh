@@ -11,26 +11,26 @@ fi
 
 while true ; do
 #default version set at the beginning of instll_bitcoin()
-set_terminal 40 110 ; echo -e "
-##############################################################################################################
+set_terminal 40 120 ; echo -e "
+########################################################################################################################
 $cyan
-            THERE ARE SEVERAL WAYS TO INSTALL BITCOIN WITH PARMANODE. PLEASE CHOOSE...
+                THERE ARE SEVERAL WAYS TO INSTALL BITCOIN WITH PARMANODE. PLEASE CHOOSE WISELY ...
 $orange
-##############################################################################################################
+########################################################################################################################
 $green
 
-            kp)       Pre-compiled Bitcoin KNOTS, verified with gpg (recommended)
-$orange
-             c)       Bitcoin CORE v$version - Download and gpg verify 'trusted' releases
+   hit <enter>)       Pre-compiled Bitcoin KNOTS, v$knotsversion, verified with gpg $blinkon(recommended)$blinkoff
 
-         knots)       Guided compile$yellow Bitcoin Knots
+         knots)       Guided compile Bitcoin KNOTS, v$knotsversion
+$yellow
+          core)       Pre-compiled Bitcoin CORE v$version, verified with gpg
 
-          hfsp)       Guided compile v$version
-$blue
-          rekt)       Guided compile v$version $yellow(FILTER-ORDINALS patch$bright_blue, by Luke Dashjr)
+          hfsp)       Guided compile Bitcoin CORE v$version
+
+          rekt)       Guided compile Bitcoin CORE, v$version $yellow(with FILTER-ORDINALS patch by Luke Dashjr)
 $orange
-          info)       Read how to compile yourself, and import the installation to Parmanode. 
-                      You can come back to this menu after selecting this. 
+          info)       Read how to compile yourself, and import the installation to Parmanode.  You can come back to 
+                      this menu after selecting this. 
 $red
            few)       Custom version (you choose) - Download and verify 'trusted' releases
 
@@ -39,11 +39,11 @@ $red
        builder)       Guided compile of most recent Github update, i.e. pre-release
                       (for testing only)
 
-        import)       IMPORT binaries you have compiled yourself (or previously downloaded without
-                      the help of the Parmanode install process). 'Binaries' refers to the 
-                      executable files, eg bitcoind and bitcoin-qt, not the blockchain.
+        import)       IMPORT binaries you have compiled yourself (or previously downloaded without the help of the 
+                      Parmanode install process). 'Binaries' refers to the executable files, eg bitcoind and 
+                      bitcoin-qt, not the blockchain.
 $orange
-##############################################################################################################
+########################################################################################################################
 "
 choose "xpmq" 
 unset bitcoin_compile ordinals_patch knotsbitcoin byo_bitcoin
@@ -52,11 +52,11 @@ jump $choice || { invalid ; continue ; } ; set_terminal
 
 case $choice in
 q|Q) exit 0 ;; p|P) return 1 ;; m|M) back2main ;;
-pk|kp|"")
+pck|pk|kp|"")
 parmanode_conf_add "bitcoin_choice=knots"
 export bitcoin_compile="false" 
 export knotsbitcoin="true" ; version="28.x-knots" ; break ;;
-0|27|c)
+0|27|c|core)
 parmanode_conf_add "bitcoin_choice=precompiled"
 export bitcoin_compile="false" ; break ;;
 few|custom) 
