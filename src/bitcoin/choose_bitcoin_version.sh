@@ -27,9 +27,9 @@ $yellow
 
           hfsp)       Guided compile Bitcoin CORE v$version
 
-          rekt)       Guided compile Bitcoin CORE, v$version $yellow(with FILTER-ORDINALS patch by Luke Dashjr)
+          rekt)       Guided compile Bitcoin CORE, v$version, (with FILTER-ORDINALS patch by Luke Dashjr)
 $orange
-          info)       Read how to compile yourself, and import the installation to Parmanode.  You can come back to 
+          info)       Read how to compile yourself, and import the installation to Parmanode. You can come back to 
                       this menu after selecting this. 
 $red
            few)       Custom version (you choose) - Download and verify 'trusted' releases
