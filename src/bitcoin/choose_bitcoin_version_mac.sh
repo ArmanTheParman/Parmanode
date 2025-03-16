@@ -8,9 +8,10 @@ set_terminal  ; echo -e "
     You have choices for installing Bitcoin with Parmanode... $orange
 
 
-$cyan    1)$orange    Bitcoin QT version $version
+$cyan    1)$bright_blue    Bitcoin Knots version $knotsversion $orange
 
-$cyan    2)$bright_blue    Bitcoin Knots version $knotsversion $orange
+$cyan    2)$orange    Bitcoin QT version $version
+
 
 $cyan    3)$red    Bitcoin in Docker (bundled with BTCPay)$orange 
 
@@ -23,11 +24,11 @@ $green
 
     What'll it be?
 
-$cyan                   1)$orange     Bitcoin QT
+$cyan                   1)$green     All the cool kids are running Knots
 
-$cyan                   2)$bright_blue     All the cool kids are running Knots
+$cyan                   2)$orange     Bitcoin Core
 
-$cyan                   3)$red     Bitcoin AND BTCPay in Docker
+$cyan                   3)$red     Bitcoin Core inside BTCPay Docker Container
 
 $orange
 ########################################################################################
@@ -37,12 +38,12 @@ jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 
-1)
+2)
 export btcdockerchoice=no
 export bitcoin_compile="false"
 break
 ;;
-2)
+1)
 parmanode_conf_add "bitcoin_choice=knots"
 export knotsbitcoin="true" ; export version="Knots" ; export bitcoin_compile="false" 
 export btcdockerchoice=no

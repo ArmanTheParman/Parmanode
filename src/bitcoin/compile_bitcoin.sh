@@ -33,7 +33,7 @@ if [[ $knotsbitcoin != "true" ]] ; then
                 git add . ; git commit -m "ordinals patch applied"
             fi
 
-elif [[ $knotsbitcoin == "true" ]] ; then  #compile bitcoin not true
+elif [[ $knotsbitcoin == "true" ]] ; then 
     set_github_config
     if [[ -e $hp/bitcoinknots_github ]] ; then 
         cd $hp/bitcoinknots_github ; git fetch ; git pull ; git checkout origin/HEAD ; git pull 

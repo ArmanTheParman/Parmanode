@@ -3,7 +3,8 @@ function download_bitcoin {
 #not required for installation/setup of system outsite docker.
 
 if [[ $btcpay_combo == "true" ]] || [[ $btcdockerchoice == yes ]] ; then return 0 ; fi
-if [[ $bitcoin_compile == "false" && $knotsbitcoin == "true" ]] ; then download_bitcoin_knots ; return 0 ; fi
+if [[ $bitcoin_compile == "true" ]] ; then return 0 ; fi
+
 # version == self means user has chosen to import own binaries.
 if [[ $version == self ]] ; then return 0 ; fi
 
@@ -56,41 +57,41 @@ function download_bitcoin_getfiles {
 while true ; do
 
 	     if [[ $chip == "armv7l" || $chip == "armv8l" ]] ; then 		#32 bit Pi4
+                [[ $knotsbitcoin == "true" ]] &&
+                curl -LO https://bitcoinknots.org/files/28.x/28.1.knots20250305/bitcoin-28.1.knots20250305-arm-linux-gnueabihf.tar.gz ; break
 		        curl -LO https://bitcoincore.org/bin/bitcoin-core-$version/bitcoin-$version-arm-linux-gnueabihf.tar.gz  ; break
          fi
 
 	     if [[ $chip == "aarch64" && $OS == Linux ]] ; then 				
 
             if [[ $( file /bin/bash | cut -d " " -f 3 ) == "64-bit" ]] ; then
+                [[ $knotsbitcoin == "true" ]] &&
+                curl -LO https://bitcoinknots.org/files/28.x/28.1.knots20250305/bitcoin-28.1.knots20250305-aarch64-linux-gnu.tar.gz ; break
                 curl -LO https://bitcoincore.org/bin/bitcoin-core-$version/bitcoin-$version-aarch64-linux-gnu.tar.gz ; break
-            else
+            else #32 bit
+                [[ $knotsbitcoin == "true" ]] &&
+                curl -LO https://bitcoinknots.org/files/28.x/28.1.knots20250305/bitcoin-28.1.knots20250305-arm-linux-gnueabihf.tar.gz ; break
                 curl -LO https://bitcoincore.org/bin/bitcoin-core-$version/bitcoin-$version-arm-linux-gnueabihf.tar.gz  ; break
             fi
          fi
 
  	     if [[ $chip == "x86_64" && $OS == Linux ]] ; then 
+                [[ $knotsbitcoin == "true" ]] &&
+                curl -LO https://bitcoinknots.org/files/28.x/28.1.knots20250305/bitcoin-28.1.knots20250305-x86_64-linux-gnu.tar.gz ; break
 		        curl -LO https://bitcoincore.org/bin/bitcoin-core-$version/bitcoin-$version-x86_64-linux-gnu.tar.gz  ; break
          fi
 
          if [[ ($chip == "arm64" && $OS == Mac) || ( $chip == "aarch64" && $OS == Mac) ]] ; then
 
-            if [[ $knotsbitcoin == "true" ]] ; then
-                curl -LO https://bitcoinknots.org/files/27.x/27.1.knots20240801/bitcoin-27.1.knots20240801-arm64-apple-darwin.dmg ; break  
-            fi
-            
-            curl -LO https://bitcoincore.org/bin/bitcoin-core-$version/bitcoin-$version-arm64-apple-darwin.zip
-            unzip bitcoin*.zip 
-            zip="true" ; break
+            [[ $knotsbitcoin == "true" ]] && 
+            curl -LO https://bitcoinknots.org/files/27.x/27.1.knots20240801/bitcoin-27.1.knots20240801-arm64-apple-darwin.dmg ; break  
+            curl -LO https://bitcoincore.org/bin/bitcoin-core-$version/bitcoin-$version-arm64-apple-darwin.zip ; unzip bitcoin*.zip ; zip="true" ; break
          fi
 
          if [[ $chip == "x86_64" && $OS == Mac ]] ; then
-            if [[ $knotsbitcoin == "true" ]] ; then
-                curl -LO https://bitcoinknots.org/files/27.x/27.1.knots20240801/bitcoin-27.1.knots20240801-x86_64-apple-darwin.dmg ; break
-            fi    
-
-            curl -LO https://bitcoincore.org/bin/bitcoin-core-$version/bitcoin-$version-x86_64-apple-darwin.zip
-            unzip bitcoin*.zip 
-            zip="true" ; break
+            [[ $knotsbitcoin == "true" ]] &&
+            curl -LO https://bitcoinknots.org/files/27.x/27.1.knots20240801/bitcoin-27.1.knots20240801-x86_64-apple-darwin.dmg ; break
+            curl -LO https://bitcoincore.org/bin/bitcoin-core-$version/bitcoin-$version-x86_64-apple-darwin.zip ; unzip bitcoin*.zip ; zip="true" ; break
          fi
 done
 return 0
@@ -99,7 +100,7 @@ return 0
 
 function unpack_bitcoin {
 
-if [[ $OS == Mac && $zip != "true" ]] ; then
+if [[ $OS == "Mac" && $zip != "true" ]] ; then
 hdiutil attach *.dmg
 sudo cp -r /Volumes/Bitcoin*/Bitcoin* /Applications
 hdiutil detach /Volumes/Bitcoin*
@@ -107,7 +108,7 @@ elif [[ $zip == "true" ]] ; then
 sudo cp -r ./Bitcoin* /Applications
 fi
 
-if [[ $OS == Linux ]] ; then
+if [[ $OS == "Linux" ]] ; then
 set_terminal
 mkdir -p $dp/temp/ >$dn 2>&1
 tar -xf bitcoin-* -C $dp/temp/ >$dn 2>&1
@@ -127,17 +128,4 @@ sudo install -m 0755 -o $(whoami) -g $(whoami) -t /usr/local/bin $hp/bitcoin/bin
 sudo rm -rf $hp/bitcoin/bin
 sudo rm -rf $dp/temp >$dn 2>&1
 fi
-}
-
-
-function download_bitcoin_knots {
-
-bitcoin_compile_dependencies
-bitcoin_compile_dependencies "GUI" #Need both
-
-git clone https://github.com/armantheparman/compiled_bitcoin_knots $hp/complied_bitcoin_knots
-sudo mv $hp/complied_bitcoin_knots/* /usr/local/bin
-sudo rm -rf $hp/complied_bitcoin_knots
-debug "after download_bitcoin_knots"
-return 0
 }

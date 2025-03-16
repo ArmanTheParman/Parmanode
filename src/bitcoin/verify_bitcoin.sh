@@ -5,8 +5,9 @@ if [[ $bitcoin_compile = "true" ]] ; then return 0 ; fi
 cd $HOME/parmanode/bitcoin
 
 if grep -q "bitcoin_choice=knots" $pc ; then
-    curl -LO https://bitcoinknots.org/files/27.x/27.1.knots20240801/SHA256SUMS
-    curl -LO https://bitcoinknots.org/files/27.x/27.1.knots20240801/SHA256SUMS.asc
+             
+    curl -LO https://bitcoinknots.org/files/28.x/28.1.knots20250305/SHA256SUMS 
+    curl -LO https://bitcoinknots.org/files/28.x/28.1.knots20250305/SHA256SUMS.asc
 else
     curl -LO https://bitcoincore.org/bin/bitcoin-core-$version/SHA256SUMS 
     curl -LO https://bitcoincore.org/bin/bitcoin-core-$version/SHA256SUMS.asc 

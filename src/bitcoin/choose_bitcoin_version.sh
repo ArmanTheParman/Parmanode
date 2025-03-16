@@ -19,7 +19,9 @@ $orange
 ##############################################################################################################
 $green
 
-    hit <enter>       v$version - Download and verify 'trusted' releases
+            kp)       Pre-compiled Bitcoin KNOTS, verified with gpg. 
+
+             c)       Bitcoin CORE v$version - Download and gpg verify 'trusted' releases
 $green
           hfsp)       Guided compile v$version
 $red
@@ -51,7 +53,11 @@ jump $choice || { invalid ; continue ; } ; set_terminal
 
 case $choice in
 q|Q) exit 0 ;; p|P) return 1 ;; m|M) back2main ;;
-0|27|"")
+pk|kp|"")
+parmanode_conf_add "bitcoin_choice=knots"
+export bitcoin_compile="false" 
+export knotsbitcoin="true" ; version="28.x-knots" ; break ;;
+0|27|c)
 parmanode_conf_add "bitcoin_choice=precompiled"
 export bitcoin_compile="false" ; break ;;
 few|custom) 
@@ -71,18 +77,7 @@ export bitcoin_compile="true" ; export ordinals_patch="true" ; break ;;
 knots)
 parmanode_conf_add "bitcoin_choice=knots"
 export bitcoin_compile="true"
-export knotsbitcoin="true" ; export version="27.x-knots" ; break ;;
-
-#reckless)
-#if [[ $(uname -m) != "x86_64" ]] ; then
-#announce "Knots precompiled only available for x86_64 at this stage."
-#continue
-#fi
-#
-#parmanode_conf_add "bitcoin_choice=knots_precompiled"
-#export bitcoin_compile="false"
-#export knotsbitcoin="true" ; export version="27.x-knots" ; break ;;
-
+export knotsbitcoin="true" ; export version="28.1-knots" ; break ;;
 builder)
 parmanode_conf_add "bitcoin_choice=compiled"
 export bitcoin_compile="true" ; export version="master" ; break ;;
