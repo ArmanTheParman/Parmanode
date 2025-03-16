@@ -1,5 +1,11 @@
 function menu_nginx {
 while true ; do
+if sudo systemctl status nginx >$dn 2>&1 ; then
+nginxrunning="${green}RUNNING$orange"
+else
+nginxrunning="${red}NOT RUNNING$orange"
+fi
+
 set_terminal ; echo -e "
 ########################################################################################$cyan
                                     Nginx Menu            $orange                   
