@@ -139,7 +139,7 @@ dt)
 please_wait
 make_datum_ssh_keys
 announce_blue "
-    To install Datum with Parmanode, please send$orange 42 sats over lightning via 
+    To install Datum with Parmanode, please send$orange 42 sats$blue over lightning via 
     NOSTR zap, or the donations page:
 
 $orange    https://armantheparman.com/donations $blue
