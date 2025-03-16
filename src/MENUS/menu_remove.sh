@@ -28,6 +28,7 @@ echo -e "
 if [[ -d $pp/datum ]] ; then datummenu=1
 echo -e "#$cyan                            (datum)$blue            Datum$orange                                  #
 #                                                                                      #"
+fi
 if grep -q "parmacloud-end" $HOME/.parmanode/installed.conf ; then parmacloudmenu=1
 echo -e "#$cyan                            (cloud)$blue            ParmaCloud$orange                             #
 #                                                                                      #"
