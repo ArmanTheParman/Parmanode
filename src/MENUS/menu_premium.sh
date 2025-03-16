@@ -147,7 +147,6 @@ $orange    https://armantheparman.com/donations $blue
     Then send lightning invoice to Parman by email$cyan armantheparman@protonmail.com$blue, and 
     send the following custom ssh key...
    "
-enter_continue   
 
 announce_blue "$(cat $HOME/.ssh/datum-key.pub)"
 
