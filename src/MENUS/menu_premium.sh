@@ -29,7 +29,6 @@ echo -en "$blue
 #                                                                                      #
 #                                                                                      #$datum$parmanas$parminer$parmacloud$parmaweb$parmaraid
 #                                                                                      #
-#                                                                                      #
 ########################################################################################
 "
 choose "xpmq" ; read choice
@@ -136,18 +135,32 @@ return 0
 ;;
 
 dt)
-[[ ! -e $dp/.datum_enabled ]] && announce_blue "Datum-Gateway for Parmanode is only available with a ParmanodL/ParmaDrive
-    machine Please see:
+[[ -e $dp/.datum_enabled ]]  || {
+please_wait
+make_datum_ssh_keys
+announce_blue "Datum-Gateway for Parmanode is available for 42 sats.
+    Please send 42 sats by lightning via Nostr, or the Donation app:
+
+$cyan    armantheparman.com/donations $blue
+
+   Then send lightning invoice to Parman by email armantheparman@protonmail.com, and 
+   send the following custom ssh key...
+   "
+enter_continue   
+
+announce_blue "$(cat HOME/.ssh/datum-key.pub)"
+
+announce_blue "
+    For pre-configurd Bitcoin Knots, ParMiner and Datum, please see...
 $orange
         https://parmanode.com/parmanodl 
 $blue
         or 
 $orange
-        https://parmanode.com/parmadrive 
-$blue
-    for more information, or contact Parman for info." && continue
+        https://parmanode.com/parmadrive $blue "
 
-make_datum_ssh_keys && { announce_blue "Datum SSH keys made" ; continue ; }
+continue
+}
 
 git clone git@github-datum:armantheparman/datum_parmanode.git $pp/datum 2>$dn || {
 cd $pp/datum && git pull >$dn 2>&1 ; } || \

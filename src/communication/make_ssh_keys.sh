@@ -83,9 +83,6 @@ debug end make_parmanas_ssh_keys
 }
 
 function make_datum_ssh_keys {
-debug start make_datum_ssh_keys
-#usage...
-#make_datum_ssh_keys && { announce_blue "Datum SSH keys made. Please contact Parman to enable." ; continue ; }
 
 sudo test -f $HOME/.ssh/datum-key.pub && return 1 # 1 is logically success here for the calling function
 
@@ -99,7 +96,6 @@ HostName github.com
 User git
 IdentityFile ~/.ssh/datum-key
 IdentitiesOnly yes" | sudo tee -a ~/.ssh/config >$dn
-debug end make_datum_ssh_keys
 }
 
 function get_all_ssh_keys {
