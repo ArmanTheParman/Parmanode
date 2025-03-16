@@ -149,7 +149,7 @@ $cyan    armantheparman.com/donations $blue
    "
 enter_continue   
 
-announce_blue "$(cat HOME/.ssh/datum-key.pub)"
+announce_blue "$(cat $HOME/.ssh/datum-key.pub)"
 
 announce_blue "
     For pre-configurd Bitcoin Knots, ParMiner and Datum, please see...
