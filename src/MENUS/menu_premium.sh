@@ -136,8 +136,16 @@ return 0
 ;;
 
 dt)
-[[ ! -e $dp/.datum_enabled ]] && announce_blue "Datum-Gateway-Parmanode is only available with a ParmanodL or ParmaDrive system. 
-    Contact Parman for info." && continue
+[[ ! -e $dp/.datum_enabled ]] && announce_blue "Datum-Gateway for Parmanode is only available with a ParmanodL/ParmaDrive
+    machine Please see:
+$orange
+        https://parmanode.com/parmanodl 
+$blue
+        or 
+$orange
+        https://parmanode.com/parmadrive 
+$blue
+    for more information, or contact Parman for info." && continue
 
 make_datum_ssh_keys && { announce_blue "Datum SSH keys made" ; continue ; }
 
