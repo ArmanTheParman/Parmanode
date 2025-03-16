@@ -25,6 +25,15 @@ echo -e "
 ########################################################################################
 #                                                                                      #
 #                                                                                      #"
+if [[ -d $pp/datum ]] ; then datummenu=1
+echo -e "#$cyan                            (datum)$blue            Datum$orange                                  #
+#                                                                                      #"
+if grep -q "parmacloud-end" $HOME/.parmanode/installed.conf ; then parmacloudmenu=1
+echo -e "#$cyan                            (cloud)$blue            ParmaCloud$orange                             #
+#                                                                                      #"
+elif grep -q "parmacloud-start" $HOME/.parmanode/installed.conf ; then parmacloudmenu=1
+echo -e "#$cyan                            (cloud)$blue            ParmaCloud$orange              $red$blinkon(partial)$blinkoff$orange      #
+#                                                                                      #" ; fi
 if grep -q "website-end" $HOME/.parmanode/installed.conf ; then websitemenu=1
 echo -e "#$cyan                            (pw)$blue               WordPress Website (ParmaWeb)           $orange#
 #                                                                                      #"
@@ -264,12 +273,6 @@ echo -e "#$cyan                            (litd)$orange             LIDT       
 #                                                                                      #"
 elif grep -q "litd-start" $HOME/.parmanode/installed.conf ; then litdmenu=1
 echo -e "#$cyan                            (litd)$orange             LITD              $red$blinkon(partial)$blinkoff$orange            #
-#                                                                                      #" ; fi
-if grep -q "parmacloud-end" $HOME/.parmanode/installed.conf ; then parmacloudmenu=1
-echo -e "#$cyan                            (cloud)$blue            ParmaCloud$orange                             #
-#                                                                                      #"
-elif grep -q "parmacloud-start" $HOME/.parmanode/installed.conf ; then parmacloudmenu=1
-echo -e "#$cyan                            (cloud)$blue            ParmaCloud$orange              $red$blinkon(partial)$blinkoff$orange      #
 #                                                                                      #" ; fi
 if grep -q "parmanostr-end" $HOME/.parmanode/installed.conf ; then parmanostrmenu=1
 echo -e "#$cyan                            (pnostr)$orange           Parmanostr                             #
@@ -601,6 +604,13 @@ fi
 cloud)
 if [[ $parmacloudmenu == 1 ]] ; then
 uninstall_parmacloud
+menu_main
+fi
+;;
+
+datum)
+if [[ $datummenu == 1 ]] ; then
+uninstall_datum
 menu_main
 fi
 ;;
