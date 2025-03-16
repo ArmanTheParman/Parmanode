@@ -27,6 +27,9 @@ deactivate >/dev/null 2>&1
     [[ -e $HOME/parman_programs/parminer ]] && for file in $HOME/parman_programs/parminer/src/*.sh ; do
 	    source $file
 	done
+    [[ -e $HOME/parman_programs/datum ]] && for file in $HOME/parman_programs/datum/src/*.sh ; do
+	    source $file
+	done
 
 if [[ $parminer == 1 ]] ; then premium=1 ; fi
 
