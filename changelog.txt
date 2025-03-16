@@ -1,5 +1,6 @@
 Version 3.55.0
      -Datum Gatway
+     -Bitcoin Knots, precompiled
 Version 3.54.3
      -smol bug fixes
      -Use menu more compact, and re-ordered
