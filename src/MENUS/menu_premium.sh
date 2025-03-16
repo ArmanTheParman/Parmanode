@@ -148,7 +148,7 @@ $cyan    https://armantheparman.com/donations $blue
     send the following custom ssh key...
    "
 
-announce_blue "$(cat $HOME/.ssh/datum-key.pub)"
+announce_blue "$cyan$(cat $HOME/.ssh/datum-key.pub)$blue"
 
 announce_blue "
     For pre-configurd Bitcoin Knots, ParMiner and Datum, please see...
