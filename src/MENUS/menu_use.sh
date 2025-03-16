@@ -33,23 +33,17 @@ echo -e "
 
 "
 if [[ -e $pp/parmanas ]] ; then
-                       echo -e "                   $cyan       (pnas)$blue       ParaNas$orange
-                            " ; parmanasapp=1 ; count=$((count +1)) ; fi
+                       echo -e "                   $cyan       (pnas)$blue       ParaNas$orange" ; parmanasapp=1 ; count=$((count +1)) ; fi
 if [[ -e $pp/parminer ]] ; then 
-                       echo -e "                   $cyan       (pm)$blue         ParMiner$orange
-                            " ; parminerapp=1 ; count=$((count +1)) ; fi
+                       echo -e "                   $cyan       (pm)$blue         ParMiner$orange" ; parminerapp=1 ; count=$((count +1)) ; fi
 if [[ -e $pp/datum ]] ; then 
-                       echo -e "                   $cyan       (dt)$blue         Datum$orange
-                            " ; datumapp=1 ; count=$((count +1)) ; fi
+                       echo -e "                   $cyan       (dt)$blue         Datum$orange" ; datumapp=1 ; count=$((count +1)) ; fi
 if grep -q "parmacloud-end" $HOME/.parmanode/installed.conf ; then parmacloudapp=1
-                       echo -e "                        $cyan  (cloud)$blue      ParmaCloud$orange
-                            " ; count=$((count +1)) ; fi
+                       echo -e "                        $cyan  (cloud)$blue      ParmaCloud$orange" ; count=$((count +1)) ; fi
 if grep -q "website-end" $HOME/.parmanode/installed.conf ; then websiteapp=1
-                       echo -e "                        $cyan  (pw)$blue         WordPress Website (ParmaWeb)$orange
-                            " ; count=$((count +1)) ; fi
+                       echo -e "                        $cyan  (pw)$blue         WordPress Website (ParmaWeb)$orange" ; count=$((count +1)) ; fi
 if grep -q "parmaraid-end" $ic ; then raidapp=1
-                       echo -e "                   $cyan       (rr)$blue         RAID 
-                            " ; count=$((count +1)) ; fi
+                       echo -e "                   $cyan       (rr)$blue         RAID" ; count=$((count +1)) ; fi
 if grep -q "bitcoin-end" $HOME/.parmanode/installed.conf ; then bitcoinapp=1
                        echo -e "                        $cyan  (b)$orange          Bitcoin
                             " ; count=$((count +1)) ; fi
