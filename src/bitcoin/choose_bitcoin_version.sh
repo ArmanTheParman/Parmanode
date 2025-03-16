@@ -19,26 +19,25 @@ $orange
 ##############################################################################################################
 $green
 
-            kp)       Pre-compiled Bitcoin KNOTS, verified with gpg. 
-
+            kp)       Pre-compiled Bitcoin KNOTS, verified with gpg (recommended)
+$orange
              c)       Bitcoin CORE v$version - Download and gpg verify 'trusted' releases
-$green
+
+         knots)       Guided compile$yellow Bitcoin Knots
+
           hfsp)       Guided compile v$version
+$blue
+          rekt)       Guided compile v$version $yellow(FILTER-ORDINALS patch$bright_blue, by Luke Dashjr)
+$orange
+          info)       Read how to compile yourself, and import the installation to Parmanode. 
+                      You can come back to this menu after selecting this. 
 $red
            few)       Custom version (you choose) - Download and verify 'trusted' releases
 
           yolo)       Guided compile custom version (you choose) 
-$bright_blue
-          rekt)       Guided compile v$version $yellow(FILTER-ORDINALS patch$bright_blue, by Luke Dashjr)
 
-         knots)       Guided compile$yellow Bitcoin Knots$bright_blue (Luke Dashjr's version of Bitcoin 
-                      Core) - syncs faster; bug fixes missing in Core; and power user options / tools.
-$red
        builder)       Guided compile of most recent Github update, i.e. pre-release
                       (for testing only)
-$orange
-          info)       Read how to compile yourself, and import the installation to Parmanode. 
-                      You can come back to this menu after selecting this. 
 
         import)       IMPORT binaries you have compiled yourself (or previously downloaded without
                       the help of the Parmanode install process). 'Binaries' refers to the 
