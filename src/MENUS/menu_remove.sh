@@ -25,10 +25,12 @@ echo -e "
 ########################################################################################
 #                                                                                      #
 #                                                                                      #"
-if [[ -d $pp/datum ]] ; then datummenu=1
+if grep -q "datum-end" $HOME/.parmanode/installed.conf ; then datummenu=1
 echo -e "#$cyan                            (datum)$blue            Datum$orange                                  #
 #                                                                                      #"
-fi
+elif grep -q "datum-start" $HOME/.parmanode/installed.conf ; then datummenu=1
+echo -e "#$cyan                            (datum)$blue            Datum$orange              $red$blinkon(partial)$blinkoff$orange      #
+#                                                                                      #" ; fi
 if grep -q "parmacloud-end" $HOME/.parmanode/installed.conf ; then parmacloudmenu=1
 echo -e "#$cyan                            (cloud)$blue            ParmaCloud$orange                             #
 #                                                                                      #"
