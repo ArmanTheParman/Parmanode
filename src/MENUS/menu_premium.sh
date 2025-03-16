@@ -17,7 +17,7 @@ another="true"
 fi
 [[ ! -e $pp/parmaraid ]] &&        parmaraid="\n#$orange                pr)$blue        ParmaRAID                                                  #
 #                                                                                      #"
-[[ ! -e $pp/datum ]] &&        datum="\n#$orange                dt)$blue        Datum-Gateway-Parmanode                                    #
+[[ ! -e $pp/datum ]] &&        datum="\n#$orange                dt)$blue        Datum-Gateway-Parmanode $green only 42 sats!$blue                                   #
 #                                                                                      #"
 
 
@@ -27,7 +27,7 @@ echo -en "$blue
 #$orange               PREMIUM FEATURES AVAILABLE FOR A FEE:$green CONACT PARMAN          $blue          #
 ########################################################################################
 #                                                                                      #
-#                                                                                      #$parmanas$parminer$parmacloud$parmaweb$parmaraid$datum
+#                                                                                      #$datum$parmanas$parminer$parmacloud$parmaweb$parmaraid
 #                                                                                      #
 #                                                                                      #
 ########################################################################################
