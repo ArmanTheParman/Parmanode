@@ -36,21 +36,30 @@ uninstall_core_lightning
 exit
 fi
 
-if [[ $1 == pubkey ]] ; then
-which qrencode || install_qrencode silent
-set_terminal_high
-echo "public key..."
-qrencode -t ANSIUTF8 "$(sudo cat ~/.ssh/id_rsa.pub)"
-echo "onion address..."
-qrencode -t ANSIUTF8 "$(sudo cat /var/lib/tor/parmanode-service/hostname | cut -d \. -f1)"
-echo "Take a photo and send to Parman for ParMiner access. Or, copy text, next screen..."
-enter_continue
+if [[ $1 == parminerkey ]] ; then
+if yesorno_blue "This will print for you the authentication key to pass on to Parman.
+    
+    You have choices..." "qr" "Print QR Code" "text" "Just text on the screen" ; then
+sudo true
 clear
-echo -e "Copy this text and send to Parman..\n$cyan"
-sudo cat /var/lib/tor/parmanode-service/hostname | cut -d \. -f1
-echo -e ""
+which qrencode || install_qrencode silent
+set_terminal 77 150
+echo -e "${cyan}ID...\n"
+qrencode -t ANSIUTF8 "$(sudo cat $macprefix/var/lib/tor/parmanode-service/hostname | cut -d \. -f1)"
+echo -e "${cyan}Key...\n"
+qrencode -t ANSIUTF8 "$(sudo cat ~/.ssh/id_rsa.pub)"
+echo -e "\nTake a photo and send to Parman for ParMiner access."
+enter_continue
+else
+sudo true
+clear
+echo -e "${cyan}ID...\n"
+sudo cat $macprefix/var/lib/tor/parmanode-service/hostname | cut -d \. -f1
+echo -e "${cyan}Key...\n"
 sudo cat ~/.ssh/id_rsa.pub
-echo  -e "$reset"
+echo -e "\nTake a photo and send to Parman for ParMiner access."
+enter_continue
+fi
 
 exit
 fi
