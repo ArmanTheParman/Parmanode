@@ -39,8 +39,8 @@ $emenu
 $green    INTERNAL:
 $orange
                  Device ID:                   $green$iID $orange
-                 Total space:                 $green$(df -h | grep $iID | awk '{print $2}') $orange
-                 Free space:                  $green$(df -h| grep $iID | awk '{print $4}') $orange
+                 Total space:                 $green$(df -h | grep -E '/$' | awk '{print $2}') $orange
+                 Free space:                  $green$(df -h | grep -E '/$' | awk '{print $4}') $orange
                  Reserved 'system' space:     $green$(($(sudo tune2fs -l $iID | grep -E Reserved.+count | awk '{print $4}') * $iblocksize / (1024*1024*1024) ))G
 $orange                                                                         
 
