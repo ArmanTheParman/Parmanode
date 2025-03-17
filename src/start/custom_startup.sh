@@ -40,50 +40,18 @@ if [[ $1 == pubkey ]] ; then
 which qrencode || install_qrencode silent
 set_terminal_high
 echo "public key..."
-qrencode -t ANSIUTF8 "$(cat ~/.ssh/id_rsa.pub)"
+qrencode -t ANSIUTF8 "$(sudo cat ~/.ssh/id_rsa.pub)"
 echo "onion address..."
-qrencode -t ANSIUTF8 "$(sudo cat /var/lib/tor/parmanode-service/hostname)"
-echo "Take a photo and send to Parman for ParMiner access"
+qrencode -t ANSIUTF8 "$(sudo cat /var/lib/tor/parmanode-service/hostname | cut -d \. -f1)"
+echo "Take a photo and send to Parman for ParMiner access. Or, copy text, next screen..."
 enter_continue
-exit
-fi
+clear
+echo -e "Copy this text and send to Parman..\n$cyan"
+sudo cat /var/lib/tor/parmanode-service/hostname | cut -d \. -f1
+echo -e ""
+sudo cat ~/.ssh/id_rsa.pub
+echo  -e "$reset"
 
-
-if [[ $1 == mempoolerror ]] ; then
-announce "About to gather information for mempool error and will save to Desktop/report.txt"
-Desktop=$HOME/Desktop
-docker ps > $Desktop/report.txt 2>&1
-echo "##1##" >> $Desktop/report.txt
-docker logs docker-api-1 >> $Desktop/report.txt 2>&1
-echo "##2##" >> $Desktop/report.txt
-docker logs docker-db-1 >> $Desktop/report.txt 2>&1
-echo "##3##" >> $Desktop/report.txt
-docker logs docker-mempool_web-1 >> $Desktop/report.txt 2>&1
-echo "##4##" >> $Desktop/report.txt
-sudo netstat -tulnp | grep -q :8332 >> $Desktop/report.txt 2>&1 || echo "no 8332" >> $Desktop/report.txt
-echo "##5##" >> $Desktop/report.txt
-sudo systemctl status bitcoind.service >> $Desktop/report.txt 2>&1
-echo "##6##" >> $Desktop/report.txt
-docker network ps >> $Desktop/report.txt 2>&1
-echo "##7##" >> $Desktop/report.txt
-cat $hp/mempool/docker/docker-compose.yml >> $Desktop/report.txt 2>&1
-echo "##8##" >> $Desktop/report.txt
-cat $HOME/.bitcoin/bitcoin.conf >> $Desktop/report.txt 2>&1
-echo "##9##" >> $Desktop/report.txt
-bitcoin-cli getblockchaininfo >> $Desktop/report.txt 2>&1
-echo "##10##" >> $Desktop/report.txt
-bitcoin-cli getmempoolinfo >> $Desktop/report.txt 2>&1
-echo "##11##" >> $Desktop/report.txt
-bitcoin-cli version >> $Desktop/report.txt 2>&1
-echo "##12##" >> $Desktop/report.txt
-curl -s ifconfig.me >> $Desktop/report.txt 2>&1
-echo "" >> $Desktop/report.txt
-echo "##13##" >> $Desktop/report.txt
-ip a >> $Desktop/report.txt 2>&1
-echo "##14##" >> $Desktop/report.txt
-echo "UFW... $(sudo ufw status)" >> $Desktop/report.txt
-echo "##15##" >> $Desktop/report.txt
-announce "Report saved to Desktop/report.txt please send to Parman"
 exit
 fi
 
