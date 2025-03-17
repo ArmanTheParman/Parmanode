@@ -15,8 +15,8 @@ if [[ $mounted == "true" ]] ; then
 emenu="$green    EXTERNAL: (mounted)
 $orange                                                                         
                  Device ID:                   $green$eID $orange
-                 Total space:                 $green$(lsblk  -nr -o PATH,MOUNTPOINT | grep $eID | awk '{print $2}') $orange
-                 Free space:                  $green$(lsblk -nr -o PATH,MOUNTPOINT | grep $eID | awk '{print $4}') $orange 
+                 Total space:                 $green$(df -h | grep $eID | awk '{print $2}') $orange
+                 Free space:                  $green$(df -h | grep $eID | awk '{print $4}') $orange 
                  Label:                       $green$(sudo e2label $eID) $orange
                  UUID:                        $green$(sudo tune2fs -l $eID | grep UUID | awk '{print $3}') $orange
                  Mountpoint:                  $green$(mount | grep $eID | awk '{print $3}') $orange
