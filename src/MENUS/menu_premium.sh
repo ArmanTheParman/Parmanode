@@ -172,7 +172,7 @@ source $file
 done
 menu_datum
 return 0
-}
+
 ;;
 
 *)
