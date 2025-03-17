@@ -15,8 +15,8 @@ if [[ $mounted == "true" ]] ; then
 emenu="$green    EXTERNAL: (mounted)
 $orange                                                                         
                  Device ID:                   $green$eID $orange
-                 Total space:                 $green$(df -h | grep $eID | awk '{print $2}') $orange
-                 Free space:                  $green$(df -h | grep $eID | awk '{print $4}') $orange
+                 Total space:                 $green$(lsblk  -f | grep $eID | awk '{print $2}') $orange
+                 Free space:                  $green$(lsblk -f | grep $eID | awk '{print $4}') $orange
                  Label:                       $green$(sudo e2label $eID) $orange
                  UUID:                        $green$(sudo tune2fs -l $eID | grep UUID | awk '{print $3}') $orange
                  Mountpoint:                  $green$(mount | grep $eID | awk '{print $3}') $orange
@@ -40,8 +40,8 @@ $emenu
 $green    INTERNAL:
 $orange
                  Device ID:                   $green$iID $orange
-                 Total space:                 $green$(df -h | grep $iID | awk '{print $2}') $orange
-                 Free space:                  $green$(df -h | grep $iID | awk '{print $4}') $orange
+                 Total space:                 $green$(lsblk -f | grep $iID | awk '{print $2}') $orange
+                 Free space:                  $green$(lsblk -f | grep $iID | awk '{print $4}') $orange
                  Reserved 'system' space:     $green$(($(sudo tune2fs -l $iID | grep -E Reserved.+count | awk '{print $4}') * $iblocksize / (1024*1024*1024) ))G
 $orange                                                                         
 
