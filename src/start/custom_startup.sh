@@ -46,7 +46,7 @@ which qrencode || install_qrencode silent
 set_terminal 77 150
 echo -e "${cyan}ID...\n"
 qrencode -t ANSIUTF8 "$(sudo cat $macprefix/var/lib/tor/parmanode-service/hostname | cut -d \. -f1)"
-echo -e "${cyan}Key...\n"
+echo -e "\n${cyan}Key...\n"
 qrencode -t ANSIUTF8 "$(sudo cat ~/.ssh/id_rsa.pub)"
 echo -e "\nTake a photo and send to Parman for ParMiner access."
 enter_continue
@@ -55,7 +55,7 @@ sudo true
 clear
 echo -e "${cyan}ID...\n"
 sudo cat $macprefix/var/lib/tor/parmanode-service/hostname | cut -d \. -f1
-echo -e "${cyan}Key...\n"
+echo -e "$\n{cyan}Key...\n"
 sudo cat ~/.ssh/id_rsa.pub
 echo -e "\nTake a photo and send to Parman for ParMiner access."
 enter_continue
