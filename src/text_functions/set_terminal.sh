@@ -1,6 +1,5 @@
 function set_terminal {
 # sets terminal size
-debug "pre set_terminal"
 while true ; do
 
 [[ -n $2 ]] && {
@@ -33,7 +32,6 @@ return 0
 }
 
 function set_terminal_wide {
-debug "pre set_terminal_wide"
 if [[ -n $1 ]] ; then val="$1" ; else val=38 ; fi
 set_terminal
 printf '\033[8;%s;110t' $val
@@ -76,7 +74,6 @@ return 0
 }
 
 function set_terminal_custom {
-debug "pre set_terminal_custom"
 if [[ -z $2 ]] ; then
 set_terminal
 printf "\033[8;%s;88t" $1
