@@ -1,6 +1,6 @@
 function get_parminer {
 
-if [[ ! -e $dp/.parminer_enabled ]] ; then
+if [[ ! -e $dp/.parminer_enabled && ! -e $dp/.enable_parminer ]] ; then
 announce_blue "Sorry, ParMiner is not available freely (not FOSS). It comes with
     ParmanodL laptops ordered from Parman.
    $cyan 
@@ -16,8 +16,9 @@ fi
 
 #wont work unless authentication valid
 if [[ -e $pp/parminer ]] ; then announce_blue "ParMiner already downloaded" ; return 1 ; fi
+
 if git clone git@github.com:armantheparman/parminer $pp/parminer ; then
-    success "ParMiner has been downloaded."
+    success_blue "ParMiner has been downloaded."
 else
     announce_blue "Something went wrong with the Download; Maybe you haven't got approval?"
     return 1
