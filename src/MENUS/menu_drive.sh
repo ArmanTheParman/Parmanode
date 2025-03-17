@@ -47,21 +47,21 @@ $orange
 
 ________________________________________________________________________________________                    
 $cyan
-                         fs)$orange           Free up some space (internal drive)
+                      fs)$orange           Free up some space (internal drive)
 $cyan
-                       info)$orange           Reserved space info
+                    info)$orange           Reserved space info
 $cyan
-                         um)$orange           Unmount Parmanode external drive 
+                      um)$orange           Unmount Parmanode external drive 
 $cyan
-                      mount)$orange           Mount Parmanode externl drive
+                   mount)$orange           Mount Parmanode externl drive
 $cyan
-                       dfat)$orange           Drive format assist tool
+                    dfat)$orange           Drive format assist tool
 $cyan 
-                         md)$orange           Import/Migrate/Revert an external drive
+                      md)$orange           Import/Migrate/Revert an external drive
 $cyan
-                         de)$orange           Drive encryption - info
+                      de)$orange           Drive encryption - info
 $cyan
-                         ps)$orange           Adjust SSD power saving
+                      ps)$orange           Adjust SSD power saving
 
 ########################################################################################
 "
