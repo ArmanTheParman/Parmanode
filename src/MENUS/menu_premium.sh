@@ -19,15 +19,15 @@ fi
 #                                                                                      #"
 [[ ! -e $pp/datum ]] &&        datum="\n#$orange                dt)$blue        Datum-Gateway-Parmanode $green only 42 sats!$blue                     #
 #                                                                                      #"
-
-
+#[[ ! -e $pp/luksenborg]] &&      luksenborg="\n#$orange                lb)$blue        LuksenBorg - encryption and remote backup                  #
+#                                                                                      #"
 set_terminal
 echo -en "$blue
 ########################################################################################
 #$orange               PREMIUM FEATURES AVAILABLE FOR A FEE:$green CONACT PARMAN          $blue          #
 ########################################################################################
 #                                                                                      #
-#                                                                                      #$datum$parmanas$parminer$parmacloud$parmaweb$parmaraid
+#                                                                                      #$datum$parmanas$parminer$parmacloud$parmaweb$parmaraid$luksenborg
 #                                                                                      #
 ########################################################################################
 "
@@ -172,7 +172,11 @@ source $file
 done
 menu_datum
 return 0
+;;
 
+lb)
+#[[ ! -e $dp/.luksenborg_enabled ]] && luksenborg_info && continue
+true
 ;;
 
 *)
