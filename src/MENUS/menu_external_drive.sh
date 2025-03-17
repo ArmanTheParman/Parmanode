@@ -28,7 +28,7 @@ fi
 
 #Internal
 
-iID=$(df -h | grep -E '/$' | awk '{print $1}')
+iID=$(lsblk -f | grep -E '/$' | awk '{print $1}')
 iblocksize=$(sudo tune2fs -l $iID | grep -E 'Block size' | awk '{print $3}')
 debug "before menu"
 set_terminal_custom 49 ; echo -e "
