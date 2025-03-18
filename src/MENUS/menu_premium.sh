@@ -19,7 +19,7 @@ fi
 #                                                                                      #"
 [[ ! -e $pp/datum ]] &&        datum="\n#$orange                dt)$blue        Datum-Gateway-Parmanode $green only 42 sats!$blue                     #
 #                                                                                      #"
-[[ ! -e $pp/remotevault ]] &&      remotevault="\n#$orange                rv)$blue        RemoteVault - encryption and remote backup                  #
+[[ ! -e $pp/remotevault ]] &&      remotevault="\n#$orange                rv)$blue        RemoteVault - encryption and remote backup                 #
 #                                                                                      #"
 set_terminal
 echo -en "$blue
