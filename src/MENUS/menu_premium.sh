@@ -39,7 +39,7 @@ q|Q) exit ;; p|P) return 0 ;; m|M) back2main ;;
 pnas)
 #If ParmaNas is not enabled, show the message and continue
     [[ ! -e $dp/.parmanas_enabled ]] && {
-    announce_blue "ParmaNas (Network Attached Storage) is not enabled by default in Parmanode.
+    announce_blue "${cyan}ParmaNas (Network Attached Storage) is not enabled by default in Parmanode.
 
     It comes with all purchased fully-synced ParmanodL laptops and ParmaCloud machines 
     (16TB self-hosted cloud data + Parmanode Bitcoin Node.)
@@ -71,7 +71,7 @@ $(cat ~/.ssh/parmanas-key.pub)$blue\n" ; continue ; }
 ;;
 
 cloud)
-  [[ ! -e $dp/.parmacloud_enabled ]] && announce_blue "
+  [[ ! -e $dp/.parmacloud_enabled ]] && announce_blue "$cyan
 
     With NextCloud, your machine can host your files like a Google Drive server,
     and you can access them from anywhere via your preferred domain name.    
@@ -96,8 +96,7 @@ get_parminer
 ;;
 
 web)
-[[ ! -e $dp/.parmaweb_enabled ]] && announce_blue "
-    With Parmaweb, you can host your own WordPress Server (Linux Only)
+[[ ! -e $dp/.parmaweb_enabled ]] && announce_blue "${cyan}With Parmaweb, you can host your own WordPress Server (Linux Only)
     with a database configured, help with reverse proxying if you need it
     and free domain name (or buy your own)$orange yourchoice.parmacloud.com$blue
     
