@@ -134,7 +134,7 @@ return 0
 ;;
 
 dt)
-if [[ $(uname -m) != "x86_64" ]] ; then  { announce_blue "Datum is only supported on x86_64 machines at this stage." ; continue ; } ; fi
+#if [[ $(uname -m) != "x86_64" ]] ; then  { announce_blue "Datum is only supported on x86_64 machines at this stage." ; continue ; } ; fi
 [[ -e $dp/.datum_enabled ]]  || {
 please_wait
 make_datum_ssh_keys
