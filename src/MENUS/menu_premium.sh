@@ -191,8 +191,8 @@ return 0
 }
 
 function remotevault_info {
-    announce_blue "
+    announce_blue "$cyan
     With RemoteVault, you can encrypt and back up your data to a remote server.
 
-    To be part of the RemoteVault pilot, please contact Parman." && return 0
+    To be part of the RemoteVault pilot, please contact Parman.$blue" && return 0
 }
