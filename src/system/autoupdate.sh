@@ -67,7 +67,7 @@ autoupdate on
 break
 ;;
 
-n|N)
+n|N|"")
 autoupdate off
 return 0 
 ;;
