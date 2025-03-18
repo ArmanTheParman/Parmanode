@@ -171,7 +171,7 @@ set_terminal ; echo -e "
    $cyan 
                                     SUCCESS !!!
 $orange
-    Bitcoin Core should have started syncing. Note, it should also continue to sync 
+    Bitcoin should have started syncing. Note, it should also continue to sync 
     after a reboot, or you can start Bitcoin Core from the Parmanode Bitcoin menu at
     any time.
 
@@ -201,7 +201,7 @@ echo -e "
 $cyan 
                                     SUCCESS !!!
 $orange
-    Bitcoin Core should have started syncing.
+    Bitcoin should have started syncing.
 
     Bitcoin can be started from the Parmanode-Bitcoin menu, or by clicking the Bitcoin
     App icon in the Applications folder.
