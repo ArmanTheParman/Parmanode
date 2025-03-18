@@ -159,6 +159,7 @@ $blue
 $orange
         https://parmanode.com/parmadrive $blue "
 
+debug "pause"
 continue
 }
 
