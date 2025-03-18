@@ -19,7 +19,7 @@ fi
 #                                                                                      #"
 [[ ! -e $pp/datum ]] &&        datum="\n#$orange                dt)$blue        Datum-Gateway-Parmanode $green only 42 sats!$blue                     #
 #                                                                                      #"
-#[[ ! -e $pp/luksenborg]] &&      luksenborg="\n#$orange                lb)$blue        LuksenBorg - encryption and remote backup                  #
+[[ ! -e $pp/remotevault ]] &&      remotevault="\n#$orange                rv)$blue        RemoteVault - encryption and remote backup                  #
 #                                                                                      #"
 set_terminal
 echo -en "$blue
@@ -27,7 +27,7 @@ echo -en "$blue
 #$orange               PREMIUM FEATURES AVAILABLE FOR A FEE:$green CONACT PARMAN          $blue          #
 ########################################################################################
 #                                                                                      #
-#                                                                                      #$datum$parmanas$parminer$parmacloud$parmaweb$parmaraid$luksenborg
+#                                                                                      #$datum$parmanas$parminer$parmacloud$parmaweb$parmaraid$remotevault
 #                                                                                      #
 ########################################################################################
 "
@@ -174,9 +174,9 @@ menu_datum
 return 0
 ;;
 
-lb)
-#[[ ! -e $dp/.luksenborg_enabled ]] && luksenborg_info && continue
-true
+rv)
+#[[ ! -e $dp/.remotevault_enabled ]] && remotevault_info && continue
+remotevault_info
 ;;
 
 *)
@@ -188,4 +188,11 @@ done
 
 return 0
 
+}
+
+function remotevault_info {
+    announce_blue "
+    With RemoteVault, you can encrypt and back up your data to a remote server.
+
+    To be part of the RemoteVault pilot, please contact Parman." && return 0
 }
