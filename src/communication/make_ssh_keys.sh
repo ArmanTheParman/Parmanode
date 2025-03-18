@@ -107,10 +107,25 @@ make_parmanas_ssh_keys
 make_parmaraid_ssh_keys
 make_datum_ssh_keys
 
-sudo cat $HOME/.ssh/*.pub >> $HOME/Desktop/all_ssh_keys.txt
-echo "" >> $HOME/Desktop/all_ssh_keys.txt
-echo "Parmanode ID" >> $HOME/Desktop/all_ssh_keys.txt
-sudo cat /var/lib/tor/parmanode-service/hostname | sed 's/\.onion//' | tee -a $HOME/Desktop/all_ssh_keys.txt >$dn 2>&1
+echo -e "########################################################################################" >> $HOME/Desktop/all_ssh_keys.txt
+echo -e "    All SSH Kyes for $USER - $(sudo cat /var/lib/tor/parmanode-service/hostname | sed 's/\.onion//')" >> $HOME/Desktop/all_ssh_keys.txt
+echo -e "########################################################################################" >> $HOME/Desktop/all_ssh_keys.txt
+echo -e "
+$(sudo cat $HOME/.ssh/id_rsa.pub)
+
+$(sudo cat $HOME/.ssh/parmacloud-key.pub)
+
+$(sudo cat $HOME/.ssh/parmans-key.pub)
+
+$(sudo cat $HOME/.ssh/parmaraid-key.pub)
+
+$(sudo cat $HOME/.ssh/parmawebs-key.pub)
+
+$(sudo cat $HOME/.ssh/dataum-key.pub)
+
+" | tee -a $HOME/Desktop/all_ssh_keys.txt >$dn
+
 echo "SSH keys made and saved to Desktop/all_ssh_keys.txt"
+
 return 0
 }
