@@ -54,8 +54,6 @@ function download_bitcoin_getfiles {
 # ARM Pi4 support. If not, checks for 64 bit x86.
 while true ; do
 
-debug chip is $chip, knots - $knotsbitcoin
-
 	     if [[ $chip == "armv7l" || $chip == "armv8l" ]] ; then 		#32 bit Pi4
                 [[ $knotsbitcoin == "true" ]] &&  { curl -LO https://bitcoinknots.org/files/28.x/28.1.knots20250305/bitcoin-28.1.knots20250305-arm-linux-gnueabihf.tar.gz ; break ; }
 		        curl -LO https://bitcoincore.org/bin/bitcoin-core-$version/bitcoin-$version-arm-linux-gnueabihf.tar.gz  ; break
@@ -89,7 +87,6 @@ debug chip is $chip, knots - $knotsbitcoin
             curl -LO https://bitcoincore.org/bin/bitcoin-core-$version/bitcoin-$version-x86_64-apple-darwin.zip ; unzip bitcoin*.zip ; zip="true" ; break
          fi
 done
-debug after break
 return 0
 }
 
