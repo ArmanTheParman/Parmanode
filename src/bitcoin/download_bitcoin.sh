@@ -34,7 +34,6 @@ enter_continue
 fi
 
 set_terminal ; echo "Downloading Bitcoin files to $HOME/parmanode/bitcoin ..."
-debug db 38
 download_bitcoin_getfiles || { enter_continue "Something went wrong." ; return 1 ; } #see code for the function below
 
 debug "before verify bitcoin, after download"
@@ -55,44 +54,44 @@ function download_bitcoin_getfiles {
 # ARM Pi4 support. If not, checks for 64 bit x86.
 while true ; do
 
+debug chip is $chip
+
 	     if [[ $chip == "armv7l" || $chip == "armv8l" ]] ; then 		#32 bit Pi4
-                [[ $knotsbitcoin == "true" ]] &&
-                curl -LO https://bitcoinknots.org/files/28.x/28.1.knots20250305/bitcoin-28.1.knots20250305-arm-linux-gnueabihf.tar.gz ; break
+                [[ $knotsbitcoin == "true" ]] && curl -LO https://bitcoinknots.org/files/28.x/28.1.knots20250305/bitcoin-28.1.knots20250305-arm-linux-gnueabihf.tar.gz ; break
 		        curl -LO https://bitcoincore.org/bin/bitcoin-core-$version/bitcoin-$version-arm-linux-gnueabihf.tar.gz  ; break
          fi
 
-	     if [[ $chip == "aarch64" && $OS == Linux ]] ; then 				
+	     if [[ $chip == "aarch64" && $OS == "Linux" ]] ; then 				
 
             if [[ $( file /bin/bash | cut -d " " -f 3 ) == "64-bit" ]] ; then
-                [[ $knotsbitcoin == "true" ]] &&
-                curl -LO https://bitcoinknots.org/files/28.x/28.1.knots20250305/bitcoin-28.1.knots20250305-aarch64-linux-gnu.tar.gz ; break
+                [[ $knotsbitcoin == "true" ]] && curl -LO https://bitcoinknots.org/files/28.x/28.1.knots20250305/bitcoin-28.1.knots20250305-aarch64-linux-gnu.tar.gz ; break
                 curl -LO https://bitcoincore.org/bin/bitcoin-core-$version/bitcoin-$version-aarch64-linux-gnu.tar.gz ; break
             else #32 bit
-                [[ $knotsbitcoin == "true" ]] &&
-                curl -LO https://bitcoinknots.org/files/28.x/28.1.knots20250305/bitcoin-28.1.knots20250305-arm-linux-gnueabihf.tar.gz ; break
+                [[ $knotsbitcoin == "true" ]] && curl -LO https://bitcoinknots.org/files/28.x/28.1.knots20250305/bitcoin-28.1.knots20250305-arm-linux-gnueabihf.tar.gz ; break
                 curl -LO https://bitcoincore.org/bin/bitcoin-core-$version/bitcoin-$version-arm-linux-gnueabihf.tar.gz  ; break
             fi
          fi
 
- 	     if [[ $chip == "x86_64" && $OS == Linux ]] ; then 
-                [[ $knotsbitcoin == "true" ]] &&
-                curl -LO https://bitcoinknots.org/files/28.x/28.1.knots20250305/bitcoin-28.1.knots20250305-x86_64-linux-gnu.tar.gz ; break
+ 	     if [[ $chip == "x86_64" && $OS == "Linux" ]] ; then 
+                debug "x86"
+                [[ $knotsbitcoin == "true" ]] && curl -LO https://bitcoinknots.org/files/28.x/28.1.knots20250305/bitcoin-28.1.knots20250305-x86_64-linux-gnu.tar.gz ; break
+                debug "x86"
 		        curl -LO https://bitcoincore.org/bin/bitcoin-core-$version/bitcoin-$version-x86_64-linux-gnu.tar.gz  ; break
+                debug "x86"
          fi
 
          if [[ ($chip == "arm64" && $OS == Mac) || ( $chip == "aarch64" && $OS == Mac) ]] ; then
 
-            [[ $knotsbitcoin == "true" ]] && 
-            curl -LO https://bitcoinknots.org/files/27.x/27.1.knots20240801/bitcoin-27.1.knots20240801-arm64-apple-darwin.dmg ; break  
+            [[ $knotsbitcoin == "true" ]] && curl -LO https://bitcoinknots.org/files/27.x/27.1.knots20240801/bitcoin-27.1.knots20240801-arm64-apple-darwin.dmg ; break  
             curl -LO https://bitcoincore.org/bin/bitcoin-core-$version/bitcoin-$version-arm64-apple-darwin.zip ; unzip bitcoin*.zip ; zip="true" ; break
          fi
 
          if [[ $chip == "x86_64" && $OS == Mac ]] ; then
-            [[ $knotsbitcoin == "true" ]] &&
-            curl -LO https://bitcoinknots.org/files/27.x/27.1.knots20240801/bitcoin-27.1.knots20240801-x86_64-apple-darwin.dmg ; break
+            [[ $knotsbitcoin == "true" ]] && curl -LO https://bitcoinknots.org/files/27.x/27.1.knots20240801/bitcoin-27.1.knots20240801-x86_64-apple-darwin.dmg ; break
             curl -LO https://bitcoincore.org/bin/bitcoin-core-$version/bitcoin-$version-x86_64-apple-darwin.zip ; unzip bitcoin*.zip ; zip="true" ; break
          fi
 done
+debug after break
 return 0
 }
 
