@@ -1,13 +1,10 @@
 function download_bitcoin {
-
 #not required for installation/setup of system outsite docker.
 
 if [[ $btcpay_combo == "true" ]] || [[ $btcdockerchoice == yes ]] ; then return 0 ; fi
 if [[ $bitcoin_compile == "true" ]] ; then return 0 ; fi
-
 # version == self means user has chosen to import own binaries.
-if [[ $version == self ]] ; then return 0 ; fi
-
+if [[ $version == "self" ]] ; then return 0 ; fi
 cd $HOME/parmanode/bitcoin
 if [[ $btcpayinstallsbitcoin != "true" ]] ; then
 set_terminal
@@ -35,8 +32,8 @@ enter_continue
 fi
 
 set_terminal ; echo "Downloading Bitcoin files to $HOME/parmanode/bitcoin ..."
-
-download_bitcoin_getfiles || return 1 #see code for the function below
+debug db 38
+download_bitcoin_getfiles || { enter_continue "Something went wrong." ; return 1 ; } #see code for the function below
 
 debug "before verify bitcoin, after download"
 
