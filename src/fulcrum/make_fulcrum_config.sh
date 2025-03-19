@@ -2,18 +2,10 @@ function make_fulcrum_config {
 # in parmanode variables ... export fc=$HOME/.fulcrum/fulcrum.conf
 # docker run command ... -v $HOME/parmanode/fulcrum/config:/home/parman/parmanode/fulcrum/config \
 
-source $bc >$dn 2>&1
-
-#remove later, it's at the start of install_fulcrum()
-if [[ -z $rpcuser ]] ; then #from parmanode.conf 
-    announce "Please set a username and password in Bitcoin conf. You can do that from the
-    \r    Parmanode-Bitcoin menu. Aborting. " ; return 1 
-fi
+[[ -z $coinfgure_bitcoin_self ]] && source $bc >$dn 2>&1
 
 # set datadir variable
-debug "fulcrumdocker: $fulcrumdocker
-    drive_fulcrum: $drive_fulcrum
-"
+
     if [[ $fulcrumdocker != "true" && $drive_fulcrum == "external" ]] ; then #works Linux and Mac
     datadir="$parmanode_drive/fulcrum_db" 
     fi
@@ -30,8 +22,6 @@ debug "fulcrumdocker: $fulcrumdocker
     cert="$HOME/.fulcrum/cert.pem" 
     key="$HOME/.fulcrum/key.pem"
     fi
-
-debug "datadir chosen, $datadir"
 
 if [[ $computer_type == Pi ]] ; then fastsync=0 ; else fastsync=1000 ; fi
 

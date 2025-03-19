@@ -5,14 +5,37 @@ sned_sats
 set_terminal
 if [[ $1 == "docker" ]] ; then export fulcrumdocker="true" ; else export fulcrumdocker="false" ; fi 
 
-grep "bitcoin-end" $ic >$dn || { announce "Must install Bitcoin first. Aborting." && return 1 ; }
+if ! grep "bitcoin-end" $ic >$dn ; then
+    if yesorno "Could not detect a Bitcoin installation made
+    by Parmanode. Would you like to keep going and manually configure the Fulcrum
+    connection to an installation you might have?" ; then
+        configure_bitcoin_self="ture"
+        announce "OK then. Do make sure of the following...
+            
+            \r    - Bitcoin is running on the same computer - if not, you have to tweak things
+            \r      totally on your own; enjoy. 
 
-if ! grep -q "rpcuser" $bc ; then
+            \r    - Bitcoin is not pruned
+
+            \r    - You have an rpcuser and rpcpassword set in your bitcoin.conf file
+
+            \r    - You have 'zmqpubhashblock=tcp://*:8433' to your bitcoin.conf file"
+    else
+        return 1
+    fi
+fi
+
+if [[ $configure_bitcoin_self == "true" ]] ; then
+    announce "Please type your Bitcoin rpcuser and rpcpassword, separated by a comma,
+    no spaces" 
+    rpcuser=$(echo $enter_cont | cut -d "," -f 1)
+    rpcpassword=$(echo $enter_cont | cut -d "," -f 2)
+elif ! grep -q "rpcuser" $bc ; then
     announce "Please set a username and password in Bitcoin conf. You can do that from the
     \r    Parmanode-Bitcoin menu. Aborting. " ; return 1 
 fi
 
-check_bitcoin_not_pruned || return 1
+[[ -z $configure_bitcoin_self ]] && check_bitcoin_not_pruned || return 1
 
 if [[ $fulcrumdocker == "true" ]] ; then
 
@@ -48,7 +71,7 @@ fulcrum_make_directories || { enter_continue "exiting... ###" && return 1 ; }
 
 make_fulcrum_config ||  { enter_continue "exiting... ####" && return 1 ; }
 
-echo 'zmqpubhashblock=tcp://*:8433' | sudo tee -a $bc >$dn 2>&1
+[[ -z $configure_bitcoin_self ]] && echo 'zmqpubhashblock=tcp://*:8433' | sudo tee -a $bc >$dn 2>&1
 
 make_ssl_certificates fulcrum || { enter_continue "exiting... #####" && return 1 ; }
 

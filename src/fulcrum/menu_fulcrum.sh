@@ -1,14 +1,19 @@
 function menu_fulcrum {
 if ! grep "fulcrum" $ic | grep -q end ; then return 0 ; fi
 [[ -e $HOME/.fulcrum/fulcrum.log ]] && [[ ! -r $HOME/.fulcrum/fulcrum.log ]] && sudo chown $USER:$(id -g) +x $HOME/.fulcrum/fulcrum.log
-
 while true ; do
 please_wait
+source $pc
 
+if [[ $configure_bitcoin_self == "true" ]] ; then
+isbitcoinrunning=UNKNOWN
+else
 isbitcoinrunning
+fi
+
 if [[ $bitcoinrunning == "true" ]] ; then
 unset isbitcoinrunning_fulcrum
-else
+elif [[ $bitcoinrunning == "false" ]] ; then
 isbitcoinrunning_fulcrum="${red}${blinkon}Bitcoin is NOT running${blinkoff}$orange"
 fi
 
@@ -23,10 +28,9 @@ else
     f_tor="off"
 fi
 
-source $pc >$dn 2>&1
-#bitcoin_status #fetches block height quicker than getblockchaininfo
 unset fulcrum_status fulcrum_sync 
 menu_fulcrum_status
+
 fulcrum_message="${blinkon}Type$red r$orange to refresh${blinkoff}$orange"
 
 isfulcrumrunning 
