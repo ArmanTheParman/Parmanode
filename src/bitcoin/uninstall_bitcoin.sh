@@ -102,6 +102,7 @@ unset drive prune_value bitcoin_choice UUID BTCIP rpcuser rpcpassword btc_authen
 print_bitcoin_variables "after unset"
 #Remove service file for Linux only
 sudo rm /etc/systemd/system/bitcoind.service 1>$dn 2>&1
+sudo systemctl daemon-reload 1>$dn 2>&1
 
 set_terminal
 if [[ $combo != "true" && $combo != "btcpay_first" ]] ; then
