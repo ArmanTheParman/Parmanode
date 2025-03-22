@@ -103,11 +103,11 @@ function make_remotevault_ssh_keys {
 sudo test -f $HOME/.ssh/remotevault-key.pub && return 1 # 1 is logically success here for the calling function
 
 mkdir -p ~/.ssh
-ssh-keygen -t rsa -b 4096 -f $HOME/.ssh/remotevault-key -N "" -C "$USER removtevault"
+ssh-keygen -t rsa -b 4096 -f $HOME/.ssh/remotevault-key -N "" -C "$USER remotevault"
 
-grep -q "github-removtevault" ~/.ssh/config >$dn 2>&1 || 
+grep -q "github-remotevault" ~/.ssh/config >$dn 2>&1 || 
 echo "
-Host github-removtevault
+Host github-remotevault
 HostName github.com
 User git
 IdentityFile ~/.ssh/remotevault-key
