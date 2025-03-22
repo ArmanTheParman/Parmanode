@@ -39,7 +39,7 @@ if ! grep -q "motd=" $pc ; then
 fi
 
 #DON'T FORGET TO CHANGE THE MOD TO THE HIGHEST NUMBERERD MESSAGE + 1
-motd=$((motd % 69))
+motd=$((motd % 70))
 
 if [[ $forkids == 1 ]] ; then
     found=1
@@ -1608,6 +1608,25 @@ $cyan
    You know what's beautiful? 
 
    Bitcoin moving from people who don't want it to people who want it. 
+
+$orange
+######################################################################################## 
+$another
+"
+enter_continue ; jump $enter_cont ; choice="$enter_cont"
+fi ; case $choice in endthefed|EndTheFed|ENDTHEFED|end) hide_messages_add "motd" "1" ; return 0 ;; esac
+if [[ $motd == 69 ]] ; then
+set_terminal ; echo -e "
+########################################################################################
+$cyan
+                                 Message of the day $orange
+
+
+    It's not just the fact that fiat money is not sound that's the problem, it's that 
+    you're made to accept that it's OK to work for it, while others are legally 
+    permitted to counterfeit it... FOR YOUR OWN GOOD!
+
+    Do you understand the humiliation?
 
 $orange
 ######################################################################################## 
