@@ -9,7 +9,7 @@ if ! grep "bitcoin-end" $ic >$dn ; then
     if yesorno "Could not detect a Bitcoin installation made
     by Parmanode. Would you like to keep going and manually configure the Fulcrum
     connection to an installation you might have?" ; then
-        configure_bitcoin_self="ture"
+        configure_bitcoin_self="true"
         announce "OK then. Do make sure of the following...
             
             \r    - Bitcoin is running on the same computer - if not, you have to tweak things

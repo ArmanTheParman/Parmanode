@@ -114,6 +114,22 @@ IdentityFile ~/.ssh/remotevault-key
 IdentitiesOnly yes" | sudo tee -a ~/.ssh/config >$dn
 }
 
+function make_uddns_ssh_keys {
+
+sudo test -f $HOME/.ssh/uddns-key.pub && return 1 # 1 is logically success here for the calling function
+
+mkdir -p ~/.ssh
+ssh-keygen -t rsa -b 4096 -f $HOME/.ssh/uddns-key -N "" -C "$USER uddns"
+
+grep -q "github-uddns" ~/.ssh/config >$dn 2>&1 || 
+echo "
+Host github-uddns
+HostName github.com
+User git
+IdentityFile ~/.ssh/uddns-key
+IdentitiesOnly yes" | sudo tee -a ~/.ssh/config >$dn
+}
+
 function get_all_ssh_keys {
 
 make_parmanode_ssh_keys
@@ -123,6 +139,7 @@ make_parmanas_ssh_keys
 make_parmaraid_ssh_keys
 make_datum_ssh_keys
 make_remotevault_ssh_keys
+make_uddns_ssh_keys
 
 echo -e "########################################################################################" >> $HOME/Desktop/all_ssh_keys.txt
 echo -e "    All SSH Kyes for $USER - $(sudo cat /var/lib/tor/parmanode-service/hostname | sed 's/\.onion//')" >> $HOME/Desktop/all_ssh_keys.txt
@@ -141,6 +158,9 @@ $(sudo cat $HOME/.ssh/parmawebs-key.pub)
 $(sudo cat $HOME/.ssh/dataum-key.pub)
 
 $(sudo cat $HOME/.ssh/remotevault-key.pub)
+
+$(sudo cat $HOME/.ssh/uddns-key.pub)
+
 
 " | tee -a $HOME/Desktop/all_ssh_keys.txt >$dn
 
