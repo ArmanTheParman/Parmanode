@@ -21,13 +21,15 @@ fi
 #                                                                                      #"
 [[ ! -e $pp/remotevault ]] &&      remotevault="\n#$orange                rv)$blue        RemoteVault - encryption and remote backup                 #
 #                                                                                      #"
+[[ ! -e $pp/uddns ]] &&                  uddns="\n#$orange                ud)$blue        UDDNS - Parman's Uncomplicated Dynamic DNS Service         #
+#                                                                                      #"
 set_terminal
 echo -en "$blue
 ########################################################################################
-#$orange               PREMIUM FEATURES AVAILABLE FOR A FEE:$green CONACT PARMAN          $blue          #
+#$orange               PREMIUM FEATURES AVAILABLE FOR A SMOL FEE:$green CONACT PARMAN          $blue     #
 ########################################################################################
 #                                                                                      #
-#                                                                                      #$datum$parmanas$parminer$parmacloud$parmaweb$parmaraid$remotevault
+#                                                                                      #$datum$parmanas$parminer$parmacloud$parmaweb$parmaraid$uddns$remotevault
 #                                                                                      #
 ########################################################################################
 "
@@ -179,6 +181,16 @@ rv)
 remotevault_info
 ;;
 
+ud)
+[[ ! -e $dp/.uddns_enabled ]] && announce_blue "No static IP? No problem. With UDDNS, you can simiulate a static IP address for
+                                          \r    your machine. Fee is cheap AF, 1.5k sats per month, paid yearly (18k sats)." && continue
+
+git clone git@github-uddns:armantheparman/uddns.git $pp/uddns 2>$dn || { enter_continue "Something went wrong. Contact Parman." ; continue ; }
+installed_conf_add "uddns-end"
+for file in $pp/uddns/src/*.sh ; do source $file ; done
+menu_uddns
+return 0
+;;
 *)
     invalid
     continue

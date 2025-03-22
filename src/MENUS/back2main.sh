@@ -11,3 +11,7 @@ menu_main
 #redundant...
 exit
 }
+
+function backtomain {
+back2main 
+}
