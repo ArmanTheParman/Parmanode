@@ -24,16 +24,16 @@ deactivate >/dev/null 2>&1
 gsed_symlink 
 parmanode_variables $@ #CANNOT USE CUSTOM DEBUG FUNCTION BEFORE THIS"
 
-    [[ -e $HOME/parman_programs/parmaweb ]] && for file in $HOME/parman_programs/parmaweb/src/*.sh ; do
+    [[ -e $pp/parmaweb ]] && for file in $pp/parmaweb/src/*.sh ; do
 	    source $file
 	done
-    [[ -e $dp/.parminer_enabled ]] && for file in $HOME/parman_programs/parminer/src/*.sh ; do
+    [[ -e $dp/.parminer_enabled ]] && for file in $pp/parminer/src/*.sh ; do
 	    source $file
 	done
-    [[ -e $dp/.datum_enabled ]] && for file in $HOME/parman_programs/datum/src/*.sh ; do
+    [[ -e $dp/.datum_enabled ]] && [[ -e $pp/datum ]] && for file in $pp/datum/src/*.sh ; do
 	    source $file
 	done
-    [[ -e $dp/.uddns_enabled ]] && for file in $HOME/parman_programs/uddns/src/*.sh ; do
+    [[ -e $dp/.uddns_enabled ]] && [[ -e $pp/uddns ]] && for file in $pp/uddns/src/*.sh ; do
 	    source $file
 	done
 
