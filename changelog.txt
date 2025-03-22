@@ -119,7 +119,7 @@ Version 3.47.0
      -Restore option (when installing)
      -Live BTCPay upgrade function
      -Reduce journalctl logs to 500M cap (Linux)
-     -Improved start/stop for bitcoin in docker
+     -Improved start/stop for bitcoin in podman
      -Bitcoin menu, tidied up appearance
      -For development: /dev/null variable refactoring - easy to turn on/off
      
@@ -161,7 +161,7 @@ Version 3.46.8
     -Deprecated 'do_not_remove_rename.txt' file and its purpose
 Version 3.46.7
     -Fulcrum 1.11.1 
-    -Fulcrum docker option added for Linux
+    -Fulcrum podman option added for Linux
     -Improved shutdown gracefulness to reduce the risk of database corruption
     -Improved Fulcrum menu
     -Tor added for Fulcrum Mac
@@ -188,7 +188,7 @@ Version 3.46.4
     -menu colour improvements
 Version 3.46.3
     -SSD drive power management tool
-    -Tool to install Bitcoin into any docker container that's running
+    -Tool to install Bitcoin into any podman container that's running
     -Import Parmanode drive without disconnection/reconnection detection procedure.
     -Fixed smol bug listing and mounting RAID devices
     -Fixed smol SSL bug for Mac electrs
@@ -244,9 +244,9 @@ Version 3.42.0
     -Instructions to connect Zeus wallet
     -LND Mac fix config for when Bitcoin is also in a Docker container
 Version 3.41.13
-    -fix electrs SSL for docker. Moved non-docker SSL so both in $HOME/.electrs
-    -put SSL forwarding with socat inside electrs docker container
-    -New installs of electrs non-docker to have single socat forwarding, 2 hops
+    -fix electrs SSL for podman. Moved non-podman SSL so both in $HOME/.electrs
+    -put SSL forwarding with socat inside electrs podman container
+    -New installs of electrs non-podman to have single socat forwarding, 2 hops
     -update rust 1.75 in electrs Docker container
     -sol bug fixes
 Version 3.41.12
@@ -284,7 +284,7 @@ Version 3.41.0
     -ParmaNostr - New software beginnigs. Can create a Nostr wallet from mnemonic seed, or import
      seed, or import keys.
 Version 3.40.0
-    -BTCPay for Mac available; combines Bitcoin in same docker container. Much refactoring done.
+    -BTCPay for Mac available; combines Bitcoin in same podman container. Much refactoring done.
 Version 3.39.1
     -BTCPay - user can choose yolo and install untested newer versions
 Version 3.39.0
@@ -317,7 +317,7 @@ Version 3.36.2
     -grpcurl tool added
     -Patch6
 Version 3.36.1
-    -Mempool Mac docker-compose compatibility fixed
+    -Mempool Mac podman-compose compatibility fixed
 Version 3.36.0
     -LND for Mac
     -RTL for Mac
@@ -362,8 +362,8 @@ Version 3.32.0
 Version 3.31.1
     -BTCPay update
     -Internal drive space check
-    -Debian docker bug fixed
-    -BTCPay docker container now with variable userID, making volume mount robust across systems
+    -Debian podman bug fixed
+    -BTCPay podman container now with variable userID, making volume mount robust across systems
     -External IP info added
 Version 3.30.6
     -Added support for Linux Mint Debian Edition (LMDE)
@@ -390,7 +390,7 @@ Version 3.30.2
     -bitcoin user/pass default
 Version 3.30.0
     -ELECTRUM X
-    -Moved SSL certs for electrum docker to the host
+    -Moved SSL certs for electrum podman to the host
     -Fixed nginx issue with electrs
     -added jq and cmake to update_computer function, and cleanup commands
     -readme update
@@ -409,10 +409,10 @@ Version 3.28.2
     -drive import bugs fixed
 Version 3.28.1
     -jq patch
-    -Tor for Mac docker electrs
+    -Tor for Mac podman electrs
     -smol bugs
 Version 3.28.0
-    -Electrs docker and non docker refactoring, Mac & Linux
+    -Electrs podman and non podman refactoring, Mac & Linux
 Version 3.27.0
     -SSH Tor server added (Linux only)
 Version 3.26.0
@@ -468,7 +468,7 @@ Version 3.21.3
     -Sparrow 1.8.1
     -Sparrow config editor in menu
     -option to connect to Parman's Tor node
-    -fixed bug with docker electrs for ext drives
+    -fixed bug with podman electrs for ext drives
 Version 3.21.2
     -Mempool code, but not available yet. Sync issues.
 Version 3.20.4
@@ -659,7 +659,7 @@ Version 3.6.1
     -Electrum and Sparrow can connect to Fulcrum or electrs Tor, from menu selection
 Version 3.6.0
     -Electrum connections to server improved
-    -Check docker installed before RTL install, otherwise fail.
+    -Check podman installed before RTL install, otherwise fail.
     -electrs added
 Version 3.5.2
     -electrs software code added ; not yet functional
@@ -730,16 +730,16 @@ Version 3.3.7
     - udev rules automatically installed (only required for Linux)
     - Fulcrum SSL certificate bug fixed. Connections should work better now.
 Version 3.3.6
-    - Docker apps on Mac work better now. (Issue with checking docker status)
-    - More sudo for docker commands (redundant for most)
+    - Docker apps on Mac work better now. (Issue with checking podman status)
+    - More sudo for podman commands (redundant for most)
     - Zip file downloads no longer supported - they are not git repos
       and updates fail because if.sparrow5
     - more educational material
 Version 3.3.4
     - Tool to import other ext or FAT32 drive to Parmanode (Linux only)
-    - Fixed some docker bugs affecting Debian Pi
+    - Fixed some podman bugs affecting Debian Pi
     - Fixed IP address formatting affecting Pi
-    - Fixed mempool install affecting fresh docker installs
+    - Fixed mempool install affecting fresh podman installs
 Version 3.3.3
     - fixed fstab "but"; added "nofail" directive to drive.
 Version 3.3.2
