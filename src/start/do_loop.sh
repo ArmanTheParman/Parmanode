@@ -21,20 +21,23 @@ deactivate >/dev/null 2>&1
 	done #ends the loop
 
 
-    [[ -e $HOME/parman_programs/parmaweb ]] && for file in $HOME/parman_programs/parmaweb/src/*.sh ; do
+gsed_symlink 
+parmanode_variables $@ #CANNOT USE CUSTOM DEBUG FUNCTION BEFORE THIS"
+
+    [[ -e $pp/parmaweb ]] && for file in $pp/parmaweb/src/*.sh ; do
 	    source $file
 	done
-    [[ -e $HOME/parman_programs/parminer ]] && for file in $HOME/parman_programs/parminer/src/*.sh ; do
+    [[ -e $dp/.parminer_enabled ]] && for file in $pp/parminer/src/*.sh ; do
 	    source $file
 	done
-    [[ -e $HOME/parman_programs/datum ]] && for file in $HOME/parman_programs/datum/src/*.sh ; do
+    [[ -e $dp/.datum_enabled ]] && [[ -e $pp/datum ]] && for file in $pp/datum/src/*.sh ; do
+	    source $file
+	done
+    [[ -e $dp/.uddns_enabled ]] && [[ -e $pp/uddns ]] && for file in $pp/uddns/src/*.sh ; do
 	    source $file
 	done
 
 if [[ $parminer == 1 ]] ; then premium=1 ; fi
-
-gsed_symlink 
-parmanode_variables $@ #CANNOT USE CUSTOM DEBUG FUNCTION BEFORE THIS"
 
 set_colours #just exports variables with colour settings to make it easier to code with colours
             #parmanode.conf later may override theme

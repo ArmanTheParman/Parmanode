@@ -31,6 +31,12 @@ echo -e "#$cyan                            (datum)$blue            Datum$orange 
 elif grep -q "datum-start" $HOME/.parmanode/installed.conf ; then datummenu=1
 echo -e "#$cyan                            (datum)$blue            Datum$orange              $red$blinkon(partial)$blinkoff$orange      #
 #                                                                                      #" ; fi
+if grep -q "uddns-end" $HOME/.parmanode/installed.conf ; then uddnsmenu=1
+echo -e "#$cyan                            (uddns)$blue            UDDNS$orange                                  #
+#                                                                                      #"
+elif grep -q "uddns-start" $HOME/.parmanode/installed.conf ; then uddnsmenu=1
+echo -e "#$cyan                            (uddns)$blue            UDDNS$orange              $red$blinkon(partial)$blinkoff$orange      #
+#                                                                                      #" ; fi
 if grep -q "parmacloud-end" $HOME/.parmanode/installed.conf ; then parmacloudmenu=1
 echo -e "#$cyan                            (cloud)$blue            ParmaCloud$orange                             #
 #                                                                                      #"
@@ -614,6 +620,12 @@ fi
 datum)
 if [[ $datummenu == 1 ]] ; then
 uninstall_datum
+menu_main
+fi
+;;
+uddns)
+if [[ $uddnsmenu == 1 ]] ; then
+uninstall_uddns
 menu_main
 fi
 ;;

@@ -22,4 +22,10 @@ nogsedtest
 gsed -i "/$1/d" $pc >/dev/null 2>&1
 }
 
+function parmanode_config_add {
+    parmanode_conf_add $@
+}
+function parmanode_config_remove {
+    parmanode_conf_remove $@
+}
 

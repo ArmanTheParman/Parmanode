@@ -40,7 +40,7 @@ sudo rm -rf /usr/local/bin/docker /usr/local/bin/docker-compose /usr/local/bin/d
 
 # Remove Docker VMs and images
 sudo rm -rf ~/.docker
-
+installed_conf_remove "docker-"
 set_terminal
 success "Docker" "being uninstalled."
 }
