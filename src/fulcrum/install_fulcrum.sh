@@ -1,4 +1,5 @@
 function install_fulcrum {
+unset configure_bitcoin_self
 debug "${FUNCNAME[0]}"
 #when I make fulcrum for mac without docker, make sure to edit patch7
 sned_sats
@@ -11,33 +12,29 @@ if ! grep "bitcoin-end" $ic >$dn ; then
     connection to an installation you might have?" ; then
         configure_bitcoin_self="true"
         announce "OK then. Do make sure of the following...
-            
-            \r    - Bitcoin is running on the same computer - if not, you have to tweak things
-            \r      totally on your own; enjoy. 
+           $cyan 
+            \r        - Bitcoin is running on the same computer.
 
-            \r    - Bitcoin is not pruned
+            \r        - Bitcoin is not pruned.
 
-            \r    - You have an rpcuser and rpcpassword set in your bitcoin.conf file
+            \r        - You have an rpcuser and rpcpassword set in your bitcoin.conf file
 
-            \r    - You have 'zmqpubhashblock=tcp://*:8433' to your bitcoin.conf file"
+            \r        - You have 'zmqpubhashblock=tcp://*:8433' to your bitcoin.conf file$orange"
     else
         return 1
     fi
 fi
 
-if [[ $configure_bitcoin_self == "true" ]] ; then
-    announce "Please type your Bitcoin rpcuser and rpcpassword, separated by a comma,
-    no spaces" 
-    rpcuser=$(echo $enter_cont | cut -d "," -f 1)
-    rpcpassword=$(echo $enter_cont | cut -d "," -f 2)
-elif ! grep -q "rpcuser" $bc ; then
-    announce "Please set a username and password in Bitcoin conf. You can do that from the
-    \r    Parmanode-Bitcoin menu. Aborting. " ; return 1 
+if [[ -z $configure_bitcoin_self ]] ; then
+    if ! grep -q "rpcuser" $bc ; then
+        announce "Please set a username and password in Bitcoin conf. You can do that from the
+        \r    Parmanode-Bitcoin menu. Aborting. " ; return 1 
+    fi
 fi
 
-[[ -z $configure_bitcoin_self ]] && check_bitcoin_not_pruned || return 1
+[[ -z $configure_bitcoin_self ]] && { check_bitcoin_not_pruned || return 1 ; }
 
-if [[ $fulcrumdocker == "true" ]] ; then
+if [[ $fulcrumdocker == "true" ]] && [[ $debug != 1 ]] ; then
 
     #check docker installed
     grep -q "docker-end" $HOME/.parmanode/installed.conf || { announce "Must install Docker first. Aborting." ; return 1 ; }
@@ -62,10 +59,12 @@ format_ext_drive "Fulcrum" || { enter_continue "exiting...  ##" && return 1 ; }
 fi
 
 if [[ $fulcrumdocker == "true" ]] ; then
-installed_config_add "fulcrumdkr-start"
+    installed_config_add "fulcrumdkr-start"
 else
-installed_config_add "fulcrum-start"
+    installed_config_add "fulcrum-start"
 fi
+
+if [[ -n $configure_bitcoin_self ]] ; then parmanode_conf_add "configure_bitcoin_self=true" ; fi
 
 fulcrum_make_directories || { enter_continue "exiting... ###" && return 1 ; }
 
