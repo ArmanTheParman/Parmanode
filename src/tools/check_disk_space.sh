@@ -35,7 +35,7 @@ set_terminal ; echo -e "
 
     Some ways to reduce disk space...
 $cyan
-        docker system prune 
+        podman system prune 
 $orange
     Only useful if you have Docker installed and have unused containers and images 
     taking up space; might be worth a try.

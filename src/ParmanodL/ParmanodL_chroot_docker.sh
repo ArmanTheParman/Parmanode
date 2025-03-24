@@ -1,6 +1,6 @@
-function ParmanodL_chroot_docker {
+function ParmanodL_chroot_podman {
 #if modifying banner, don't use ', it will break the echo command.
-#document to be executed inside docker container.
+#document to be executed inside podman container.
 if [[ $arg2 == fast ]] ; then
 apt_text="#!/bin/bash
 chroot /tmp/mnt/raspi /bin/bash -c 'apt-get update -y'
@@ -207,7 +207,7 @@ EOS
 
 #run chroot functions
 sudo chmod +x ~/ParmanodL/chroot_function.sh
-docker exec -it ParmanodL /bin/bash -c '/mnt/ParmanodL/chroot_function.sh'
+podman exec -it ParmanodL /bin/bash -c '/mnt/ParmanodL/chroot_function.sh'
 
 }
 

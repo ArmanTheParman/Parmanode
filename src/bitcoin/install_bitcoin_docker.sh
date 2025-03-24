@@ -1,11 +1,11 @@
-function install_bitcoin_docker {
+function install_bitcoin_podman {
 if [[ $1 != silent ]] ; then
 set_terminal
-yesorno "You are about to install Bitcoin into a docker container of your
+yesorno "You are about to install Bitcoin into a podman container of your
     choice." || return 1
 set_terminal
 
-if ! docker ps 2>$dn ; then announce "Docker is not running" ; return 1 ; fi
+if ! podman ps 2>$dn ; then announce "Docker is not running" ; return 1 ; fi
 
 if [[ -z $1 ]] ; then
 
@@ -18,20 +18,20 @@ if [[ -z $1 ]] ; then
     Please type the name of the running Docker container you want to use (case
     sensitive). These are the running containers...
 $green    
-$(docker ps --format "{{.Names}}")
+$(podman ps --format "{{.Names}}")
 $orange
 ########################################################################################
 "
-read dockername
+read podmanname
 
-        case $dockername in
+        case $podmanname in
         Q|q) exit ;; p|P) return 1 ;; m|M) back2main ;;
         "")
         invalid 
         ;;
         *)
-        if docker ps | grep -q $dockername ; then
-            yesorno "You have chosen the$red $dockername$orange container." && break
+        if podman ps | grep -q $podmanname ; then
+            yesorno "You have chosen the$red $podmanname$orange container." && break
         else
             announce "This container is not running" ; continue
         fi
@@ -39,13 +39,13 @@ read dockername
         esac
     done
 
-    export dockername
+    export podmanname
 
 else
-    export dockername=${1}
+    export podmanname=${1}
 fi
 
-debug "dockername is $dockername"
+debug "podmanname is $podmanname"
 clear
 #USER choice
 while true ; do
@@ -99,7 +99,7 @@ rpcallowip=127.0.0.1
 rpcallowip=10.0.0.0/8
 rpcallowip=192.168.0.0/16
 rpcallowip=172.0.0.0/8
-rpcservertimeout=120" | tee $tmp/dockerbitcoin.conf >$dn 2>&1
+rpcservertimeout=120" | tee $tmp/podmanbitcoin.conf >$dn 2>&1
 
 
 if [[ $username == root ]] ; then
@@ -110,12 +110,12 @@ fi
 
 if [[ $2 == parmabox ]] ; then
 thedir="/home/parman"
-dockername=parmabox
+podmanname=parmabox
 username=parman
 fi
 
-docker exec -u $username $dockername /bin/bash -c "mkdir -p $thedir/.bitcoin 2>$dn"
-docker cp $tmp/dockerbitcoin.conf $dockername:$thedir/.bitcoin/bitcoin.conf >$dn 2>&1
+podman exec -u $username $podmanname /bin/bash -c "mkdir -p $thedir/.bitcoin 2>$dn"
+podman cp $tmp/podmanbitcoin.conf $podmanname:$thedir/.bitcoin/bitcoin.conf >$dn 2>&1
 
 #Download bitcoin 
 export bitcoin_compile="false"
@@ -155,17 +155,17 @@ clear
 
 done
 
-docker exec $dockername mkdir -p /tmp/bitcoin 2>$dn
-docker cp $tmp/bitcoin/* $dockername:/tmp/bitcoin/ >$dn 2>&1
-docker exec $dockername /bin/bash -c "tar -xf /tmp/bitcoin/bitcoin* -C /tmp/bitcoin" >$dn 2>&1
-docker exec -itu $username $dockername /bin/bash -c "sudo install -m 0755 -o \$(whoami) -g \$(whoami) -t /usr/local/bin /tmp/bitcoin/bitcoin-*/bin/*" || {
+podman exec $podmanname mkdir -p /tmp/bitcoin 2>$dn
+podman cp $tmp/bitcoin/* $podmanname:/tmp/bitcoin/ >$dn 2>&1
+podman exec $podmanname /bin/bash -c "tar -xf /tmp/bitcoin/bitcoin* -C /tmp/bitcoin" >$dn 2>&1
+podman exec -itu $username $podmanname /bin/bash -c "sudo install -m 0755 -o \$(whoami) -g \$(whoami) -t /usr/local/bin /tmp/bitcoin/bitcoin-*/bin/*" || {
     enter_continue "something went wrong" 
     return 1
     }
-docker exec $dockername rm -rf /tmp/bitcoin
+podman exec $podmanname rm -rf /tmp/bitcoin
 rm -rf $tmp/bitcoin
 if [[ $1 != silent ]] ; then
-success "Bitcoin has been installed in the $dockername container.
+success "Bitcoin has been installed in the $podmanname container.
 
     The username and password is$cyan 'parman'$orange and$cyan 'parman'.$orange You can
     modify the bitcoin.conf file to change it.
@@ -182,7 +182,7 @@ success "Bitcoin has been installed in the $dockername container.
 "
 fi
 
-docker exec $dockername /bin/bash -c "touch \$HOME/bitcoin-installed" || enter_continue
+podman exec $podmanname /bin/bash -c "touch \$HOME/bitcoin-installed" || enter_continue
 return 0
 }
 

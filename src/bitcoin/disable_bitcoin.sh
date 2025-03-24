@@ -4,7 +4,7 @@ function disable_bitcoin {
 if grep -q "disable_bitcoin=true" $pc ; then
 
     if grep -q btccombo $ic ; then
-        docker exec -u root btcpay bash -c "chmod +x /usr/local/bin/bitcoin*" && \
+        podman exec -u root btcpay bash -c "chmod +x /usr/local/bin/bitcoin*" && \
         gsed -i "/disable_bitcoin=true/d" $pc && \
         success "Bitcoin Enabled" 
         return 0
@@ -40,7 +40,7 @@ else
     done
 
     if grep -q btccombo $ic ; then
-        docker exec -u root btcpay bash -c "chmod -x /usr/local/bin/bitcoin*" && \
+        podman exec -u root btcpay bash -c "chmod -x /usr/local/bin/bitcoin*" && \
         echo "disable_bitcoin=true" >> $pc && \
         success "Bitcoin Disabled" 
         return 0

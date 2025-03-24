@@ -3,10 +3,10 @@ if ! grep "electrs" $ic  | grep -q end ; then return 0 ; fi
 while true ; do
 
 if grep -q "electrsdkr" $ic ; then #dont use electrsdkr2
-    electrsis=docker
+    electrsis=podman
     logfile=$HOME/.electrs/run_electrs.log
 else
-    electrsis=nondocker
+    electrsis=nonpodman
     logfile=$HOME/.electrs/run_electrs.log 
 fi
 
@@ -22,7 +22,7 @@ if [[ $electrsrunning == "true" && $1 != fast ]] ; then menu_electrs_status # ge
 fi
 
 #Tor status
-if  [[ -e $macprefix/etc/tor/torrc && $electrsis == "nondocker" && $1 != fast ]] \
+if  [[ -e $macprefix/etc/tor/torrc && $electrsis == "nonpodman" && $1 != fast ]] \
     && sudo grep -q "electrs" $macprefix/etc/tor/torrc \
     && grep -q "electrs_tor=true" $pc \
     && sudo cat $macprefix/var/lib/tor/electrs-service/hostname | grep -q "onion" >$dn 2>&1 ; then
@@ -36,19 +36,19 @@ else
 
 fi
 
-#Tor is always on for docker electrs
-if [[ $electrsis == docker && $1 != fast ]] ; then
-        ONION_ADDR_ELECTRS=$(docker exec -u root electrs cat /var/lib/tor/electrs-service/hostname)
+#Tor is always on for podman electrs
+if [[ $electrsis == podman && $1 != fast ]] ; then
+        ONION_ADDR_ELECTRS=$(podman exec -u root electrs cat /var/lib/tor/electrs-service/hostname)
 fi
 
 #Get version
-if [[ $electrsis == docker && $1 != fast ]] ; then
-    if docker exec electrs /home/parman/parmanode/electrs/target/release/electrs --version >$dn 2>&1 ; then
-        electrs_version=$(docker exec electrs /home/parman/parmanode/electrs/target/release/electrs --version | tr -d '\r' 2>$dn )
-        if docker exec -it electrs /bin/bash -c "tail -n 10 $logfile" | grep -q "electrs failed" ; then unset electrs_version 
+if [[ $electrsis == podman && $1 != fast ]] ; then
+    if podman exec electrs /home/parman/parmanode/electrs/target/release/electrs --version >$dn 2>&1 ; then
+        electrs_version=$(podman exec electrs /home/parman/parmanode/electrs/target/release/electrs --version | tr -d '\r' 2>$dn )
+        if podman exec -it electrs /bin/bash -c "tail -n 10 $logfile" | grep -q "electrs failed" ; then unset electrs_version 
         fi
     fi
-else #electrsis nondocker
+else #electrsis nonpodman
         electrs_version=$($HOME/parmanode/electrs/target/release/electrs --version 2>$dn)
 fi
 
@@ -60,7 +60,7 @@ echo -e "
 ########################################################################################
 
 "
-if [[ $electrsis == "nondocker" && $electrsrunning == "true" ]] ; then
+if [[ $electrsis == "nonpodman" && $electrsrunning == "true" ]] ; then
 echo -e "
       ELECTRS IS:$green RUNNING$orange
 
@@ -78,14 +78,14 @@ echo -e "
                   $ONION_ADDR_ELECTRS:7004:t $orange
          $yellow \e[G\e[41G(From any computer in the world)$orange"
       fi
-elif [[ $electrsis == "nondocker" && $electrsrunning == "false" ]] ; then
+elif [[ $electrsis == "nonpodman" && $electrsrunning == "false" ]] ; then
 echo -e "
       ELECTRS IS:$red NOT RUNNING$orange -- CHOOSE \"start\" TO RUN
 
       Will sync to the $cyan$drive_electrs$orange drive"
 fi #end electrs running or not
 
-if [[ $electrsis == docker ]] ; then
+if [[ $electrsis == podman ]] ; then
 
 
 if [[ $electrsrunning == "true" ]] ; then echo -e "
@@ -107,7 +107,7 @@ echo -e "
 
                    Will sync to the $cyan$drive_electrs$orange drive"
 fi
-fi #end electrsis docker
+fi #end electrsis podman
 echo -e "
 
 $green
@@ -129,7 +129,7 @@ $cyan
 $cyan
       (dc)$orange       electrs database corrupted? -- Use this to start fresh."
 
-if [[ $electrsis == "nondocker" ]] ; then echo -e "$cyan
+if [[ $electrsis == "nonpodman" ]] ; then echo -e "$cyan
       (tor)$orange      Enable/Disable Tor connections to electrs -- Status : $E_tor"  ; else echo -e "
 $cyan      
       (newtor)$orange   Refresh Tor address
@@ -153,8 +153,8 @@ info_electrs
 ;;
 
 start | START)
-if [[ $electrsis == docker ]] ; then 
-docker_start_electrs
+if [[ $electrsis == podman ]] ; then 
+podman_start_electrs
 else
 start_electrs 
 sleep 1
@@ -162,8 +162,8 @@ fi
 ;;
 
 stop | STOP) 
-if [[ $electrsis == docker ]] ; then 
-docker_stop_electrs
+if [[ $electrsis == podman ]] ; then 
+podman_stop_electrs
 else
 stop_electrs
 fi
@@ -171,11 +171,11 @@ fi
 
 logdel)
 please_wait
-if [[ $electrsis == docker ]] ; then
-docker_stop_electrs #stops electrs container
-docker start electrs >$dn 2>&1 #starts container
-docker exec electrs bash -c "rm $logfile"
-docker_start_electrs #starts electrs inside running container
+if [[ $electrsis == podman ]] ; then
+podman_stop_electrs #stops electrs container
+podman start electrs >$dn 2>&1 #starts container
+podman exec electrs bash -c "rm $logfile"
+podman_start_electrs #starts electrs inside running container
 else
 stop_electrs
 rm $logfile
@@ -184,9 +184,9 @@ fi
 ;;
 
 restart|Restart)
-if [[ $electrsis == docker ]] ; then
-docker_stop_electrs
-docker_start_electrs
+if [[ $electrsis == podman ]] ; then
+podman_stop_electrs
+podman_start_electrs
 else
 restart_electrs
 sleep 2
@@ -194,11 +194,11 @@ fi
 ;;
 
 remote|REMOTE|Remote)
-if [[ $electrsis == docker ]] ; then
+if [[ $electrsis == podman ]] ; then
 set_terminal
 electrs_to_remote
-docker_stop_electrs
-docker_start_electrs
+podman_stop_electrs
+podman_start_electrs
 set_terminal
 else
 set_terminal

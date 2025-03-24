@@ -16,7 +16,7 @@ announce "Parmanode does not support a Nostr Relay and a Website on the same com
 return 1
 fi
 
-grep -q docker-end $HOME/.parmanode/installed.conf || { announce "Must install Docker first.
+grep -q podman-end $HOME/.parmanode/installed.conf || { announce "Must install Docker first.
 " \
 "Use menu: Add --> Other --> Docker). Aborting." && return 1 ; }
 

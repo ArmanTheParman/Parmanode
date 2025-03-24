@@ -235,8 +235,8 @@ fi # end if $1 != install
 
 # Part 2 dependencies
 
-    if ! which docker > /dev/null 2>&1 ; then install_docker ; fi 
-    if ! docker ps > /dev/null 2>&1 ; then start_docker_mac || return 1 ; fi 
+    if ! which podman > /dev/null 2>&1 ; then install_podman ; fi 
+    if ! podman ps > /dev/null 2>&1 ; then start_podman_mac || return 1 ; fi 
 
 # Part 3 dependencis
     
@@ -244,7 +244,7 @@ fi # end if $1 != install
     if [[ $OS == Linux ]] ; then
     sudo apt-get update
     sudo apt-get install -y qemu binfmt-support qemu-user-static
-    docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
+    podman run --rm --privileged multiarch/qemu-user-static --reset -p yes
     fi
 
 
@@ -270,8 +270,8 @@ fi # end if $1 != install
     fi
 
 # Macs use Docker functionality here
-    ParmanodL_docker_run || { announce "failed at docker_run" ; exit ; }
-    ParmanodL_docker_get_binaries || { announce "failed at docker_get_binaries" ; exit ; }
+    ParmanodL_podman_run || { announce "failed at podman_run" ; exit ; }
+    ParmanodL_podman_get_binaries || { announce "failed at podman_get_binaries" ; exit ; }
 
 # Mount the image and dependent directories
     
@@ -279,7 +279,7 @@ fi # end if $1 != install
 
 # Modify the image with chroot
 
-    ParmanodL_chroot_docker ; log "parmanodl" "finished ParmanodL_chroot"
+    ParmanodL_chroot_podman ; log "parmanodl" "finished ParmanodL_chroot"
 
 # Debug - opportunity to pause and check
 

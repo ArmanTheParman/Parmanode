@@ -74,13 +74,13 @@ jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit 0 ;; p|P) return 0 ;; n|N) break ;; m|M) back2main ;;
 y|Y)
-if ! docker ps >$dn 2>&1 ; then
+if ! podman ps >$dn 2>&1 ; then
 set_terminal ; echo "Please run Docker and hit enter to try again." ; enter_continue 
-  if ! docker ps >$dn 2>&1 ; then
+  if ! podman ps >$dn 2>&1 ; then
   set_terminal ; echo "Docker not running, skipping." ; enter_continue ; break
   fi
 fi
-docker system prune
+podman system prune
 enter_continue
 break
 ;;

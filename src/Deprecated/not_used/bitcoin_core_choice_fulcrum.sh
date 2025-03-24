@@ -31,6 +31,6 @@ set_terminal
 if [[ -z $core_port ]] ; then core_port=8332 ; fi
 
 sudo gsed -i "/bitcoind/c\bitcoind = $core_IP:$core_port" $fc
-stop_fulcrum_docker
-start_fulcrum_docker
+stop_fulcrum_podman
+start_fulcrum_podman
 }

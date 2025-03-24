@@ -1,13 +1,13 @@
-function docker_troubleshooting {
-if [[ $1 == "btcpay" ]] ; then parmanode_conf_add "dockerexitbtcpay=1" ; fi
-if [[ $1 == "mempool" ]] ; then parmanode_conf_add "dockerexitmem=1" ; fi
+function podman_troubleshooting {
+if [[ $1 == "btcpay" ]] ; then parmanode_conf_add "podmanexitbtcpay=1" ; fi
+if [[ $1 == "mempool" ]] ; then parmanode_conf_add "podmanexitmem=1" ; fi
 while true ; do 
 set_terminal ; echo -e "
 ########################################################################################
 $cyan
                                Docker Troubleshooting
 $orange
-    Parmanode tried to add your username to the docker group, but it will 
+    Parmanode tried to add your username to the podman group, but it will 
     require you to log out of the session you're in and return.
 
     That means, if you're accessing this via SSH, you need to exit out of the user.
@@ -20,10 +20,10 @@ $orange
 
     When you return, type:
 $cyan
-    id | grep docker
+    id | grep podman
 $orange
     If there is no output, something is wrong, try rebooting your computer to refresh
-    the memory. Only when this command shows docker in the display should you 
+    the memory. Only when this command shows podman in the display should you 
     attempt to return to parmanode and continue the installation.    
 $red
     Type IGETIT to prove you read this, and Parmanode will now exit.

@@ -1,15 +1,15 @@
-function start_btcpay_indocker {
+function start_btcpay_inpodman {
 count=0
 while [[ $count -le 1 ]] ; do
-if docker ps | grep btcpay ; then   
-docker exec -du parman btcpay /bin/bash -c \
+if podman ps | grep btcpay ; then   
+podman exec -du parman btcpay /bin/bash -c \
 "/usr/bin/dotnet run --no-launch-profile --no-build -c Release --project \"\\
 /home/parman/parmanode/btcpayserver/BTCPayServer/BTCPayServer.csproj\" -- \$@ \\
 >/home/parman/.btcpayserver/btcpay.log" || return 1 
 return 0
 else
-debug "starting docker btcpay"
-docker start btcpay || log "btcpay" "failed to start btcpay docker container"     
+debug "starting podman btcpay"
+podman start btcpay || log "btcpay" "failed to start btcpay podman container"     
 count=$((count + 1))
 fi
 done

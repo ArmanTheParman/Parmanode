@@ -8,7 +8,7 @@ function parmanode_variables {
 #program wherever it appears. "export" keeps variable in global memory.
 if [[ $1 == "debug" || $1 == d || $2 == d || $2 == "debug" ]] ; then export debug=1 
 elif [[ $1 == d2 ]] ; then export debug=2  
-elif [[ $1 == d3 ]] ; then export debug=3  #bre docker no-cache build
+elif [[ $1 == d3 ]] ; then export debug=3  #bre podman no-cache build
 fi
 
 #Can be used to source parmanode script and then open a bash terminal with the functions

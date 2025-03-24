@@ -40,7 +40,7 @@ done
 if [[ $OS == Mac ]] ; then set_static_IP_mac && return 0 ; return 1
 else
 sudo systemctl start NetworkManager
-connection_count=$(sudo nmcli -t -f NAME,TYPE con show --active | grep -v docker | grep -v bridge | wc -l)
+connection_count=$(sudo nmcli -t -f NAME,TYPE con show --active | grep -v podman | grep -v bridge | wc -l)
 sleep 2
 if [[ $connection_count != 1 ]] ; then
 announce "Parmanode was unable to make your IP address static. Please do
@@ -48,7 +48,7 @@ announce "Parmanode was unable to make your IP address static. Please do
     get errors."
 fi
 
-connection_name=$(sudo nmcli -t -f NAME,TYPE con show --active | grep -v docker | grep -v bridge | cut -d : -f 1) 
+connection_name=$(sudo nmcli -t -f NAME,TYPE con show --active | grep -v podman | grep -v bridge | cut -d : -f 1) 
 
 router=$(ip route | grep default | awk '{print $3}')
 sudo nmcli con mod $connection_name ipv4.addresses $IP/24 >$dn 2>&1

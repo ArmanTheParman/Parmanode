@@ -63,7 +63,7 @@ esac
 done
 #Break point. Proceed to uninstall Bitcoin.
 
-if ! docker ps >$dn 2>&1 ; then
+if ! podman ps >$dn 2>&1 ; then
 announce "Docker doesn't seem to be running. Can't uninstall without that. Aborting."
 return 1
 fi

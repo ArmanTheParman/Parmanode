@@ -2,7 +2,7 @@ function make_public_pool_env {
 source $bc
 
 if [[ $OS == Mac ]] ; then 
-IPurl="host.docker.internal"
+IPurl="host.podman.internal"
 else
 IPurl=$IP
 fi

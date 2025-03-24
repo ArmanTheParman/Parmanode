@@ -1,8 +1,8 @@
 function create_wallet {
 ########################################################################################
-if grep -q "lnddocker" $ic ; then
+if grep -q "lndpodman" $ic ; then
 
-if ! docker ps >$dn 2>&1 ; then set_terminal ; echo -e "
+if ! podman ps >$dn 2>&1 ; then set_terminal ; echo -e "
 ########################################################################################$red
                               Docker is not running. $orange
 ########################################################################################
@@ -11,7 +11,7 @@ enter_continue ; jump $enter_cont
 return 1
 fi
 
-if ! docker ps | grep -q lnd ; then set_terminal ; echo -e "
+if ! podman ps | grep -q lnd ; then set_terminal ; echo -e "
 ########################################################################################$red
                         The LND container is not running. $orange
 ########################################################################################
@@ -19,7 +19,7 @@ if ! docker ps | grep -q lnd ; then set_terminal ; echo -e "
 if [[ $1 != silent ]] ; then enter_continue ; jump $enter_cont ; return 1 ; esle true ; fi
 fi 
 
-if docker exec -it lnd /bin/bash -c "lncli walletbalance" >$dn 2>&1 ; then
+if podman exec -it lnd /bin/bash -c "lncli walletbalance" >$dn 2>&1 ; then
 announce "You already have an LND wallet, and it's unlocked. Please delete the 
     wallet first if you want to create a new one."
 return 1
@@ -29,7 +29,7 @@ fi
 ########################################################################################
 
 
-else #end docker
+else #end podman
 
 
 if ! sudo systemctl status litd.service >$dn \
@@ -44,7 +44,7 @@ announce "You already have an LND wallet, and it's unlocked. Please delete the
 return 1
 fi
 
-fi # end docker vs non docker
+fi # end podman vs non podman
 
 set_terminal
 lnd_wallet_info
@@ -62,8 +62,8 @@ announce "${cyan}You will be asked to create a password - this is for your LND p
 "
 echo -e "$reset" #resets colour
 
-if grep -q "lnddocker" $ic ; then
-docker exec -it lnd /bin/bash -c "lncli create"
+if grep -q "lndpodman" $ic ; then
+podman exec -it lnd /bin/bash -c "lncli create"
 debug "after lncli create"
 else
 lncli create

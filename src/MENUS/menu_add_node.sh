@@ -32,7 +32,7 @@ if [[ -n $mempool_n ]]         ; then echo -e  "$mempool_n"; fi
 if [[ -n $bre_n ]]             ; then echo  -e "$bre_n"; fi
 if [[ -n $lnd_n ]]             ; then echo  -e "$lnd_n"; fi
 if [[ -n $litd_n ]]             ; then echo  -e "$litd_n"; fi
-if [[ -n $lnddocker_n ]]       ; then echo  -e "$lnddocker_n"; fi
+if [[ -n $lndpodman_n ]]       ; then echo  -e "$lndpodman_n"; fi
 if [[ -n $btcpay_n ]]          ; then echo -e  "$btcpay_n"; fi
 if [[ -n $fulcrum_n ]]         ; then echo  -e "$fulcrum_n"; fi
 if [[ -n $fulcrumdkr_n ]]         ; then echo  -e "$fulcrumdkr_n"; fi
@@ -49,7 +49,7 @@ if [[ -n $btcrpcexplorer_i ]]  ; then echo -e "$btcrpcexplorer_i"; fi
 if [[ -n $mempool_i ]]         ; then echo -e  "$mempool_i"; fi
 if [[ -n $bre_i ]]             ; then echo -e  "$bre_i"; fi
 if [[ -n $lnd_i ]]             ; then echo  -e "$lnd_i"; fi
-if [[ -n $lnddocker_i ]]       ; then echo  -e "$lnddocker_i"; fi
+if [[ -n $lndpodman_i ]]       ; then echo  -e "$lndpodman_i"; fi
 if [[ -n $btcpay_i ]]          ; then echo  -e "$btcpay_i"; fi
 if [[ -n $fulcrum_i ]]         ; then echo  -e "$fulcrum_i"; fi
 if [[ -n $fulcrumdkr_i ]]      ; then echo  -e "$fulcrumdkr_i"; fi
@@ -67,7 +67,7 @@ if [[ -n $btcrpcexplorer_p ]]  ; then echo -e "$pink$btcrpcexplorer_p$orange"; f
 if [[ -n $mempool_p ]]         ; then echo -e "$mempool_p"; fi
 if [[ -n $bre_p ]]             ; then echo -e "$pink$bre_p$orange"; fi
 if [[ -n $lnd_p ]]             ; then echo -e "$pink$lnd_p$orange"; fi
-if [[ -n $lnddocker_p ]]       ; then echo -e "$pink$lnddocker_p$orange"; fi
+if [[ -n $lndpodman_p ]]       ; then echo -e "$pink$lndpodman_p$orange"; fi
 if [[ -n $btcpay_p ]]          ; then echo -e "$pink$btcpay_p$orange"; fi
 if [[ -n $fulcrum_p ]]         ; then echo -e "$pink$fulcrum_p$orange"; fi
 if [[ -n $fulcrumdkr_p ]]      ; then echo -e "$pink$fulcrumdkr_p$orange"; fi
@@ -103,7 +103,7 @@ q|Q) exit ;; p|P) return ;; m|M) back2main ;;
 
     fd|FD)
       if [[ -n $fulcrumdkr_n ]] ; then set_terminal
-         install_fulcrum docker 
+         install_fulcrum podman 
          menu_main
       fi
       ;;
@@ -128,7 +128,7 @@ q|Q) exit ;; p|P) return ;; m|M) back2main ;;
     lnd|LND|Lnd)
        if [[ -n $lnd_n ]] ; then
 
-         if [[ -z $lnddocker_n ]] ; then announce "Can't have this with Docker LND. Aborting." ; continue ; fi
+         if [[ -z $lndpodman_n ]] ; then announce "Can't have this with Docker LND. Aborting." ; continue ; fi
        
          if [[ $OS == "Linux" ]] ; then install_lnd ; menu_main ; fi 
 
@@ -142,15 +142,15 @@ q|Q) exit ;; p|P) return ;; m|M) back2main ;;
 
     
     ld|LD|Ld)
-       if [[ -n $lnddocker_n ]] ; then
-         if [[ -z $lnd_n ]] ; then announce "Can't have this with LND non-docker. Aborting." ; continue ; fi
-       install_lnd_docker
+       if [[ -n $lndpodman_n ]] ; then
+         if [[ -z $lnd_n ]] ; then announce "Can't have this with LND non-podman. Aborting." ; continue ; fi
+       install_lnd_podman
        fi
        ;;
     
    bre|BRE|Bre)
        if [[ $computer_type == Pi ]] ; then
-          bre_docker_install
+          bre_podman_install
           menu_main
        fi
 
@@ -160,7 +160,7 @@ q|Q) exit ;; p|P) return ;; m|M) back2main ;;
        fi 
 
        if [[ -n $bre_n && $OS == "Mac" ]] ; then
-            bre_docker_install
+            bre_podman_install
             menu_main
        fi
        ;;
@@ -177,9 +177,9 @@ q|Q) exit ;; p|P) return ;; m|M) back2main ;;
          menu_main
       fi
       ;;
-   ersd|ERSD|Ersd|electrsdocker)
+   ersd|ERSD|Ersd|electrspodman)
       if [[ -n $electrsdkr_n && -n $electrsdkr2_n ]] ; then
-         install_electrs_docker
+         install_electrs_podman
          menu_main
       fi
       ;;
@@ -204,7 +204,7 @@ fi
 
    litd|LITD) 
        if [[ -n $litd_n ]] ; then
-         if [[ -z $lnddocker_n ]] ; then announce "Can't have this with Docker LND. Aborting." ; continue ; fi
+         if [[ -z $lndpodman_n ]] ; then announce "Can't have this with Docker LND. Aborting." ; continue ; fi
          if [[ -z $lnd_n ]] ; then announce "Can't have this with LND. Aborting." ; continue ; fi
        if [[ $OS == "Mac" ]] ; then no_mac ; continue ; fi
        if [[ $OS == "Linux" ]] ; then install_litd ; menu_main ; fi 

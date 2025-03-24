@@ -3,7 +3,7 @@ nogsedtest
 # arguments: only, both, off
 local file=$HOME/.lnd/lnd.conf
 debug "in lnd_tor"
-if ! grep -q "lnddocker" $ic && ! which tor >$dn ; then install_tor ; fi
+if ! grep -q "lndpodman" $ic && ! which tor >$dn ; then install_tor ; fi
 debug "1"
 #while stream isolation is enabled, the TOR proxy may not be skipped.
 

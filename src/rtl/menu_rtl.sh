@@ -17,14 +17,14 @@ echo -e "
                                  $cyan   RTL Menu     $orange 
 ########################################################################################
 "
-if docker ps | grep -q rtl ; then echo -e "
+if podman ps | grep -q rtl ; then echo -e "
                                  RTL is$green RUNNING$orange" 
 else 
 echo -e "
                                  RTL is$red NOT RUNNING$orange"
 fi
 
-if ! ps -x | grep lnd | grep bin >$dn 2>&1  && ! docker ps | grep -q lnd ; then echo -e "$red
+if ! ps -x | grep lnd | grep bin >$dn 2>&1  && ! podman ps | grep -q lnd ; then echo -e "$red
                 WARNING: LND is not running. RTL won't funciton.$orange" ; fi
 
 echo -e "      
@@ -66,12 +66,12 @@ continue
 ;;
 
 stop|STOP|Stop)
-docker stop rtl
+podman stop rtl
 continue
 ;;
 
 restart|RESTART|Restart)
-docker stop rtl 
+podman stop rtl 
 start_rtl
 continue
 ;;

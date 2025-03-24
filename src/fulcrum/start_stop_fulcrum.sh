@@ -2,9 +2,9 @@ function start_fulcrum {
 if grep -q "fulcrum-" $ic ; then
     sudo systemctl start fulcrum.service
 elif grep -q "fulcrumdkr" $ic ; then
-    docker_running || return 1
-    docker start fulcrum
-    docker exec -d fulcrum /bin/bash -c "/home/parman/parmanode/fulcrum/Fulcrum /home/parman/.fulcrum/fulcrum.conf \
+    podman_running || return 1
+    podman start fulcrum
+    podman exec -d fulcrum /bin/bash -c "/home/parman/parmanode/fulcrum/Fulcrum /home/parman/.fulcrum/fulcrum.conf \
         >/home/parman/.fulcrum/fulcrum.log 2>&1" >$dn 2>&1
 fi
 }
@@ -15,9 +15,9 @@ if grep -q "fulcrum-" $ic ; then
     sleep 1
 
 elif grep -q "fulcrumdkr" $ic ; then
-    docker_running || return 1
+    podman_running || return 1
     please_wait
-    tmux "docker exec -it fulcrum bash -c 'pkill Fulcrum'"
+    tmux "podman exec -it fulcrum bash -c 'pkill Fulcrum'"
     sleep 1
 fi
 }

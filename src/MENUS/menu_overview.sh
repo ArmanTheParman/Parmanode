@@ -58,7 +58,7 @@ else
     unset m1 s1 r1
 fi
 
-if grep -q lnd-end $ic || grep -q lnddocker-end $ic ; then
+if grep -q lnd-end $ic || grep -q lndpodman-end $ic ; then
     i2="${green}Y${orange}"
     lndinstalled="true"
     if [[ $lndrunning == "true" ]] ; then
@@ -411,11 +411,11 @@ s5)
 if [[ $menub5 == "true" ]] ; then
 clear ; please_wait
 if [[ $computer_type == LinuxPC ]] ; then stop_bre ; fi
-if [[ $OS == Mac || $computer_type == Pi ]] ; then bre_docker_stop ; fi
+if [[ $OS == Mac || $computer_type == Pi ]] ; then bre_podman_stop ; fi
 else
 clear ; please_wait
 if [[ $computer_type == LinuxPC ]] ; then start_bre ; fi
-if [[ $OS == Mac || $computer_type == Pi ]] ; then bre_docker_start ; fi
+if [[ $OS == Mac || $computer_type == Pi ]] ; then bre_podman_start ; fi
 fi
 ;;
 s6) 
@@ -430,19 +430,19 @@ fi
 s7) 
 if [[ $menub7 == "true" ]] ; then
 clear ; please_wait
-docker stop rtl
+podman stop rtl
 else
 clear ; please_wait
-docker start rtl
+podman start rtl
 fi
 ;;
 s8) 
 if [[ $menub8 == "true" ]] ; then
 clear ; please_wait
-docker_stop_electrs
+podman_stop_electrs
 else
 clear ; please_wait
-docker_start_electrs
+podman_start_electrs
 fi
 ;;
 

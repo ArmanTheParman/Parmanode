@@ -1,18 +1,18 @@
 function menu_parmabox {
 if ! grep -q "parmabox-end" $ic ; then return 0 ; fi
 while true ; do 
-if ! docker ps >$dn 2>&1 ; then
-    dockerrunning="
+if ! podman ps >$dn 2>&1 ; then
+    podmanrunning="
                               ${red}Warning: Docker is not running${orange}
     "
 else
 
-   if ! docker ps | grep -qi parmabox ; then
-   dockerrunning="
+   if ! podman ps | grep -qi parmabox ; then
+   podmanrunning="
                               ${red}Warning: ParmaBox container is not running${orange}
    " 
    else
-   dockerrunning="
+   podmanrunning="
                               ${green}ParmaBox is running${orange}
    " 
    fi
@@ -24,7 +24,7 @@ set_terminal ; echo -ne "
               $cyan                     ParmaBox Menu            $orange                   
 ########################################################################################
 
-                              $dockerrunning 
+                              $podmanrunning 
 $cyan
             r) $orange        Log into the container as root
 $blue                              The password is 'parmanode' 
@@ -49,17 +49,17 @@ jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in 
 m|M) back2main ;; q|Q|QUIT|Quit) exit 0 ;; p|P) menu_use ;; 
 r|R) 
-docker exec -it -u root parmabox /bin/bash ;;
+podman exec -it -u root parmabox /bin/bash ;;
 pm) 
-docker exec -it -u parman parmabox /bin/bash ;;
+podman exec -it -u parman parmabox /bin/bash ;;
 s) 
 stop_parmabox ;;
 rs) 
 start_parmabox ;;
 u) 
-docker exec -it -u root parmabox bash -c "apt update -y && apt -y upgrade" 
+podman exec -it -u root parmabox bash -c "apt update -y && apt -y upgrade" 
 echo "Update Parmanode..."
-docker exec -it -u parman parmabox bash -c "cd /home/parman/parman_programs/parmanode ; git pull"
+podman exec -it -u parman parmabox bash -c "cd /home/parman/parman_programs/parmanode ; git pull"
 sleep 2
 ;;
 rf)
@@ -76,8 +76,8 @@ done
 } 
 
 function start_parmabox {
-docker start parmabox >$dn 2>&1
+podman start parmabox >$dn 2>&1
 }
 function stop_parmabox {
-docker stop parmabox >$dn 2>&1
+podman stop parmabox >$dn 2>&1
 }

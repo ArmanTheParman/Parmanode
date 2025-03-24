@@ -29,13 +29,13 @@ q|Q|QUIT|Quit) exit 0 ;;
 p|P) return 1 ;; 
 
 2) 
-    edit_ssl_port_fulcrum_indocker 50002
+    edit_ssl_port_fulcrum_inpodman 50002
     break
 ;;
 
 yolo|YOLO|Yolo)
 
-    edit_ssl_port_fulcrum_indocker 50003
+    edit_ssl_port_fulcrum_inpodman 50003
     break
 ;; 
 

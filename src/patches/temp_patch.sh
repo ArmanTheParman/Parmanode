@@ -2,12 +2,12 @@ function temp_patch {
 cleanup_parmanode_service
 truncatedebuglog
 truncatexsessions
-if [[ -e /.dockerenv ]] && ! netstat -tuln | grep -q 9050 ; then
+if [[ -e /.podmanenv ]] && ! netstat -tuln | grep -q 9050 ; then
 enable_tor_general
 fi
  
 #Docker containers sometimes won't have $USER variable set...
-if [[ -e /.dockerenv && -z $USER ]] ; then
+if [[ -e /.podmanenv && -z $USER ]] ; then
     USER=$(whoami) >$dn 2>&1
     echo "USER=$USER ##added by Parmanode" | sudo tee -a $HOME/.bashrc >$dn 2>&1
 fi
@@ -31,11 +31,11 @@ nogsedtest
     fi
 fi
 
-#leave in temp patch because a single time patch may fail, as docker needs to be running
-#remove June 2025 - make sure all electrs docker has socat installed
+#leave in temp patch because a single time patch may fail, as podman needs to be running
+#remove June 2025 - make sure all electrs podman has socat installed
 if cat $ic 2>$dn | grep -q "electrsdkr" ; then
-    if ! docker exec -it electrs bash -c "which socat" >$dn 2>&1 ; then
-        docker exec -d electrs bash -c "sudo apt-get install socat -y" >$dn 2>&1
+    if ! podman exec -it electrs bash -c "which socat" >$dn 2>&1 ; then
+        podman exec -d electrs bash -c "sudo apt-get install socat -y" >$dn 2>&1
     fi
 fi
 
@@ -60,7 +60,7 @@ if ! cat $bashrc 2>$dn | grep -q "parmashell" ; then
 uninstall_parmashell silent ; install_parmashell
 fi
 
-#Leave until Mac has a non-docker fulcrum option
+#Leave until Mac has a non-podman fulcrum option
 if [[ $OS == "Mac" ]] && cat $ic 2>$dn | grep -q "fulcrum-end" ; then
 sudo gsed -i 's/fulcrum-end/fulcrumdkr-end/' $ic >$dn 2>&1 
 sudo gsed -i 's/fulcrum-start/fulcrumdkr-start/' $ic >$dn 2>&1 
@@ -79,8 +79,8 @@ if grep -q "nextcloud" $ic ; then
 fi
 
 #can remove in 2026
-[[ -e $hp/mempool/docker/docker-compose.yml ]] && 
-    gsed -i 's/on-failure/unless-stopped/g' $hp/mempool/docker/docker-compose.yml >/dev/null 2>&1
+[[ -e $hp/mempool/podman/podman-compose.yml ]] && 
+    gsed -i 's/on-failure/unless-stopped/g' $hp/mempool/podman/podman-compose.yml >/dev/null 2>&1
         
 
 [[ -e $bc ]] && if grep -q "onion" $bc && ! grep -q "rpcbind=127.0.0.1" $bc ; then
@@ -121,11 +121,11 @@ fi
 
 function fulcrum_delete_old_log {
 oldfile="/home/parman/parmanode/fulcrum/fulcrum.log"
-if cat $ic 2>$dn | grep -q "fulcrumdkr" && docker ps 2>$dn | grep -q "fulcrum" >$dn \
-&& docker exec -it fulcrum test -e $oldfile ; then
+if cat $ic 2>$dn | grep -q "fulcrumdkr" && podman ps 2>$dn | grep -q "fulcrum" >$dn \
+&& podman exec -it fulcrum test -e $oldfile ; then
     announce "Parmanode needs to make some smol adjustments to Fulcrum"
-    docker_stop_fulcrum
-    docker exec -it fulcrum pkill -15 Fulcrum
+    podman_stop_fulcrum
+    podman exec -it fulcrum pkill -15 Fulcrum
     sleep 2
     start_fulcrum
 fi

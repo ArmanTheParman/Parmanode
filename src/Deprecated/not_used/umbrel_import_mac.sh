@@ -41,7 +41,7 @@ case $choice in q|Q) exit ;; p|P) return 1 ;; esac
     UIDGID
 
 # Part 2 dependencies - Macs need Docker
-    Macs_need_docker || exit
+    Macs_need_podman || exit
 
 
 # Make necessary directories
@@ -57,14 +57,14 @@ case $choice in q|Q) exit ;; p|P) return 1 ;; esac
 #Mount
 # Need Docker functionality here for mounting ext4 drives
     
-    ParmanodL_docker_run umbrelmac || { log "$log" "failed at docker_run" ; exit ; }
-    ParmanodL_docker_get_binaries || { log "$log" "failed at docker_get_binaries" ; exit ; }
+    ParmanodL_podman_run umbrelmac || { log "$log" "failed at podman_run" ; exit ; }
+    ParmanodL_podman_get_binaries || { log "$log" "failed at podman_get_binaries" ; exit ; }
     
 # Template from umbrel_import.sh 
 ########################################################################################################################
 cd
 
-umbrel_drive_mods_with_docker || return 1
+umbrel_drive_mods_with_podman || return 1
 
 #Clean-up
 ########################################################################################

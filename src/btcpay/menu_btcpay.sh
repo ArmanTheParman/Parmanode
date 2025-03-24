@@ -7,7 +7,7 @@ set_btcpay_version_and_menu_print
 menu_bitcoin menu_btcpay #gets variables output1 for menu text, and $bitcoinrunning
 isbtcpayrunning
 if [[ $btcpayrunning != "true" ]] \
-&& docker ps | grep -q btcpay ; then
+&& podman ps | grep -q btcpay ; then
 containeronly="${cyan}Container RUNNING$orange"
 else
 unset containeronly
@@ -259,7 +259,7 @@ set_terminal ; echo -e "
     backup feature from the Parmanode BTCPay menu.
 
     The update works by first stopping the services running, then pulling the 
-    desired version from GitHub, building the binaries again inside the docker 
+    desired version from GitHub, building the binaries again inside the podman 
     container, and then restarting the service.
 
     You have options...
@@ -279,10 +279,10 @@ q|Q) exit ;; a|A|p|P) return 1 ;; m|M) back2main ;;
 pp)
 version="v2.0.3"
 stop_btcpay 
-docker start btcpay #container only
+podman start btcpay #container only
 set_terminal
 echo -e "${green}Updating to version $version. This can take a few minutes. \nSit back and stacks some sats...$orange"
-docker exec -itu parman btcpay bash -c "cd /home/parman/parmanode/btcpayserver && git checkout $version && ./build.sh"
+podman exec -itu parman btcpay bash -c "cd /home/parman/parmanode/btcpayserver && git checkout $version && ./build.sh"
 restart_btcpay
 success "BTCPay Server has been updated to version $version"
 parmanode_conf_remove "btcpay_version"
@@ -298,8 +298,8 @@ if [[ ! $version =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]] ; then announce "Incorrect form
 stop_btcpay 
 set_terminal 
 echo -e "${green}Updating to version $version. This can take a few minutes. \nSit back and stacks some sats...$orange"
-docker start btcpay #container only
-docker exec -itu parman btcpay bash -c "cd /home/parman/parmanode/btcpayserver && git checkout $version && ./build.sh"
+podman start btcpay #container only
+podman exec -itu parman btcpay bash -c "cd /home/parman/parmanode/btcpayserver && git checkout $version && ./build.sh"
 restart_btcpay
 success "BTCPay Server has been updated to version $cyan$version$orange"
 parmanode_conf_remove "btcpay_version"
@@ -388,7 +388,7 @@ cp -r $HOME/.btcpayserver/Plugins   $tempdir/Plugins
 cp -r $HOME/.btcpayserver/Main      $tempdir/Main
 
 #backup databases
-if ! docker exec -itu postgres btcpay bash -c "pg_dumpall -U postgres" > $tempdir/btcpayserver.sql 2>&1 ; then 
+if ! podman exec -itu postgres btcpay bash -c "pg_dumpall -U postgres" > $tempdir/btcpayserver.sql 2>&1 ; then 
     rm -rf $tempdir 
     enter_continue "Something went wrong with the database backup. Aborting." 
     return 1
@@ -481,44 +481,44 @@ fi
 
 
 function menu_btcpay_manr {
-if ! docker exec -itu root btcpay bash -c "grep -q 'parmashell_functions' /etc/bash.bashrc" ; then
-docker exec -du root btcpay bash -c "echo 'source /home/parman/parman_programs/parmanode/src/ParmaShell/parmashell_functions' | tee -a /etc/bash.bashrc >$dn" 
+if ! podman exec -itu root btcpay bash -c "grep -q 'parmashell_functions' /etc/bash.bashrc" ; then
+podman exec -du root btcpay bash -c "echo 'source /home/parman/parman_programs/parmanode/src/ParmaShell/parmashell_functions' | tee -a /etc/bash.bashrc >$dn" 
 fi
-if ! docker exec -itu root btcpay bash -c "grep -q '#colour_function' /etc/bash.bashrc" ; then
-docker exec -du root btcpay bash -c "echo 'colour 2>$dn #colour_function' | tee -a /etc/bash.bashrc >$dn"
+if ! podman exec -itu root btcpay bash -c "grep -q '#colour_function' /etc/bash.bashrc" ; then
+podman exec -du root btcpay bash -c "echo 'colour 2>$dn #colour_function' | tee -a /etc/bash.bashrc >$dn"
 fi
 enter_continue "Type exit and <enter> to return from container back to Parmanode."
 clear
-docker exec -itu root btcpay bash 
+podman exec -itu root btcpay bash 
 
 }
 
 function menu_btcpay_manp {
-if ! docker exec -it btcpay bash -c "grep -q 'parmashell_functions' /etc/bash.bashrc" ; then
-docker exec -du root btcpay bash -c "echo 'source /home/parman/parman_programs/parmanode/src/ParmaShell/parmashell_functions' | tee -a /etc/bash.bashrc >$dn"
+if ! podman exec -it btcpay bash -c "grep -q 'parmashell_functions' /etc/bash.bashrc" ; then
+podman exec -du root btcpay bash -c "echo 'source /home/parman/parman_programs/parmanode/src/ParmaShell/parmashell_functions' | tee -a /etc/bash.bashrc >$dn"
 fi
-if ! docker exec -itu root btcpay bash -c "grep -q '#colour_function' /etc/bash.bashrc" ; then
-docker exec -du root btcpay bash -c "echo 'colour 2>$dn #colour_function' | tee -a /etc/bash.bashrc >$dn"
+if ! podman exec -itu root btcpay bash -c "grep -q '#colour_function' /etc/bash.bashrc" ; then
+podman exec -du root btcpay bash -c "echo 'colour 2>$dn #colour_function' | tee -a /etc/bash.bashrc >$dn"
 fi
 clear
 #echo -e "${green}The sudo password for parman is 'parmanode'$orange"
 enter_continue "Type exit and <enter> to return from container back to Parmanode."
 clear
-docker exec -itu postgres btcpay bash 
+podman exec -itu postgres btcpay bash 
 }
 
 function menu_btcpay_man {
-if ! docker exec -it btcpay -c "grep -q 'parmashell_functions' /etc/bash.bashrc" ; then
-docker exec -du root btcpay bash -c "echo 'source /home/parman/parman_programs/parmanode/src/ParmaShell/parmashell_functions' | tee -a /etc/bash.bashrc >$dn" 
+if ! podman exec -it btcpay -c "grep -q 'parmashell_functions' /etc/bash.bashrc" ; then
+podman exec -du root btcpay bash -c "echo 'source /home/parman/parman_programs/parmanode/src/ParmaShell/parmashell_functions' | tee -a /etc/bash.bashrc >$dn" 
 fi
-if ! docker exec -itu root btcpay bash -c "grep -q '#colour_function' /etc/bash.bashrc" ; then
-docker exec -du root btcpay bash -c "echo 'colour 2>$dn #colour_function' | tee -a /etc/bash.bashrc >$dn"
+if ! podman exec -itu root btcpay bash -c "grep -q '#colour_function' /etc/bash.bashrc" ; then
+podman exec -du root btcpay bash -c "echo 'colour 2>$dn #colour_function' | tee -a /etc/bash.bashrc >$dn"
 fi
 clear
 echo -e "${green}The sudo password for parman is 'parmanode'$orange"
 enter_continue "Type exit and <enter> to return from container back to Parmanode."
 clear
-docker exec -it btcpay bash 
+podman exec -it btcpay bash 
 }
 
 function btcpay_menu_advanced {
@@ -557,7 +557,7 @@ case $choice in
 q|Q) exit ;; p|P) return 0 ;; m|M) back2main ;; 
 dco)
 stop_btcpay 
-docker start btcpay #do not user start_btcpay()
+podman start btcpay #do not user start_btcpay()
 ;;
 man)
 menu_btcpay_man
@@ -569,15 +569,15 @@ manr)
 menu_btcpay_manr
 ;;
 btcp)
-start_btcpay_indocker 
+start_btcpay_inpodman 
 enter_continue
 ;;
 nbx)
-start_nbxplorer_indocker
+start_nbxplorer_inpodman
 enter_continue
 ;;
 post)
-start_postgres_btcpay_indocker 
+start_postgres_btcpay_inpodman 
 enter_continue
 ;;
 del)
@@ -596,14 +596,14 @@ yesorno "${red}ARE YOU SURE? THIS IS YOUR BTCPAY STORE DATA!$orange
 please_wait
 
 #terminate any connections
-docker exec -itu parman btcpay /bin/bash -c "psql -U parman -d postgres -c \"
+podman exec -itu parman btcpay /bin/bash -c "psql -U parman -d postgres -c \"
 SELECT pg_terminate_backend(pid) FROM pg_stat_activity WHERE datname = 'btcpayserver';
 SELECT pg_terminate_backend(pid) FROM pg_stat_activity WHERE datname = 'nbxplorer';\""
 #delete databases
-docker exec -itu parman btcpay /bin/bash -c "psql -U parman -d postgres -c 'DROP DATABASE btcpayserver;'" 
-docker exec -itu parman btcpay /bin/bash -c "psql -U parman -d postgres -c 'DROP DATABASE nbxplorer;'" 
+podman exec -itu parman btcpay /bin/bash -c "psql -U parman -d postgres -c 'DROP DATABASE btcpayserver;'" 
+podman exec -itu parman btcpay /bin/bash -c "psql -U parman -d postgres -c 'DROP DATABASE nbxplorer;'" 
 #create databases
-docker exec -itu postgres btcpay /bin/bash -c "createdb -O parman btcpayserver && createdb -O parman nbxplorer" 
+podman exec -itu postgres btcpay /bin/bash -c "createdb -O parman btcpayserver && createdb -O parman nbxplorer" 
 enter_continue
 ;;
 
@@ -617,19 +617,19 @@ done
 
 function btcpaycontainerspps {
 
-    if docker exec -du postgres btcpay bash -c "ps ax | grep /usr/lib/postgresq | grep -qv grep" ; then
+    if podman exec -du postgres btcpay bash -c "ps ax | grep /usr/lib/postgresq | grep -qv grep" ; then
     export posgresrunning="${green}RUNNING$orange"
     else
     export posgresrunning="${red}NOT RUNNING$orange"
     fi
 
-    if docker exec -it btcpay bash -c "ps ax | grep NBX | grep -v grep | grep -q csproj" ; then
+    if podman exec -it btcpay bash -c "ps ax | grep NBX | grep -v grep | grep -q csproj" ; then
     export nbxplorerrunning="${green}RUNNING$orange"
     else
     export nbxplorerrunning="${red}NOT RUNNING$orange"
     fi
 
-    if docker exec -it btcpay bash -c "ps ax | grep btcpay | grep -v grep | grep -q csproj" ; then
+    if podman exec -it btcpay bash -c "ps ax | grep btcpay | grep -v grep | grep -q csproj" ; then
     export containerbtcpayrunning="${green}RUNNING$orange"
     else
     export containerbtcpayrunning="${red}NOT RUNNING$orange"

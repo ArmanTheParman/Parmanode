@@ -80,7 +80,7 @@ $cyan
 $cyan
       (tor)$orange      Toggle Tor connections to Fulcrum -- Fulcrum Tor Status : $F_tor
 $cyan
-      (man)$orange      Manually explore the docker container
+      (man)$orange      Manually explore the podman container
 $cyan    
       (dc)$orange       Fulcrum database corrupted? -- Use this to start fresh.
 "
@@ -199,11 +199,11 @@ man)
 yesorno "Do you want to log in as the root user or parman (sudo password: parmanode)" "r" "root" "pp" "parman" \
          && {
             clear
-            docker exec -itu root fulcrum bash
+            podman exec -itu root fulcrum bash
             continue
          }
          clear
-         docker exec -itu parman fulcrum bash
+         podman exec -itu parman fulcrum bash
          ;;
 
  
@@ -257,10 +257,10 @@ return 0
 function is_fulcrum_shutting_down {
 if ! grep -q "fulcrumdkr" $ic ; then return 1 ; fi
 
-if docker exec -it fulcrum bash -c "cat /home/parman/.fulcrum/fulcrum.log  | tail -n1 | grep 'exiting' " \
-|| docker exec -it fulcrum bash -c "cat /home/parman/.fulcrum/fulcrum.log  | tail -n1 | grep 'Shutdown requested via signal' " \
-|| docker exec -it fulcrum bash -c "cat /home/parman/.fulcrum/fulcrum.log  | tail -n1 | grep 'Stopping' " \
-|| docker exec -it fulcrum bash -c "cat /home/parman/.fulcrum/fulcrum.log  | tail -n1 | grep 'Closing' "  ; then
+if podman exec -it fulcrum bash -c "cat /home/parman/.fulcrum/fulcrum.log  | tail -n1 | grep 'exiting' " \
+|| podman exec -it fulcrum bash -c "cat /home/parman/.fulcrum/fulcrum.log  | tail -n1 | grep 'Shutdown requested via signal' " \
+|| podman exec -it fulcrum bash -c "cat /home/parman/.fulcrum/fulcrum.log  | tail -n1 | grep 'Stopping' " \
+|| podman exec -it fulcrum bash -c "cat /home/parman/.fulcrum/fulcrum.log  | tail -n1 | grep 'Closing' "  ; then
 return 0
 else
 return 1

@@ -23,9 +23,9 @@ configure_yourself || return 1
 
 please_wait
 
-docker stop lnbits 2>$dn
-docker rm lnbits 2>$dn
-docker rmi lnbits 2>$dn
+podman stop lnbits 2>$dn
+podman rm lnbits 2>$dn
+podman rmi lnbits 2>$dn
 sudo rm -rf $HOME/parmanode/lnbits >$dn 2>&1
 
 #sudo systemctl stop lnbits.service

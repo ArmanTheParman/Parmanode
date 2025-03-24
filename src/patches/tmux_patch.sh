@@ -4,7 +4,7 @@ if [[ $btcpayinstallsbitcoin == "true" ]] ; then return 0 ; fi
 if which tmux >$dn 2>&1 ; then return 0 ; fi
 
 while true ; do
-if [[ $btcdockerchoice != "yes" ]] ; then
+if [[ $btcpodmanchoice != "yes" ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
 

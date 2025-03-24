@@ -37,15 +37,15 @@ done
 
 set_terminal
 
-if ! docker ps >$dn 2>&1 ; then
-announce "docker not running. Aborting."
+if ! podman ps >$dn 2>&1 ; then
+announce "podman not running. Aborting."
 return 1
 fi
 
 double_check_website_not_installed || return 1
 
-docker stop nostrrelay >$dn 2>&1
-docker rm nostrrelay >$dn 2>&1
+podman stop nostrrelay >$dn 2>&1
+podman rm nostrrelay >$dn 2>&1
 
 sudo rm -rf $hp/nostrrelay 2>$dn
 

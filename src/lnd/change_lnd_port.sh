@@ -1,7 +1,7 @@
 function change_lnd_port {
 
 nogsedtest
-if grep -r "lnddocker-" $ic ; then
+if grep -r "lndpodman-" $ic ; then
 announce "It is not possible to change the LND port if running inside
     a Docker container, as the ports are already 'bound' when running
     the container. 9735 it shall remain. 

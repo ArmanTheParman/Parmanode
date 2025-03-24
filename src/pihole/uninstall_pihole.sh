@@ -22,7 +22,7 @@ esac
 done
 
 cd $hp/pihole
-docker compose down
+podman compose down
 cd
 sudo rm -rf $hp/pihole
 installed_conf_remove "pihole"

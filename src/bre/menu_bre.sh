@@ -40,9 +40,9 @@ fi
 fi
 
 if [[ $OS == Mac || $computer_type == Pi ]] ; then
-if  docker ps 2>$dn | grep -q bre ; then 
+if  podman ps 2>$dn | grep -q bre ; then 
 
-    if docker exec -itu root bre /bin/bash -c 'ps -xa | grep "btc-rpc"' | grep -v grep >$dn 2>&1 ; then
+    if podman exec -itu root bre /bin/bash -c 'ps -xa | grep "btc-rpc"' | grep -v grep >$dn 2>&1 ; then
     menubrerunning="true"
     echo -e "
 
@@ -96,15 +96,15 @@ menu_use ;;
 start|START|Start)
 if [[ $menubrerunning == "true" ]] ; then continue ; fi
 if [[ $computer_type == LinuxPC ]] ; then start_bre ; fi
-if [[ $OS == Mac || $computer_type == Pi ]] ; then bre_docker_start ; fi
+if [[ $OS == Mac || $computer_type == Pi ]] ; then bre_podman_start ; fi
 ;;
 stop|Stop|STOP)
 if [[ $computer_type == LinuxPC ]] ; then stop_bre ; fi
-if [[ $OS == Mac || $computer_type == Pi ]] ; then bre_docker_stop ; fi
+if [[ $OS == Mac || $computer_type == Pi ]] ; then bre_podman_stop ; fi
 ;;
 restart|Restart|RESTART)
 if [[ $computer_type == LinuxPC ]] ; then restart_bre ; fi
-if [[ $OS == Mac || $computer_type == Pi ]] ; then bre_docker_restart ; fi
+if [[ $OS == Mac || $computer_type == Pi ]] ; then bre_podman_restart ; fi
 ;;
 t|T|TOR|tor|Tor)
 if [[ $OS == Linux ]] ; then 

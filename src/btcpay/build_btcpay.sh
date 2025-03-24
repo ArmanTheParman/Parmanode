@@ -4,6 +4,6 @@ function build_btcpay {
 
 thisID=$(id -u) 
 
-docker build --build-arg parmanID=$thisID --build-arg btcpay_version=$btcpay_version_choice -t btcpay $pn/src/btcpay  || return 1
+podman build --build-arg parmanID=$thisID --build-arg btcpay_version=$btcpay_version_choice -t btcpay $pn/src/btcpay  || return 1
 
 }

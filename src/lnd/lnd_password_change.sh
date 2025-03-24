@@ -47,7 +47,7 @@ else
 fi
 start_lnd
 
-lncli changepassword 2>&1 || docker exec -it lnd lncli changepassword
+lncli changepassword 2>&1 || podman exec -it lnd lncli changepassword
 stop_lnd
 
 if grep -q "litd" $ic >$dn 2>&1 ; then

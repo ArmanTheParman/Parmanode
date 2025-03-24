@@ -1,38 +1,38 @@
-function install_lnd_docker {
+function install_lnd_podman {
 nogsedtest
 set_terminal
-export install=lnddocker
+export install=lndpodman
 export lndversion="v0.17.3-beta"
 
 grep -q bitcoin-end $HOME/.parmanode/installed.conf || { announce "Must install Bitcoin first. Aborting." && return 1 ; }
 
 please_wait
 
-installed_config_add "lnddocker-start" 
+installed_config_add "lndpodman-start" 
 parmanode_conf_add "lnd_port=9735"
 
 make_lnd_directories || { debug "make_lnd_directories failed" ; return 1 ; }
 
 
 #apply variables first
-modify_lnd_dockerfile || { debug "modify_lnd_dockerfile failed" ; return 1 ; }
-build_lnd_docker || { debug "build_lnd_docker failed" ; return 1 ; }
-lnd_docker_run || { debug "lnd_docker_run failed" ; return 1 ; }
+modify_lnd_podmanfile || { debug "modify_lnd_podmanfile failed" ; return 1 ; }
+build_lnd_podman || { debug "build_lnd_podman failed" ; return 1 ; }
+lnd_podman_run || { debug "lnd_podman_run failed" ; return 1 ; }
 
-debug "after docker run and start"
+debug "after podman run and start"
 
-docker exec -itu root lnd bash -c "echo \"ControlPort 9051\" | tee -a /etc/tor/torrc" >$dn 2>&1
+podman exec -itu root lnd bash -c "echo \"ControlPort 9051\" | tee -a /etc/tor/torrc" >$dn 2>&1
 
 #password file, even if blank, needs to exists for lnd conf file to be valid
 if [[ $reusedotlnd != "true" ]] ; then
 touch $HOME/.lnd/password.txt  
 make_lnd_conf 
-fix_BTC_addr_btccombo #if BTC is installed in a btcpay docker container, IP addresses need to be fixed.
+fix_BTC_addr_btccombo #if BTC is installed in a btcpay podman container, IP addresses need to be fixed.
 make_lnd_service_tor #sets up lnd-service, not necessarily active
 set_lnd_alias #needs to have lnd conf existing
 fi
 
-lnd_docker_start || { announce "Couldn't start lnd, aborting." ; return 1 ; }
+lnd_podman_start || { announce "Couldn't start lnd, aborting." ; return 1 ; }
 debug "check lnd started in container"
 
 if [[ $reusedotlnd != "true" ]] ; then
@@ -44,7 +44,7 @@ sudo gsed -i '/^; wallet-unlock-allow-create/s/^..//' $HOME/.lnd/lnd.conf
 cd $HOME/.lnd && git init >$dn 2>&1
 fi
 
-installed_config_add "lnddocker-end"
+installed_config_add "lndpodman-end"
 
 success "LND Docker" "being installed"
 unset install reusedotlnd

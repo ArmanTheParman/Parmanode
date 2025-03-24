@@ -89,6 +89,6 @@ Electrs DB on external drive = "$parmanode_drive/electrs_db"
 export backup="$parmanode_drive/electrs_db_backup"
 
 ########################################################################################
-Internal drive, docker
+Internal drive, podman
 $HOME/parmanode/electrs/electrs_db
 or ... $hp/electrs/electrs_db

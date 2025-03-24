@@ -4,7 +4,7 @@ if [[ $debug != 1 ]] ; then
 grep -q bitcoin-end $HOME/.parmanode/installed.conf || { announce "Please install Bitcoin first. Aborting." && return 1 ; }
 fi
 
-grep -q docker-end $HOME/.parmanode/installed.conf || { announce "Must install Docker first.
+grep -q podman-end $HOME/.parmanode/installed.conf || { announce "Must install Docker first.
 " \
 "Use menu: Add --> Other --> Docker). Aborting." && return 1 ; }
 
@@ -36,15 +36,15 @@ nbxplorer_config || return 1 ; log "btcpay" "entering nbxplorer_config..."
 build_btcpay || return 1 ; log "btcpay" "entering build_btcpay..."
 pause "check build went ok"
 
-run_btcpay_docker || return 1 ; log "btcpay" "entering run_btcpay_docker..."
+run_btcpay_podman || return 1 ; log "btcpay" "entering run_btcpay_podman..."
 
 initialise_postgres_btcpay || return 1 
 
 sleep 4
-start_nbxplorer_indocker || return 1
+start_nbxplorer_inpodman || return 1
 
 sleep 4
-start_btcpay_indocker || return 1 
+start_btcpay_inpodman || return 1 
 
 if which tor >$dn 2>&1 ; then enable_tor_btcpay ; fi
 

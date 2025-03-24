@@ -29,9 +29,9 @@ echo -e "
 enter_continue
 clear
 if grep -q "btccombo" $ic ; then
-docker exec btcpay bitcoind --reindex
-docker exec btcpay bitcoin-cli stop
-docker exec -d btcpay bitcoind 
+podman exec btcpay bitcoind --reindex
+podman exec btcpay bitcoin-cli stop
+podman exec -d btcpay bitcoind 
 elif [[ $OS == Linux ]] ; then
 sudo bitcoind --reindex
 stop_bitcoin

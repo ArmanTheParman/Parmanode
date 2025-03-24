@@ -1,7 +1,7 @@
-function bre_docker_run {
+function bre_podman_run {
 
 if [[ $OS == Linux ]] ; then
-docker run -d --name bre \
+podman run -d --name bre \
            --restart unless-stopped \
      -v $HOME/parmanode/bre:/home/parman/parmanode/bre \
      --network="host" \
@@ -9,7 +9,7 @@ docker run -d --name bre \
 fi
 
 if [[ $OS == Mac ]] ; then
-docker run -d --name bre \
+podman run -d --name bre \
            --restart unless-stopped \
      -v $HOME/parmanode/bre:/home/parman/parmanode/bre \
      -p 3002:3002 \

@@ -42,61 +42,61 @@ containerfile="/home/parman/backup.tar"
 containerdir="/home/parman/backupdir"
 containerdb="$containerdir/btcpayserver.sql"
 restore_log="/var/lib/postgresql/restore_log.txt"
-docker exec -itu parman btcpay /bin/bash -c "rm -rf $containerdir ; mkdir $containerdir"
+podman exec -itu parman btcpay /bin/bash -c "rm -rf $containerdir ; mkdir $containerdir"
 
-if ! docker cp $file btcpay:$containerfile ; then 
+if ! podman cp $file btcpay:$containerfile ; then 
     #copy didn't work. clean up...
-    docker exec -itu root btcpay rm -rf $containerdir
-    docker exec -itu root btcpay rm -rf $containerfile
+    podman exec -itu root btcpay rm -rf $containerdir
+    podman exec -itu root btcpay rm -rf $containerfile
     enter_continue "Something went wrong copying the backup to the container"
     return 1
 fi 
 
 #extract the tar file
 please_wait
-if ! docker exec -itu parman btcpay /bin/bash -c "tar -xvf $containerfile -C $containerdir" ; then
+if ! podman exec -itu parman btcpay /bin/bash -c "tar -xvf $containerfile -C $containerdir" ; then
     #extract didn't work. clean up...
-    docker exec -itu root btcpay rm -rf $containerdir
-    docker exec -itu root btcpay rm -rf $containerfile
+    podman exec -itu root btcpay rm -rf $containerdir
+    podman exec -itu root btcpay rm -rf $containerfile
     enter_continue "Something went wrong extracting the backup in the container"
     return 1
 fi
 
 #Check psql db file is valid
-if ! docker exec -itu parman btcpay /bin/bash -c "grep -iq 'PostgreSQL database dump' $containerdb" ; then
+if ! podman exec -itu parman btcpay /bin/bash -c "grep -iq 'PostgreSQL database dump' $containerdb" ; then
     yesorno "Doesn't seem to be a valid Postgres SQL file.\n    Ignore error and proceed to import?" || {
-        docker exec -itu root btcpay rm -rf $containerdir
-        docker exec -itu root btcpay rm -rf $containerfile
+        podman exec -itu root btcpay rm -rf $containerdir
+        podman exec -itu root btcpay rm -rf $containerfile
         return 1
     }
 fi
 
 #stop databases
 #echo -e "\n${green}Stopping databases...$orange"
-#docker exec -itu postgres btcpay /bin/bash -c "psql -U postgres -c \"SELECT pg_terminate_backend(pid) FROM pg_stat_activity WHERE datname IN ('btcpayserver', 'nbxplorer', 'postgres');\" " >$dn 2>&1
+#podman exec -itu postgres btcpay /bin/bash -c "psql -U postgres -c \"SELECT pg_terminate_backend(pid) FROM pg_stat_activity WHERE datname IN ('btcpayserver', 'nbxplorer', 'postgres');\" " >$dn 2>&1
 
 # #delete first to avoid merging - the other databases don't matter.
-#     if ! docker exec -itu postgres btcpay bash -c "psql -U postgres -c 'DROP DATABASE IF EXISTS btcpayserver;'" \
-#         && docker exec -itu postgres btcpay bash -c "psql -U postgres -c 'DROP DATABASE IF EXISTS nbxplorer;'" \
-#         && docker exec -itu postgres btcpay bash -c "psql -U postgres -c 'DROP DATABASE IF EXISTS postgres;'"  
+#     if ! podman exec -itu postgres btcpay bash -c "psql -U postgres -c 'DROP DATABASE IF EXISTS btcpayserver;'" \
+#         && podman exec -itu postgres btcpay bash -c "psql -U postgres -c 'DROP DATABASE IF EXISTS nbxplorer;'" \
+#         && podman exec -itu postgres btcpay bash -c "psql -U postgres -c 'DROP DATABASE IF EXISTS postgres;'"  
 #     then    
-#         docker exec -itu root btcpay rm -rf $containerdir
-#         docker exec -itu root btcpay rm -rf $containerfile
+#         podman exec -itu root btcpay rm -rf $containerdir
+#         podman exec -itu root btcpay rm -rf $containerfile
 #         enter_continue "Something went wrong during database preparation. Aborting." 
 #         return 1
 #     fi
 
 #restore directories - delete first then copy in. Preserve settings file first.
 cp $HOME/.btcpayserver/Main/settings.config $HOME/.btcpayserver/settings.config_backup 2>$dn
-docker exec -itu root btcpay rm -rf /home/parman/.btcpayserver/Main 2>$dn
-docker exec -itu root btcpay rm -rf /home/parman/.btcpayserver/Plugins 2>$dn
+podman exec -itu root btcpay rm -rf /home/parman/.btcpayserver/Main 2>$dn
+podman exec -itu root btcpay rm -rf /home/parman/.btcpayserver/Plugins 2>$dn
 
-if ! docker exec -itu parman btcpay cp -r $containerdir/Main /home/parman/.btcpayserver/Main ; then
+if ! podman exec -itu parman btcpay cp -r $containerdir/Main /home/parman/.btcpayserver/Main ; then
     announce "Something went wrong - couldn't copy Main directory. Aborting."
     return 1
 fi
 
-if ! docker exec -itu parman btcpay mv $containerdir/Plugins /home/parman/.btcpayserver/Plugins ; then
+if ! podman exec -itu parman btcpay mv $containerdir/Plugins /home/parman/.btcpayserver/Plugins ; then
     announce "Something went wrong - couldn't copy Plugins directory. Aborting."
     return 1
 fi
@@ -104,15 +104,15 @@ fi
 mv $HOME/.btcpayserver/settings.config_backup $HOME/.btcpayserver/Main/settings.config >$dn 2>&1
 
 #restore databases
-if docker exec -itu postgres btcpay bash -c "psql < $containerdb | tee $restore_log 2>&1" ; then 
+if podman exec -itu postgres btcpay bash -c "psql < $containerdb | tee $restore_log 2>&1" ; then 
     debug "after restore psql"
-    docker exec -itu root btcpay bash -c "rm $containerfile" 
-    docker exec -itu root btcpay rm -rf $containerdir
+    podman exec -itu root btcpay bash -c "rm $containerfile" 
+    podman exec -itu root btcpay rm -rf $containerdir
     success "Backup restored" 
     return 0
 else
-    docker exec -itu root btcpay rm -rf $containerdir
-    docker exec -itu root btcpay rm -rf $containerfile
+    podman exec -itu root btcpay rm -rf $containerdir
+    podman exec -itu root btcpay rm -rf $containerfile
     enter_continue "Something went wrong with the import procedure. Aborting." ; jump $enter_cont 
     return 1
 fi

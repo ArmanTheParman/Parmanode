@@ -33,22 +33,22 @@ jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in 
 m|M) back2main ;; q|Q|QUIT|Quit) exit 0 ;; p|P) menu_use ;; 
 r|R) 
-docker exec -it -u root btcrecover /bin/bash 
+podman exec -it -u root btcrecover /bin/bash 
 ;;
 pm) 
-docker exec -it -u parman btcrecover /bin/bash 
+podman exec -it -u parman btcrecover /bin/bash 
 ;;
 ec)
-docker exec -it -u parman btcrecover bash -c "cd /home/parman/parman_programs/parmanode ; git pull"
+podman exec -it -u parman btcrecover bash -c "cd /home/parman/parman_programs/parmanode ; git pull"
 electrum_crack ;;
 print)
-docker exec -it -u parman btcrecover bash -c "cat /home/parman/parman_programs/parmanode/src/ParmaWallet/electrum_cracker/cracked_password.txt"
+podman exec -it -u parman btcrecover bash -c "cat /home/parman/parman_programs/parmanode/src/ParmaWallet/electrum_cracker/cracked_password.txt"
 enter_continue
 ;;
 s) 
-docker stop btcrecover ;;
+podman stop btcrecover ;;
 rs) 
-docker start btcrecover ;;
+podman start btcrecover ;;
 info)
 btcrecover_info ;;
 *)

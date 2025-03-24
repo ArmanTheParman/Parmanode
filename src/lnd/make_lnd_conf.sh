@@ -5,7 +5,7 @@ source $HOME/.bitcoin/bitcoin.conf
 
 get_extIP >$dn 2>&1
 
-if grep -q "lnddocker" $ic || [[ $install == lnddocker ]] ; then
+if grep -q "lndpodman" $ic || [[ $install == lndpodman ]] ; then
 customHOME=/home/parman
 else
 customHOME=$HOME
@@ -156,8 +156,8 @@ rpcmiddleware.enable=true
 " | tee $file >$dn 2>&1
 
 if [[ $bitcoin_choice_with_lnd == local ]] \
-&& [[ $install == lnddocker ]] && [[ $OS == Mac ]] ; then
-sudo gsed -i "/bitcoind.zmqpubrawblock=/c\bitcoind.zmqpubrawblock=tcp:\/\/host.docker.internal:28332" $file
-sudo gsed -i "/bitcoind.zmqpubrawtx=/c\bitcoind.zmqpubrawtx=tcp:\/\/host.docker.internal:28333" $file
+&& [[ $install == lndpodman ]] && [[ $OS == Mac ]] ; then
+sudo gsed -i "/bitcoind.zmqpubrawblock=/c\bitcoind.zmqpubrawblock=tcp:\/\/host.podman.internal:28332" $file
+sudo gsed -i "/bitcoind.zmqpubrawtx=/c\bitcoind.zmqpubrawtx=tcp:\/\/host.podman.internal:28333" $file
 fi
 } 

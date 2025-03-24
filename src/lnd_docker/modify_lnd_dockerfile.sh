@@ -1,9 +1,9 @@
-function modify_lnd_dockerfile {
+function modify_lnd_podmanfile {
 
 file="$hp/lnd/Dockerfile"
 unset chip_4lnd 
 
-cp $pn/src/lnd_docker/Dockerfile $file >$dn
+cp $pn/src/lnd_podman/Dockerfile $file >$dn
 cp $pn/src/nginx/stream_lnd.conf $hp/lnd/ >$dn
  
 if [[ $chip == x86_64  ]] ; then chip_4lnd=amd64 ; fi

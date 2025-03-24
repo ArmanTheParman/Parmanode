@@ -1,4 +1,4 @@
-function run_fulcrum_docker {
+function run_fulcrum_podman {
 
 source $HOME/.parmanode/parmanode.conf >$dn 2>&1
 
@@ -22,7 +22,7 @@ elif [[ $OS == Linux ]] ; then
 ports="--network=host"
 fi
 
-docker run -d --name fulcrum \
+podman run -d --name fulcrum \
                 --restart unless-stopped \
                 $ports \
                 -v $HOME/.fulcrum_db:/home/parman/.fulcrum_db \

@@ -1,5 +1,5 @@
-function preamble_install_electrs_docker {
-log "electrsdkr" "preamble install electrs docker"
+function preamble_install_electrs_podman {
+log "electrsdkr" "preamble install electrs podman"
 while true ; do
 set_terminal
 echo -e "

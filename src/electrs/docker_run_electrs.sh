@@ -1,10 +1,10 @@
-function docker_run_electrs {
+function podman_run_electrs {
 source $pc >$dn 2>&1
 
 if [[ $OS == Linux ]] ; then
 
     if [[ $drive_electrs == internal ]] ; then
-    docker run -d --name electrs \
+    podman run -d --name electrs \
                             --network="host" \
                             --restart unless-stopped \
                             -v $HOME/.electrs_db:/electrs_db \
@@ -14,7 +14,7 @@ if [[ $OS == Linux ]] ; then
 
 
     if [[ $drive_electrs == external ]] ; then
-    docker run -d --name electrs \
+    podman run -d --name electrs \
                             --network="host" \
                             --restart unless-stopped \
                             -v $pd/electrs_db:/electrs_db \
@@ -27,7 +27,7 @@ fi #end if Linux
 
 if [[ $OS == Mac ]] ; then
     if [[ $drive_electrs == internal ]] ; then 
-        docker run -d --name electrs \
+        podman run -d --name electrs \
                                 -p 50005:50005 \
                                 --restart unless-stopped \
                                 -p 50006:50006 \
@@ -38,7 +38,7 @@ if [[ $OS == Mac ]] ; then
     fi
 
     if [[ $drive_electrs == external ]] ; then 
-        docker run -d --name electrs \
+        podman run -d --name electrs \
                                 -p 50005:50005 \
                                  --restart unless-stopped \
                                 -p 50006:50006 \

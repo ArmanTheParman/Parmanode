@@ -17,9 +17,9 @@ function install_joinmarket {
             install_parmabox silent
         fi
 
-        if ! docker ps | grep -q parmabox ; then
+        if ! podman ps | grep -q parmabox ; then
         while true ; do
-        yesorno "ParmaBox needs to be running. Let Parmanode start it?" && { docker start parmabox ; break ; }
+        yesorno "ParmaBox needs to be running. Let Parmanode start it?" && { podman start parmabox ; break ; }
         return 1
         done
         fi
@@ -31,11 +31,11 @@ function install_joinmarket {
         return 1
     fi
 
-    if [[ $OS == "Mac" ]] && ! docker exec parmabox cat /home/parman/bitcoin-installed 2>$dn ; then
-        install_bitcoin_docker silent parmabox joinmarket || return 1
-        docker cp $bc parmabox:/home/parman/.bitcoin/bitcoin.conf >$dn 2>&1
-        docker exec -u root parmabox /bin/bash -c "chown -R parman:parman /home/parman/.bitcoin/"
-        docker exec -u root parmabox /bin/bash -c "echo 'rpcconnect=host.docker.internal' | tee -a /home/parman/.bitcoin/bitcoin.conf" >$dn 2>&1
+    if [[ $OS == "Mac" ]] && ! podman exec parmabox cat /home/parman/bitcoin-installed 2>$dn ; then
+        install_bitcoin_podman silent parmabox joinmarket || return 1
+        podman cp $bc parmabox:/home/parman/.bitcoin/bitcoin.conf >$dn 2>&1
+        podman exec -u root parmabox /bin/bash -c "chown -R parman:parman /home/parman/.bitcoin/"
+        podman exec -u root parmabox /bin/bash -c "echo 'rpcconnect=host.podman.internal' | tee -a /home/parman/.bitcoin/bitcoin.conf" >$dn 2>&1
     fi
 
     make_joinmarket_wallet || { enter_continue "aborting" ; return 1 ; }
@@ -112,12 +112,12 @@ debug "1"
         #Loop to make sure bitcoin registers rpc call; if the wallet exists, it will break successfully
         
         if [[ $OS == "Mac" ]] ; then
-            bcdocker="/home/parman/.bitcoin/bitcoin.conf"
-            rpcconnect="rpcconnect=host.docker.internal"
-            docker exec -u root parmabox /bin/bash -c "grep -q $rpcconnect $bcdocker || echo "$rpcconnect" | tee -a $bcdocker >$dn"
-            docker exec parmabox /bin/bash -c 'bitcoin-cli -named createwallet wallet_name=jm_wallet descriptors=false 2>&1 | grep -q "exists"' >$dn 2>&1 && break
-            docker exec parmabox /bin/bash -c 'bitcoin-cli -named createwallet wallet_name=jm_wallet descriptors=false 2>&1 | grep -q "exists"' >$dn 2>&1 && break
-            docker exec parmabox /bin/bash -c 'bitcoin-cli -named createwallet wallet_name=jm_wallet descriptors=false 2>&1 | grep -q "exists"' >$dn 2>&1 && break
+            bcpodman="/home/parman/.bitcoin/bitcoin.conf"
+            rpcconnect="rpcconnect=host.podman.internal"
+            podman exec -u root parmabox /bin/bash -c "grep -q $rpcconnect $bcpodman || echo "$rpcconnect" | tee -a $bcpodman >$dn"
+            podman exec parmabox /bin/bash -c 'bitcoin-cli -named createwallet wallet_name=jm_wallet descriptors=false 2>&1 | grep -q "exists"' >$dn 2>&1 && break
+            podman exec parmabox /bin/bash -c 'bitcoin-cli -named createwallet wallet_name=jm_wallet descriptors=false 2>&1 | grep -q "exists"' >$dn 2>&1 && break
+            podman exec parmabox /bin/bash -c 'bitcoin-cli -named createwallet wallet_name=jm_wallet descriptors=false 2>&1 | grep -q "exists"' >$dn 2>&1 && break
 
         elif [[ $OS == "Linux" ]] ; then 
             bitcoin-cli -named createwallet wallet_name=jm_wallet descriptors=false |& grep "exists" && break

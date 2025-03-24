@@ -4,18 +4,18 @@ set_terminal_high ; echo -e "$blue
 ########################################################################################
     
     The easiest way to store your NextCloud data to a different location to the
-    standard docker location$orange /var/lib/docker$blue is to do this...
+    standard podman location$orange /var/lib/podman$blue is to do this...
 
         1) Make a new directory wherever you want (eg external drive)
 
-        2) Stop Docker:$orange sudo service docker stop $blue and double check that
+        2) Stop Docker:$orange sudo service podman stop $blue and double check that
            no containers are running.
 
-        3) Edit the file (or make new)$orange /etc/docker/daemon.json$blue and include
+        3) Edit the file (or make new)$orange /etc/podman/daemon.json$blue and include
            this json block:$pink
 
            {
-               "data-root": "/path/to/your/docker" 
+               "data-root": "/path/to/your/podman" 
            }$blue
         
         4) Move the existing Docker contents to the new location, and delete the
@@ -26,7 +26,7 @@ set_terminal_high ; echo -e "$blue
         
         5) Restart Docker:$orange 
 
-               sudo service docker start $blue 
+               sudo service podman start $blue 
 
            Or, reboot.
 

@@ -72,8 +72,8 @@ heading "INSTALLED.CONF"
 echor "$(cat $dp/installed.conf)"
 
 heading "PROGRAM CHECK"
-echor "which nginx npm tor bitcoin-cli docker brew curl jq netstat tmux ssh:"
-echor "$(sudo which nginx npm tor bitcoin-cli docker brew curl jq netstat tmux ssh)"
+echor "which nginx npm tor bitcoin-cli podman brew curl jq netstat tmux ssh:"
+echor "$(sudo which nginx npm tor bitcoin-cli podman brew curl jq netstat tmux ssh)"
 
 heading "TMUX LIST..."
 echor "$(tmux ls)"
@@ -107,12 +107,12 @@ echor "$(bitcoin-cli getblockchaininfo)"
 fi
 
 heading "DOCKER ..."
-echor "docker ps -a \n $(docker ps -a)"
-echor "docker ps \n $(docker ps) \n "
-containers=$(docker ps -q)
-echor "containers... \n $(docker ps -q)"
+echor "podman ps -a \n $(podman ps -a)"
+echor "podman ps \n $(podman ps) \n "
+containers=$(podman ps -q)
+echor "containers... \n $(podman ps -q)"
 for i in $containers ; do
-docker logs $i --tail 50 
+podman logs $i --tail 50 
 done
 
 heading "BTCRPCEXPLORER"
@@ -137,7 +137,7 @@ echor "LND config \n $(cat $HOME/.lnd/lnd.conf)"
 if [[ $OS == "Linux" ]] ; then echor "$(journalctl -exu lnd.service)" ; fi
 
 heading "MEMPOOL"
-echor "Mempool docker compose \n $(cat $hp/mempool/docker/docker-compose.yml)"
+echor "Mempool podman compose \n $(cat $hp/mempool/podman/podman-compose.yml)"
 
 heading "TOR"
 echor "$(which tor)"

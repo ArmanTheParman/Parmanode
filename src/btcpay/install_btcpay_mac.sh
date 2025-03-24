@@ -2,15 +2,15 @@ function install_btcpay_mac {
 export install=btcpay_mac
 debug "in btcpay mac - $install"
 
-#make sure docker installed
-grep -q "docker-end" $HOME/.parmanode/installed.conf || { 
+#make sure podman installed
+grep -q "podman-end" $HOME/.parmanode/installed.conf || { 
     announce "Must install Docker first.\n\n    Use menu: Add --> Other --> Docker). Aborting." 
     jump $enter_cont
     return 1 
     }
 
-#start docker if it is not running 
-if ! docker ps >$dn 2>&1 ; then 
+#start podman if it is not running 
+if ! podman ps >$dn 2>&1 ; then 
     announce "Please make sure Docker is running, then try again. Aborting."
     jump $enter_cont
     return 1
@@ -53,9 +53,9 @@ export btcpay_combo="true"
 install_bitcoin #btcpay_combo unset at the end of function 
 install_btcpay_mac_child
 
-unset btcdockerchoice btcpay_combo
+unset btcpodmanchoice btcpay_combo
 
-if ! docker exec btcpay ps | grep -q bitcoind ; then docker exec btcpay bitcoind ; fi
+if ! podman exec btcpay ps | grep -q bitcoind ; then podman exec btcpay bitcoind ; fi
 
 installed_config_add "bitcoin-end"
 installed_config_add "btcpay-end"

@@ -39,18 +39,18 @@ case $choice in
 q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 
 2)
-export btcdockerchoice=no
+export btcpodmanchoice=no
 export bitcoin_compile="false"
 break
 ;;
 1)
 parmanode_conf_add "bitcoin_choice=knots"
 export knotsbitcoin="true" ; export version="Knots" ; export bitcoin_compile="false" 
-export btcdockerchoice=no
+export btcpodmanchoice=no
 break
 ;;
 3)
-export btcdockerchoice=yes
+export btcpodmanchoice=yes
 export bitcoin_compile="false"
 break
 ;;

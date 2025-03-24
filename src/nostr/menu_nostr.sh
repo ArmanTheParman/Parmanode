@@ -7,7 +7,7 @@ get_onion_address_variable nostr
 source $pc >$dn 2>&1
 
 #running status
-if docker ps | grep -q nostrrelay ; then 
+if podman ps | grep -q nostrrelay ; then 
 running_nostr_menu="                                NOSTR IS$green RUNNING$orange"
 else
 running_nostr_menu="                              NOSTR IS$red NOT RUNNING$orange"
@@ -70,7 +70,7 @@ $running_nostr_menu
         $domain_name_text
         Local IP & Port           $IP${yellow}:7080$orange    (routed to Docker container)
 
-        Docker Container IP       $(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' nostrrelay)${yellow}:8080 $orange
+        Docker Container IP       $(podman inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' nostrrelay)${yellow}:8080 $orange
 
 $tor_menu                      $orange
         Nostr data location:      $nostr_data_location
@@ -149,7 +149,7 @@ enter_continue ; jump $enter_cont
 fi
 
 set_terminal_wider
-docker logs nostrrelay -f --tail 100 &
+podman logs nostrrelay -f --tail 100 &
 tail_PID=$!
 trap 'kill $tail_PID' SIGINT #condition added to memory
 wait $tail_PID # code waits here for user to control-c

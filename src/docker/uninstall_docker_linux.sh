@@ -1,4 +1,4 @@
-function uninstall_docker_linux {
+function uninstall_podman_linux {
 while true ; do set_terminal ; echo -e "
 ########################################################################################
 $cyan
@@ -18,13 +18,13 @@ done
 set_terminal ; echo "
 Stopping all running containers...
 "
-docker stop $(docker ps -q) >$dn 2>&1
+podman stop $(podman ps -q) >$dn 2>&1
 
 echo "Purging Docker programs..."
 sleep 1
-sudo apt-get purge docker docker-engine docker.io containerd runc docker-ce \
-    docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin \
-    docker-ce-rootless-extras -y
+sudo apt-get purge podman podman-engine podman.io containerd runc podman-ce \
+    podman-ce-cli containerd.io podman-buildx-plugin podman-compose-plugin \
+    podman-ce-rootless-extras -y
 
 set_terminal
 echo "
@@ -32,11 +32,11 @@ Removing all Docker containers, images, and volumes and configuration choices.
 "
 choose "qc" ; read choice ; case $choice in q|Q|Quit|QUIT|quit) return 1 ;; esac
 
-sudo rm -rf /var/lib/docker
+sudo rm -rf /var/lib/podman
 sudo rm -rf /var/lib/containerd
 
-log "docker" "uninstall; function finished"
-installed_config_remove "docker"
+log "podman" "uninstall; function finished"
+installed_config_remove "podman"
 success "Docker" "being uninstalled."
 return 0
 }

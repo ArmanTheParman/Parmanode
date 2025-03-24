@@ -1,7 +1,7 @@
 function install_bitcoin {
 
-# if installing bitcoin inside a docker container, then using btcpayinstallsbitcoin="true"
-# if installing bitcoin and btcpay together in docker (initiated by a bitcoin install), then using btcdockerchoice="yes"
+# if installing bitcoin inside a podman container, then using btcpayinstallsbitcoin="true"
+# if installing bitcoin and btcpay together in podman (initiated by a bitcoin install), then using btcpodmanchoice="yes"
 
 #set compile to false, and make true later depending on choices
 export bitcoin_compile="false"
@@ -11,36 +11,36 @@ if [[ $version != "self" ]] ; then
 fi
 
 if [[ $btcpay_combo == "true" ]] ; then
-export btcdockerchoice="yes"
+export btcpodmanchoice="yes"
 else
-    if [[ $OS == Mac && $btcpayinstallsbitcoin != "true" ]] ; then choose_bitcoin_version_mac || return 1 ; fi #get btcdockerchoice=yes or no
+    if [[ $OS == Mac && $btcpayinstallsbitcoin != "true" ]] ; then choose_bitcoin_version_mac || return 1 ; fi #get btcpodmanchoice=yes or no
 fi
 
-if [[ $btcdockerchoice == "yes" ]] ; then
+if [[ $btcpodmanchoice == "yes" ]] ; then
 
-    #make sure docker installed
-    grep -q "docker-end" $HOME/.parmanode/installed.conf || { announce "Must install Docker first.
+    #make sure podman installed
+    grep -q "podman-end" $HOME/.parmanode/installed.conf || { announce "Must install Docker first.
     " \
     "Use menu: Add --> Other --> Docker). Aborting." && return 1 ; }
 
-    #start docker if it is not running 
-    if ! docker ps >$dn 2>&1 ; then 
+    #start podman if it is not running 
+    if ! podman ps >$dn 2>&1 ; then 
     announce "Please make sure Docker is running, then try again. Aborting."
     return 1
     fi
 
-fi #end btcdockerchoice
+fi #end btcpodmanchoice
 
 #btcpayinstallsbitcoin=true if installing from btcpay Dockerfile
 
 export install=bitcoin
 export install_bitcoin_variable="true" #don't use same name as function!
 
-if [[ -e /.dockerenv && $btcpayinstallsbitcoin != "true" ]] ; then announce "Bitcoin can be installed inside a Docker container, but may not
+if [[ -e /.podmanenv && $btcpayinstallsbitcoin != "true" ]] ; then announce "Bitcoin can be installed inside a Docker container, but may not
     run as expected with default Parmanode settings - you'll have to tweak."
 fi
 
-if ! [[ $btcpayinstallsbitcoin == "true" || $btcdockerchoice == "yes" ]] ; then
+if ! [[ $btcpayinstallsbitcoin == "true" || $btcpodmanchoice == "yes" ]] ; then
 
 announce "So you want to install Bitcoin Core - nice one. May I take to this opportunity to
     to direct you to an essay I wrote about why it's important to run a node? You might
@@ -101,7 +101,7 @@ debug "after download_bitcoin"
 make_bitcoin_conf || return 1
 debug "after make bitcoin conf"
 #make a script that service file will use
-if [[ $OS == "Linux" && $btcpayinstallsbitcoin != "true" && $btcdockerchoice != "yes" ]] ; then
+if [[ $OS == "Linux" && $btcpayinstallsbitcoin != "true" && $btcpodmanchoice != "yes" ]] ; then
     make_mount_check_script 
     debug "make_mount_check_script"
 fi
@@ -117,7 +117,7 @@ sudo chown -R $USER: $HOME/.bitcoin/
 fi
 debug "pause"
 
-if [[ $btcpayinstallsbitcoin != "true"  && $btcdockerchoice != "yes" ]] ; then
+if [[ $btcpayinstallsbitcoin != "true"  && $btcpodmanchoice != "yes" ]] ; then
 #setting password. Managing behaviour of called function with variable and arguments.
 unset skip
 if [[ $version == self ]] && grep -q "rpcuser=" $bc ; then skip="true" ; else skip="false" 
@@ -133,14 +133,14 @@ please_wait && start_bitcoin
 fi #end not btcpainstallsbitcoin
 
 if [[ $btcpayinstallsbitcoin == "true" ]] || [[ $btcpay_combo == "true" ]] ; then
-#end internal docker installation here
+#end internal podman installation here
 #end btcpay then bitcoin install here
 unset btcpayinstallsbitcoin btcpay_combo
 return 0
 fi
 
-if [[ $btcdockerchoice == "yes" ]] ; then
-unset btcdockerchoice
+if [[ $btcpodmanchoice == "yes" ]] ; then
+unset btcpodmanchoice
 debug "before install_btcpay_mac_child"
 install_btcpay_mac_child || return 1
 debug "after install_btcpay_mac_child"

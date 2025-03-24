@@ -67,29 +67,29 @@ while true ; do
 set_terminal
 
 please_wait
-unset lnd_version lnddockermenu dkrmenu lndtor torhybrid inside_docker
+unset lnd_version lndpodmanmenu dkrmenu lndtor torhybrid inside_podman
 
-if docker ps >$dn 2>&1 | grep -q lnd ; then
-export lnddockermenu="true"
+if podman ps >$dn 2>&1 | grep -q lnd ; then
+export lndpodmanmenu="true"
 else
-export lnddockermenu="false"
+export lndpodmanmenu="false"
 fi
 
-if [[ $lnddockermenu == "false" ]] ; then #non docker
+if [[ $lndpodmanmenu == "false" ]] ; then #non podman
 export lnd_version=$(lncli --version | cut -d - -f 1 | cut -d ' ' -f 3) 
-unset dkrmenu inside_docker
-elif [[ $lnddockermenu == "true" ]] ; then
-export lnd_version=$(docker exec lnd lncli --version | cut -d - -f 1 | cut -d ' ' -f 3)
+unset dkrmenu inside_podman
+elif [[ $lndpodmanmenu == "true" ]] ; then
+export lnd_version=$(podman exec lnd lncli --version | cut -d - -f 1 | cut -d ' ' -f 3)
 dkrmenu="
       (dks)            Start Docker container (and LND)
 
       (dkst)           Stop Docker container (and LND)
 "
-inside_docker="(within running Docker container)"
+inside_podman="(within running Docker container)"
 fi
 
 # To check if wallet is created/loaded
-if lncli walletbalance >$dn 2>&1 || docker exec lnd lncli walletbalance >$dn 2>&1 ; then 
+if lncli walletbalance >$dn 2>&1 || podman exec lnd lncli walletbalance >$dn 2>&1 ; then 
 wallet="WALLET CREATED & UNLOCKED =$green TRUE$orange" 
 else
 wallet="WALLET CREATED & UNLOCKED =$red FALSE $yellow... usually just wait a
@@ -114,10 +114,10 @@ fi
 #get onion address if it exists...
 unset lnd_onion clearnetURI
 
-if [[ $lnddockermenu == "false" ]] ; then 
+if [[ $lndpodmanmenu == "false" ]] ; then 
 lncli getinfo >$dp/lndinfo.log 2>$dn
 else
-docker exec lnd lncli getinfo >$dp/lndinfo.log 2>$dn
+podman exec lnd lncli getinfo >$dp/lndinfo.log 2>$dn
 fi
 
 if grep -q onion: $dp/lndinfo.log ; then
@@ -155,7 +155,7 @@ colour1="$green" ; else colour1="$red" ; fi
 if [[ $torhybrid == Enabled ]] ; then
 colour2="$green" ; else colour2="$red" ; fi
 
-if [[ $lnddockermenu == "false" ]] ; then
+if [[ $lndpodmanmenu == "false" ]] ; then
 
     if ps -x | grep litd | grep bin >$dn 2>&1 ||\
     ps -x | grep lnd | grep bin >$dn 2>&1 ; then
@@ -164,9 +164,9 @@ if [[ $lnddockermenu == "false" ]] ; then
     lndrunning="false"
     fi
 
-else #docker
+else #podman
 
-    if docker exec lnd pgrep lnd >$dn 2>&1 ; then
+    if podman exec lnd pgrep lnd >$dn 2>&1 ; then
     lndrunning="true"
     else 
     lndrunning="false"
@@ -192,11 +192,11 @@ $menuDockerIP
 $cyan
       i)$orange              Important info
 $cyan
-      s)$orange              Start $LND $orange$inside_docker 
+      s)$orange              Start $LND $orange$inside_podman 
 $cyan
-      stop)$orange           Stop $LND $orange$inside_docker 
+      stop)$orange           Stop $LND $orange$inside_podman 
 $cyan
-      rs)$orange             Restart $LND $inside_docker
+      rs)$orange             Restart $LND $inside_podman
 $cyan
       mwt)$orange            Watchtower Service Menu$pink NEW
 $dkrmenu
@@ -289,8 +289,8 @@ if grep -q "lnd-" $ic ; then
 tmux new -s lnd_log "journalctl -fexu lnd.service"
 elif grep -q "litd" $ic ; then
 tmux new -s litd_log "journalctl -fexu litd.service"
-elif grep -q "lnddocker-" $ic ; then
-tmux new -s lnddocker_log "tail -f $hp/lnd/lnd.log"
+elif grep -q "lndpodman-" $ic ; then
+tmux new -s lndpodman_log "tail -f $hp/lnd/lnd.log"
 fi
 TMUX=$TMUX2
 

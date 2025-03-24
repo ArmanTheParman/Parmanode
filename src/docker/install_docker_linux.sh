@@ -1,4 +1,4 @@
-function install_docker_linux {
+function install_podman_linux {
 
 #Docker explainer
 while true ; do 
@@ -29,23 +29,23 @@ esac
 done
 
 # Docker recommends uninstall first...
-    sudo apt-get purge docker docker-engine docker.io containerd runc docker-ce \
-    docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin \
-    docker-ce-rootless-extras -y
-    installed_conf_remove "docker"
+    sudo apt-get purge podman podman-engine podman.io containerd runc podman-ce \
+    podman-ce-cli containerd.io podman-buildx-plugin podman-compose-plugin \
+    podman-ce-rootless-extras -y
+    installed_conf_remove "podman"
 
-# download_docker_linux
-log "docker" "docker auto install linux ..." 
-docker_package_download_linux || return 1
+# download_podman_linux
+log "podman" "podman auto install linux ..." 
+podman_package_download_linux || return 1
 
 #-- removed and added to run_parmanode, as a reboot
 #is needed for proper installation.
 
-    #installed_config_add "docker-end" 
+    #installed_config_add "podman-end" 
 
-log "docker" "Install success. Reboot needed." 
+log "podman" "Install success. Reboot needed." 
 success "Docker" "installing."
-if ! id | grep docker ; then
+if ! id | grep podman ; then
 while true ; do
 set_terminal ; echo -e "$pink
 ######################################################################################## 
@@ -76,10 +76,10 @@ m|M) back2main ;; q|Q) exit 0 ;; p|P) return 1 ;;
 no|NO|N|n|No) return 1 ;; y|Y|YES|Yes|yes) sudo reboot ;; *) invalid ;;
 esac
 done
-#if docker group added, make sure installed config reflects it.
+#if podman group added, make sure installed config reflects it.
 else 
-    if ! grep docker-end $HOME/.parmanode/installed.conf ; then
-        installed_config_add "docker-end"
+    if ! grep podman-end $HOME/.parmanode/installed.conf ; then
+        installed_config_add "podman-end"
     fi
     return 0
 fi

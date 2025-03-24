@@ -1,20 +1,20 @@
-function install_electrs_docker {
+function install_electrs_podman {
 
-# Docker container runs with tor daemon using dockerfile CMD
+# Docker container runs with tor daemon using podmanfile CMD
 # Data is synced to /electrs_db inside container.
 # External drive sync is volume mounted directly to external drive
 # Internal drive sync is mounted to $HOME/.electrs_db
 
-unset install_electrs_docker_variable
-export install_electrs_docker_variable="true" # used later to fork make config code.
+unset install_electrs_podman_variable
+export install_electrs_podman_variable="true" # used later to fork make config code.
 
 source $pc $ic >$dn 2>&1
 
 grep -q "bitcoin-end" $ic || { announce "Must install Bitcoin first. Aborting." && return 1 ; }
 
-grep -q "docker-end" $dp/installed.conf || { announce "Please install Docker from Parmanode menu first. Aborting." && return 1 ; }
+grep -q "podman-end" $dp/installed.conf || { announce "Please install Docker from Parmanode menu first. Aborting." && return 1 ; }
 
-if ! docker ps >$dn 2>&1 ; then set_terminal ; echo -e "
+if ! podman ps >$dn 2>&1 ; then set_terminal ; echo -e "
 ########################################################################################$red
                               Docker is not running. $orange
 ########################################################################################
@@ -45,11 +45,11 @@ export dontstartbitcoin="true"
 check_rpc_bitcoin
 unset dontstartbitcoin
 
-preamble_install_electrs_docker || return 1
+preamble_install_electrs_podman || return 1
 
 set_terminal ; please_wait
 
-docker build -t electrs $pn/src/electrs/ ; log "electrsdkr" "docker build done"
+podman build -t electrs $pn/src/electrs/ ; log "electrsdkr" "podman build done"
 echo -e " $red
 Pausing here; you can see if the build failed or not."
 enter_continue
@@ -85,18 +85,18 @@ fi
 make_electrs_config && log "electrs" "config done" 
 
 #Start the container
-docker_run_electrs || { announce "failed to run docker electrs" ; log "electrsdkr" "failed to run" ; return 1 ; }
-debug "after docker run electrs"
+podman_run_electrs || { announce "failed to run podman electrs" ; log "electrsdkr" "failed to run" ; return 1 ; }
+debug "after podman run electrs"
 
 #Set permissions
-docker exec -itu root electrs bash -c "chown -R parman:parman /home/parman/parmanode/electrs/"
+podman exec -itu root electrs bash -c "chown -R parman:parman /home/parman/parmanode/electrs/"
 
 make_ssl_certificates electrsdkr || announce "SSL certificate generation failed. Proceed with caution."  ; debug "check ssl certs done"
 
-docker_start_electrs || return 1 
+podman_start_electrs || return 1 
 
 installed_config_add "electrsdkr2-end"
-unset install_electrs_docker_variable
+unset install_electrs_podman_variable
 success "electrs in Docker" "being installed"
 
 }

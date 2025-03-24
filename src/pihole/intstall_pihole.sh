@@ -43,7 +43,7 @@ $orange
 enter_continue ; jump $enter_cont
 
 # Install Docker
-if ! which docker >$dn 2>&1 ; then install_docker || return 1 ; fi
+if ! which podman >$dn 2>&1 ; then install_podman || return 1 ; fi
 
 nginx_clash PiHole || return 1
 
@@ -105,19 +105,19 @@ set_static_IP || return 1
 cd $hp
 mkdir pihole && installed_conf_add "pihole-start"
 cd $hp/pihole
-if [[ $OS == Mac ]] ; then cp "$pn/src/pihole/docker-compose(mac).yaml" ./docker-compose.yaml 
+if [[ $OS == Mac ]] ; then cp "$pn/src/pihole/podman-compose(mac).yaml" ./podman-compose.yaml 
 else
-cp $pn/src/pihole/docker-compose.yaml ./
+cp $pn/src/pihole/podman-compose.yaml ./
 fi
 
-if ! docker ps >$dn ; then
-if [[ $OS == Mac ]] ; then start_docker_mac ; fi
+if ! podman ps >$dn ; then
+if [[ $OS == Mac ]] ; then start_podman_mac ; fi
 fi
-if ! docker ps >$dn ; then
+if ! podman ps >$dn ; then
 announce "Docker needs to be running. Please start Docker before continuing."
 fi
 
-docker compose up -d 
+podman compose up -d 
 installed_conf_add "pihole-end"
 success "PiHole" "being installed"
 set_terminal ; echo -e "

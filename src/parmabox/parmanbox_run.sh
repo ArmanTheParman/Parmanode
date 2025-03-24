@@ -1,6 +1,6 @@
 function parmabox_run {
 if [[ $OS == "Mac" ]] ; then    
-    docker run -du parman --privileged --hostname ParmaBox --name parmabox \
+    podman run -du parman --privileged --hostname ParmaBox --name parmabox \
            -v $HOME/parmanode/parmabox:/home/parman/parmanode/parmabox \
            -p 23:22 \
            -p 10999:10999 \
@@ -11,7 +11,7 @@ if [[ $OS == "Mac" ]] ; then
 
 elif [[ $OS == "Linux" ]] ; then
 
-    docker run -du parman --privileged --name parmabox \
+    podman run -du parman --privileged --name parmabox \
            --network=host \
            -v $HOME/parmanode/parmabox:/home/parman/parmanode/parmabox \
            parmabox \
