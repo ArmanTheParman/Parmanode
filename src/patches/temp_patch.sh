@@ -99,7 +99,9 @@ fi
 #having many keys in the .ssh directory causes issues with ssh-agent
 mkdir -p $HOME/.ssh/extra_keys >$dn 2>&1
 sudo mv ~/.ssh/*-key* $HOME/.ssh/extra_keys/ >$dn 2>&1
-[[ -f ~/.ssh/config ]] && sudo gsed -E -i 's|^IdentityFile ~/.ssh/(.*-key)$|IdentityFile ~/.ssh/extra_keys/\1|' ~/.ssh/config >$dn 2>&1
+[[ -f ~/.ssh/config ]] && 
+! grep -q 'extra_keys' ~/.ssh/config && 
+sudo gsed -E -i 's|^IdentityFile ~/.ssh/(.*-key)$|IdentityFile ~/.ssh/extra_keys/\1|' ~/.ssh/config >$dn 2>&1
 
 debug temppatchend
 }
