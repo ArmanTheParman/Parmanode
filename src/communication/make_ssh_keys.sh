@@ -10,16 +10,16 @@ fi
 
 function make_parmaraid_ssh_keys {
 debug start make_parmaraid_ssh_keys
-sudo test -f $HOME/.ssh/parmaraid-key.pub && return 1 # 1 is logically success here for the calling function
+sudo test -f $HOME/.ssh/extra_keys/parmaraid-key.pub && return 1 # 1 is logically success here for the calling function
 mkdir -p ~/.ssh
-ssh-keygen -t rsa -b 4096 -f $HOME/.ssh/parmaraid-key -N "" -C "$USER parmaraid"
+ssh-keygen -t rsa -b 4096 -f $HOME/.ssh/extra_keys/parmaraid-key -N "" -C "$USER parmaraid"
 
 grep -q "github-parmaraid" ~/.ssh/config >$dn ||
 echo "
 Host github-parmaraid
 HostName github.com
 User git
-IdentityFile ~/.ssh/parmaraid-key
+IdentityFile ~/.ssh/extra_keys/parmaraid-key
 IdentitiesOnly yes" | sudo tee -a ~/.ssh/config >$dn 
 debug end make_parmaraid_ssh_keys
 }
@@ -29,16 +29,16 @@ debug start make_parmacloud_ssh_keys
 #usage...
 #make_parmacloud_ssh_keys && { announce_blue "ParmaCloud SSH keys made. Please contact Parman to enable." ; continue ; }
 
-sudo test -f $HOME/.ssh/parmacloud-key.pub && return 1 # 1 is logically success here for the calling function
+sudo test -f $HOME/.ssh/extra_keys/parmacloud-key.pub && return 1 # 1 is logically success here for the calling function
 mkdir -p ~/.ssh
-ssh-keygen -t rsa -b 4096 -f $HOME/.ssh/parmacloud-key -N "" -C "$USER parmacloud"
+ssh-keygen -t rsa -b 4096 -f $HOME/.ssh/extra_keys/parmacloud-key -N "" -C "$USER parmacloud"
 
 grep -q "github-parmacloud" ~/.ssh/config >$dn ||
 echo "
 Host github-parmacloud
 HostName github.com
 User git
-IdentityFile ~/.ssh/parmacloud-key
+IdentityFile ~/.ssh/extra_keys/parmacloud-key
 IdentitiesOnly yes" | sudo tee -a ~/.ssh/config >$dn 
 debug end make_parmacloud_ssh_keys 
 }
@@ -46,17 +46,17 @@ debug end make_parmacloud_ssh_keys
 
 function make_parmaweb_ssh_keys {
 debug start make_parmaweb_ssh_keys
-sudo test -f ~/.ssh/parmaweb-key.pub && return 1 # 1 is logically success here for the calling function
+sudo test -f ~/.ssh/extra_keys/parmaweb-key.pub && return 1 # 1 is logically success here for the calling function
 
 mkdir -p ~/.ssh
-ssh-keygen -t rsa -b 4096 -f ~/.ssh/parmaweb-key -N "" -C "$USER parmaweb"
+ssh-keygen -t rsa -b 4096 -f ~/.ssh/extra_keys/parmaweb-key -N "" -C "$USER parmaweb"
 
 grep -q "github-parmaweb" ~/.ssh/config >$dn || 
 echo "
 Host github-parmaweb
 HostName github.com
 User git
-IdentityFile ~/.ssh/parmaweb-key
+IdentityFile ~/.ssh/extra_keys/parmaweb-key
 IdentitiesOnly yes" | sudo tee -a ~/.ssh/config >$dn
 debug end make_parmaweb_ssh_keys
 }
@@ -67,56 +67,56 @@ debug start make_parmanas_ssh_keys
 #usage...
 #make_parmanas_ssh_keys && { announce_blue "Parmanas SSH keys made. Please contact Parman to enable." ; continue ; }
 
-sudo test -f $HOME/.ssh/parmanas-key.pub && return 1 # 1 is logically success here for the calling function
+sudo test -f $HOME/.ssh/extra_keys/parmanas-key.pub && return 1 # 1 is logically success here for the calling function
 
 mkdir -p ~/.ssh
-ssh-keygen -t rsa -b 4096 -f $HOME/.ssh/parmanas-key -N "" -C "$USER parmanas"
+ssh-keygen -t rsa -b 4096 -f $HOME/.ssh/extra_keys/parmanas-key -N "" -C "$USER parmanas"
 
 grep -q "github-parmanas" ~/.ssh/config >$dn 2>&1 || 
 echo "
 Host github-parmanas
 HostName github.com
 User git
-IdentityFile ~/.ssh/parmanas-key
+IdentityFile ~/.ssh/extra_keys/parmanas-key
 IdentitiesOnly yes" | sudo tee -a ~/.ssh/config >$dn
 debug end make_parmanas_ssh_keys
 }
 
 function make_datum_ssh_keys {
 
-sudo test -f $HOME/.ssh/datum-key.pub && return 1 # 1 is logically success here for the calling function
+sudo test -f $HOME/.ssh/extra_keys/datum-key.pub && return 1 # 1 is logically success here for the calling function
 
 mkdir -p ~/.ssh
-ssh-keygen -t rsa -b 4096 -f $HOME/.ssh/datum-key -N "" -C "$USER datum"
+ssh-keygen -t rsa -b 4096 -f $HOME/.ssh/extra_keys/datum-key -N "" -C "$USER datum"
 
 grep -q "github-datum" ~/.ssh/config >$dn 2>&1 || 
 echo "
 Host github-datum
 HostName github.com
 User git
-IdentityFile ~/.ssh/datum-key
+IdentityFile ~/.ssh/extra_keys/datum-key
 IdentitiesOnly yes" | sudo tee -a ~/.ssh/config >$dn
 }
 
 function make_remotevault_ssh_keys {
 
-sudo test -f $HOME/.ssh/remotevault-key.pub && return 1 # 1 is logically success here for the calling function
+sudo test -f $HOME/.ssh/extra_keys/remotevault-key.pub && return 1 # 1 is logically success here for the calling function
 
 mkdir -p ~/.ssh
-ssh-keygen -t rsa -b 4096 -f $HOME/.ssh/remotevault-key -N "" -C "$USER remotevault"
+ssh-keygen -t rsa -b 4096 -f $HOME/.ssh/extra_keys/remotevault-key -N "" -C "$USER remotevault"
 
 grep -q "github-remotevault" ~/.ssh/config >$dn 2>&1 || 
 echo "
 Host github-remotevault
 HostName github.com
 User git
-IdentityFile ~/.ssh/remotevault-key
+IdentityFile ~/.ssh/extra_keys/remotevault-key
 IdentitiesOnly yes" | sudo tee -a ~/.ssh/config >$dn
 }
 
 function make_uddns_ssh_keys {
 
-sudo test -f $HOME/.ssh/uddns-key.pub && return 1 # 1 is logically success here for the calling function
+sudo test -f $HOME/.ssh/extra_keys/uddns-key.pub && return 1 # 1 is logically success here for the calling function
 
 mkdir -p ~/.ssh
 ssh-keygen -t rsa -b 4096 -f $HOME/.ssh/uddns-key -N "" -C "$USER uddns"
@@ -126,7 +126,7 @@ echo "
 Host github-uddns
 HostName github.com
 User git
-IdentityFile ~/.ssh/uddns-key
+IdentityFile ~/.ssh/extra_keys/uddns-key
 IdentitiesOnly yes" | sudo tee -a ~/.ssh/config >$dn
 }
 
@@ -147,19 +147,19 @@ echo -e "#######################################################################
 echo -e "
 $(sudo cat $HOME/.ssh/id_rsa.pub)
 
-$(sudo cat $HOME/.ssh/parmacloud-key.pub)
+$(sudo cat $HOME/.ssh/extra_keys/parmacloud-key.pub)
 
-$(sudo cat $HOME/.ssh/parmans-key.pub)
+$(sudo cat $HOME/.ssh/extra_keys/parmans-key.pub)
 
-$(sudo cat $HOME/.ssh/parmaraid-key.pub)
+$(sudo cat $HOME/.ssh/extra_keys/parmaraid-key.pub)
 
-$(sudo cat $HOME/.ssh/parmawebs-key.pub)
+$(sudo cat $HOME/.ssh/extra_keys/parmawebs-key.pub)
 
-$(sudo cat $HOME/.ssh/dataum-key.pub)
+$(sudo cat $HOME/.ssh/extra_keys/dataum-key.pub)
 
-$(sudo cat $HOME/.ssh/remotevault-key.pub)
+$(sudo cat $HOME/.ssh/extra_keys/remotevault-key.pub)
 
-$(sudo cat $HOME/.ssh/uddns-key.pub)
+$(sudo cat $HOME/.ssh/extra_keys/uddns-key.pub)
 
 
 " | tee -a $HOME/Desktop/all_ssh_keys.txt >$dn

@@ -95,6 +95,16 @@ if [[ $OS == Linux ]] && [[ -e /etc/systemd/system/socat.service  ]] ; then
     fi
 fi
 
+#make part of installation later
+#having many keys in the .ssh directory causes issues with ssh-agent
+[[ $debug  == 1 ]] && {
+sudo test -d $HOME/.ssh/extra_keys >$dn 2>&1 || mkdir -p $HOME/.ssh/extra_keys >$dn 2>&1
+sudo mv ~/.ssh/*-key* $HOME/.ssh/extra_keys/ >$dn 2>&1
+sudo gsed -E -i 's|^IdentityFile ~/.ssh/(.*-key)$|IdentityFile ~/.ssh/extra_keys/\1|' ~/.ssh/config
+echo keys done
+}
+
+
 debug temppatchend
 }
 
