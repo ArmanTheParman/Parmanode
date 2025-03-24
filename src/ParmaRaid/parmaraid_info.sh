@@ -26,7 +26,7 @@ $green
 
     ParmaRAID is not FOSS. Fee is$green 50,000 sats$orange. Please contact Parman to enable.
     
-
+$blue
 ########################################################################################
 "
 enter_continue
