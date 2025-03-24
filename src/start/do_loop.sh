@@ -54,21 +54,21 @@ if [[ ! -e $ic ]] ; then touch $ic ; fi
 # Load config variables
 source $HOME/.parmanode/parmanode.conf >$dn 2>&1 
 
-# If docker is set up on the machine, then it is detected by Parmanode
+# If podman is set up on the machine, then it is detected by Parmanode
 # and added to the config file
 if [[ -f $ic ]] ; then #execute only if an installed config file exits otherwise not point.
-	if ([[ $(uname) == Darwin ]] && ( which docker >$dn )) || \
-	( [[ $(uname) == Linux ]] && which docker >$dn && id | grep -q docker ) ; then
-		if ! grep -q docker-end $ic ; then
-			installed_config_add "docker-end" 
+	if ([[ $(uname) == Darwin ]] && ( which podman >$dn )) || \
+	( [[ $(uname) == Linux ]] && which podman >$dn && id | grep -q podman ) ; then
+		if ! grep -q podman-end $ic ; then
+			installed_config_add "podman-end" 
 		fi
-	else installed_config_remove "docker"
+	else installed_config_remove "podman"
 	fi
 fi
 #add to run count
 [[ $premium == 1 ]] || rp_counter
 test_internet_connected || exit
-#btcpayinstallsbitcoin is for a docker container installation initiated by btcpay installation.
+#btcpayinstallsbitcoin is for a podman container installation initiated by btcpay installation.
 [[ $premium == 1 ]] || if [[ $1 != menu ]] ; then
    if [[ $skip_intro != "true" && $btcpayinstallsbitcoin != "true" ]] ; then intro ; instructions ; fi
 fi

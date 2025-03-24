@@ -7,8 +7,8 @@ yesorno "Colima is a lightweight way to install Docker on your Mac, and avoids
     that and Docker Dompose for you. Continue?" || return 1 
 
 
-brew install docker colima &&
-brew install docker-compose
+brew install podman colima &&
+brew install podman-compose
 enter_continue "Colima about to start. Check there are no errors..."
 colima start
 enter_continue "Colima should have started."

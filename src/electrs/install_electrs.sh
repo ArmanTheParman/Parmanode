@@ -1,6 +1,6 @@
 function install_electrs {
 
-export install_electrs_docker_variable="false"
+export install_electrs_podman_variable="false"
 export electrsversion="v0.10.6"
 
 source $pc $ic >$dn 2>&1

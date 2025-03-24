@@ -1,6 +1,6 @@
-function lnd_docker_start {
+function lnd_podman_start {
 
-if ! docker ps >$dn 2>&1 ; then set_terminal ; echo -e "
+if ! podman ps >$dn 2>&1 ; then set_terminal ; echo -e "
 ########################################################################################$red
                               Docker is not running. $orange
 ########################################################################################
@@ -8,25 +8,25 @@ if ! docker ps >$dn 2>&1 ; then set_terminal ; echo -e "
 enter_continue ; jump $enter_cont
 return 1
 fi
-docker start lnd 
+podman start lnd 
 
 if [[ $OS == Mac ]] ; then
-    docker exec -du root lnd /bin/bash -c "tor > /home/parman/parmanode/lnd/tor.log 2>&1" || return 1
+    podman exec -du root lnd /bin/bash -c "tor > /home/parman/parmanode/lnd/tor.log 2>&1" || return 1
     sleep 2
-    docker exec -du root lnd /bin/bash -c "nginx" || return 1
+    podman exec -du root lnd /bin/bash -c "nginx" || return 1
     debug "after nginx"
 fi
 
 sleep 3
-docker exec -d lnd /bin/bash -c "lnd /usr/local/bin/lnd > /home/parman/parmanode/lnd/lnd.log 2>&1" || return 1
+podman exec -d lnd /bin/bash -c "lnd /usr/local/bin/lnd > /home/parman/parmanode/lnd/lnd.log 2>&1" || return 1
 debug "after lnd start"
 #do later
-#docker exec -d lnd tor
+#podman exec -d lnd tor
 }
 
-function lnd_docker_stop {
+function lnd_podman_stop {
 
-if ! docker ps >$dn 2>&1 ; then set_terminal ; echo -e "
+if ! podman ps >$dn 2>&1 ; then set_terminal ; echo -e "
 ########################################################################################$red
                               Docker is not running. $orange
 ########################################################################################
@@ -34,7 +34,7 @@ if ! docker ps >$dn 2>&1 ; then set_terminal ; echo -e "
 if [[ $1 != silent ]] ; then enter_continue ; jump $enter_cont ; return 1 ; esle true ; fi
 fi
 
-if ! docker ps | grep -q lnd ; then set_terminal ; echo -e "
+if ! podman ps | grep -q lnd ; then set_terminal ; echo -e "
 ########################################################################################$red
                         The LND container is not running. $orange
 ########################################################################################
@@ -42,5 +42,5 @@ if ! docker ps | grep -q lnd ; then set_terminal ; echo -e "
 if [[ $1 != silent ]] ; then enter_continue  ; jump $enter_cont; return 1 ; esle true ; fi
 fi 
 
-docker stop lnd
+podman stop lnd
 }

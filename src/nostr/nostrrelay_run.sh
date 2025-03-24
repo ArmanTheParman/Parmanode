@@ -15,7 +15,7 @@ exit
 
 fi
 
-docker run -du root -p 7080:8080 \
+podman run -du root -p 7080:8080 \
   --restart unless-stopped \
   -v $nostr_data:/usr/src/app/db \
   -v $HOME/parmanode/nostrrelay/config.toml:/usr/src/app/config.toml:ro \

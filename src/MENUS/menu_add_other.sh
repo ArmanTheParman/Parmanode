@@ -16,7 +16,7 @@ echo -e "
 if [[ -n $parmashell_n ]]      ; then echo -e  "$parmashell_n"; fi 
 if [[ -n $parmanostr_n ]]      ; then echo -e  "$parmanostr_n"; fi
 if [[ -n $nostrrelay_n ]]      ; then echo -e  "$nostrrelay_n"; fi
-if [[ -n $docker_n ]]          ; then echo -e  "$docker_n"; fi
+if [[ -n $podman_n ]]          ; then echo -e  "$podman_n"; fi
 if [[ -n $tor_n ]]             ; then echo -e  "$tor_n"; fi
 if [[ -n $torserver_n ]]       ; then echo -e  "$torserver_n"; fi
 if [[ -n $parmabox_n ]]        ; then echo -e  "$parmabox_n"; fi
@@ -38,7 +38,7 @@ echo -e "#                                                                      
 if [[ -n $parmashell_i ]]      ; then echo  "$parmashell_i"; fi 
 if [[ -n $parmanostr_i ]]      ; then echo -e  "$parmanostr_i"; fi
 if [[ -n $nostrrelay_i ]]      ; then echo -e  "$nostrrelay_i"; fi
-if [[ -n $docker_i ]]          ; then echo -e  "$docker_i"; fi
+if [[ -n $podman_i ]]          ; then echo -e  "$podman_i"; fi
 if [[ -n $tor_i ]]             ; then echo -e  "$tor_i"; fi
 if [[ -n $torserver_i ]]       ; then echo -e  "$torserver_i"; fi
 if [[ -n $parmabox_i ]]        ; then echo -e  "$parmabox_i"; fi
@@ -60,7 +60,7 @@ echo -e "#                                                                      
 if [[ -n $parmashell_p ]]      ; then echo  -e "$pink$parmashell_p$orange"; fi 
 if [[ -n $parmanostr_p ]]      ; then echo  -e "$pink$parmanostr_p$orange"; fi
 if [[ -n $nostrrelay_p ]]      ; then echo  -e "$pink$nostrrelay_p$orange"; fi
-if [[ -n $docker_p ]]          ; then echo  -e "$pink$docker_p$orange"; fi
+if [[ -n $podman_p ]]          ; then echo  -e "$pink$podman_p$orange"; fi
 if [[ -n $tor_p ]]             ; then echo  -e "$pink$tor_p$orange"; fi
 if [[ -n $torserver_p ]]       ; then echo  -e "$pink$torserver_p$orange"; fi
 if [[ -n $parmabox_p ]]        ; then echo  -e "$pink$parmabox_p$orange"; fi
@@ -92,10 +92,10 @@ ps|PS|Ps)
      ;;
 
 d|D)
-     if [[ -n $docker_n ]] ; then
+     if [[ -n $podman_n ]] ; then
      set_terminal
-     if [[ $OS == Linux ]] ; then install_docker_linux ; fi
-     if [[ $OS == Mac ]] ; then install_docker_mac ; fi
+     if [[ $OS == Linux ]] ; then install_podman_linux ; fi
+     if [[ $OS == Mac ]] ; then install_podman_mac ; fi
      return 0
      fi
      ;; 

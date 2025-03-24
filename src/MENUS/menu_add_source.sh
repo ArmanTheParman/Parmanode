@@ -15,16 +15,16 @@ bitcoin_n="#$cyan                            (b)$orange           Bitcoin Core/K
 fi
 
 #DOCKER
-unset docker_i docker_p docker_n
-if grep -q "docker-end" $HOME/.parmanode/installed.conf ; then 
+unset podman_i podman_p podman_n
+if grep -q "podman-end" $HOME/.parmanode/installed.conf ; then 
    #installed
-docker_i="#                                      Docker                                          #"
-elif grep -q "docker-start" $HOME/.parmanode/installed.conf ; then
+podman_i="#                                      Docker                                          #"
+elif grep -q "podman-start" $HOME/.parmanode/installed.conf ; then
    #partially installed
-docker_p="#                                      Docker                                          #"
+podman_p="#                                      Docker                                          #"
 else
    #not installed
-docker_n="#$cyan                            (d)$orange           Docker                                      #"
+podman_n="#$cyan                            (d)$orange           Docker                                      #"
 fi
 
 #FULCRUM
@@ -495,17 +495,17 @@ else
 website_n="#$cyan                            (pw)        $orange  Wordpress Website (ParmaWeb)                #"
 fi
 
-#lnddocker
-unset lnddocker_i lnddocker_p lnddocker_n
-if grep -q "lnddocker-end" $HOME/.parmanode/installed.conf ; then
+#lndpodman
+unset lndpodman_i lndpodman_p lndpodman_n
+if grep -q "lndpodman-end" $HOME/.parmanode/installed.conf ; then
    #installed
-lnddocker_i="#                                      LND (Docker)                                    #"
-elif grep -q "lnddocker-start" $HOME/.parmanode/installed.conf ; then
+lndpodman_i="#                                      LND (Docker)                                    #"
+elif grep -q "lndpodman-start" $HOME/.parmanode/installed.conf ; then
    #partially installed
-lnddocker_p="#                                      Lnd (Docker)                                    #"
+lndpodman_p="#                                      Lnd (Docker)                                    #"
 else
    #not installed
-lnddocker_n="#$cyan                            (ld)        $orange  Lnd (Docker) - Mac or Linux                 #"
+lndpodman_n="#$cyan                            (ld)        $orange  Lnd (Docker) - Mac or Linux                 #"
 fi
 
 #nginx

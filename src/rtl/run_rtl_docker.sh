@@ -1,4 +1,4 @@
-function run_rtl_docker {
+function run_rtl_podman {
 
 if [[ $OS == Mac ]] ; then ports="-p 3000:3000" ; else ports="--network=host" ; fi
 
@@ -12,7 +12,7 @@ fi
 
 
 
-docker run -d --name rtl $ports \
+podman run -d --name rtl $ports \
            --restart unless-stopped \
            -v $HOME/parmanode/rtl:/home/parman/RTL2 \
            $vs \

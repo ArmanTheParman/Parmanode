@@ -1,5 +1,5 @@
 function make_nbxplorer_service {
-docker exec -it -u root btcpay /bin/bash -c \
+podman exec -it -u root btcpay /bin/bash -c \
 "echo \"[Unit]
 Description=NBXplorer daemon
 

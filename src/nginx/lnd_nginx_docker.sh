@@ -1,9 +1,9 @@
-function lnd_nginx_docker {
+function lnd_nginx_podman {
 
 return 0
 
 ######################################
-#### during docker build process #####
+#### during podman build process #####
 ######################################
 # nginx installed 
 # rm /etc/nginx/sites-available/*

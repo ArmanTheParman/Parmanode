@@ -44,7 +44,7 @@ RUN mv /home/parman/parmanode/fulcrum/Fu*/* /home/parman/parmanode/fulcrum/ && r
 USER parman
 WORKDIR /home/parman/parmanode/fulcrum
 # RUN echo "datadir = /home/parman/parmanode/fulcrum_db" >> fulcrum.conf \
-# && echo "bitcoind = host.docker.internal:8332" >> fulcrum.conf \
+# && echo "bitcoind = host.podman.internal:8332" >> fulcrum.conf \
 # && echo "ssl = 0.0.0.0:50002" >> fulcrum.conf \
 # && echo "tcp = 0.0.0.0:50001" >> fulcrum.conf \
 # && echo "cert = /home/parman/parmanode/fulcrum/cert.pem" >> fulcrum.conf \
@@ -52,7 +52,7 @@ WORKDIR /home/parman/parmanode/fulcrum
 # && echo "peering = false" >> fulcrum.conf
  
 # RUN mkdir /home/parman/parmanode/config
-#will contain symlinks to be made after docker run
+#will contain symlinks to be made after podman run
 
 USER parman
 CMD [ "tail", "-f", "/dev/null" ] 

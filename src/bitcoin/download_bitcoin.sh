@@ -1,7 +1,7 @@
 function download_bitcoin {
-#not required for installation/setup of system outsite docker.
+#not required for installation/setup of system outsite podman.
 
-if [[ $btcpay_combo == "true" ]] || [[ $btcdockerchoice == yes ]] ; then return 0 ; fi
+if [[ $btcpay_combo == "true" ]] || [[ $btcpodmanchoice == yes ]] ; then return 0 ; fi
 if [[ $bitcoin_compile == "true" ]] ; then return 0 ; fi
 # version == self means user has chosen to import own binaries.
 if [[ $version == "self" ]] ; then return 0 ; fi

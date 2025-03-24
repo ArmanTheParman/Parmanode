@@ -7,7 +7,7 @@ unset bitcoinapp fulcrumapp fulcrumdkrapp btcpayapp torapp lndapp sparrowapp rtl
 unset torserverapp specterapp btcrpcexplorerapp electrsapp lnbitsapp trezorapp bitboxapp
 unset ledgerapp parmashellapp parmaboxapp anydeskapp piholeapp torrelayapp
 unset electrsdkrapp electrsdkr2app torbapp qbittorrentapp mempoolapp torsshapp public_poolapp
-unset electrumxapp thunderhubapp websiteapp lnddockerapp nostrrelay litdapp parmacloudapp
+unset electrumxapp thunderhubapp websiteapp lndpodmanapp nostrrelay litdapp parmacloudapp
 unset parmanostrapp btcrecoverapp joinmarketapp greenapp parman_booksapp X11app phoenixapp
 unset parminerapp parmanasapp
 
@@ -83,7 +83,7 @@ if grep -q "parmanostr-end" $HOME/.parmanode/installed.conf ; then parmanostrapp
 ### Lightning related 
 if grep -q "lnd-end" $HOME/.parmanode/installed.conf ; then lndapp=1
                        echo -e "                        $cyan  (l)$orange          LND " ; count=$((count +1)) ; fi
-if grep -q "lnddocker-end" $HOME/.parmanode/installed.conf ; then lnddockerapp=1
+if grep -q "lndpodman-end" $HOME/.parmanode/installed.conf ; then lndpodmanapp=1
                        echo -e "                        $cyan  (ld)$orange         LND (Docker) " ; count=$((count +1)) ; fi
 if grep -q "btcpay-end" $HOME/.parmanode/installed.conf ; then btcpayapp=1
                        echo -e "                        $cyan  (btcp)$orange       BTCPay Server " ; count=$((count +1)) ; fi
@@ -203,7 +203,7 @@ lnd|LND|Lnd|L|l)
     fi
 ;;
 ld|LD|Ld|lD)
-    if [[ $lnddockerapp == 1 ]] ; then
+    if [[ $lndpodmanapp == 1 ]] ; then
     clear
     please_wait
     menu_lnd

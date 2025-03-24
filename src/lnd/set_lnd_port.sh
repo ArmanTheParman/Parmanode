@@ -1,6 +1,6 @@
 function set_lnd_port {
 
-if [[ -e /.dockerenv ]] ; then 
+if [[ -e /.podmanenv ]] ; then 
     parmanode_conf_remove "lnd_port" 
     parmanode_conf_add "lnd_port=9735" 
     export lnd_port=9735 

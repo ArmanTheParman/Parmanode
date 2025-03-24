@@ -4,10 +4,10 @@ if ! grep -q "bitcoi.*end" $ic ; then return 0 ; fi
 export debuglogfile="$HOME/.bitcoin/debug.log" 
 
 if grep -q "btccombo" $ic >$dn 2>&1 ; then
-dockerbitcoinmenu=" $pink                Bitcoin in Docker Container with BTCPay Server $orange"
+podmanbitcoinmenu=" $pink                Bitcoin in Docker Container with BTCPay Server $orange"
 btcman="$cyan      man)$orange          Explore Bitcoin/BTCPay container (manr for root)"
 else
-unset btcman dockerbitcoinmenu
+unset btcman podmanbitcoinmenu
 fi
 
 #for multiselection menus, need to exit if not installed
@@ -104,7 +104,7 @@ fi
 echo -en "
 ########################################################################################
                                 ${cyan}Bitcoin Menu${orange}                               
-$dockerbitcoinmenu
+$podmanbitcoinmenu
 ########################################################################################
 
 "
@@ -383,7 +383,7 @@ set_terminal_high ; echo -e "
     sudo systemctl COMMAND bitcoind$orange. Replace COMMAND with start, stop, restart, 
     or status.
     
-    In you're using the BTCPay combo docker container, restarting the container 
+    In you're using the BTCPay combo podman container, restarting the container 
     manually will be problematic, because the numerous programs do not automatically 
     load up if the container is simply restarted. Instead, you can manually enter the 
     container, do$cyan pkill -15 bitcoind$orange, and restart it with

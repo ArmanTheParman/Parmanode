@@ -1,6 +1,6 @@
-function make_mempool_docker_compose {
+function make_mempool_podman_compose {
 source $bc >$dn 2>&1
-file="$tmp/docker-compose.yml"
+file="$tmp/podman-compose.yml"
 
 if [[ $OS == Linux ]] ; then
   mariadb_data="./data"

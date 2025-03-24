@@ -1,5 +1,5 @@
-function docker_running {
-if ! docker ps >$dn 2>&1 ; then set_terminal 
+function podman_running {
+if ! podman ps >$dn 2>&1 ; then set_terminal 
 announce "
 ########################################################################################$red
                               Docker is not running. $orange

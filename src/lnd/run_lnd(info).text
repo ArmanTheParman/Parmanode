@@ -1,4 +1,4 @@
- docker run -it -v ~/.lnd:/root/.lnd -p 9735:9735 -p 10009:10009 \
+ podman run -it -v ~/.lnd:/root/.lnd -p 9735:9735 -p 10009:10009 \
     lnd \
     /bin/bash -c "/bin/lnd \
     --network host \
@@ -6,7 +6,7 @@
     --bitcoin.node=bitcoind"
 
 # --rm option removed (removes container when stopped)
-#docker run -d --name lnd -v $HOME/.lnd-dat:/lnd -v $HOME/.lnd:/root/.lnd -p 9735:9735 -p 10009:10009 lnd
+#podman run -d --name lnd -v $HOME/.lnd-dat:/lnd -v $HOME/.lnd:/root/.lnd -p 9735:9735 -p 10009:10009 lnd
 exec lnd \
     --noseedbackup \
     "--$CHAIN.active" \

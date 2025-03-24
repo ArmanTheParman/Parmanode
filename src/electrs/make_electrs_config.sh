@@ -4,7 +4,7 @@ local file="$HOME/.electrs/config.toml"
 nogsedtest
 mkdir -p $HOME/.electrs >$dn 2>&1
 
-if [[ $install_electrs_docker_variable == "false" ]] ; then
+if [[ $install_electrs_podman_variable == "false" ]] ; then
 
     if [[ $drive_electrs == external ]] 
     then
@@ -14,7 +14,7 @@ if [[ $install_electrs_docker_variable == "false" ]] ; then
     fi
 
 else
-       db_dir="/electrs_db" #docker run command uses this path to volume mount.
+       db_dir="/electrs_db" #podman run command uses this path to volume mount.
 fi
 
 echo "daemon_rpc_addr = \"127.0.0.1:8332\"
@@ -27,8 +27,8 @@ log_filters = \"INFO\" # Options are ERROR, WARN, INFO, DEBUG, TRACE
 auth = \"$rpcuser:$rpcpassword\"
 " | tee $file >$dn
 
-if [[ $install_electrs_docker_variable == "true" && $OS == Mac ]] ; then #mac has funny networking.
-gsed -i "/daemon_rpc_addr/c\daemon_rpc_addr = \"host.docker.internal:8332\"" $file #necessary to reach bitcoin on the host
-gsed -i "/daemon_p2p_addr/c\daemon_p2p_addr = \"host.docker.internal:8333\"" $file
+if [[ $install_electrs_podman_variable == "true" && $OS == Mac ]] ; then #mac has funny networking.
+gsed -i "/daemon_rpc_addr/c\daemon_rpc_addr = \"host.podman.internal:8332\"" $file #necessary to reach bitcoin on the host
+gsed -i "/daemon_p2p_addr/c\daemon_p2p_addr = \"host.podman.internal:8333\"" $file
 fi
 }

@@ -1,4 +1,4 @@
-function lnd_docker_run {
+function lnd_podman_run {
 
 #Leaving comented out text here for info. No longer need to mount bitcoin directory
 #because I learned it's not needed if using RPC/zmq instead
@@ -60,8 +60,8 @@ unset text
 # port 10009 on the host to send traffic to lnd. 10010 on the container side to avoid port conflic.
 # 10010 redicrected to 10009 inside container with reverse proxy stream
 if [[ $OS == Mac ]] ; then
-if ! docker ps | grep -q lnd ; then
-docker run -d --name lnd \
+if ! podman ps | grep -q lnd ; then
+podman run -d --name lnd \
            --restart unless-stopped \
            -v $HOME/.lnd:/home/parman/.lnd $text \
            -v $HOME/parmanode/lnd:/home/parman/parmanode/lnd \
@@ -71,8 +71,8 @@ docker run -d --name lnd \
            lnd
 fi
 else
-if ! docker ps | grep -q lnd ; then
-docker run -d --name lnd \
+if ! podman ps | grep -q lnd ; then
+podman run -d --name lnd \
            --restart unless-stopped \
            -v $HOME/.lnd:/home/parman/.lnd $text \
            -v $HOME/parmanode/lnd:/home/parman/parmanode/lnd \
@@ -86,7 +86,7 @@ fi
 unset menutext text
 }
 
-### Not needed because using host.docker.internal in lnd.conf
+### Not needed because using host.podman.internal in lnd.conf
 #           -p 28332:28332 \
 #           -p 28333:28333 \
 

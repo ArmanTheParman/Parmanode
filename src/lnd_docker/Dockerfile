@@ -15,8 +15,8 @@ RUN echo 'parman:parmanode' | chpasswd
 USER root
 RUN rm /etc/nginx/sites-available/*
 RUN rm /etc/nginx/sites-enabled/*
-# The dockerfile is moved, so any copy command must examine where the working directory is.
-# Move needed files with the dockerfile for the copy command to work.
+# The podmanfile is moved, so any copy command must examine where the working directory is.
+# Move needed files with the podmanfile for the copy command to work.
 COPY ./stream_lnd.conf /etc/nginx/stream.conf
 RUN echo "include stream.conf;" | tee -a /etc/nginx/nginx.conf
 

@@ -10,5 +10,5 @@ announce "A Bitcoin username and pasword needs to be set in bitcoin.conf"
 clear
 set_rpc_authentication s 
 fi
-add_userpass_to_fulcrum #works on non-docker too.
+add_userpass_to_fulcrum #works on non-podman too.
 }

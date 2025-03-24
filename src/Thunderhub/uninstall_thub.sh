@@ -21,7 +21,7 @@ break
 esac
 done
 
-docker stop thunderhub ; docker rm thunderhub 
+podman stop thunderhub ; podman rm thunderhub 
 sudo rm -rf $hp/thunderhub
 parmanode_conf_remove "thub_port"
 installed_config_remove "thunderhub"

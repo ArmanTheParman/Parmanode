@@ -1,4 +1,4 @@
-function uninstall_lnd_docker {
+function uninstall_lnd_podman {
 while true ; do
 set_terminal ; echo -e "
 ########################################################################################
@@ -28,8 +28,8 @@ case $choice in
 q|Q) exit ;; a|A|p|P) return 1 ;; m|M) back2main ;;
 *)
 if ! echo "$choice" | grep -qE '1|2|3' ; then invalid ; continue ; fi
-lnd_docker_stop silent
-docker rm lnd
+lnd_podman_stop silent
+podman rm lnd
 ;;
 esac
 
@@ -53,7 +53,7 @@ done
 
 sudo rm -rf $hp/lnd
 
-installed_conf_remove "lnddocker"
+installed_conf_remove "lndpodman"
 parmanode_conf_remove "lnd_port"
 success "LND Docker has finished being uninstalled"
 }

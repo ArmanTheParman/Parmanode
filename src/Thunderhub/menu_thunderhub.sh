@@ -11,7 +11,7 @@ get_onion_address_variable thunderhub
 $bright_blue    http://$ONION_ADDR_THUB:2050 $orange
 fi
 
-if docker ps 2>$dn | grep -q thunderhub ; then
+if podman ps 2>$dn | grep -q thunderhub ; then
 running="
                            Thunderhub is$green    Running$orange
 "
@@ -65,7 +65,7 @@ start_thunderhub
 log)
 announce "Hint: Use q to exit the view screen" 
 th_log="$(mktemp)"
-docker logs thunderhub | tee $th_log 2>&1
+podman logs thunderhub | tee $th_log 2>&1
 NODAEMON="true" ; pn_tmux "less -R $th_log"  ; unset NODAEMON
 rm $th_log >$dn 2>&1
 ;;

@@ -1,6 +1,6 @@
-function bre_docker_start {
+function bre_podman_start {
 
-if ! docker ps >$dn 2>&1 ; then set_terminal ; echo -e "
+if ! podman ps >$dn 2>&1 ; then set_terminal ; echo -e "
 ########################################################################################$red
                               Docker is not running. $orange
 ########################################################################################
@@ -10,12 +10,12 @@ jump $enter_cont
 return 1
 fi
 check_config_bre || return 1
-bre_docker_start_bre
+bre_podman_start_bre
 }
 
-function bre_docker_stop {
+function bre_podman_stop {
 
-if ! docker ps >$dn 2>&1 ; then set_terminal ; echo -e "
+if ! podman ps >$dn 2>&1 ; then set_terminal ; echo -e "
 ########################################################################################$red
                               Docker is not running. $orange
 ########################################################################################
@@ -24,12 +24,12 @@ enter_continue
 jump $enter_cont
 return 1
 fi
-docker stop bre
+podman stop bre
 }
 
-function bre_docker_restart {
+function bre_podman_restart {
 
-if ! docker ps >$dn 2>&1 ; then set_terminal ; echo -e "
+if ! podman ps >$dn 2>&1 ; then set_terminal ; echo -e "
 ########################################################################################$red
                               Docker is not running. $orange
 ########################################################################################
@@ -39,6 +39,6 @@ jump $enter_cont
 return 1
 fi
 
-bre_docker_stop
-bre_docker_start
+bre_podman_stop
+bre_podman_start
 }

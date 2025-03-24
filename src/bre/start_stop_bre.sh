@@ -1,19 +1,19 @@
 function start_bre {
 nogsedtest
-if [[ $computer_type == Pi || $OS == Mac ]] ; then bre_docker_start ; return 0 ; fi
+if [[ $computer_type == Pi || $OS == Mac ]] ; then bre_podman_start ; return 0 ; fi
 
 check_config_bre || return 1
 sudo systemctl start btcrpcexplorer.service
 }
 
 function stop_bre {
-if [[ $computer_type == Pi || $OS == Mac ]] ; then bre_docker_stop ; return 0 ; fi
+if [[ $computer_type == Pi || $OS == Mac ]] ; then bre_podman_stop ; return 0 ; fi
 sudo systemctl stop btcrpcexplorer.service
 return 1
 }
 
 function restart_bre {
-if [[ $computer_type == Pi || $OS == Mac ]] ; then bre_docker_restart ; return 0 ; fi
+if [[ $computer_type == Pi || $OS == Mac ]] ; then bre_podman_restart ; return 0 ; fi
 sudo systemctl restart btcrpcexplorer.service
 }
 

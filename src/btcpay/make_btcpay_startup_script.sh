@@ -2,16 +2,16 @@ function make_btcpay_service_file {
 
 echo "#!/bin/bash
 
-docker start btcpay || sleep 1
-docker start btcpay || exit 1
+podman start btcpay || sleep 1
+podman start btcpay || exit 1
 
-docker exec -d -u root btcpay /bin/bash -c \"service postgresql start\" || { sleep 1 && \\
-       docker exec -d -u root btcpay /bin/bash -c \"service postgresql start\" ; } || exit 1 
+podman exec -d -u root btcpay /bin/bash -c \"service postgresql start\" || { sleep 1 && \\
+       podman exec -d -u root btcpay /bin/bash -c \"service postgresql start\" ; } || exit 1 
  
 
-docker exec -d -u parman btcpay /bin/bash -c \"cd /home/parman/parmanode/NBXplorer ; ./run.sh >/home/parman/.nbxplorer/nbxplorer.log\" 
+podman exec -d -u parman btcpay /bin/bash -c \"cd /home/parman/parmanode/NBXplorer ; ./run.sh >/home/parman/.nbxplorer/nbxplorer.log\" 
 
-docker exec -d -u parman btcpay /bin/bash -c \\
+podman exec -d -u parman btcpay /bin/bash -c \\
 \"/usr/bin/dotnet run --no-launch-profile --no-build -c Release -p \\\"\\\\
 /home/parman/parmanode/btcpayserver/BTCPayServer/BTCPayServer.csproj\\\" -- \$@ >\$HOME/.btcpayserver/btcpay.log\"
 

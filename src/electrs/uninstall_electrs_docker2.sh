@@ -1,4 +1,4 @@
-function uninstall_electrs_docker2 {
+function uninstall_electrs_podman2 {
 while true ; do
 set_terminal ; echo -e "
 ########################################################################################
@@ -24,9 +24,9 @@ source $pc
 #might not be needed. Review when refactoring.
 if [[ $OS == Linux ]] ; then electrs_tor_remove uninstall ; fi
 
-docker stop electrs
-docker rm electrs
-docker rmi electrs
+podman stop electrs
+podman rm electrs
+podman rmi electrs
 
 # Uninstall - electrs_db
 

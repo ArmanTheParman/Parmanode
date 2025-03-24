@@ -3,7 +3,7 @@ function parmacloud_run {
 if ! yesorno_blue "Regular or Reverse Proxy?" "reg" "Regular" "rev" "Reverse" ; then
 clear
 echo -e "$blue"
-sudo docker run \
+sudo podman run \
 -d \
 --init \
 --sig-proxy=false \
@@ -16,13 +16,13 @@ sudo docker run \
 --env APACHE_IP_BINDING=0.0.0.0 \
 --env APACHE_ADDITIONAL_NETWORK="" \
 --env SKIP_DOMAIN_VALIDATION=false \
---volume nextcloud_aio_mastercontainer:/mnt/docker-aio-config \
---volume /var/run/docker.sock:/var/run/docker.sock:ro \
+--volume nextcloud_aio_mastercontainer:/mnt/podman-aio-config \
+--volume /var/run/podman.sock:/var/run/podman.sock:ro \
 nextcloud/all-in-one:latest || { enter_continue "Something went wrong." ; return 1 ; }
 else
 clear
 echo -e "$blue"
-sudo docker run \
+sudo podman run \
 -d \
 --init \
 --sig-proxy=false \
@@ -31,8 +31,8 @@ sudo docker run \
 --publish 8080:8080 \
 --publish 80:80 \
 --publish 8020:8080 \
---volume nextcloud_aio_mastercontainer:/mnt/docker-aio-config \
---volume /var/run/docker.sock:/var/run/docker.sock:ro \
+--volume nextcloud_aio_mastercontainer:/mnt/podman-aio-config \
+--volume /var/run/podman.sock:/var/run/podman.sock:ro \
 nextcloud/all-in-one:latest || { enter_continue "Something went wrong." ; return 1 ; }
 fi
 

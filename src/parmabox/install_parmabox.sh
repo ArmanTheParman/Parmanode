@@ -1,16 +1,16 @@
 function install_parmabox {
 
-if ! which docker > $dn ; then announce \
+if ! which podman > $dn ; then announce \
 "Please install Docker from the Parmanode install menu first."
 return 1
 fi
 
-if ! docker ps >$dn ; then announce \
+if ! podman ps >$dn ; then announce \
 "Please make sure Docker is running first."
 return 1
 fi
 
-if docker ps | grep -q parmabox ; then 
+if podman ps | grep -q parmabox ; then 
 announce "The parmabox container is already running."
 return 1
 fi
@@ -68,7 +68,7 @@ clear
 
 case $choice in 
 boring)
-docker run -d --name parmabox ubuntu tail -f /dev/null
+podman run -d --name parmabox ubuntu tail -f /dev/null
 ;;
 *)
 please_wait

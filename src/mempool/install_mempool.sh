@@ -1,7 +1,7 @@
 function install_mempool {
-if ! which docker >$dn 2>&1 ; then announce "Please install Docker first from Parmanode Add/Other menu, and START it. Aborting." ; return 1
+if ! which podman >$dn 2>&1 ; then announce "Please install Docker first from Parmanode Add/Other menu, and START it. Aborting." ; return 1
 else
-    if ! docker ps >$dn ; then announce "Pease make sure you START the docker service first. Aborting for now." ; return 1 ; fi
+    if ! podman ps >$dn ; then announce "Pease make sure you START the podman service first. Aborting for now." ; return 1 ; fi
 fi
 
 if ! grep -q bitcoin-end $HOME/.parmanode/installed.conf ; then
@@ -31,31 +31,31 @@ choose_mempool_version && cd $hp && git clone $memversion https://github.com/mem
 
 install_conf_add "mempool-start"
 #make sure mounted dir permission is correct (Pi is not 1000:1000, so these dir's will not be readable by container.)
-sudo chown -R 1000:1000 $hp/mempool/docker/data $hp/mempool/docker/mysql >$dn
+sudo chown -R 1000:1000 $hp/mempool/podman/data $hp/mempool/podman/mysql >$dn
 installed_config_add "mempool-start"
 #set variables
-make_mempool_docker_compose
-cp $tmp/docker-compose.yml $hp/mempool/docker/docker-compose.yml
-rm $tmp/docker-compose.yml >$dn 2>&1
+make_mempool_podman_compose
+cp $tmp/podman-compose.yml $hp/mempool/podman/podman-compose.yml
+rm $tmp/podman-compose.yml >$dn 2>&1
 choose_bitcoin_for_mempool
 
-cd $hp/mempool/docker 
-docker compose up -d || debug "compose up didn't work"
+cd $hp/mempool/podman 
+podman compose up -d || debug "compose up didn't work"
 
-#Final check to make sure the docker gatway IP is included in bitcoin.conf
-if docker ps >$dn 2>&1 ; then
+#Final check to make sure the podman gatway IP is included in bitcoin.conf
+if podman ps >$dn 2>&1 ; then
 
-string="$(docker network inspect docker_PM_network | grep Gateway | awk '{print $2}' | tr -d ' ' | tr -d \" | cut -d \. -f 1)"
+string="$(podman network inspect podman_PM_network | grep Gateway | awk '{print $2}' | tr -d ' ' | tr -d \" | cut -d \. -f 1)"
 debug "string is $string"
 
 if [[ $string != 172 ]] ; then #would be unusualy for it not to be 172
 
-        if ! docker network inspect docker_PM_netowrk >$dn 2>&1 ; then 
+        if ! podman network inspect podman_PM_netowrk >$dn 2>&1 ; then 
         announce "some problem with starting the container. Aborting. Please let Parman know to fix."
         return 1
         fi
 
-    stringIP="$(docker network inspect docker_PM_network | grep Gateway | awk '{print $2}' | tr -d ' ' | tr -d \" )"
+    stringIP="$(podman network inspect podman_PM_network | grep Gateway | awk '{print $2}' | tr -d ' ' | tr -d \" )"
 
     if [[ -n $stringIP ]] ; then
       cp $bc $dp/backup_bitcoin.conf 
@@ -75,9 +75,9 @@ if [[ $string != 172 ]] ; then #would be unusualy for it not to be 172
     "
     restart_mempool
 
-fi ; fi #end if docker ps
+fi ; fi #end if podman ps
 
-if docker ps | grep -q mempool ; then
+if podman ps | grep -q mempool ; then
     installed_conf_add "mempool-end"
     filter_notice
     success "Mempool" "being installed"

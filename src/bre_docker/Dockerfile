@@ -23,15 +23,15 @@ RUN git clone --depth 1 https://github.com/janoside/btc-rpc-explorer.git
 RUN echo "BTCEXP_SLOW_DEVICE_MODE=false"                     > /home/parman/parmanode/.env
 RUN echo "BTCEXP_HOST=0.0.0.0"                              >> /home/parman/parmanode/.env
 #RUN echo "BTCEXP_PORT=3002"                                >> /home/parman/parmanode/.env
-RUN echo "BTCEXP_BITCOIND_HOST=host.docker.internal"        >> /home/parman/parmanode/.env
+RUN echo "BTCEXP_BITCOIND_HOST=host.podman.internal"        >> /home/parman/parmanode/.env
 RUN echo "BTCEXP_BITCOIND_PORT=8332"                        >> /home/parman/parmanode/.env
 RUN echo "BTCEXP_BITCOIND_USER=parman"                      >> /home/parman/parmanode/.env 
 RUN echo "BTCEXP_BITCOIND_PASS=hodl"                        >> /home/parman/parmanode/.env  
 RUN echo "BTCEXP_BITCOIND_RPC_TIMEOUT=50000"                >> /home/parman/parmanode/.env 
 RUN echo "BTCEXP=0.0.0.0"                                   >> /home/parman/parmanode/.env 
 RUN echo "BTCEXP_ADDRESS_API=electrumx"                     >> /home/parman/parmanode/.env
-RUN echo "BTCEXP_ELECTRUM_SERVERS=tcp://host.docker.internal:50001"    >> /home/parman/parmanode/.env 
-RUN echo "BTCEXP_ELECTRUM_SERVERS=tcp://host.docker.internal:50005"    >> /home/parman/parmanode/.env 
+RUN echo "BTCEXP_ELECTRUM_SERVERS=tcp://host.podman.internal:50001"    >> /home/parman/parmanode/.env 
+RUN echo "BTCEXP_ELECTRUM_SERVERS=tcp://host.podman.internal:50005"    >> /home/parman/parmanode/.env 
 RUN echo "BTCEXP_NO_RATES=false"                            >> /home/parman/parmanode/.env 
 
 

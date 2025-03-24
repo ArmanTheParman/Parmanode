@@ -25,7 +25,7 @@ read choice
 case $choice in y|Y) break ;; n|N) continue ;; *) invalid ;; esac
 done
 
-    edit_bitcoindIP_fulcrum_indocker $IP
+    edit_bitcoindIP_fulcrum_inpodman $IP
 
 return 0
 }

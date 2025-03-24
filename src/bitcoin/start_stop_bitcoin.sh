@@ -4,8 +4,8 @@
 function restart_bitcoin { stop_bitcoin ; start_bitcoin ; }
 
 function start_bitcoin {
-#for docker (no systemctl, use tmux)
-if [[ -e /.dockerenv ]] && which bitcoind >$dn ; then
+#for podman (no systemctl, use tmux)
+if [[ -e /.podmanenv ]] && which bitcoind >$dn ; then
 please_wait
 pn_tmux "bitcoind -conf=$HOME/.bitcoin/bitcoin.conf" "starting_bitcoin"
 sleep 0.5
@@ -17,11 +17,11 @@ fi
 if grep -q btccombo $ic ; then
 
     pn_tmux "
-    if ! docker ps | grep -q btcpay ; then
-        docker start btcpay >$dn 2>&1 ; sleep 3
+    if ! podman ps | grep -q btcpay ; then
+        podman start btcpay >$dn 2>&1 ; sleep 3
     fi
 
-    docker exec -it btcpay bitcoind
+    podman exec -it btcpay bitcoind
     " "starting_bitcoin"
 
 sleep 0.5
@@ -52,8 +52,8 @@ fi
 
 function stop_bitcoin {
 
-#for docker (no systemctl, use tmux)
-if [[ -e /.dockerenv ]] ; then
+#for podman (no systemctl, use tmux)
+if [[ -e /.podmanenv ]] ; then
 pn_tmux "pkill bitcoind" "stopping_bitcoin"
 sleep 0.5
 return 0
@@ -62,7 +62,7 @@ fi
 #needs to be first...
 if grep -q btccombo $ic ; then
 pn_tmux "
-docker exec -it btcpay pkill bitcoind
+podman exec -it btcpay pkill bitcoind
 " "stopping_bitcoin"
 sleep 0.5
 return 0
@@ -81,16 +81,16 @@ return 0
 fi
 }
 
-function start_bitcoin_indocker {
+function start_bitcoin_inpodman {
 pn_tmux "
-docker exec -itu parman btcpay bitcoind
+podman exec -itu parman btcpay bitcoind
 " "starting_bitcoin"
 sleep 0.5
 }
 
-function stop_bitcoin_docker {
+function stop_bitcoin_podman {
 pn_tmux "
-docker exec -itu parman btcpay bitcoin-cli stop
+podman exec -itu parman btcpay bitcoin-cli stop
 " "stopping_bitcoin"
 sleep 0.5
 return 0

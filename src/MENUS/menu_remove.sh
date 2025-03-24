@@ -10,11 +10,11 @@ local num=$(( 42 + ((num1)/2 - 14) ))
 if [[ $num -lt 45 ]] ; then num=46 ; fi
 if [[ $num -gt 66 ]] ; then num=66 ; fi
 set_terminal_custom $((num + 2))
-unset bitcoinmenu fulcrummenu dockermenu btcpaymenu lnbitsmenu tormenu lndmenu mempoolmenu 
+unset bitcoinmenu fulcrummenu podmanmenu btcpaymenu lnbitsmenu tormenu lndmenu mempoolmenu 
 unset sparrowmenu rtlmenu electrummenu torservermenu btcTORmenu spectermenu btcrpcexplorermenu
-unset electrsmenu trezormenu ledgermenu bitboxmenu parmashellmenu bredockermenu parmaboxmenu
+unset electrsmenu trezormenu ledgermenu bitboxmenu parmashellmenu brepodmanmenu parmaboxmenu
 unset anydeskmenu piholemenu torrelaymenu electrskdmenu piappsmenu torbmenu electrs2menu electrsdkr2menu
-unset public_poolmenu electrumxmenu thunderhubmenu lnddockermenu nginxmenu nostrrelaymenu litdmenu
+unset public_poolmenu electrumxmenu thunderhubmenu lndpodmanmenu nginxmenu nostrrelaymenu litdmenu
 unset parmacloudmenu parmanostrmenu btcrecovermenu joinmarketmenu greenmenu X11menu
 
 echo -e "
@@ -67,11 +67,11 @@ echo -e "#$cyan                            (fulcrumd)$orange         Fulcrum Ser
 elif grep -q "fulcrumdkr-start" $HOME/.parmanode/installed.conf ; then fulcrumdkrmenu=1                                
 echo -e "#$cyan                            (fulcrumd)$orange         Fulcrum (Docker)$red$blinkon(partial)$blinkoff$orange              #
 #                                                                                      #" ; fi
-if grep -q "docker-end" $HOME/.parmanode/installed.conf ; then dockermenu=1 
-echo -e "#$cyan                            (docker)$orange           Docker                                 #
+if grep -q "podman-end" $HOME/.parmanode/installed.conf ; then podmanmenu=1 
+echo -e "#$cyan                            (podman)$orange           Docker                                 #
 #                                                                                      #"
-elif grep -q "docker-start" $HOME/.parmanode/installed.conf ; then dockermenu=1                       
-echo -e "#$cyan                            (docker)$orange           Docker $red$blinkon(partial)$blinkoff$orange                       #
+elif grep -q "podman-start" $HOME/.parmanode/installed.conf ; then podmanmenu=1                       
+echo -e "#$cyan                            (podman)$orange           Docker $red$blinkon(partial)$blinkoff$orange                       #
 #                                                                                      #" ; fi
 if grep -q "btcpay-end" $HOME/.parmanode/installed.conf ; then btcpaymenu=1              
 echo -e "#$cyan                            (btcp)$orange             BTCPay                                 #
@@ -169,10 +169,10 @@ echo -e "#$cyan                            (ps)$orange               Parmashell 
 elif grep -q "parmashell-start" $HOME/.parmanode/installed.conf ; then parmashellmenu=1
 echo -e "#$cyan                            (ps)$orange               Parmashell  $red$blinkon(partial)$blinkoff$orange                  #
 #                                                                                      #" ; fi
-if grep -q "bre-end" $HOME/.parmanode/installed.conf ; then bredockermenu=1
+if grep -q "bre-end" $HOME/.parmanode/installed.conf ; then brepodmanmenu=1
 echo -e "#$cyan                            (bre)$orange              BTC RPC Explorer (Docker)              #
 #                                                                                      #"
-elif grep -q "bre-start" $HOME/.parmanode/installed.conf ; then bredockermenu=1
+elif grep -q "bre-start" $HOME/.parmanode/installed.conf ; then brepodmanmenu=1
 echo -e "#$cyan                            (bre)$orange              BRE         $red$blinkon(partial)$blinkoff$orange                  #
 #                                                                                      #" ; fi
 if grep -q "parmabox-end" $HOME/.parmanode/installed.conf ; then parmaboxmenu=1
@@ -259,10 +259,10 @@ echo -e "#$cyan                            (th)$orange               Thunderhub 
 elif grep -q "thunderhub-start" $HOME/.parmanode/installed.conf ; then thunderhubmenu=1
 echo -e "#$cyan                            (th)$orange               Thunderhub $red$blinkon(partial)$blinkoff$orange                   #
 #                                                                                      #" ; fi
-if grep -q "lnddocker-end" $HOME/.parmanode/installed.conf ; then lnddockermenu=1
+if grep -q "lndpodman-end" $HOME/.parmanode/installed.conf ; then lndpodmanmenu=1
 echo -e "#$cyan                            (ld)$orange               LND (Docker)                           #
 #                                                                                      #"
-elif grep -q "lnddocker-start" $HOME/.parmanode/installed.conf ; then lnddockermenu=1
+elif grep -q "lndpodman-start" $HOME/.parmanode/installed.conf ; then lndpodmanmenu=1
 echo -e "#$cyan                            (ld)$orange               LND (Docker)      $red$blinkon(partial)$blinkoff$orange            #
 #                                                                                      #" ; fi
 if grep -q "nginx-end" $HOME/.parmanode/installed.conf ; then nginxmenu=1
@@ -354,10 +354,10 @@ menu_main
 fi
 ;;
 
-docker|Docker|DOCKER)
-if [[ $dockermenu == 1 ]] ; then
-if [[ $OS == "Mac" ]] ; then uninstall_docker_mac ; fi
-if [[ $OS == "Linux" ]] ; then uninstall_docker_linux ; fi
+podman|Docker|DOCKER)
+if [[ $podmanmenu == 1 ]] ; then
+if [[ $OS == "Mac" ]] ; then uninstall_podman_mac ; fi
+if [[ $OS == "Linux" ]] ; then uninstall_podman_linux ; fi
 menu_main
 fi
 ;;
@@ -384,8 +384,8 @@ fi
 ;;
 
 ld|LD|Ld)
-if [[ $lnddockermenu == 1 ]] ; then
-uninstall_lnd_docker 
+if [[ $lndpodmanmenu == 1 ]] ; then
+uninstall_lnd_podman 
 menu_main
 fi
 ;;
@@ -446,8 +446,8 @@ uninstall_btcrpcexplorer
 menu_main
 fi
 
-if [[ $bredockermenu == 1 ]] ; then
-bre_docker_uninstall
+if [[ $brepodmanmenu == 1 ]] ; then
+bre_podman_uninstall
 menu_main
 fi
 ;;
@@ -529,12 +529,12 @@ fi
 
 ersd|ERSD|Ersd)
 if [[ $electrsdkrmenu == 1 ]] ; then
-uninstall_electrs_docker
+uninstall_electrs_podman
 menu_main
 fi
 
 if [[ $electrsdkr2menu == 1 ]] ; then
-uninstall_electrs_docker2
+uninstall_electrs_podman2
 menu_main
 fi
 ;;

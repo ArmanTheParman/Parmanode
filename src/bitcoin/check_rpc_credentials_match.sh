@@ -2,7 +2,7 @@ function check_rpc_credentials_match {
 nogsedtest
 source_rpc_global
 
-if [[ -n $BREdocker_rpcuser ]] && [[ $BREdocker_rpcuser != $rpcuser || $BREdocker_rpcpassword != $rpcpassword ]] ; then
+if [[ -n $BREpodman_rpcuser ]] && [[ $BREpodman_rpcuser != $rpcuser || $BREpodman_rpcpassword != $rpcpassword ]] ; then
 program="${cyan}BTC RPC Explorer (Docker)$orange"
 while true ; do
 set_terminal ; echo -e "
@@ -26,10 +26,10 @@ case $choice in
 q|Q) exit 0 ;; p|P|M|m) back2main ;;
 y)
 unset file && local file="$HOME/parmanode/bre/.env"
-bre_docker_stop
+bre_podman_stop
 sudo gsed -i "/BTCEXP_BITCOIND_USER/c\BTCEXP_BITCOIND_USER=$rpcuser" "$file"
 sudo gsed -i "/BTCEXP_BITCOIND_PASS/c\BTCEXP_BITCOIND_PASS=$rpcpassword" "$file"
-bre_docker_start
+bre_podman_start
 break
 ;;
 n)
@@ -184,7 +184,7 @@ if grep -q "electrs-end" $ic ; then stop_electrs ; fi
 if grep -q "electrsdkr-end" $ic ; then stop_electrs ; fi
 sudo gsed -i  "/auth/c\auth = \"$rpcuser:$rpcpassword\"" $file
 if grep -q "electrs-end" $ic ; then start_electrs ; fi
-if grep -q "electrsdkr-end" $ic ; then docker_start_electrs ; fi
+if grep -q "electrsdkr-end" $ic ; then podman_start_electrs ; fi
 break
 ;;
 n)
@@ -292,9 +292,9 @@ jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit 0 ;; p|P|M|m) back2main ;;
 y)
-unset file && local file="$hp/mempool/docker/docker-compose.yml"
+unset file && local file="$hp/mempool/podman/podman-compose.yml"
 stop_mempool
-sudo gsed -i "/CORE_RPC_USERNAME/c\      CORE_RPC_USERNAME: \"$rpcuser\"" $file #docker compose file, indentation is criticial
+sudo gsed -i "/CORE_RPC_USERNAME/c\      CORE_RPC_USERNAME: \"$rpcuser\"" $file #podman compose file, indentation is criticial
 sudo gsed -i "/CORE_RPC_PASSWORD/c\      CORE_RPC_PASSWORD: \"$rpcpassword\"" $file
 start_mempool
 break

@@ -48,6 +48,6 @@ done
 
 please_wait
 
-if ! which docker >/dev/null ; then install_docker || return 1 ; fi 
+if ! which podman >/dev/null ; then install_podman || return 1 ; fi 
 ParmanodL_Installer install
 }

@@ -46,6 +46,6 @@ echo -e "
 Accept (y) or try again (n) ?" ; read choice
 
 
-docker exec -it -u root btcpay /bin/bash -c "echo \"Main:email=$email;password=$password;otp=$otp\" \\
+podman exec -it -u root btcpay /bin/bash -c "echo \"Main:email=$email;password=$password;otp=$otp\" \\
 | tee -a $HOME/.btcpayserver/Main/settings.config >$dn 2>&1"
 }

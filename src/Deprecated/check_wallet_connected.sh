@@ -33,14 +33,14 @@ if [[ $connection == FulcrumTOR || $connection == FulcrumSSL || $connection == F
 fi
 
 if [[ $connection == electrsTCP || $connection == electrsTOR || $connection == electrsSSL ]] ; then
-  if ! ps -x | grep electrs | grep conf >$dn 2>&1 && ! docker ps | grep -q electrs ; then 
+  if ! ps -x | grep electrs | grep conf >$dn 2>&1 && ! podman ps | grep -q electrs ; then 
   announce "$1 is configured to connect to electrs, but electrs is"\
   "not running. Be warned."
   fi
 fi
 
 if [[ $connection == Docker_FulcrumSSL ]] ; then
-  if ! docker ps | grep fulcrum ; then
+  if ! podman ps | grep fulcrum ; then
   announce "$1 is configured to connect to Fulcrum, but Fulcrum is"\
   "not running. Be warned."
   fi

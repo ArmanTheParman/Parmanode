@@ -1,5 +1,5 @@
-function run_thub_docker {
-docker run -d --name thunderhub -p $thub_port:3000/tcp \
+function run_thub_podman {
+podman run -d --name thunderhub -p $thub_port:3000/tcp \
               --restart unless-stopped \
               -v $hp/thunderhub/account_1.yaml:/app/account_1.yaml \
               -v $hp/thunderhub/.env.local:/app/.env.local \

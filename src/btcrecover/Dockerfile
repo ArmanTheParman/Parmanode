@@ -72,4 +72,4 @@ WORKDIR /home/parman/
 
 CMD tail -f /dev/null 
 # Need to run fix_openssl_repemd160
-#user should set number of cores to dedicate to docker container
+#user should set number of cores to dedicate to podman container

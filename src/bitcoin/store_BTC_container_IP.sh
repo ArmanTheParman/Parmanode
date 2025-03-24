@@ -19,11 +19,11 @@ BTCIP=$IP
 return 0
 fi
 
-if ! docker ps >$dn 2>&1 ; then return 1 ; fi
+if ! podman ps >$dn 2>&1 ; then return 1 ; fi
 
-if docker ps | grep -q btcpay ; then
+if podman ps | grep -q btcpay ; then
 
-    BTCIP=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' btcpay)
+    BTCIP=$(podman inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' btcpay)
 
     if ! echo $BTCIP | grep -qE '^[0-9]' ; then #double check BTCIP starts with a number rather than error message
        unset BTCIP

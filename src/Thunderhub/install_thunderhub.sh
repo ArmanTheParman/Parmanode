@@ -48,14 +48,14 @@ return 1
 fi
 
 #make sure lightning installed 
-if ! grep -q "lnd-end" $ic >$dn 2>&1 && ! grep -q "lnddocker-end" $ic >$dn 2>&1 ; \
+if ! grep -q "lnd-end" $ic >$dn 2>&1 && ! grep -q "lndpodman-end" $ic >$dn 2>&1 ; \
 then
 announce "Please install LND first. Aborting."
 return 1
 fi
 
-#make sure docker installed
-if ! which docker >$dn 2>&1 ; then 
+#make sure podman installed
+if ! which podman >$dn 2>&1 ; then 
 announce "Please install Docker first. Aborting." 
 return 1 
 fi
@@ -69,7 +69,7 @@ installed_conf_add "thunderhub-start"
 make_thub_env || return 1
 make_thunderhub_account || return 1
 build_thub || return 1 
-run_thub_docker || return 1
+run_thub_podman || return 1
 enable_tor_thunderhub
 unset version file password password2
 

@@ -8,14 +8,14 @@ if [[ $OS == Mac ]] ; then no_mac ; return 1 ; fi #for now
 set_terminal 
 sned_sats
 if [[ $OS == Mac ]] ; then
-    if ! which docker >$dn 2>&1 ; then announce "Please install Docker first. Aborting" ; return 1 ; fi
+    if ! which podman >$dn 2>&1 ; then announce "Please install Docker first. Aborting" ; return 1 ; fi
     if ! which python3 >$dn ; then
         if ! which brew >$dn ; then install_homebrew 
         fi
     brew install python3
     fi
 elif [[ $OS == Linux ]] ; then
-    if ! which docker >$dn 2>&1 ; then announce "Please install Docker first. Aborting" ; return 1 ; fi
+    if ! which podman >$dn 2>&1 ; then announce "Please install Docker first. Aborting" ; return 1 ; fi
     if ! which python3 >$dn ; then
         sudo apt-get update -y && sudo apt-get install python3 -y
     fi
@@ -36,7 +36,7 @@ return 1
 fi
 
 #check Docker running, esp Mac
-if ! docker ps >$dn 2>&1 ; then echo -e "
+if ! podman ps >$dn 2>&1 ; then echo -e "
 ########################################################################################
 
     Docker doesn't seem to be running. Please start it and, once it's running, hit $green 
@@ -48,7 +48,7 @@ choose "emq" ; read choice
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in Q|q) exit 0 ;; m|M) back2main ;; esac
 set_terminal
-if ! docker ps >$dn 2>&1 ; then echo -e "
+if ! podman ps >$dn 2>&1 ; then echo -e "
 ########################################################################################
 
     Docker is still$red not running$orange. 
@@ -65,12 +65,12 @@ return 1
 fi
 fi
 
-if docker ps | grep -q "public_pool" ; then
-docker stop public_pool public_pool_ui
+if podman ps | grep -q "public_pool" ; then
+podman stop public_pool public_pool_ui
 fi
 
-if docker ps -a | grep -q "public_pool" ; then
-docker rm public_pool public_pool_ui
+if podman ps -a | grep -q "public_pool" ; then
+podman rm public_pool public_pool_ui
 fi
 
 cd $hp
@@ -103,15 +103,15 @@ debug "cp"
 unset file
 
 # build image
-docker build -t public_pool $NOCACHE . ; debug "build done"
+podman build -t public_pool $NOCACHE . ; debug "build done"
 echo -e "${pink}Pausing, you can check if the first build went ok.$orange"
 enter_continue
 
 #start container
 if [[ $OS == Linux ]] ; then
-    docker run -d --name public_pool --restart unless-stopped --network=host -v $hp/public_pool/.env:/.env public_pool ; debug "run pool done"
+    podman run -d --name public_pool --restart unless-stopped --network=host -v $hp/public_pool/.env:/.env public_pool ; debug "run pool done"
 elif [[ $OS == Mac ]] ; then
-    docker run -d --name public_pool --restart unless-stopped -p 3333:3333 -p 3334:3334 -v $hp/public_pool/.env:/.env public_pool ; debug "run pool done"
+    podman run -d --name public_pool --restart unless-stopped -p 3333:3333 -p 3334:3334 -v $hp/public_pool/.env:/.env public_pool ; debug "run pool done"
 fi
 
 
@@ -121,11 +121,11 @@ fi
 cd $hp/public_pool_ui
 sudo rm $hp/public_pool_ui/src/environments/*
 sudo cp $pp/parmanode/src/public_pool/environment* $hp/public_pool_ui/src/environments/
-docker build -t public_pool_ui . ; debug "build done"
+podman build -t public_pool_ui . ; debug "build done"
 echo -e "${pink}Pausing, you can check if the second build went ok.$orange"
 enter_continue
-#docker run -d --name public_pool_ui -p 5050:80 public_pool_ui ; debug "run done"
-docker run -d --restart unless-stopped --name public_pool_ui --network=host public_pool_ui ; debug "run done"
+#podman run -d --name public_pool_ui -p 5050:80 public_pool_ui ; debug "run done"
+podman run -d --restart unless-stopped --name public_pool_ui --network=host public_pool_ui ; debug "run done"
 #certs before socat
 make_ssl_certificates "public_pool_ui" ; debug "certs done"
 # make_socat_script "public_pool_ui"
@@ -140,7 +140,7 @@ enter_continue
 nginx_public_pool_ui
 
 #check for success
-if docker ps | grep "public_pool" | grep -q "public_pool_ui" ; then
+if podman ps | grep "public_pool" | grep -q "public_pool_ui" ; then
 success "Public Pool" "being installed"
 installed_conf_add "public_pool-end"
 else

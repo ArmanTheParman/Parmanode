@@ -9,9 +9,9 @@ fi
 
 unset nextcloud_running
 source $pc
-if  [[ $(docker ps | grep nextcloud | wc -l) -gt 1 ]] ; then
+if  [[ $(podman ps | grep nextcloud | wc -l) -gt 1 ]] ; then
 nextcloud_running="${green}RUNNING$orange"
-elif docker ps | grep -q nextcloud ; then
+elif podman ps | grep -q nextcloud ; then
 nextcloud_running="${red}PARTIALLY RUNNING - you might need to access the
                                        initial setup link to get it going, see below$orange
                                        Then start the containers from the browser"
@@ -19,12 +19,12 @@ else
 nextcloud_running="${red}NOT RUNNING$orange"
 fi
 
-if ! { sudo test -e /etc/docker/daemon.json && \
-       grep -q "data-root" /etc/docker/daemon.json && \
-       vld=$(sudo cat /etc/docker/daemon.json 2>/dev/null | jq -r '."data-root"') 
+if ! { sudo test -e /etc/podman/daemon.json && \
+       grep -q "data-root" /etc/podman/daemon.json && \
+       vld=$(sudo cat /etc/podman/daemon.json 2>/dev/null | jq -r '."data-root"') 
      } ; then 
 
-    vld=/var/lib/docker
+    vld=/var/lib/podman
 fi
 
 
@@ -44,7 +44,7 @@ $green
 $red
                       stop)$blue          Stop NextCloud Docker container
 $orange
-                      refresh)$blue       Run if you manually modified the docker volume 
+                      refresh)$blue       Run if you manually modified the podman volume 
 $orange
                       rerun)$blue         Destroy container and rerun (no data loss, be cool) 
 $orange
@@ -69,7 +69,7 @@ m|M) back2main ;; q|Q|QUIT|Quit) exit 0 ;; p|P) menu_use ;;
 
 pass)
 set_terminal
-sudo docker exec nextcloud-aio-mastercontainer grep password /mnt/docker-aio-config/data/configuration.json || \
+sudo podman exec nextcloud-aio-mastercontainer grep password /mnt/podman-aio-config/data/configuration.json || \
 { announce "No password found. It is created only once you access the server setup page
     the very first time around." ; continue ; }
 
@@ -77,10 +77,10 @@ enter_continue
 ;;
 
 start)
-docker start nextcloud-aio-mastercontainer || enter_continue
+podman start nextcloud-aio-mastercontainer || enter_continue
 ;;
 stop)
-docker stop $(docker ps --format "{{.Names}}" | grep nextcloud)
+podman stop $(podman ps --format "{{.Names}}" | grep nextcloud)
 ;;
 
 data)
@@ -99,8 +99,8 @@ refresh_parmacloud
 ;;
 
 rerun)
-docker stop $(docker ps --format "{{.Names}}" | grep nextcloud) || enter_continue
-docker rm $(docker ps -a --format "{{.Names}}" | grep nextcloud) || enter_continue
+podman stop $(podman ps --format "{{.Names}}" | grep nextcloud) || enter_continue
+podman rm $(podman ps -a --format "{{.Names}}" | grep nextcloud) || enter_continue
 parmacloud_run
 ;;
 "")
@@ -123,7 +123,7 @@ set_terminal ; echo -e "$blue
 ########################################################################################
 $orange"
 read user
-docker exec -it nextcloud-aio-nextcloud bash -c "sudo -u www-data php /var/www/html/occ user:resetpassword $user" || { enter_continue "some error" ; return 1 ; }
+podman exec -it nextcloud-aio-nextcloud bash -c "sudo -u www-data php /var/www/html/occ user:resetpassword $user" || { enter_continue "some error" ; return 1 ; }
 success_blue "Password change done." 
 }
 
@@ -146,7 +146,7 @@ esac
 
 function refresh_parmacloud {
 
-announce "If you modify files in the docker volume directory, it's not going to show up
+announce "If you modify files in the podman volume directory, it's not going to show up
     in the NextCloud web interface unless you make sure any new files/directories are 
     owned by www-data and you also have to run a database refresh command."
 
@@ -155,7 +155,7 @@ case $enter_cont in
 q|Q) exit ;; p) return ;; m|M) back2main ;;
 "")
 clear
-docker exec -u www-data nextcloud-aio-nextcloud php occ files:scan --all
+podman exec -u www-data nextcloud-aio-nextcloud php occ files:scan --all
 enter_continue "Database refershed"
 ;;
 esac

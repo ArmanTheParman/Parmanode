@@ -42,7 +42,7 @@ done
 
 password_changer || return 1
 
-edit_user_pass_fulcrum_docker $rpcuser $rpcpassword remote || return 1 
+edit_user_pass_fulcrum_podman $rpcuser $rpcpassword remote || return 1 
 
 bitcoindIP_change_fulcrum || return 1 
 

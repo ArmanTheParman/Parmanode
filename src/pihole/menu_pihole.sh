@@ -1,7 +1,7 @@
 function menu_pihole {
 if ! grep -q "pihole-end" $ic ; then return 0 ; fi
 while true ; do 
-if docker ps | grep -q pihole ; then
+if podman ps | grep -q pihole ; then
 local piholerunning="Running"
 else
 local piholerunning="Not Running"
@@ -57,7 +57,7 @@ echo -e "Please enter new password then hit <enter>. You will only be asked once
 
 "
 read piholepassword
-docker exec -it pihole /bin/bash -c "pihole -a -p $piholepassword" 
+podman exec -it pihole /bin/bash -c "pihole -a -p $piholepassword" 
 debug "look"
 success "Your PiHole password has been set" ;;
 "")
@@ -186,9 +186,9 @@ server:
 EOF
 sudo systemctl restart unbound >$dn 2>&1
 
-docker exec -itu root pihole /bin/bash -c "sed -i '/PIHOLE_DNS_/d' /etc/pihole/setupVars.conf"
+podman exec -itu root pihole /bin/bash -c "sed -i '/PIHOLE_DNS_/d' /etc/pihole/setupVars.conf"
 debug "deleted?"
-docker exec -itu root pihole /bin/bash -c "echo 'PIHOLE_DNS_1=127.0.0.1#5335' >> '/etc/pihole/setupVars.conf' "
+podman exec -itu root pihole /bin/bash -c "echo 'PIHOLE_DNS_1=127.0.0.1#5335' >> '/etc/pihole/setupVars.conf' "
 success "Unbound DNS Resolver" "being configured"
 }
 
@@ -197,8 +197,8 @@ function disable_unbound {
 sudo systemctl stop unbound
 sudo systemctl disable unbound
 
-docker exec -itu root pihole /bin/bash -c "sed -i '/PIHOLE_DNS_/d' /etc/pihole/setupVars.conf"
+podman exec -itu root pihole /bin/bash -c "sed -i '/PIHOLE_DNS_/d' /etc/pihole/setupVars.conf"
 debug "deleted"
-docker exec -itu root pihole /bin/bash -c "echo 'PIHOLE_DNS_1=8.8.8.8' >> '/etc/pihole/setupVars.conf' "
+podman exec -itu root pihole /bin/bash -c "echo 'PIHOLE_DNS_1=8.8.8.8' >> '/etc/pihole/setupVars.conf' "
 success "Unbound DNS Resolver" "being disabled"
 }

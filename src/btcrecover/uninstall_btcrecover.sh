@@ -16,13 +16,13 @@ q|Q) exit ;; p|P) return 1 ;; m|M) backtomain ;; y) break ;; n) return 1 ;; *) i
 esac
 done
 
-if ! docker ps >$dn 2>&1 ; then
+if ! podman ps >$dn 2>&1 ; then
 announce "Docker needs to be running. Aborting."
 return 1
 fi
 
-docker stop btcrecover >$dn 2>&1
-docker rm btcrecover
+podman stop btcrecover >$dn 2>&1
+podman rm btcrecover
 
 if [[ -d $hp/btcrecover_data ]] ; then
 set_terminal ; echo -e "

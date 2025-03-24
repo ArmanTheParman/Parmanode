@@ -24,10 +24,10 @@ please_wait
 
 nogsedtest
 if grep -q "fulcrumdkr" $ic || [[ $OS == Mac ]] ; then
-[[ $debug == 1 ]] || if ! docker ps >$dn 2>&1 ; then announce "Please make sure Docker is running. Aborting." ; return 1 ; fi
-docker stop fulcrum >$dn 2>&1 
-docker rm fulcrum >$dn 2>&1 
-docker rmi fulcrum >$dn 2>&1 
+[[ $debug == 1 ]] || if ! podman ps >$dn 2>&1 ; then announce "Please make sure Docker is running. Aborting." ; return 1 ; fi
+podman stop fulcrum >$dn 2>&1 
+podman rm fulcrum >$dn 2>&1 
+podman rmi fulcrum >$dn 2>&1 
 else
 sudo rm /usr/local/bin/Fulcrum* 2>$dn
 sudo systemctl disable fulcrum.service 2>$dn

@@ -47,7 +47,7 @@ esac
 done 
 fi
 
-if ! docker ps >$dn 2>&1 ; then
+if ! podman ps >$dn 2>&1 ; then
 announce "Docker doesn't seem to be running. Can't uninstall without that. Aborting."
 return 1
 fi
@@ -55,9 +55,9 @@ fi
 fi
 # stop containers, delete containers, delete images
 please_wait
-echo "Stopping containers..." && docker stop btcpay  >$dn 2>&1
-echo "Removing containers..." && sleep 0.5 && docker rm btcpay >$dn 2>&1 
-echo "Removing Docker images..." && sleep 0.5 && docker rmi btcpay >$dn 2>&1 
+echo "Stopping containers..." && podman stop btcpay  >$dn 2>&1
+echo "Removing containers..." && sleep 0.5 && podman rm btcpay >$dn 2>&1 
+echo "Removing Docker images..." && sleep 0.5 && podman rmi btcpay >$dn 2>&1 
 #remove directories
 echo "Removing BTCpay and NBXplorer directories..." && sleep 1 && rm -rf $HOME/.btcpayserver $HOME/.nbxplorer >$dn 2>&1 
 

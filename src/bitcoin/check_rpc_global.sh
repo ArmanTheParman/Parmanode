@@ -6,16 +6,16 @@ if [[ -e $bc ]] ; then
 source $bc 
 fi
 
-#BRE (non docker)
+#BRE (non podman)
 if [[ -e $HOME/parmanode/btc-rpc-explorer/.env ]] ; then
 export BRE_rpcuser=$(cat $HOME/parmanode/btc-rpc-explorer/.env | grep BTCEXP_BITCOIND_USER | cut -d = -f 2)
 export BRE_rpcpassword=$(cat $HOME/parmanode/btc-rpc-explorer/.env | grep BTCEXP_BITCOIND_PASS | cut -d = -f 2)
 fi
 
-#BRE (docker)
+#BRE (podman)
 if [[ -e $HOME/parmanode/bre/.env ]] ; then
-export BREdocker_rpcuser=$(cat $HOME/parmanode/bre/.env | grep BTCEXP_BITCOIND_USER | cut -d = -f 2)
-export BREdocker_rpcpassword=$(cat $HOME/parmanode/bre/.env | grep BTCEXP_BITCOIND_PASS | cut -d = -f 2)
+export BREpodman_rpcuser=$(cat $HOME/parmanode/bre/.env | grep BTCEXP_BITCOIND_USER | cut -d = -f 2)
+export BREpodman_rpcpassword=$(cat $HOME/parmanode/bre/.env | grep BTCEXP_BITCOIND_PASS | cut -d = -f 2)
 fi
 
 #LND
@@ -44,9 +44,9 @@ export fulcrum_rpcpassword=$(cat $fc | grep rpcpassword | cut -d = -f 2 | xargs 
 fi
 
 #mempool
-if [[ -e $hp/mempool/docker/docker-compose.yml ]] ; then 
-export mempool_rpcuser=$(cat $hp/mempool/docker/docker-compose.yml | grep CORE_RPC_USERNAME | cut -d \" -f 2 | tr -d \" )
-export mempool_rpcpassword=$(cat $hp/mempool/docker/docker-compose.yml | grep CORE_RPC_PASSWORD | cut -d \" -f 2 | tr -d \" )
+if [[ -e $hp/mempool/podman/podman-compose.yml ]] ; then 
+export mempool_rpcuser=$(cat $hp/mempool/podman/podman-compose.yml | grep CORE_RPC_USERNAME | cut -d \" -f 2 | tr -d \" )
+export mempool_rpcpassword=$(cat $hp/mempool/podman/podman-compose.yml | grep CORE_RPC_PASSWORD | cut -d \" -f 2 | tr -d \" )
 fi
 
 #sparrow

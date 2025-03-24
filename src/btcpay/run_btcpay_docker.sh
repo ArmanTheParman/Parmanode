@@ -1,6 +1,6 @@
-function run_btcpay_docker {
+function run_btcpay_podman {
 if [[ $OS == "Linux" ]] ; then
-docker run -d -u parman \
+podman run -d -u parman \
            --name btcpay \
            --restart unless-stopped \
            -v $HOME/.btcpayserver:/home/parman/.btcpayserver \
@@ -10,7 +10,7 @@ docker run -d -u parman \
 fi
 
 if [[ $OS == "Mac" ]] ; then
-docker run -d -u parman \
+podman run -d -u parman \
            --name btcpay \
            --restart unless-stopped \
            -v $HOME/.btcpayserver:/home/parman/.btcpayserver \
@@ -24,7 +24,7 @@ docker run -d -u parman \
 #           -p 24444:24444 \
 #           -p 24445:24445 \
 
-log "docker" "after docker run"
+log "podman" "after podman run"
 fi
 }    
 

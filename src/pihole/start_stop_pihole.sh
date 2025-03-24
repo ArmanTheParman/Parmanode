@@ -1,8 +1,8 @@
 function start_pihole {
     cd $hp/pihole
-    docker compose start
+    podman compose start
 }
 function stop_pihole {
     cd $hp/pihole
-    docker compose stop 
+    podman compose stop 
 }

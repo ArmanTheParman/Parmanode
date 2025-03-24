@@ -1,6 +1,6 @@
 function openssh_patch {
 
-if [[ $btcdockerchoice != "yes" ]] ; then return 0 ; fi
+if [[ $btcpodmanchoice != "yes" ]] ; then return 0 ; fi
 
 source $hm >$dn
 if [[ $openssh == "hide" || $OS != "Linux" ]] ; then return 0 ; fi

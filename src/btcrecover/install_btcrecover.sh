@@ -1,13 +1,13 @@
 function install_btcrecover {
 clear
-#make sure docker installed
-if ! which docker >$dn 2>&1 ; then 
+#make sure podman installed
+if ! which podman >$dn 2>&1 ; then 
 announce "Please install Docker first. Aborting." 
 return 1 
 fi
 
 #check Docker running, esp Mac
-if ! docker ps >$dn 2>&1 ; then echo -e "
+if ! podman ps >$dn 2>&1 ; then echo -e "
 ########################################################################################
 
     Docker doesn't seem to be running. Please start it and, once it's running, hit $green 
@@ -19,7 +19,7 @@ if ! docker ps >$dn 2>&1 ; then echo -e "
     jump $choice || { invalid ; continue ; } ; set_terminal
     case $choice in Q|q) exit 0 ;; m|M) back2main ;; esac
     set_terminal
-    if ! docker ps >$dn 2>&1 ; then echo -e "
+    if ! podman ps >$dn 2>&1 ; then echo -e "
 ########################################################################################
 
     Docker is still$red not running$orange. 
@@ -43,10 +43,10 @@ cd $pn/src/btcrecover
 
 if [[ ! -d $hp/btcrecover_data ]] ; then mkdir -p $hp/btcrecover_data ; fi
 
-docker build  -t btcrecover .
+podman build  -t btcrecover .
 enter_continue "Pausing to check if build was successful."
 
-docker run -d --network none $cpu --name btcrecover -v $hp/btcrecover_data:/home/parman/parmanode/btcrecover_data btcrecover 
+podman run -d --network none $cpu --name btcrecover -v $hp/btcrecover_data:/home/parman/parmanode/btcrecover_data btcrecover 
 installed_conf_add "btcrecover-start" 
 fix_openssl_ripemd160
 parmabox_exec "btcrecover" # borrow's parmabox function to make terinal better.
@@ -56,7 +56,7 @@ cd $hp/btcrecover_data && curl -LO https://raw.githubusercontent.com/first20hour
 curl -LO https://raw.githubusercontent.com/dwyl/english-words/refs/heads/master/words.txt && \
 curl -LO https://github.com/brannondorsey/naive-hashcat/releases/download/data/rockyou.txt
 
-if docker ps | grep -q btcrecover ; then
+if podman ps | grep -q btcrecover ; then
     installed_conf_add "btcrecover-end" 
     success "BTC Recover tool is installed and running in a container." 
     return 0

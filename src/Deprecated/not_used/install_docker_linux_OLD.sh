@@ -1,5 +1,5 @@
 return 0
-function install_docker_linux {
+function install_podman_linux {
 installed_from="$1"
 
 if [[ "$1" == "menu" ]] ; then
@@ -49,7 +49,7 @@ choose "xpmq" ; read choice
 case $choice in q|Q|Quit|QUIT) exit 0 ;; p|P|s|P) return 1 ;; 
 m|M) back2main ;;
 i|I|install|Install)
-    log "docker" "docker install chosen"
+    log "podman" "podman install chosen"
     break ;;
 *) invalid ;;
 esac 
@@ -75,24 +75,24 @@ clear
 case $choice in q|Q|Quit|QUIT) exit 0 ;; p|P) return 1 ;;
 m|M) back2main ;;
 y|Y|YES|yes|Yes)
-    log "docker" "uninstall old Docker versions chosen"
-    sudo apt-get purge docker docker-engine docker.io containerd runc docker-ce \
-    docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin \
-    docker-ce-rootless-extras -y
+    log "podman" "uninstall old Docker versions chosen"
+    sudo apt-get purge podman podman-engine podman.io containerd runc podman-ce \
+    podman-ce-cli containerd.io podman-buildx-plugin podman-compose-plugin \
+    podman-ce-rootless-extras -y
     break ;;
 
 n|N|NO|No)
-    log "docker" "skipping uninstall of old Docker versions" ; break ;;
+    log "podman" "skipping uninstall of old Docker versions" ; break ;;
 *) invalid ;;
 esac
 done
 
-# download_docker_linux
-log "docker" "docker auto install linux ..." 
-docker_package_download_linux || return 1
+# download_podman_linux
+log "podman" "podman auto install linux ..." 
+podman_package_download_linux || return 1
 
-installed_config_add "docker-end" 
-log "docker" "Install success." 
+installed_config_add "podman-end" 
+log "podman" "Install success." 
 success "Docker" "installing."
 
 if [[ $installed_from == "btcpay" ]] ; then

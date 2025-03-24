@@ -81,13 +81,13 @@ create_wallet && lnd_wallet_unlock_password  # && because 2nd command necessary 
 # password file and needs new wallet to do so.
 
 #might be redundant...
-lncli unlock 2>$dn || docker exec lnd lncli unlock 2>$dn
+lncli unlock 2>$dn || podman exec lnd lncli unlock 2>$dn
 
 return 0 ;;
 
 ul|UL|Ul|unlock|Unlock) 
 if grep -q "lnd-" $ic || grep -q "litd" $ic ; then lncli unlock ; fi
-if grep -q "lnddocker-" $ic ; then docker exec lnd lncli unlock ; fi
+if grep -q "lndpodman-" $ic ; then podman exec lnd lncli unlock ; fi
 return 0
 ;;
 
@@ -125,8 +125,8 @@ fi
 
 if grep -q "lnd-" $ic || grep -q "litd" $ic ; then
 lncli channelbalance > $tmp/.channelbalance
-elif grep -q "lnddocker-" $ic ; then
-docker exec lnd lncli channelbalance > $tmp/.channelbalance
+elif grep -q "lndpodman-" $ic ; then
+podman exec lnd lncli channelbalance > $tmp/.channelbalance
 fi
 cbfile=$tmp/.channelbalance
 
@@ -136,8 +136,8 @@ channel_size_total=$((local_balance + remote_balance))
 
 if grep -q "lnd-" $ic || grep -q "litd" $ic ; then
 lncli walletbalance >$tmp/.walletbalance
-elif grep -q "lnddocker-" $ic ; then
-docker exec lnd lncli walletbalance >$tmp/.walletbalance
+elif grep -q "lndpodman-" $ic ; then
+podman exec lnd lncli walletbalance >$tmp/.walletbalance
 fi
 wbfile=$tmp/.walletbalance
 
@@ -180,8 +180,8 @@ extract_value_cb() {
 # Run lncli channelbalance and capture the JSON output
 if grep -q "lnd-" $ic || grep -q "litd" $ic ; then 
 cb_json=$(lncli channelbalance)
-elif grep -q "lnddocker-" $ic ; then
-cb_json=$(docker exec lnd lncli channelbalance)
+elif grep -q "lndpodman-" $ic ; then
+cb_json=$(podman exec lnd lncli channelbalance)
 fi
 
 # Parse specific values

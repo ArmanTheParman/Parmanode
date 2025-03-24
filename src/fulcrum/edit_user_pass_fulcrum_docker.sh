@@ -1,4 +1,4 @@
-function edit_user_pass_fulcrum_docker {
+function edit_user_pass_fulcrum_podman {
 
 nogsedtest
 sudo gsed -i "/rpcuser/d" $fc

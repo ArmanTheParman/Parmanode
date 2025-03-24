@@ -10,7 +10,7 @@ function ParmanodL_unmount {
    # fi
 
    # if [[ $OS == Mac ]] ; then
-      docker exec -it ParmanodL /bin/bash -c "umount /tmp/mnt/raspi/dev ; \
+      podman exec -it ParmanodL /bin/bash -c "umount /tmp/mnt/raspi/dev ; \
                                               umount /tmp/mnt/raspi/sys ; \
                                               umount /tmp/mnt/raspi/proc ; \
                                               umount /tmp/mnt/raspi"

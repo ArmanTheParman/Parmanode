@@ -22,7 +22,7 @@ esac
 done
 debug "1"
 #check Docker running, esp Mac
-if ! docker ps >$dn 2>&1 ; then echo -e "
+if ! podman ps >$dn 2>&1 ; then echo -e "
 ########################################################################################
 
     Docker doesn't seem to be running. Please start it and, once it's running, hit $green 
@@ -34,7 +34,7 @@ choose "emq" ; read choice
 jump $choice 
 case $choice in Q|q) exit 0 ;; m|M) back2main ;; esac
 set_terminal
-if ! docker ps >$dn 2>&1 ; then echo -e "
+if ! podman ps >$dn 2>&1 ; then echo -e "
 ########################################################################################
 
     Docker is still$red not running$orange. 
@@ -52,7 +52,7 @@ fi
 fi
 debug "1"
 stop_public_pool 
-docker rm public_pool public_pool_ui >$dn 2>&1 ; debug "containers stopped and removed"
+podman rm public_pool public_pool_ui >$dn 2>&1 ; debug "containers stopped and removed"
 cd
 sudo rm -rf $hp/public_pool $hp/public_pool_ui >$dn 2>&1
 sudo rm $dp/*public_pool* $dp/.socat1_public_pool_ui $dp/.socat2_public_pool_ui >$dn 2>&1

@@ -48,7 +48,7 @@ m|M) back2main ;;
 v|V)
 if [[ $combomenu == "true" ]] ; then
 set_terminal
-docker exec btcpay bitcoin-cli --version
+podman exec btcpay bitcoin-cli --version
 enter_continue
 continue
 elif [[ $OS == Linux ]] ; then
@@ -62,7 +62,7 @@ fi
 gi)
 if [[ $combomenu == "true" ]] ; then
 set_terminal
-docker exec btcpay bitcoin-cli -getinfo
+podman exec btcpay bitcoin-cli -getinfo
 enter_continue
 continue
 elif [[ $OS == Linux ]] ; then
@@ -77,7 +77,7 @@ fi
 ni)
 if [[ $combomenu == "true" ]] ; then
 set_terminal
-docker exec btcpay bitcoin-cli -netinfo
+podman exec btcpay bitcoin-cli -netinfo
 enter_continue
 continue
 elif [[ $OS == Linux ]] ; then
@@ -96,7 +96,7 @@ read block ; set_terminal
 
 if [[ $combomenu == "true" ]] ; then
 set_terminal
-docker exec btcpay bitcoin-cli getblockhash $block
+podman exec btcpay bitcoin-cli getblockhash $block
 enter_continue
 continue
 elif [[ $OS == Linux ]] ; then
@@ -211,7 +211,7 @@ if [[ $combomenu == "true" ]] ; then
     echo "Please paste in the MESSAGE TEXT and hit <enter> : " ; read message
     echo ""
     echo ""
-    docker exec btcpay bitcoin-cli verifymessage "$address" "$signature" "$message" 
+    podman exec btcpay bitcoin-cli verifymessage "$address" "$signature" "$message" 
     enter_continue
     continue
 elif [[ $OS == Linux ]] ; then

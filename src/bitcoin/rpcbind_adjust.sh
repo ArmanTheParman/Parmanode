@@ -26,17 +26,17 @@ $orange
 echo "rpcallowip=$IP" | sudo tee -a $bc >$dn 2>&1
 
 
-#question 2 - docker containers that are running
-docker ps 2>/dev/null | tail -n1 | awk '{print $1}' | grep -q CONTAINER || \
+#question 2 - podman containers that are running
+podman ps 2>/dev/null | tail -n1 | awk '{print $1}' | grep -q CONTAINER || \
 yesorno "${green}Question 2:
 $orange
     Do you want to add this/these Docker IP address(es) to the bitcoin.conf file?
 $green
-$(docker inspect -f '{{.Name}} - {{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $(docker ps -q) | gsed 's/^\///')
+$(podman inspect -f '{{.Name}} - {{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $(podman ps -q) | gsed 's/^\///')
 $orange
     You can decline and add them yourself later, or manually delete them.
 " &&
-docker inspect -f '{{.Name}} - {{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $(docker ps -q) \
+podman inspect -f '{{.Name}} - {{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $(podman ps -q) \
 | awk '{print $3}' | while read theip ; do echo rpcbind=$theip | tee -a $bc ; done
 
 #question 3 - another computer on the network

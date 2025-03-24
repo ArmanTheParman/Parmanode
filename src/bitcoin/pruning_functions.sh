@@ -6,7 +6,7 @@ function prune_choice {
 if [[ $importdrive == "true" || $bitcoin_drive_import == "true" || $skip_prune_choice == "true" ]] ; then return 0 ; fi
 while true ; do
 set_terminal
-if [[ $btcpayinstallsbitcoin != "true" && $btcdockerchoice != "yes" ]] || [[ $btcpay_combo == "true" ]] ; then
+if [[ $btcpayinstallsbitcoin != "true" && $btcpodmanchoice != "yes" ]] || [[ $btcpay_combo == "true" ]] ; then
 echo -e "
 ########################################################################################
       $cyan                               

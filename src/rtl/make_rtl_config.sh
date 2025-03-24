@@ -2,7 +2,7 @@ function make_rtl_config {
 if [[ $OS != Mac ]] ; then
 localhostaddr="127.0.0.1"
 else
-localhostaddr=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' lnd)
+localhostaddr=$(podman inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' lnd)
 fi
 echo "  
 {

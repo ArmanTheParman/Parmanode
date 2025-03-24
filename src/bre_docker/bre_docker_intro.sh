@@ -1,4 +1,4 @@
-function bre_docker_intro {
+function bre_podman_intro {
 set_terminal ; echo -e "
 ########################################################################################
 $cyan

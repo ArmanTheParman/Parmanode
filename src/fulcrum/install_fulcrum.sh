@@ -1,10 +1,10 @@
 function install_fulcrum {
 unset configure_bitcoin_self
 debug "${FUNCNAME[0]}"
-#when I make fulcrum for mac without docker, make sure to edit patch7
+#when I make fulcrum for mac without podman, make sure to edit patch7
 sned_sats
 set_terminal
-if [[ $1 == "docker" ]] ; then export fulcrumdocker="true" ; else export fulcrumdocker="false" ; fi 
+if [[ $1 == "podman" ]] ; then export fulcrumpodman="true" ; else export fulcrumpodman="false" ; fi 
 
 if ! grep "bitcoin-end" $ic >$dn ; then
     if yesorno "Could not detect a Bitcoin installation made
@@ -34,20 +34,20 @@ fi
 
 [[ -z $configure_bitcoin_self ]] && { check_bitcoin_not_pruned || return 1 ; }
 
-if [[ $fulcrumdocker == "true" ]] && [[ $debug != 1 ]] ; then
+if [[ $fulcrumpodman == "true" ]] && [[ $debug != 1 ]] ; then
 
-    #check docker installed
-    grep -q "docker-end" $HOME/.parmanode/installed.conf || { announce "Must install Docker first. Aborting." ; return 1 ; }
-    #check docker is running
+    #check podman installed
+    grep -q "podman-end" $HOME/.parmanode/installed.conf || { announce "Must install Docker first. Aborting." ; return 1 ; }
+    #check podman is running
 
-    if ! docker ps >$dn 2>&1 ; then 
+    if ! podman ps >$dn 2>&1 ; then 
     announce "Please make sure Docker is running, then try again. Aborting."
     return 1
     fi
 
     #remove old container, just in case
-    docker stop fulcrum >$dn 2>&1 
-    docker rm fulcrum >$dn 2>&1 
+    podman stop fulcrum >$dn 2>&1 
+    podman rm fulcrum >$dn 2>&1 
 
 fi
 
@@ -58,7 +58,7 @@ if [[ $drive_fulcrum == "external" ]] && [[ ! -d $pd/fulcrum_db ]] ; then
 format_ext_drive "Fulcrum" || { enter_continue "exiting...  ##" && return 1 ; }
 fi
 
-if [[ $fulcrumdocker == "true" ]] ; then
+if [[ $fulcrumpodman == "true" ]] ; then
     installed_config_add "fulcrumdkr-start"
 else
     installed_config_add "fulcrum-start"
@@ -74,10 +74,10 @@ make_fulcrum_config ||  { enter_continue "exiting... ####" && return 1 ; }
 
 make_ssl_certificates fulcrum || { enter_continue "exiting... #####" && return 1 ; }
 
-if [[ $fulcrumdocker == "true" ]] ; then
-    build_fulcrum_docker || { echo "Build failed. Aborting" ; enter_continue ; return 1 ; }
-    run_fulcrum_docker || { announce "Docker run failed. Aborting." ; return 1 ; }
-    #start fulcrum for docker
+if [[ $fulcrumpodman == "true" ]] ; then
+    build_fulcrum_podman || { echo "Build failed. Aborting" ; enter_continue ; return 1 ; }
+    run_fulcrum_podman || { announce "Docker run failed. Aborting." ; return 1 ; }
+    #start fulcrum for podman
     installed_config_add "fulcrumdkr-end"
 else
     download_fulcrum || { enter_continue "exiting... 6#" ; return 1 ; }
@@ -89,7 +89,7 @@ else
     installed_config_add "fulcrum-end"
 fi
 
-unset fulcrumdocker
+unset fulcrumpodman
 success "Fulcrum has been installed"
 }
 

@@ -34,7 +34,7 @@ done
 
 btcrecover_data_permissions || return 1
 
-docker exec -it btcrecover /bin/bash -c "python3 /home/parman/parman_programs/parmanode/src/ParmaWallet/electrum_cracker/crack.py"
+podman exec -it btcrecover /bin/bash -c "python3 /home/parman/parman_programs/parmanode/src/ParmaWallet/electrum_cracker/crack.py"
 
 }
 

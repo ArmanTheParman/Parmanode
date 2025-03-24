@@ -1,12 +1,12 @@
 function ispublicpoolrunning {
 while true ; do
 
-if ! docker ps >$dn 2>&1 ; then
+if ! podman ps >$dn 2>&1 ; then
 export publicpoolrunning="false"
 break
 fi
 
-if docker ps | grep -q 'public_pool' ; then
+if podman ps | grep -q 'public_pool' ; then
 export publicpoolrunning="true" 
 fi
 break
@@ -18,7 +18,7 @@ function isbitcoinrunning {
 unset bitcoinrunning
 
 if grep -q "btccombo" $ic ; then
-    if docker exec btcpay ps | grep -q bitcoind ; then
+    if podman exec btcpay ps | grep -q bitcoind ; then
         export bitcoinrunning="true"
     else 
         export bitcoinrunning="false"
@@ -26,7 +26,7 @@ if grep -q "btccombo" $ic ; then
 return 0
 fi
 
-if [[ $OS == Mac ]] ; then #if docker container, then previous btccombo check takes care of it
+if [[ $OS == Mac ]] ; then #if podman container, then previous btccombo check takes care of it
     if pgrep Bitcoin-Q >$dn ; then 
     export bitcoinrunning="true"
     else 
@@ -65,13 +65,13 @@ function islndrunning {
 unset lndrunning
 if ps -x | grep lnd | grep bin >$dn 2>&1 || \
    ps -x | grep litd | grep bin >$dn 2>&1 || \
-   docker exec lnd pgrep lnd >$dn 2>&1 ; then
+   podman exec lnd pgrep lnd >$dn 2>&1 ; then
 export lndrunning="true"
 else
 export lndrunning="false"
 fi
 
-if ! grep -q "lnddocker" $ic ; then 
+if ! grep -q "lndpodman" $ic ; then 
 
     if lncli walletbalance >$dn 2>&1 ; then 
     export lndwallet=unlocked
@@ -79,7 +79,7 @@ if ! grep -q "lnddocker" $ic ; then
     export lndwallet=locked
     fi
 else
-    if docker exec lnd lncli walletbalance >$dn 2>&1 ; then 
+    if podman exec lnd lncli walletbalance >$dn 2>&1 ; then 
     export lndwallet=unlocked
     else
     export lndwallet=locked
@@ -98,7 +98,7 @@ if grep -q "fulcrum-" $ic ; then
 fi 
 
 if grep -q "fulcrumdkr-" $ic ; then
-    if docker ps 2>$dn | grep -q fulcrum && docker exec -it fulcrum bash -c "pgrep Fulcrum" >$dn 2>&1 ; then
+    if podman ps 2>$dn | grep -q fulcrum && podman exec -it fulcrum bash -c "pgrep Fulcrum" >$dn 2>&1 ; then
     export fulcrumrunning="true"
     else
     export fulcrumrunning="false"
@@ -119,12 +119,12 @@ if grep -q electrs- $ic >$dn 2>&1 || grep -q electrs2- $ic >$dn 2>&1 ; then
 fi #end if grep
 
 if grep -q electrsdkr $ic ; then
-    if ! docker ps | grep -q electrs ; then
+    if ! podman ps | grep -q electrs ; then
     export electrsrunning="false"
     return 1
     fi
 
-    if docker exec -it electrs /home/parman/parmanode/electrs/target/release/electrs --version >$dn 2>&1 ; then
+    if podman exec -it electrs /home/parman/parmanode/electrs/target/release/electrs --version >$dn 2>&1 ; then
     export electrsrunning="true"
     else
     export electrsrunning="false"
@@ -145,8 +145,8 @@ if [[ $computer_type == LinuxPC ]] ; then
 fi
 
 if [[ $OS == Mac || $computer_type == Pi ]] ; then
-    if  docker ps 2>$dn | grep -q bre ; then 
-        if docker exec -itu root bre /bin/bash -c 'ps -xa | grep "btc-rpc"' | grep -v grep >$dn 2>&1 ; then
+    if  podman ps 2>$dn | grep -q bre ; then 
+        if podman exec -itu root bre /bin/bash -c 'ps -xa | grep "btc-rpc"' | grep -v grep >$dn 2>&1 ; then
         export brerunning="true"
         else
         export brerunning="false"
@@ -159,9 +159,9 @@ fi
 }
 
 function isbtcpayrunning {
-if docker ps 2>$dn | grep -q btcp >$dn 2>&1 \
-&& docker exec -it btcpay bash -c "ps aux | grep csproj | grep btcpay.log | grep -vq grep" \
-&& docker exec -it btcpay bash -c "ps aux | grep csproj | grep NBX | grep -vq grep" ; then
+if podman ps 2>$dn | grep -q btcp >$dn 2>&1 \
+&& podman exec -it btcpay bash -c "ps aux | grep csproj | grep btcpay.log | grep -vq grep" \
+&& podman exec -it btcpay bash -c "ps aux | grep csproj | grep NBX | grep -vq grep" ; then
 export btcpayrunning="true"
 else
 export btcpayrunning="false"
@@ -170,16 +170,16 @@ fi
 
 function isrtlrunning {
 
-if docker ps 2>$dn | grep -q rtl ; then
+if podman ps 2>$dn | grep -q rtl ; then
 export rtlrunning="true"
 else 
 export rtlrunning="false"
 fi
 
 function ismempoolrunning {
-if docker ps 2>$dn | grep -q mempool_web \
-&& docker ps 2>$dn | grep -q docker-api-1 \
-&& docker ps 2>$dn | grep -q docker-db-1 ; then
+if podman ps 2>$dn | grep -q mempool_web \
+&& podman ps 2>$dn | grep -q podman-api-1 \
+&& podman ps 2>$dn | grep -q podman-db-1 ; then
 
 export mempoolrunning="true"
 else
@@ -191,7 +191,7 @@ fi
 
 }
 function isthunderhubrunning {
-if docker ps 2>$dn | grep -q thunderhub ; then
+if podman ps 2>$dn | grep -q thunderhub ; then
 export thunderhubrunning="true"
 else
 export thunderhubrunning="false"

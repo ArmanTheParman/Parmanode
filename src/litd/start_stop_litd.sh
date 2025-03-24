@@ -7,8 +7,8 @@ function start_litd {
     return 0
     fi 
 
-    if grep -q "litddocker-" $ic ; then
-    litd_docker_start
+    if grep -q "litdpodman-" $ic ; then
+    litd_podman_start
     fi
 }
 
@@ -18,8 +18,8 @@ function stop_litd {
     sudo systemctl stop litd.service 
     return 0
     fi
-    if grep -q "litddocker-" $ic ; then
-    litd_docker_stop
+    if grep -q "litdpodman-" $ic ; then
+    litd_podman_stop
     fi
 }
 
@@ -29,9 +29,9 @@ function restart_litd {
     sudo systemctl restart litd.service 
     return 0
     fi
-    if grep -q "litddocker-" $ic ; then
-    litd_docker_stop
-    litd_docker_start
+    if grep -q "litdpodman-" $ic ; then
+    litd_podman_stop
+    litd_podman_start
     fi
 }
 
@@ -50,14 +50,14 @@ done
 return 0
 fi
 
-if grep -q "litddocker-" $ic ; then
+if grep -q "litdpodman-" $ic ; then
 
 local counter=0
 while [[ $counter -lt 6 ]] ; do
-if docker exec litd pgrep litd >$dn ; then return 0
+if podman exec litd pgrep litd >$dn ; then return 0
 fi
 clear ; echo "Starting litd. Please wait..."
-litd_docker_start
+litd_podman_start
 sleep 3
 counter=$((counter + 1))
 done

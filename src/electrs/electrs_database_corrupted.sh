@@ -25,7 +25,7 @@ n|N|NO|No|no) return 0 ;;
 y|Y|YES|Yes|yes) 
 
 if grep -q electrsdkr $dp/installed.conf ; then
-docker_stop_electrs
+podman_stop_electrs
 else
 stop_electrs
 fi

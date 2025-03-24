@@ -32,8 +32,8 @@ unset debug
 invalid_flag=set
 ;;
 
-dockerps)
-clear ; docker ps ; enter_continue ; invalid_flag=set ;;       
+podmanps)
+clear ; podman ps ; enter_continue ; invalid_flag=set ;;       
 
 readfunction)
 clear
