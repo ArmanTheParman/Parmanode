@@ -96,25 +96,25 @@ fi #end electrumx running or not
 echo -en "
 
 $green
-      (start)$orange    Start Electrum X 
+      start)$orange    Start Electrum X 
 $red
-      (stop)$orange     Stop Electrum X
+      stop)$orange     Stop Electrum X
 $cyan
-      (restart)$orange  Restart Electrum X
+      restart)$orange  Restart Electrum X
 $cyan
-      (remote)$orange   Choose which Bitcoin Core for Electrum X to connect to
+      remote)$orange   Choose which Bitcoin Core for Electrum X to connect to
 $cyan
-      (log)$orange      Inspect Electrum X logs
+      log)$orange      Inspect Electrum X logs
 $cyan
-      (ec)$orange       Inspect and edit config file (ecv for vim)
+      ec)$orange       Inspect and edit config file (ecv for vim)
 $cyan
-      (dc)$orange       Electrum X database corrupted? -- Use this to start fresh."
+      dc)$orange       Electrum X database corrupted? -- Use this to start fresh."
 
 if [[ $OS == Linux ]] ; then echo -e "
 $cyan
-      (tor)$orange      Enable/Disable Tor connections to Electrum X -- Status : $E_tor"  ; else echo -e "
+      tor)$orange      Enable/Disable Tor connections to Electrum X -- Status : $E_tor"  ; else echo -e "
 $cyan
-      (newtor)$orange   Refresh Tor address
+      newtor)$orange   Refresh Tor address
 " 
 fi
 echo -e "
@@ -127,6 +127,13 @@ q|Q) exit ;; m|M) back2main ;;
 p|P)
 if [[ $1 == overview ]] ; then return 0 ; fi
 menu_use ;; 
+dc)
+yesorno "This will delete the Electrum X database and start fresh. Are you sure?" || continue
+stop_electrumx
+sudo rm -rf $hp/.electrumx_db/*
+sudo chown -R $USER $hp/.electrumx_db
+success "Electrum X database deleted. You can now start Electrum X."
+;;
 r) 
 please_wait
 refresh="true"
