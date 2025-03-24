@@ -8,6 +8,21 @@ debug end make_parmanode_ssh_keys
 fi
 }
 
+function make_parminer_ssh_keys {
+sudo test -f $HOME/.ssh/extra_keys/parminer-key.pub && return 1 # 1 is logically success here for the calling function
+mkdir -p ~/.ssh
+ssh-keygen -t rsa -b 4096 -f $HOME/.ssh/extra_keys/parminer-key -N "" -C "$USER parminer"
+
+grep -q "github-parminer" ~/.ssh/config >$dn ||
+echo "
+Host github-parminer
+HostName github.com
+User git
+IdentityFile ~/.ssh/extra_keys/parminer-key
+IdentitiesOnly yes" | sudo tee -a ~/.ssh/config >$dn 
+debug end make_parminer_ssh_keys
+}
+
 function make_parmaraid_ssh_keys {
 debug start make_parmaraid_ssh_keys
 sudo test -f $HOME/.ssh/extra_keys/parmaraid-key.pub && return 1 # 1 is logically success here for the calling function
