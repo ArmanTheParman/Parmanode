@@ -12,4 +12,5 @@ function install_homebrew_packages {
     /opt/homebrew/bin/brew install tmux
     /opt/homebrew/bin/brew install tor
     /opt/homebrew/bin/brew install gnu-sed
+    /opt/homebrew/bin/brew install gsed
 }

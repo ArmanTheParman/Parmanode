@@ -39,11 +39,8 @@ echo "
 You may get a prompt to update the PATH - don't worry, Parmanode has done 
 it for you."
 enter_continue
-yesorno "Next, Parmanode wants to install a few programs to make it work better.
-    If you choose to do it later, choose 'update computer' from the Parmanode
-    menu." && {
-    install_homebrew_packages
-    }
+install_homebrew_packages
+
 success "Parmanode has completed installing Homebrew for you."
 return 0
 ;;
