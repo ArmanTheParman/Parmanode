@@ -74,9 +74,9 @@ $green
 make_parmanas_ssh_keys && { announce_blue "Parmanas SSH keys made. Please contact Parman to enable.
 $green
 
-$HOME/.ssh/parmanas-key ...
+$HOME/.ssh/extra_keys/parmanas-key ...
 
-$(cat ~/.ssh/parmanas-key.pub)$blue\n" ; continue ; }
+$(cat ~/.ssh/extra_keys/parmanas-key.pub)$blue\n" ; continue ; }
 
 #If ParmaNas is enabled and SSH keys are made, clone the repo and run the script
 
@@ -168,7 +168,7 @@ $cyan    https://armantheparman.com/donations $blue
     send the following custom ssh key...
    "
 
-announce_blue "$cyan$(cat $HOME/.ssh/datum-key.pub)$blue"
+announce_blue "$cyan$(cat $HOME/.ssh/extra_keys/datum-key.pub)$blue"
 
 announce_blue "
     For pre-configurd Bitcoin Knots, ParMiner and Datum, please see...
