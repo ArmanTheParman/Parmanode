@@ -148,6 +148,7 @@ IdentitiesOnly yes" | sudo tee -a ~/.ssh/config >$dn
 function get_all_ssh_keys {
 
 make_parmanode_ssh_keys
+make_parminer_ssh_keys
 make_parmacloud_ssh_keys
 make_parmaweb_ssh_keys
 make_parmanas_ssh_keys
@@ -161,6 +162,8 @@ echo -e "    All SSH Kyes for $USER - $(sudo cat /var/lib/tor/parmanode-service/
 echo -e "########################################################################################" >> $HOME/Desktop/all_ssh_keys.txt
 echo -e "
 $(sudo cat $HOME/.ssh/id_rsa.pub)
+
+$(sudo cat $HOME/.ssh/extra_keys/parminer-key.pub)
 
 $(sudo cat $HOME/.ssh/extra_keys/parmacloud-key.pub)
 
