@@ -5,12 +5,12 @@ function update_homebrew {
 }
 
 function install_homebrew_packages {
-    /opt/homebrew/bin/brew install bash
-    /opt/homebrew/bin/brew install netcat
-    /opt/homebrew/bin/brew install jq
-    /opt/homebrew/bin/brew install vim
-    /opt/homebrew/bin/brew install tmux
-    /opt/homebrew/bin/brew install tor
-    /opt/homebrew/bin/brew install gnu-sed
-    /opt/homebrew/bin/brew install gsed
+    $macprefix/bin/brew install bash
+    $macprefix/bin/brew install netcat
+    $macprefix/bin/brew install jq
+    $macprefix/bin/brew install vim
+    $macprefix/bin/brew install tmux
+    $macprefix/bin/brew install tor
+    $macprefix/bin/brew install gnu-sed
+    $macprefix/bin/brew install gsed
 }
