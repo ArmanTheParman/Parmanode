@@ -27,8 +27,6 @@ sudo docker run \
 --name nextcloud-aio-mastercontainer \
 --restart unless-stopped \
 --publish 8020:8080 \
---publish 80:80 \
---publish 8443:8443 \
 --env APACHE_PORT=11000 \
 --env APACHE_IP_BINDING=0.0.0.0 \
 --env APACHE_ADDITIONAL_NETWORK="" \
@@ -62,3 +60,8 @@ fi
 #--env APACHE_PORT=11000 \
 #--env APACHE_IP_BINDING=0.0.0.0 \
 #--env APACHE_ADDITIONAL_NETWORK="" \
+
+
+
+#--publish 80:80 \
+#--publish 8443:8443 \
