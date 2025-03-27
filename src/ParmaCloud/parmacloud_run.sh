@@ -17,7 +17,7 @@ sudo docker run \
 nextcloud/all-in-one:latest || { enter_continue "Something went wrong." ; return 1 ; }
 else
 
-if yesorno_blue "Normal Reverse Proxy with Nginx or a CloudFlare Tunnel?" "r" "normal reverse proxy" "c" "cloudflare" ;
+if yesorno_blue "Normal Reverse Proxy with Nginx or a CloudFlare Tunnel?" "r" "normal reverse proxy" "c" "cloudflare" ; then
 sdv="false"
 else
 sdv="true"
