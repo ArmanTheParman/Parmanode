@@ -17,7 +17,12 @@ sudo docker run \
 nextcloud/all-in-one:latest || { enter_continue "Something went wrong." ; return 1 ; }
 else
 
-#if yesorno_blue "Normal Reverse Proxy with Nginx or a CloudFlare Tunnel?" "r" "normal reverse proxy" "c" "cloudflare" ; then
+if yesorno_blue "Normal Reverse Proxy with Nginx or a CloudFlare Tunnel?" "r" "normal reverse proxy" "c" "cloudflare" ;
+sdv="false"
+else
+sdv="true"
+fi
+
 clear
 echo -e "$blue"
 sudo docker run \
@@ -30,7 +35,7 @@ sudo docker run \
 --env APACHE_PORT=11000 \
 --env APACHE_IP_BINDING=0.0.0.0 \
 --env APACHE_ADDITIONAL_NETWORK="" \
---env SKIP_DOMAIN_VALIDATION=false \
+--env SKIP_DOMAIN_VALIDATION=$sdv \
 --volume nextcloud_aio_mastercontainer:/mnt/docker-aio-config \
 --volume /var/run/docker.sock:/var/run/docker.sock:ro \
 nextcloud/all-in-one:latest || { enter_continue "Something went wrong." ; return 1 ; }
@@ -60,7 +65,7 @@ fi
 #--env APACHE_PORT=11000 \
 #--env APACHE_IP_BINDING=0.0.0.0 \
 #--env APACHE_ADDITIONAL_NETWORK="" \
-
+#--env SKIP_DOMAIN_VALIDATION=true
 
 
 #--publish 80:80 \
