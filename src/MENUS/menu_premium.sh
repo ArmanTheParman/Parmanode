@@ -2,7 +2,7 @@ function menu_premium {
 while true ; do
 unset parminer parmacloud parmanas another
 menu_add_source
-[[ ! -e $pp/parmaswap ]] &&          parmaswap="\n#$orange              swap)$blue        ParmaSwap                                                   #
+[[ ! -e $pp/parmaswap ]] &&          parmaswap="\n#$orange              swap)$blue        ParmaSwap                                                  #
 #                                                                                      #"
 [[ ! -e $pp/parminer ]] &&          parminer="\n#$orange                pm)$blue        ParMiner                                                   #
 #                                                                                      #"
