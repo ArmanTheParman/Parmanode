@@ -6,6 +6,8 @@ export MacOSVersion_major=$(sw_vers | grep ProductVersion | cut -d \. -f 1 | gre
 export MacOSVersion_minor=$(sw_vers | grep ProductVersion | cut -d \. -f 2)
 export MacOSVersion_patch=$(sw_vers | grep ProductVersion | cut -d \. -f 3)
 
+! grep -q MacOSVersion $pc 2>$dn || parmanode_conf_add "MacOSVersion=$MacOSVersion"
+
 if [[ ( $MacOSVersion_major -lt 10 ) || ( $MacOSVersion_major == 10 && $MacOSVersion_major -lt 9 ) ]] ; then
 clear
 echo "
