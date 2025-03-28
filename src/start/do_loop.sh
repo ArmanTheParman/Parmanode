@@ -27,7 +27,7 @@ parmanode_variables $@ #CANNOT USE CUSTOM DEBUG FUNCTION BEFORE THIS"
     [[ -e $pp/parmaweb ]] && for file in $pp/parmaweb/src/*.sh ; do
 	    source $file
 	done
-    [[ -e $dp/.parminer_enabled ]] && [[ -e $pp/parminer]] && for file in $pp/parminer/src/*.sh ; do
+    [[ -e $dp/.parminer_enabled ]] && [[ -e $pp/parminer ]] && for file in $pp/parminer/src/*.sh ; do
 	    source $file
 	done
     [[ -e $dp/.datum_enabled ]] && [[ -e $pp/datum ]] && for file in $pp/datum/src/*.sh ; do
