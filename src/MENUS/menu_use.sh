@@ -9,7 +9,7 @@ unset ledgerapp parmashellapp parmaboxapp anydeskapp piholeapp torrelayapp
 unset electrsdkrapp electrsdkr2app torbapp qbittorrentapp mempoolapp torsshapp public_poolapp
 unset electrumxapp thunderhubapp websiteapp lnddockerapp nostrrelay litdapp parmacloudapp
 unset parmanostrapp btcrecoverapp joinmarketapp greenapp parman_booksapp X11app phoenixapp
-unset parminerapp parmanasapp
+unset parminerapp parmanasapp parmascaleapp
 
 set_terminal
 echo -e "
@@ -22,7 +22,9 @@ echo -e "
 "
 ### Premium
 if [[ -e $pp/parmanas ]] ; then
-                       echo -e "                   $cyan       (pnas)$blue       ParaNas$orange" ; parmanasapp=1 ; count=$((count +1)) ; fi
+                       echo -e "                   $cyan       (pnas)$blue       ParmaNas$orange" ; parmanasapp=1 ; count=$((count +1)) ; fi
+if [[ -e $pp/parmascale ]] ; then
+                       echo -e "                   $cyan       (scale)$blue      ParmaScale$orange" ; parmascaleapp=1 ; count=$((count +1)) ; fi
 if [[ -e $pp/parminer ]] ; then 
                        echo -e "                   $cyan       (pm)$blue         ParMiner$orange" ; parminerapp=1 ; count=$((count +1)) ; fi
 if [[ -e $pp/datum ]] ; then 
@@ -525,6 +527,16 @@ if [[ $parmanasapp == 1 ]] ; then
 please_wait
 cd $pp/parmanas/ && git pull >$dn 2>&1
 $pp/parmanas/run_parmanas.sh
+if [[ -n $1 ]] ; then clear ; return 0 ; fi
+else invalid
+fi
+;;
+
+scale)
+if [[ $parmascaleapp == 1 ]] ; then
+please_wait
+cd $pp/parmascale/ && git pull >$dn 2>&1
+menu_parmascale
 if [[ -n $1 ]] ; then clear ; return 0 ; fi
 else invalid
 fi

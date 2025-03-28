@@ -36,6 +36,9 @@ parmanode_variables $@ #CANNOT USE CUSTOM DEBUG FUNCTION BEFORE THIS"
     [[ -e $dp/.uddns_enabled ]] && [[ -e $pp/uddns ]] && for file in $pp/uddns/src/*.sh ; do
 	    source $file
 	done
+    [[ -e $dp/.parmascale_enabled ]] && [[ -e $pp/parmascale ]] && for file in $pp/parmascale/src/*.sh ; do
+	    source $file
+	done
 
 if [[ $parminer == 1 ]] ; then premium=1 ; fi
 
