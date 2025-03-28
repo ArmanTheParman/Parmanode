@@ -1,3 +1,5 @@
+Version 3.57.0
+     -Premium feature added, ParmaScale (TailScale) 
 Version 3.56.2
      -HomeBrew bin file for some Macs was wrong.
 Version 3.56.1
