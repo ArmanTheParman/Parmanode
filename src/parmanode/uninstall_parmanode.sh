@@ -220,20 +220,33 @@ uninstall_lnbits
 set_terminal
 fi
 
+#### Premium apps
 if grep -q "parmascale" $ic ; then
 uninstall_parmascale
 set_terminal
 fi
 if grep -q "uddns" $ic ; then
-uninstall_parmascale
+uninstall_uddns
 set_terminal
 fi
 if grep -q "parminer" $ic ; then
-uninstall_parmascale
+uninstall_parminer
 set_terminal
 fi
 if grep -q "parmacloud" $ic ; then
-uninstall_parmascale
+uninstall_parmacloue
+set_terminal
+fi
+if grep -q "parmaswap" $ic ; then
+uninstall_parmaswap
+set_terminal
+fi
+if grep -q "datum" $ic ; then
+uninstall_datum
+set_terminal
+fi
+if grep -q "remotevault" $ic ; then
+uninstall_remotevault
 set_terminal
 fi
 
