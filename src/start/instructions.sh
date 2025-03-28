@@ -1,14 +1,4 @@
 function instructions {
-
-# If the file exists, source it...
-# checks named file first: 
-#      -f, is 'is it a file?, 
-#      -d is 'is it a directory?', 
-#      -e is 'does it exist?' 
-#      -L is 'is it a symlink?"
-
-# A . is the same as the source command when used like this.
-
 if [[ -f $HOME/.parmanode/hide_messages.conf ]] ; then
 . $HOME/.parmanode/hide_messages.conf >$dn
 fi
