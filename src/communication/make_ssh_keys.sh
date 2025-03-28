@@ -145,6 +145,22 @@ IdentityFile ~/.ssh/extra_keys/uddns-key
 IdentitiesOnly yes" | sudo tee -a ~/.ssh/config >$dn
 }
 
+function make_parmascale_ssh_keys {
+
+sudo test -f $HOME/.ssh/extra_keys/parmascale-key.pub && return 1 # 1 is logically success here for the calling function
+
+mkdir -p ~/.ssh/extra_keys
+ssh-keygen -t rsa -b 4096 -f $HOME/.ssh/extra_keys/parmascale-key -N "" -C "$USER parmascale"
+
+grep -q "github-parmascale" ~/.ssh/config >$dn 2>&1 || 
+echo "
+Host github-parmascale
+HostName github.com
+User git
+IdentityFile ~/.ssh/extra_keys/parmascale-key
+IdentitiesOnly yes" | sudo tee -a ~/.ssh/config >$dn
+}
+
 function get_all_ssh_keys {
 
 make_parmanode_ssh_keys
@@ -156,6 +172,7 @@ make_parmaraid_ssh_keys
 make_datum_ssh_keys
 make_remotevault_ssh_keys
 make_uddns_ssh_keys
+make_parmascale_ssh_keys
 
 echo -e "########################################################################################" >> $HOME/Desktop/all_ssh_keys.txt
 echo -e "    All SSH Kyes for $USER - $(sudo cat /var/lib/tor/parmanode-service/hostname | sed 's/\.onion//')" >> $HOME/Desktop/all_ssh_keys.txt
