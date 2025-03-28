@@ -220,6 +220,25 @@ uninstall_lnbits
 set_terminal
 fi
 
+if grep -q "parmascale" $ic ; then
+uninstall_parmascale
+set_terminal
+fi
+if grep -q "uddns" $ic ; then
+uninstall_parmascale
+set_terminal
+fi
+if grep -q "parminer" $ic ; then
+uninstall_parmascale
+set_terminal
+fi
+if grep -q "parmacloud" $ic ; then
+uninstall_parmascale
+set_terminal
+fi
+
+
+
 set_terminal
 if [[ $debug == 0 ]] ; then 
 while true ; do
