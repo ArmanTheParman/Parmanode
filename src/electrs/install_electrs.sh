@@ -62,9 +62,9 @@ echo -e "
     It's advisable if Bitcoin is stopped when electrs is being installed to conserve
     system resources for the compiling procedure. Shall Parmanode stop it for you? 
 $cyan
-               y)$orange       Stop Bitcoin Core for now
+               y)$orange       Stop Bitcoin for now
 $cyan
-               n)$orange       Leave Bitcoin Core running
+               n)$orange       Leave Bitcoin running
 
 ########################################################################################  
 "
@@ -85,9 +85,9 @@ minV=11 && if [[ $MacOSVersion_major -lt $minV ]] ; then
 announce "electrs has been tested successfully on newer versions of MacOS.
     It fails with older versions. 
 
-    To use Bitoin Core with a wallet using this computer, either update
+    To use Bitoin with a wallet using this computer, either update
     to a later version of MacOS (11+) or use Sparrow directly with
-    Bitcoin Core (it doesn't need electrs or Fulcrum).
+    Bitcoin (it doesn't need electrs or Fulcrum).
 
     Aborting.
     "

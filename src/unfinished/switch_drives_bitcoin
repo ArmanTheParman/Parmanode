@@ -12,7 +12,7 @@ if [[ $drive == "external" && $swap_to == "internal" ]] ; then
     set_terminal
     echo "
 
-    The symbolic link pointing to the drive has been deleted. When you restart Bitcoin Core
+    The symbolic link pointing to the drive has been deleted. When you restart Bitcoin
     it will sync to the default internal directory ($HOME/.bitcoin).
     "
     parmanode_conf_remove "drive="

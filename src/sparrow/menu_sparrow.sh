@@ -155,7 +155,7 @@ $cyan
                CURRENT SPARROW CONNECTION TYPE: $cyan$connection$orange
 
 
-$cyan             d)  $orange     Bitcoin Core via tcp (default)
+$cyan             d)  $orange     Bitcoin via tcp (default)
 
 $cyan             fs)   $orange   Fulcrum via ssl (port 50002)
 

@@ -12,7 +12,7 @@ while true ; do
 set_terminal ; echo -e "
 ########################################################################################
 
-    Parmanode has detected that LND is not configured to connect to Bitcoin Core 
+    Parmanode has detected that LND is not configured to connect to Bitcoin 
     (Docker) correctly. 
     
 

@@ -51,7 +51,7 @@ fi
 #get backend variable
 if grep "MEMPOOL_BACKEND" $mempoolconf | grep -q "none" ; then
 
-    export backend="${yellow}Bitcoin Core$orange"
+    export backend="${yellow}Bitcoin$orange"
 elif grep "MEMPOOL_BACKEND" $mempoolconf | grep -q "electrum" ; then
 export backend="${bright_blue}An Electrum/Fulcrum Server$orange"
 else

@@ -26,7 +26,7 @@ set_terminal
 echo "
 ########################################################################################
     
-    Bitcoin core is currently configured to sync to the $drive drive.
+    Bitcoin is currently configured to sync to the $drive drive.
 
     Would you like to....
 

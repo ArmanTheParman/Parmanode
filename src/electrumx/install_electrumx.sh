@@ -48,9 +48,9 @@ echo -e "
     conserve system resources for the compiling procedure. Shall Parmanode stop it 
     for you? 
 $green
-               y)$orange       Stops Bitcoin Core for now
+               y)$orange       Stops Bitcoin for now
 $red
-               n)$orange       Leave Bitcoin Core running
+               n)$orange       Leave Bitcoin running
 
 ########################################################################################  
 "

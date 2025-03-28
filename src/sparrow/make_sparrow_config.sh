@@ -1,5 +1,5 @@
 # takes arguments to set connection type
-# defualt, no argument, is plain connection to Bitcoin Core.
+# defualt, no argument, is plain connection to Bitcoin.
 function  make_sparrow_config {
 export sparrowconf="$HOME/.sparrow/config"
 

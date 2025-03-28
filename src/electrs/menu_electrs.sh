@@ -119,7 +119,7 @@ $cyan
 $cyan
       (i)$orange        Important info / Troubleshooting
 $cyan
-      (remote)$orange   Choose which Bitcoin Core for electrs to connect to
+      (remote)$orange   Choose which Bitcoin for electrs to connect to
 $cyan
       (c)$orange        How to connect your Electrum wallet to electrs 
 $cyan	    

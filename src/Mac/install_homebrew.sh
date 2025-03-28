@@ -8,7 +8,7 @@ echo -e "
 
     It is recommended that you install the Homebrew package manager for Mac, which
     allows Parmanode to install neceesary modules to make things work. It is not
-    necessary for very basic functionality, eg you just want to install Bitcoin Core
+    necessary for very basic functionality, eg you just want to install Bitcoin
     and Sparrow wallet.
 
     This can take a while, sometimes with very litte feedback during the process. 

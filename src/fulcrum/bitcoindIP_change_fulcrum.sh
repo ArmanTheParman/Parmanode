@@ -4,9 +4,9 @@ while true ; do
 set_terminal ; echo -e "
 ########################################################################################
 $cyan
-                            IP address of Bitcoin Core
+                              IP address of Bitcoin 
 $orange
-    Go get the IP address of the other Bitcoin Core computer that Fulcrum will 
+    Go get the IP address of the other Bitcoin computer that Fulcrum will 
     connect to.
 
     (The standard port of 8332 will be assumed. You must fiddle with this yourself if 

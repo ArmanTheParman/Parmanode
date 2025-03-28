@@ -40,7 +40,7 @@ while true ; do
 clear ; echo -e "
 ########################################################################################
 
-    Please type in the$pink IP address$orange of the Bitcoin Core instance you want to use, then
+    Please type in the$pink IP address$orange of the Bitcoin instance you want to use, then
     hit$cyan <enter> $orange
 
 ########################################################################################
@@ -51,10 +51,10 @@ while true ; do
 clear ; echo -e "
 ########################################################################################    
    
-    Next, enter the rpc username for the Bitcoin Core instance.
+    Next, enter the rpc username for the Bitcoin instance.
     
     This can be found in it's corresponding bitcoin.conf file. If it doesn't exist,
-    then Bitcoin Core doesn't have a username set up. You can create one by adding it
+    then Bitcoin doesn't have a username set up. You can create one by adding it
     to the bitcoin.conf file:
 $yellow
                 rpcuser=some_username

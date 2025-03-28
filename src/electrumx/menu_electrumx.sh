@@ -102,7 +102,7 @@ $red
 $cyan
       restart)$orange  Restart Electrum X
 $cyan
-      remote)$orange   Choose which Bitcoin Core for Electrum X to connect to
+      remote)$orange   Choose which Bitcoin instance for Electrum X to connect to
 $cyan
       log)$orange      Inspect Electrum X logs
 $cyan
