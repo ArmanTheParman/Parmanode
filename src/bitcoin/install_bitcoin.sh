@@ -82,7 +82,7 @@ prune_choice || return 1
 make_bitcoin_directories || return 1
     # make bitcoin directories in appropriate locations
     # installed.conf entry gets made when parmanode/bitcoin directory gets made.
-    # symlinks created (before Bitcoin core installed)
+    # symlinks created (before Bitcoin installed)
 
 debug "after make_bitcoin_directories"
 
@@ -155,7 +155,7 @@ set_terminal
 if [[ $OS == "Linux" ]] ; then
 
     if ! which bitcoind >$dn ; then
-        enter_continue "Something went wrong. Bitcoin Core did not install correctly."
+        enter_continue "Something went wrong. Bitcoin did not install correctly."
         install_failure "Bitcoin"
         log "bitcoin" "no binaries. install failure."
         unset importdrive
@@ -180,7 +180,7 @@ set_terminal ; echo -e "
                                     SUCCESS !!!
 $orange
     Bitcoin should have started syncing. Note, it should also continue to sync 
-    after a reboot, or you can start Bitcoin Core from the Parmanode Bitcoin menu at
+    after a reboot, or you can start Bitcoin from the Parmanode Bitcoin menu at
     any time.
 
     You can also access Bitcoin functions from the Parmanode menu.
@@ -214,9 +214,9 @@ $orange
     Bitcoin can be started from the Parmanode-Bitcoin menu, or by clicking the Bitcoin
     App icon in the Applications folder.
     
-    For now, there is no configuration to automatically make Bitcoin Core 
-    start after a reboot, as it seemed to introduce too much potential for error. 
-    This feature is only available on Linux.
+    For now, there is no configuration to automatically make Bitcoin start after a 
+    reboot, as it seemed to introduce too much potential for error. This feature is 
+    only available on Linux.
 $green
     Do remmember to manually restart Bitcoin should your Mac power off. 
 $orange

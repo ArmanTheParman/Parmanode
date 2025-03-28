@@ -4,9 +4,9 @@ while true ; do
 set_terminal ; echo -e "
 ########################################################################################
 $cyan
-                            IP address of Bitcoin Core
+                            IP address of Bitcoin 
 $orange
-    Go get the IP address of the other Bitcoin Core computer that electrs will 
+    Go get the IP address of the other Bitcoin computer that electrs will 
     connect to, then type the IP address number (${green}e.g. 192.168.0.150$orange), then$cyan <enter>
     $bright_blue
 

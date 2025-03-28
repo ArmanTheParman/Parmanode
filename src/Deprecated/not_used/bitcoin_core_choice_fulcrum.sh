@@ -5,7 +5,7 @@ nogsedtest
 set_terminal ; echo -e "
 ########################################################################################
 
-    Please enter the IP address of the Bitcoin Core instance you want to connect 
+    Please enter the IP address of the Bitcoin instance you want to connect 
     to. For example:
 
             192.168.0.150
@@ -19,7 +19,7 @@ set_terminal
 echo -e "
 ########################################################################################
 
-    Bitcoin Core uses 8332 as the port, unless you change it.
+    Bitcoin uses 8332 as the port, unless you change it.
 
     Hit$cyan <enter>$orange to leave the default, or type a number and$cyan <enter>$orange to
     change it.

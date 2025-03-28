@@ -11,7 +11,7 @@ if [ -z $rpcuser ] ; then
 set_terminal ; echo -e "
 ########################################################################################    
 
-    The program won't work unless Bitcoin Core has a username and password set.
+    The program won't work unless Bitcoin has a username and password set.
 
     Would you like to set that now?    
     

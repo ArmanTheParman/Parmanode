@@ -188,7 +188,7 @@ if [[ $importdrive == "true" ]] ; then return 0 ; fi
 ########################################################################################
 ########################################################################################
 
-#Conenct drive to Bitcoin Core
+#Conenct drive to Bitcoin 
 source $HOME/.parmanode/parmanode.conf
 while [[ $drive == internal ]] ; do
 source $HOME/.parmanode/parmanode.conf

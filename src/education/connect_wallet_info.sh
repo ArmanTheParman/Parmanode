@@ -8,8 +8,8 @@ echo -e "
             $cyan                        Bitcoin Wallet Connection Info$orange
 
     To connect your wallet, you need to first wait for the Bitcoin blockchain to finish syncing. You can 
-    inspect the debug.log file (access from Parmanode Bitcoin Core menu) to check its progress in real 
-    time. Any errors with Bitcoin Core will show up here as well.
+    inspect the debug.log file (access from Parmanode Bitcoin menu) to check its progress in real 
+    time. Any errors with Bitcoin will show up here as well.
 $cyan
                             s)$orange          Sparrow Bitcoin Wallet
 $cyan
@@ -173,7 +173,7 @@ echo -e "
     $cyan                  
                                         Specter Desktop Wallet:
 $orange
-    Newer versions of Specter now allow you to connect not only to Bitcoin Core directly, but to an 
+    Newer versions of Specter now allow you to connect not only to Bitcoin directly, but to an 
     Electrum (Fulcrum) server as well. 
     
     You need to name the connection to proceed. It's not yet tested, but if it insists on a username and 

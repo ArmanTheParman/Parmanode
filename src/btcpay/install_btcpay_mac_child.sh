@@ -48,7 +48,7 @@ function install_bitcoin_inside_docker {
 set_terminal ; echo -e "
 ########################################################################################
 
-    Parmanode will now add Bitcoin Core inside the BTC Pay docker container.
+    Parmanode will now add Bitcoin inside the BTC Pay docker container.
 
     It will sync with the existing data directory on your drive.$red 
     

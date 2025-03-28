@@ -3,7 +3,7 @@ function fulcrum_to_remote {    #called by menu_fulcrum function
 set_terminal ; echo -e "
 ########################################################################################
 
-    You're about to switch which Bitcoin Core instance Fulcrum connects to. Parmanode
+    You're about to switch which Bitcoin instance Fulcrum connects to. Parmanode
     will help you with that. But be aware that if you do this, you'll need to 
     delete the data that Fulcrum has already sync'ed (if any). 
 
@@ -51,7 +51,7 @@ set_terminal ; echo -e "
 $cyan
                                 Bitcoin rpcallowip
 $orange
-    The Bitcoin Core node on the other computer must accept connections from the IP
+    The Bitcoin node on the other computer must accept connections from the IP
     address of the Fulcrum server. You can find your computer's IP address using the
     Parmanode menu (startup --> tools --> what's my IP). 
 
