@@ -685,7 +685,7 @@ fi
 ;;
 
 vw)
-if [[ $bitwardenmenu == 1 ]] ; then
+if [[ $vaultwardenmenu == 1 ]] ; then
 uninstall_bitwarden
 menu_main
 fi
