@@ -9,7 +9,7 @@ unset ledgerapp parmashellapp parmaboxapp anydeskapp piholeapp torrelayapp
 unset electrsdkrapp electrsdkr2app torbapp qbittorrentapp mempoolapp torsshapp public_poolapp
 unset electrumxapp thunderhubapp websiteapp lnddockerapp nostrrelay litdapp parmacloudapp
 unset parmanostrapp btcrecoverapp joinmarketapp greenapp parman_booksapp X11app phoenixapp
-unset parminerapp parmanasapp parmascaleapp
+unset parminerapp parmanasapp parmascaleapp vaultwardenapp
 
 set_terminal
 echo -e "
@@ -103,7 +103,7 @@ if grep -q "phoenix-end" $HOME/.parmanode/installed.conf ; then phoenixapp=1
 ### Mining
 if grep -q "public_pool-end" $HOME/.parmanode/installed.conf ; then public_poolapp=1
                        echo -e "                        $cyan  (pool)$orange       Public Pool " ; count=$((count +1)) ; fi
-### General 1
+### General
 if grep -q "parmashell-end" $HOME/.parmanode/installed.conf ; then parmashellapp=1
                        echo -e "                        $cyan  (ps)$orange         Parmashell " ; count=$((count +1)) ; fi
 if grep -q "anydesk-end" $HOME/.parmanode/installed.conf ; then anydeskapp=1
@@ -116,6 +116,8 @@ if grep -q "nostrrelay-end" $HOME/.parmanode/installed.conf ; then nostrrelayapp
                        echo -e "                        $cyan  (nr)$orange         Nostr Relay " ; count=$((count +1)) ; fi
 if grep -q "X11-end" $HOME/.parmanode/installed.conf ; then X11app=1
                        echo -e "                        $cyan  (x11)  $orange      X11 Forwarding " ; count=$((count +1)) ; fi
+if grep -q "vaultwarden-end" $HOME/.parmanode/installed.conf ; then vaultwardenapp=1
+                       echo -e "                        $cyan  (vw)  $orange       VaultWarden" ; count=$((count +1)) ; fi
 ### Education
 if [[ -d $hp/parman_books ]] ; then parman_booksapp=1
                        echo -e "                        $cyan  (pb)  $orange       Parman Books " ; count=$((count +1)) ; fi
@@ -456,6 +458,13 @@ gr|green)
 X11|x11)
    if [[ $X11app == 1 ]] ; then
    menu_X11
+   if [[ -n $1 ]] ; then clear ; return 0 ; fi
+   else invalid
+   fi
+   ;;
+vw)
+   if [[ $vaultwardenapp == 1 ]] ; then
+   menu_vaultwarden
    if [[ -n $1 ]] ; then clear ; return 0 ; fi
    else invalid
    fi
