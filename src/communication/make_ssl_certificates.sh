@@ -12,23 +12,22 @@ elif [[ $OS == Mac ]] ; then
     fi
 fi
 
-cd $hp/${1} 2>$dn
+cd $hp/${1} 2>$dn #errors here handled next...
 
-if [[ $1 == electrsdrk || $1 == electrs ]] ; then
-    mkdir -p $HOME/.electrs >$dn 2>&1
-    cd $HOME/.electrs
-fi
+    if [[ $1 == "electrsdrk" || $1 == "electrs" ]] ; then
+        mkdir -p $HOME/.electrs >$dn 2>&1
+        cd $HOME/.electrs
+    fi
 
-if [[ $1 == fulcrum ]] ; then
-    mkdir -p $HOME/.fulcrum >$dn 2>&1
-    cd $HOME/.fulcrum
-fi
+    if [[ $1 == "fulcrum" ]] ; then
+        mkdir -p $HOME/.fulcrum >$dn 2>&1
+        cd $HOME/.fulcrum
+    fi
 
 #for populating the open ssl key command
 
-#local address="127.0.0.1"
 local address=$IP #TEST THIS AGAIN
-if [[ $1 == public_pool_ui ]] ; then local address="localhost" ; fi
+if [[ $1 == "public_pool_ui" ]] ; then local address="localhost" ; fi
 
 openssl req -newkey rsa:2048 -nodes -x509 -keyout key.pem -out cert.pem -days 36500 -subj "/C=/L=/O=/OU=/CN=$address/ST/emailAddress=/" >$dn 2>&1
 }

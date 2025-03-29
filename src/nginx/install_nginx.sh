@@ -12,7 +12,7 @@ else
     installed_conf_remove "nginx-"
     fi
 
-    if [[ $OS == Mac ]] ; then 
+    if [[ $OS == "Mac" ]] ; then 
         brew_check Nginx || return 1
         brew install nginx 
     elif [[ $OS == "Linux" ]] ; then
