@@ -1,7 +1,7 @@
 function menu_vaultwarden {
 while true ; do 
 if ! grep -q "tailscale-end" $ic ; then pca="${red}Not Installed" ; fi
-
+get_onion_address_variable vaultwarden
 set_terminal 40 110 ; echo -e "
 ##############################################################################################################$cyan
                                              VaultWarden Menu            $orange                   
@@ -11,7 +11,7 @@ set_terminal 40 110 ; echo -e "
 
     Connection TCP:$cyan  http://localhost:19080 ; http://$IP:19080 ; http://127.0.0.1:19080$orange
     Connection SSL: $cyan http://localhost:19443 ; http://$IP:19443 ; http://127.0.0.1:19443$orange
-    Connection Tor:$cyan  $VW_ONION_ADDR$orange
+    Connection Tor:$cyan  http://$ONION_ADDR_VAULTWARDEN:7009 $orange
     Connection ParmaScale:$cyan $pca$orange
 
 $green
