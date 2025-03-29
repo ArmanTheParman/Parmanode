@@ -684,6 +684,13 @@ menu_main
 fi
 ;;
 
+vw)
+if [[ $bitwardenmenu == 1 ]] ; then
+uninstall_bitwarden
+menu_main
+fi
+;;
+
 *)
 	invalid
 	continue
