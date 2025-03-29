@@ -638,4 +638,17 @@ else
    #not installed
 phoenix_n="#$cyan                            (pho)   $orange      Phoenix Server                              #"
 fi
+
+#Vaultwarden
+unset vaultwarden_i vaultwarden_p vaultwarden_n
+if grep -q "vaultwarden-end" $HOME/.parmanode/installed.conf ; then 
+  #installed
+vaultwarden_i="#                                      VaultWarden                                     #"
+elif grep -q "X11-start" $HOME/.parmanode/installed.conf ; then 
+   #partially installed
+vaultwarden_p="#                                      VaultWarden                                     #"
+else
+   #not installed
+vaultwarden_n="#$cyan                            (vw)    $orange      VaultWarden                                 #"
+fi
 }

@@ -15,7 +15,7 @@ unset sparrowmenu rtlmenu electrummenu torservermenu btcTORmenu spectermenu btcr
 unset electrsmenu trezormenu ledgermenu bitboxmenu parmashellmenu bredockermenu parmaboxmenu
 unset anydeskmenu piholemenu torrelaymenu electrskdmenu piappsmenu torbmenu electrs2menu electrsdkr2menu
 unset public_poolmenu electrumxmenu thunderhubmenu lnddockermenu nginxmenu nostrrelaymenu litdmenu
-unset parmacloudmenu parmanostrmenu btcrecovermenu joinmarketmenu greenmenu X11menu
+unset parmacloudmenu parmanostrmenu btcrecovermenu joinmarketmenu greenmenu X11menu phoenixmenu vaultwardenmenu
 
 echo -e "
 ########################################################################################
@@ -47,13 +47,13 @@ if grep -q "parmacloud-end" $HOME/.parmanode/installed.conf ; then parmacloudmen
 echo -e "#$cyan                            (cloud)$blue            ParmaCloud$orange                             #
 #                                                                                      #"
 elif grep -q "parmacloud-start" $HOME/.parmanode/installed.conf ; then parmacloudmenu=1
-echo -e "#$cyan                            (cloud)$blue            ParmaCloud$orange              $red$blinkon(partial)$blinkoff$orange      #
+echo -e "#$cyan                            (cloud)$blue            ParmaCloud$orange         $red$blinkon(partial)$blinkoff$orange      #
 #                                                                                      #" ; fi
 if grep -q "website-end" $HOME/.parmanode/installed.conf ; then websitemenu=1
 echo -e "#$cyan                            (pw)$blue               WordPress Website (ParmaWeb)           $orange#
 #                                                                                      #"
 elif grep -q "website-start" $HOME/.parmanode/installed.conf ; then websitemenu=1
-echo -e "#$cyan                            (pw)$blue               WordPress Website $red$blinkon(partial)$blinkoff$blue            #
+echo -e "#$cyan                            (pw)$blue               WordPress Website         $red$blinkon(partial)$blinkoff$orange      #
 #                                                                                      #" ; fi
 if grep -q "bitcoin-end" $HOME/.parmanode/installed.conf ; then bitcoinmenu=1
 echo -e "#$cyan                            (bitcoin)$orange$orange          Bitcoin                                #
@@ -131,7 +131,7 @@ if grep -q "specter-end" $HOME/.parmanode/installed.conf ; then spectermenu=1
 echo -e "#$cyan                            (specter)$orange          Specter Wallet                         #
 #                                                                                      #"
 elif grep -q "specter-start" $HOME/.parmanode/installed.conf ; then spectermenu=1
-echo -e "                                     (specter)          Specter Wallet                 #$cya
+echo -e "                                     (specter)          Specter Wallet $red$blinkon(partial)$blinkoff$orange                   #
 #                                                                                      #" ; fi
 if grep -q "btcrpcexplorer-end" $HOME/.parmanode/installed.conf ; then btcrpcexplorermenu=1
 echo -e "#$cyan                            (bre)$orange              BTC RPC Explorer                       #
@@ -317,13 +317,19 @@ if grep -q "X11-end" $HOME/.parmanode/installed.conf ; then X11menu=1
 echo -e "#$cyan                            (x11)$orange              X11                                    #
 #                                                                                      #"
 elif grep -q "X11-start" $HOME/.parmanode/installed.conf ; then X11menu=1
-echo -e "#$cyan                            (x11)$orange              X11           $red$blinkon(partial)$blinkoff$orange       #
+echo -e "#$cyan                            (x11)$orange              X11                    $red$blinkon(partial)$blinkoff$orange       #
 #                                                                                      #" ; fi
 if grep -q "phoenix-end" $HOME/.parmanode/installed.conf ; then phoenixmenu=1
 echo -e "#$cyan                            (pho)$orange              Phoenix Server                         #
 #                                                                                      #"
 elif grep -q "phoenix-start" $HOME/.parmanode/installed.conf ; then phoenixmenu=1
 echo -e "#$cyan                            (pho)$orange              Phoenix Server         $red$blinkon(partial)$blinkoff$orange       #
+#                                                                                      #" ; fi
+if grep -q "vaultwarden-end" $HOME/.parmanode/installed.conf ; then vaultwardenmenu=1
+echo -e "#$cyan                            (vw)$orange               VaultWarden                            #
+#                                                                                      #"
+elif grep -q "vaultwarden-start" $HOME/.parmanode/installed.conf ; then vaultwardenmenu=1
+echo -e "#$cyan                            (vw)$orange               VaultWarden            $red$blinkon(partial)$blinkoff$orange       #
 #                                                                                      #" ; fi
 echo -e "#                                                                                      #
 ########################################################################################
