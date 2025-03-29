@@ -16,7 +16,7 @@ docker run -d \
       -e WEBSOCKET_ENABLED=true \
       -v $HOME/.vw_data:/data \
       -p 19080:80 \
-      -restart unless-stopped \
+      --restart unless-stopped \
       vaultwarden/server:latest || { enter_continue "Something went wrong." ; return 1 ; }
 
 installed_config_add "vaultwarden-end"
