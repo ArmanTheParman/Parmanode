@@ -1,3 +1,5 @@
+Version 3.58.0
+     -VaultWarden
 Version 3.57.0
      -Premium feature added, ParmaScale (TailScale) 
 Version 3.56.2
