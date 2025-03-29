@@ -10,7 +10,7 @@ set_terminal 40 110 ; echo -e "
     VaultWarden is: $vwr                                                                     
 
     Connection TCP:$cyan  http://localhost:19080 ; http://$IP:19080 ; http://127.0.0.1:19080$orange
-    Connection SSL: $cyan http://localhost:19443 ; http://$IP:19443 ; http://127.0.0.1:19443$orange
+    Connection SSL: $cyan https://localhost:19443 ; https://$IP:19443 ; https://127.0.0.1:19443$orange
     Connection Tor:$cyan  http://$ONION_ADDR_VAULTWARDEN:7009 $orange
     Connection ParmaScale:$cyan $pca$orange
 
