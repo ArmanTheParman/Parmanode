@@ -1,4 +1,21 @@
 function install_vaultwarden {
+
+yesorno "Please be aware of a very nasty danger with password managers...
+
+    They are not magical tools, they are databases that store your password in an
+    encrypted way. You access them with a master password, resulting in decryption
+    and reading of the passwords, never storing the actual passwords anywhere
+    in readable format.
+
+    But just because the database/server never sees you're passwords, it doesn't 
+    mean you're automatically safe. The client computer "sees" your decryption 
+    password (because you type it to unlock), and if that leaks, ALL your passwords
+    are exposed, including the bitcoin seed phrase you should never have added in 
+    there. Be warned.
+
+    Proceed to install VaultWarden?" || return 0
+
+
 install=vaultwarden
 if ! grep docker-end $ic ; then announce "Please install Docker first. Aborting" ; return 1 ; fi
 if ! docker ps >$dn ; then announce "Please start Docker first. Aborting." ; return 1 ; fi
