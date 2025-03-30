@@ -1,4 +1,4 @@
-     function vaultwarden_start {
+     function start_vaultwarden {
 
 if ! docker ps >$dn 2>&1 ; then set_terminal ; echo -e "
 ########################################################################################$red
@@ -12,7 +12,7 @@ fi
 docker start vaultwarden
 }
 
-function vaultwarden_stop {
+function stop_vaultwarden {
 
 if ! docker ps >$dn 2>&1 ; then set_terminal ; echo -e "
 ########################################################################################$red
@@ -26,7 +26,7 @@ fi
 docker stop vaultwarden
 }
 
-function vaultwarden_restart {
+function restart_vaultwarden {
 
 if ! docker ps >$dn 2>&1 ; then set_terminal ; echo -e "
 ########################################################################################$red
