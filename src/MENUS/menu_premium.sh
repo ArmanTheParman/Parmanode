@@ -4,7 +4,7 @@ unset parminer parmacloud parmanas another
 menu_add_source
 [[ ! -e $pp/parmaswap ]] &&          parmaswap="\n#$orange              swap)$blue        ParmaSwap                                                  #
 #                                                                                      #"
-[[ ! -e $pp/parmascalexxxxx ]] &&          parmascale="\n#$orange             scale)$blue        ParmaScale                                                 #
+[[ ! -e $pp/parmascale ]] &&          parmascale="\n#$orange             scale)$blue        ParmaScale                                                 #
 #                                                                                      #"
 [[ ! -e $pp/parminer ]] &&          parminer="\n#$orange                pm)$blue        ParMiner                                                   #
 #                                                                                      #"
