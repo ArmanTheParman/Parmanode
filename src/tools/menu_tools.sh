@@ -95,7 +95,7 @@ return 0
 
 
       rs|RS)
-      rsync
+      rsync_wizard
       ;;
 
 svr)

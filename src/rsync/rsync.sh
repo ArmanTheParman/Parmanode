@@ -1,4 +1,4 @@
-function rsync {
+function rsync_wizard {
 unset source destination
 while true ; do
 set_terminal ; echo -e "
