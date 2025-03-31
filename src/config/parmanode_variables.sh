@@ -38,6 +38,7 @@ elif [[ $(uname) == "Darwin" ]] ; then
     export varlibtor="$macprefix/var/lib/tor"
 fi
 
+export pdc="$HOME/.parmanode/parmadrive.conf"
 export pd=$parmanode_drive
 export dp="$HOME/.parmanode"
 export hp="$HOME/parmanode"
