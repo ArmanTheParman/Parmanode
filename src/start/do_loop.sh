@@ -24,21 +24,7 @@ deactivate >/dev/null 2>&1
 gsed_symlink 
 parmanode_variables $@ #CANNOT USE CUSTOM DEBUG FUNCTION BEFORE THIS"
 
-    [[ -e $pp/parmaweb ]] && for file in $pp/parmaweb/src/*.sh ; do
-	    source $file
-	done
-    [[ -e $dp/.parminer_enabled ]] && [[ -e $pp/parminer ]] && for file in $pp/parminer/src/*.sh ; do
-	    source $file
-	done
-    [[ -e $dp/.datum_enabled ]] && [[ -e $pp/datum ]] && for file in $pp/datum/src/*.sh ; do
-	    source $file
-	done
-    [[ -e $dp/.uddns_enabled ]] && [[ -e $pp/uddns ]] && for file in $pp/uddns/src/*.sh ; do
-	    source $file
-	done
-    [[ -e $dp/.parmascale_enabled ]] && [[ -e $pp/parmascale ]] && for file in $pp/parmascale/src/*.sh ; do
-	    source $file
-	done
+source_premium
 
 if [[ $parminer == 1 ]] ; then premium=1 ; fi
 
