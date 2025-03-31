@@ -29,6 +29,7 @@ else
     rm $tmp/bitcoinsha256 >$dn 2>&1
 fi
 
+if [[ $skipverify == "true" ]] ; then return 0 ; fi
 sleep 3
 echo -e "\nPlease wait a moment for gpg verification..."
 
