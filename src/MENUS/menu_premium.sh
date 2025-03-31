@@ -59,90 +59,15 @@ announce_blue "ParmaSwap is a remote backup swap service allowing you and a frie
       "
 ;;
 scale)
-if [[ ! -e $dp/.parmascale_enabled ]] ; then 
-announce_blue "ParmaScale is TailScale integration for all ParmaDrives, and part of$orange ParmaSwap$blue,
-    where ParmaDrive machines owned by different people are connected, with automated
-    receiprocal encrypted backups, to facilitate redundancy of your personal data, and 
-    avoiding a single point of failure; this way you can deGoogle yourself safely.
-$orange
-    ParmaScale$blue is just one component of that. You man install Parmascale on your
-    Parmanode machine (Mac or Linux) for a smol fee of only 40k sats."
-else
-make_parmascale_ssh_keys && { announce_blue "ParmaScale SSH keys made. Please contact Parman to enable.
-$green
-
-$HOME/.ssh/extra_keys/parmascale-key ...
-
-$(cat ~/.ssh/extra_keys/parmascale-key.pub)$blue\n" ; continue ; }
-#If ParmaScale is enabled and SSH keys are made, clone the repo and run the script
-
-    if [[ ! -d $pp/parmascale ]] ; then
-    git clone git@github-parmascale:armantheparman/parmascale.git $pp/parmascale || { enter_continue "\n$blue    Something went wrong. Contact Parman.\n
-    \r    Please contact Parman to enable ParmaScale on your machine.\n$orange" ; continue ; }
-    success_blue "ParmaScale has been installed. Go to the USE menu to use."
-    else
-    cd $pp/parmascale && please_wait && git pull >$dn 2>&1
-    announce_blue "ParmaScale updated. Go to the USU menu to use."
-    fi
-
-source_premium
-
-fi
-    ;;
+get_parmascale
+;;
 
 pnas)
-#If ParmaNas is not enabled, show the message and continue
-    [[ ! -e $dp/.parmanas_enabled ]] && {
-    announce_blue "${cyan}ParmaNas (Network Attached Storage) is not enabled by default in Parmanode.
-
-    It comes with all purchased fully-synced ParmanodL laptops and ParmaCloud machines 
-    (16TB self-hosted cloud data + Parmanode Bitcoin Node.)
-
-    Contact Parman for more info, or see...
-$green
-    https://parmanode.com/parmanodl$blue"
-
-    continue
-    }
-#If ParmaNas is enabled, make the SSH keys and continue
-make_parmanas_ssh_keys && { announce_blue "Parmanas SSH keys made. Please contact Parman to enable.
-$green
-
-$HOME/.ssh/extra_keys/parmanas-key ...
-
-$(cat ~/.ssh/extra_keys/parmanas-key.pub)$blue\n" ; continue ; }
-
-#If ParmaNas is enabled and SSH keys are made, clone the repo and run the script
-
-    if [[ ! -d $pp/parmanas ]] ; then
-    git clone git@github-parmanas:armantheparman/parmanas.git $pp/parmanas || { enter_continue "\n$blue    Something went wrong. Contact Parman.\n
-    \r    Please contact Parman to enable ParmaNas on your machine.\n$orange" ; continue ; }
-    else
-    cd $pp/parmanas && please_wait && git pull >$dn 2>&1
-    fi
-
-    $pp/parmanas/run_parmanas.sh
+get_parmanas
 ;;
 
 cloud)
-  [[ ! -e $dp/.parmacloud_enabled ]] && announce_blue "$cyan
-
-    With NextCloud, your machine can host your files like a Google Drive server,
-    and you can access them from anywhere via your preferred domain name.    
-
-    Contact Parman for set up. Fee is \$US400.$blue" && continue 
-
-make_parmacloud_ssh_keys && { announce_blue "ParmaCloud SSH keys made. Please contact Parman to enable." ; continue ; }
-
-[[ ! -e $pp/parmacloud ]] && { 
-    git clone git@github-parmacloud:armantheparman/parmacloud.git $pp/parmacloud || {
-        enter_continue "Please contact Parman to enable ParmaCloud on your machine.\n$orange" ; continue ; 
-    } #requires SSH key authority 
-}
-installed_conf_add "parmacloud-start"
-for file in $pp/parmacloud/src/*.sh ; do source $file ; done
-install_parmacloud
-debug "pause"
+get_parmacloud
 ;;
 
 pm)
@@ -150,82 +75,15 @@ get_parminer
 ;;
 
 web)
-[[ ! -e $dp/.parmaweb_enabled ]] && announce_blue "${cyan}With Parmaweb, you can host your own WordPress Server (Linux Only)
-    with a database configured, help with reverse proxying if you need it
-    and free domain name (or buy your own)$orange yourchoice.parmacloud.com$blue
-    
-    Contact Parman for setup. Fee is \$500 USD." && continue
-
-[[ -z $another ]] && make_parmaweb_ssh_keys && { announce_blue "ParmaWeb SSH keys made" ; continue ; }
-
-git clone git@github-parmaweb:armantheparman/parmaweb.git $pp/parmaweb 2>$dn || {
-cd $pp/parmaweb && git pull >$dn 2>&1 ; } || \
-{ enter_continue "Please contact Parman to enable ParmaWeb on your machine.\n$orange" ; continue ; } #requires SSH key authority
-
-for file in $pp/parmaweb/src/*.sh ; do
-source $file
-done
-
-install_website
-return 0
-
+get_parmaweb
 ;;
+
 pr)
-[[ ! -e $dp/.parmaraid_enabled ]] && parmaraid_info && continue
-
-make_parmaraid_ssh_keys && { announce_blue "ParmaRaid SSH keys made" ; continue ; }
-
-git clone git@github-parmaraid:armantheparman/parmaraid.git $pp/parmaraid 2>$dn ||
-{ cd $pp/parmaraid 2>$dn && git pull >$dn 2>&1 ; } ||
-{ enter_continue "Please contact Parman to enable ParmaRaid on your machine.\n$orange" ; continue ; } #requires SSH key authority
-
-for file in $pp/parmaraid/src/*.sh ; do
-source $file
-done
-
-install_raid
-return 0
+get_parmaraid
 ;;
 
 dt)
-#if [[ $(uname -m) != "x86_64" ]] ; then  { announce_blue "Datum is only supported on x86_64 machines at this stage." ; continue ; } ; fi
-[[ -e $dp/.datum_enabled ]]  || {
-please_wait
-make_datum_ssh_keys
-announce_blue "
-    To install Datum with Parmanode, please send$green 42 sats$blue over lightning via 
-    NOSTR zap, or the donations page:
-
-$cyan    https://armantheparman.com/donations $blue
-
-    Then send lightning invoice to Parman by email$cyan armantheparman@protonmail.com$blue, and 
-    send the following custom ssh key...
-   "
-
-announce_blue "$cyan$(cat $HOME/.ssh/extra_keys/datum-key.pub)$blue"
-
-announce_blue "
-    For pre-configurd Bitcoin Knots, ParMiner and Datum, please see...
-$orange
-        https://parmanode.com/parmanodl 
-$blue
-        or 
-$orange
-        https://parmanode.com/parmadrive $blue "
-
-debug "pause"
-continue
-}
-
-git clone git@github-datum:armantheparman/datum_parmanode.git $pp/datum 2>$dn || {
-cd $pp/datum && git pull >$dn 2>&1 ; } || \
-{ enter_continue "Please contact Parman to enable Datum on your machine.\n$orange" ; continue ; } #requires SSH key authority
-
-for file in $pp/datum/src/*.sh ; do
-source $file
-done
-menu_datum
-return 0
+get_datum
 ;;
 
 rv)
@@ -234,15 +92,9 @@ remotevault_info
 ;;
 
 ud)
-[[ ! -e $dp/.uddns_enabled ]] && announce_blue "No static IP? No problem. With UDDNS, you can simiulate a static IP address for
-                                          \r    your machine. Fee is cheap AF, 1.5k sats per month, paid yearly (18k sats)." && continue
-
-git clone git@github-uddns:armantheparman/uddns.git $pp/uddns 2>$dn || { enter_continue "Something went wrong. Contact Parman." ; continue ; }
-installed_conf_add "uddns-end"
-for file in $pp/uddns/src/*.sh ; do source $file ; done
-menu_uddns
-return 0
+get_uddns
 ;;
+
 *)
     invalid
     continue
