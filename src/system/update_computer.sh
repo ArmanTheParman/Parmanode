@@ -51,7 +51,7 @@ Type$pink y$yellow or$pink n$yellow, then$cyan <enter>$yellow.$orange
     sudo apt-get update -y
     [[ $choice == t ]] || sudo apt-get upgrade -y | tee -a $ndebug
     sudo apt-get install -y jq| tee -a $ndebug
-    sudo apt-get install -y netcat-tradiational | tee -a $ndebug
+    sudo apt-get install -y netcat-traditional | tee -a $ndebug
     sudo apt-get install -y vim | tee -a $ndebug
     sudo apt-get install -y net-tools | tee -a $ndebug
     sudo apt-get install -y unzip | tee -a $ndebug
