@@ -1,7 +1,18 @@
 function download_sparrow {
 cd $HOME/parmanode
-
-choose_sparrow_version
+while true ; do 
+    export sparrow_version="2.1.3"
+    announce "Installing Sparrow Version $sparrow_version. If you want a different
+    version, try typing the value in. Othewise just hit <enter> for the default."
+    jump || $enter_cont
+    case $enter_cont in     "") break 
+                                ;; 
+                             *) export sparrow_version=$enter_cont 
+                                yesorno "Do you want version $sparrow_version?" || continue 
+                                break
+                                ;;
+    esac
+done
 
 #clean up previous downloads if any
 sudo rm -rf $hp/"*parrow-*" >$dn
@@ -27,28 +38,4 @@ fi
 
 curl -LO https://github.com/sparrowwallet/sparrow/releases/download/${sparrow_version}/sparrow-${sparrow_version}-manifest.txt
 curl -LO https://github.com/sparrowwallet/sparrow/releases/download/${sparrow_version}/sparrow-${sparrow_version}-manifest.txt.asc
-}
-
-function choose_sparrow_version {
-set_terminal ; echo -e "
-########################################################################################
-
-    If you prefer the older sparrow$green version 1.9.0$orange, then type '${red}old$orange' and $cyan<enter>$orange.
-
-    Otherwise hit$cyan <enter>$orange alone to get$green version 2.1.1$orange
-
-########################################################################################
-"
-choose xpmq ; read choice 
-jump $choice || { invalid ; continue ; } ; set_terminal
-case $choice in
-q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
-old)
-export sparrow_version="1.9.0"
-;;
-*)
-export sparrow_version="2.1.1"
-;;
-esac
-return 0
 }

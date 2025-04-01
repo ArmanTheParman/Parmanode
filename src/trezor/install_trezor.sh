@@ -2,8 +2,6 @@ function install_trezor {
 export version="24.10.1"
 set_terminal
 
-config_warning "Trezor Suite" || return 1
-
 if [[ $OS == Linux ]] ; then
 export configdir="$HOME/.config/@trezor/suite-desktop"
 elif [[ $OS == Mac ]] ; then
@@ -22,7 +20,7 @@ mkdir $trezorDir
 cd $trezorDir
 installed_conf_add "trezor-start"
 
-if [[ $chip == arm64 && $OS == Mac ]] ; then
+if [[ $chip == "arm64" && $OS == "Mac" ]] ; then
 curl -LO    https://github.com/trezor/trezor-suite/releases/download/v$version/Trezor-Suite-$version-mac-arm64.dmg
 curl -LO    https://github.com/trezor/trezor-suite/releases/download/v$version/Trezor-Suite-$version-mac-arm64.dmg.asc
 verify_trezor || return 1
@@ -32,7 +30,7 @@ hdiutil detach /Volumes/"Trezor"*
 sudo rm -rf *.dmg
 fi
 
-if [[ $chip == x86_64 && $OS == Mac ]] ; then
+if [[ $chip == "x86_64" && $OS == "Mac" ]] ; then
 curl -LO https://github.com/trezor/trezor-suite/releases/download/v$version/Trezor-Suite-$version-mac-x64.dmg
 curl -LO https://github.com/trezor/trezor-suite/releases/download/v$version/Trezor-Suite-$version-mac-x64.dmg.asc
 verify_trezor || return 1
