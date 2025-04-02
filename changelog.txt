@@ -2,6 +2,7 @@ Version 3.58.0
      -VaultWarden
      -Sparrow v2.1.3
      -Smol Trezor bug fix
+     -Trezor v25.3.3
 Version 3.57.0
      -Premium feature added, ParmaScale (TailScale) 
 Version 3.56.2
