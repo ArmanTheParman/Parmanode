@@ -113,19 +113,19 @@ IdentityFile ~/.ssh/extra_keys/datum-key
 IdentitiesOnly yes" | sudo tee -a ~/.ssh/config >$dn
 }
 
-function make_remotevault_ssh_keys {
+function make_parmasync_ssh_keys {
 
-sudo test -f $HOME/.ssh/extra_keys/remotevault-key.pub && return 1 # 1 is logically success here for the calling function
+sudo test -f $HOME/.ssh/extra_keys/parmasync-key.pub && return 1 # 1 is logically success here for the calling function
 
 mkdir -p ~/.ssh/extra_keys
-ssh-keygen -t rsa -b 4096 -f $HOME/.ssh/extra_keys/remotevault-key -N "" -C "$USER remotevault"
+ssh-keygen -t rsa -b 4096 -f $HOME/.ssh/extra_keys/parmasync-key -N "" -C "$USER parmasync"
 
-grep -q "github-remotevault" ~/.ssh/config >$dn 2>&1 || 
+grep -q "github-parmasync" ~/.ssh/config >$dn 2>&1 || 
 echo "
-Host github-remotevault
+Host github-parmasync
 HostName github.com
 User git
-IdentityFile ~/.ssh/extra_keys/remotevault-key
+IdentityFile ~/.ssh/extra_keys/parmasync-key
 IdentitiesOnly yes" | sudo tee -a ~/.ssh/config >$dn
 }
 
@@ -170,7 +170,7 @@ make_parmaweb_ssh_keys
 make_parmanas_ssh_keys
 make_parmaraid_ssh_keys
 make_datum_ssh_keys
-make_remotevault_ssh_keys
+make_parmasync_ssh_keys
 make_uddns_ssh_keys
 make_parmascale_ssh_keys
 
@@ -192,7 +192,7 @@ $(sudo cat $HOME/.ssh/extra_keys/parmawebs-key.pub)
 
 $(sudo cat $HOME/.ssh/extra_keys/dataum-key.pub)
 
-$(sudo cat $HOME/.ssh/extra_keys/remotevault-key.pub)
+$(sudo cat $HOME/.ssh/extra_keys/parmasync-key.pub)
 
 $(sudo cat $HOME/.ssh/extra_keys/uddns-key.pub)
 

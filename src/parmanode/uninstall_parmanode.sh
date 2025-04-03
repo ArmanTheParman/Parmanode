@@ -234,7 +234,7 @@ uninstall_parminer
 set_terminal
 fi
 if grep -q "parmacloud" $ic ; then
-uninstall_parmacloue
+uninstall_parmacloud
 set_terminal
 fi
 if grep -q "parmaswap" $ic ; then
@@ -245,8 +245,8 @@ if grep -q "datum" $ic ; then
 uninstall_datum
 set_terminal
 fi
-if grep -q "remotevault" $ic ; then
-uninstall_remotevault
+if grep -q "parmasync" $ic ; then
+uninstall_parmasync
 set_terminal
 fi
 
