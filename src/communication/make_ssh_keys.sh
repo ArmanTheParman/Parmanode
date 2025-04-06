@@ -160,6 +160,12 @@ User git
 IdentityFile ~/.ssh/extra_keys/parmascale-key
 IdentitiesOnly yes" | sudo tee -a ~/.ssh/config >$dn
 }
+function make_parmadrive_ssh_keys {
+ssh-keygen -t rsa -b 4096 -f $HOME/.ssh/parmadrive-key -N "" -C "$USER parmadrive"
+}
+function make_parmatwin_ssh_keys  {
+ssh-keygen -t rsa -b 4096 -f $HOME/.ssh/parmatwin-key -N "" -C "$USER parmatwin"
+}
 
 function get_all_ssh_keys {
 
