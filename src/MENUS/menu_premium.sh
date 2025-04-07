@@ -45,17 +45,24 @@ q|Q) exit ;; p|P) return 0 ;; m|M) back2main ;;
 ps)
 [[ ! -e $dp/.parmasync_enabled ]] && 
 announce_blue "ParmaSync is a remote backup swap service allowing you and a friend/family
-    memeber, or even a stranger, to dedicate a portion of your hard drive for automatic
-    encrypted remote backups over an \"encrypted tunnel\", while they do the same for you.
+    memeber, or even a stranger, to dedicate a portion of your hard drive space for 
+    automatic ENCRYPTED remote backups over a 'secure tunnel', while they do the 
+    same for you (or not). The other person can even be yourself, if you have two or 
+    more ParmaDrives and locations to put them in.
 
-    They are the 'ParmaTwin'.
+    Both ParmaDrives become 'ParmaTwins'.
 
     This allows you to distribute your data loss risk, and avoid the need to sacrifice 
     your privacy for a cloud backup service, and the associated high fees.
 
     Your data backup Twin will not see your data, nor your location.
 
-    This service is configured for ParmaDrive clients on request, and no extra fee
+    In addition, the drives will auto-unlock on boot (if requested), but that will
+    be automatically disabled if the drive is stolen (moved elsewhere). In such a case,
+    to unlock the drive will require a password, or a security USB drive which will
+    be provided to you.
+
+    ParmaSync is configured for ParmaDrive clients on request, and no extra fee
     is required. To purchase a ParmaDrive, see this page for choices...
     $cyan
         https://parmanode.com/parmadrive$blue
