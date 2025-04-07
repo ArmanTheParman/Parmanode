@@ -23,7 +23,7 @@ unset datum
 [[ ! -e $pp/datum ]] &&        datum="\n#$orange                dt)$blue        Datum-Gateway-Parmanode $green only 42 sats!$blue                     #
 #                                                                                      #"
 unset parmasync 
-[[ ! -e $pp/parmasync ]] &&      parmasync="\n#$orange                rv)$blue        ParmaSync - reciprical backup with remote ParmaTwin        #
+[[ ! -e $pp/parmasync ]] &&      parmasync="\n#$orange                ps)$blue        ParmaSync - reciprical backup with remote ParmaTwin        #
 #                                                                                      #"
 unset uddns
 [[ ! -e $pp/uddns ]] &&                  uddns="\n#$orange                ud)$blue        UDDNS - Parman's Uncomplicated Dynamic DNS Service         #
@@ -42,7 +42,7 @@ choose "xpmq" ; read choice
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit ;; p|P) return 0 ;; m|M) back2main ;;
-swap)
+ps)
 [[ ! -e $dp/.parmasync_enabled ]] && 
 announce_blue "ParmaSync is a remote backup swap service allowing you and a friend/family
     memeber, or even a stranger, to dedicate a portion of your hard drive for automatic
@@ -88,11 +88,6 @@ get_parmaraid
 dt)
 get_datum
 ;;
-
-# rv)
-# #[[ ! -e $dp/.remotevault_enabled ]] && remotevault_info && continue
-# remotevault_info
-# ;;
 
 ud)
 get_uddns
