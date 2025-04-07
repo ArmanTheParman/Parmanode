@@ -160,15 +160,17 @@ User git
 IdentityFile ~/.ssh/extra_keys/parmascale-key
 IdentitiesOnly yes" | sudo tee -a ~/.ssh/config >$dn
 }
+
 function make_parmadrive_ssh_keys {
-ssh-keygen -t rsa -b 4096 -f $HOME/.ssh/parmadrive-key -N "" -C "$USER parmadrive"
+sudo test -f ~/.ssh/parmadrive-key && return 0
+ssh-keygen -t rsa -b 4096 -f ~/.ssh/parmadrive-key -N "" -C "$USER parmadrive"
 }
 function make_parmatwin_ssh_keys  {
-ssh-keygen -t rsa -b 4096 -f $HOME/.ssh/parmatwin-key -N "" -C "$USER parmatwin"
+sudo test -f ~/.ssh/parmatwin-key && return 0
+ssh-keygen -t rsa -b 4096 -f ~/.ssh/parmatwin-key -N "" -C "$USER parmatwin"
 }
 
-function get_all_ssh_keys {
-
+function make_all_ssh_keys {
 make_parmanode_ssh_keys
 make_parminer_ssh_keys
 make_parmacloud_ssh_keys
@@ -179,6 +181,13 @@ make_datum_ssh_keys
 make_parmasync_ssh_keys
 make_uddns_ssh_keys
 make_parmascale_ssh_keys
+make_parmadrive_ssh_keys #not in extra_keys
+make_parmatwin_ssh_keys #not in extra_keys
+}
+
+function get_all_ssh_keys {
+
+make_all_ssh_keys
 
 echo -e "########################################################################################" >> $HOME/Desktop/all_ssh_keys.txt
 echo -e "    All SSH Kyes for $USER - $(sudo cat /var/lib/tor/parmanode-service/hostname | sed 's/\.onion//')" >> $HOME/Desktop/all_ssh_keys.txt
@@ -201,6 +210,8 @@ $(sudo cat $HOME/.ssh/extra_keys/dataum-key.pub)
 $(sudo cat $HOME/.ssh/extra_keys/parmasync-key.pub)
 
 $(sudo cat $HOME/.ssh/extra_keys/uddns-key.pub)
+
+$(sudo cat $HOME/.ssh/extra_keys/parmascale-key.pub)
 
 
 " | tee -a $HOME/Desktop/all_ssh_keys.txt >$dn
