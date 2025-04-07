@@ -171,6 +171,7 @@ ssh-keygen -t rsa -b 4096 -f ~/.ssh/parmatwin-key -N "" -C "$USER parmatwin"
 }
 
 function make_all_ssh_keys {
+#No longer used
 make_parmanode_ssh_keys
 make_parminer_ssh_keys
 make_parmacloud_ssh_keys
@@ -181,12 +182,10 @@ make_datum_ssh_keys
 make_parmasync_ssh_keys
 make_uddns_ssh_keys
 make_parmascale_ssh_keys
-make_parmadrive_ssh_keys #not in extra_keys
-make_parmatwin_ssh_keys #not in extra_keys
 }
 
 function get_all_ssh_keys {
-
+#No longer used
 make_all_ssh_keys
 
 echo -e "########################################################################################" >> $HOME/Desktop/all_ssh_keys.txt
