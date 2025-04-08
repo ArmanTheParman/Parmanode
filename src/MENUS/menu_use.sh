@@ -31,7 +31,7 @@ if [[ -e $pp/datum ]] ; then
                        echo -e "                   $cyan       dt)$blue         Datum$orange" ; datumapp=1 ; count=$((count +1)) ; fi
 if [[ -e $pp/uddns ]] ; then 
                        echo -e "                   $cyan       ud)$blue         UDDNS$orange" ; uddnsapp=1 ; count=$((count +1)) ; fi
-if [[ -e $pp/parmashell ]] ; then 
+if [[ -e $pp/parmasync ]] ; then 
                        echo -e "                        $cyan  sync)$blue       ParmaSync$orange" ; parmasyncapp=1 ; count=$((count +1)) ; fi
 if grep -q "parmacloud-end" $HOME/.parmanode/installed.conf ; then parmacloudapp=1
                        echo -e "                        $cyan  cloud)$blue      ParmaCloud$orange" ; count=$((count +1)) ; fi
