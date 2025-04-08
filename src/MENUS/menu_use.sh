@@ -31,10 +31,10 @@ if [[ -e $pp/datum ]] ; then
                        echo -e "                   $cyan       dt)$blue         Datum$orange" ; datumapp=1 ; count=$((count +1)) ; fi
 if [[ -e $pp/uddns ]] ; then 
                        echo -e "                   $cyan       ud)$blue         UDDNS$orange" ; uddnsapp=1 ; count=$((count +1)) ; fi
+if [[ -e $pp/parmashell ]] ; then 
+                       echo -e "                        $cyan  sync)$blue       ParmaSync$orange" ; parmasyncapp=1 ; count=$((count +1)) ; fi
 if grep -q "parmacloud-end" $HOME/.parmanode/installed.conf ; then parmacloudapp=1
                        echo -e "                        $cyan  cloud)$blue      ParmaCloud$orange" ; count=$((count +1)) ; fi
-if grep -q "parmasync-end" $HOME/.parmanode/installed.conf ; then parmasyncapp=1
-                       echo -e "                        $cyan  sync)$blue       ParmaSync$orange" ; count=$((count +1)) ; fi
 if grep -q "website-end" $HOME/.parmanode/installed.conf ; then websiteapp=1
                        echo -e "                        $cyan  pw)$blue         WordPress Website (ParmaWeb)$orange" ; count=$((count +1)) ; fi
 if grep -q "parmaraid-end" $ic ; then raidapp=1
