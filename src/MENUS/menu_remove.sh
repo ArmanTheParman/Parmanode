@@ -50,10 +50,10 @@ elif grep -q "parmacloud-start" $HOME/.parmanode/installed.conf ; then parmaclou
 echo -e "#$cyan                            \033[27G cloud)$blue            ParmaCloud$orange         $red$blinkon(partial)$blinkoff$orange       \033[88G#
 #                                                                                      #" ; fi
 if grep -q "parmasync-end" $HOME/.parmanode/installed.conf ; then parmasyncmenu=1
-echo -e "#$cyan                             \033[27G sync)$blue            ParmaSync$orange                             \033[88G#
+echo -e "#$cyan                            \033[27G sync)$blue            ParmaSync$orange                             \033[88G#
 #                                                                                      #"
 elif grep -q "parmasync-start" $HOME/.parmanode/installed.conf ; then parmasyncmenu=1
-echo -e "#$cyan                             \033[27G sync)$blue            ParmaSync$orange          $red$blinkon(partial)$blinkoff$orange       \033[88G#
+echo -e "#$cyan                            \033[27G sync)$blue            ParmaSync$orange          $red$blinkon(partial)$blinkoff$orange       \033[88G#
 #                                                                                      #" ; fi
 if grep -q "website-end" $HOME/.parmanode/installed.conf ; then websitemenu=1
 echo -e "#$cyan                            \033[27G pw)$blue               WordPress Website (ParmaWeb)           $orange\033[88G#
