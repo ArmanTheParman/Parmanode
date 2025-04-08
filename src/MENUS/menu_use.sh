@@ -563,7 +563,6 @@ cloud)
 
 sync) 
    if [[ $parmasyncapp == 1 ]] ; then
-   debug "before menu_parmasync"
    please_wait
    cd $pp/parmasync/ && git stash >$dn 2>&1 ; git pull >$dn 2>&1
    menu_parmasync
