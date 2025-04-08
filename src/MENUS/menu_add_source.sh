@@ -11,7 +11,7 @@ elif grep -q "bitcoin-start" $HOME/.parmanode/installed.conf ; then
 bitcoin_p="#                                      Bitcoin Core/Knots                              #"
 else 
    #not installed
-bitcoin_n="#$cyan                            (b)$orange           Bitcoin Core/Knots                          #"
+bitcoin_n="#$cyan                             b)$orange           Bitcoin Core/Knots                          #"
 fi
 
 #DOCKER
@@ -24,7 +24,7 @@ elif grep -q "docker-start" $HOME/.parmanode/installed.conf ; then
 docker_p="#                                      Docker                                          #"
 else
    #not installed
-docker_n="#$cyan                            (d)$orange           Docker                                      #"
+docker_n="#$cyan                             d)$orange           Docker                                      #"
 fi
 
 #FULCRUM
@@ -37,7 +37,7 @@ elif grep -q "fulcrum-start" $HOME/.parmanode/installed.conf ; then
 fulcrum_p="#                                      Fulcrum                                         #"
 else
    #not installed
-fulcrum_n="#$cyan                            (f)$orange           Fulcrum (an Electrum Server)                #"
+fulcrum_n="#$cyan                             f)$orange           Fulcrum (an Electrum Server)                #"
 fi
 #FULCRUMDKR
 unset fulcrumdkr_i fulcrumdkr_p fulcrumdkr_n
@@ -49,7 +49,7 @@ elif grep -q "fulcrumdkr-start" $HOME/.parmanode/installed.conf ; then
 fulcrumdkr_p="#                                      Fulcrum (Docker)                                #"
 else
    #not installed
-fulcrumdkr_n="#$cyan                            (fd)$orange          Fulcrum (an Electrum Server in Docker)      #"
+fulcrumdkr_n="#$cyan                             fd)$orange          Fulcrum (an Electrum Server in Docker)      #"
 fi
 
 #BTCPAY
@@ -62,7 +62,7 @@ elif grep -q "btcpay-start" $HOME/.parmanode/installed.conf ; then
 btcpay_p="#                                      BTCPay Server                                   #"
 else
    #not installed
-btcpay_n="#$cyan                            (btcp)$orange        BTCPay Server                               #"
+btcpay_n="#$cyan                             btcp)$orange        BTCPay Server                               #"
 fi
 
 #Sparrow
@@ -75,7 +75,7 @@ elif grep -q "sparrow-start" $HOME/.parmanode/installed.conf ; then
 sparrow_p="#                                      Sparrow Wallet                                  #"
 else
    #not installed
-sparrow_n="#$cyan                            (s)$orange           Sparrow Wallet                              #"
+sparrow_n="#$cyan                             s)$orange           Sparrow Wallet                              #"
 fi
 
 #Electrs
@@ -88,7 +88,7 @@ elif grep -q "electrs-start" $HOME/.parmanode/installed.conf ; then
 electrs_p="#                                      electrs                                         #"
 else
    #not installed
-electrs_n="#$cyan                            (ers)$orange         electrs                                     #"
+electrs_n="#$cyan                             ers)$orange         electrs                                     #"
 fi
 #Electrs2
 unset electrs2_i electrs2_p electrs2_n
@@ -100,7 +100,7 @@ elif grep -q "electrs2-start" $HOME/.parmanode/installed.conf ; then
 electrs2_p="#                                      electrs                                         #"
 else
    #not installed
-electrs2_n="#$cyan                            (ers) $orange        electrs                                     #"
+electrs2_n="#$cyan                             ers) $orange        electrs                                     #"
 fi
 
 #LND
@@ -113,7 +113,7 @@ elif grep -q "lnd-start" $HOME/.parmanode/installed.conf ; then
 lnd_p="#                                      LND                                             #"
 else
    #not installed
-lnd_n="#$cyan                            (lnd) $orange        LND                                         #"
+lnd_n="#$cyan                             lnd) $orange        LND                                         #"
 fi
 
 #RTL
@@ -126,7 +126,7 @@ elif grep -q "rtl-start" $HOME/.parmanode/installed.conf ; then
 rtl_p="#                                      RTL Wallet                                      #"
 else
    #not installed
-rtl_n="#$cyan                            (r) $orange          RTL Wallet                                  #"
+rtl_n="#$cyan                             r) $orange          RTL Wallet                                  #"
 fi
 
 #Electrum
@@ -139,7 +139,7 @@ elif grep -q "electrum-start" $HOME/.parmanode/installed.conf ; then
 electrum_p="#                                      Electrum                                        #"
 else
  #not installed 
-electrum_n="#$cyan                            (e) $orange          Electrum                                    #"
+electrum_n="#$cyan                             e) $orange          Electrum                                    #"
 fi
 
 
@@ -153,7 +153,7 @@ elif grep -q "tor-start" $HOME/.parmanode/installed.conf ; then
 tor_p="#                                      Tor                                             #"
 else
    #not installed
-tor_n="#$cyan                            (t) $orange          Tor                                         #"
+tor_n="#$cyan                             t) $orange          Tor                                         #"
 fi
 
 #Specter
@@ -166,7 +166,7 @@ elif grep -q "specter-start" $HOME/.parmanode/installed.conf ; then
 specter_p="#                                      Specter Wallet                                  #"
 else
    #not installed
-specter_n="#$cyan                            (specter) $orange    Specter Wallet                              #"
+specter_n="#$cyan                             specter) $orange    Specter Wallet                              #"
 fi
 
 #Tor Server
@@ -179,7 +179,7 @@ elif grep -q "tor-server-start" $HOME/.parmanode/installed.conf ; then
 torserver_p="#                                      Tor Web Server                                  #"
 else
    #not installed
-torserver_n="#$cyan                            (tws)      $orange   Tor Web Server (Darknet Server)             #"
+torserver_n="#$cyan                             tws)      $orange   Tor Web Server (Darknet Server)             #"
 fi
 
 #BTC RPC Explorer (not Docker)
@@ -192,7 +192,7 @@ elif grep -q "btcrpcexplore-start" $HOME/.parmanode/installed.conf ; then
 btcrpcexplorer_p="#                                      BTC RPC Explorer                                #"
 else
    #not installed
-btcrpcexplorer_n="#$cyan                            (bre)       $orange  BTC RPC Explorer                            #"
+btcrpcexplorer_n="#$cyan                             bre)       $orange  BTC RPC Explorer                            #"
 fi
 
 #BTC RPC Explorer (Docker)
@@ -205,7 +205,7 @@ elif grep -q "bre-start" $HOME/.parmanode/installed.conf ; then
 bre_p="#                                      BTC RPC Explorer (Docker)                       #"
 else
    #not installed
-bre_n="#$cyan                            (bre)        $orange BTC RPC Explorer (Docker)                   #"
+bre_n="#$cyan                             bre)        $orange BTC RPC Explorer (Docker)                   #"
 fi
 
 #LNbits
@@ -218,7 +218,7 @@ elif grep -q "lnbits-start" $HOME/.parmanode/installed.conf ; then
 lnbits_p="#                                      LNbits                                          #"
 else
    #not installed
-lnbits_n="#$cyan                            (lnb)     $orange    LNbits                                      #"
+lnbits_n="#$cyan                             lnb)     $orange    LNbits                                      #"
 fi
 
 #trezor
@@ -232,7 +232,7 @@ elif grep -q "trezor-start" $HOME/.parmanode/installed.conf ; then
 trezor_p="#                                      Trezor Suite                                    #"
 else
    #not installed
-trezor_n="#$cyan                            (trz)     $orange    Trezor Suite                                #"
+trezor_n="#$cyan                             trz)     $orange    Trezor Suite                                #"
 fi
 
 #Bitbox
@@ -246,7 +246,7 @@ elif grep -q "bitbox-start" $HOME/.parmanode/installed.conf ; then
 bitbox_p="#                                      BitBox                                          #"
 else
    #not installed
-bitbox_n="#$cyan                            (bb)       $orange   Bitbox                                      #"
+bitbox_n="#$cyan                             bb)       $orange   Bitbox                                      #"
 fi
 
 #Ledger
@@ -260,7 +260,7 @@ elif grep -q "ledger-start" $HOME/.parmanode/installed.conf ; then
 ledger_p="#                                      Ledger                                          #"
 else
    #not installed
-ledger_n="#$cyan                            (ll)       $orange   Ledger                                      #"
+ledger_n="#$cyan                             ll)       $orange   Ledger                                      #"
 fi
 
 #Parmashell
@@ -274,7 +274,7 @@ elif grep -q "parmashell-start" $HOME/.parmanode/installed.conf ; then
 parmashell_p="#                                      ParmaShell                                      #"
 else
    #not installed
-parmashell_n="#$cyan                            (ps)       $orange   ParmaShell                                  #"
+parmashell_n="#$cyan                             ps)       $orange   ParmaShell                                  #"
 fi
 
 #NodeJS
@@ -288,7 +288,7 @@ elif grep -q "nodejs-start" $HOME/.parmanode/installed.conf ; then
 nodejs_p="#                                      NodeJS                                       #"
 else
    #not installed
-nodejs_n="#$cyan                            (njs)        $orange  NodeJS                                  #"
+nodejs_n="#$cyan                             njs)        $orange  NodeJS                                  #"
 fi
 
 #Parmabox
@@ -302,7 +302,7 @@ elif grep -q "parmabox-start" $HOME/.parmanode/installed.conf ; then
 parmabox_p="#                                      ParmaBox                                        #"
 else
    #not installed
-parmabox_n="#$cyan                            (pbx)        $orange Parmabox                                    #"
+parmabox_n="#$cyan                             pbx)        $orange Parmabox                                    #"
 fi
 
 #AnyDesk
@@ -316,7 +316,7 @@ elif grep -q "anydesk-start" $HOME/.parmanode/installed.conf ; then
 anydesk_p="#                                      AnyDesk                                         #"
 else
    #not installed
-anydesk_n="#$cyan                            (any)        $orange AnyDesk                                     #"
+anydesk_n="#$cyan                             any)        $orange AnyDesk                                     #"
 fi
 
 #PiHole
@@ -330,7 +330,7 @@ elif grep -q "pihole-start" $HOME/.parmanode/installed.conf ; then
 pihole_p="#                                      PiHole                                          #"
 else
    #not installed
-pihole_n="#$cyan                            (pih)        $orange PiHole                                      #"
+pihole_n="#$cyan                             pih)        $orange PiHole                                      #"
 fi
 
 #Torrelay
@@ -344,7 +344,7 @@ elif grep -q "torrelay-start" $HOME/.parmanode/installed.conf ; then
 torrelay_p="#                                      TorRelay                                        #"
 else
    #not installed
-torrelay_n="#$cyan                            (trl)     $orange    TorRelay                                    #"
+torrelay_n="#$cyan                             trl)     $orange    TorRelay                                    #"
 fi
 
 #Electrsdkr
@@ -357,7 +357,7 @@ elif grep -q "electrsdkr-start" $HOME/.parmanode/installed.conf ; then
 electrsdkr_p="#                                      electrs (Docker)                                #"
 else
    #not installed
-electrsdkr_n="#$cyan                            (ersd)      $orange  electrs (Docker)                            #"
+electrsdkr_n="#$cyan                             ersd)      $orange  electrs (Docker)                            #"
 fi
 #Electrsdkr2
 unset electrsdkr2_i electrsdkr2_p electrsdkr2_n
@@ -369,7 +369,7 @@ elif grep -q "electrsdkr2-start" $HOME/.parmanode/installed.conf ; then
 electrsdkr2_p="#                                      electrs (Docker)                                #"
 else
    #not installed
-electrsdkr2_n="#$cyan                            (ersd)      $orange  electrs (Docker)                            #"
+electrsdkr2_n="#$cyan                             ersd)      $orange  electrs (Docker)                            #"
 fi
 
 #piapps
@@ -383,7 +383,7 @@ elif grep -q "piapps-start" $HOME/.parmanode/installed.conf ; then
 piapps_p="#                                      PiApps                                          #"
 else
    #not installed
-piapps_n="#$cyan                            (piap)      $orange  PiApps                                      #"
+piapps_n="#$cyan                             piap)      $orange  PiApps                                      #"
 fi
 fi #end computer type = Pi
 
@@ -398,7 +398,7 @@ elif grep -q "torb-start" $HOME/.parmanode/installed.conf ; then
 torb_p="#                                      Tor Browser                                     #"
 else
    #not installed
-torb_n="#$cyan                            (torb)   $orange     Tor Browser                                 #"
+torb_n="#$cyan                             torb)   $orange     Tor Browser                                 #"
 fi
 fi #end computer type/OS
 
@@ -413,7 +413,7 @@ elif grep -q "qbittorrent-start" $HOME/.parmanode/installed.conf ; then
 qbittorrent_p="#                                      QBittorrent                                     #"
 else
    #not installed
-qbittorrent_n="#$cyan                            (qbit)      $orange  QBittorrent                                 #"
+qbittorrent_n="#$cyan                             qbit)      $orange  QBittorrent                                 #"
 fi
 fi #end computer type/OS
 
@@ -427,7 +427,7 @@ elif grep -q "mempool-start" $HOME/.parmanode/installed.conf ; then
 mempool_p="#                                      Mempool (Docker)                                #"
 else
    #not installed
-mempool_n="#$cyan                            (mem)       $orange  Mempool (Docker)                            #"
+mempool_n="#$cyan                             mem)       $orange  Mempool (Docker)                            #"
 fi
 
 #torssh
@@ -440,7 +440,7 @@ elif grep -q "torssh-start" $HOME/.parmanode/installed.conf ; then
 torssh_p="#                                      Tor SSH Server                                  #"
 else
    #not installed
-torssh_n="#$cyan                            (tssh)    $orange    Tor SSH Server                              #"
+torssh_n="#$cyan                             tssh)    $orange    Tor SSH Server                              #"
 fi
 
 #public_pool
@@ -453,7 +453,7 @@ elif grep -q "public_pool-start" $HOME/.parmanode/installed.conf ; then
 public_pool_p="#                                      Public Pool                                     #"
 else
    #not installed
-public_pool_n="#$cyan                            (pool)      $orange  Public Pool                                 #"
+public_pool_n="#$cyan                             pool)      $orange  Public Pool                                 #"
 fi
 
 #Electrumx
@@ -466,7 +466,7 @@ elif grep -q "electrumx-start" $HOME/.parmanode/installed.conf ; then
 electrumx_p="#                                      Electrum X                                      #"
 else
    #not installed
-electrumx_n="#$cyan                            (ex)        $orange  Electrum X                                  #"
+electrumx_n="#$cyan                             ex)        $orange  Electrum X                                  #"
 fi
 
 #Thunderhub
@@ -479,7 +479,7 @@ elif grep -q "thunderhub-start" $HOME/.parmanode/installed.conf ; then
 thunderhub_p="#                                      Thunderhub                                      #"
 else
    #not installed
-thunderhub_n="#$cyan                            (th)        $orange  Thunderhub                                  #"
+thunderhub_n="#$cyan                             th)        $orange  Thunderhub                                  #"
 fi
 
 #website
@@ -492,7 +492,7 @@ elif grep -q "website-start" $HOME/.parmanode/installed.conf ; then
 website_p="#                                      WordPress Website (ParmaWeb)                    #"
 else
    #not installed
-website_n="#$cyan                            (pw)        $orange  Wordpress Website (ParmaWeb)                #"
+website_n="#$cyan                             pw)        $orange  Wordpress Website (ParmaWeb)                #"
 fi
 
 #lnddocker
@@ -505,7 +505,7 @@ elif grep -q "lnddocker-start" $HOME/.parmanode/installed.conf ; then
 lnddocker_p="#                                      Lnd (Docker)                                    #"
 else
    #not installed
-lnddocker_n="#$cyan                            (ld)        $orange  Lnd (Docker) - Mac or Linux                 #"
+lnddocker_n="#$cyan                             ld)        $orange  Lnd (Docker) - Mac or Linux                 #"
 fi
 
 #nginx
@@ -518,7 +518,7 @@ elif grep -q "nginx-start" $HOME/.parmanode/installed.conf ; then
 nginx_p="#                                      Nginx                                           #"
 else
    #not installed
-nginx_n="#$cyan                            (ng)        $orange  Nginx                                       #"
+nginx_n="#$cyan                             ng)        $orange  Nginx                                       #"
 fi
 
 #nostrrelay
@@ -531,7 +531,7 @@ elif grep -q "nostrrelay-start" $HOME/.parmanode/installed.conf ; then
 nostrrelay_p="#                                      Nostr Relay                                     #"
 else
    #not installed
-nostrrelay_n="#$cyan                            (nr)        $orange  Nostr Relay                                 #"
+nostrrelay_n="#$cyan                             nr)        $orange  Nostr Relay                                 #"
 fi
 
 #litd
@@ -544,7 +544,7 @@ elif grep -q "litd-start" $HOME/.parmanode/installed.conf ; then
 litd_p="#                                      LITD                                            #"
 else
    #not installed
-litd_n="#$cyan                            (litd)      $orange  LITD (Lightning terminal, pool, loop)       #"
+litd_n="#$cyan                             litd)      $orange  LITD (Lightning terminal, pool, loop)       #"
 fi
 
 #nextcloud
@@ -557,7 +557,7 @@ elif grep -q "nextcloud-start" $HOME/.parmanode/installed.conf ; then
 nextcloud_p="#$blue                                      ParmaCloud                                      $orange#"
 else
    #not installed
-nextcloud_n="#$cyan                            (cloud)      $blue ParmaCloud                                  $orange#"
+nextcloud_n="#$cyan                             cloud)      $blue ParmaCloud                                  $orange#"
 fi
 
 #parmanostr
@@ -570,7 +570,7 @@ elif grep -q "parmanostr-start" $HOME/.parmanode/installed.conf ; then
 parmanostr_p="#                                      Parmanostr                                      #"
 else
    #not installed
-parmanostr_n="#$cyan                            (pnostr)    $orange  Parmanostr                                  #"
+parmanostr_n="#$cyan                             pnostr)    $orange  Parmanostr                                  #"
 fi
 
 
@@ -584,7 +584,7 @@ elif grep -q "btcrecover-start" $HOME/.parmanode/installed.conf ; then
 btcrecover_p="#                                      BTC Recover                                     #"
 else
    #not installed
-btcrecover_n="#$cyan                            (btcr)    $orange    BTC recover                                 #"
+btcrecover_n="#$cyan                             btcr)    $orange    BTC recover                                 #"
 fi
 
 #joinmarket
@@ -597,7 +597,7 @@ elif grep -q "joinmarket-start" $HOME/.parmanode/installed.conf ; then
 joinmarket_p="#                                      ParmaJoin                                       #"
 else
    #not installed
-joinmarket_n="#$cyan                            (join)    $orange    ParmaJoin (JoinMarket) - Linux only         #"
+joinmarket_n="#$cyan                             join)    $orange    ParmaJoin (JoinMarket) - Linux only         #"
 fi
 
 #green
@@ -610,7 +610,7 @@ elif grep -q "green-start" $HOME/.parmanode/installed.conf ; then
 green_p="#                                      Green Wallet                                    #"
 else
    #not installed
-green_n="#$cyan                            (gr)    $orange      Green Wallet                                #"
+green_n="#$cyan                             gr)    $orange      Green Wallet                                #"
 fi
 
 #x11
@@ -623,7 +623,7 @@ elif grep -q "X11-start" $HOME/.parmanode/installed.conf ; then
 X11_p="#                                      X11                                             #"
 else
    #not installed
-X11_n="#$cyan                            (X11)   $orange      X11                                         #"
+X11_n="#$cyan                             X11)   $orange      X11                                         #"
 fi
 
 #Phoenix
@@ -636,7 +636,7 @@ elif grep -q "X11-start" $HOME/.parmanode/installed.conf ; then
 phoenix_p="#                                      Phoenix Server                                  #"
 else
    #not installed
-phoenix_n="#$cyan                            (pho)   $orange      Phoenix Server                              #"
+phoenix_n="#$cyan                             pho)   $orange      Phoenix Server                              #"
 fi
 
 #Vaultwarden
@@ -649,6 +649,19 @@ elif grep -q "X11-start" $HOME/.parmanode/installed.conf ; then
 vaultwarden_p="#                                      VaultWarden                                     #"
 else
    #not installed
-vaultwarden_n="#$cyan                            (vw)    $orange      VaultWarden                                 #"
+vaultwarden_n="#$cyan                             vw)    $orange      VaultWarden                                 #"
+fi
+
+#ParmaSync
+unset parmasync_i parmasync_p parmasync_n
+if grep -q "parmasync-end" $HOME/.parmanode/installed.conf ; then 
+  #installed
+parmasync_i="#                                      ParmaSync                                       #"
+elif grep -q "X11-start" $HOME/.parmanode/installed.conf ; then 
+   #partially installed
+parmasync_p="#                                      ParmaSync                                       #"
+else
+   #not installed
+parmasync_n="#$cyan                             sync)    $orange    ParmaSync                                   #"
 fi
 }
