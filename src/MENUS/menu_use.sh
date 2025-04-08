@@ -564,6 +564,7 @@ cloud)
 sync) 
    if [[ $parmasyncapp == 1 ]] ; then
    menu_parmasync
+   debug "after menu_parmasync"
    if [[ -n $1 ]] ; then clear ; return 0 ; fi
    else invalid
    fi
