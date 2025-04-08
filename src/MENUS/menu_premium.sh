@@ -23,7 +23,7 @@ unset datum
 [[ ! -e $pp/datum ]] &&        datum="\n#$orange                dt)$blue        Datum-Gateway-Parmanode $green only 42 sats!$blue                     #
 #                                                                                      #"
 unset parmasync 
-[[ ! -e $pp/parmasync ]] &&      parmasync="\n#$orange              sync)$blue        ParmaSync - reciprical backup with remote ParmaTwin      #
+[[ ! -e $pp/parmasync ]] &&      parmasync="\n#$orange              sync)$blue        ParmaSync - reciprical backup with remote ParmaTwin        #
 #                                                                                      #"
 unset uddns
 [[ ! -e $pp/uddns ]] &&                  uddns="\n#$orange                ud)$blue        UDDNS - Parman's Uncomplicated Dynamic DNS Service         #
