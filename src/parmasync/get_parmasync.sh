@@ -28,12 +28,12 @@ announce_blue "ParmaSync is a remote backup swap service allowing you and a frie
     if [[ ! -d $pp/parmasync ]] ; then
     git clone git@github-parmasync:armantheparman/parmasync.git $pp/parmasync || { enter_continue "\n$blue    Something went wrong. Contact Parman.\n
     \r    Please contact Parman to enable ParmaSync on your machine.\n$orange" ; return 1 ; }
-    success_blue "ParmaSync files have been extracted. Go to the USE menu to install and use."
+    source_premium
+    install_parmasync 
+    return 0
     else
     cd $pp/parmasync && please_wait && git pull >$dn 2>&1
-    announce_blue "ParmaSync  updated. Go to the USU menu to use."
+    source_premium
+    announce_blue "ParmaSync  updated. Go to the USE menu to use."
     fi
-
-source_premium
-
 }
