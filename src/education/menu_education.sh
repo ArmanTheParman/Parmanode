@@ -10,17 +10,17 @@ echo -ne "
 ########################################################################################
 
 $cyan                    
-                    (mit)$orange      2018 MIT Lecture Series (With Tagde Dryja)
+                    mit)$orange      2018 MIT Lecture Series (With Tagde Dryja)
 $cyan
-                    (w)$orange        How to connect your wallet to your node
+                    w)$orange        How to connect your wallet to your node
 $cyan
-                    (mm)$orange       Bitcoin Mentorship Info
+                    mm)$orange       Bitcoin Mentorship Info
 $cyan
-                    (n)$orange        Six reasons to run a node (essay)
+                    n)$orange        Six reasons to run a node (essay)
 $cyan
-                    (s)$orange        Separation of money and state (essay)
+                    s)$orange        Separation of money and state (essay)
 $cyan
-                    (cs)$orange       Cool stuff ('Did you know?')
+                    cs)$orange       Cool stuff ('Did you know?')
 
 
 ########################################################################################

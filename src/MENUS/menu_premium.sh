@@ -23,7 +23,7 @@ unset datum
 [[ ! -e $pp/datum ]] &&        datum="\n#$orange                dt)$blue        Datum-Gateway-Parmanode $green only 42 sats!$blue                     #
 #                                                                                      #"
 unset parmasync 
-[[ ! -e $pp/parmasync ]] &&      parmasync="\n#$orange                ps)$blue        ParmaSync - reciprical backup with remote ParmaTwin        #
+[[ ! -e $pp/parmasync ]] &&      parmasync="\n#$orange                sync)$blue        ParmaSync - reciprical backup with remote ParmaTwin      #
 #                                                                                      #"
 unset uddns
 [[ ! -e $pp/uddns ]] &&                  uddns="\n#$orange                ud)$blue        UDDNS - Parman's Uncomplicated Dynamic DNS Service         #
@@ -42,7 +42,7 @@ choose "xpmq" ; read choice
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit ;; p|P) return 0 ;; m|M) back2main ;;
-ps)
+sync)
 get_parmasync
 ;;
 scale)

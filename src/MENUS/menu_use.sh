@@ -22,118 +22,120 @@ echo -e "
 "
 ### Premium
 if [[ -e $pp/parmanas ]] ; then
-                       echo -e "                   $cyan       (pnas)$blue       ParmaNas$orange" ; parmanasapp=1 ; count=$((count +1)) ; fi
+                       echo -e "                   $cyan       pnas)$blue       ParmaNas$orange" ; parmanasapp=1 ; count=$((count +1)) ; fi
 if [[ -e $pp/parmascale ]] ; then
-                       echo -e "                   $cyan       (scale)$blue      ParmaScale$orange" ; parmascaleapp=1 ; count=$((count +1)) ; fi
+                       echo -e "                   $cyan       scale)$blue      ParmaScale$orange" ; parmascaleapp=1 ; count=$((count +1)) ; fi
 if [[ -e $pp/parminer ]] ; then 
-                       echo -e "                   $cyan       (pm)$blue         ParMiner$orange" ; parminerapp=1 ; count=$((count +1)) ; fi
+                       echo -e "                   $cyan       pm)$blue         ParMiner$orange" ; parminerapp=1 ; count=$((count +1)) ; fi
 if [[ -e $pp/datum ]] ; then 
-                       echo -e "                   $cyan       (dt)$blue         Datum$orange" ; datumapp=1 ; count=$((count +1)) ; fi
+                       echo -e "                   $cyan       dt)$blue         Datum$orange" ; datumapp=1 ; count=$((count +1)) ; fi
 if [[ -e $pp/uddns ]] ; then 
-                       echo -e "                   $cyan       (ud)$blue         UDDNS$orange" ; uddnsapp=1 ; count=$((count +1)) ; fi
+                       echo -e "                   $cyan       ud)$blue         UDDNS$orange" ; uddnsapp=1 ; count=$((count +1)) ; fi
 if grep -q "parmacloud-end" $HOME/.parmanode/installed.conf ; then parmacloudapp=1
-                       echo -e "                        $cyan  (cloud)$blue      ParmaCloud$orange" ; count=$((count +1)) ; fi
+                       echo -e "                        $cyan  cloud)$blue      ParmaCloud$orange" ; count=$((count +1)) ; fi
+if grep -q "parmasync-end" $HOME/.parmanode/installed.conf ; then parmasyncapp=1
+                       echo -e "                        $cyan  sync)$blue       ParmaSync$orange" ; count=$((count +1)) ; fi
 if grep -q "website-end" $HOME/.parmanode/installed.conf ; then websiteapp=1
-                       echo -e "                        $cyan  (pw)$blue         WordPress Website (ParmaWeb)$orange" ; count=$((count +1)) ; fi
+                       echo -e "                        $cyan  pw)$blue         WordPress Website (ParmaWeb)$orange" ; count=$((count +1)) ; fi
 if grep -q "parmaraid-end" $ic ; then raidapp=1
-                       echo -e "                   $cyan       (rr)$blue         RAID" ; count=$((count +1)) ; fi
+                       echo -e "                   $cyan       rr)$blue         RAID" ; count=$((count +1)) ; fi
 ### Bitcoin 
 if grep -q "bitcoin-end" $HOME/.parmanode/installed.conf ; then bitcoinapp=1
-                       echo -e "                        $cyan  (b)$orange          Bitcoin " ; count=$((count +1)) ; fi
+                       echo -e "                        $cyan  b)$orange          Bitcoin " ; count=$((count +1)) ; fi
 ### Databases
 if grep -q "electrs-end" $HOME/.parmanode/installed.conf ; then electrsapp=1
-                       echo -e "                        $cyan  (ers)$orange        electrs " ; count=$((count +1)) ; fi
+                       echo -e "                        $cyan  ers)$orange        electrs " ; count=$((count +1)) ; fi
 if grep -q "electrs2-end" $HOME/.parmanode/installed.conf ; then electrs2app=1
-                       echo -e "                        $cyan  (ers)$orange        electrs " ; count=$((count +1)) ; fi
+                       echo -e "                        $cyan  ers)$orange        electrs " ; count=$((count +1)) ; fi
 if grep -q "electrsdkr-end" $HOME/.parmanode/installed.conf ; then electrsdkrapp=1
-                       echo -e "                        $cyan  (ersd)$orange       electrs (Docker) " ; count=$((count +1)) ; fi
+                       echo -e "                        $cyan  ersd)$orange       electrs (Docker) " ; count=$((count +1)) ; fi
 if grep -q "electrsdkr2-end" $HOME/.parmanode/installed.conf ; then electrsdkr2app=1
-                       echo -e "                        $cyan  (ersd)$orange       electrs (Docker) " ; count=$((count +1)) ; fi
+                       echo -e "                        $cyan  ersd)$orange       electrs (Docker) " ; count=$((count +1)) ; fi
 if grep -q "electrumx-end" $HOME/.parmanode/installed.conf ; then electrumxapp=1
-                       echo -e "                        $cyan  (ex)$orange         Electrum X " ; count=$((count +1)) ; fi
+                       echo -e "                        $cyan  ex)$orange         Electrum X " ; count=$((count +1)) ; fi
 if grep -q "fulcrum-end" $HOME/.parmanode/installed.conf ; then fulcrumapp=1
-                       echo -e "                        $cyan  (f)$orange          Fulcrum (an Electrum Server) " ; count=$((count +1)) ; fi
+                       echo -e "                        $cyan  f)$orange          Fulcrum (an Electrum Server) " ; count=$((count +1)) ; fi
 if grep -q "fulcrumdkr-end" $HOME/.parmanode/installed.conf ; then fulcrumdkrapp=1
-                       echo -e "                        $cyan  (fd)$orange         Fulcrum (an Electrum Server in Docker) " ; count=$((count +1)) ; fi
+                       echo -e "                        $cyan  fd)$orange         Fulcrum (an Electrum Server in Docker) " ; count=$((count +1)) ; fi
 if grep -q "mempool-end" $HOME/.parmanode/installed.conf ; then mempoolapp=1
-                       echo -e "                        $cyan  (mem)$orange        Mempool " ; count=$((count +1)) ; fi
+                       echo -e "                        $cyan  mem)$orange        Mempool " ; count=$((count +1)) ; fi
 if grep -q "bre-end" $HOME/.parmanode/installed.conf ; then breapp=1
-                       echo -e "                        $cyan  (bre)$orange        BTC RPC Explorer (Docker) " ; count=$((count +1)) ; fi
+                       echo -e "                        $cyan  bre)$orange        BTC RPC Explorer (Docker) " ; count=$((count +1)) ; fi
 if grep -q "btcrpcexplorer-end" $HOME/.parmanode/installed.conf ; then btcrpcexplorerapp=1
-                       echo -e "                        $cyan  (bre)$orange        BTC RPC Explorer " ; count=$((count +1)) ; fi
+                       echo -e "                        $cyan  bre)$orange        BTC RPC Explorer " ; count=$((count +1)) ; fi
 #### Wallets                     
 if grep -q "sparrow-end" $HOME/.parmanode/installed.conf ; then sparrowapp=1
-                       echo -e "                        $cyan  (s)$orange          Sparrow Wallet " ; count=$((count +1)) ; fi
+                       echo -e "                        $cyan  s)$orange          Sparrow Wallet " ; count=$((count +1)) ; fi
 if grep -q "electrum-end" $HOME/.parmanode/installed.conf ; then electrumapp=1
-                       echo -e "                        $cyan  (e)$orange          Electrum Wallet " ; count=$((count +1)) ; fi
+                       echo -e "                        $cyan  e)$orange          Electrum Wallet " ; count=$((count +1)) ; fi
 if grep -q "specter-end" $HOME/.parmanode/installed.conf ; then specterapp=1
-                       echo -e "                        $cyan  (specter)$orange    Specter Wallet " ; count=$((count +1)) ; fi
+                       echo -e "                        $cyan  specter)$orange    Specter Wallet " ; count=$((count +1)) ; fi
 if grep -q "trezor-end" $HOME/.parmanode/installed.conf ; then trezorapp=1
-                       echo -e "                        $cyan  (trz)$orange        Trezor Suite " ; count=$((count +1)) ; fi
+                       echo -e "                        $cyan  trz)$orange        Trezor Suite " ; count=$((count +1)) ; fi
 if grep -q "bitbox-end" $HOME/.parmanode/installed.conf ; then bitboxapp=1
-                       echo -e "                        $cyan  (bb)$orange         BitBox App " ; count=$((count +1)) ; fi
+                       echo -e "                        $cyan  bb)$orange         BitBox App " ; count=$((count +1)) ; fi
 if grep -q "ledger-end" $HOME/.parmanode/installed.conf ; then ledgerapp=1
-                       echo -e "                        $cyan  (ll)$orange         Ledger Live App " ; count=$((count +1)) ; fi
+                       echo -e "                        $cyan  ll)$orange         Ledger Live App " ; count=$((count +1)) ; fi
 if grep -q "green-end" $HOME/.parmanode/installed.conf ; then greenapp=1
-                       echo -e "                        $cyan  (gr)  $orange       Green Wallet " ; count=$((count +1)) ; fi
+                       echo -e "                        $cyan  gr)  $orange       Green Wallet " ; count=$((count +1)) ; fi
 if grep -q "btcrecover-end" $HOME/.parmanode/installed.conf ; then btcrecoverapp=1
-                       echo -e "                        $cyan  (btcr)  $orange     BTC Recover " ; count=$((count +1)) ; fi
+                       echo -e "                        $cyan  btcr)  $orange     BTC Recover " ; count=$((count +1)) ; fi
 if grep -q "joinmarket-end" $HOME/.parmanode/installed.conf ; then joinmarketapp=1
-                       echo -e "                        $cyan  (join)  $orange     JoinMarket " ; count=$((count +1)) ; fi
+                       echo -e "                        $cyan  join)  $orange     JoinMarket " ; count=$((count +1)) ; fi
 if grep -q "parmanostr-end" $HOME/.parmanode/installed.conf ; then parmanostrapp=1
-                       echo -e "                        $cyan  (pnostr)$orange     ParmaNostr " ; count=$((count +1)) ; fi
+                       echo -e "                        $cyan  pnostr)$orange     ParmaNostr " ; count=$((count +1)) ; fi
 ### Lightning related 
 if grep -q "lnd-end" $HOME/.parmanode/installed.conf ; then lndapp=1
-                       echo -e "                        $cyan  (l)$orange          LND " ; count=$((count +1)) ; fi
+                       echo -e "                        $cyan  l)$orange          LND " ; count=$((count +1)) ; fi
 if grep -q "lnddocker-end" $HOME/.parmanode/installed.conf ; then lnddockerapp=1
-                       echo -e "                        $cyan  (ld)$orange         LND (Docker) " ; count=$((count +1)) ; fi
+                       echo -e "                        $cyan  ld)$orange         LND (Docker) " ; count=$((count +1)) ; fi
 if grep -q "btcpay-end" $HOME/.parmanode/installed.conf ; then btcpayapp=1
-                       echo -e "                        $cyan  (btcp)$orange       BTCPay Server " ; count=$((count +1)) ; fi
+                       echo -e "                        $cyan  btcp)$orange       BTCPay Server " ; count=$((count +1)) ; fi
 if grep -q "rtl-end" $HOME/.parmanode/installed.conf ; then rtlapp=1
-                       echo -e "                        $cyan  (r)$orange          RTL Wallet " ; count=$((count +1)) ; fi
+                       echo -e "                        $cyan  r)$orange          RTL Wallet " ; count=$((count +1)) ; fi
 if grep -q "thunderhub-end" $HOME/.parmanode/installed.conf ; then thunderhubapp=1
-                       echo -e "                        $cyan  (th)$orange         Thunderhub " ; count=$((count +1)) ; fi
+                       echo -e "                        $cyan  th)$orange         Thunderhub " ; count=$((count +1)) ; fi
 if grep -q "lnbits-end" $HOME/.parmanode/installed.conf ; then lnbitsapp=1
-                       echo -e "                        $cyan  (lnb)$orange        Lnbits " ; count=$((count +1)) ; fi
+                       echo -e "                        $cyan  lnb)$orange        Lnbits " ; count=$((count +1)) ; fi
 if grep -q "litd-end" $HOME/.parmanode/installed.conf ; then litdapp=1
-                       echo -e "                        $cyan  (litd)$orange       LITD "
-                       echo -e "                        $cyan  (lt)$orange         Lightning Terminal " ; count=$((count +1)) ; fi
+                       echo -e "                        $cyan  litd)$orange       LITD "
+                       echo -e "                        $cyan  lt)$orange         Lightning Terminal " ; count=$((count +1)) ; fi
 if grep -q "phoenix-end" $HOME/.parmanode/installed.conf ; then phoenixapp=1
-                       echo -e "                        $cyan  (pho)  $orange      Phoenix Server " ; count=$((count +1)) ; fi
+                       echo -e "                        $cyan  pho)  $orange      Phoenix Server " ; count=$((count +1)) ; fi
 ### Mining
 if grep -q "public_pool-end" $HOME/.parmanode/installed.conf ; then public_poolapp=1
-                       echo -e "                        $cyan  (pool)$orange       Public Pool " ; count=$((count +1)) ; fi
+                       echo -e "                        $cyan  pool)$orange       Public Pool " ; count=$((count +1)) ; fi
 ### General
 if grep -q "parmashell-end" $HOME/.parmanode/installed.conf ; then parmashellapp=1
-                       echo -e "                        $cyan  (ps)$orange         Parmashell " ; count=$((count +1)) ; fi
+                       echo -e "                        $cyan  ps)$orange         Parmashell " ; count=$((count +1)) ; fi
 if grep -q "anydesk-end" $HOME/.parmanode/installed.conf ; then anydeskapp=1
-                       echo -e "                        $cyan  (any)$orange        AnyDesk " ; count=$((count +1)) ; fi
+                       echo -e "                        $cyan  any)$orange        AnyDesk " ; count=$((count +1)) ; fi
 if grep -q "pihole-end" $HOME/.parmanode/installed.conf ; then piholeapp=1
-                       echo -e "                        $cyan  (pih)$orange        PiHole " ; count=$((count +1)) ; fi
+                       echo -e "                        $cyan  pih)$orange        PiHole " ; count=$((count +1)) ; fi
 if grep -q "parmabox-end" $HOME/.parmanode/installed.conf ; then parmaboxapp=1
-                       echo -e "                        $cyan  (pbx)$orange        ParmaBox " ; count=$((count +1)) ; fi
+                       echo -e "                        $cyan  pbx)$orange        ParmaBox " ; count=$((count +1)) ; fi
 if grep -q "nostrrelay-end" $HOME/.parmanode/installed.conf ; then nostrrelayapp=1
-                       echo -e "                        $cyan  (nr)$orange         Nostr Relay " ; count=$((count +1)) ; fi
+                       echo -e "                        $cyan  nr)$orange         Nostr Relay " ; count=$((count +1)) ; fi
 if grep -q "X11-end" $HOME/.parmanode/installed.conf ; then X11app=1
-                       echo -e "                        $cyan  (x11)  $orange      X11 Forwarding " ; count=$((count +1)) ; fi
+                       echo -e "                        $cyan  x11)  $orange      X11 Forwarding " ; count=$((count +1)) ; fi
 if grep -q "vaultwarden-end" $HOME/.parmanode/installed.conf ; then vaultwardenapp=1
-                       echo -e "                        $cyan  (vw)  $orange       VaultWarden" ; count=$((count +1)) ; fi
+                       echo -e "                        $cyan  vw)  $orange       VaultWarden" ; count=$((count +1)) ; fi
 ### Education
 if [[ -d $hp/parman_books ]] ; then parman_booksapp=1
-                       echo -e "                        $cyan  (pb)  $orange       Parman Books " ; count=$((count +1)) ; fi
+                       echo -e "                        $cyan  pb)  $orange       ParmaBooks " ; count=$((count +1)) ; fi
 ### Tor related 
 if which tor >$dn 2>&1 ; then torapp=1
-                       echo -e "                        $cyan  (t)$orange          Tor " ; count=$((count +1)) ; fi
+                       echo -e "                        $cyan  t)$orange          Tor " ; count=$((count +1)) ; fi
 if grep -q "tor-server-end" $HOME/.parmanode/installed.conf ; then torserverapp=1
-                       echo -e "                        $cyan  (tws)$orange        Tor Web Server " ; count=$((count +1)) ; fi
+                       echo -e "                        $cyan  tws)$orange        Tor Web Server " ; count=$((count +1)) ; fi
 if grep -q "torrelay-end" $HOME/.parmanode/installed.conf ; then torrelayapp=1
-                       echo -e "                        $cyan  (trl)$orange        Tor Relay " ; count=$((count +1)) ; fi
+                       echo -e "                        $cyan  trl)$orange        Tor Relay " ; count=$((count +1)) ; fi
 if grep -q "torb-end" $HOME/.parmanode/installed.conf ; then torbapp=1
-                       echo -e "                        $cyan  (torb)$orange       Tor Browser " ; count=$((count +1)) ; fi
+                       echo -e "                        $cyan  torb)$orange       Tor Browser " ; count=$((count +1)) ; fi
 if grep -q "qbittorrent-end" $HOME/.parmanode/installed.conf ; then qbittorrentapp=1
-                       echo -e "                        $cyan  (qbit)$orange       QBittorrent " ; count=$((count +1)) ; fi
+                       echo -e "                        $cyan  qbit)$orange       QBittorrent " ; count=$((count +1)) ; fi
 if grep -q "torssh-end" $HOME/.parmanode/installed.conf ; then torsshapp=1
-                       echo -e "                        $cyan  (tssh)$orange       Tor SSH " ; count=$((count +1)) ; fi
+                       echo -e "                        $cyan  tssh)$orange       Tor SSH " ; count=$((count +1)) ; fi
 echo -e "                            
 #######################################################################################
 "
@@ -479,7 +481,7 @@ ng)
 ##########################
 pb)
 if [[ $parman_booksapp == 1 ]] ; then
-menu_parmanbooks
+menu_parmabooks
 if [[ -n $1 ]] ; then clear ; return 0 ; fi
 else invalid
 fi
@@ -554,6 +556,14 @@ fi
 cloud) 
    if [[ $parmacloudapp == 1 ]] ; then
    menu_parmacloud
+   if [[ -n $1 ]] ; then clear ; return 0 ; fi
+   else invalid
+   fi
+   ;;
+
+sync) 
+   if [[ $parmasyncapp == 1 ]] ; then
+   menu_parmasync
    if [[ -n $1 ]] ; then clear ; return 0 ; fi
    else invalid
    fi

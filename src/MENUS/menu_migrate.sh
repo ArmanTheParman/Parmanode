@@ -10,21 +10,21 @@ $cyan
 ########################################################################################
 
 $cyan
-      (parmy)$orange    Import a Parmanode drive to use with Parmanode 
+      parmy)$orange    Import a Parmanode drive to use with Parmanode 
 $cyan
-      (new)$orange      Make a new external Parmanode drive (will be formatted)
+      new)$orange      Make a new external Parmanode drive (will be formatted)
 $cyan
-      (ub)$orange       Migrate an Umbrel drive to Parmanode 
+      ub)$orange       Migrate an Umbrel drive to Parmanode 
 $cyan
-      (mn)$orange       Migrate a MyNode drive to Parmanode 
+      mn)$orange       Migrate a MyNode drive to Parmanode 
 $cyan
-      (rp)$orange       Migrate a RaspiBlitz drive to Parmanode
+      rp)$orange       Migrate a RaspiBlitz drive to Parmanode
 $red
-      (eww)$orange      Migrate a Parmanode drive back to Umbrel
+      eww)$orange      Migrate a Parmanode drive back to Umbrel
 $cyan
-      (rm)$orange       Migrate a Parmanode drive back to MyNode
+      rm)$orange       Migrate a Parmanode drive back to MyNode
 $cyan
-      (rr)$orange       Migrate a Parmanode drive back to RaspiBlitz
+      rr)$orange       Migrate a Parmanode drive back to RaspiBlitz
 
 
 ########################################################################################

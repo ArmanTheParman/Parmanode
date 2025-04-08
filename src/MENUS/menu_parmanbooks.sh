@@ -1,10 +1,10 @@
-function menu_parmanbooks {
+function menu_parmabooks {
 while true ; do
 set_terminal
 echo -ne "
 ########################################################################################$cyan
 
-                                Parman Books Menu $orange
+                                 ParmaBooks Menu $orange
 
 ########################################################################################
 

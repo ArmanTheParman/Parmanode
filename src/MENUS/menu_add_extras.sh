@@ -15,7 +15,7 @@ echo -en "
 #                                                                                      #
 #$cyan              udev)$orange    Add UDEV rules for HWWs (only needed for Linux)                #
 #                                                                                      #
-#$cyan              fb)$orange      ${UPDATE}Parman's recommended free books (pdfs)$endline
+#$cyan              pb)$orange      ${UPDATE}Parman's recommended free books (pdfs)$endline
 #                                                                                      #
 #$cyan              cl)$orange      Core Lightning                                                 #
 #                                                                                      #
@@ -57,7 +57,7 @@ udev|UDEV)
     fi
     udev
 ;;
-fb|FB)
+pb|fb|FB)
 get_books
 ;;
 
