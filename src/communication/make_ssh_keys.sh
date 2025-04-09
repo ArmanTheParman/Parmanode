@@ -4,7 +4,6 @@ debug start make_parmanode_ssh_keys
 if ! sudo test -f $HOME/.ssh/id_rsa.pub >$dn 2>&1 ; then
 mkdir -p $HOME/.ssh/extra_keys >$dn 2>&1
 ssh-keygen -t rsa -b 4096 -f $HOME/.ssh/id_rsa -N "" -C "$USER parmanode" 
-debug end make_parmanode_ssh_keys
 fi
 }
 

@@ -91,12 +91,15 @@ if ! grep -q "OS=" $pc >/dev/null 2>&1 ; then
 which_os
 fi
 
+#Premium Configs
+export PTCONF=$hp/parmatwin/parmatwin.conf
+export PSCONFIG=$hp/parmasync/parmasync.conf
 }
 
-function print_parmanode_variables {
 
+
+function print_parmanode_variables {
 echo debug $debug fix $fix test $test bash $bash
 echo parmanode dirve $parmanode_drive
 echo bashV_major $bashV_major
-
 }
