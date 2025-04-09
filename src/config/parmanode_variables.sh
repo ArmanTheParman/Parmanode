@@ -92,7 +92,7 @@ which_os
 fi
 
 #Premium Configs
-export PTCONF=$hp/parmatwin/parmatwin.conf
+export PTWINCONF=$hp/parmatwin/parmatwin.conf
 export PSCONFIG=$hp/parmasync/parmasync.conf
 }
 
