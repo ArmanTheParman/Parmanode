@@ -4,12 +4,7 @@ function menu_remove {
 # set to toggle the availability of the menu logic below, via if statements.
 
 while true ; do
-clear
-local num1=$(cat $dp/installed.conf | wc -l)
-local num=$(( 42 + ((num1)/2 - 14) ))
-if [[ $num -lt 45 ]] ; then num=46 ; fi
-if [[ $num -gt 66 ]] ; then num=66 ; fi
-set_terminal_custom $((num + 2))
+set_terminal 42
 unset bitcoinmenu fulcrummenu dockermenu btcpaymenu lnbitsmenu tormenu lndmenu mempoolmenu 
 unset sparrowmenu rtlmenu electrummenu torservermenu btcTORmenu spectermenu btcrpcexplorermenu
 unset electrsmenu trezormenu ledgermenu bitboxmenu parmashellmenu bredockermenu parmaboxmenu
