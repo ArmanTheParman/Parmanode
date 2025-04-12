@@ -462,4 +462,5 @@ q|Q) exit ;;
 p|P) return 1 ;;
 m|returnM) back2main ;;
 esac
+return 0
 }
