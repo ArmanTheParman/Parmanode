@@ -459,7 +459,7 @@ esac
 function jump_qpm {
 case $1 in
 q|Q) exit ;;
-p|P) return 1 ;;
+p|P) debug "in jump_qpm, p" ; return 1 ;;
 m|returnM) back2main ;;
 esac
 return 0
