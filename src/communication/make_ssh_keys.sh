@@ -162,11 +162,11 @@ IdentitiesOnly yes" | sudo tee -a ~/.ssh/config >$dn
 
 function make_parmadrive_ssh_keys {
 sudo test -f ~/.ssh/parmadrive-key && return 0
-ssh-keygen -t rsa -b 4096 -f ~/.ssh/parmadrive-key -N "" -C "$USER parmadrive"
+ssh-keygen -t rsa -b 4096 -f ~/.ssh/extra_keys/parmadrive-key -N "" -C "$USER parmadrive"
 }
 function make_parmatwin_ssh_keys  {
 sudo test -f ~/.ssh/parmatwin-key && return 0
-ssh-keygen -t rsa -b 4096 -f ~/.ssh/parmatwin-key -N "" -C "$USER parmatwin"
+ssh-keygen -t rsa -b 4096 -f ~/.ssh/extra_keys/parmatwin-key -N "" -C "$USER parmatwin"
 }
 
 function make_all_ssh_keys {
