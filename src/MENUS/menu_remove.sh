@@ -26,317 +26,213 @@ echo -e "
 #                                                                                      #
 #                                                                                      #"
 if grep -q "datum-end" $HOME/.parmanode/installed.conf ; then datummenu=1
-echo -e "#$cyan                            \033[27G datum)$blue            Datum$orange                                   \033[88G#
-#                                                                                      #"
+echo -e "#$cyan                            \033[27G datum)$blue            Datum$orange                                   \033[88G#"
 elif grep -q "datum-start" $HOME/.parmanode/installed.conf ; then datummenu=1
-echo -e "#$cyan                            \033[27G datum)$blue            Datum$orange              $red$blinkon(partial)$blinkoff$orange       \033[88G#
-#                                                                                      #" ; fi
+echo -e "#$cyan                            \033[27G datum)$blue            Datum$orange              $red$blinkon(partial)$blinkoff$orange       \033[88G#" ; fi
 if grep -q "uddns-end" $HOME/.parmanode/installed.conf ; then uddnsmenu=1
-echo -e "#$cyan                            \033[27G uddns)$blue            UDDNS$orange                                  \033[88G#
-#                                                                                      #"
+echo -e "#$cyan                            \033[27G uddns)$blue            UDDNS$orange                                  \033[88G#"
 elif grep -q "uddns-start" $HOME/.parmanode/installed.conf ; then uddnsmenu=1
-echo -e "#$cyan                            \033[27G uddns)$blue            UDDNS$orange              $red$blinkon(partial)$blinkoff$orange       \033[88G#
-#                                                                                      #" ; fi
+echo -e "#$cyan                            \033[27G uddns)$blue            UDDNS$orange              $red$blinkon(partial)$blinkoff$orange       \033[88G#" ;fi
 if grep -q "tailscale-end" $HOME/.parmanode/installed.conf ; then parmascalemenu=1
-echo -e "#$cyan                            \033[27G scale)$blue            ParmaScale$orange                             \033[88G#
-#                                                                                      #"
+echo -e "#$cyan                            \033[27G scale)$blue            ParmaScale$orange                             \033[88G#"
 elif grep -q "tailscale-start" $HOME/.parmanode/installed.conf ; then parmascalemenu=1
-echo -e "#$cyan                            \033[27G scale)$blue            ParmaScale$orange         $red$blinkon(partial)$blinkoff$orange       \033[88G#
-#                                                                                      #" ; fi
+echo -e "#$cyan                            \033[27G scale)$blue            ParmaScale$orange         $red$blinkon(partial)$blinkoff$orange       \033[88G#" ; fi
 if grep -q "parmacloud-end" $HOME/.parmanode/installed.conf ; then parmacloudmenu=1
-echo -e "#$cyan                            \033[27G cloud)$blue            ParmaCloud$orange                             \033[88G#
-#                                                                                      #"
+echo -e "#$cyan                            \033[27G cloud)$blue            ParmaCloud$orange                             \033[88G#"
 elif grep -q "parmacloud-start" $HOME/.parmanode/installed.conf ; then parmacloudmenu=1
-echo -e "#$cyan                            \033[27G cloud)$blue            ParmaCloud$orange         $red$blinkon(partial)$blinkoff$orange       \033[88G#
-#                                                                                      #" ; fi
+echo -e "#$cyan                            \033[27G cloud)$blue            ParmaCloud$orange         $red$blinkon(partial)$blinkoff$orange       \033[88G#" ; fi
 if grep -q "parmasync-end" $HOME/.parmanode/installed.conf ; then parmasyncmenu=1
-echo -e "#$cyan                            \033[27G sync)$blue             ParmaSync$orange                             \033[88G#
-#                                                                                      #"
+echo -e "#$cyan                            \033[27G sync)$blue             ParmaSync$orange                             \033[88G#"
 elif grep -q "parmasync-start" $HOME/.parmanode/installed.conf ; then parmasyncmenu=1
-echo -e "#$cyan                            \033[27G sync)$blue             ParmaSync$orange          $red$blinkon(partial)$blinkoff$orange       \033[88G#
-#                                                                                      #" ; fi
+echo -e "#$cyan                            \033[27G sync)$blue             ParmaSync$orange          $red$blinkon(partial)$blinkoff$orange       \033[88G#" ; fi
 if grep -q "website-end" $HOME/.parmanode/installed.conf ; then websitemenu=1
-echo -e "#$cyan                            \033[27G pw)$blue               WordPress Website (ParmaWeb)           $orange\033[88G#
-#                                                                                      #"
+echo -e "#$cyan                            \033[27G pw)$blue               WordPress Website (ParmaWeb)           $orange\033[88G#"
 elif grep -q "website-start" $HOME/.parmanode/installed.conf ; then websitemenu=1
-echo -e "#$cyan                            \033[27G pw)$blue               WordPress Website         $red$blinkon(partial)$blinkoff$orange       \033[88G#
-#                                                                                      #" ; fi
+echo -e "#$cyan                            \033[27G pw)$blue               WordPress Website         $red$blinkon(partial)$blinkoff$orange       \033[88G#" ; fi
 if grep -q "bitcoin-end" $HOME/.parmanode/installed.conf ; then bitcoinmenu=1
-echo -e "#$cyan                            \033[27G bitcoin)$orange          Bitcoin                                \033[88G#
-#                                                                                      #"
+echo -e "#$cyan                            \033[27G bitcoin)$orange          Bitcoin                                \033[88G#"
 elif grep -q "bitcoin-start" $HOME/.parmanode/installed.conf ; then bitcoinmenu=1
-echo -e "#$cyan                            \033[27G bitcoin)$orange          Bitcoin $red$blinkon(partial)$blinkoff$orange                       \033[88G#
-#                                                                                      #" ; fi
+echo -e "#$cyan                            \033[27G bitcoin)$orange          Bitcoin $red$blinkon(partial)$blinkoff$orange                       \033[88G#" ; fi
 if grep -q "fulcrum-end" $HOME/.parmanode/installed.conf ; then fulcrummenu=1 
-echo -e "#$cyan                            \033[27G fulcrum)$orange          Fulcrum Server                         \033[88G#
-#                                                                                      #"
+echo -e "#$cyan                            \033[27G fulcrum)$orange          Fulcrum Server                         \033[88G#"
 elif grep -q "fulcrum-start" $HOME/.parmanode/installed.conf ; then fulcrummenu=1                                
-echo -e "#$cyan                            \033[27G fulcrum)$orange          Fulcrum $red$blinkon(partial)$blinkoff$orange                       \033[88G#
-#                                                                                      #" ; fi
+echo -e "#$cyan                            \033[27G fulcrum)$orange          Fulcrum $red$blinkon(partial)$blinkoff$orange                       \033[88G#" ; fi
 if grep -q "fulcrumdkr-end" $HOME/.parmanode/installed.conf ; then fulcrumdkrmenu=1 
-echo -e "#$cyan                            \033[27G fulcrumd)$orange         Fulcrum Server (Docker)                \033[88G#
-#                                                                                      #"
+echo -e "#$cyan                            \033[27G fulcrumd)$orange         Fulcrum Server (Docker)                \033[88G#"
 elif grep -q "fulcrumdkr-start" $HOME/.parmanode/installed.conf ; then fulcrumdkrmenu=1                                
-echo -e "#$cyan                            \033[27G fulcrumd)$orange         Fulcrum (Docker)$red$blinkon(partial)$blinkoff$orange               \033[88G#
-#                                                                                      #" ; fi
+echo -e "#$cyan                            \033[27G fulcrumd)$orange         Fulcrum (Docker)$red$blinkon(partial)$blinkoff$orange               \033[88G#" ; fi
 if grep -q "docker-end" $HOME/.parmanode/installed.conf ; then dockermenu=1 
-echo -e "#$cyan                            \033[27G docker)$orange           Docker                                 \033[88G#
-#                                                                                      #"
+echo -e "#$cyan                            \033[27G docker)$orange           Docker                                 \033[88G#"
 elif grep -q "docker-start" $HOME/.parmanode/installed.conf ; then dockermenu=1                       
-echo -e "#$cyan                            \033[27G docker)$orange           Docker $red$blinkon(partial)$blinkoff$orange                        \033[88G#
-#                                                                                      #" ; fi
+echo -e "#$cyan                            \033[27G docker)$orange           Docker $red$blinkon(partial)$blinkoff$orange                        \033[88G#" ; fi
 if grep -q "btcpay-end" $HOME/.parmanode/installed.conf ; then btcpaymenu=1              
-echo -e "#$cyan                            \033[27G btcp)$orange             BTCPay                                 \033[88G#
-#                                                                                      #"
+echo -e "#$cyan                            \033[27G btcp)$orange             BTCPay                                 \033[88G#"
 elif grep -q "btcpay-start" $HOME/.parmanode/installed.conf ; then btcpaymenu=1
-echo -e "#$cyan                            \033[27G btcp)$orange             BTCPay $red$blinkon(partial)$blinkoff$orange                        \033[88G#
-#                                                                                      #" ; fi
+echo -e "#$cyan                            \033[27G btcp)$orange             BTCPay $red$blinkon(partial)$blinkoff$orange                        \033[88G#" ; fi
 if which tor >$dn 2>&1 ; then tormenu=1
-echo -e "#$cyan                            \033[27G tor)$orange              Tor                                    \033[88G#
-#                                                                                      #"
+echo -e "#$cyan                            \033[27G tor)$orange              Tor                                    \033[88G#"
 elif grep -q "tor-start" $HOME/.parmanode/installed.conf ; then tormenu=1
-echo -e "#$cyan                            \033[27G tor)$orange              Tor $red$blinkon(partial)$blinkoff$orange                           \033[88G#
-#                                                                                      #" ; fi
+echo -e "#$cyan                            \033[27G tor)$orange              Tor $red$blinkon(partial)$blinkoff$orange                           \033[88G#" ; fi
 if grep -q "lnd-end" $HOME/.parmanode/installed.conf ; then lndmenu=1
-echo -e "#$cyan                            \033[27G lnd)$orange              LND                                    \033[88G#
-#                                                                                      #"
+echo -e "#$cyan                            \033[27G lnd)$orange              LND                                    \033[88G#"
 elif grep -q "lnd-start" $HOME/.parmanode/installed.conf ; then lndmenu=1
-echo -e "#$cyan                            \033[27G lnd)$orange              LND $red$blinkon(partial)$blinkoff$orange                           \033[88G#
-#                                                                                      #" ; fi
+echo -e "#$cyan                            \033[27G lnd)$orange              LND $red$blinkon(partial)$blinkoff$orange                           \033[88G#" ; fi
 if grep -q "mempool-end" $HOME/.parmanode/installed.conf ; then mempoolmenu=1
-echo -e "#$cyan                            \033[27G mem)$orange              Mempool                                \033[88G#
-#                                                                                      #"
+echo -e "#$cyan                            \033[27G mem)$orange              Mempool                                \033[88G#"
 elif grep -q "mempool-start" $HOME/.parmanode/installed.conf ; then mempoolmenu=1
-echo -e "#$cyan                            \033[27G mem)$orange              Mempool $red$blinkon(partial)$blinkoff$orange                       \033[88G#
-#                                                                                      #" ; fi
+echo -e "#$cyan                            \033[27G mem)$orange              Mempool $red$blinkon(partial)$blinkoff$orange                       \033[88G#" ; fi
 if grep -q "sparrow-end" $HOME/.parmanode/installed.conf ; then sparrowmenu=1
-echo -e "#$cyan                            \033[27G s)$orange                Sparrow Wallet                         \033[88G#
-#                                                                                      #"  
+echo -e "#$cyan                            \033[27G s)$orange                Sparrow Wallet                         \033[88G#"
 elif grep -q "sparrow-start" $HOME/.parmanode/installed.conf ; then sparrowmenu=1
-echo -e "#$cyan                            \033[27G s)$orange                Sparrow $red$blinkon(partial)$blinkoff$orange                       \033[88G#
-#                                                                                      #" ; fi
+echo -e "#$cyan                            \033[27G s)$orange                Sparrow $red$blinkon(partial)$blinkoff$orange                       \033[88G#" ; fi
 if grep -q "rtl-end" $HOME/.parmanode/installed.conf ; then rtlmenu=1
-echo -e "#$cyan                            \033[27G r)$orange                RTL Wallet                             \033[88G#
-#                                                                                      #" 
+echo -e "#$cyan                            \033[27G r)$orange                RTL Wallet                             \033[88G#"
 elif grep -q "rtl-start" $HOME/.parmanode/installed.conf ; then rtlmenu=1
-echo -e "#$cyan                            \033[27G r)$orange                RTL $red$blinkon(partial)$blinkoff$orange                           \033[88G#
-#                                                                                      #" ; fi
+echo -e "#$cyan                            \033[27G r)$orange                RTL $red$blinkon(partial)$blinkoff$orange                           \033[88G#" ; fi
 if grep -q "electrum-end" $HOME/.parmanode/installed.conf ; then electrummenu=1
-echo -e "#$cyan                            \033[27G e)$orange                Electrum Wallet                        \033[88G#
-#                                                                                      #"  
+echo -e "#$cyan                            \033[27G e)$orange                Electrum Wallet                        \033[88G#"
 elif grep -q "electrum-start" $HOME/.parmanode/installed.conf ; then electrummenu=1
-echo -e "#$cyan                            \033[27G e)$orange                Electrum $red$blinkon(partial)$blinkoff$orange                      \033[88G#
-#                                                                                      #" ; fi
+echo -e "#$cyan                            \033[27G e)$orange                Electrum $red$blinkon(partial)$blinkoff$orange                      \033[88G#" ; fi
 if grep -q "tor-server-end" $HOME/.parmanode/installed.conf ; then torservermenu=1
-echo -e "#$cyan                            \033[27G tws)$orange              Tor Web Server                         \033[88G#
-#                                                                                      #"
+echo -e "#$cyan                            \033[27G tws)$orange              Tor Web Server                         \033[88G#"
 elif grep -q "tor-server-start" $HOME/.parmanode/installed.conf ; then torservermenu=1
-echo -e "#$cyan                            \033[27G tws)$orange              Tor Web Server $red$blinkon(partial)$blinkoff$orange                \033[88G#
-#                                                                                      #" ; fi
+echo -e "#$cyan                            \033[27G tws)$orange              Tor Web Server $red$blinkon(partial)$blinkoff$orange                \033[88G#" ; fi
 if grep -q "specter-end" $HOME/.parmanode/installed.conf ; then spectermenu=1
-echo -e "#$cyan                            \033[27G specter)$orange          Specter Wallet                         \033[88G#
-#                                                                                      #"
+echo -e "#$cyan                            \033[27G specter)$orange          Specter Wallet                         \033[88G#"
 elif grep -q "specter-start" $HOME/.parmanode/installed.conf ; then spectermenu=1
-echo -e "                                  \033[27G specter)                 Specter Wallet $red$blinkon(partial)$blinkoff$orange                \033[88G#
-#                                                                                      #" ; fi
+echo -e "                                  \033[27G specter)                 Specter Wallet $red$blinkon(partial)$blinkoff$orange                \033[88G#" ; fi
 if grep -q "btcrpcexplorer-end" $HOME/.parmanode/installed.conf ; then btcrpcexplorermenu=1
-echo -e "#$cyan                            \033[27G bre)$orange              BTC RPC Explorer                       \033[88G#
-#                                                                                      #"
+echo -e "#$cyan                            \033[27G bre)$orange              BTC RPC Explorer                       \033[88G#"
 elif grep -q "btcrpcexplorer-start" $HOME/.parmanode/installed.conf ; then btcrpcexplorermenu=1
-echo -e "#$cyan                            \033[27G bre)$orange              BTCrpcEXP $red$blinkon(partial)$blinkoff$orange                     \033[88G#
-#                                                                                      #" ; fi
+echo -e "#$cyan                            \033[27G bre)$orange              BTCrpcEXP $red$blinkon(partial)$blinkoff$orange                     \033[88G#" ; fi
 if grep -q "electrs-end" $HOME/.parmanode/installed.conf ; then electrsmenu=1
-echo -e "#$cyan                            \033[27G ers)$orange              electrs                                \033[88G#
-#                                                                                      #"
+echo -e "#$cyan                            \033[27G ers)$orange              electrs                                \033[88G#"
 elif grep -q "electrs-start" $HOME/.parmanode/installed.conf ; then electrsmenu=1
-echo -e "#$cyan                            \033[27G ers)$orange              electrs $red$blinkon(partial)$blinkoff$orange                       \033[88G#
-#                                                                                      #" ; fi
+echo -e "#$cyan                            \033[27G ers)$orange              electrs $red$blinkon(partial)$blinkoff$orange                       \033[88G#" ; fi
 if grep -q "lnbits-end" $HOME/.parmanode/installed.conf ; then lnbitsmenu=1
-echo -e "#$cyan                            \033[27G lnb)$orange              LNbits                                 \033[88G#
-#                                                                                      #"
+echo -e "#$cyan                            \033[27G lnb)$orange              LNbits                                 \033[88G#"
 elif grep -q "lnbits-start" $HOME/.parmanode/installed.conf ; then lnbitsmenu=1
-echo -e "#$cyan                            \033[27G lnb)$orange              LNbits $red$blinkon(partial)$blinkoff$orange                        \033[88G#
-#                                                                                      #" ; fi
+echo -e "#$cyan                            \033[27G lnb)$orange              LNbits $red$blinkon(partial)$blinkoff$orange                        \033[88G#" ; fi
 if grep -q "trezor-end" $HOME/.parmanode/installed.conf ; then trezormenu=1
-echo -e "#$cyan                            \033[27G trz)$orange              Trezor Suite                           \033[88G#
-#                                                                                      #"
+echo -e "#$cyan                            \033[27G trz)$orange              Trezor Suite                           \033[88G#"
 elif grep -q "trezor-start" $HOME/.parmanode/installed.conf ; then trezormenu=1
-echo -e "#$cyan                            \033[27G trz)$orange              Trezor $red$blinkon(partial)$blinkoff$orange                        \033[88G#
-#                                                                                      #" ; fi
+echo -e "#$cyan                            \033[27G trz)$orange              Trezor $red$blinkon(partial)$blinkoff$orange                        \033[88G#" ; fi
 if grep -q "bitbox-end" $HOME/.parmanode/installed.conf ; then bitboxmenu=1
-echo -e "#$cyan                            \033[27G bb)$orange               BitBox                                 \033[88G#
-#                                                                                      #"
+echo -e "#$cyan                            \033[27G bb)$orange               BitBox                                 \033[88G#"
 elif grep -q "bitbox-start" $HOME/.parmanode/installed.conf ; then bitboxmenu=1
-echo -e "#$cyan                            \033[27G bb)$orange               Bitbox  $red$blinkon(partial)$blinkoff$orange                       \033[88G#
-#                                                                                      #" ; fi
+echo -e "#$cyan                            \033[27G bb)$orange               Bitbox  $red$blinkon(partial)$blinkoff$orange                       \033[88G#" ; fi
 if grep -q "ledger-end" $HOME/.parmanode/installed.conf ; then ledgermenu=1
-echo -e "#$cyan                            \033[27G ll)$orange               Ledger                                 \033[88G#
-#                                                                                      #"
+echo -e "#$cyan                            \033[27G ll)$orange               Ledger                                 \033[88G#"
 elif grep -q "ledger-start" $HOME/.parmanode/installed.conf ; then ledgermenu=1
-echo -e "#$cyan                            \033[27G ll)$orange               Ledger  $red$blinkon(partial)$blinkoff$orange                       \033[88G#
-#                                                                                      #" ; fi
+echo -e "#$cyan                            \033[27G ll)$orange               Ledger  $red$blinkon(partial)$blinkoff$orange                       \033[88G#" ; fi
 if grep -q "parmashell-end" $HOME/.parmanode/installed.conf ; then parmashellmenu=1
-echo -e "#$cyan                            \033[27G ps)$orange               Parmashell                             \033[88G#
-#                                                                                      #"
+echo -e "#$cyan                            \033[27G ps)$orange               Parmashell                             \033[88G#"
 elif grep -q "parmashell-start" $HOME/.parmanode/installed.conf ; then parmashellmenu=1
-echo -e "#$cyan                            \033[27G ps)$orange               Parmashell  $red$blinkon(partial)$blinkoff$orange                   \033[88G#
-#                                                                                      #" ; fi
+echo -e "#$cyan                            \033[27G ps)$orange               Parmashell  $red$blinkon(partial)$blinkoff$orange                   \033[88G#" ; fi
 if grep -q "bre-end" $HOME/.parmanode/installed.conf ; then bredockermenu=1
-echo -e "#$cyan                            \033[27G bre)$orange              BTC RPC Explorer (Docker)              \033[88G#
-#                                                                                      #"
+echo -e "#$cyan                            \033[27G bre)$orange              BTC RPC Explorer (Docker)              \033[88G#"
 elif grep -q "bre-start" $HOME/.parmanode/installed.conf ; then bredockermenu=1
-echo -e "#$cyan                            \033[27G bre)$orange              BRE         $red$blinkon(partial)$blinkoff$orange                   \033[88G#
-#                                                                                      #" ; fi
+echo -e "#$cyan                            \033[27G bre)$orange              BRE         $red$blinkon(partial)$blinkoff$orange                   \033[88G#" ; fi
 if grep -q "parmabox-end" $HOME/.parmanode/installed.conf ; then parmaboxmenu=1
-echo -e "#$cyan                            \033[27G pbx)$orange              ParmaBox                               \033[88G#
-#                                                                                      #"
+echo -e "#$cyan                            \033[27G pbx)$orange              ParmaBox                               \033[88G#"
 elif grep -q "parmabox-start" $HOME/.parmanode/installed.conf ; then parmaboxmenu=1
-echo -e "#$cyan                            \033[27G pbx)$orange              Parmabox    $red$blinkon(partial)$blinkoff$orange                   \033[88G#
-#                                                                                      #" ; fi
+echo -e "#$cyan                            \033[27G pbx)$orange              Parmabox    $red$blinkon(partial)$blinkoff$orange                   \033[88G#" ; fi
 if grep -q "anydesk-end" $HOME/.parmanode/installed.conf ; then anydeskmenu=1
-echo -e "#$cyan                            \033[27G any)$orange              AnyDesk                                \033[88G#
-#                                                                                      #"
+echo -e "#$cyan                            \033[27G any)$orange              AnyDesk                                \033[88G#"
 elif grep -q "anydesk-start" $HOME/.parmanode/installed.conf ; then anydeskmenu=1
-echo -e "#$cyan                            \033[27G any)$orange              AnyDesk     $red$blinkon(partial)$blinkoff$orange                   \033[88G#
-#                                                                                      #" ; fi
+echo -e "#$cyan                            \033[27G any)$orange              AnyDesk     $red$blinkon(partial)$blinkoff$orange                   \033[88G#" ; fi
 if grep -q "pihole-end" $HOME/.parmanode/installed.conf ; then piholemenu=1
-echo -e "#$cyan                            \033[27G pih)$orange              PiHole                                 \033[88G#
-#                                                                                      #"
+echo -e "#$cyan                            \033[27G pih)$orange              PiHole                                 \033[88G#"
 elif grep -q "pihole-start" $HOME/.parmanode/installed.conf ; then piholemenu=1
-echo -e "#$cyan                            \033[27G pih)$orange              PiHole      $red$blinkon(partial)$blinkoff$orange                   \033[88G#
-#                                                                                      #" ; fi
+echo -e "#$cyan                            \033[27G pih)$orange              PiHole      $red$blinkon(partial)$blinkoff$orange                   \033[88G#" ; fi
 if grep -q "torrelay-end" $HOME/.parmanode/installed.conf ; then torrelaymenu=1
-echo -e "#$cyan                            \033[27G trl)$orange              TorRelay                               \033[88G#
-#                                                                                      #"
+echo -e "#$cyan                            \033[27G trl)$orange              TorRelay                               \033[88G#"
 elif grep -q "torrelay-start" $HOME/.parmanode/installed.conf ; then torrelaymenu=1
-echo -e "#$cyan                            \033[27G trl)$orange              TorRelay    $red$blinkon(partial)$blinkoff$orange                   \033[88G#
-#                                                                                      #" ; fi
+echo -e "#$cyan                            \033[27G trl)$orange              TorRelay    $red$blinkon(partial)$blinkoff$orange                   \033[88G#" ; fi
 if grep -q "electrsdkr-end" $HOME/.parmanode/installed.conf ; then electrsdkrmenu=1
-echo -e "#$cyan                            \033[27G ersd)$orange             Electrs Docker                         \033[88G#
-#                                                                                      #"
+echo -e "#$cyan                            \033[27G ersd)$orange             Electrs Docker                         \033[88G#"
 elif grep -q "electrsdkr-start" $HOME/.parmanode/installed.conf ; then electrsdkrmenu=1
-echo -e "#$cyan                            \033[27G ersd)$orange             Electrs Dkr $red$blinkn (partial)$blinkoff$orange                   \033[88G#
-#                                                                                      #" ; fi
+echo -e "#$cyan                            \033[27G ersd)$orange             Electrs Dkr $red$blinkn (partial)$blinkoff$orange                   \033[88G#" ; fi
 if grep -q "electrsdkr2-end" $HOME/.parmanode/installed.conf ; then electrsdkr2menu=1
-echo -e "#$cyan                            \033[27G ersd)$orange             Electrs Docker                         \033[88G#
-#                                                                                      #"
+echo -e "#$cyan                            \033[27G ersd)$orange             Electrs Docker                         \033[88G#"
 elif grep -q "electrsdkr2-start" $HOME/.parmanode/installed.conf ; then electrsdkr2menu=1
-echo -e "#$cyan                            \033[27G ersd)$orange             Electrs Dkr $red$blinkon(partial)$blinkoff$orange                   \033[88G#
-#                                                                                      #" ; fi
+echo -e "#$cyan                            \033[27G ersd)$orange             Electrs Dkr $red$blinkon(partial)$blinkoff$orange                   \033[88G#" ; fi
 if grep -q "piapps-end" $HOME/.parmanode/installed.conf ; then piappsmenu=1
-echo -e "#$cyan                            \033[27G piap)$orange             PiApps                                 \033[88G#
-#                                                                                      #"
+echo -e "#$cyan                            \033[27G piap)$orange             PiApps                                 \033[88G#"
 elif grep -q "piapps-start" $HOME/.parmanode/installed.conf ; then piappsmenu=1
-echo -e "#$cyan                            \033[27G piap)$orange             PiApps      $red$blinkon(partial)$blinkoff$orange                   \033[88G#
-#                                                                                      #" ; fi
+echo -e "#$cyan                            \033[27G piap)$orange             PiApps      $red$blinkon(partial)$blinkoff$orange                   \033[88G#" ; fi
 if grep -q "torb-end" $HOME/.parmanode/installed.conf ; then torbmenu=1
-echo -e "#$cyan                            \033[27G torb)$orange             Tor Browser                            \033[88G#
-#                                                                                      #"
+echo -e "#$cyan                            \033[27G torb)$orange             Tor Browser                            \033[88G#"
 elif grep -q "torb-start" $HOME/.parmanode/installed.conf ; then torbmenu=1
-echo -e "#$cyan                            \033[27G torb)$orange             Tor Browse  $red$blinkon(partial)$blinkoff$orange                   \033[88G#
-#                                                                                      #" ; fi
+echo -e "#$cyan                            \033[27G torb)$orange             Tor Browse  $red$blinkon(partial)$blinkoff$orange                   \033[88G#" ; fi
 if grep -q "qbittorrent-end" $HOME/.parmanode/installed.conf ; then qbittorrentmenu=1
-echo -e "#$cyan                            \033[27G qbit)$orange             QBittorrent                            \033[88G#
-#                                                                                      #"
+echo -e "#$cyan                            \033[27G qbit)$orange             QBittorrent                            \033[88G#"
 elif grep -q "qbittorrent-start" $HOME/.parmanode/installed.conf ; then torbmenu=1
-echo -e "#$cyan                            \033[27G qbit)$orange             QBittorrent$red$blinkon(partial)$blinkoff$orange                    \033[88G#
-#                                                                                      #" ; fi
+echo -e "#$cyan                            \033[27G qbit)$orange             QBittorrent$red$blinkon(partial)$blinkoff$orange                    \033[88G#" ; fi
 if grep -q "torssh-end" $HOME/.parmanode/installed.conf ; then torsshmenu=1
-echo -e "#$cyan                            \033[27G tssh)$orange             Tor SSH                                \033[88G#
-#                                                                                      #"
+echo -e "#$cyan                            \033[27G tssh)$orange             Tor SSH                                \033[88G#"
 elif grep -q "torssh-start" $HOME/.parmanode/installed.conf ; then torsshmenu=1
-echo -e "#$cyan                            \033[27G tssh)$orange             Tor SSH $red$blinkon(partial)$blinkoff$orange                       \033[88G#
-#                                                                                      #" ; fi
+echo -e "#$cyan                            \033[27G tssh)$orange             Tor SSH $red$blinkon(partial)$blinkoff$orange                       \033[88G#" ; fi
 if grep -q "electrs2-end" $HOME/.parmanode/installed.conf ; then electrs2menu=1
-echo -e "#$cyan                            \033[27G ers)$orange              electrs                                \033[88G#
-#                                                                                      #"
+echo -e "#$cyan                            \033[27G ers)$orange              electrs                                \033[88G#"
 elif grep -q "electrs2-start" $HOME/.parmanode/installed.conf ; then electrs2menu=1
-echo -e "#$cyan                            \033[27G ers)$orange              electrs $red$blinkon(partial)$blinkoff$orange                       \033[88G#
-#                                                                                      #" ; fi
+echo -e "#$cyan                            \033[27G ers)$orange              electrs $red$blinkon(partial)$blinkoff$orange                       \033[88G#" ; fi
 if grep -q "public_pool-end" $HOME/.parmanode/installed.conf ; then public_poolmenu=1
-echo -e "#$cyan                            \033[27G pool)$orange             Public Pool                            \033[88G#
-#                                                                                      #"
+echo -e "#$cyan                            \033[27G pool)$orange             Public Pool                            \033[88G#"
 elif grep -q "public_pool-start" $HOME/.parmanode/installed.conf ; then public_poolmenu=1
-echo -e "#$cyan                            \033[27G pool)$orange             Public Pool $red$blinkon(partial)$blinkoff$orange                   \033[88G#
-#                                                                                      #" ; fi
+echo -e "#$cyan                            \033[27G pool)$orange             Public Pool $red$blinkon(partial)$blinkoff$orange                   \033[88G#" ; fi
 if grep -q "electrumx-end" $HOME/.parmanode/installed.conf ; then electrumxmenu=1
-echo -e "#$cyan                            \033[27G ex)$orange               Electrum X                             \033[88G#
-#                                                                                      #"
+echo -e "#$cyan                            \033[27G ex)$orange               Electrum X                             \033[88G#"
 elif grep -q "electrumx-start" $HOME/.parmanode/installed.conf ; then electrumxmenu=1
-echo -e "#$cyan                            \033[27G ex)$orange               Electrum X $red$blinkon(partial)$blinkoff$orange                    \033[88G#
-#                                                                                      #" ; fi
+echo -e "#$cyan                            \033[27G ex)$orange               Electrum X $red$blinkon(partial)$blinkoff$orange                    \033[88G#" ; fi
 if grep -q "thunderhub-end" $HOME/.parmanode/installed.conf ; then thunderhubmenu=1
-echo -e "#$cyan                            \033[27G th)$orange               Thunderhub                             \033[88G#
-#                                                                                      #"
+echo -e "#$cyan                            \033[27G th)$orange               Thunderhub                             \033[88G#"
 elif grep -q "thunderhub-start" $HOME/.parmanode/installed.conf ; then thunderhubmenu=1
-echo -e "#$cyan                            \033[27G th)$orange               Thunderhub $red$blinkon(partial)$blinkoff$orange                    \033[88G#
-#                                                                                      #" ; fi
+echo -e "#$cyan                            \033[27G th)$orange               Thunderhub $red$blinkon(partial)$blinkoff$orange                    \033[88G#" ; fi
 if grep -q "lnddocker-end" $HOME/.parmanode/installed.conf ; then lnddockermenu=1
-echo -e "#$cyan                            \033[27G ld)$orange               LND (Docker)                           \033[88G#
-#                                                                                      #"
+echo -e "#$cyan                            \033[27G ld)$orange               LND (Docker)                           \033[88G#"
 elif grep -q "lnddocker-start" $HOME/.parmanode/installed.conf ; then lnddockermenu=1
-echo -e "#$cyan                            \033[27G ld)$orange               LND (Docker)      $red$blinkon(partial)$blinkoff$orange             \033[88G#
-#                                                                                      #" ; fi
+echo -e "#$cyan                            \033[27G ld)$orange               LND (Docker)      $red$blinkon(partial)$blinkoff$orange             \033[88G#" ; fi
 if grep -q "nginx-end" $HOME/.parmanode/installed.conf ; then nginxmenu=1
-echo -e "#$cyan                            \033[27G ng)$orange               Nginx                                  \033[88G#
-#                                                                                      #"
+echo -e "#$cyan                            \033[27G ng)$orange               Nginx                                  \033[88G#"
 elif grep -q "nginx-start" $HOME/.parmanode/installed.conf ; then nginxmenu=1
-echo -e "#$cyan                            \033[27G ng)$orange               Nginx             $red$blinkon(partial)$blinkoff$orange             \033[88G#
-#                                                                                      #" ; fi
+echo -e "#$cyan                            \033[27G ng)$orange               Nginx             $red$blinkon(partial)$blinkoff$orange             \033[88G#" ; fi
 if grep -q "nostrrelay-end" $HOME/.parmanode/installed.conf ; then nostrrelaymenu=1
-echo -e "#$cyan                            \033[27G nr)$orange               NOSTR Relay                            \033[88G#
-#                                                                                      #"
+echo -e "#$cyan                            \033[27G nr)$orange               NOSTR Relay                            \033[88G#"
 elif grep -q "nostrrelay-start" $HOME/.parmanode/installed.conf ; then nostrrelaymenu=1
-echo -e "#$cyan                            \033[27G nr)$orange               NOSTR Relay       $red$blinkon(partial)$blinkoff$orange             \033[88G#
-#                                                                                      #" ; fi
+echo -e "#$cyan                            \033[27G nr)$orange               NOSTR Relay       $red$blinkon(partial)$blinkoff$orange             \033[88G#" ; fi
 if grep -q "litd-end" $HOME/.parmanode/installed.conf ; then litdmenu=1
-echo -e "#$cyan                            \033[27G litd)$orange             LIDT                                   \033[88G#
-#                                                                                      #"
+echo -e "#$cyan                            \033[27G litd)$orange             LIDT                                   \033[88G#"
 elif grep -q "litd-start" $HOME/.parmanode/installed.conf ; then litdmenu=1
-echo -e "#$cyan                            \033[27G litd)$orange             LITD              $red$blinkon(partial)$blinkoff$orange             \033[88G#
-#                                                                                      #" ; fi
+echo -e "#$cyan                            \033[27G litd)$orange             LITD              $red$blinkon(partial)$blinkoff$orange             \033[88G#" ; fi
 if grep -q "parmanostr-end" $HOME/.parmanode/installed.conf ; then parmanostrmenu=1
-echo -e "#$cyan                            \033[27G pnostr)$orange           Parmanostr                             \033[88G#
-#                                                                                      #"
+echo -e "#$cyan                            \033[27G pnostr)$orange           Parmanostr                             \033[88G#"
 elif grep -q "parmanostr-start" $HOME/.parmanode/installed.conf ; then parmanostrmenu=1
-echo -e "#$cyan                            \033[27G pnostr)$orange           Parmanostr             $red$blinkon(partial)$blinkoff$orange        \033[88G#
-#                                                                                      #" ; fi
+echo -e "#$cyan                            \033[27G pnostr)$orange           Parmanostr             $red$blinkon(partial)$blinkoff$orange        \033[88G#" ; fi
 if grep -q "btcrecover-end" $HOME/.parmanode/installed.conf ; then btcrecovermenu=1
-echo -e "#$cyan                            \033[27G btcr)$orange             BTC Recover                            \033[88G#
-#                                                                                      #"
+echo -e "#$cyan                            \033[27G btcr)$orange             BTC Recover                            \033[88G#"
 elif grep -q "btcrecover-start" $HOME/.parmanode/installed.conf ; then btcrecovermenu=1
-echo -e "#$cyan                            \033[27G btcr)$orange             BTC Recover            $red$blinkon(partial)$blinkoff$orange        \033[88G#
-#                                                                                      #" ; fi
+echo -e "#$cyan                            \033[27G btcr)$orange             BTC Recover            $red$blinkon(partial)$blinkoff$orange        \033[88G#" ; fi
 if grep -q "joinmarket-end" $HOME/.parmanode/installed.conf ; then joinmarketmenu=1
-echo -e "#$cyan                            \033[27G join)$orange             JoinMarket                             \033[88G#
-#                                                                                      #"
+echo -e "#$cyan                            \033[27G join)$orange             JoinMarket                             \033[88G#"
 elif grep -q "joinmarket-start" $HOME/.parmanode/installed.conf ; then joinmarketmenu=1
-echo -e "#$cyan                            \033[27G join)$orange             JoinMarket             $red$blinkon(partial)$blinkoff$orange        \033[88G#
-#                                                                                      #" ; fi
+echo -e "#$cyan                            \033[27G join)$orange             JoinMarket             $red$blinkon(partial)$blinkoff$orange        \033[88G#" ; fi
 if grep -q "green-end" $HOME/.parmanode/installed.conf ; then greenmenu=1
-echo -e "#$cyan                            \033[27G gr)$orange               Green Wallet                           \033[88G#
-#                                                                                      #"
+echo -e "#$cyan                            \033[27G gr)$orange               Green Wallet                           \033[88G#"
 elif grep -q "green-start" $HOME/.parmanode/installed.conf ; then greenmenu=1
-echo -e "#$cyan                            \033[27G gr)$orange               Green Wallet           $red$blinkon(partial)$blinkoff$orange        \033[88G#
-#                                                                                      #" ; fi
+echo -e "#$cyan                            \033[27G gr)$orange               Green Wallet           $red$blinkon(partial)$blinkoff$orange        \033[88G#" ; fi
 if grep -q "X11-end" $HOME/.parmanode/installed.conf ; then X11menu=1
-echo -e "#$cyan                            \033[27G x11)$orange              X11                                    \033[88G#
-#                                                                                      #"
+echo -e "#$cyan                            \033[27G x11)$orange              X11                                    \033[88G#"
 elif grep -q "X11-start" $HOME/.parmanode/installed.conf ; then X11menu=1
-echo -e "#$cyan                            \033[27G x11)$orange              X11                    $red$blinkon(partial)$blinkoff$orange        \033[88G#
-#                                                                                      #" ; fi
+echo -e "#$cyan                            \033[27G x11)$orange              X11                    $red$blinkon(partial)$blinkoff$orange        \033[88G#" ; fi
 if grep -q "phoenix-end" $HOME/.parmanode/installed.conf ; then phoenixmenu=1
-echo -e "#$cyan                            \033[27G pho)$orange              Phoenix Server                         \033[88G#
-#                                                                                      #"
+echo -e "#$cyan                            \033[27G pho)$orange              Phoenix Server                         \033[88G#"
 elif grep -q "phoenix-start" $HOME/.parmanode/installed.conf ; then phoenixmenu=1
-echo -e "#$cyan                            \033[27G pho)$orange              Phoenix Server         $red$blinkon(partial)$blinkoff$orange        \033[88G#
-#                                                                                      #" ; fi
+echo -e "#$cyan                            \033[27G pho)$orange              Phoenix Server         $red$blinkon(partial)$blinkoff$orange        \033[88G#" ; fi
 if grep -q "vaultwarden-end" $HOME/.parmanode/installed.conf ; then vaultwardenmenu=1
-echo -e "#$cyan                            \033[27G vw)$orange               VaultWarden                            \033[88G#
-#                                                                                      #"
+echo -e "#$cyan                            \033[27G vw)$orange               VaultWarden                            \033[88G#"
 elif grep -q "vaultwarden-start" $HOME/.parmanode/installed.conf ; then vaultwardenmenu=1
-echo -e "#$cyan                            \033[27G vw)$orange               VaultWarden            $red$blinkon(partial)$blinkoff$orange        \033[88G#
-#                                                                                      #" ; fi
+echo -e "#$cyan                            \033[27G vw)$orange               VaultWarden            $red$blinkon(partial)$blinkoff$orange        \033[88G#" ; fi
 echo -e "#                                                                                      \033[88G#
 ########################################################################################
 "
