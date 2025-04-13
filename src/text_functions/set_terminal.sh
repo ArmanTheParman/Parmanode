@@ -8,7 +8,7 @@ break
 }
 
 [[ -n $1 && -z $2 ]] && {
-    read -p "n1 z2" 
+    reap -p "n1 z2" 
 printf "\033[8;%s;88t" "$1" 
 break
 }
