@@ -92,13 +92,9 @@ debug "bash_check and check_architecture"
 
 ########################################################################################
 ########################################################################################
-debug "pc...
-$(cat $pc)
-"
 [[ $premium == 1 ]] || apply_patches
 #Add Parmashell (do after patches)
 [[ $premium == 1 ]] || install_parmashell 
-debug line 103
 # get version, and suggest user to update if old.
 
 [[ $btcpayinstallsbitcoin == "true" ]] || update_version_info 

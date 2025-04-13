@@ -3,7 +3,6 @@ debug "Pausing here. IP: $IP" "silent" #when debugging, I can check for error me
 unset enter_cont choice version
 
 while true ; do
-set_terminal
 
 source $pn/version.conf >$dn
 source $hm >$dn 2>&1 #hide messages
@@ -55,6 +54,7 @@ fi
 # if statements in the menu printout makes the menu dynamic, ie changes according to the
 # tests performed. Variables are set to assist logic in the menu choice execution part
 # of the code at the bottom.
+debug "before  main menu"
 set_terminal 46
 echo -en "$orange
 ########################################################################################
