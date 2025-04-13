@@ -2,18 +2,17 @@ function set_terminal {
 # sets terminal size
 while true ; do
 
-[[ -n $2 ]] && {
+[[ -n $2 ]] && { #then 1 and 2 must be set
 printf "\033[8;%s;%st" $1 $2
 break
 }
 
-[[ -n $1 && -z $2 ]] && {
-    reap -p "n1 z2" 
+[[ -n $1 && -z $2 ]] && { #then only 1 i set
 printf "\033[8;%s;88t" "$1" 
 break
 }
 
-[[ -z $1 ]] && {
+[[ -z $1 ]] && { #then none are set
 printf "\033[8;38;88t"   
 break
 }
