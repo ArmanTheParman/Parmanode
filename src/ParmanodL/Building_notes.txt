@@ -3,13 +3,7 @@ BASIC PARMANODL PROCEDURE FOR A PI4
 ParmanodL on a Pi4 can be built by first creating the image file, ParmanodL.img
 This is then flashed to a microSD.
 That is inserted into the Pi, and booted.
-The Desktop log in GUI appears, user:parman password:parmanodl, it must be changed.
-
-sudo apt update
-sudo apt full-upgrade
-might be needed or prompted for: sudo apt-get update --fix-missing
-optional: sudo apt install vim
-sudo systemctl start ssh
+The Desktop log in GUI appears, user:parman password:parmanodl.
 
 run Parmanode...
 /home/$USER/parman_programs/parmanode/run_parmanode.sh
