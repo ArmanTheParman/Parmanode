@@ -33,6 +33,8 @@ if [[ -e $pp/uddns ]] ; then
                        echo -e "                   $cyan       ud)$blue         UDDNS$orange" ; uddnsapp=1 ; count=$((count +1)) ; fi
 if [[ -e $pp/parmasync ]] ; then 
                        echo -e "                        $cyan  sync)$blue       ParmaSync$orange" ; parmasyncapp=1 ; count=$((count +1)) ; fi
+if [[ -e $pp/parmatwin ]] ; then 
+                       echo -e "                        $cyan  sync)$blue       ParmaTwin Server$orange" ; parmatwinapp=1 ; count=$((count +1)) ; fi
 if grep -q "parmacloud-end" $HOME/.parmanode/installed.conf ; then parmacloudapp=1
                        echo -e "                        $cyan  cloud)$blue      ParmaCloud$orange" ; count=$((count +1)) ; fi
 if grep -q "website-end" $HOME/.parmanode/installed.conf ; then websiteapp=1
@@ -565,8 +567,17 @@ sync)
    if [[ $parmasyncapp == 1 ]] ; then
    please_wait
    cd $pp/parmasync/ && git stash >$dn 2>&1 ; git pull >$dn 2>&1
-   menu_parmasync fast
+   menu_parmasync
    debug "after menu_parmasync"
+   if [[ -n $1 ]] ; then clear ; return 0 ; fi
+   else invalid
+   fi
+   ;;
+twin) 
+   if [[ $parmatwinapp == 1 ]] ; then
+   please_wait
+   cd $pp/parmatwin/ && git stash >$dn 2>&1 ; git pull >$dn 2>&1
+   menu_parmatwin
    if [[ -n $1 ]] ; then clear ; return 0 ; fi
    else invalid
    fi

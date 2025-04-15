@@ -664,4 +664,16 @@ else
    #not installed
 parmasync_n="#$cyan                             sync)    $orange    ParmaSync                                   #"
 fi
+
+#ParmaTwin
+unset parmatwin_i parmatwin_p parmatwin_n
+if grep -q "parmatwin-end" $HOME/.parmanode/installed.conf ; then 
+  #installed
+parmatwin_i="#                                      ParmaTwin                                       #"
+elif grep -q "X11-start" $HOME/.parmanode/installed.conf ; then 
+   #partially installed
+parmatwin_p="#                                      ParmaTwin                                       #"
+else
+   #not installed
+parmatwin_n="#$cyan                             twin)    $orange    ParmaTwin                                   #"
 }
