@@ -40,6 +40,10 @@ if grep -q "parmasync-end" $HOME/.parmanode/installed.conf ; then parmasyncmenu=
 echo -e "#$cyan                            \033[27G sync)$blue             ParmaSync$orange                             \033[88G#"
 elif grep -q "parmasync-start" $HOME/.parmanode/installed.conf ; then parmasyncmenu=1
 echo -e "#$cyan                            \033[27G sync)$blue             ParmaSync$orange          $red$blinkon(partial)$blinkoff$orange       \033[88G#" ; fi
+if grep -q "parmatwin-end" $HOME/.parmanode/installed.conf ; then parmamenu=1
+echo -e "#$cyan                            \033[27G twin)$blue             ParmaTwin$orange                             \033[88G#"
+elif grep -q "parmatwin-start" $HOME/.parmanode/installed.conf ; then parmatwinmenu=1
+echo -e "#$cyan                            \033[27G twin)$blue             ParmaTwin$orange          $red$blinkon(partial)$blinkoff$orange       \033[88G#" ; fi
 if grep -q "website-end" $HOME/.parmanode/installed.conf ; then websitemenu=1
 echo -e "#$cyan                            \033[27G pw)$blue               WordPress Website (ParmaWeb)           $orange\033[88G#"
 elif grep -q "website-start" $HOME/.parmanode/installed.conf ; then websitemenu=1
@@ -591,6 +595,13 @@ fi
 sync)
 if [[ $parmasyncmenu == 1 ]] ; then
 uninstall_parmasync
+menu_main
+fi
+;;
+
+twin)
+if [[ $parmatwinmenu == 1 ]] ; then
+uninstall_parmatwin
 menu_main
 fi
 ;;
