@@ -34,7 +34,7 @@ if [[ -e $pp/uddns ]] ; then
 if [[ -e $pp/parmasync ]] ; then 
                        echo -e "                        $cyan  sync)$blue       ParmaSync$orange" ; parmasyncapp=1 ; count=$((count +1)) ; fi
 if grep -q "parmatwin-end" $ic ; then 
-                       echo -e "                        $cyan  sync)$blue       ParmaTwin Server$orange" ; parmatwinapp=1 ; count=$((count +1)) ; fi
+                       echo -e "                        $cyan  twin)$blue       ParmaTwin Server$orange" ; parmatwinapp=1 ; count=$((count +1)) ; fi
 if grep -q "parmacloud-end" $ic ; then parmacloudapp=1
                        echo -e "                        $cyan  cloud)$blue      ParmaCloud$orange" ; count=$((count +1)) ; fi
 if grep -q "website-end" $ic ; then websiteapp=1
