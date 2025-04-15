@@ -99,7 +99,7 @@ tar -xvf sparrow*.gz
 
 function mac_sparrow_headsup {
 
-set_terminal ; echo " 
+set_terminal ; echo -e " 
 ########################################################################################
 
     Dear Mac user, Parmanode will download Sparrow for you, verify it, and move the
