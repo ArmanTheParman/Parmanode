@@ -34,9 +34,9 @@ fi
 
 please_wait
 download_sparrow || return 1
-debug_user "sparrow downloaded"
+debug "sparrow downloaded"
 installed_conf_add "sparrow-start"
-debug_user "check if files have been downloaded, esp shasum file.
+debug "check if files have been downloaded, esp shasum file.
 should be found in $HOME/parmanode/"
 verify_sparrow || return 1
 debug "sparrow verified"
