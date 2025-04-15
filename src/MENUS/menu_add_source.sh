@@ -676,4 +676,5 @@ parmatwin_p="#                                      ParmaTwin                   
 else
    #not installed
 parmatwin_n="#$cyan                             twin)    $orange    ParmaTwin                                   #"
+fi
 }
