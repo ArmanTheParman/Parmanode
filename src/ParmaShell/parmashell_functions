@@ -86,8 +86,8 @@ function vlt { cd /var/lib/tor ; a ; }
 function www { cd /var/www/ ; a ; }
 function ess { cd /etc/systemd/system ; a ; }
 function rn { sudo systemctl restart nginx.service && echo "" && echo "Nginx restarted" ; }
-function nas { cd /srv/parmanas 2>/dev/null || cd /srv ; a ; }
-function srv { cd /srv/ || sleep 1.5 ; a ; }
+function nas { cd /srv/parmanas 2>/dev/null || { cd /srv/parmadrive/parmanas/ 2>/dev/null || cd /srv ; } ; a ; }
+function srv { cd /srv/ ; }
 function vl { cd /var/log ; a ; }
 function vlt { cd /var/lib/tor ; a ; }
 function vln { cd /var/log/nginx ; a ; }
