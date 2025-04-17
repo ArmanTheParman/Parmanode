@@ -26,13 +26,12 @@ debug end patch 8
 ########################################################################################
 
 function reduce_systemd_logs {
-[[ -e /etc/systemd/journald.conf ]] && if [[ $OS == Linux ]] ; then
+[[ -e /etc/systemd/journald.conf ]] && if [[ $OS == "Linux" ]] ; then
 yesorno "Linux system log files can get really big and waste space. OK to 'vacuum'
     them up and limit to 500 MB?" || return 1
 please_wait
-sudo journalctl --vacuum-size=500M 
-sudo test -f /etc/systemd/journald.conf && sudo gsed -iE 's/^.*SystemMaxUse.*$/SystemMaxUse=500M/' /etc/systemd/journald.conf >$dn 2>&1
-debug after_vacuum
+sudo journalctl --vacuum-size=500M >$dn 2>&1
+sudo test -f /etc/systemd/journald.conf 2>&1 && sudo gsed -iE 's/^.*SystemMaxUse.*$/SystemMaxUse=500M/' /etc/systemd/journald.conf >$dn 2>&1
 fi
 }
 
