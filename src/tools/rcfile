@@ -3,7 +3,7 @@ source $HOME/.bashrc
 else
 source $HOME/.zshrc
 fi
-
 source $HOME/parman_programs/parmanode/source_parmanode.sh
 source_parmanode
+source_premium
 a

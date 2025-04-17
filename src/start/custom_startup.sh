@@ -36,7 +36,7 @@ uninstall_core_lightning
 exit
 fi
 
-if [[ $1 == parminerkey ]] ; then
+if [[ $1 == "parminerkey" ]] ; then
 if yesorno_blue "This will print for you the authentication key to pass on to Parman.
     
     You have choices..." "qr" "Print QR Code" "text" "Just text on the screen" ; then
