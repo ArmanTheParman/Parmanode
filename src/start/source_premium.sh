@@ -20,8 +20,6 @@ function source_premium  {
 #custom
     if ! test -f $dp/donotsourceparmadrive ; then
 		[[ -e $pp/parmadrive ]] && for file in $pp/parmadrive/src/*.sh ; do
-		    echo "Sourcing $file"
-			read
 			source $file
 		done
 	fi
