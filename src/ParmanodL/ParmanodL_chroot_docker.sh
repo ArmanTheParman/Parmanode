@@ -1,30 +1,14 @@
 function ParmanodL_chroot_docker {
 #if modifying banner, don't use ', it will break the echo command.
 #document to be executed inside docker container.
-if [[ $arg2 == fast ]] ; then
-apt_text="#!/bin/bash
-chroot /tmp/mnt/raspi /bin/bash -c 'apt-get update -y'
-"
-else
-apt_text="#!/bin/bash
-chroot /tmp/mnt/raspi /bin/bash -c 'apt-get update -y ; apt-get full-upgrade -y' 
-"
-fi
-cat << EOS >> ~/ParmanodL/chroot_function.sh 
-$apt_text
-EOS
 
 cat << 'EOS' >> ~/ParmanodL/chroot_function.sh 
-chroot /tmp/mnt/raspi /bin/bash -c "apt-get install vim -y" 
+#!/bin/bash
+chroot /tmp/mnt/raspi /bin/bash -c 'apt-get update -y ; apt-get upgrade -y' 
+chroot /tmp/mnt/raspi /bin/bash -c "apt-get install vim git ssh jq netcat-traditional net-tools unzip tmux tor ufw mdadm e2fsprogs fuse3 libfuse2 -y" 
 
-# It looks egocentric, but having a consistent username makes everything in the code easier, and
-# once I started doing this, it's very hard to undo.
 chroot /tmp/mnt/raspi /bin/bash -c "groupadd -r parman ; useradd -m -g parman parman ; usermod -aG sudo parman"
 chroot /tmp/mnt/raspi /bin/bash -c 'echo "parman:parmanodl" | chpasswd ; systemctl enable ssh'
-
-# Forces the user to change password at the start, but the UI is clunky
-# Also, adding this affects what I want to do with the ssh welcome screen
-## chroot /tmp/mnt/raspi /bin/bash -c 'chage -d 0 parman' 
 
 chroot /tmp/mnt/raspi /bin/bash -c "apt-get purge piwiz -y" 
 chroot /tmp/mnt/raspi /bin/bash -c 'userdel rpi-first-boot-wizard'
@@ -52,9 +36,8 @@ chroot /tmp/mnt/raspi /bin/bash -c "echo 'parmashell-end' | tee -a /home/parman/
 #hostname
 chroot /tmp/mnt/raspi /bin/bash -c 'echo "parmanodl" > /etc/hostname'
 chroot /tmp/mnt/raspi /bin/bash -c "sed -i '/127.0.1.1/d' /etc/hosts"
-chroot /tmp/mnt/raspi /bin/bash -c 'echo "127.0.1.1    parmanodl" | tee -a /etc/hosts'
+chroot /tmp/mnt/raspi /bin/bash -c 'echo "127.0.1.1        parmanodl" | tee -a /etc/hosts'
 
-chroot /tmp/mnt/raspi /bin/bash -c 'apt-get install git -y'
 chroot /tmp/mnt/raspi /bin/bash -c 'cd /home/parman/parman_programs/ ; git clone https://github.com/armantheparman/parmanode.git'
 
 # Make it pretty...
@@ -84,7 +67,7 @@ WELCOME TO YOUR ...
  |   ___/  /  /_\  \   |      /  |  |\/|  |   /  /_\  \   |  `    | |  |  |  | |  |  |  | |  |     
  |  |     /  _____  \  |  |\  \  |  |  |  |  /  /   \  \  |  | `  | |  |__|  | |  |__|  | |  |____
  | _|    /__/     \__\ | _| `._\ |__|  |__| /__/     \__\ |__| \__|  \______/  |_______/  |_______|
-                                                                                             v3.0.0                                                                                 
+                                                                                             v3.1.0                                                                                 
 
 ... computer, running pre-installed Parmanode software.
 
@@ -149,12 +132,13 @@ This works because 'parmanodl' has been set as the hostname.
 
 If that doesn't work, you'll need the computer's IP address, which can
 be a bit tricky to find. One way is to look it up on your router's
-page, then do the command like this (example number shown):
+page to find the IP, then do the command like this (example number shown):
 
 ssh parman@192.168.0.100
 
-Another way (esiest) is to find it is to run Parmanode, go to the tools 
-menu and choose 'ip'.
+Another way (easiest) to find it is to run Parmanode on any other computer
+in the home network, and, go to the tools menu and choose 'aip' for list
+of connected devices on your home network.
 
 You can use Parmanode to install various wallets - Sparrow or Electrum,
 or Specter are the recommended ones. There others are for hardware

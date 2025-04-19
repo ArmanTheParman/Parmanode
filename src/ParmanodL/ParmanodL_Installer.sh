@@ -1,13 +1,13 @@
 #Changes here should also be made to ParmanodL_Installer script.
 #Do not move this file from this path, get_parmanodl_installer dependent on it.
-
+#https://downloads.raspberrypi.com/raspios_arm64/images/raspios_arm64-2024-11-19/2024-11-19-raspios-bookworm-arm64.img.xz
 function ParmanodL_Installer {
 # Version specific info
 if [[ $1 != mint ]] ; then   
-    export zip_file="2024-03-15-raspios-bookworm-arm64.img.xz"
+    export zip_file="2024-11-19-raspios-bookworm-arm64.img.xz"
     export zip_path="$HOME/ParmanodL/$zip_file"
-    export image_file="2024-03-15-raspios-bookworm-arm64.img"
-    export hash_zip="7e53a46aab92051d523d7283c080532bebb52ce86758629bf1951be9b4b0560f"
+    export image_file="2024-11-19-raspios-bookworm-arm64.img"
+    export hash_zip="ea6e68c48d14c3d78af5471c0b288bbf6522fdd775241f74d8295d106d344300"
     export hash_image="94fc4b66d87c9e2742092aba689e0f326ebdaedb4a1dcdbf0c5182c034809c16"
 else
     export install=mint
@@ -36,7 +36,7 @@ $orange
 
    This software will help you install Parmanodl OS (Raspberry Pi OS) onto an 
    external drive or micro SD card which you can then use to install the OS onto a 
-   Pi4 computer. 
+   Pi4/5 computer. 
 
    Yes, strictly speaking, ParmanodL isn't its own OS, but when you write code, you
    can do whatever you want, including giving your software cool sounding names :P
@@ -250,7 +250,7 @@ fi # end if $1 != install
 
 # Make necessary directories
 
-    ParmanodL_directories ;  log "parmanodl" "directory function"
+    ParmanodL_directories 
 
 # Get OS , verify, and extract
     please_wait
@@ -279,7 +279,7 @@ fi # end if $1 != install
 
 # Modify the image with chroot
 
-    ParmanodL_chroot_docker ; log "parmanodl" "finished ParmanodL_chroot"
+    ParmanodL_chroot_docker 
 
 # Debug - opportunity to pause and check
 
@@ -287,15 +287,15 @@ fi # end if $1 != install
 
 # Unmount the image and system directories
 
-    ParmanodL_unmount ; log "parmanodl" "finished ParmanodL_unmount"
+    ParmanodL_unmount 
 
 # Get microSD device name into disk variable - user input here
 
-    detect_microSD || { log "parmanodl" "failed at detect_microSD" ; exit ; }
+    detect_microSD || { sww "parmanodl failed at detect_microSD" ; exit ; }
 
 # Write the image to microSD
 
-    ParmanodL_write || { log "parmanodl" "failed at ParmanodL_write" ; exit ; }
+    ParmanodL_write || { sww "parmanodl failed at ParmanodL_write" ; exit ; }
 
 # Rename image file
     if [[ $OS_choice == pi ]] ; then
@@ -306,15 +306,15 @@ fi # end if $1 != install
 
 # Clean known hosts of parmanodl
  
-    clean_known_hosts && log "parmanodl" "finished clean_known_hosts"
+    clean_known_hosts 
 
 # make run_parmanodl for desktop execution
 
-    make_Run_ParmanodL && log "parmanodl" "finished make_run_parmanodL"
+    make_Run_ParmanodL
 
 # Remove temporary script
 
-    rm $HOME/Desktop/ParmanodL_Installer >/dev/null 2>&1 && log "parmanodl" "installer removed"
+    rm $HOME/Desktop/ParmanodL_Installer >/dev/null 2>&1 
 
 # Clean up the mess
 
