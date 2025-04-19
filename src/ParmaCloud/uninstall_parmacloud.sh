@@ -55,17 +55,21 @@ esac
 done
 
 while true ; do
-yesorno_blue "Do you want to remove all your NextCloud data?
+unset enter_cont
+announce_blue "Do you want to remove all your NextCloud data?
 $pink
     THIS CANNOT BE UNDONE.
    $blue 
-    Tihs will remove volume data only if it hasn't been moved to somewhere other than$pink
+    This will remove volume data from $pink
 
-    /var/lib/docker/volumes/... $blue" && announce_blue "Type$red DELETE$blue to confirm, othewise <enter> to skip."
+    /var/lib/docker/volumes/... $blue
+    
+    Type$red DELETE$blue to delete, otherwise <enter> to skip."
 
 case $enter_conf in 
     "") 
-    announce_blue "If you change your mind later, Docker volumes can manually be deleted with:
+    announce_blue "If you change your mind later, Docker volumes can manually be deleted with
+    \r    the  commands:
 
     $orange docker volumes ls $blue                  #to see the volumes 
     $orange docker volume rm name_of_volume $blue    #to permanently delete
@@ -79,6 +83,7 @@ case $enter_conf in
     invalid
     ;;
 esac
+done
 
 rm -rf $pp/parmacloud
 
