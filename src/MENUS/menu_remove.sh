@@ -28,9 +28,9 @@ if grep -q "uddns-end" $HOME/.parmanode/installed.conf ; then uddnsmenu=1
 echo -e "#$cyan                            \033[27G uddns)$blue            UDDNS$orange                                  \033[88G#"
 elif grep -q "uddns-start" $HOME/.parmanode/installed.conf ; then uddnsmenu=1
 echo -e "#$cyan                            \033[27G uddns)$blue            UDDNS$orange              $red$blinkon(partial)$blinkoff$orange       \033[88G#" ;fi
-if grep -q "tailscale-end" $HOME/.parmanode/installed.conf ; then parmascalemenu=1
+if grep -q "parmascale-end" $HOME/.parmanode/installed.conf ; then parmascalemenu=1
 echo -e "#$cyan                            \033[27G scale)$blue            ParmaScale$orange                             \033[88G#"
-elif grep -q "tailscale-start" $HOME/.parmanode/installed.conf ; then parmascalemenu=1
+elif grep -q "parmascale-start" $HOME/.parmanode/installed.conf ; then parmascalemenu=1
 echo -e "#$cyan                            \033[27G scale)$blue            ParmaScale$orange         $red$blinkon(partial)$blinkoff$orange       \033[88G#" ; fi
 if grep -q "parmacloud-end" $HOME/.parmanode/installed.conf ; then parmacloudmenu=1
 echo -e "#$cyan                            \033[27G cloud)$blue            ParmaCloud$orange                             \033[88G#"

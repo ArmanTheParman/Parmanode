@@ -1,7 +1,7 @@
 function menu_vaultwarden {
 while true ; do 
 if docker ps 2>$dn | grep -q vaultwarden ; then vwr="${green}RUNNING$orange" ; else vwr="${red}NOT RUNNING$orange" ; fi
-if ! grep -q "tailscale-end" $ic ; then pca="${red}Not Installed" ; fi
+if ! grep -q "parmascale-end" $ic ; then pca="${red}Not Installed" ; fi
 get_onion_address_variable vaultwarden
 set_terminal 40 110 ; echo -e "
 ##############################################################################################################$cyan
