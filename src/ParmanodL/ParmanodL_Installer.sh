@@ -8,7 +8,7 @@ if [[ $1 != mint ]] ; then
     export zip_path="$HOME/ParmanodL/$zip_file"
     export image_file="2024-11-19-raspios-bookworm-arm64.img"
     export hash_zip="ea6e68c48d14c3d78af5471c0b288bbf6522fdd775241f74d8295d106d344300"
-    export hash_image="94fc4b66d87c9e2742092aba689e0f326ebdaedb4a1dcdbf0c5182c034809c16"
+    export hash_image="ab2a881114b917d699b1974a5d6f40e856899868baba807f05e3155dd885818a"
 else
     export install=mint
     export image_file="linuxmint-21.3-cinnamon-64bit.iso"
