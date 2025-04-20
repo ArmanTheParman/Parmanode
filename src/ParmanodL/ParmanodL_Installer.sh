@@ -15,7 +15,6 @@ else
     export hash_image="5aa24abbc616807ab754a6a3b586f24460b0c213b6cacb0bf8b9a80b65013ecc"
 fi
     export image_path="$HOME/ParmanodL/$image_file" 
-    export mnt="$HOME/mnt"
 
 # Size 88 wide, and orange colour scheme
 
