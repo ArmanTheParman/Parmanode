@@ -194,7 +194,3 @@ sudo chmod +x ~/ParmanodL/chroot_function.sh
 docker exec -it ParmanodL /bin/bash -c '/mnt/ParmanodL/chroot_function.sh'
 
 }
-
-
-# had this before...
-# chroot /tmp/mnt/raspi /bin/bash -c 'chown root:root /home/parman/rp'
