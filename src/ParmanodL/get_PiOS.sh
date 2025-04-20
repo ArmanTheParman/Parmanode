@@ -10,7 +10,7 @@ fi
 
 	if [ ! -e $zip_path ] ; then
 	please_wait
-	curl -LO https://downloads.raspberrypi.org/raspios_arm64/images/raspios_arm64-2024-03-15/$zip_file || \
+	curl -LO https://downloads.raspberrypi.org/raspios_arm64/images/raspios_arm64-$OSdate/$zip_file || \
 	{ announce "Failed to download Pi OS image. Aborting." ; return 1 ; }
 	fi
 

@@ -4,9 +4,10 @@
 function ParmanodL_Installer {
 # Version specific info
 if [[ $1 != mint ]] ; then   
-    export zip_file="2024-11-19-raspios-bookworm-arm64.img.xz"
+    export OSdate=2024-11-19
+    export zip_file="$OSdate-raspios-bookworm-arm64.img.xz"
     export zip_path="$HOME/ParmanodL/$zip_file"
-    export image_file="2024-11-19-raspios-bookworm-arm64.img"
+    export image_file="$OSdate-raspios-bookworm-arm64.img"
     export hash_zip="ea6e68c48d14c3d78af5471c0b288bbf6522fdd775241f74d8295d106d344300"
     export hash_image="ab2a881114b917d699b1974a5d6f40e856899868baba807f05e3155dd885818a"
 else
@@ -24,7 +25,7 @@ fi
 
 while true ; do
 
-   if [[ $1 == install || $1 == mint ]] ; then break ; fi
+   if [[ $1 == "install" || $1 == "mint" ]] ; then break ; fi
 
    clear ; echo -e "$orange
 ########################################################################################
