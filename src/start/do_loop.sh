@@ -23,7 +23,7 @@ deactivate >/dev/null 2>&1
 
 gsed_symlink 
 parmanode_variables $@ #CANNOT USE CUSTOM DEBUG FUNCTION BEFORE THIS"
-
+debug "pc is $pc"
 source_premium
 
 if [[ $parminer == 1 ]] ; then premium=1 ; fi
