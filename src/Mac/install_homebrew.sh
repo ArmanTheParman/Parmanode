@@ -6,10 +6,7 @@ echo -e "
                               HOMEBREW INSTALLATION$orange
 ########################################################################################
 
-    It is recommended that you install the Homebrew package manager for Mac, which
-    allows Parmanode to install neceesary modules to make things work. It is not
-    necessary for very basic functionality, eg you just want to install Bitcoin
-    and Sparrow wallet.
+    Homebrew is a package manager for macOS. It is used to install and manage software.
 
     This can take a while, sometimes with very litte feedback during the process. 
 
@@ -22,13 +19,13 @@ echo -e "
 $green
                              yes)$orange    Install Homebrew
 $red
-                             no)$orange     Skip
+                             no)$orange     Skip (exit)
 
 ########################################################################################    
 "
 read choice ; set_terminal
 case $choice in
-q|Q) exit ;; n|No|no) return 1 ;; 
+q|Q) exit ;; n|No|no) exit ;; 
 yes)
 
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" 
