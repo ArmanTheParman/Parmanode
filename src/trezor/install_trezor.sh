@@ -1,7 +1,7 @@
 function install_trezor {  
 
 while true ; do
-    export version="25.3.3"
+    export version="25.4.2"
     Announce "Parmanode will install Trezor Suite version $version.
         If you accept this version, hit$cyan <enter>$orange, otherwise, type
         in the version number and hit $cyan<enter>$orange, it'll probably work,
@@ -49,7 +49,7 @@ hdiutil detach /Volumes/"Trezor"*
 sudo rm -rf *.dmg
 fi
 
-if [[ $chip == x86_64 && $OS == Linux ]] ; then
+if [[ $chip == "x86_64" && $OS == "Linux" ]] ; then
 rm *AppImage 2>$dn
 curl -LO https://github.com/trezor/trezor-suite/releases/download/v$version/Trezor-Suite-$version-linux-x86_64.AppImage
 curl -LO https://github.com/trezor/trezor-suite/releases/download/v$version/Trezor-Suite-$version-linux-x86_64.AppImage.asc
