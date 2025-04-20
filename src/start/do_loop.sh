@@ -121,6 +121,9 @@ pn_tmux "$dp/update_external_IP2.sh" "checking_external_IP"
 test_8333_reachable
 
 jump $1
+
+which gsed >/dev/null 2>&1 || announce "Parmanode cannot detec gsed which is necessary for proper
+    functioning. Things aint gonna work right. Be warned."
 # This is the main program, which is a menu that loops.
 #Parminer borrows do_loop function, but don't go to parmanode menu
 [[ $premium == 1 ]] || menu_main
