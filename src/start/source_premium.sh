@@ -1,4 +1,4 @@
-function source_premium  {
+function source_premium {
     [[ -e $pp/parmaweb ]] && for file in $pp/parmaweb/src/*.sh ; do
 	    source $file
 	done
