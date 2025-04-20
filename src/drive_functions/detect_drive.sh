@@ -17,6 +17,11 @@ jump $enter_cont
 fi
 fi
 
+if [[ $OS == "Mac" ]] ; then formacs="\n    On Macs, especially new ones, you may need to go to System Settings -->
+    \r    'privacy & security' --> 'allow accessories to connect'=always. Otherwise the drive may
+    \r     not be deteced.\n"
+fi
+
 while true ; do
 
 
@@ -31,7 +36,7 @@ set_terminal ; echo -en "$pink
     
     This is important to make sure the drive is detected in the list of drives before 
     and after the connection.
-   $cyan 
+$formacs       $cyan 
     Hit <enter> only once this is done. (q to quit)
 $pink
 ########################################################################################

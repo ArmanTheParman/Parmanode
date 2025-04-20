@@ -15,6 +15,11 @@ $orange"
 enter_continue 
 jump $enter_cont
 
+if [[ $OS == "Mac" ]] ; then formacs="\n    On Macs, especially new ones, you may need to go to System Settings -->
+    \r    'privacy & security' --> 'allow accessories to connect'=always. Otherwise the drive may
+    \r     not be deteced.\n"
+fi
+
 while true ; do
 rm_after_before #just removes files
 set_terminal ; echo -e "$pink
@@ -22,7 +27,7 @@ set_terminal ; echo -e "$pink
 
     Please make sure the microSD card for $name is ${cyan}DISCONNECTED.$pink Do not 
     disconnect any of your other drives at this time.
-    
+$formacs    
     Hit <enter> only once this is done. (q to quit)
 
 ########################################################################################
