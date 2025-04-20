@@ -13,15 +13,16 @@ $orange
     Docker should be loading; it sometimes could take a minute or so. There may be a
     graphical pop-up - make sure to accept the terms and conditions if that appears,
     otherwise Parmanode (& Docker) will not work. 
-    
-    Once accepted,$cyan you can close the Docker window. $orange
 
-    If after a few minutes Docker didn't open, TRY CLICKING THE DOCKER ICON FROM 
-    THE APPLICATIONS FOLDER. 
+    If there's a problem after a few minutes, try starting Docker yourself. If you
+    still have issues installing Docker using Parmanode, try installing Docker
+    manually yourself. Parmanode will detect it and use it.
     
-    If a Docker icon doesn't even exist in the Applications menu, something went 
-    wrong. Carefully place the computer in the bin and buy a new one, preferably 
-    Linux, not Mac, and not, God forbid, Windows.
+    After accepting the terms,$cyan you can close the Docker window. $orange
+
+    If Parmanode doesn't successfully install Docker, and you fail to as well, then
+    carefully place the computer in the bin and buy a new one, preferably Linux, 
+    not Mac, and not, God forbid, Windows.
 
 $green
                ####################################################
