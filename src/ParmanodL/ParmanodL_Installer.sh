@@ -3,6 +3,8 @@
 #https://downloads.raspberrypi.com/raspios_arm64/images/raspios_arm64-2024-11-19/2024-11-19-raspios-bookworm-arm64.img.xz
 function ParmanodL_Installer {
 # Version specific info
+ParmanodL_version=3.1.0
+ParmanodL_mint_version=3.0.0
 if [[ $1 != mint ]] ; then   
     export OSdate=2024-11-19
     export zip_file="$OSdate-raspios-bookworm-arm64.img.xz"
@@ -299,9 +301,9 @@ fi # end if $1 != install
 
 # Rename image file
     if [[ $OS_choice == pi ]] ; then
-    mv $HOME/ParmanodL/2024*img $HOME/ParmanodL/ParmanodL-PI-v3.0.0.img
+    mv $HOME/ParmanodL/2024*img $HOME/ParmanodL/ParmanodL-PI-v$ParmanodL_version.img
     elif [[ $OS_choice == mint ]] ; then
-    mv $image_file $HOME/ParmanodL/ParmanodL-MINT-v3.0.0.iso
+    mv $image_file $HOME/ParmanodL/ParmanodL-MINT-v$ParmanodL_mint_version.iso
     fi
 
 # Clean known hosts of parmanodl
