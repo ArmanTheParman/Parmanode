@@ -18,7 +18,7 @@ fi
 if [[ -e $pp/parminer ]] ; then announce_blue "ParMiner already downloaded" ; return 1 ; fi
 
 if git clone git@github-parminer:armantheparman/parminer $pp/parminer ; then
-    success_blue "ParMiner has been downloaded."
+    success_blue "ParMiner Menu has been downloaded."
 else
     announce_blue "Something went wrong with the Download; Maybe you haven't got approval?"
     return 1

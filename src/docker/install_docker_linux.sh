@@ -47,6 +47,7 @@ log "docker" "Install success. Reboot needed."
 success "Docker" "installing."
 if ! id | grep docker ; then
 while true ; do
+if [[ $preconfigure_parmadrive == "true" ]] ; then installed_config_add "docker-end" ; return 0 ; fi
 set_terminal ; echo -e "$pink
 ######################################################################################## 
 ######################################################################################## 
