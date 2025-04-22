@@ -1,4 +1,5 @@
 function success_blue {
+if [[ $preconfigure_parmadrive == "true" ]] ; then return 0 ; fi
 bluesuccesscolour="true"
 success "$@"
 }
@@ -6,6 +7,7 @@ success "$@"
 
 function success {
 debug "pre-success menu"
+if [[ $preconfigure_parmadrive == "true" ]] ; then return 0 ; fi
 if [[ $bluesuccesscolour == "true" ]] ; then temp=$orange ; orange=$blue ; fi
 
 if [[ -z $2 ]] ; then has_finished="" ; else has_finished="has finished" ; fi
