@@ -34,6 +34,7 @@ cd $pp/datum && git pull >$dn 2>&1 ; } || \
 for file in $pp/datum/src/*.sh ; do
 source $file
 done
+if [[ $preconfigure_parmadrive == "true" ]] ; then return 0 ; fi
 menu_datum
 return 0
 }
