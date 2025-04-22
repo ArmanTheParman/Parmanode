@@ -30,4 +30,6 @@ $(cat ~/.ssh/extra_keys/parmanas-key.pub)$blue\n" ; return 1 ; }
     fi
 
     $pp/parmanas/run_parmanas.sh
+
+    install_parmanas
 }
