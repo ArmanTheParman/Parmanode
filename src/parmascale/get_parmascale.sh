@@ -27,6 +27,6 @@ $(cat ~/.ssh/extra_keys/parmascale-key.pub)$blue\n" ; return 1 ; }
     fi
 
 source_premium
-
+install_parmascale silent
 fi
 }
