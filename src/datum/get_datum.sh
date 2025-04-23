@@ -1,4 +1,9 @@
 function get_datum {
+
+if [[ $preconfigure_parmadrive == "true" ]] ; then
+   if grep -q "datum-end" $ic ; then return 0 ; fi
+fi
+
 #if [[ $(uname -m) != "x86_64" ]] ; then  { announce_blue "Datum is only supported on x86_64 machines at this stage." ; continue ; } ; fi
 [[ -e $dp/.datum_enabled ]]  || {
 please_wait

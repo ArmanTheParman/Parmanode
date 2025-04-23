@@ -1,5 +1,10 @@
 function get_parminer {
 
+if [[ $preconfigure_parmadrive == "true" ]] ; then
+    if grep -q "parminer-end" $ic ; then return 0 ; fi
+fi
+
+
 if [[ ! -e $dp/.parminer_enabled && ! -e $dp/.enable_parminer ]] ; then
 announce_blue "Sorry, ParMiner is not available freely (not FOSS). It comes with
     ParmanodL laptops ordered from Parman.
