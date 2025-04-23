@@ -100,15 +100,13 @@ fi
 
 if [[ $OS == "Mac" ]] ; then
 
-hdiutil attach *.dmg
-sudo cp -r /Volumes/Bitcoin*/Bitcoin* /Applications
-hdiutil detach /Volumes/Bitcoin*
-hdiutil attach *.dmg
-sudo cp -r /Volumes/Bitcoin*/Bitcoin* /Applications
-hdiutil detach /Volumes/Bitcoin*
-else
-sudo cp -r ./Bitcoin* /Applications
-fi
+    if file $hp/bitcoin/ -type f -name "*.dmg" ; then
+        hdiutil attach *.dmg
+        sudo cp -r /Volumes/Bitcoin*/Bitcoin* /Applications
+        hdiutil detach /Volumes/Bitcoin*
+    else
+        sudo cp -r ./Bitcoin*app/Applications
+    fi
 
 if [[ $OS == "Linux" ]] ; then
 set_terminal
