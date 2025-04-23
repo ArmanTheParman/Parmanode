@@ -6,7 +6,8 @@ installed_conf_add "bitbox-start"
 version="4.47.0" #careful, some patches don't have Mac versions, and some are zips with .pp not dmgs.
 
 if [[ $OS == "Mac" ]] ; then #it's for x86_64, but M1/M2 macs will run it but not so efficiently
-if [[ $MacOSVersion_major -lt 12 ]] ; then { announce "You need MacOS version 12.0 or higher. Aborting." ; return 1 ; fi ; }
+    if [[ $MacOSVersion_major -lt 12 ]] ; then { announce "You need MacOS version 12.0 or higher. Aborting." ; return 1 ; } 
+    fi
     please_wait
     curl -LO https://github.com/BitBoxSwiss/bitbox-wallet-app/releases/download/v$version/BitBox-$version-macOS.dmg 
     curl -LO https://github.com/BitBoxSwiss/bitbox-wallet-app/releases/download/v$version/BitBox-$version-macOS.dmg.asc
