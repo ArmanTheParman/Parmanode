@@ -6,8 +6,8 @@ cd $HOME/parmanode/bitcoin
 set_terminal 46 120
 if grep -q "$bitcoin_choice=knots" $pc ; then
              
-    curl -LO https://bitcoinknots.org/files/28.x/28.1.knots20250305/SHA256SUMS 
-    curl -LO https://bitcoinknots.org/files/28.x/28.1.knots20250305/SHA256SUMS.asc
+    curl -LO https://bitcoinknots.org/files/$knotsmajor/$knotsversion.knots$knotsdate/SHA256SUMS 
+    curl -LO https://bitcoinknots.org/files/$knotsmajor/$knotsversion.knots$knotsdate/SHA256SUMS.asc
 else
     curl -LO https://bitcoincore.org/bin/bitcoin-core-$version/SHA256SUMS 
     curl -LO https://bitcoincore.org/bin/bitcoin-core-$version/SHA256SUMS.asc 
