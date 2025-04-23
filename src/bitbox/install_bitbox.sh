@@ -7,17 +7,15 @@ version="4.47.0" #careful, some patches don't have Mac versions
 
 if [[ $OS == "Mac" ]] ; then #it's for x86_64, but M1/M2 macs will run it but not so efficiently
     please_wait
-    curl -LO https://github.com/BitBoxSwiss/bitbox-wallet-app/releases/download/v$version/BitBox-$version-macOS.dmg 2>$dn
-    curl -LO https://github.com/BitBoxSwiss/bitbox-wallet-app/releases/download/v$version/BitBox-$version-macOS.dmg.asc 2>$dn
-    curl -LO https://github.com/BitBoxSwiss/bitbox-wallet-app/releases/download/v$version/BitBox-$version-macOS.zip 2>$dn
-    curl -LO https://github.com/BitBoxSwiss/bitbox-wallet-app/releases/download/v$version/BitBox-$version-macOS.zip.asc 2>$dn
+    curl -LO https://github.com/BitBoxSwiss/bitbox-wallet-app/releases/download/v$version/BitBox-$version-macOS.dmg 
+    curl -LO https://github.com/BitBoxSwiss/bitbox-wallet-app/releases/download/v$version/BitBox-$version-macOS.dmg.asc
 
     verify_bitbox || return 1
 
     #sometimes the file is actually a zip file
-    if find ./ -type f -name "*.zip" 2>$dn | grep -q . ; then
-    unzip *.zip ; rm *.zip 2>$dn
-    fi
+    #if find ./ -type f -name "*.zip" 2>$dn | grep -q . ; then
+    #unzip *.zip ; rm *.zip 2>$dn
+    #fi
 
     mv *.app /Applications/
 
