@@ -535,7 +535,7 @@ fi
 ;;
 
 pnas)
-if [[ $parmanasmenu== 1 ]] ; then
+if [[ $parmanasmenu == 1 ]] ; then
 uninstall_parmanas
 menu_main
 fi
