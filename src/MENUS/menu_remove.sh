@@ -36,6 +36,10 @@ if grep -q "parmacloud-end" $HOME/.parmanode/installed.conf ; then parmacloudmen
 echo -e "#$cyan                            \033[27G cloud)$blue            ParmaCloud$orange                             \033[88G#"
 elif grep -q "parmacloud-start" $HOME/.parmanode/installed.conf ; then parmacloudmenu=1
 echo -e "#$cyan                            \033[27G cloud)$blue            ParmaCloud$orange         $red$blinkon(partial)$blinkoff$orange       \033[88G#" ; fi
+if grep -q "parmanas-end" $HOME/.parmanode/installed.conf ; then parmanasmenu=1
+echo -e "#$cyan                            \033[27G pnas)$blue             ParmaNas$orange                             \033[88G#"
+elif grep -q "parmanas-start" $HOME/.parmanode/installed.conf ; then parmanasmenu=1
+echo -e "#$cyan                            \033[27G pnas)$blue             ParmaNas$orange         $red$blinkon(partial)$blinkoff$orange       \033[88G#" ; fi
 if grep -q "parmasync-end" $HOME/.parmanode/installed.conf ; then parmasyncmenu=1
 echo -e "#$cyan                            \033[27G sync)$blue             ParmaSync$orange                             \033[88G#"
 elif grep -q "parmasync-start" $HOME/.parmanode/installed.conf ; then parmasyncmenu=1
@@ -526,6 +530,13 @@ fi
 cloud)
 if [[ $parmacloudmenu == 1 ]] ; then
 uninstall_parmacloud
+menu_main
+fi
+;;
+
+pnas)
+if [[ $parmanasmenu== 1 ]] ; then
+uninstall_parmanas
 menu_main
 fi
 ;;
