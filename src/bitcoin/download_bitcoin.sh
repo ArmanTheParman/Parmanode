@@ -105,7 +105,7 @@ if [[ $OS == "Mac" ]] ; then
         sudo cp -r /Volumes/Bitcoin*/Bitcoin* /Applications
         hdiutil detach /Volumes/Bitcoin*
     else
-        sudo cp -r ./Bitcoin*app/Applications
+        sudo cp -r $hp/bitcoin/Bitcoin*app /Applications
     fi
 fi
 
