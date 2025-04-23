@@ -1,5 +1,5 @@
 function sww {
-echo -e "${blue}Something went wrong
+echo -e "    ${blue}Something went wrong
 	
 $1	
 "

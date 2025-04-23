@@ -3,7 +3,7 @@ if [[ $verify == "skip" ]] ; then return 0 ; fi #skipverify argument set in parm
 if [[ $bitcoin_compile = "true" ]] ; then return 0 ; fi
 
 cd $HOME/parmanode/bitcoin
-
+set_terminal 46 120
 if grep -q "$bitcoin_choice=knots" $pc ; then
              
     curl -LO https://bitcoinknots.org/files/28.x/28.1.knots20250305/SHA256SUMS 
@@ -17,15 +17,27 @@ if ! which gpg >$dn  && [[ $OS == Mac ]] ; then install_gpg4mac ; fi
 
 #ignore-missing option not available on shasum
 if which sha256sum >$dn ; then
-    if ! sha256sum --ignore-missing --check SHA256SUMS ; then sww "Checksum$red failed$orange. Aborting. \
-    Sometimes this happens for unexplainable reasons. 
-    Try uninstalling the partial Bitcoin installation and try again." ; return 1 ; fi
+    if ! sha256sum --ignore-missing --check SHA256SUMS ; then 
+    sww "${orange}Checksum failed. Aborting. Sometimes this happens for unexplainable reasons. 
+    Try uninstalling the partial Bitcoin installation and try again.
+    
+    Below is the contents of $hp/bitcoin/ where the files should have been downloaded:$red
+
+$(ls -lah $hp/bitcoin/ | gsed -n '4,$p' | awk '{print "    "$9" .........."$5}')$orange" ; return 1 ; fi
 else
     rm $tmp/bitcoinsha256 >$dn 2>&1
     shasum -a 256 --check SHA256SUMS >$tmp/bitcoinsha256 2>&1
-    if ! grep -q OK $tmp/bitcoinsha256 ; then sww "Checksum$red failed$orange. Aborting.\
-    Sometimes this happens for unexplainable reasons. 
-    Try uninstalling the partial Bitcoin installation and try again." ; return 1 ; fi
+    if ! grep -q OK $tmp/bitcoinsha256 ; then 
+    sww "${orange}Checksum failed. Aborting. Sometimes this happens for unexplainable reasons. 
+    Try uninstalling the partial Bitcoin installation and try again.
+    
+    Below is the contents of $hp/bitcoin/ where the files should have been downloaded:$red
+
+$(ls -lah $hp/bitcoin/ | gsed -n '4,$p' | awk '{print "    "$9" .........."$5}')$orange
+
+    Below is the file with the SHA256 output that was being checked:
+    $tmp/bitcoinsha256" ; return 1 ; fi
+
     rm $tmp/bitcoinsha256 >$dn 2>&1
 fi
 
