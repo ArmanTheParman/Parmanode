@@ -12,7 +12,6 @@ $cyan    1)$bright_blue    Bitcoin Knots version $knotsversion $orange
 
 $cyan    2)$orange    Bitcoin QT version $version
 
-
 $cyan    3)$red    Bitcoin in Docker (bundled with BTCPay)$orange 
 
             This is a new addition to Parmanode: You can opt to install Bitcoin 
