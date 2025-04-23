@@ -1,4 +1,7 @@
 function install_bitbox { 
+announce "BitBox has changed their file paths. I have to go over the code. Please wait about 24 hours before updating
+    Parmanode, and try again." 
+return 1
 set_terminal
 bitboxDir=$HOME/parmanode/bitbox
 mkdir $bitboxDir && cd $bitboxDir
@@ -6,8 +9,10 @@ installed_conf_add "bitbox-start"
 version="4.47.2"
 
 if [[ $OS == Mac ]] ; then #it's for x86_64, but M1/M2 macs will run it but not so efficiently
-curl -LO https://github.com/digitalbitbox/bitbox-wallet-app/releases/download/v$version/BitBox-$version-macOS.zip
-curl -LO https://github.com/digitalbitbox/bitbox-wallet-app/releases/download/v$version/BitBox-$version-macOS.zip.asc
+curl -LO https://github.com/BitBoxSwiss/bitbox-wallet-app/releases/download/v$version/BitBox-$version-macOS.zip
+curl -LO https://github.com/BitBoxSwiss/bitbox-wallet-app/releases/download/v$version/BitBox-$version-macOS.zip.asc
+#curl -LO https://github.com/BitBoxSwiss/bitbox-wallet-app/releases/download/v4.47.0/BitBox-4.47.0-macOS.dmg
+
 verify_bitbox || return 1
 unzip *.zip ; rm *.zip 2>$dn
 mv *.app /Applications/
