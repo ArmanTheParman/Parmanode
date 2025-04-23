@@ -17,6 +17,9 @@ function source_premium {
     [[ -e $dp/.parmasync_enabled ]] && [[ -e $pp/parmasync ]] && for file in $pp/parmasync/src/*.sh ; do
 	    source $file
 	done
+    [[ -e $dp/.parmanas_enabled ]] && [[ -e $pp/parmanas ]] && for file in $pp/parmanas/src/*.sh ; do
+	    source $file
+	done
 #custom
     if ! test -f $dp/donotsourceparmadrive ; then
 		[[ -e $pp/parmadrive ]] && for file in $pp/parmadrive/src/*.sh ; do
