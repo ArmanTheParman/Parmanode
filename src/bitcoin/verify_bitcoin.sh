@@ -1,6 +1,7 @@
 function verify_bitcoin {
 if [[ $verify == "skip" ]] ; then return 0 ; fi #skipverify argument set in parman_variables
 if [[ $bitcoin_compile = "true" ]] ; then return 0 ; fi
+if [[ $SKIPVERIFY == "true" ]] ; then return 0 ; fi
 
 cd $HOME/parmanode/bitcoin
 set_terminal 46 120
@@ -34,7 +35,6 @@ else
 $(ls -lah $hp/bitcoin/ | gsed -n '4,$p' | awk '{print "    "$9" .........."$5}')$orange" ; return 1 ; fi
 fi
 
-if [[ $skipverify == "true" ]] ; then return 0 ; fi
 sleep 3
 echo -e "\nPlease wait a moment for gpg verification..."
 
