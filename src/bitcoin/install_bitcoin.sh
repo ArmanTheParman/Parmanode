@@ -55,6 +55,7 @@ announce "So you want to install Bitcoin - nice one. May I take to this opportun
     to to direct you to an essay I wrote about why it's important to run a node? 
     You might want to save this link for later...$cyan
 
+
     https://armantheparman.com/6reasonsnode $orange
     "
 fi

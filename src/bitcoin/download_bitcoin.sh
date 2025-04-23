@@ -78,13 +78,13 @@ while true ; do
 
          if [[ ($chip == "arm64" && $OS == "Mac") || ( $chip == "aarch64" && $OS == "Mac") ]] ; then
 
-            [[ $knotsbitcoin == "true" ]] && { curl -LO https://bitcoinknots.org/files/$knotsmajor/$version.knots$knotsdate/bitcoin-$version.knots$knotsdate-arm64-apple-darwin.dmg ; break ; }
-            curl -LO https://bitcoincore.org/bin/bitcoin-core-$version/bitcoin-$version-arm64-apple-darwin.zip ; unzip bitcoin*.zip ; zip="true" ; break
+            [[ $knotsbitcoin == "true" ]] && { curl -LO https://bitcoinknots.org/files/$knotsmajor/$version.knots$knotsdate/bitcoin-$version.knots$knotsdate-arm64-apple-darwin.zip ; break ; }
+            curl -LO https://bitcoincore.org/bin/bitcoin-core-$version/bitcoin-$version-arm64-apple-darwin.zip ; break
          fi
 
          if [[ $chip == "x86_64" && $OS == "Mac" ]] ; then
             [[ $knotsbitcoin == "true" ]] &&  { curl -LO https://bitcoinknots.org/files/$knotsmajor/$version.knots$knotsdate/bitcoin-$version.knots$knotsdate-x86_64-apple-darwin.dmg ; break ; }
-            curl -LO https://bitcoincore.org/bin/bitcoin-core-$version/bitcoin-$version-x86_64-apple-darwin.zip ; unzip bitcoin*.zip ; zip="true" ; break
+            curl -LO https://bitcoincore.org/bin/bitcoin-core-$version/bitcoin-$version-x86_64-apple-darwin.zip ; break
          fi
 done
 return 0
@@ -93,11 +93,18 @@ return 0
 
 function unpack_bitcoin {
 
-if [[ $OS == "Mac" && $zip != "true" ]] ; then
+if find $hp/bitcoin/ -type f -name "*.zip" >$dn 2>&1 ; then
+unzip bitcoin*.zip
+fi
+
+if [[ $OS == "Mac" ]] ; then
 hdiutil attach *.dmg
 sudo cp -r /Volumes/Bitcoin*/Bitcoin* /Applications
 hdiutil detach /Volumes/Bitcoin*
-elif [[ $zip == "true" ]] ; then
+hdiutil attach *.dmg
+sudo cp -r /Volumes/Bitcoin*/Bitcoin* /Applications
+hdiutil detach /Volumes/Bitcoin*
+else
 sudo cp -r ./Bitcoin* /Applications
 fi
 
