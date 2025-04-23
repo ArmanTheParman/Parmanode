@@ -1,3 +1,5 @@
+Version 3.58.3
+     -Knots Mac upgrade to v28.1
 Version 3.58.2
      -Trezor 25.4.2
 Version 3.58.1
