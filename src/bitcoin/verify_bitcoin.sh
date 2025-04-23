@@ -17,14 +17,14 @@ if ! which gpg >$dn  && [[ $OS == Mac ]] ; then install_gpg4mac ; fi
 
 #ignore-missing option not available on shasum
 if which sha256sum >$dn ; then
-    if ! sha256sum --ignore-missing --check SHA256SUMS ; then announce "Checksum$red failed$orange. Aborting." \
-    "Sometimes this happens for unexplainable reasons. 
+    if ! sha256sum --ignore-missing --check SHA256SUMS ; then sww "Checksum$red failed$orange. Aborting. \
+    Sometimes this happens for unexplainable reasons. 
     Try uninstalling the partial Bitcoin installation and try again." ; return 1 ; fi
 else
     rm $tmp/bitcoinsha256 >$dn 2>&1
     shasum -a 256 --check SHA256SUMS >$tmp/bitcoinsha256 2>&1
-    if ! grep -q OK $tmp/bitcoinsha256 ; then announce "Checksum$red failed$orange. Aborting." \
-    "Sometimes this happens for unexplainable reasons. 
+    if ! grep -q OK $tmp/bitcoinsha256 ; then sww "Checksum$red failed$orange. Aborting.\
+    Sometimes this happens for unexplainable reasons. 
     Try uninstalling the partial Bitcoin installation and try again." ; return 1 ; fi
     rm $tmp/bitcoinsha256 >$dn 2>&1
 fi
