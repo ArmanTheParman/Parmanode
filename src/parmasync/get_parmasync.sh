@@ -34,7 +34,8 @@ announce_blue "ParmaSync is a remote backup swap service allowing you and a frie
     return 0
     else
     cd $pp/parmasync && please_wait && git pull >$dn 2>&1
-    source_premium
     announce_blue "ParmaSync  updated. Go to the USE menu to use."
     fi
+
+source_premium
 }

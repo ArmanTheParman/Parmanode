@@ -11,7 +11,9 @@ $green
     https://parmanode.com/parmanodl$blue"
 
     return 1
-    }
+}
+
+
 #If ParmaNas is enabled, make the SSH keys and return
 make_parmanas_ssh_keys && { announce_blue "Parmanas SSH keys made. Please contact Parman to enable.
 $green
@@ -29,5 +31,6 @@ $(cat ~/.ssh/extra_keys/parmanas-key.pub)$blue\n" ; return 1 ; }
     cd $pp/parmanas && please_wait && git pull >$dn 2>&1
     fi
 
+    source_premium
     install_parmanas
 }

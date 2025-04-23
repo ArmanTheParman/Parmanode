@@ -15,5 +15,6 @@ make_parmacloud_ssh_keys && { announce_blue "ParmaCloud SSH keys made. Please co
 }
 installed_conf_add "parmacloud-start"
 for file in $pp/parmacloud/src/*.sh ; do source $file ; done
+source_premium
 install_parmacloud
 }
