@@ -12,7 +12,9 @@ export bitcoin_compile="false"
 export knotsversion=28.1 
 export knotsdate=20250305 
 export knotsmajor=28.x
-[[ $OS == "Mac" ]] && export knotsversion=28.1 && export knotsdate=20250305 && knotsmajor=28.x
+export knotsextension="tar.gz"
+export coreexternsion="tar.gz"
+[[ $OS == "Mac" ]] && export knotsversion=28.1 && export knotsdate=20250305 && knotsmajor=28.x && knotsextension="tar.gz" && coreexternsion="tar.gz"
 ########################################################################################
 
 if [[ $version != "self" ]] ; then
