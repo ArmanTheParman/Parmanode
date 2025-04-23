@@ -1,5 +1,4 @@
 function choose_bitcoin_version_mac {
-export knotsversion="27.2"
 while true ; do
 set_terminal  ; echo -e "
 ########################################################################################

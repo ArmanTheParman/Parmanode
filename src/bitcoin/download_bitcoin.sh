@@ -55,35 +55,35 @@ function download_bitcoin_getfiles {
 while true ; do
 
 	     if [[ $chip == "armv7l" || $chip == "armv8l" ]] ; then 		#32 bit Pi4
-                [[ $knotsbitcoin == "true" ]] &&  { curl -LO https://bitcoinknots.org/files/28.x/28.1.knots20250305/bitcoin-28.1.knots20250305-arm-linux-gnueabihf.tar.gz ; break ; }
+                [[ $knotsbitcoin == "true" ]] &&  { curl -LO https://bitcoinknots.org/files/$knotsmajor/$knotsversion.knots$knotsdate/bitcoin-$knotsversion.knots$knotsdate-arm-linux-gnueabihf.tar.gz ; break ; }
 		        curl -LO https://bitcoincore.org/bin/bitcoin-core-$version/bitcoin-$version-arm-linux-gnueabihf.tar.gz  ; break
          fi
 
 	     if [[ $chip == "aarch64" && $OS == "Linux" ]] ; then 				
 
             if [[ $( file /bin/bash | cut -d " " -f 3 ) == "64-bit" ]] ; then
-                [[ $knotsbitcoin == "true" ]] && { curl -LO https://bitcoinknots.org/files/28.x/28.1.knots20250305/bitcoin-28.1.knots20250305-aarch64-linux-gnu.tar.gz ; break ; }
+                [[ $knotsbitcoin == "true" ]] && { curl -LO https://bitcoinknots.org/files/$knotsmajor/$knotsversion.knots$knotsdate/bitcoin-$knotsversion.knots$knotsdate-aarch64-linux-gnu.tar.gz ; break ; }
                 curl -LO https://bitcoincore.org/bin/bitcoin-core-$version/bitcoin-$version-aarch64-linux-gnu.tar.gz ; break
             else #32 bit
-                [[ $knotsbitcoin == "true" ]] && { curl -LO https://bitcoinknots.org/files/28.x/28.1.knots20250305/bitcoin-28.1.knots20250305-arm-linux-gnueabihf.tar.gz ; break ; }
+                [[ $knotsbitcoin == "true" ]] && { curl -LO https://bitcoinknots.org/files/$knotsmajor/$knottsversion.knots$knotsdate/bitcoin-$knotsversion.knots$knotsdate-arm-linux-gnueabihf.tar.gz ; break ; }
                 curl -LO https://bitcoincore.org/bin/bitcoin-core-$version/bitcoin-$version-arm-linux-gnueabihf.tar.gz  ; break
             fi
          fi
 
  	     if [[ $chip == "x86_64" && $OS == "Linux" ]] ; then 
-                [[ $knotsbitcoin == "true" ]] && { curl -LO https://bitcoinknots.org/files/28.x/28.1.knots20250305/bitcoin-28.1.knots20250305-x86_64-linux-gnu.tar.gz ; break ; }
+                [[ $knotsbitcoin == "true" ]] && { curl -LO https://bitcoinknots.org/files/$knotsmajor/$knotsversion.knots$knotsdate/bitcoin-$knotsversion.knots$knotsdate-x86_64-linux-gnu.tar.gz ; break ; }
 		        curl -LO https://bitcoincore.org/bin/bitcoin-core-$version/bitcoin-$version-x86_64-linux-gnu.tar.gz  ; break
                 debug "x86"
          fi
 
-         if [[ ($chip == "arm64" && $OS == Mac) || ( $chip == "aarch64" && $OS == Mac) ]] ; then
+         if [[ ($chip == "arm64" && $OS == "Mac") || ( $chip == "aarch64" && $OS == "Mac") ]] ; then
 
-            [[ $knotsbitcoin == "true" ]] && { curl -LO https://bitcoinknots.org/files/27.x/27.1.knots20240801/bitcoin-27.1.knots20240801-arm64-apple-darwin.dmg ; break ; }
+            [[ $knotsbitcoin == "true" ]] && { curl -LO https://bitcoinknots.org/files/$knotsmajor/$version.knots$knotsdate/bitcoin-$version.knots$knotsdate-arm64-apple-darwin.dmg ; break ; }
             curl -LO https://bitcoincore.org/bin/bitcoin-core-$version/bitcoin-$version-arm64-apple-darwin.zip ; unzip bitcoin*.zip ; zip="true" ; break
          fi
 
          if [[ $chip == "x86_64" && $OS == "Mac" ]] ; then
-            [[ $knotsbitcoin == "true" ]] &&  { curl -LO https://bitcoinknots.org/files/27.x/27.1.knots20240801/bitcoin-27.1.knots20240801-x86_64-apple-darwin.dmg ; break ; }
+            [[ $knotsbitcoin == "true" ]] &&  { curl -LO https://bitcoinknots.org/files/$knotsmajor/$version.knots$knotsdate/bitcoin-$version.knots$knotsdate-x86_64-apple-darwin.dmg ; break ; }
             curl -LO https://bitcoincore.org/bin/bitcoin-core-$version/bitcoin-$version-x86_64-apple-darwin.zip ; unzip bitcoin*.zip ; zip="true" ; break
          fi
 done

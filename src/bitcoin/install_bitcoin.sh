@@ -5,7 +5,16 @@ function install_bitcoin {
 
 #set compile to false, and make true later depending on choices
 export bitcoin_compile="false"
-export knotsversion=28.1
+
+########################################################################################
+#Check download file, verify, and printouts, are correct when changing...
+########################################################################################
+export knotsversion=28.1 
+export knotsdate=20250305 
+export knotsmajor=28.x
+[[ $OS == "Mac" ]] && export knotsversion=28.1 && export knotsdate=20250305 && knotsmajor=28.x
+########################################################################################
+
 if [[ $version != "self" ]] ; then
     export version="28.1"
 fi
