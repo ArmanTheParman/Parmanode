@@ -43,7 +43,7 @@ break
 ;;
 1)
 parmanode_conf_add "bitcoin_choice=knots"
-export knotsbitcoin="true" ; export version="Knots" ; export bitcoin_compile="false" 
+export knotsbitcoin="true" ; export version="Knots-$knotsversion" ; export bitcoin_compile="false" 
 export btcdockerchoice=no
 break
 ;;

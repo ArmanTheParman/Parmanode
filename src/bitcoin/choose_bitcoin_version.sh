@@ -55,7 +55,7 @@ q|Q) exit 0 ;; p|P) return 1 ;; m|M) back2main ;;
 pck|pk|kp|"")
 parmanode_conf_add "bitcoin_choice=knots"
 export bitcoin_compile="false" 
-export knotsbitcoin="true" ; version="28.x-knots" ; break ;;
+export knotsbitcoin="true" ; version="$knotsmajor-knots" ; break ;;
 0|27|c|core)
 parmanode_conf_add "bitcoin_choice=precompiled"
 export bitcoin_compile="false" ; break ;;
