@@ -1,5 +1,7 @@
 function install_docker_linux {
 
+if grep -q "docker-end" $ic ; then return 0 ; fi
+
 #Docker explainer
 while true ; do 
 set_terminal ; echo -e "

@@ -2,9 +2,6 @@ return 0
 function install_docker_linux {
 installed_from="$1"
 
-if grep -q "docker-end" $ic ; then return 0 ; fi
-
-
 if [[ "$1" == "menu" ]] ; then
 #Docker explainer
 set_terminal ; echo -e "
