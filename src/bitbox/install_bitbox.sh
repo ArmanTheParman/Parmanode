@@ -1,20 +1,23 @@
 function install_bitbox { 
-announce "BitBox has changed their file paths. I have to go over the code. Please wait about 24 hours before updating
-    Parmanode, and try again." 
-return 1
 set_terminal
 bitboxDir=$HOME/parmanode/bitbox
 mkdir $bitboxDir && cd $bitboxDir
 installed_conf_add "bitbox-start"
-version="4.47.2"
+version="4.47.0" #careful, some patches don't have Mac versions
 
 if [[ $OS == Mac ]] ; then #it's for x86_64, but M1/M2 macs will run it but not so efficiently
-curl -LO https://github.com/BitBoxSwiss/bitbox-wallet-app/releases/download/v$version/BitBox-$version-macOS.zip
-curl -LO https://github.com/BitBoxSwiss/bitbox-wallet-app/releases/download/v$version/BitBox-$version-macOS.zip.asc
-#curl -LO https://github.com/BitBoxSwiss/bitbox-wallet-app/releases/download/v4.47.0/BitBox-4.47.0-macOS.dmg
+curl -LO https://github.com/BitBoxSwiss/bitbox-wallet-app/releases/download/v$version/BitBox-$version-macOS.dmg 2>$dn
+curl -LO https://github.com/BitBoxSwiss/bitbox-wallet-app/releases/download/v$version/BitBox-$version-macOS.dmg.asc 2>$dn
+curl -LO https://github.com/BitBoxSwiss/bitbox-wallet-app/releases/download/v$version/BitBox-$version-macOS.zip 2>$dn
+curl -LO https://github.com/BitBoxSwiss/bitbox-wallet-app/releases/download/v$version/BitBox-$version-macOS.zip.asc 2>$dn
 
 verify_bitbox || return 1
+
+#sometimes the file is actually a zip file
+if find ./ -type f -name "*.zip" 2>$dn | grep -q . ; then
 unzip *.zip ; rm *.zip 2>$dn
+fi
+
 mv *.app /Applications/
 fi
 
@@ -39,7 +42,5 @@ return 1
 fi
 
 installed_conf_add "bitbox-end"
-success "BitBox App" "being installed."
+success "BitBox App has been installed"
 }
-
-
