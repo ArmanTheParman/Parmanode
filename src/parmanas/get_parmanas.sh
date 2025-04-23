@@ -29,7 +29,5 @@ $(cat ~/.ssh/extra_keys/parmanas-key.pub)$blue\n" ; return 1 ; }
     cd $pp/parmanas && please_wait && git pull >$dn 2>&1
     fi
 
-    $pp/parmanas/run_parmanas.sh
-
     install_parmanas
 }
