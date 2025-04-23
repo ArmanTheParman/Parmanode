@@ -3,7 +3,7 @@ set_terminal
 bitboxDir=$HOME/parmanode/bitbox
 mkdir $bitboxDir && cd $bitboxDir
 installed_conf_add "bitbox-start"
-version="4.47.0" #careful, some patches don't have Mac versions
+version="4.47.0" #careful, some patches don't have Mac versions, and some are zips with .pp not dmgs.
 
 if [[ $OS == "Mac" ]] ; then #it's for x86_64, but M1/M2 macs will run it but not so efficiently
     please_wait
