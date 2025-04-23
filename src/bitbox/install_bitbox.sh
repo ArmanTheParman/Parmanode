@@ -17,7 +17,7 @@ if [[ $OS == "Mac" ]] ; then #it's for x86_64, but M1/M2 macs will run it but no
     #unzip *.zip ; rm *.zip 2>$dn
     #fi
 
-    mv *.app /Applications/
+    sudo mv *.app /Applications/
 
 fi
 
