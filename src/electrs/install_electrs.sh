@@ -1,7 +1,7 @@
 function install_electrs {
 
 export install_electrs_docker_variable="false"
-export electrsversion="v0.10.6"
+export electrsversion="v0.10.9"
 
 source $pc $ic >$dn 2>&1
 
