@@ -78,12 +78,12 @@ while true ; do
 
          if [[ ($chip == "arm64" && $OS == "Mac") || ( $chip == "aarch64" && $OS == "Mac") ]] ; then
 
-            [[ $knotsbitcoin == "true" ]] && { curl -LO https://bitcoinknots.org/files/$knotsmajor/$version.knots$knotsdate/bitcoin-$version.knots$knotsdate-arm64-apple-darwin.$knotsextension ; break ; }
+            [[ $knotsbitcoin == "true" ]] && { curl -LO https://bitcoinknots.org/files/$knotsmajor/$knotsversion.knots$knotsdate/bitcoin-$knotsversion.knots$knotsdate-arm64-apple-darwin.$knotsextension ; break ; }
             curl -LO https://bitcoincore.org/bin/bitcoin-core-$version/bitcoin-$version-arm64-apple-darwin.zip ; break
          fi
 
          if [[ $chip == "x86_64" && $OS == "Mac" ]] ; then
-            [[ $knotsbitcoin == "true" ]] &&  { curl -LO https://bitcoinknots.org/files/$knotsmajor/$version.knots$knotsdate/bitcoin-$version.knots$knotsdate-x86_64-apple-darwin.$knotsextension ; break ; }
+            [[ $knotsbitcoin == "true" ]] &&  { curl -LO https://bitcoinknots.org/files/$knotsmajor/$knotsversion.knots$knotsdate/bitcoin-$knotsversion.knots$knotsdate-x86_64-apple-darwin.$knotsextension ; break ; }
             curl -LO https://bitcoincore.org/bin/bitcoin-core-$version/bitcoin-$version-x86_64-apple-darwin.zip ; break
          fi
 done
