@@ -21,9 +21,9 @@ echo -e "
 
 "
 ### Premium
-if [[ -e $pp/parmanas ]] ; then
+if grep -q "parmanas-end" $ic ; then 
                        echo -e "                   $cyan       pnas)$blue       ParmaNas$orange" ; parmanasapp=1 ; count=$((count +1)) ; fi
-if [[ -e $pp/parmascale ]] ; then
+if grep -q "parmascale-end" $ic ; then
                        echo -e "                   $cyan       scale)$blue      ParmaScale$orange" ; parmascaleapp=1 ; count=$((count +1)) ; fi
 if [[ -e $pp/parminer ]] ; then 
                        echo -e "                   $cyan       pm)$blue         ParMiner$orange" ; parminerapp=1 ; count=$((count +1)) ; fi
@@ -31,7 +31,7 @@ if [[ -e $pp/datum ]] ; then
                        echo -e "                   $cyan       dt)$blue         Datum$orange" ; datumapp=1 ; count=$((count +1)) ; fi
 if [[ -e $pp/uddns ]] ; then 
                        echo -e "                   $cyan       ud)$blue         UDDNS$orange" ; uddnsapp=1 ; count=$((count +1)) ; fi
-if [[ -e $pp/parmasync ]] ; then 
+if  grep -q "parmasync-end" $ic ; then
                        echo -e "                        $cyan  sync)$blue       ParmaSync$orange" ; parmasyncapp=1 ; count=$((count +1)) ; fi
 if grep -q "parmatwin-end" $ic ; then 
                        echo -e "                        $cyan  twin)$blue       ParmaTwin Server$orange" ; parmatwinapp=1 ; count=$((count +1)) ; fi
