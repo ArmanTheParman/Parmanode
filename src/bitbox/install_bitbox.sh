@@ -17,7 +17,8 @@ if [[ $OS == "Mac" ]] ; then #it's for x86_64, but M1/M2 macs will run it but no
     #unzip *.zip ; rm *.zip 2>$dn
     #fi
 
-    sudo mv *.app /Applications/
+    hdiutil attach *.dmg
+    sudo mv  /Volumes/BitBox*/*.app /Applications
 
 fi
 
