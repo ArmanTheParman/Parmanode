@@ -93,14 +93,14 @@ return 0
 
 function unpack_bitcoin {
 
-if find $hp/bitcoin/ -type f -name "*.zip" >$dn 2>&1 ; then
+if find $hp/bitcoin/ -type f -name "*.zip" | grep -q . >$dn 2>&1 ; then
 unzip bitcoin*.zip
 fi
 
 
 if [[ $OS == "Mac" ]] ; then
 
-    if find $hp/bitcoin/ -type f -name "*.dmg" ; then
+    if find $hp/bitcoin/ -type f -name "*.dmg" | grep -q . ; then
         hdiutil attach *.dmg
         sudo cp -r /Volumes/Bitcoin*/Bitcoin* /Applications
         hdiutil detach /Volumes/Bitcoin*
