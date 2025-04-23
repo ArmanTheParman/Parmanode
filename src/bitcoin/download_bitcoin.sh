@@ -107,6 +107,7 @@ if [[ $OS == "Mac" ]] ; then
     else
         sudo cp -r ./Bitcoin*app/Applications
     fi
+fi
 
 if [[ $OS == "Linux" ]] ; then
 set_terminal
