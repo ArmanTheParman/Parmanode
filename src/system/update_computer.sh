@@ -60,6 +60,8 @@ Type$pink y$yellow or$pink n$yellow, then$cyan <enter>$yellow.$orange
     sudo apt-get install -y tor | tee -a $ndebug
     sudo apt-get install -y ufw | tee -a $ndebug
     sudo apt-get install -y mdadm | tee -a $ndebug
+    #new 2025
+    sudo apt-get install -y libnotify-bin strace | tee -a $ndebug
     if ! which tune2fs >$dn 2>&1 ; then sudo apt-get install -y e2fsprogs | tee -a $ndebug ; fi
     sudo systemctl enable ssh >$dn 2>&1
     sudo systemctl start ssh >$dn 2>&1

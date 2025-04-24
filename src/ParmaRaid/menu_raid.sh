@@ -1,10 +1,12 @@
 function menu_raid {
+# FOR LATER, to detect errors. zenity --info --title="RAID Alert" --text="Drive failed in RAID1. Check /proc/mdstat." --width=400 --height=100
 while true ; do
+if grep -Eq '\[.*_.*\]' /proc/mdstat ; then issuedetected="$blinkon${red}RAID ISSUE DETECTED$blinkoff$orange" ; else unset issuedetected ; fi
 set_terminal ; echo -e "$blue
 ########################################################################################$orange
-                                R A I D - menu$blue
+                                 R A I D - menu$blue
 ########################################################################################
-$orange
+$issuedetected$orange
                       dt)$blue         Inspect RAID details $orange
                       lr)$blue         List running RAIDs $orange
                       lm)$blue         List mounted RAIDs $orange
@@ -100,3 +102,17 @@ done
 #update mdadm.conf
 # sudo mdadm --detail --scan | grep '/dev/md1' | sudo tee -a /etc/mdadm/mdadm.conf
 # sudo update-initramfs -u
+
+function mdadm_detect_errors {
+true
+#mdadm --monitor --scan --oneshot 2> output.txt
+
+#mdadm --monitor --scan --daemonise --program=/path/to/alert.sh
+
+#grep -E 'DegradedArray|Fail|removed|RebuildStarted|RebuildFinished'
+
+
+#make a service file to keep mdadm_detect running, and restart within parmanode and desired moments.
+
+
+}
