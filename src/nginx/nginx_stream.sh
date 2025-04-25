@@ -31,7 +31,7 @@ fi
 source $pp/parmanode/src/nginx/stream.conf >$dn 2>&1
 #unset what is not installed
 if [[ $1 != electrs ]] ; then
-   if ! grep -q "electrs-end" $ic && ! grep -q "electrs2-end" $ic && ! grep -q "electrsdkr" $ic ; then
+   if ! grep -q "electrs-end" $ic && ! grep -q "electrsdkr" $ic ; then
    unset upstream_electrs server_electrs
    fi
 fi

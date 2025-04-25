@@ -91,7 +91,7 @@ else
     menub3="false"
     unset m3 s3 r3
 fi 
-if grep -q electrs-end $ic || grep -q electrs2-end $ic ; then
+if grep -q electrs-end $ic ; then
     i4="${green}Y${orange}"
     electrsinstalled="true"
     if [[ $electrsrunning == "true" ]] ; then
@@ -156,7 +156,7 @@ else
     unset m7 s7 r7
 fi
 
-if grep -q electrsdkr-end $ic || grep -q electrsdkr2-end $ic ; then
+if grep -q electrsdkr-end $ic ; then
     i8="${green}Y${orange}"
     electrsdkrinstalled="true"
     if [[ $electrsdkrrunning == "true" ]] ; then

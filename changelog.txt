@@ -2,6 +2,7 @@ Version 3.58.3
      -Knots Mac upgrade to v28.1
      -Electrs upgrade to v0.10.9
      -BitBox v.4.47.0
+     -Backend cleanup: Removed electrs2 and electrsdkr2 names and refactored.
 Version 3.58.2
      -Trezor 25.4.2
 Version 3.58.1

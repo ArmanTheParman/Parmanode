@@ -24,8 +24,8 @@ echo -e "
 #$green Not yet installed... $orange                                                                #
 #                                                                                      #"
 if [[ -n $bitcoin_n ]]         ; then echo -e  "$bitcoin_n"; fi
-if [[ -n $electrs2_n && -n $electrs_n ]] ; then echo -e "$electrs2_n"; fi
-if [[ -n $electrsdkr2_n ]]      ; then echo  -e "$electrsdkr2_n"; fi
+if [[ -n $electrs_n ]]         ; then echo -e  "$electrs_n"; fi
+if [[ -n $electrsdkr_n ]]      ; then echo  -e "$electrsdkr_n"; fi
 if [[ -n $electrumx_n ]]       ; then echo -e  "$electrumx_n"; fi
 if [[ -n $btcrpcexplorer_n ]]  ; then echo  -e "$btcrpcexplorer_n"; fi
 if [[ -n $mempool_n ]]         ; then echo -e  "$mempool_n"; fi
@@ -41,9 +41,7 @@ echo -e "#                                                                      
 #                                                                                      #"
 if [[ -n $bitcoin_i ]]         ; then echo  -e "$bitcoin_i"; fi
 if [[ -n $electrs_i ]]         ; then echo   -e "$electrs_i"; fi
-if [[ -n $electrs2_i ]]        ; then echo   -e "$electrs2_i"; fi
 if [[ -n $electrsdkr_i ]]      ; then echo  -e "$electrsdkr_i"; fi
-if [[ -n $electrsdkr2_i ]]     ; then echo   -e "$electrsdkr2_i"; fi
 if [[ -n $electrumx_i ]]       ; then echo -e  "$electrumx_i"; fi
 if [[ -n $btcrpcexplorer_i ]]  ; then echo -e "$btcrpcexplorer_i"; fi
 if [[ -n $mempool_i ]]         ; then echo -e  "$mempool_i"; fi
@@ -59,9 +57,7 @@ echo -e "#                                                                      
 #                                                                                      #"
 if [[ -n $bitcoin_p ]]         ; then echo -e "$pink$bitcoin_p$orange"; fi
 if [[ -n $electrs_p ]]         ; then echo -e "$pink$electrs_p$orange"; fi
-if [[ -n $electrs2_p ]]        ; then echo -e "$pink$electrs2_p$orange"; fi
 if [[ -n $electrsdkr_p ]]      ; then echo -e "$pink$electrsdkr_p$orange"; fi
-if [[ -n $electrsdkr2_p ]]     ; then echo -e "$pink$electrsdkr2_p$orange"; fi
 if [[ -n $electrumx_p ]]       ; then echo -e "$electrumx_p"; fi
 if [[ -n $btcrpcexplorer_p ]]  ; then echo -e "$pink$btcrpcexplorer_p$orange"; fi
 if [[ -n $mempool_p ]]         ; then echo -e "$mempool_p"; fi
@@ -172,13 +168,13 @@ q|Q) exit ;; p|P) return ;; m|M) back2main ;;
       fi
       ;;
    ers|ERS|Ers|electrs)
-      if [[ -n $electrs_n && -n $electrs2_n ]] ; then
+      if [[ -n $electrs_n ]] ; then
          install_electrs
          menu_main
       fi
       ;;
    ersd|ERSD|Ersd|electrsdocker)
-      if [[ -n $electrsdkr_n && -n $electrsdkr2_n ]] ; then
+      if [[ -n $electrsdkr_n ]] ; then
          install_electrs_docker
          menu_main
       fi

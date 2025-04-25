@@ -8,7 +8,7 @@ set_terminal 42
 unset bitcoinmenu fulcrummenu dockermenu btcpaymenu lnbitsmenu tormenu lndmenu mempoolmenu 
 unset sparrowmenu rtlmenu electrummenu torservermenu btcTORmenu spectermenu btcrpcexplorermenu
 unset electrsmenu trezormenu ledgermenu bitboxmenu parmashellmenu bredockermenu parmaboxmenu
-unset anydeskmenu piholemenu torrelaymenu electrskdmenu piappsmenu torbmenu electrs2menu electrsdkr2menu
+unset anydeskmenu piholemenu torrelaymenu electrskdmenu piappsmenu torbmenu 
 unset public_poolmenu electrumxmenu thunderhubmenu lnddockermenu nginxmenu nostrrelaymenu litdmenu
 unset parmacloudmenu parmanostrmenu btcrecovermenu joinmarketmenu greenmenu X11menu phoenixmenu vaultwardenmenu
 
@@ -156,10 +156,6 @@ if grep -q "electrsdkr-end" $HOME/.parmanode/installed.conf ; then electrsdkrmen
 echo -e "#$cyan                            \033[27G ersd)$orange             Electrs Docker                         \033[88G#"
 elif grep -q "electrsdkr-start" $HOME/.parmanode/installed.conf ; then electrsdkrmenu=1
 echo -e "#$cyan                            \033[27G ersd)$orange             Electrs Dkr $red$blinkn (partial)$blinkoff$orange                   \033[88G#" ; fi
-if grep -q "electrsdkr2-end" $HOME/.parmanode/installed.conf ; then electrsdkr2menu=1
-echo -e "#$cyan                            \033[27G ersd)$orange             Electrs Docker                         \033[88G#"
-elif grep -q "electrsdkr2-start" $HOME/.parmanode/installed.conf ; then electrsdkr2menu=1
-echo -e "#$cyan                            \033[27G ersd)$orange             Electrs Dkr $red$blinkon(partial)$blinkoff$orange                   \033[88G#" ; fi
 if grep -q "piapps-end" $HOME/.parmanode/installed.conf ; then piappsmenu=1
 echo -e "#$cyan                            \033[27G piap)$orange             PiApps                                 \033[88G#"
 elif grep -q "piapps-start" $HOME/.parmanode/installed.conf ; then piappsmenu=1
@@ -176,9 +172,9 @@ if grep -q "torssh-end" $HOME/.parmanode/installed.conf ; then torsshmenu=1
 echo -e "#$cyan                            \033[27G tssh)$orange             Tor SSH                                \033[88G#"
 elif grep -q "torssh-start" $HOME/.parmanode/installed.conf ; then torsshmenu=1
 echo -e "#$cyan                            \033[27G tssh)$orange             Tor SSH $red$blinkon(partial)$blinkoff$orange                       \033[88G#" ; fi
-if grep -q "electrs2-end" $HOME/.parmanode/installed.conf ; then electrs2menu=1
+if grep -q "electrs-end" $HOME/.parmanode/installed.conf ; then electrsmenu=1
 echo -e "#$cyan                            \033[27G ers)$orange              electrs                                \033[88G#"
-elif grep -q "electrs2-start" $HOME/.parmanode/installed.conf ; then electrs2menu=1
+elif grep -q "electrs-start" $HOME/.parmanode/installed.conf ; then electrsmenu=1
 echo -e "#$cyan                            \033[27G ers)$orange              electrs $red$blinkon(partial)$blinkoff$orange                       \033[88G#" ; fi
 if grep -q "public_pool-end" $HOME/.parmanode/installed.conf ; then public_poolmenu=1
 echo -e "#$cyan                            \033[27G pool)$orange             Public Pool                            \033[88G#"
@@ -374,11 +370,6 @@ if [[ $electrsmenu == 1 ]] ; then
 uninstall_electrs
 menu_main
 fi
-	
-if [[ $electrs2menu == 1 ]] ; then
-uninstall_electrs2
-menu_main
-fi
 ;;
 
 lnb|LNB|Lnb)
@@ -444,14 +435,9 @@ menu_main
 fi
 ;;
 
-ersd|ERSD|Ersd)
+ersd|ERSs|Ersd)
 if [[ $electrsdkrmenu == 1 ]] ; then
 uninstall_electrs_docker
-menu_main
-fi
-
-if [[ $electrsdkr2menu == 1 ]] ; then
-uninstall_electrs_docker2
 menu_main
 fi
 ;;

@@ -53,7 +53,7 @@ docker build -t electrs $pn/src/electrs/ ; log "electrsdkr" "docker build done"
 echo -e " $red
 Pausing here; you can see if the build failed or not."
 enter_continue
-installed_config_add "electrsdkr2-start"
+installed_config_add "electrsdkr-start"
 
 
 #prepare drives
@@ -95,7 +95,7 @@ make_ssl_certificates electrsdkr || announce "SSL certificate generation failed.
 
 docker_start_electrs || return 1 
 
-installed_config_add "electrsdkr2-end"
+installed_config_add "electrsdkr-end"
 unset install_electrs_docker_variable
 success "electrs in Docker" "being installed"
 

@@ -2,7 +2,7 @@ function menu_electrs {
 if ! grep "electrs" $ic  | grep -q end ; then return 0 ; fi
 while true ; do
 
-if grep -q "electrsdkr" $ic ; then #dont use electrsdkr2
+if grep -q "electrsdkr" $ic ; then 
     electrsis=docker
     logfile=$HOME/.electrs/run_electrs.log
 else

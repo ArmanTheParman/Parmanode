@@ -1,4 +1,4 @@
-function uninstall_electrs_docker2 {
+function uninstall_electrs_docker {
 while true ; do
 set_terminal ; echo -e "
 ########################################################################################
@@ -85,6 +85,6 @@ sudo rm -rf $HOME/parmanode/electrs && sudo rm -rf $HOME/.electrs >$dn 2>&1
 
 rm $dp/*socat_electrs.sh >$dn
 parmanode_conf_remove "drive_electrs"
-installed_config_remove "electrsdkr2" 
+installed_config_remove "electrsdkr" 
 success "electrs" "being uninstalled."
 }

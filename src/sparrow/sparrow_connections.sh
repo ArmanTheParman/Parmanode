@@ -34,7 +34,7 @@ announce \
 return 1
 fi
 
-if ! grep -Eq "electrs2-end" $ic && ! grep -Eq "electrsdkr-end" $ic ; then
+if ! grep -Eq "electrs-end" $ic && ! grep -Eq "electrsdkr-end" $ic ; then
 announce \
 "Please install electrs first."
 return 1 

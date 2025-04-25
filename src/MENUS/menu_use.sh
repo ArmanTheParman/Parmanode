@@ -6,7 +6,7 @@ unset raidapp
 unset bitcoinapp fulcrumapp fulcrumdkrapp btcpayapp torapp lndapp sparrowapp rtlapp electrumapp 
 unset torserverapp specterapp btcrpcexplorerapp electrsapp lnbitsapp trezorapp bitboxapp
 unset ledgerapp parmashellapp parmaboxapp anydeskapp piholeapp torrelayapp
-unset electrsdkrapp electrsdkr2app torbapp qbittorrentapp mempoolapp torsshapp public_poolapp
+unset electrsdkrapp torbapp qbittorrentapp mempoolapp torsshapp public_poolapp
 unset electrumxapp thunderhubapp websiteapp lnddockerapp nostrrelay litdapp parmacloudapp
 unset parmanostrapp btcrecoverapp joinmarketapp greenapp parman_booksapp X11app phoenixapp
 unset parminerapp parmanasapp parmascaleapp vaultwardenapp
@@ -47,11 +47,7 @@ if grep -q "bitcoin-end" $ic ; then bitcoinapp=1
 ### Databases
 if grep -q "electrs-end" $ic ; then electrsapp=1
                        echo -e "                        $cyan  ers)$orange        electrs " ; count=$((count +1)) ; fi
-if grep -q "electrs2-end" $ic ; then electrs2app=1
-                       echo -e "                        $cyan  ers)$orange        electrs " ; count=$((count +1)) ; fi
 if grep -q "electrsdkr-end" $ic ; then electrsdkrapp=1
-                       echo -e "                        $cyan  ersd)$orange       electrs (Docker) " ; count=$((count +1)) ; fi
-if grep -q "electrsdkr2-end" $ic ; then electrsdkr2app=1
                        echo -e "                        $cyan  ersd)$orange       electrs (Docker) " ; count=$((count +1)) ; fi
 if grep -q "electrumx-end" $ic ; then electrumxapp=1
                        echo -e "                        $cyan  ex)$orange         Electrum X " ; count=$((count +1)) ; fi
@@ -275,7 +271,7 @@ bre|BRE|Bre)
    ;;
 
 ers|ERS|Ers)
-   if [[ $electrsapp == 1 || $electrs2app == 1 ]] ; then
+   if [[ $electrsapp == 1 ]] ; then
    menu_electrs
     if [[ -n $1 ]] ; then clear ; return 0 ; fi
    else invalid
@@ -283,7 +279,7 @@ ers|ERS|Ers)
    ;;
 
 ersf|ERSf|Ersf)
-   if [[ $electrsapp == 1 || $electrs2app == 1 ]] ; then
+   if [[ $electrsapp == 1 ]] ; then
    menu_electrs fast
     if [[ -n $1 ]] ; then clear ; return 0 ; fi
    else invalid
@@ -346,7 +342,7 @@ trl|Trl|TRL)
    fi
    ;;
 ersd|Ersd|ERSD)
-   if [[ $electrsdkrapp == 1 || $electrsdkr2app == 1 ]] ; then
+   if [[ $electrsdkrapp == 1 ]] ; then
    menu_electrs
     if [[ -n $1 ]] ; then clear ; return 0 ; fi
    else invalid

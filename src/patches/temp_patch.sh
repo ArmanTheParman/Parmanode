@@ -17,26 +17,8 @@ rm -rf $dp/temp >$dn 2>&1
 
 #keep checking in case user declines
 tmux_patch
-#fix homebrew path order ; remove June 2025
-if [[ $OS == "Mac" ]] && which brew >$dn && [[ -e $bashrc ]] ; then
-#if sed finds opt/homebrew/bin at the end of the current path, delete that line.
-#if /opt/homebrew/bin isn't at the beginning of the path, add it to the start of the path.
-nogsedtest
-    if cat $bashrc 2>$dn | grep -q "$PATH:/opt/homebrew/bin" ; then
-         sudo gsed -i "/\$PATH:\/opt\/homebrew\/bin/d" $bashrc
-    fi
-    if ! cat $bashrc 2>$dn | grep -q "PATH=/opt/homebrew/bin" ; then
-        echo "PATH=/opt/homebrew/bin:\$PATH" | sudo tee -a $bashrc >$dn 2>&1
-    fi
-fi
 
 #leave in temp patch because a single time patch may fail, as docker needs to be running
-#remove June 2025 - make sure all electrs docker has socat installed
-if cat $ic 2>$dn | grep -q "electrsdkr" ; then
-    if ! docker exec -it electrs bash -c "which socat" >$dn 2>&1 ; then
-        docker exec -d electrs bash -c "sudo apt-get install socat -y" >$dn 2>&1
-    fi
-fi
 
 if [[ $OS == "Linux" ]] && cat $ic 2>$dn | grep -q "electrs" && ! cat $ic 2>$dn | grep -q "electrsdkr" && ! cat /etc/systemd/system/electrs.service 2>$dn | grep -q "StandardOutput" ; then
 please_wait
@@ -45,14 +27,6 @@ sudo gsed -i '/\[Install\]/i\
 # Logging\nStandardOutput=append:/home/parman/.electrs/run_electrs.log\nStandardError=append:/home/parman/.electrs/run_electrs.log\n' /etc/systemd/system/electrs.service  >$dn 2>&1
 sudo systemctl daemon-reload >$dn 2>&1
 sudo systemctl restart electrs >$dn 2>&1
-fi
-
-#remove in 2025
-#because of version2 of electrs install, small bug introduced in the
-#install detection. This fixes it.
-if cat $ic 2>$dn | grep -q "electrs-start" && cat $ic 2>$dn | grep -q "electrs2-end" ; then
-sudo gsed -i "/electrs-start/d" $ic 
-parmanode_conf_add "electrs2-start"
 fi
 
 if ! cat $bashrc 2>$dn | grep -q "parmashell" ; then
@@ -101,6 +75,10 @@ sudo mv ~/.ssh/*-key* $HOME/.ssh/extra_keys/ >$dn 2>&1
 [[ -f ~/.ssh/config ]] && 
 ! grep -q 'extra_keys' ~/.ssh/config && 
 sudo gsed -E -i 's|^IdentityFile ~/.ssh/(.*-key)$|IdentityFile ~/.ssh/extra_keys/\1|' ~/.ssh/config >$dn 2>&1
+
+#remove 2026
+    gsed -i 's/electrs2/electrs/'       $ic >$dn 2>&1
+    gsed -i 's/electrsdkr2/electrsdkr/' $ic >$dn 2>&1
 
 debug temppatchend
 }

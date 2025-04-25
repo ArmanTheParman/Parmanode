@@ -108,7 +108,7 @@ fi
 }
 
 function iselectrsrunning {
-if grep -q electrs- $ic >$dn 2>&1 || grep -q electrs2- $ic >$dn 2>&1 ; then
+if grep -q electrs- $ic >$dn 2>&1 ; then
     if ps -x | grep electrs | grep -q conf >$dn 2>&1 ; then 
     export electrsrunning="true"
     else
