@@ -66,7 +66,7 @@ $pink
     
     Type$red DELETE$blue to delete, otherwise <enter> to skip."
 
-case $enter_conf in 
+case $enter_cont in 
     "") 
     announce_blue "If you change your mind later, Docker volumes can manually be deleted with
     \r    the  commands:
