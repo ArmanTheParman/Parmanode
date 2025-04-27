@@ -42,7 +42,7 @@ echo "#Added by Parmanode..." | tee -a ~/.bashrc >/dev/null 2>&1
 echo 'function rp { cd $HOME/parman_programs/parmanode ; ./run_parmanode.sh $@ ; }' | tee -a ~/.bashrc >/dev/null 2>&1
 fi
 
-echo -e "
+printf "
 ########################################################################################
 
     To run Parmanode, close this terminal, then\033[5m\033[31m OPEN A NEW TERMINAL WINDOW\033[0m, and
