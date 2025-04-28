@@ -28,6 +28,7 @@ unset parmasync
 unset uddns
 [[ ! -e $pp/uddns ]] &&                  uddns="\n#$orange                ud)$blue        UDDNS - Parman's Uncomplicated Dynamic DNS Service         #
 #                                                                                      #"
+debug "pre-premium"
 set_terminal
 echo -en "$blue
 ########################################################################################

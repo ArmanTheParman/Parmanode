@@ -1,5 +1,4 @@
 function set_terminal {
-debug "pre-set_terminal"
 # sets terminal size
 while true ; do
 
