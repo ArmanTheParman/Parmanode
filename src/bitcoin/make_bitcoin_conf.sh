@@ -70,11 +70,11 @@ choose "xpmq" ; read choice
 else
 choice=o
 fi
-
+jump $choice 
 case $choice in 
 m|M) back2main ;;
     q|Q|QUIT|Quit|quit) exit 0 ;; 
-    p|P) return 1 ;; 
+    a|A|p|P) return 1 ;; 
     o|O) break ;;
     yolo|YOLO|Yolo) apply_prune_bitcoin_conf ; return 0 ;; 
     *) invalid ;; 
