@@ -224,7 +224,7 @@ enter_continue ; jump $enter_cont
 }
 
 function connect_mobile_wallet {
-set_terminal_custom 40; echo -e "
+set_terminal 40 88 ; echo -e "
 ########################################################################################
 $cyan
 
@@ -274,7 +274,7 @@ else
 onion=$(sudo cat /usr/local/var/lib/tor/lnd-service/hostname)
 fi
 
-set_terminal_custom 40 ; echo -e "
+set_terminal 40 88 ; echo -e "
 ########################################################################################
 
 

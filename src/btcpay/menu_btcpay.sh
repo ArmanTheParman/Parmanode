@@ -40,7 +40,7 @@ else
 fi
 
 debug "before set terminal"
-set_terminal_custom 52 
+set_terminal 52 88
 echo -en "
 ########################################################################################
                                 ${cyan}BTCPay Server Menu${orange}
@@ -432,7 +432,7 @@ echo -e "
 "
 enter_continue ; jump $enter_cont
 fi
-set_terminal_wider
+set_terminal 38 200
 if ! which tmux >$dn 2>&1 ; then
 yesorno "Log viewing needs Tmux installed. Go ahead and do that?" || continue
 fi
@@ -453,8 +453,7 @@ echo -e "
 ########################################################################################
 "
 enter_continue ; jump $enter_cont
-set_terminal_wider
-
+set_terminal 38 200
     if ! which tmux >$dn 2>&1 ; then
     yesorno "Log viewing needs Tmux installed. Go ahead and do that?" || continue
     fi

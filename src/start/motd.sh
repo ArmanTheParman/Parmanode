@@ -394,7 +394,7 @@ $another
 enter_continue ; jump $enter_cont ; choice="$enter_cont"
 fi ; case $choice in endthefed|EndTheFed|ENDTHEFED|end) hide_messages_add "motd" "1" ; return 0 ;; esac
 if [[ $motd == 18 ]] ; then
-set_terminal_custom 52 ; echo -e "
+set_terminal 52 88 ; echo -e "
 ########################################################################################
 $cyan
                                  Message of the day $orange
@@ -441,7 +441,7 @@ $another
 enter_continue ; jump $enter_cont ; choice="$enter_cont"
 fi ; case $choice in endthefed|EndTheFed|ENDTHEFED|end) hide_messages_add "motd" "1" ; return 0 ;; esac
 if [[ $motd == 19 ]] ; then
-set_terminal_custom 56 ; echo -e "
+set_terminal 56 88 ; echo -e "
 ########################################################################################
 $cyan
                                  Message of the day $orange
@@ -1136,7 +1136,7 @@ $another
 enter_continue ; jump $enter_cont ; choice="$enter_cont"
 fi ; case $choice in endthefed|EndTheFed|ENDTHEFED|end) hide_messages_add "motd" "1" ; return 0 ;; esac
 if [[ $motd == 52 ]] ; then
-set_terminal_custom 48 ; echo -e "
+set_terminal 48 88 ; echo -e "
 ########################################################################################
 $cyan
                                  Message of the day $orange
@@ -1175,7 +1175,7 @@ $another
 enter_continue ; jump $enter_cont ; choice="$enter_cont"
 fi ; case $choice in endthefed|EndTheFed|ENDTHEFED|end) hide_messages_add "motd" "1" ; return 0 ;; esac
 if [[ $motd == 53 ]] ; then
-set_terminal_custom 48 ; echo -e "
+set_terminal 48 88 ; echo -e "
 ########################################################################################
 $cyan
                                  Message of the day $orange

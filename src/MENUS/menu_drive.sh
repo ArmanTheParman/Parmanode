@@ -31,7 +31,7 @@ fi
 iID=$(lsblk -nr -o PATH,MOUNTPOINT | grep -E '/$' | awk '{print $1}')
 iblocksize=$(sudo tune2fs -l $iID | grep -E 'Block size' | awk '{print $3}')
 debug "before menu"
-set_terminal_custom 49 ; echo -e "
+set_terminal 49 88 ; echo -e "
 ########################################################################################$cyan
                                 Parmanode Drive Menu$orange
 ########################################################################################

@@ -55,7 +55,7 @@ else
 unset tor_menu
 fi
 
-set_terminal_custom 48 ; echo -ne "
+set_terminal 48 88 ; echo -ne "
 ########################################################################################$cyan
 
                                 N O S T R  RELAY$orange
@@ -104,7 +104,7 @@ $cyan            test)$orange             Send a test connection
 "
 choose "xpmq" ; read choice
 jump $choice || { invalid ; continue ; } 
-set_terminal_custom 45
+set_terminal 45 88
 case $choice in
 q|Q) exit 0 ;; p|P) return 1 ;; m|M) back2main ;;
 i)
@@ -148,7 +148,7 @@ echo -e "
 enter_continue ; jump $enter_cont
 fi
 
-set_terminal_wider
+set_terminal 38 200
 docker logs nostrrelay -f --tail 100 &
 tail_PID=$!
 trap 'kill $tail_PID' SIGINT #condition added to memory

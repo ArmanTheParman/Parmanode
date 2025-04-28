@@ -1,6 +1,6 @@
 function website_intro {
 while true ; do
-set_terminal_custom 50 ; echo -e "$blue
+set_terminal 50 88 ; echo -e "$blue
 ########################################################################################
 $orange
                                    P A R M A W E B

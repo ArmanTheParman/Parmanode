@@ -52,7 +52,7 @@ else #electrsis nondocker
         electrs_version=$($HOME/parmanode/electrs/target/release/electrs --version 2>$dn)
 fi
 
-set_terminal_custom 50
+set_terminal 50 88
 
 echo -e "
 ########################################################################################
@@ -228,7 +228,7 @@ echo -e "
 "
 enter_continue ; jump $enter_cont
 fi
-set_terminal_wider
+set_terminal 38 200
 
 if ! which tmux >$dn 2>&1 ; then
 yesorno "Log viewing needs Tmux installed. Go ahead and do that?" || continue

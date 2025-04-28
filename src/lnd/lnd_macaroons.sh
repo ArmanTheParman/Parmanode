@@ -108,7 +108,7 @@ $orange
 enter_continue ; jump $enter_cont
 ;;
 b)
-set_terminal_custom 60 100; echo -e "
+set_terminal 60 100 ; echo -e "
 ########################################################################################
    
 You can use this to set up BTC Pay server to connect to LND by the 'REST proxy':

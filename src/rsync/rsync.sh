@@ -202,7 +202,7 @@ command1="rsync -rvazP$update $del $dry $hidden $source $destination/"
 ;;
 esac
 
-set_terminal_wide
+set_terminal 38 110
 echo -e "
 ##############################################################################################################
 

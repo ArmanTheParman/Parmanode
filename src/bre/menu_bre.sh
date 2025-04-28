@@ -147,7 +147,7 @@ enter_continue ; jump $enter_cont
 fi
 
 if [[ $OS == "Linux" ]] ; then
-    set_terminal_wider
+    set_terminal 38 200
     if ! which tmux >$dn 2>&1 ; then
     yesorno "Log viewing needs Tmux installed. Go ahead and do that?" || continue
     fi

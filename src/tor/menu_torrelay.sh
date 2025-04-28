@@ -36,7 +36,7 @@ echo -e "
 "
 enter_continue ; jump $enter_cont
 fi
-set_terminal_wider
+set_terminal 38 200
 nyx
 tail_PID=$!
 trap 'kill $tail_PID' SIGINT #condition added to memory

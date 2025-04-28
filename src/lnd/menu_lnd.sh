@@ -173,7 +173,7 @@ else #docker
     fi
 fi
 
-set_terminal_custom 55 ; echo -e "
+set_terminal 55 88 ; echo -e "
 ########################################################################################$cyan
                                 LND Menu${orange} - v$lnd_version                               
 ########################################################################################
@@ -279,7 +279,7 @@ echo -e "
 enter_continue
 fi
 
-set_terminal_wider
+set_terminal 38 200
 
 if ! which tmux >$dn 2>&1 ; then
 yesorno "Log viewing needs Tmux installed. Go ahead and do that?" || continue

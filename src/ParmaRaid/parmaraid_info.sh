@@ -1,6 +1,6 @@
 function parmaraid_info {
 
-set_terminal_custom 48 ; echo -e "$blue
+set_terminal 48 88 ; echo -e "$blue
 ########################################################################################
 $orange
                                   ParmaRAID

@@ -224,7 +224,7 @@ esac ; done ; return 0
 }
 
 function navigation_shortcuts {
-set_terminal_custom 46 ; echo -e "
+set_terminal 46 88 ; echo -e "
 ########################################################################################
 $red$blinkon
                                G O O D   N E W S  ! ! $blinkoff$orange

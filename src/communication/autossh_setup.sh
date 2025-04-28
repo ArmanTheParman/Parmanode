@@ -56,7 +56,7 @@ jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;; *) break ;; esac
 done
 while true ; do
-set_terminal_wide ; echo -e "
+set_terminal  38 110 ; echo -e "
 ########################################################################################
     
     6b. OPTIONAL: You can edit the authorized_keys files manually to include some
@@ -74,7 +74,7 @@ case $choice in q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;; *) break ;; esac
 done
 
 while true ; do
-set_terminal_wide ; echo -e "
+set_terminal 38 110 ; echo -e "
 ########################################################################################
 
     7. Then, add these to the end of file$cyan /etc/ssh/sshd_config$orange on the VPS, or 

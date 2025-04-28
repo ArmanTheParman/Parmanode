@@ -1,6 +1,6 @@
 function menu_bitcoin {
 
-if ! grep -q "bitcoi.*end" $ic ; then return 0 ; fi
+if ! grep -qE "bitcoin-end" $ic ; then return 0 ; fi
 export debuglogfile="$HOME/.bitcoin/debug.log" 
 
 if grep -q "btccombo" $ic >$dn 2>&1 ; then
@@ -94,8 +94,7 @@ if [[ $bitcoinrunning == "true" ]] && tail -n15 $HOME/.bitcoin/debug.log | grep 
 fi
 
 debug "bitcoin menu..."
-set_terminal_custom "52"
-
+set_terminal 52 88
 if grep -q "disable_bitcoin=true" $pc ; then
          output1="                   Bitcoin is$red DISABLED$orange" 
 fi
@@ -215,7 +214,7 @@ echo -e "
 "
 enter_continue ; jump $enter_cont
 fi
-set_terminal_wider
+set_terminal 38 200
 
 if ! which tmux >$dn 2>&1 ; then
 yesorno "Log viewing needs Tmux installed. Go ahead and do that?" || continue

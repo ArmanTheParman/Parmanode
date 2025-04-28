@@ -55,7 +55,7 @@ fi
 #Get version
 electrumx_version=$(grep -Eo 'software version: ElectrumX.+$' $logfile | tail -n1 | grep -Eo [0-1].+$ | xargs)
 
-set_terminal_custom 50
+set_terminal  50 88
 
 echo -en "
 ########################################################################################
@@ -190,7 +190,7 @@ enter_continue ; jump $enter_cont
 
 fi
 if [[ $OS == Mac ]] ; then
-    set_terminal_wider
+    set_terminal 38 200
     if ! which tmux >$dn 2>&1 ; then
     yesorno "Log viewing needs Tmux installed. Go ahead and do that?" || continue
     fi
@@ -203,7 +203,7 @@ if [[ $OS == Mac ]] ; then
 fi
 
 if [[ $OS == "Linux" ]] ; then
-    set_terminal_wider
+    set_terminal 38 200
     if ! which tmux >$dn 2>&1 ; then
     yesorno "Log viewing needs Tmux installed. Go ahead and do that?" || continue
     fi

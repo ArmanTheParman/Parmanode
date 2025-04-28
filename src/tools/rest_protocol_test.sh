@@ -1,6 +1,6 @@
 function rest_protocol_test { 
 
-set_terminal_wide ; echo -e "
+set_terminal 38 110 ; echo -e "
 ##############################################################################################################
 
     The REST protocol format to test lnd with curl is:

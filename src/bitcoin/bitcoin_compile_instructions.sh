@@ -61,7 +61,7 @@ enter_continue ; jump $enter_cont
 set_terminal
 ;;
 2)
-set_terminal_wide ; echo -e "
+set_terminal 38 110 ; echo -e "
 ##############################################################################################################
 $cyan
                                          INSTALL DEPENDENCIES

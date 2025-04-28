@@ -6,7 +6,7 @@ set_terminal ; announce "When you hit$cyan <enter>$orange a reader will open up.
     To exit, just hit$red q$orange then$cyan <enter>$orange
 "
 
-set_terminal_bit_higher
+set_terminal 43 88
 
 if [[ $1 == "6rn" ]] ; then less $pn/src/education/6rn.txt ; fi
 

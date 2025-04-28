@@ -146,7 +146,7 @@ return 0
 
 function hack_tips {
 
-set_terminal_custom 55 ; echo -e "
+set_terminal 55 88 ; echo -e "
 ########################################################################################
 
     If for some reason, Bitcoin is not syncing to the correct drive, here's what's

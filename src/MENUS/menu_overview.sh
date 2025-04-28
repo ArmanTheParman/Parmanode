@@ -13,7 +13,7 @@ unset thunderhubinstalled
 set_terminal
 please_wait
 debug "line 7"
-set_terminal_custom 48
+set_terminal 48 88
 
 m1="${white}m1${orange}"
 m2="${white}m2${orange}"
@@ -243,7 +243,7 @@ fi
 
 x="${orange}|$bright_blue"
 
-set_terminal_wide 42 #(110)
+set_terminal 42 110
 echo -en "
 ########################################################################################################
 $bright_blue           PROGRAM              $x            GO TO MENU         RUNNING          START/STOP        ${orange}

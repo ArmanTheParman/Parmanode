@@ -180,7 +180,7 @@ case $choice in
 q|Q) exit 0 ;; m|M) back2main ;; 
 esac
 
-set_terminal_wide ; echo -e "
+set_terminal 38 110 ; echo -e "
 
 ##############################################################################################################
 $cyan

@@ -2,7 +2,7 @@ function scb {
 source $HOME/.parmanode/hide_messages.conf
 if [[ $message_scb != 1 ]] ; then
 while true ; do
-set_terminal_bit_higher ; echo -e "
+set_terminal 43 88 ; echo -e "
 ########################################################################################
 $cyan
                              Static Channel Backup (SCB)

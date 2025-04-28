@@ -1,7 +1,7 @@
 function connect_wallet_info {
 while true
 do
-set_terminal_wide
+set_terminal 38 110
 echo -e "
 ##############################################################################################################
                                     
@@ -21,7 +21,7 @@ $cyan
 "
 choose "xpmq" ; read choice
 jump $choice || { invalid ; continue ; } ; set_terminal
-set_terminal_wide
+set_terminal 38 110
 case $choice in
 q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;; 
 
@@ -50,7 +50,7 @@ return 0
 
 
 function sparrow_wallet_info {
-set_terminal_wide
+set_terminal 38 110
 echo -e "
 ##############################################################################################################
 $cyan
@@ -72,7 +72,7 @@ return 0
 }
 
 function electrum_wallet_info {
-set_terminal_big
+set_terminal 50 110
 echo -e "
 ##############################################################################################################
 $cyan
@@ -140,7 +140,7 @@ return 0
 }
 
 function electrum_one_server {
-set_terminal_wide
+set_terminal 38 110
 echo -e "
 ##############################################################################################################
 $cyan
@@ -167,7 +167,7 @@ return 0
 }
 
 function specter_wallet_info {
-set_terminal_wide
+set_terminal 38 110
 echo -e "
 ##############################################################################################################
     $cyan                  

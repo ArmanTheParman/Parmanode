@@ -41,7 +41,7 @@ else
 RUNNING="RUNNING"
 fi
 
-set_terminal_custom 47
+set_terminal  47 88
 echo -e "
 ########################################################################################
                                    ${cyan}Fulcrum Menu${orange}                               
@@ -143,7 +143,7 @@ echo -e "
 "
 enter_continue
 fi
-set_terminal_wider
+set_terminal 38 200
 if ! which tmux >$dn 2>&1 ; then
 yesorno "Log viewing needs Tmux installed. Go ahead and do that?" || continue
 fi

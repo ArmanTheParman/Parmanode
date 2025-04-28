@@ -73,7 +73,7 @@ q|Q|Quit|QUIT|quit) exit 0 ;; p|P) return 1 ;;
 
 ic) less $HOME/.parmanode/installed.conf ;;
 pc) less $HOME/.parmanode/parmanode.conf ;;
-pa) set_terminal_wide ; less $HOME/.parmanode/parmanode_all.log ; set_terminal ;;
+pa) set_terminal 38 110 ; less $HOME/.parmanode/parmanode_all.log ; set_terminal ;;
 delete|DELETE|Delete) 
 rm $HOME/.parmanode/*.log >$dn 2>&1 ; echo "" ; echo "Deleting" ; sleep 0.5 ; return 0 ;;
 uh) rm $HOME/.parmanode/hide_messages.conf >$dn 2>&1 ; return 0 

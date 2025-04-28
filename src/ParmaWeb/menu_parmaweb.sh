@@ -96,7 +96,7 @@ $blue
 ########################################################################################
 "
 choose "xpmq" ; read choice 
-jump $choice || { invalid ; continue ; } ; set_terminal_custom 45
+jump $choice || { invalid ; continue ; } ; set_terminal 45 88
 case $choice in
 q|Q) exit 0 ;; p|P) return 1 ;; m|M) back2main ;;
 
@@ -237,7 +237,7 @@ $blue
 ########################################################################################
 "
 choose "xpmq" ; read choice 
-jump $choice || { invalid ; continue ; } ; set_terminal_custom 45
+jump $choice || { invalid ; continue ; } ; set_terminal 45 88
 case $choice in
 q|Q) exit 0 ;; p|P) return 1 ;; m|M) back2main ;;
 

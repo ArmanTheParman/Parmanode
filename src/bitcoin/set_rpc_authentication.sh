@@ -5,7 +5,7 @@ if [[ $bitcoin == "yolo" ]]
 	fi
 
 while true ; do
-set_terminal_bit_higher  
+set_terminal 43 88
 
 if [[ -z $1 ]] ; then
 echo -e "

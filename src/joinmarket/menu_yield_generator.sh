@@ -87,7 +87,7 @@ fi
 #Menu print
 ########################################################################################
 
-set_terminal_custom 48 ; echo -ne "
+set_terminal 48 88 ; echo -ne "
 ########################################################################################
 
                                    YIELD GENERATOR                         $cyan
@@ -179,7 +179,7 @@ echo -e "
 "
 enter_continue ; jump $enter_cont
 fi
-set_terminal_wider
+set_terminal 38 200
 if ! which tmux >$dn 2>&1 ; then
 yesorno "Log viewing needs Tmux installed. Go ahead and do that?" || continue
 fi

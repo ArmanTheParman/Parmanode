@@ -1,6 +1,6 @@
 function mentorship {
 
-set_terminal_bit_higher ; echo -e "
+set_terminal 43 88 ; echo -e "
 ########################################################################################
 $cyan
                            Mentorship with Parman$orange

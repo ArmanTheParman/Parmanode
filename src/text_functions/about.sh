@@ -1,6 +1,6 @@
 function about {
 
-set_terminal_wide ; echo -e "
+set_terminal 38 110 ; echo -e "
 ##############################################################################################################
                                 
                           $cyan                    About Parmanode $orange

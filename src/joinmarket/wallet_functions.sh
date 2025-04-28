@@ -24,7 +24,7 @@ yesorno "Do you want to create a new wallet or restore?" "cr" "create" "res" "re
     }
 
 while true ; do
-set_terminal_custom 47 ; echo -e "
+set_terminal 47 88 ; echo -e "
 ########################################################################################
 
     Wallet files will be kept at$cyan $HOME/.joinmarket/wallet $orange
@@ -190,7 +190,7 @@ line=$(echo "############################################" | head -c $y)
 sed -i "1i##################################### $wallet $line" $tmp/jmaddresses
 echo "
 ####################################### END #########################################" | tee -a $tmp/jmaddresses >$dn
-set_terminal_wide
+set_terminal 38 110
 less $tmp/jmaddresses
 
 if [[ $copyjmdesktop == "true" ]] ; then
@@ -241,7 +241,7 @@ return 0
 
 function restore_jm_wallet {
 while true ; do
-set_terminal_custom 47 ; echo -e "
+set_terminal 47 88 ; echo -e "
 ########################################################################################
 
     Wallet files will be kept at $cyan $HOME/.joinmarket/wallet $orange
