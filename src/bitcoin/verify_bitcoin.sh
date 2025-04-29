@@ -19,7 +19,7 @@ if ! which gpg >$dn  && [[ $OS == Mac ]] ; then install_gpg4mac ; fi
 #ignore-missing option not available on shasum
 if which sha256sum >$dn ; then
     debug "Using sha256sum"
-    if ! sha256sum --ignore-missing --check SHA256SUMS 2>$dn | grep -q ": OK" ; then 
+    if ! sha256sum --check SHA256SUMS 2>$dn | grep -q ": OK" ; then 
     sww "${orange}Checksum failed. Aborting. Sometimes this happens for unexplainable reasons. 
     Try uninstalling the partial Bitcoin installation and try again. (Error code VBS256S)
     
