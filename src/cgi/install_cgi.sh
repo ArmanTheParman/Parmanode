@@ -1,6 +1,7 @@
 function install_cgi {
+debug install_cgi 2
 grep -q "cgi-end" $ic || return 0
-
+debug install_cgi 4
 if ! [[ $silent == "true" ]] ; then
 yesorno "Do you want to enable the browser-based CGI interface?" || return 1
 fi
