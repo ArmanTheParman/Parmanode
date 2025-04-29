@@ -63,8 +63,10 @@ curl https://raw.githubusercontent.com/bitcoin-core/guix.sigs/main/builder-keys/
         echo -e "\nGPG verification of the SHA256SUMS file$green passed$orange.\n"
         [[ $btcpayinstallsbitcoin == "true" ]] || enter_continue 5
     else 
-        echo -e "\nGPG verification$red failed$orange. Aborting.\n" 
-        enter_continue
-        return 1 
+        sww "GPG verification$red failed$orange. Aborting.\n
+        \r    Type yolo to ignore and continue. If you do that, The SHA256SUMS file and corresponding 
+        \r    signature will be left in$cyan $hp/bitcoin $orange
+        \r    for you to manually check." 
+        case $enter_cont in yolo) return 0 ;; *) return 1 ;; esac 
     fi
 }
