@@ -69,7 +69,7 @@ install_cgi
 enter_continue "cgi installed"
 fi
 
-if [[ $uninsall == cgi ]] ; then
+if [[ $uninstall == cgi ]] ; then
 uninstall_cgi
 fi
 }
