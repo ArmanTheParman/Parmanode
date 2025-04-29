@@ -39,6 +39,7 @@ fi
 
 cat <<EOF | sudo tee $macprefix/etc/nginx/conf.d/parmanode_cgi.conf >$dn 2>&1
 server {
+    #version 1
     listen 54000;
     server_name localhost parmanodl.local parmadrive.local parmanode.local ;
     root /var/www/parmanode_cgi;
