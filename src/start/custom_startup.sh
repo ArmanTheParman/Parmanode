@@ -66,7 +66,6 @@ fi
 
 if [[ $install == cgi ]] ; then
 install_cgi 
-enter_continue "cgi installed"
 fi
 
 if [[ $uninstall == cgi ]] ; then

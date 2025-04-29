@@ -8,7 +8,6 @@ install_fcgiwrap
 make_cgi_nginx_conf || return 1
 installed_conf_add "cgi-end"
 success "CGI interface for browser access enabled. User IP address and port 54000"
-[[ $install == cgi ]] && enter_continue "cgi installed"
 }
 
 function install_fcgiwrap {
