@@ -6,6 +6,7 @@ fi
 install_nginx
 install_fcgiwrap
 make_cgi_nginx_conf || return 1
+installed_conf_add "cgi-end"
 success "CGI interface for browser access enabled. User IP address and port 54000"
 [[ $install == cgi ]] && enter_continue "cgi installed"
 }
@@ -19,7 +20,7 @@ sudo systemctl enable --now fcgiwrap
 function uninstall_cgi {
 yesorno "Do you want to disable the browser-based CGI interface?" || return 1
 sudo apt remove -y fcgiwrap
-installed_conf_add "cgi-end"
+installed_conf_remove "cgi-end"
 success "CGI interface for browser access disabled"
 }
 
