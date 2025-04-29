@@ -36,7 +36,6 @@ server {
     root $pp/parmanode/src/cgi/;
 
     location /cgi-bin/ {
-        gzip off;
         include fastcgi_params;
         fastcgi_pass unix:/var/run/fcgiwrap.socket;
         fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
