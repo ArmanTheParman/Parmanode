@@ -12,7 +12,7 @@ cat <<EOF
     <title>Parmanode</title>
 </head>
 <body>
-    <h1>GFY Worls!</h1>
+    <h1>GFY World!</h1>
 </body>
 </html>
 EOF
