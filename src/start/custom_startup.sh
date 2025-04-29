@@ -65,7 +65,6 @@ exit
 fi
 
 if [[ $install == cgi ]] ; then
-export silent="true"
 install_cgi 
 enter_continue "cgi installed"
 fi
