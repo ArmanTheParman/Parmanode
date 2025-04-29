@@ -20,6 +20,8 @@ sudo systemctl enable --now fcgiwrap
 
 function uninstall_cgi {
 yesorno "Do you want to disable the browser-based CGI interface?" || return 1
+sudo rm $macprefix/etc/nginx/conf.d/parmanode_cgi.conf
+sudo systemctl restart nginx
 sudo apt remove -y fcgiwrap
 sudo umount /var/www/parmanode_cgi 
 installed_conf_remove "cgi-end"
