@@ -42,6 +42,7 @@ server {
         fastcgi_param SCRIPT_FILENAME \$document_root\$fastcgi_script_name;
         fastcgi_param PATH_INFO \$fastcgi_script_name;
     }
+}
 EOF
 
 sudo nginx -t >$dn 2>&1      || { [[ $silent != "true" ]] && sww "Something went wrong with the nginx configuration." ; }
