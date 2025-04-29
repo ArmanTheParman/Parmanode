@@ -34,17 +34,21 @@ if ! [[ $silent == "true" ]] ; then
 netstat -tuln 2>$dn | grep -q :54000 && { sww "Port 54000 is already in use. Unexpected. Can't continue, aborting." && return 1 ; }
 fi
 
+#SCRIPT_FILENAME neessary for fcgiwrap to know what to execute
+#Other variables are for the script
+
 cat <<EOF | sudo tee $macprefix/etc/nginx/conf.d/parmanode_cgi.conf >$dn 2>&1
 server {
     listen 54000;
     server_name localhost parmanodl.local parmadrive.local parmanode.local ;
     root /var/www/parmanode_cgi;
 
-    location ~ /.*\.sh$ {
+    location ~ /.*\.sh {
+        fastcgi_split_path_info ^(/.*\.sh)(/.*)?$;
         include fastcgi_params;
         fastcgi_pass unix:/var/run/fcgiwrap.socket;
         fastcgi_param SCRIPT_FILENAME \$document_root\$fastcgi_script_name;
-        fastcgi_param PATH_INFO \$fastcgi_script_name;
+        fastcgi_param PATH_INFO \$fastcgi_path_info;
     }
 }
 EOF
