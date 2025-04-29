@@ -1,8 +1,7 @@
 function install_nginx {
 
 if cat $HOME/.parmanode/installed.conf | grep -q "nginx-end" ; then 
-    set_terminal
-    log "parmanode" "Nginx already installed." ; return 0 
+    return 0 
 else
     if sudo which nginx >$dn 2>&1 ; then 
     set_terminal 
