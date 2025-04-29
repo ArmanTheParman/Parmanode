@@ -4,7 +4,7 @@ if ! [[ $silent == "true" ]] ; then
 yesorno "Do you want to enable the browser-based CGI interface?" || return 1
 fi
 install_nginx
-install_fastcgi
+install_fcgiwrap
 make_cgi_nginx_conf || return 1
 success "CGI interface for browser access enabled. User IP address and port 54000"
 [[ $install == cgi ]] && enter_continue "cgi installed"
