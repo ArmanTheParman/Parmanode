@@ -27,7 +27,11 @@ if which sha256sum >$dn ; then
     
 $(ls -lah $hp/bitcoin/ | gsed -n '4,$p' | awk '{print "    "$9" .........."$5}')$orange 
 
-    Type ${red}yolo${orange} to ignore and continue" ; case $enter_cont in yolo) true ;; *) return 1 ;; esac ; fi
+    Type ${red}yolo${orange} to ignore and continue. If you do that...
+        -- GPG will be checked next anyway.
+        -- The SHA256SUMS file and corresponding signature will be left in
+$cyan        $hp/bitcoin $orange
+           for you to manually check." ; case $enter_cont in yolo) true ;; *) return 1 ;; esac ; fi
 else
     if ! shasum -a 256 --check SHA256SUMS >$dn | grep -q ": OK"  || [[ $test == "true" ]] ; then
     sww "${orange}Checksum failed. Aborting. Sometimes this happens for unexplainable reasons. 
@@ -37,7 +41,11 @@ else
 
 $(ls -lah $hp/bitcoin/ | gsed -n '4,$p' | awk '{print "    "$9" .........."$5}')$orange
 
-    Type ${red}yolo${orange} to ignore and continue" ; case $enter_cont in yolo) true ;; *) return 1 ;; esac ; fi
+    Type ${red}yolo${orange} to ignore and continue. If you do that...
+        -- GPG will be checked next anyway.
+        -- The SHA256SUMS file and corresponding signature will be left in
+$cyan        $hp/bitcoin $orange
+           for you to manually check." ; case $enter_cont in yolo) true ;; *) return 1 ;; esac ; fi
 fi
 
 sleep 3
