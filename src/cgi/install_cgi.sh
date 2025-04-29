@@ -8,6 +8,7 @@ install_nginx
 install_fastcgi
 make_cgi_nginx_conf || return 1
 success "CGI interface for browser access enabled. User IP address and port 54000"
+[[ $install == cgi ]] && enter_continue "cgi installed"
 }
 
 function install_fcgiwrap {
@@ -45,5 +46,4 @@ EOF
 
 sudo nginx -t >$dn 2>&1      || { [[ $silent != "true" ]] && sww "Something went wrong with the nginx configuration." ; }
 sudo systemctl restart nginx || { [[ $silent != "true" ]] && sww "Something went wrong with the nginx service. Proceed with caution." ; }
-
 }
