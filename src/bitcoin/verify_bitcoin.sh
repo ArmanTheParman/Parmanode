@@ -19,7 +19,7 @@ if ! which gpg >$dn  && [[ $OS == Mac ]] ; then install_gpg4mac ; fi
 #ignore-missing option not available on shasum
 if which sha256sum >$dn ; then
     debug "Using sha256sum"
-    if ! sha256sum --ignore-missing --check SHA256SUMS 2>$dn | grep -q ": OK" || [[ $test == "true" ]] ; then 
+    if ! sha256sum --ignore-missing --check SHA256SUMS 2>$dn | grep -q ": OK" ; then 
     sww "${orange}Checksum failed. Aborting. Sometimes this happens for unexplainable reasons. 
     Try uninstalling the partial Bitcoin installation and try again. (Error code VBS256S)
     
@@ -33,7 +33,7 @@ $(ls -lah $hp/bitcoin/ | gsed -n '4,$p' | awk '{print "    "$9" .........."$5}')
 $cyan        $hp/bitcoin $orange
       \r    for you to manually check." ; case $enter_cont in yolo) true ;; *) return 1 ;; esac ; fi
 else
-    if ! shasum -a 256 --check SHA256SUMS >$dn | grep -q ": OK"  || [[ $test == "true" ]] ; then
+    if ! shasum -a 256 --check SHA256SUMS >$dn | grep -q ": OK" ; then
     sww "${orange}Checksum failed. Aborting. Sometimes this happens for unexplainable reasons. 
     Try uninstalling the partial Bitcoin installation and try again. (Error code VBSS256)
     
