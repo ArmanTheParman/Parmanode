@@ -6,6 +6,8 @@ fi
 install_nginx
 install_fcgiwrap
 make_cgi_nginx_conf || return 1
+sudo mkdir -p $macprefix/var/www/parmanode_cgi
+sudo mount --bind $pp/parmanode/src/cgi/cgi-bin $macprefix/var/www/parmanode_cgi || sww "Mounting cgi-bin failed."
 installed_conf_add "cgi-end"
 success "CGI interface for browser access enabled. User IP address and port 54000"
 }
@@ -19,6 +21,7 @@ sudo systemctl enable --now fcgiwrap
 function uninstall_cgi {
 yesorno "Do you want to disable the browser-based CGI interface?" || return 1
 sudo apt remove -y fcgiwrap
+sudo umount /var/www/parmanode_cgi 
 installed_conf_remove "cgi-end"
 success "CGI interface for browser access disabled"
 }
@@ -33,9 +36,9 @@ cat <<EOF | sudo tee $macprefix/etc/nginx/conf.d/parmanode_cgi.conf >$dn 2>&1
 server {
     listen 54000;
     server_name localhost parmanodl.local parmadrive.local parmanode.local ;
-    root $pp/parmanode/src/cgi/;
+    root /var/www/parmanode_cgi;
 
-    location /cgi-bin/ {
+    location ~ /.*\.sh$ {
         include fastcgi_params;
         fastcgi_pass unix:/var/run/fcgiwrap.socket;
         fastcgi_param SCRIPT_FILENAME \$document_root\$fastcgi_script_name;
