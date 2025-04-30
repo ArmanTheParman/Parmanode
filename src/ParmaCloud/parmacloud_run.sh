@@ -14,7 +14,7 @@ sudo docker run \
 --env APACHE_ADDITIONAL_NETWORK="" \
 --env SKIP_DOMAIN_VALIDATION=true \
 --volume nextcloud_aio_mastercontainer:/mnt/docker-aio-config \
---volume /var/run/docker.sock:/var/run/docker.sock:ro \
+--volume /var/run/docker.sock:/var/run/docker.sock \
 nextcloud/all-in-one:latest || { enter_continue "Something went wrong." ; return 1 ; }
 return 0
 fi
@@ -33,7 +33,7 @@ sudo docker run \
 --publish 80:80 \
 --publish 8020:8080 \
 --volume nextcloud_aio_mastercontainer:/mnt/docker-aio-config \
---volume /var/run/docker.sock:/var/run/docker.sock:ro \
+--volume /var/run/docker.sock:/var/run/docker.sock \
 nextcloud/all-in-one:latest || { enter_continue "Something went wrong." ; return 1 ; }
 else
 
@@ -57,7 +57,7 @@ sudo docker run \
 --env APACHE_ADDITIONAL_NETWORK="" \
 --env SKIP_DOMAIN_VALIDATION=$sdv \
 --volume nextcloud_aio_mastercontainer:/mnt/docker-aio-config \
---volume /var/run/docker.sock:/var/run/docker.sock:ro \
+--volume /var/run/docker.sock:/var/run/docker.sock \
 nextcloud/all-in-one:latest || { enter_continue "Something went wrong." ; return 1 ; }
 fi
 }
