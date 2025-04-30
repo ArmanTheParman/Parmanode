@@ -59,16 +59,16 @@ if [[ -z $dn ]] ; then echo "some problem with dn variable" ; read ; fi ##debug
 
 if [[ -z $lnd_port ]] ; then export lnd_port=9735 ; fi 
 
-get_Mac_version #function to export Mac Version variables (Need Mav version 10.9 or later)
-
-get_ip_address #function to put the IP address of the computer in memory.
+#CGI will not have everything source at this point
+[[ $cgi == "true" ]] || get_Mac_version #function to export Mac Version variables (Need Mav version 10.9 or later)
+[[ $cgi == "true" ]] || get_ip_address #function to put the IP address of the computer in memory.
 
 # A counter for the number of times main_menu has been 'Inceptioned'.
 # back2main function will add 1. After a set value, user is warned to restart Parmanode.
 export main_loop=0
 
 #bash version
-export bashV_major=$(bash --version | head -n1 | cut -d \. -f 1 | grep -Eo '[0-9]+')
+[[ $cgi == "true" ]] || export bashV_major=$(bash --version | head -n1 | cut -d \. -f 1 | grep -Eo '[0-9]+')
 
 #for gnu-sed on macs - seems to not be necessary - note it only works withing Parmanode,
 #it wont' work in the normal terminal.
@@ -94,12 +94,4 @@ fi
 #Premium Configs
 export PTWINCONF=$hp/parmatwin/parmatwin.conf
 export PSCONFIG=$hp/parmasync/parmasync.conf
-}
-
-
-
-function print_parmanode_variables {
-echo debug $debug fix $fix test $test bash $bash
-echo parmanode dirve $parmanode_drive
-echo bashV_major $bashV_major
 }
