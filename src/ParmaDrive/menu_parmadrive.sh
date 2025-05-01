@@ -4,7 +4,7 @@ function menu_parmadrive {
 source $pdc
 
 while true ; do
-set_terminal 44
+set_terminal 43
 
 if lsblk | grep -q ParmaDrive ; then #works as long as the internal drive is called ParmanodL not Parmadrive
 parmadrive_lockstatus="${green}UNLOCKED" 
@@ -57,9 +57,9 @@ else
 unset raidmenu raid raidstatus
 fi
 
-if mountpoint /srv/proton_drive ; then proton="${cyan}Proton Drive$green MOUNTED$blue"
+if mountpoint /srv/proton_drive ; then proton="Proton Drive:$green MOUNTED$blue"
 else
-proton="Proton Drive$red NOT MOUNTED$blue"
+proton="Proton Drive:$red NOT MOUNTED$blue"
 fi
 
 clear
