@@ -45,10 +45,10 @@ fi
 
 if grep -q parmaraid-end $ic ; then
     if sudo blkid | grep -q $RAIDUUID ; then
-    raid="${green}assembled{$blue}"
+    raid="${green}assembled${blue}"
     raidstatus=assembled
     else
-    raid="${green}disassembled{$blue}"
+    raid="${green}disassembled${blue}"
     raidstatus=disassembled
     fi
 raidmenu="\nRAID is: $raid\n"
