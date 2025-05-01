@@ -4,7 +4,7 @@ function menu_parmadrive {
 source $pdc
 
 while true ; do
-set_terminal
+set_terminal 48
 
 if lsblk | grep -q ParmaDrive ; then #works as long as the internal drive is called ParmanodL not Parmadrive
 parmadrive_lockstatus="${green}UNLOCKED" 
