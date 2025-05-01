@@ -21,6 +21,8 @@ echo -e "
 
 "
 ### Premium
+if grep -q "parmadrive-end" $ic ; then
+                       echo -e "                   $cyan       pdrive)$blue     ParmaDrive$orange" ; parmadriveapp=1 ; count=$((count +1)) ; fi
 if grep -q "parmanas-end" $ic ; then 
                        echo -e "                   $cyan       pnas)$blue       ParmaNas$orange" ; parmanasapp=1 ; count=$((count +1)) ; fi
 if grep -q "parmascale-end" $ic ; then
@@ -526,6 +528,16 @@ for i in $pp/uddns/*/*.sh ; do
     source $i
 done
 menu_uddns
+if [[ -n $1 ]] ; then clear ; return 0 ; fi
+else invalid
+fi
+;;
+
+pdrive)
+if [[ $parmadriveapp == 1 ]] ; then
+please_wait
+cd $pp/parmadrive/ 2>$dn && git stash >$dn 2>&1 && git pull >$dn 2>&1
+menu_parmadrive
 if [[ -n $1 ]] ; then clear ; return 0 ; fi
 else invalid
 fi
