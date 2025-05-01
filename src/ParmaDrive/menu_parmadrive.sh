@@ -22,7 +22,7 @@ if [[ -n $PARMADRIVE2DEVUUID ]] ; then #if there is a config entry, then it's a 
         parmadrive2_lockstatus="${red}LOCKED"
         locked2="locked"
     fi
-    encryption_menu="\nEncryption2: $parmadrive2_lockstatus $blue" #stays even if there is RAID. Other 2-drive variables will be unset with RAID present.
+    encryption_menu="\nEncryption2:$parmadrive2_lockstatus $blue" #stays even if there is RAID. Other 2-drive variables will be unset with RAID present.
 
 
     if sudo mountpoint /srv/parmadrive2 >/dev/null 2>&1 ; then #test 2nd mountpoint for 2 drive system, but unset if a raid.
@@ -43,7 +43,7 @@ else
     mounted="not mounted"
 fi
 
-if grep -q parmraid-end $ic ; then
+if grep -q parmaraid-end $ic ; then
     if sudo blkid | grep -q $RAIDUUID ; then
     raid="${green}assembled{$blue}"
     raidstatus=assembled
@@ -73,7 +73,6 @@ Mountpoint:$cyan /srv/parmadrive $mount $blue $mountmenu
 Encryption: $parmadrive_lockstatus $blue $encryption_menu
 
 $raidmenu
-
 $orange
                        pr)$cyan              ParmaRaid menu
 $orange
