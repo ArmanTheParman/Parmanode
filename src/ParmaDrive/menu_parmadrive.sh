@@ -65,7 +65,7 @@ fi
 clear
 echo -e "$blue
 ########################################################################################$orange
-                              EXTERNAL DRIVE MENU$blue
+                                EXTERNAL DRIVE MENU$blue
 ########################################################################################
 
 Mountpoint:$cyan /srv/parmadrive $mount $blue $mountmenu
