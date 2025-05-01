@@ -52,7 +52,7 @@ $cyan
 $cyan
             h)$orange        Hack Parmanode; tips for troubleshooting.
 $cyan
-      disable)$orange        Toggel disable/enable Bitcoin on the system.
+      disable)$orange        Toggle disable/enable Bitcoin on the system.
 
 
 ########################################################################################
