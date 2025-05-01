@@ -71,7 +71,6 @@ echo -e "$blue
 Mountpoint:$cyan /srv/parmadrive $mount $blue $mountmenu
 
 Encryption: $parmadrive_lockstatus $blue $encryption_menu
-
 $raidmenu
 $orange
                        pr)$cyan              ParmaRaid menu
