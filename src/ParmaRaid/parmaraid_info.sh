@@ -22,10 +22,7 @@ $green
     only be able to store the capacity of the smaller drive.
 $green
     RAID-2 to 6 and 10 $blue
-    Less commonly used variations.
-
-    ParmaRAID is not FOSS. Fee is$green 50,000 sats$orange. Please contact Parman to enable.
-    
+    These are less commonly used variations.
 $blue
 ########################################################################################
 "
