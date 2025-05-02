@@ -84,23 +84,23 @@ echo -e "$blue
             $proton  
 
 $orange
-                       pr)$cyan              ParmaRaid menu
+                          pr)$cyan           ParmaRaid menu
 $orange
-                       ul)$cyan              Unlock drive(s)
+                          ul)$cyan           Unlock drive(s)
 $orange 
-                      key) $cyan             Unlock with USB drive key
+                         key) $cyan          Unlock with USB drive key
 $orange
-                       mm)           $cyan   Mount Drive
+                          mm)        $cyan   Mount Drive
 $orange
-                       um)          $cyan    Unmount Drive 
+                          um)       $cyan    Unmount Drive 
 $orange
-                       ll)             $cyan Lock drive(s)
+                          ll)          $cyan Lock drive(s)
 $orange
-                       db)  $cyan            Why stop Docker and bitcoin?...
+                          db)  $cyan         Why stop Docker and bitcoin?...
 $orange
-                       mp)$cyan              Mount Proton
+                          mp)$cyan           Mount Proton
 $orange
-                      ump)$cyan              Unmount Proton
+                         ump)$cyan           Unmount Proton
 
 $blue
 ########################################################################################
