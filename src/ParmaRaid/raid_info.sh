@@ -1,5 +1,5 @@
 function raid_info {
-set_terminal ; echo -e "$blue
+set_terminal 42 ; echo -e "$blue
 ########################################################################################$orange
                              R A I D - info $blue
 ########################################################################################
@@ -15,9 +15,27 @@ set_terminal ; echo -e "$blue
           
     You also can't stop the process unless you unmount the drives.
 
-    The drives are formatted, but also there is another layer of format that happens 
-    at a higher level, across all the drives.
+    Some useful commands to do manually if the menus aren't doing the trick for you... 
 
+    If a drive is missing from a RAID array (you might see that when inspecting RAID
+    details, you can add it like this, where /dev/sdX is the device name of the 
+    drive...
+$cyan
+       sudo mdadm --add /dev/md0 /dev/sdX
+$blue
+    Note, if the drive is encrypted, you will need a different device naming format
+    that goes like this (use the decrypted name, eg ParmaDrive):
+$cyan
+       sudo mdadm --add /dev/md0 /dev/mapper/ParmaDrive
+$blue
+    You can remove too, just change '--add' to '--remove'
+
+    Other information gathering commands...
+$cyan       
+       cat /proc/mdstat
+       sudo mdadm --detail --scan
+       sudo mdadm --detail /dev/md0
+$blue
 ########################################################################################
 "
 enter_continue ; jump $enter_cont
