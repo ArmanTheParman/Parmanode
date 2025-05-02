@@ -153,7 +153,7 @@ q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 rr)
     if [[ $raidapp == 1 ]] ; then
     clear
-    menu_raid
+    menu_parmaraid
     if [[ -n $1 ]] ; then clear ; return 0 ; fi
     else invalid
     fi

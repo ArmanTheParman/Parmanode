@@ -1,4 +1,4 @@
-function menu_raid {
+function menu_parmaraid {
 # FOR LATER, to detect errors. zenity --info --title="RAID Alert" --text="Drive failed in RAID1. Check /proc/mdstat." --width=400 --height=100
 while true ; do
 if grep -Eq '\[.*_.*\]' /proc/mdstat ; then issuedetected="$blinkon${red}RAID ISSUE DETECTED$blinkoff$orange" ; else unset issuedetected ; fi
