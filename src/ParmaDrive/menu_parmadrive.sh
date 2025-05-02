@@ -165,12 +165,12 @@ yesorno_blue "Be mindful that unmount won't work if docker is running or if Bitc
     Because normally their directories exist on the external hard drive. 
     You need to stop them first.
 
-    If all you want to do is detach the drive safely, it's easier to shut down the computer,
-    and then detach the drive.
+    If all you want to do is detach the drive safely, it's easier to shut down the 
+    computer, and then detach the drive.
     
     Continue with unmount now?" || continue
 
-[[ -n $raidmenu ]] &&  { sudo unmount /srv/parmadrive || swwd ; } 
+[[ -n $raidmenu ]] &&  { sudo umount /srv/parmadrive || swwd ; } 
 
 if yesorno_blue "Drive 1 or 2" "1" "ParmaDrive" "2" "ParmaDrive2" ; then
 [[ $mounted != "mounted" ]] && announce_blue "Can't unmount a drive that isn't mounted." && continue
