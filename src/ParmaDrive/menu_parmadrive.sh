@@ -1,9 +1,9 @@
 function menu_parmadrive {
 [[ $OS == "Mac" ]] && no_mac && return 1
 
-function sww {
+function swwd {
 echo -e "    ${blue}Something went wrong. If you keep getting errors, sometimes you just need to
-    switch it off an on again."
+    switch it off an on again.
 	
 $1	
 "
@@ -120,11 +120,11 @@ unlock)
 if yesorno_blue "Drive 1 or 2" "1" "ParmaDrive" "2" "ParmaDrive2" ; then
 ! sudo blkid | grep -q $PARMADRIVE1DEVUUID && announce_blue "Expected drive not detected, trying to unlock anyway..."
 clear
-sudo cryptsetup open UUID=$PARMADRIVE1DEVUUID ParmaDrive || sww
+sudo cryptsetup open UUID=$PARMADRIVE1DEVUUID ParmaDrive || swwd
 else
 ! sudo blkid | grep -q $PARMADRIVE2DEVUUID && announce_blue "Expected drive not detected, trying to unlock anyway..."
 clear
-sudo cryptsetup open UUID=$PARMADRIVE2DEVUUID ParmaDrive2 || sww
+sudo cryptsetup open UUID=$PARMADRIVE2DEVUUID ParmaDrive2 || swwd
 fi
 
 ;;
@@ -135,12 +135,12 @@ keydev=$(readlink -f /dev/disk/by-id/$USBKEYBYID)
 if yesorno_blue "Drive 1 or 2" "1" "ParmaDrive" "2" "ParmaDrive2" ; then
 clear ; echo -e "${blue}Attempting to unlock ParmaDrive...\n"
 sudo blkid | grep -q "$PARMADRIVE1DEVUUID" && {
-    sudo dd if=$keydev count=4096 bs=1 | sudo cryptsetup open --key-file=- UUID=$PARMADRIVE1DEVUUID ParmaDrive || sww ; } 
+    sudo dd if=$keydev count=4096 bs=1 | sudo cryptsetup open --key-file=- UUID=$PARMADRIVE1DEVUUID ParmaDrive || swwd ; } 
 echo ""
 else
 clear ; echo -e "${blue}Attempting to unlock ParmaDrive2...\n"
 sudo blkid | grep -q "$PARMADRIVE2DEVUUID" && {
-    sudo dd if=$keydev count=4096 bs=1 | sudo cryptsetup open --key-file=- UUID=$PARMADRIVE2DEVUUID ParmaDrive2 || sww ; } 
+    sudo dd if=$keydev count=4096 bs=1 | sudo cryptsetup open --key-file=- UUID=$PARMADRIVE2DEVUUID ParmaDrive2 || swwd ; } 
 echo ""
 
 fi
@@ -150,11 +150,11 @@ mount|m)
 if yesorno_blue "Drive 1 or 2" "1" "ParmaDrive" "2" "ParmaDrive2" ; then
     [[ $mounted == "mounted" ]] && announce_blue "Already mounted" && continue
     [[ $locked == "locked" ]] && announce_blue "Can't mount a locked drive" && continue
-    sudo mount /srv/parmadrive || sww #specify the mountpoint only as it is in fstab
+    sudo mount /srv/parmadrive || swwd #specify the mountpoint only as it is in fstab
 else
     [[ $mounted2 == "mounted" ]] && announce_blue "Already mounted" && continue
     [[ $locked2 == "locked" ]] && announce_blue "Can't mount a locked drive" && continue
-    sudo mount /srv/parmadrive2 || sww #specify the mountpoint only as it is in fstab
+    sudo mount /srv/parmadrive2 || swwd #specify the mountpoint only as it is in fstab
 fi
 ;;
 
@@ -170,10 +170,10 @@ yesorno_blue "Be mindful that unmount won't work if docker is running or if Bitc
 
 if yesorno_blue "Drive 1 or 2" "1" "ParmaDrive" "2" "ParmaDrive2" ; then
 [[ $mounted != "mounted" ]] && announce_blue "Can't unmount a drive that isn't mounted." && continue
-sudo umount /srv/parmadrive || sww
+sudo umount /srv/parmadrive || swwd
 else
 [[ $mounted2 != "mounted" ]] && announce_blue "Can't unmount a drive that isn't mounted." && continue
-sudo umount /srv/parmadrive2 || sww
+sudo umount /srv/parmadrive2 || swwd
 fi
 ;;
 
@@ -182,10 +182,10 @@ lock)
 
 if yesorno_blue "Drive 1 or 2" "1" "ParmaDrive" "2" "ParmaDrive2" ; then
 [[ $mounted == "mounted" ]] && announce_blue "Can't lock the drive if it's mounted" && continue
-sudo cryptsetup luksClose /dev/mapper/ParmaDrive || sww
+sudo cryptsetup luksClose /dev/mapper/ParmaDrive || swwd
 else
 [[ $mounted2 == "mounted" ]] && announce_blue "Can't lock the drive if it's mounted" && continue
-sudo cryptsetup luksClose /dev/mapper/ParmaDrive2 || sww
+sudo cryptsetup luksClose /dev/mapper/ParmaDrive2 || swwd
 fi
 ;;
 
