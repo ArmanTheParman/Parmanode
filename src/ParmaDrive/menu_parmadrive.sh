@@ -147,6 +147,8 @@ fi
 ;;
 
 mount|m)
+[[ -n $raidmenu ]] &&  { sudo mount /srv/parmadrive || swwd ; } 
+
 if yesorno_blue "Drive 1 or 2" "1" "ParmaDrive" "2" "ParmaDrive2" ; then
     [[ $mounted == "mounted" ]] && announce_blue "Already mounted" && continue
     [[ $locked == "locked" ]] && announce_blue "Can't mount a locked drive" && continue
@@ -167,6 +169,8 @@ yesorno_blue "Be mindful that unmount won't work if docker is running or if Bitc
     and then detach the drive.
     
     Continue with unmount now?" || continue
+
+[[ -n $raidmenu ]] &&  { sudo unmount /srv/parmadrive || swwd ; } 
 
 if yesorno_blue "Drive 1 or 2" "1" "ParmaDrive" "2" "ParmaDrive2" ; then
 [[ $mounted != "mounted" ]] && announce_blue "Can't unmount a drive that isn't mounted." && continue
