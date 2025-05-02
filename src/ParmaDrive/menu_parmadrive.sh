@@ -147,7 +147,11 @@ fi
 ;;
 
 mount|m)
-[[ -n $raidmenu ]] &&  { sudo mount /srv/parmadrive || { swwd ; continue ;} ; continue ; } 
+[[ -n $raidmenu ]] &&  { 
+    sudo mount /srv/parmadrive || { swwd ; continue ;}
+    sudo mount /var/lib/docker 
+    continue
+}
 
 if yesorno_blue "Drive 1 or 2" "1" "ParmaDrive" "2" "ParmaDrive2" ; then
     [[ $mounted == "mounted" ]] && announce_blue "Already mounted" && continue
