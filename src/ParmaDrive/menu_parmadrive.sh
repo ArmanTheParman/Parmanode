@@ -1,6 +1,15 @@
 function menu_parmadrive {
 [[ $OS == "Mac" ]] && no_mac && return 1
 
+function sww {
+echo -e "    ${blue}Something went wrong. If you keep getting errors, sometimes you just need to
+    switch it off an on again."
+	
+$1	
+"
+enter_continue
+}
+
 source $pdc
 
 while true ; do
@@ -116,8 +125,8 @@ else
 ! sudo blkid | grep -q $PARMADRIVE2DEVUUID && announce_blue "Expected drive not detected, trying to unlock anyway..."
 clear
 sudo cryptsetup open UUID=$PARMADRIVE2DEVUUID ParmaDrive2 || sww
-
 fi
+
 ;;
 key)
 keydev=$(readlink -f /dev/disk/by-id/$USBKEYBYID)
