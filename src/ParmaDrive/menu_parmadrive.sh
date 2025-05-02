@@ -94,6 +94,8 @@ $orange
 $orange
                      lock)             $cyan Lock drive(s)
 $blue
+                       db)  $cyan            Why stop docker and bitcoin?...
+
 ########################################################################################$orange
                                   Proton Drive$blue
 ########################################################################################
@@ -206,6 +208,40 @@ else
 [[ $mounted2 == "mounted" ]] && announce_blue "Can't lock the drive if it's mounted" && continue
 sudo cryptsetup luksClose /dev/mapper/ParmaDrive2 || swwd
 fi
+;;
+
+db)
+announce_blue "Docker's directory, /var/lib/docker, is actually a mountpoint to a directory on the 
+    external drive. The default location is /srv/parmadrive/.docker
+
+    If you disconnect the drive and then start docker, the original director /var/lib/docker no
+    longer is a mountpoint and continues as data on the internal drive. Docker will think it is
+    a fresh install and will not find any of your containers, but it will still run. You will then
+    have 2 copies of /var/lib/docker, one on the internal drive and on on the external drive. If 
+    you then mount the external drive's docker directory to the internal one, then the contents
+    of the internal drive's /var/lib/docker temporarily disappears, with the external drive's
+    version mounted on top of it. This all gets confusing.
+
+    This is why the ParmaDrive menu prevents you from making these mistakes, but does allow you
+    to yolo override, in case you know better. ParmaDrive cannont anticipate every possible
+    scenario so a manual override is possible.
+    
+    Why was this done? It's to move potentally massive amounts of data off the internal drive
+    and on to the larger external drive, particularly for your NextCloud backups.
+    
+    Next, about Bitcoin..."
+
+announce_blue "Similarly with Bitcoin, the internal location is $HOME/.bitcoin/ and within there, there
+    is a massive directory called 'blocks'. This has been moved to /srv/parmadrive/.bitcoin.
+
+    'blocks' exists as a symplink, not a mountpoint (not the same, but similar):
+    
+        $HOME/.bitcoin/blocks --> /srv/parmadrive/.bitcoin/blocks
+
+    One difference with docker is that bitcoin won't be able to start without the drive being
+    mounted, because bitcoin will fail to write to 'blocks'. It remains pointing to the drive
+    even if the drive is not connected.
+    "
 ;;
 
 1) 
