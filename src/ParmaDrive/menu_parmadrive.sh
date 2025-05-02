@@ -77,8 +77,11 @@ echo -e "$blue
                                 EXTERNAL DRIVE MENU$blue
 ########################################################################################
 
-    Encryption: $parmadrive_lockstatus $blue$encryption_menu $raidmenu
-    Mountpoint:$cyan /srv/parmadrive $mount $blue $mountmenu $proton  
+          Encryption: $parmadrive_lockstatus $blue$encryption_menu 
+          $raidmenu
+          Mountpoint:$cyan /srv/parmadrive $mount $blue $mountmenu 
+          $proton  
+
 $orange
                        pr)$cyan              ParmaRaid menu
 $orange
