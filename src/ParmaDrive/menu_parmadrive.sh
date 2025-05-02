@@ -78,32 +78,25 @@ echo -e "$blue
 ########################################################################################
 
     Encryption: $parmadrive_lockstatus $blue$encryption_menu $raidmenu
-    Mountpoint:$cyan /srv/parmadrive $mount $blue $mountmenu
+    Mountpoint:$cyan /srv/parmadrive $mount $blue $mountmenu $proton  
 $orange
                        pr)$cyan              ParmaRaid menu
 $orange
-                   unlock)$cyan              Unlock drive(s)
+                       ul)$cyan              Unlock drive(s)
 $orange 
-                      key) $cyan             Unlock with USD drive key
+                      key) $cyan             Unlock with USB drive key
 $orange
-                    mount)           $cyan   Mount Drive
+                       mm)           $cyan   Mount Drive
 $orange
-                  unmount)          $cyan    Unmount Drive 
+                       um)          $cyan    Unmount Drive 
 $orange
-                     lock)             $cyan Lock drive(s)
+                       ll)             $cyan Lock drive(s)
 $orange
                        db)  $cyan            Why stop Docker and bitcoin?...
-$blue
-########################################################################################$orange
-                                  Proton Drive$blue
-########################################################################################
-
-    $proton  
-
 $orange
-                        1)$cyan              Mount Proton
+                       mp)$cyan              Mount Proton
 $orange
-                        2)$cyan              Unmount Proton
+                      ump)$cyan              Unmount Proton
 $blue
 ########################################################################################
 "
@@ -117,7 +110,7 @@ pr)
 menu_parmaraid
 ;;
 
-unlock)
+ul|unlock)
 if yesorno_blue "Drive 1 or 2" "1" "ParmaDrive" "2" "ParmaDrive2" ; then
 ! sudo blkid | grep -q $PARMADRIVE1DEVUUID && announce_blue "Expected drive not detected, trying to unlock anyway..."
 clear
@@ -147,7 +140,7 @@ echo ""
 fi
 ;;
 
-mount|m)
+mount|mm)
 [[ -n $raidmenu ]] &&  { 
     docker ps >$dn || { sww "Make sure that Docker is fully stopped before mounting" ; case $enter_cont in yolo) true ;; *) continue ;; esac ; }
     sudo mount /srv/parmadrive || { swwd ; continue ;}
@@ -167,7 +160,7 @@ else
 fi
 ;;
 
-unmount)
+unmount|um|umm)
 yesorno_blue "Be mindful that unmount won't work if Docker is running or if Bitcoin is running.
     Because normally their directories exist on the external hard drive. 
     You need to stop them first.
@@ -197,7 +190,7 @@ else
 fi
 ;;
 
-lock)
+ll|lock)
 [[ $raidstatus == "assembled" ]] && { yesorno_blue "Can't lock a RAID drive if it's assembled. Try anyway?" || continue ; }
 
 if yesorno_blue "Drive 1 or 2" "1" "ParmaDrive" "2" "ParmaDrive2" ; then
@@ -247,11 +240,11 @@ $blue
     connected."
 ;;
 
-1) 
+mp) 
 sudo systemctl start rclone.service
 success_blue "Proton Mounted"
 ;;
-2)
+ump)
 sudo systemctl stop rclone.service
 success_blue "Proton Unmounted"
 ;;
