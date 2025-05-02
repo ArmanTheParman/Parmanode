@@ -13,7 +13,7 @@ enter_continue
 source $pdc
 
 while true ; do
-set_terminal 43
+set_terminal 45
 
 if lsblk | grep -q ParmaDrive ; then #works as long as the internal drive is called ParmanodL not Parmadrive
 parmadrive_lockstatus="${green}UNLOCKED" 
@@ -99,6 +99,7 @@ $blue
 ########################################################################################$orange
                                   Proton Drive$blue
 ########################################################################################
+
 $proton  
 
 $orange
