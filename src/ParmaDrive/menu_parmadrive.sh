@@ -94,7 +94,7 @@ $orange
 $orange
                      lock)             $cyan Lock drive(s)
 $orange
-                       db)  $cyan            Why stop docker and bitcoin?...
+                       db)  $cyan            Why stop Docker and bitcoin?...
 $blue
 ########################################################################################$orange
                                   Proton Drive$blue
@@ -150,7 +150,7 @@ fi
 
 mount|m)
 [[ -n $raidmenu ]] &&  { 
-    docker ps >$dn || { sww "Make sure that docker is fully stopped before mounting" ; case $enter_cont in yolo) true ;; *) continue ;; esac ; }
+    docker ps >$dn || { sww "Make sure that Docker is fully stopped before mounting" ; case $enter_cont in yolo) true ;; *) continue ;; esac ; }
     sudo mount /srv/parmadrive || { swwd ; continue ;}
     sudo mount /var/lib/docker 
     continue
@@ -159,7 +159,7 @@ mount|m)
 if yesorno_blue "Drive 1 or 2" "1" "ParmaDrive" "2" "ParmaDrive2" ; then
     [[ $mounted == "mounted" ]] && announce_blue "Already mounted" && continue
     [[ $locked == "locked" ]] && announce_blue "Can't mount a locked drive" && continue
-    docker ps >$dn || { sww "Make sure that docker is fully stopped before mounting" ; case $enter_cont in yolo) true ;; *) continue ;; esac ; }
+    docker ps >$dn || { sww "Make sure that Docker is fully stopped before mounting" ; case $enter_cont in yolo) true ;; *) continue ;; esac ; }
     sudo mount /srv/parmadrive || swwd #specify the mountpoint only as it is in fstab
 else
     [[ $mounted2 == "mounted" ]] && announce_blue "Already mounted" && continue
@@ -169,7 +169,7 @@ fi
 ;;
 
 unmount)
-yesorno_blue "Be mindful that unmount won't work if docker is running or if Bitcoin is running.
+yesorno_blue "Be mindful that unmount won't work if Docker is running or if Bitcoin is running.
     Because normally their directories exist on the external hard drive. 
     You need to stop them first.
 
@@ -179,7 +179,7 @@ yesorno_blue "Be mindful that unmount won't work if docker is running or if Bitc
     Continue with unmount now?" || continue
 
 [[ -n $raidmenu ]] && { 
-    docker ps >$dn || { sww "Make sure that docker is fully stopped before unmounting. yolo to ignore." ; case $enter_cont in yolo) true ;; *) continue ;; esac ; }
+    docker ps >$dn || { sww "Make sure that Docker is fully stopped before unmounting. yolo to ignore." ; case $enter_cont in yolo) true ;; *) continue ;; esac ; }
     pgrep bitcoin >$dn || { sww "Make sure that bitcoin is fully stopped before unmounting"             ; case $enter_cont in yolo) true ;; *) continue ;; esac ; }
     sudo unmount /var/lib/docker
     sudo umount /srv/parmadrive || { swwd ; continue ; } 
@@ -189,7 +189,7 @@ yesorno_blue "Be mindful that unmount won't work if docker is running or if Bitc
 
 if yesorno_blue "Drive 1 or 2" "1" "ParmaDrive" "2" "ParmaDrive2" ; then
 [[ $mounted != "mounted" ]] && announce_blue "Can't unmount a drive that isn't mounted." && continue
-    docker ps >$dn || { sww "Make sure that docker is fully stopped before unmounting. yolo to ignore." ; case $enter_cont in yolo) true ;; *) continue ;; esac ; }
+    docker ps >$dn || { sww "Make sure that Docker is fully stopped before unmounting. yolo to ignore." ; case $enter_cont in yolo) true ;; *) continue ;; esac ; }
     pgrep bitcoin >$dn || { sww "Make sure that bitcoin is fully stopped before unmounting"             ; case $enter_cont in yolo) true ;; *) continue ;; esac ; }
     sudo umount /srv/parmadrive || swwd
 else
@@ -214,12 +214,12 @@ db)
 announce_blue "Docker's directory,$cyan /var/lib/docker$blue, is actually a mountpoint to a directory on 
     the external drive. The default location is$cyan /srv/parmadrive/.docker$blue
 
-    If you disconnect the drive and then start docker, the original directory
+    If you disconnect the drive and then start Docker, the original directory
     $cyan/var/lib/docker$blue no longer is a mountpoint and continues as data on the internal
     drive. Docker will think it is a fresh install and will not find any of your 
     containers, but it will still run. You will then have 2 copies of /var/lib/docker, 
     one on the internal drive and on on the external drive. If you then mount the 
-    external drive's docker directory to the internal one, then the contents of the 
+    external drive's Docker directory to the internal one, then the contents of the 
     internal drive's /var/lib/docker temporarily disappears, with the external drive's
     version mounted on top of it. This all gets confusing.
 
@@ -236,13 +236,13 @@ announce_blue "Docker's directory,$cyan /var/lib/docker$blue, is actually a moun
 announce_blue "Similarly with Bitcoin, the internal location is$cyan $HOME/.bitcoin/$blue and within 
     there, there is a massive directory called 'blocks'. This has been moved to
 
-    $cyan/srv/parmadrive/.bitcoin$blue.
+    $cyan/srv/parmadrive/.bitcoin/blocks$blue.
 
     'blocks' exists as a symplink, not a mountpoint (not the same, but similar):
    $cyan 
         $HOME/.bitcoin/blocks --> /srv/parmadrive/.bitcoin/blocks
 $blue
-    One difference between mounting and symlinks is that with docker is that Bitcoin
+    One difference between mounting and symlinks is that with Docker is that Bitcoin
     won't be able to start without the drive being mounted, because bitcoin will fail
     to write to 'blocks'. It remains pointing to the drive even if the drive is not
     connected."
