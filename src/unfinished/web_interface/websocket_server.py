@@ -7,11 +7,16 @@ MAX_CLIENTS = 5
 clients = set()
 
 async def broadcast(message):
-    print(f"{message}")
+    if message.strip() == "__CLEAR__":
+        payload = "\x1b[2J\x1b[H"  # ANSI clear + home cursor
+    else:
+        payload = message
+    #print(f"{message}")
+    print(f"{repr(payload)}")
     to_remove = set()
     for ws in clients:
         try:
-            await ws.send(message)
+            await ws.send(payload)
         except:
             to_remove.add(ws)
     clients.difference_update(to_remove)
