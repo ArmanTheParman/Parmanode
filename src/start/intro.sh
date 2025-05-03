@@ -7,7 +7,7 @@ set_terminal_high
 if [[ ${message_intro} != "1" ]] ; then 
 while true
 do
-echo -e "
+echo -e "$orange
 ########################################################################################
 
            $cyan                  P  A  R  M  A  N  O  D  E    $orange
