@@ -244,8 +244,6 @@ uninstall_parmasync
 set_terminal
 fi
 
-
-
 set_terminal
 if [[ $debug == 0 ]] ; then 
 while true ; do
@@ -282,6 +280,9 @@ if [[ $OS == "Linux" ]] ; then
         disktultil unmount "parmanode"
 
         fi
+
+#remove bind mount
+sudo unmount $macprefix/var/www/parmanode_cgi 
 
 #uninstall parmanode directories and config files contained within.
 sudo rm -rf $HOME/.parmanode >$dn 2>&1
