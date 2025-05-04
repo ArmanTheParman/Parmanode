@@ -28,7 +28,7 @@
 
   <script>
     const output = document.getElementById("output");
-    const ws = new WebSocket("ws://localhost:58000");
+    const ws = new WebSocket("ws://0.0.0.0:58000");
     const ansi_up = new AnsiUp();
 
     ws.onmessage = (event) => {
