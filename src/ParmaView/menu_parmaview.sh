@@ -56,8 +56,7 @@ pn_tmux "python3 $pn/src/ParmaView/websocket_server.py" "ws1"
 enter_continue "Websocket started in the background"
 ;;
 wst)
-sendtosocket "__CLEAR__"
-#tmux kill-session -t ws1
+tmux kill-session -t ws1
 enter_continue "WS1 session stopped"
 ;;
 ts)
