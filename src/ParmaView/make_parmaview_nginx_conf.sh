@@ -7,13 +7,13 @@ fi
 #SCRIPT_FILENAME neessary for fcgiwrap to know what to execute
 #Other variables are for the script
 
-cat <<EOF | sudo tee $parmaviewnginx 
+cat <<EOF | sudo tee $parmaviewnginx >$dn 2>&1
 server {
     #version 1
     listen 58000;
     server_name localhost parmanodl.local parmadrive.local parmanode.local ;
     root $wwwparmaviewdir;
-    index.html;
+    index index.html;
 
     location ~ /cgi-bin/.*\.sh {
         fastcgi_split_path_info ^(/.*\.sh)(/.*)?$;
