@@ -50,7 +50,7 @@ choose "xpmq" ; read choice
 jump $choice || { invalid ; continue ; } ; clear
 case $choice in 
 ws)
-{ python3 $pn/src/ParmaView/websocket_server.py & ; } && enter_continue "Websocket started"
+{ python3 $pn/src/ParmaView/websocket_server.py & } && enter_continue "Websocket started"
 ;;
 ts)
 { echo "Hello World" | sendtosocket ; } && enter_continue "Message sent"
