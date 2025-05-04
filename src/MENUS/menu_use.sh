@@ -5,7 +5,7 @@ unset count
 unset raidapp
 unset bitcoinapp fulcrumapp fulcrumdkrapp btcpayapp torapp lndapp sparrowapp rtlapp electrumapp 
 unset torserverapp specterapp btcrpcexplorerapp electrsapp lnbitsapp trezorapp bitboxapp
-unset ledgerapp parmashellapp parmaboxapp anydeskapp piholeapp torrelayapp
+unset ledgerapp parmashellapp parmaviewapp parmaboxapp anydeskapp piholeapp torrelayapp
 unset electrsdkrapp torbapp qbittorrentapp mempoolapp torsshapp public_poolapp
 unset electrumxapp thunderhubapp websiteapp lnddockerapp nostrrelay litdapp parmacloudapp
 unset parmanostrapp btcrecoverapp joinmarketapp greenapp parman_booksapp X11app phoenixapp
@@ -106,6 +106,8 @@ if grep -q "phoenix-end" $ic ; then phoenixapp=1
 if grep -q "public_pool-end" $ic ; then public_poolapp=1
                        echo -e "                        $cyan  pool)$orange       Public Pool " ; count=$((count +1)) ; fi
 ### General
+if grep -q "parmaview-end" $ic ; then parmaviewapp=1
+                       echo -e "                        $cyan  pview)$orange      ParmaView" ; count=$((count +1)) ; fi
 if grep -q "parmashell-end" $ic ; then parmashellapp=1
                        echo -e "                        $cyan  ps)$orange         Parmashell " ; count=$((count +1)) ; fi
 if grep -q "anydesk-end" $ic ; then anydeskapp=1
@@ -308,6 +310,14 @@ ll|LL|Ll)
    else invalid
    fi
    ;;
+pview)
+   if [[ $parmaviewapp== 1 ]] ; then
+   menu_parmaview 
+    if [[ -n $1 ]] ; then clear ; return 0 ; fi
+   else invalid
+   fi
+   ;;
+
 ps|PS|Ps)
    if [[ $parmashellapp == 1 ]] ; then
    parmashell_info
