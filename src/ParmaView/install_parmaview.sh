@@ -26,6 +26,6 @@ parmaview_run
 parmaview_parmanode
 installed_config_add "parmaview-end"
 if [[ $1 != silent ]] ; then
-success "Your ParmaView" "being installed" 
+success "ParmaView has been installed"
 fi
 }

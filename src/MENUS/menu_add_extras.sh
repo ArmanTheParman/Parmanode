@@ -19,12 +19,19 @@ echo -en "
 #                                                                                      #
 #$cyan              cl)$orange      Core Lightning                                                 #
 #                                                                                      #
+#$cyan              pv)$orange      ParmaView (web interfact, coming soon)                         #
+#                                                                                      #
 ########################################################################################
 "
 choose "xpmq" ; read choice
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit ;; p|P) return 0 ;; m|M) back2main ;;
+
+pv)
+! [[ -f $dp/.parmaview_enabled ]] && { announce "Not available yet, hang in there, it'll be worth it." ; continue ; }
+install_parmaview
+;;
 
 pnas)
     [[ ! -e $dp/.parmanas_enabled ]] && {
