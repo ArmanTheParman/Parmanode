@@ -55,9 +55,8 @@ export nk="$dp/.nostr_keys/nostr_keys.txt"
 export nkd="$dp/.nostr_keys"
 export dn="/dev/null"
 export ndebug="$dp/.new_debug.log"
-export parmaviewnginx="$macprefix/etc/nginx.conf.d/parmaview.conf"
+export parmaviewnginx="$macprefix/etc/nginx/conf.d/parmaview.conf"
 export wwwparmaviewdir="$macprefix/var/www/parmaview"
-
 if [[ -z $dn ]] ; then echo "some problem with dn variable" ; read ; fi ##debug
 
 if [[ -z $lnd_port ]] ; then export lnd_port=9735 ; fi 

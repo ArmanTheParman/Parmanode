@@ -7,7 +7,7 @@ fi
 #SCRIPT_FILENAME neessary for fcgiwrap to know what to execute
 #Other variables are for the script
 
-cat <<EOF | sudo tee $parmaviewginx >$dn 2>&1
+cat <<EOF | sudo tee $parmaviewnginx 
 server {
     #version 1
     listen 58000;
