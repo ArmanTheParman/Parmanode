@@ -23,11 +23,16 @@ server {
         fastcgi_param PATH_INFO \$fastcgi_path_info;
     }
 
-    location / {
+    location /ws/ {
+        proxy_pass http://127.0.0.1:58001;
         proxy_http_version 1.1;
         proxy_set_header Upgrade \$http_upgrade;
         proxy_set_header Connection "upgrade";
-        #  proxy_pass http://127.0.0.1:58001;
+    }
+
+    location / {
+        index index.html;
+        try_files $uri $uri/ =404;
     }
 }
 EOF
