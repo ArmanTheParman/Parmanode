@@ -1,4 +1,4 @@
-function parmabox_run {
+function parmaview_run {
 if [[ $OS == "Mac" ]] ; then    
     docker run -du parman --hostname ParmaView --name parmaview \
            -v $HOME/parmanode/parmaview:/home/parman/parmanode/parmaview \
