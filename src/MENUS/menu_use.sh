@@ -311,7 +311,7 @@ ll|LL|Ll)
    fi
    ;;
 pview)
-   if [[ $parmaviewapp== 1 ]] ; then
+   if [[ $parmaviewapp == 1 ]] ; then
    menu_parmaview 
     if [[ -n $1 ]] ; then clear ; return 0 ; fi
    else invalid
