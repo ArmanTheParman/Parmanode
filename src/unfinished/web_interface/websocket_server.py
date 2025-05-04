@@ -47,7 +47,7 @@ async def websocket_handler(websocket):
 
 async def main():
     # Start WebSocket server for browsers
-    ws_server = await websockets.serve(websocket_handler, "localhost", 8765)
+    ws_server = await websockets.serve(websocket_handler, "localhost", 58000)
 
     # Start UNIX socket server to receive stream
     unix_server = await asyncio.start_unix_server(unix_socket_handler, path=SOCKET_PATH)
