@@ -22,6 +22,9 @@ echo -e "
 #                                                                                      #"
 if grep -q "parmaview-end" $HOME/.parmanode/installed.conf ; then parmaviewmenu=1
 echo -e "#$cyan                            \033[27G pview)$blue            ParmaView$orange                               \033[88G#"
+elif grep -q "parmaview-start" $HOME/.parmanode/installed.conf ; then parmaviewmenu=1
+echo -e "#$cyan                            \033[27G pview)$blue            ParmaView$orange          $red$blinkon(partial)$blinkoff$orange       \033[88G#" ; fi
+
 if grep -q "datum-end" $HOME/.parmanode/installed.conf ; then datummenu=1
 echo -e "#$cyan                            \033[27G datum)$blue            Datum$orange                                   \033[88G#"
 elif grep -q "datum-start" $HOME/.parmanode/installed.conf ; then datummenu=1
@@ -542,6 +545,7 @@ uninstall_datum
 menu_main
 fi
 ;;
+
 uddns)
 if [[ $uddnsmenu == 1 ]] ; then
 uninstall_uddns
