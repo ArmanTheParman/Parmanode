@@ -6,11 +6,13 @@ if [[ -e $hp/parman_books ]] ; then UPDATE="${red}UPDATE$orange " ; endline="   
 if ! grep -q "parmaview-end" $ic ; then 
 parmaviewmenu="\n#$cyan              pv)$orange      ParmaView (web interfact, coming soon)                         #
 #                                                                                      #"
+unset pvremove
+elif grep -q "parmaview-end" $ic ; then 
+unset parmaviewmnu pvremove
 elif grep -q "parmaview-start" $ic ; then
-parmaviewmenu="\n#$cyan              pv)$red      REMOVE ParmaView failed install                                #$orange
+pvremove=1
+parmaviewmenu="\n#$cyan              pv)$red      REMOVE ParmaView failed install                                $orange#
 #                                                                                      #"
-else
-unset parmaviewmnu
 fi
 
 set_terminal
@@ -38,6 +40,8 @@ case $choice in
 q|Q) exit ;; p|P) return 0 ;; m|M) back2main ;;
 
 pv)
+if [[ $pvremove == 1 ]] ; then uninstall_parmaview ; continue ; fi
+
 ! [[ -f $dp/.parmaview_enabled ]] && { announce "Not available yet, hang in there, it'll be worth it." ; continue ; }
 install_parmaview
 ;;
