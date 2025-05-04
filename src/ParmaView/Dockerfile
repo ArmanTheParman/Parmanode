@@ -1,0 +1,28 @@
+FROM debian:latest
+
+RUN apt-get update -y 
+RUN apt-get install -f
+RUN apt-get install -y curl
+RUN apt-get install -y vim 
+RUN apt-get install -y nano
+RUN apt-get install -y ssh 
+RUN apt-get install -y sudo 
+RUN apt-get install -y net-tools 
+RUN apt-get install -y git 
+RUN apt-get install -y procps 
+RUN apt-get install -y gnupg 
+RUN apt-get install -y tmux
+RUN apt-get install -y ca-certificates
+RUN apt-get install -y python3
+RUN apt-get install -y python3-cryptography
+RUN apt-get install -y python3-setuptools
+RUN apt-get install -y python3-pip 
+RUN apt-get install -y x11-apps
+
+RUN groupadd -r parman && useradd -m -g parman parman 
+RUN chown -R parman:parman /home/parman 
+RUN echo 'parman:parmanode' | chpasswd
+RUN usermod -aG sudo parman
+USER parman
+WORKDIR /home/parman/
+

@@ -1,9 +1,9 @@
-function uninstall_parmabox {
+function uninstall_parmaview {
 while true ; do
 set_terminal ; echo -e "
 ########################################################################################
 $cyan
-                                 Uninstall ParmaBox 
+                                 Uninstall ParmaView
 $orange
     Are you sure? (y) (n)
 
@@ -20,19 +20,19 @@ esac
 done
 if ! docker ps >$dn ; then announce \
 "Please make sure Docker is running before asking Parmanode to
-    clean up the installed ParmaBox."
+    clean up the installed ParmaView."
 return 1
 fi
 
-docker stop parmabox 
-docker rm parmabox 
-docker rmi parmabox
+docker stop parmaview 
+docker rm parmaview 
+docker rmi parmaview
 
 yesorno "Do you want to delete this directory on your system as well?
 $cyan     
-        $HOME/parmanode/parmabox $orange" && sudo rm -rf $HOME/parmanode/parmabox >$dn
+        $HOME/parmanode/parmaview $orange" && sudo rm -rf $HOME/parmanode/parmaview >$dn
 
-installed_config_remove "parmabox"
-success "ParmaBox" "being uninstalled"
+installed_config_remove "parmaview"
+success "ParmaView" "being uninstalled"
 
 }
