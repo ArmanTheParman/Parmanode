@@ -26,5 +26,11 @@ RUN chown -R parman:parman /home/parman
 RUN echo 'parman:parmanode' | chpasswd
 RUN usermod -aG sudo parman
 USER parman
+
+RUN mkdir -p /home/parman/parman_programs/
+RUN mkdir -p /home/parman/parmanode/
+WORKDIR /home/parman/parman_programs/
+RUN git clone --depth 1 https://github.com/armantheparman/parmanode
+
 WORKDIR /home/parman/
 
