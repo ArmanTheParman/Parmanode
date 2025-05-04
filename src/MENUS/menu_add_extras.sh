@@ -2,6 +2,17 @@ function menu_add_extras {
 while true ; do
 menu_add_source
 if [[ -e $hp/parman_books ]] ; then UPDATE="${red}UPDATE$orange " ; endline="                  #" ; else unset UPDATE ; endline="                         #"; fi
+
+if ! grep -q "parmaview-end" $ic ; then 
+parmaviewmenu="\n#$cyan              pv)$orange      ParmaView (web interfact, coming soon)                         #
+#                                                                                      #"
+elif grep -q "parmaview-start" $ic ; then
+parmaviewmenu="\n#$cyan              pv)$red      REMOVE ParmaView failed install                                #$orange
+#                                                                                      #"
+else
+unset parmaviewmnu
+fi
+
 set_terminal
 echo -en "
 ########################################################################################
@@ -17,9 +28,7 @@ echo -en "
 #                                                                                      #
 #$cyan              pb)$orange      ${UPDATE}Parman's recommended free books (pdfs)$endline
 #                                                                                      #
-#$cyan              cl)$orange      Core Lightning                                                 #
-#                                                                                      #
-#$cyan              pv)$orange      ParmaView (web interfact, coming soon)                         #
+#$cyan              cl)$orange      Core Lightning                                                 #$parmaviewmenu
 #                                                                                      #
 ########################################################################################
 "
