@@ -19,6 +19,8 @@ RUN apt-get install -y python3-setuptools
 RUN apt-get install -y python3-pip 
 RUN apt-get install -y x11-apps
 
+RUN pip3 install websockets --break-system-packages
+
 RUN groupadd -r parman && useradd -m -g parman parman 
 RUN chown -R parman:parman /home/parman 
 RUN echo 'parman:parmanode' | chpasswd

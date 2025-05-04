@@ -1,4 +1,4 @@
-function parmaview_exec {
+function parmaview_parmanode {
 # Install Parmanode in Parmabox, and ParmaShell
 docker exec -it -u parman $parmabox bash \
             -c "mkdir -p /home/parman/Desktop ; \

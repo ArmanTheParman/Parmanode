@@ -6,7 +6,7 @@ docker stop parmaview
 docker rm parmaview
 parmaview_build
 parmaview_run
-parmaview_exec
+parmaview_parmanode
 
 success "ParmaView" "being refreshed"
 }

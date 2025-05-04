@@ -23,7 +23,7 @@ installed_config_add "parmaview-start"
 please_wait
 parmaview_build || { enter_continue && announce "build failed" && return 1 ; }
 parmaview_run
-parmaview_exec
+parmaview_parmanode
 installed_config_add "parmaview-end"
 if [[ $1 != silent ]] ; then
 success "Your ParmaView" "being installed" 
