@@ -28,6 +28,8 @@ set_terminal 38 100; echo -ne "
 $cyan
               ws)$orange      Start WebSocket
 $cyan
+             wst)$orange      Stop WebSocket
+$cyan
               ts)$orange      Send test signal through socket
 $cyan
                s)$orange      Stop the container
