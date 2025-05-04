@@ -1,4 +1,4 @@
-function parmaview_parmanode {
+function parmanode_in_parmaview {
 # Install ParmaShell in ParmaView
 docker exec -it -u parman parmaview bash -c "echo \"parmashell-end\" | tee -a /home/parman/.parmanode/installed.conf >$dn"
 

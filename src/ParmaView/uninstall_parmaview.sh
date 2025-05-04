@@ -27,11 +27,15 @@ if ! docker ps >$dn ; then announce \
     clean up the installed ParmaView."
 return 1
 fi
+#remove docker container/image
 docker stop parmaview 
 docker rm parmaview 
 docker rmi parmaview
-sudo rm -rf $HOME/parmanode/parmaview >$dn
-uninstall_cgi
+#uninstall_cgi
+    sudo apt remove -y fcgiwrap
+    sudo umount $wwwparmaviewdir
+    sudo rm -rf $parmaviewnginx
+    sudo systemctl restart nginx
 installed_config_remove "parmaview"
 success "ParmaView" "being uninstalled"
 

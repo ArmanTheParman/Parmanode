@@ -17,13 +17,20 @@ announce "The parmaview container is already running."
 return 1
 fi
 
-mkdir -p $HOME/parmanode/parmaveiw 
+#CGI
+sudo apt update ; sudo apt install -y fcgiwrap ; sudo systemctl enable --now fcgiwrap
 installed_config_add "parmaview-start"
-install_cgi
+sudo mkdir -p $wwwparmaviewdir
+sudo mount --bind $pp/parmanode/src/ParmaView/ $wwwparmaviewdir || sww "Mounting cgi-bin failed."
+#Nginx
+install_nginx
+make_parmaview_nginx_conf || return 1
+#Docker
 please_wait
 parmaview_build || { enter_continue && announce "build failed" && return 1 ; }
 parmaview_run
-parmaview_parmanode
+parmanode_in_parmaview
+#Finish
 installed_config_add "parmaview-end"
 if [[ $1 != silent ]] ; then
 success "ParmaView has been installed"
