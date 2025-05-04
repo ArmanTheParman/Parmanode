@@ -27,11 +27,7 @@ fi
 docker stop parmaview 
 docker rm parmaview 
 docker rmi parmaview
-
-yesorno "Do you want to delete this directory on your system as well?
-$cyan     
-        $HOME/parmanode/parmaview $orange" && sudo rm -rf $HOME/parmanode/parmaview >$dn
-
+sudo rm -rf $HOME/parmanode/parmaview >$dn
 installed_config_remove "parmaview"
 success "ParmaView" "being uninstalled"
 

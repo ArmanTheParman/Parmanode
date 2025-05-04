@@ -2,6 +2,9 @@ FROM debian:latest
 
 RUN apt-get update -y 
 RUN apt-get install -f
+RUN apt-get install -y curl socat vim nano ssh sudo 
+RUN apt-get install -y net-tools git procps gnupg tmux x11-apps ca-certificates netcat-traditional jq
+RUN apt-get install -y curl socat vim nano ssh sudo net-tools gi procps gnupg tmux x11-apps ca-certificates netcat-traditional jq
 RUN apt-get install -y curl socat vim nano ssh sudo net-tools gi procps gnupg tmux x11-apps ca-certificates netcat-traditional jq
 RUN apt-get install -y python3 python3-cryptography python3-setuptools python3-pip 
 
