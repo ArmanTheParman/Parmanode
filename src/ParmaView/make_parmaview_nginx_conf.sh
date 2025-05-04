@@ -13,6 +13,7 @@ server {
     listen 58000;
     server_name localhost parmanodl.local parmadrive.local parmanode.local ;
     root $wwwparmaviewdir;
+    index.html;
 
     location ~ /cgi-bin/.*\.sh {
         fastcgi_split_path_info ^(/.*\.sh)(/.*)?$;
