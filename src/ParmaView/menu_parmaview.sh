@@ -19,33 +19,33 @@ else
 
 fi
 
-set_terminal ; echo -ne "
-########################################################################################
-              $cyan                     ParmaView Menu            $orange                   
-########################################################################################
+set_terminal 38 100; echo -ne "
+####################################################################################################$cyan
+                                          ParmaView Menu            $orange                   
+####################################################################################################
 
                               $dockerrunning 
 $cyan
-            r) $orange        Log into the container as root
-$blue                              The password is 'parmanode' 
+              ws)$orange      Start WebSocket
 $cyan
-            pm)$orange        Log into the container as parman   (type exit to return here)
-$blue                              The password is 'parmanode' 
+               s)$orange      Stop the container
 $cyan
-            s)$orange         Stop the container
+              rs)$orange      Restart the container
 $cyan
-            rs)$orange        Restart the container
-$cyan
-            u)$orange         Run an update of Parmanode and the OS inside the container
-$cyan
-            rf)$orange        Refresh ParmaView (starts over and includes new updates)
-
+              rf)$orange      Refresh ParmaView (starts over and includes new updates)
+$red
+      ----------------------------------------------------------------------------------------
+      EXPERT OPTIONS... $cyan
+              u)$orange       Run an update of Parmanode and the OS inside the container$cyan
+              r) $orange      Log into the container as root $blue   The password is 'parmanode'$cyan
+              pm)$orange      Log into the container as parman $blue The password is 'parmanode'$red
+      ----------------------------------------------------------------------------------------
 $orange
 
-########################################################################################
+####################################################################################################
 "
 choose "xpmq" ; read choice 
-jump $choice || { invalid ; continue ; } ; set_terminal
+jump $choice || { invalid ; continue ; } ; clear
 case $choice in 
 m|M) back2main ;; q|Q|QUIT|Quit) exit 0 ;; p|P) menu_use ;; 
 r|R) 
