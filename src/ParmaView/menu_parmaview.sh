@@ -28,6 +28,8 @@ set_terminal 38 100; echo -ne "
 $cyan
               ws)$orange      Start WebSocket
 $cyan
+              ts)$orange      Send test signal through socket
+$cyan
                s)$orange      Stop the container
 $cyan
               rs)$orange      Restart the container
@@ -47,6 +49,12 @@ $orange
 choose "xpmq" ; read choice 
 jump $choice || { invalid ; continue ; } ; clear
 case $choice in 
+ws)
+python3 $pn/src/ParmaView/websocket_server.py & && enter_continue "Websocket started"
+;;
+ts)
+echo "Hello World" | sendtosocket && enter_continue "Message sent"
+;;
 m|M) back2main ;; q|Q|QUIT|Quit) exit 0 ;; p|P) menu_use ;; 
 r|R) 
 docker exec -it -u root parmaview /bin/bash ;;
