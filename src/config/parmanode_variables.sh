@@ -48,13 +48,16 @@ export db="$HOME/.bitcoin"
 export bc="$db/bitcoin.conf"
 export fc="$HOME/.fulcrum/fulcrum.conf"
 export hm="$dp/hide_messages.conf"
-export pc="${dp}/parmanode.conf"
-export ic="${dp}/installed.conf"
+export pc="$dp/parmanode.conf"
+export ic="$dp/installed.conf"
 export oc="$dp/overview.conf"
 export nk="$dp/.nostr_keys/nostr_keys.txt"
 export nkd="$dp/.nostr_keys"
 export dn="/dev/null"
-export ndebug=$dp/.new_debug.log
+export ndebug="$dp/.new_debug.log"
+export cginginx="$macprefix/etc/nginx.conf.d/parmaview_cgi.conf"
+export wwwcgidir="$macprefix/var/www/parmanode_cgi"
+
 if [[ -z $dn ]] ; then echo "some problem with dn variable" ; read ; fi ##debug
 
 if [[ -z $lnd_port ]] ; then export lnd_port=9735 ; fi 

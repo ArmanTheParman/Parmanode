@@ -19,7 +19,7 @@ fi
 
 mkdir -p $HOME/parmanode/parmaveiw 
 installed_config_add "parmaview-start"
-
+install_cgi
 please_wait
 parmaview_build || { enter_continue && announce "build failed" && return 1 ; }
 parmaview_run

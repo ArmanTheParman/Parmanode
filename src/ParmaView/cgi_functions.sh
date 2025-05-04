@@ -1,15 +1,10 @@
 function install_cgi {
 grep -q "cgi-end" $ic && return 0
-if ! [[ $silent == "true" ]] ; then
-yesorno "Do you want to enable the browser-based CGI interface?" || return 1
-fi
 install_nginx
 install_fcgiwrap
 make_cgi_nginx_conf || return 1
-sudo mkdir -p $macprefix/var/www/parmanode_cgi
-sudo mount --bind $pp/parmanode/src/ParmaView/cgi-bin $macprefix/var/www/parmanode_cgi || sww "Mounting cgi-bin failed."
-installed_conf_add "cgi-end"
-success "CGI interface for browser access enabled. User IP address and port 54000"
+sudo mkdir -p $wwwcgidir
+sudo mount --bind $pp/parmanode/src/ParmaView/cgi-bin $wwwcgidir || sww "Mounting cgi-bin failed."
 }
 
 function install_fcgiwrap {
@@ -19,13 +14,10 @@ sudo systemctl enable --now fcgiwrap
 }
 
 function uninstall_cgi {
-yesorno "Do you want to disable the browser-based CGI interface?" || return 1
-sudo rm $macprefix/etc/nginx/conf.d/parmanode_cgi.conf
+sudo rm -rf $cginginx
 sudo systemctl restart nginx
 sudo apt remove -y fcgiwrap
-sudo umount /var/www/parmanode_cgi 
-installed_conf_remove "cgi-end"
-success "CGI interface for browser access disabled"
+sudo umount $wwwcgidir
 }
 
 function make_cgi_nginx_conf {
@@ -37,12 +29,12 @@ fi
 #SCRIPT_FILENAME neessary for fcgiwrap to know what to execute
 #Other variables are for the script
 
-cat <<EOF | sudo tee $macprefix/etc/nginx/conf.d/parmanode_cgi.conf >$dn 2>&1
+cat <<EOF | sudo tee $cginginx >$dn 2>&1
 server {
     #version 1
-    listen 54000;
+    listen 58000;
     server_name localhost parmanodl.local parmadrive.local parmanode.local ;
-    root /var/www/parmanode_cgi;
+    root $wwwcgidir;
 
     location ~ /.*\.sh {
         fastcgi_split_path_info ^(/.*\.sh)(/.*)?$;
@@ -50,6 +42,13 @@ server {
         fastcgi_pass unix:/var/run/fcgiwrap.socket;
         fastcgi_param SCRIPT_FILENAME \$document_root\$fastcgi_script_name;
         fastcgi_param PATH_INFO \$fastcgi_path_info;
+    }
+
+    location / {
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade \$http_upgrade;
+        proxy_set_header Connection "upgrade";
+        proxy_pass http://127.0.0.1:58001;
     }
 }
 EOF

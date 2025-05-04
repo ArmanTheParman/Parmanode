@@ -63,12 +63,3 @@ fi
 
 exit
 fi
-
-if [[ $install == cgi ]] ; then
-install_cgi 
-fi
-
-if [[ $uninstall == cgi ]] ; then
-uninstall_cgi
-fi
-}
