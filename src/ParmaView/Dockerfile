@@ -31,6 +31,7 @@ RUN mkdir -p /home/parman/parman_programs/
 RUN mkdir -p /home/parman/parmanode/
 WORKDIR /home/parman/parman_programs/
 RUN git clone --depth 1 https://github.com/armantheparman/parmanode
+RUN touch /home/parman/.parmanode.com/installed.conf
 
 WORKDIR /home/parman/
 
