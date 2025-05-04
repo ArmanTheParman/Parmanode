@@ -28,8 +28,8 @@ echo -en "
 #                                                                                      #
 #$cyan              pb)$orange      ${UPDATE}Parman's recommended free books (pdfs)$endline
 #                                                                                      #
-#$cyan              cl)$orange      Core Lightning                                                 #$parmaviewmenu
-#                                                                                      #
+#$cyan              cl)$orange      Core Lightning                                                 #
+#                                                                                      #$parmaviewmenu
 ########################################################################################
 "
 choose "xpmq" ; read choice
