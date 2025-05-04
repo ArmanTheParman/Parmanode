@@ -56,7 +56,7 @@ export nkd="$dp/.nostr_keys"
 export dn="/dev/null"
 export ndebug="$dp/.new_debug.log"
 export parmaviewnginx="$macprefix/etc/nginx.conf.d/parmaview.conf"
-export wwwparmaviewdir="$macprefix/var/www/parmaview
+export wwwparmaviewdir="$macprefix/var/www/parmaview"
 
 if [[ -z $dn ]] ; then echo "some problem with dn variable" ; read ; fi ##debug
 
