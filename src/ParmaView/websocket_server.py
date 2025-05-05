@@ -6,6 +6,10 @@ SOCKET_PATH = os.path.expandvars("$HOME/.parmanode/parmanode.sock")
 MAX_CLIENTS = 5
 clients = set()
 
+#remove first to prevent issues from unexpected termination.j
+if os.path.exists(SOCKET_PATH):
+    os.remove(SOCKET_PATH)
+
 async def broadcast(message):
     if message.strip() == "__CLEAR__":
         payload = "\x1b[2J\x1b[H"  # ANSI clear + home cursor
