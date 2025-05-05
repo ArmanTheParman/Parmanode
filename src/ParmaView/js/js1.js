@@ -8,8 +8,12 @@ socket.onmessage = function(event) {
         title.textContent = original;
     }, 3000);
 };
-
 function getVersion() {
-    fetch("/cgi-bin/version.sh");
-
+    fetch("/cgi-bin/version.sh")
+        .then(res => {
+            console.log("CGI triggered:", res.status);
+            return res.text();
+        })
+        .then(text => console.log("Response body:", text))
+        .catch(err => console.error("CGI fetch error:", err));
 }
