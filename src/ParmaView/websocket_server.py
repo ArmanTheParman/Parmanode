@@ -46,6 +46,7 @@ async def websocket_handler(websocket):
     clients.add(websocket)
     try:
         await websocket.wait_closed()
+        print("New WebSocket client connected")
     finally:
         clients.discard(websocket)
 
