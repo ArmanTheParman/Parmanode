@@ -49,7 +49,7 @@ async def main():
     # Start WebSocket server for browsers
     ws_server = await websockets.serve(websocket_handler, "localhost", 58001)
 
-    # Start UNIX socket server to receive stream
+    # Start UNIX socket server to receive stream. Creates socket file if it doesn't exist. No need to delete it.
     unix_server = await asyncio.start_unix_server(unix_socket_handler, path=SOCKET_PATH)
 
     async with ws_server, unix_server:

@@ -52,7 +52,7 @@ choose "xpmq" ; read choice
 jump $choice || { invalid ; continue ; } ; clear
 case $choice in 
 ws)
-pn_tmux "python3 $pn/src/ParmaView/websocket_server.py" "ws1"
+pn_tmux "python3 $pn/src/ParmaView/websocket_server.py" "ws1" || { enter_continue ; continue ; }
 enter_continue "Websocket started in the background"
 ;;
 wst)
