@@ -4,6 +4,6 @@ echo ""
 
 source "$HOME/parman_programs/parmanode/version.conf"
 source "$HOME/parman_programs/parmanode/src/ParmaView/sendtosocket.sh"
-sendtosocket "$version"
+echo "$version" | sendtosocket 
 echo "$version test"
 
