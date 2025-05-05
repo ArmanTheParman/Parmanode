@@ -161,7 +161,9 @@ unset NODAEMON
 
 log) 
 while true ; do
-announce "Choosee api$cyan (1)$orange, db$cyan (2)$orange, or web$cyan (3)$orange."
+announce "Choosee api$cyan (1)$orange, db$cyan (2)$orange, or web$cyan (3)$orange.
+    
+    Hit 'q' to exit the log."
     jump $enter_cont
     NODAEMON="true"
     case $enter_cont in
