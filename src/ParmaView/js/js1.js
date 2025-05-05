@@ -1,4 +1,4 @@
-let socket = new WebSocket("ws://localhost:58001");
+let socket = new WebSocket("ws://" + location.host + "/ws/");
 
 socket.onmessage = function(event) {
     const title = document.getElementById("title");
