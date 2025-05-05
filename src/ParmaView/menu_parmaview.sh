@@ -52,7 +52,7 @@ choose "xpmq" ; read choice
 jump $choice || { invalid ; continue ; } ; clear
 case $choice in 
 ws)
-ps aux | grep websocket_server.py | grep -v tmux | grep -v grep && { enter_continue "Server already running" ; continue ; }
+ps aux | grep websocket_server.py | grep -v tmux | grep -qv grep && { enter_continue "Server already running" ; continue ; }
 pn_tmux "python3 $pn/src/ParmaView/websocket_server.py" "ws1" 
 enter_continue "Websocket started in the background"
 ;;
