@@ -21,9 +21,9 @@ echo -e "
 #                                                                                      #
 #                                                                                      #"
 if grep -q "parmaview-end" $HOME/.parmanode/installed.conf ; then parmaviewmenu=1
-echo -e "#$cyan                            \033[27G pview)$blue            ParmaView$orange                               \033[88G#"
+echo -e "#$cyan                            \033[27G pv)$blue               ParmaView$orange                               \033[88G#"
 elif grep -q "parmaview-start" $HOME/.parmanode/installed.conf ; then parmaviewmenu=1
-echo -e "#$cyan                            \033[27G pview)$blue            ParmaView$orange          $red$blinkon(partial)$blinkoff$orange       \033[88G#" ; fi
+echo -e "#$cyan                            \033[27G pv)$blue               ParmaView$orange          $red$blinkon(partial)$blinkoff$orange       \033[88G#" ; fi
 
 if grep -q "datum-end" $HOME/.parmanode/installed.conf ; then datummenu=1
 echo -e "#$cyan                            \033[27G datum)$blue            Datum$orange                                   \033[88G#"
@@ -532,7 +532,7 @@ menu_main
 fi
 ;;
 
-pview)
+pv|pview)
 if [[ $parmaviewmenu == 1 ]] ; then
 uninstall_parmaview
 menu_main
