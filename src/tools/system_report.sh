@@ -49,6 +49,13 @@ else
 echor "\$dp DOES NOT EXIST"
 fi
 
+if [[ $OS == "Mac" ]] ; then
+heading "MAC TESTS"
+echor "which brew: $(which brew)"
+echor "which gsed: $(which gsed)"
+echor "Home dir: $(echo $HOME)"
+fi
+
 heading "HOME PARMANODE"
 cd $HOME/parmanode
 echor "$(ls -m)"
