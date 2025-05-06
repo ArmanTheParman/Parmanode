@@ -22,3 +22,17 @@ function getBlockHeight() {
             console.warn("NA:", err.message);
         });
 }
+
+/*Clarke Moodey Dashboard*/
+const ws = new WebSocket("wss://bitcoin.clarkmoody.com/dashboard/ws");
+ws.onmessage = (event) => {
+    const data = JSON.parse(event.data);
+    if (data.type === "price" && data.pair === "BTC/USD") {
+      priceEl.textContent = "$" + Number(data.value).toLocaleString();
+    }
+  };
+
+  ws.onerror = (err) => {
+    priceEl.textContent = "1 bitcoin";
+    console.error(err);
+  };
