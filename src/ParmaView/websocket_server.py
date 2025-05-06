@@ -56,6 +56,7 @@ async def main():
 
     # Start UNIX socket server to receive stream. Creates socket file if it doesn't exist. No need to delete it.
     unix_server = await asyncio.start_unix_server(unix_socket_handler, path=SOCKET_PATH)
+    os.chmod(SOCKET_PATH, 0o660)
 
     async with ws_server, unix_server:
         await asyncio.gather(
