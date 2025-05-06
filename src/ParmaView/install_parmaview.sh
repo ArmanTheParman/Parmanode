@@ -22,6 +22,9 @@ sudo apt update ; sudo apt install -y fcgiwrap ; sudo systemctl enable --now fcg
 installed_config_add "parmaview-start"
 sudo mkdir -p $wwwparmaviewdir
 sudo mount --bind $pp/parmanode/src/ParmaView/ $wwwparmaviewdir || sww "Mounting cgi-bin failed."
+sudo mkdir -p /opt/parmanode
+sudo mount --bind $pp/parmanode /opt/parmanode || sww "Mounting parmanode to /opt/parmanode failed."
+sudo setfacl -R -m u:www-data:rwx /opt/parmanode
 #Nginx
 install_nginx
 make_parmaview_nginx_conf || return 1
