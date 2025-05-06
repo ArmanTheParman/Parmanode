@@ -1,7 +1,7 @@
 import socket
 import os
 
-SOCKET_PATH = os.path.expandvars("$HOME/.parmanode/parmanode.sock")
+SOCKET_PATH = "/run/parmanode.sock"
 
 if os.path.exists(SOCKET_PATH):
     os.remove(SOCKET_PATH)

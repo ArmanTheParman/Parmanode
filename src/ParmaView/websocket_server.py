@@ -2,7 +2,7 @@ import asyncio
 import websockets
 import os
 
-SOCKET_PATH = os.path.expandvars("$HOME/.parmanode/parmanode.sock")
+SOCKET_PATH = "/run/parmanode.sock"
 MAX_CLIENTS = 5
 clients = set()
 
