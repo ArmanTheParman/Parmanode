@@ -9,13 +9,5 @@ socket.onmessage = function(event) {
     }, 3000);
 };
 function getVersion() {
-    console.log("getVersion() was called");
-
-    fetch("/cgi-bin/version.sh")
-        .then(res => {
-            console.log("CGI triggered:", res.status);
-            return res.text();
-        })
-        .then(text => console.log("Response body:", text))
-        .catch(err => console.error("CGI fetch error:", err));
+    fetch("/cgi-bin/version.sh");
 }
