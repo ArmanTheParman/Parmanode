@@ -38,6 +38,9 @@ tmux kill-session -t ws1
     sudo rm -rf $parmaviewnginx
     sudo umount /opt/parmanode
     sudo systemctl restart nginx
+    sudo systemctl disable fcgiwrap >$dn
+    sudo rm -rf /etc/systemd/system/fcgiwrap.service.d
+    sudo systemctl daemon-reload
 installed_config_remove "parmaview"
 success "ParmaView" "being uninstalled"
 
