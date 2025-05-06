@@ -34,7 +34,6 @@ docker rmi parmaview
 #stop connections
 tmux kill-session -t ws1
 #uninstall_cgi
-    sudo apt remove -y fcgiwrap
     sudo umount $wwwparmaviewdir
     sudo rm -rf $parmaviewnginx
     sudo umount /opt/parmanode

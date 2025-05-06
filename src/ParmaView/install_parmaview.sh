@@ -3,6 +3,7 @@ yesorno "ParmaView is a Docker container with the purpose of orchestrating a
     communication channel to a browser interface for Parmanode.
 
     Install?" || return 1
+clear
 
 if ! which docker > $dn ; then announce "Please install Docker from the Parmanode install menu first."
 return 1
