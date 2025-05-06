@@ -12,3 +12,4 @@ source "/opt/parmanode/version.conf"
     }
 
 echo "$version" | sendtosocket 
+echo ""
