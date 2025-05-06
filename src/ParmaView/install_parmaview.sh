@@ -24,7 +24,7 @@ sudo mkdir -p $wwwparmaviewdir
 sudo mount --bind $pp/parmanode/src/ParmaView/ $wwwparmaviewdir || sww "Mounting cgi-bin failed."
 sudo mkdir -p /opt/parmanode
 sudo mount --bind $pp/parmanode /opt/parmanode || sww "Mounting parmanode to /opt/parmanode failed."
-sudo setfacl -R -m u:www-data:rwx /opt/parmanode
+sudo setfacl -R -m u:www-data:rX /opt/parmanode #uppercase X for directories only, and already executable files.
 #Nginx
 install_nginx
 make_parmaview_nginx_conf || return 1

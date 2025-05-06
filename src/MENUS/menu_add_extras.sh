@@ -40,6 +40,8 @@ case $choice in
 q|Q) exit ;; p|P) return 0 ;; m|M) back2main ;;
 
 pv)
+[[ -z $parmaviewmenu ]] && invlid && continue
+
 if [[ $pvremove == 1 ]] ; then uninstall_parmaview ; continue ; fi
 
 ! [[ -f $dp/.parmaview_enabled ]] && { announce "Not available yet, hang in there, it'll be worth it." ; continue ; }
