@@ -8,7 +8,7 @@ parmaviewmenu="\n#$cyan              pv)$orange      ParmaView (web interfact, c
 #                                                                                      #"
 unset pvremove
 elif grep -q "parmaview-end" $ic ; then 
-unset parmaviewmnu pvremove
+unset parmaviewmenu pvremove
 elif grep -q "parmaview-start" $ic ; then
 pvremove=1
 parmaviewmenu="\n#$cyan              pv)$red      REMOVE ParmaView failed install                                $orange#
