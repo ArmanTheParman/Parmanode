@@ -4,6 +4,9 @@ function getVersion() {
             return response.text();
         })
         .then(function(text) {
-            document.getElementById("version").textContent = text;
+            document.getElementById("version").textContent = text.trim();
+        })
+        .catch(err => {
+            console.warn("Could not connect:", err.message);
         });
 }
