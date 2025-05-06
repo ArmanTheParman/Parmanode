@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="parmastyle/parmastyle_special.css">
 </head>
 
-<body onload="getVersion(); getBlockHeight();">
+<body onload="getVersion(); getBlockHeight(); getIP();">
     <h1 id="title" class="header">PARMANODE
        <span id="version" style="font-size: 0.35em; 
                                  position: fixed; 
@@ -45,7 +45,11 @@
          1 bitcoin
          </span>
         </div>
-        <div class="parmabox">IP:192.168.0.80085</div>
+        <div class="parmabox">IP =&nbsp
+            <span id="IP" style="color: rgb(57, 213, 57);">
+              80085
+            </span>
+        </div>
     </div>
 
 <script src="js/js1.js">

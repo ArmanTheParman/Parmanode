@@ -22,6 +22,20 @@ function getBlockHeight() {
             console.warn("NA");
         });
 }
+
+function getIP() {
+    fetch("/cgi-bin/getip.sh")
+        .then(function(response) {
+            return response.text();
+        })
+        .then(function(text) {
+            document.getElementById("IP").textContent = text.trim();
+        })
+        .catch(err => {
+            console.warn("NA");
+        });
+}
+
 function getBitcoinPrice() {
     fetch("/cgi-bin/bitcoinprice.sh")
         .then(res => res.json())
