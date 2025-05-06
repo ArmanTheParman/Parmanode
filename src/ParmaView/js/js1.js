@@ -23,7 +23,7 @@ function getBlockHeight() {
         });
 }
 function getBitcoinPrice() {
-    fetch("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd")
+    fetch("/cgi-bin/bitcoinprice.sh")
         .then(res => res.json())
         .then(data => {
             const price = "$" + data.bitcoin.usd.toLocaleString();
@@ -31,22 +31,23 @@ function getBitcoinPrice() {
         })
         .catch(err => {
             console.warn("NA");
+            showPriceCycle("1 bitcoin");
         });
 }
 
 function showPriceCycle(priceText) {
     const el = document.getElementById("price");
-    
+
     el.textContent = priceText;
-    
+
     setTimeout(() => {
         el.textContent = "1 bitcoin";
-    }, 5000); // After 5 seconds, show "1 bitcoin"
+    }, 5000); // Show "1 bitcoin" after 5 sec
 
     setTimeout(() => {
-        getBitcoinPrice(); // Repeat cycle
-    }, 7500); // After total 7.5 seconds, fetch again
+        getBitcoinPrice(); // Restart cycle after 7.5 sec
+    }, 7500);
 }
 
-// Start the cycle
+// Start the loop
 getBitcoinPrice();
