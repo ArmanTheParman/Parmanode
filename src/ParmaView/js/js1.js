@@ -19,21 +19,34 @@ function getBlockHeight() {
             document.getElementById("blockheight").textContent = text.trim();
         })
         .catch(err => {
-            console.warn("NA:", err.message);
+            console.warn("NA");
+        });
+}
+function getBitcoinPrice() {
+    fetch("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd")
+        .then(res => res.json())
+        .then(data => {
+            const price = "$" + data.bitcoin.usd.toLocaleString();
+            showPriceCycle(price);
+        })
+        .catch(err => {
+            console.warn("NA");
         });
 }
 
-/*Clarke Moodey Dashboard*/
-const priceEl = document.getElementById("price");
-const ws = new WebSocket("wss://bitcoin.clarkmoody.com/dashboard/ws");
-ws.onmessage = (event) => {
-    const data = JSON.parse(event.data);
-    if (data.t === "price_usd") {
-      priceEl.innerHTML = "1 bitcoin =&nbsp;<span style='color: rgb(57, 213, 57);'>$" +
-        Number(data.v).toLocaleString() + "</span>";
-    }
-  };
-ws.onerror = (err) => {
-priceEl.textContent = "1 bitcoin";
-console.error(err);
-};
+function showPriceCycle(priceText) {
+    const el = document.getElementById("price");
+    
+    el.textContent = priceText;
+    
+    setTimeout(() => {
+        el.textContent = "1 bitcoin";
+    }, 5000); // After 5 seconds, show "1 bitcoin"
+
+    setTimeout(() => {
+        getBitcoinPrice(); // Repeat cycle
+    }, 7500); // After total 7.5 seconds, fetch again
+}
+
+// Start the cycle
+getBitcoinPrice();
