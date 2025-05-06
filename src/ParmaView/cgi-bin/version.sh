@@ -2,8 +2,8 @@
 echo "Content-Type: text/plain"
 echo ""
 
-source "$HOME/parman_programs/parmanode/version.conf"
-source "$HOME/parman_programs/parmanode/src/ParmaView/sendtosocket.sh"
+source "/opt/parmanode/version.conf"
+source "/opt/parmanode/src/ParmaView/sendtosocket.sh"
 echo "$version" | sendtosocket 
-echo "$version test, HOME is $HOME"
+echo "$version test"
 
