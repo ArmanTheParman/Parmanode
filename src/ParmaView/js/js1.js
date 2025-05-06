@@ -25,14 +25,15 @@ function getBlockHeight() {
 
 /*Clarke Moodey Dashboard*/
 const priceEl = document.getElementById("price");
-const ws = new WebSocket("wss://bitcoin.clarkmoody.com/dashboard/ws");ws.onmessage = (event) => {
+const ws = new WebSocket("wss://bitcoin.clarkmoody.com/dashboard/ws");
+ws.onmessage = (event) => {
     const data = JSON.parse(event.data);
-    if (data.type === "price" && data.pair === "BTC/USD") {
-      priceEl.textContent = "$" + Number(data.value).toLocaleString();
+    if (data.t === "price_usd") {
+      priceEl.innerHTML = "1 bitcoin =&nbsp;<span style='color: rgb(57, 213, 57);'>$" +
+        Number(data.v).toLocaleString() + "</span>";
     }
   };
-
-  ws.onerror = (err) => {
-    priceEl.textContent = "1 bitcoin";
-    console.error(err);
-  };
+ws.onerror = (err) => {
+priceEl.textContent = "1 bitcoin";
+console.error(err);
+};
