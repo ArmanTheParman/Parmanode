@@ -1,6 +1,6 @@
 import asyncio, os
 
-SOCKET_PATH = "/run/parmanode.sock"
+SOCKET_PATH = "/run/parmanode/parmanode.sock"
 
 if os.path.exists(SOCKET_PATH):
     os.remove(SOCKET_PATH)
