@@ -312,11 +312,8 @@ case $choice in y|Y)
 rm $HOME/Desktop/*un_parmanode* >$dn
 rm $HOME/Desktop/*armanode* >$dn
 rm $HOME/Desktop/parmanode.desktop >$dn
-debug "delete desktop icon"
 rm $HOME/.icons/PNicon*
-debug "delete .icons"
 sudo rm -rf $pn
-debug "remove original dir"
 ;;
 esac
 
