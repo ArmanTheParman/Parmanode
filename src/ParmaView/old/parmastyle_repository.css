@@ -7,12 +7,20 @@ html {
       "main main main"
       "footer footer footer";
   margin: 2vw;
-  padding: 0px;
+  padding: 0;
   height: calc(100% - 4vw);
   border: 2vw dashed orange;
   background-color: black;
   font-family: monospace;
   color: white;
+}
+
+.parmabox{
+  grid-area: main;
+  border: darkorange 5vw solid;
+  min-height: 6vw;
+  min-width: 6vw;
+  padding: 4px;
 }
 
 .header {
@@ -23,7 +31,7 @@ html {
   align-content: center;
   background-color: black;
   color: darkorange;
-  font-size: clamp(10px, 2vw, 9999px);
+  font-size: clamp(10px, 1vw, 9999px);
 }
 .main {
   grid-area: main;
@@ -33,15 +41,7 @@ html {
   align-content: center;
   background-color: black;
   color: darkorange;
-  font-size: clamp(10px, 2vw, 9999px);
-}
-
-.parmabox{
-  grid-area: main;
-  border: darkorange 5vw solid;
-  min-height: 6vw;
-  min-width: 6vw;
-  padding: 4px;
+  font-size: clamp(10px, 1vw, 9999px);
 }
 
 .parmaflex {
@@ -59,8 +59,6 @@ html {
   justify-content: space-evenly;
   flex-direction: row;
 }
-
-
 
 .message {
   font-size: 0.8em;
