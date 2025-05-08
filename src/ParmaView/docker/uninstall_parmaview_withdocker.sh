@@ -22,9 +22,17 @@ done
 export wwwdir="$macprefix/var/www/parmanode_cgi"
 export cginginx="macprefix/etc/nginx.conf.d/parmaview_cgi.conf"
 
+if ! docker ps >$dn ; then announce \
+"Please make sure Docker is running before asking Parmanode to
+    clean up the installed ParmaView."
+return 1
+fi
+#remove docker container/image
+docker stop parmaview 
+docker rm parmaview 
+docker rmi parmaview
 #stop connections
 tmux kill-session -t ws1
-
 #uninstall_cgi
     sudo umount $wwwparmaviewdir
     sudo rm -rf $parmaviewnginx
@@ -33,7 +41,6 @@ tmux kill-session -t ws1
     sudo systemctl disable fcgiwrap >$dn
     sudo rm -rf /etc/systemd/system/fcgiwrap.service.d
     sudo systemctl daemon-reload
-
 installed_config_remove "parmaview"
 success "ParmaView" "being uninstalled"
 

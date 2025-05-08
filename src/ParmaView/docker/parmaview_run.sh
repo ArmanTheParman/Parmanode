@@ -17,7 +17,6 @@ elif [[ $OS == "Linux" ]] ; then
 
     docker run -du parman --name parmaview \
            --network=host \
-           -v $HOME/parmanode/parmaview:/home/parman/parmanode/parmaview \
            -v $pp/parmanode/:/home/parman/parman_programs/parmanode \
            parmaview \
            tail -f /dev/null
