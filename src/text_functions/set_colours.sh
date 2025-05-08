@@ -11,7 +11,8 @@ export cyan="\033[36m"
 export white="\033[37m"
 export reset="\033[0m"
 export orange="\033[1m\033[38;2;255;145;0m"
-if [[ $(uname) == Darwin ]] ; then export orange="$yellow" ; fi
+    if [[ $(uname) == Darwin ]] ; then export orange="$yellow" 
+    fi
 export pink="\033[38;2;255;0;255m"
 
 export bright_black="\033[90m" ; export grey="\033[90m"
