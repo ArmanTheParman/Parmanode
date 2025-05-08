@@ -2,7 +2,7 @@ function get_linux_version_codename {
 . /etc/os-release && VC=$VERSION_CODENAME
 . $HOME/.parmanode/parmanode.conf #(fix ID variable)
 
-# Linux Mint has Ubunta equivalents for this purpose
+# Linux Mint has Ubuntu equivalents for this purpose
 if [[ $VC == "vera" ]] ; then VCequivalent="jammy" ; parmanode_conf_add "VCequivalent=$VCequivalent" 
 elif [[ $VC == "vanessa" ]] ; then VCequivalent="jammy" ; parmanode_conf_add "VCequivalent=$VCequivalent"  
 elif [[ $VC == "una" ]] ; then VCequivalent="focal" ; parmanode_conf_add "VCequivalent=$VCequivalent" 
@@ -19,7 +19,7 @@ elif [[ $VC == "elsie" ]] ; then VCequivalent="bullseye" ; parmanode_conf_add "V
 elif [[ $VC == "victoria" ]] ; then VCequivalent="jammy" ; parmanode_conf_add "VCequivalent=$VCequivalent"  
 elif [[ $VC == "virginia" ]] ; then VCequivalent="jammy" ; parmanode_conf_add "VCequivalent=$VCequivalent"
 elif [[ $VC == "faye" ]] ; then VCequivalent="bullseye" ; parmanode_conf_add "VCequivalent=$VCequivalent"
-#with these two lines, all the other should become redundant, but I have to check it before deleting the above.
+#with these two lines, all the others should become redundant, but I have to check it before deleting the above.
 elif [[ -n $UBUNTU_CODENAME ]] ; then VCequivalent="$UBUNTU_CODENAME" ; parmanode_conf_add "VCequivalent=$VCequivalent"
 elif [[ -n $DEBIAN_CODENAME ]] ; then VCequivalent="$DEBIAN_CODENAME" ; parmanode_conf_add "VCequivalent=$VCequivalent"
 
