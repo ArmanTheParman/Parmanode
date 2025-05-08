@@ -4,7 +4,7 @@ body {
   border: 2vw dashed orange;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 1.5fr 0.23fr 10fr 1fr ;
+  grid-template-rows: 1.5fr 0.23fr 10fr 1fr ; /* affects terminal height choice. 12.73 parts to height. Going with  50 char wide, 16 rows high*/
   grid-template-areas:
       "header"
       "spacer"
