@@ -19,9 +19,6 @@ n) return 1 ;;
 esac
 done
 
-export wwwdir="$macprefix/var/www/parmanode_cgi"
-export cginginx="macprefix/etc/nginx.conf.d/parmaview_cgi.conf"
-
 #stop connections
 tmux kill-session -t ws1
 

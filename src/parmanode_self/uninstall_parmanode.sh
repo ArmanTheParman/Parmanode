@@ -282,7 +282,7 @@ if [[ $OS == "Linux" ]] ; then
         fi
 
 #remove bind mount
-sudo unmount $macprefix/var/www/parmanode_cgi 
+sudo unmount $wwwparmaviewdir
 
 #uninstall parmanode directories and config files contained within.
 sudo rm -rf $HOME/.parmanode >$dn 2>&1
