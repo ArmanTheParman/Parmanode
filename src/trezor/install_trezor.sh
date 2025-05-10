@@ -4,8 +4,8 @@ while true ; do
     export version="25.4.2"
     Announce "Parmanode will install Trezor Suite version $version.
         If you accept this version, hit$cyan <enter>$orange, otherwise, type
-        in the version number and hit $cyan<enter>$orange, it'll probably work,
-        but no gaurantees, and not big deal, you can come back and try the default version."
+        in the version number and hit $cyan<enter>$orange; it'll probably work,
+        but no guarantees, and no big deal, you can come back and try the default version."
     jump $enter_cont
     case $enter_cont in "") break ;; *) yesorno "Use this version? v$enter_cont" || continue ; version=$enter_cont ;; esac
 done
