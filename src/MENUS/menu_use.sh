@@ -120,6 +120,8 @@ if grep -q "nostrrelay-end" $ic ; then nostrrelayapp=1
                        echo -e "                        $cyan  nr)$orange         Nostr Relay " ; count=$((count +1)) ; fi
 if grep -q "X11-end" $ic ; then X11app=1
                        echo -e "                        $cyan  x11)  $orange      X11 Forwarding " ; count=$((count +1)) ; fi
+if grep -q "nginx-end" $ic ; then nginxapp=1
+                       echo -e "                        $cyan  ng)  $orange      Nginx " ; count=$((count +1)) ; fi
 if grep -q "vaultwarden-end" $ic ; then vaultwardenapp=1
                        echo -e "                        $cyan  vw)  $orange       VaultWarden" ; count=$((count +1)) ; fi
 ### Education
@@ -482,13 +484,14 @@ vw)
    fi
    ;;
 
-######Hidden Menu########
-ng)
-  if sudo which nginx >$dn 2>&1 ; then
+nginx|ng)
+  if [[ $nginxapp == 1 ]] ; then
   menu_nginx
+  if [[ -n $1 ]] ; then clear ; return 0 ; fi
+  else invalid
   fi
   ;;
-##########################
+
 pb)
 if [[ $parman_booksapp == 1 ]] ; then
 menu_parmabooks
