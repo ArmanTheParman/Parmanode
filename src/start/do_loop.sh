@@ -127,16 +127,18 @@ which gsed >/dev/null 2>&1 || announce "Parmanode cannot detect gsed which is ne
     functioning. Things aint gonna work right. Be warned."
 
 if ! sudo which nginx >$dn 2>&1 ; then
+installed_config_remove "nginx-"
 gsed -i '/nginx-/d' $ic
 else
-echo "nginx-end" | tee $ic >$dn 2>&1
+installed_config_add "nginx-end"
 fi
 
-if ([[ $(uname) == Darwin ]] && ( which docker >$dn )) || \
-( [[ $(uname) == Linux ]] && which docker >$dn && id | grep -q docker ) ; then
-	if ! grep -q docker-end $ic ; then
-		installed_config_add "docker-end" 
-	fi
-else installed_config_remove "docker"
+if { [[ $(uname) == "Darwin" ]] && which docker >$dn       ; } ||
+   { [[ $(uname) == "Linux"  ]] && which docker >$dn && id | grep -q docker ; } ; then
+       if ! grep -q docker-end $ic ; then
+          installed_config_add "docker-end" 
+       fi
+else 
+          installed_config_remove "docker"
 fi
 }
