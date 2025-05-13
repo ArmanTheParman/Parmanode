@@ -183,7 +183,7 @@ yg)
     ;;
 
 vc)
-sed '/^#/d' $jmcfg | sed '/^$/d' | sed '/\[/a\ ' | sed '/\[/i\ ' | tee $tmp/cfg >$dn 2>&1
+gsed '/^#/d' $jmcfg | sed '/^$/d' | sed '/\[/a\ ' | sed '/\[/i\ ' | tee $tmp/cfg >$dn 2>&1
 sudo mv $tmp/cfg $jmcfg
 enter_continue "file modified"
 ;;
@@ -243,7 +243,7 @@ h|hist)
 
 vc)
 cfg="$HOME/.joinmarket/joinmarket.cfg" 
-sed '/^#/d' $cfg | sed '/^$/d' | sed '/\[/a\ ' | sed '/\[/i\ ' | tee $tmp/cfg >$dn 2>&1
+gsed '/^#/d' $cfg | sed '/^$/d' | sed '/\[/a\ ' | sed '/\[/i\ ' | tee $tmp/cfg >$dn 2>&1
 sudo mv $tmp/cfg $cfg
 enter_continue "file modified"
 ;;

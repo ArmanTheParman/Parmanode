@@ -17,7 +17,7 @@ case $password in
 q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 esac
 set_terminal
-sed -i "s/<xxx>/$password/" $HOME/.lit/lit.conf
+gsed -i "s/<xxx>/$password/" $HOME/.lit/lit.conf
 echo -e "${green}Password set..."
 sleep 1.5
 unset password

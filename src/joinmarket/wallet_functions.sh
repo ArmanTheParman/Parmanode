@@ -178,16 +178,16 @@ fi
     fi
 
 clear
-sed -i '1,/[Mm]ixdepth/{/[Mm]ixdepth/!d}' $tmp/jmaddresses
-sed -i -r 's/\x1B\[[0-9;]*[a-zA-Z]//g' $tmp/jmaddresses #removeds escape characters
-sed -i '/^[Mm]ixdepth/i\\' $tmp/jmaddresses
+gsed -i '1,/[Mm]ixdepth/{/[Mm]ixdepth/!d}' $tmp/jmaddresses
+gsed -i -r 's/\x1B\[[0-9;]*[a-zA-Z]//g' $tmp/jmaddresses #removeds escape characters
+gsed -i '/^[Mm]ixdepth/i\\' $tmp/jmaddresses
 
 #formatting...
 x=$(echo $wallet | wc -c | awk '{print $1}')
 y=$(( 49 - x ))
 line=$(echo "############################################" | head -c $y)
 
-sed -i "1i##################################### $wallet $line" $tmp/jmaddresses
+gsed -i "1i##################################### $wallet $line" $tmp/jmaddresses
 echo "
 ####################################### END #########################################" | tee -a $tmp/jmaddresses >$dn
 set_terminal 38 110

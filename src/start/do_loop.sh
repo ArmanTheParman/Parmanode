@@ -43,17 +43,8 @@ if [[ ! -e $ic ]] ; then touch $ic ; fi
 # Load config variables
 source $HOME/.parmanode/parmanode.conf >$dn 2>&1 
 
-# If docker is set up on the machine, then it is detected by Parmanode
-# and added to the config file
-if [[ -f $ic ]] ; then #execute only if an installed config file exits otherwise not point.
-	if ([[ $(uname) == Darwin ]] && ( which docker >$dn )) || \
-	( [[ $(uname) == Linux ]] && which docker >$dn && id | grep -q docker ) ; then
-		if ! grep -q docker-end $ic ; then
-			installed_config_add "docker-end" 
-		fi
-	else installed_config_remove "docker"
-	fi
-fi
+check_installed_programs
+
 #add to run count
 [[ $premium == 1 ]] || rp_counter
 test_internet_connected || exit
@@ -64,6 +55,7 @@ fi
 #If the new_install file exists (created at install) then offer to update computer.
 #then delete the file so it doesn't ask again. 
 # .new_install created inside a function that creates .parmanode directory for the first time
+
 if [[ $btcpayinstallsbitcoin != "true" ]] ; then
 if [[ -e $HOME/.parmanode/.new_install ]] ; then
 	# If Parmanode has never run before, make sure to get latest version of Parmanode
@@ -80,6 +72,7 @@ announce "An update to Parmanode was made to the latest version. Please restart 
 exit
 fi
 fi #end btcpayinstallsbitcoin
+
 #Health check
 parmanode1_fix
 #prompts every 20 times parmanode is run (reducing load up time of Parmanode)
@@ -88,7 +81,6 @@ parmanode1_fix
    bash_check 
    check_architecture 
 fi
-debug "bash_check and check_architecture" 
 
 ########################################################################################
 ########################################################################################
@@ -122,9 +114,29 @@ test_8333_reachable
 
 jump $1
 
-which gsed >/dev/null 2>&1 || announce "Parmanode cannot detect gsed which is necessary for proper
-    functioning. Things aint gonna work right. Be warned."
+
 # This is the main program, which is a menu that loops.
 #Parminer borrows do_loop function, but don't go to parmanode menu
 [[ $premium == 1 ]] || menu_main
+}
+
+function check_installed_programs {
+if [[ ! -f $ic ]] ; then return 0 ; fi
+
+which gsed >/dev/null 2>&1 || announce "Parmanode cannot detect gsed which is necessary for proper
+    functioning. Things aint gonna work right. Be warned."
+
+if ! sudo which nginx >$dn 2>&1 ; then
+gsed -i '/nginx-/d' $ic
+else
+echo "nginx-end" | tee $ic >$dn 2>&1
+fi
+
+if ([[ $(uname) == Darwin ]] && ( which docker >$dn )) || \
+( [[ $(uname) == Linux ]] && which docker >$dn && id | grep -q docker ) ; then
+	if ! grep -q docker-end $ic ; then
+		installed_config_add "docker-end" 
+	fi
+else installed_config_remove "docker"
+fi
 }
