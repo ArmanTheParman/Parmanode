@@ -34,8 +34,8 @@ success "UDEV rules for easy HWW connections have been imported.
 function udev_patch {
 if [[ $OS == "Mac" ]] ; then return 0 ; fi
 sudo install -m 644 $pn/src/misc/udev/*.rules /etc/udev/rules.d >$dn
-sudo udevadm control --reload
-sudo udevadm trigger
-sudo groupadd -f plugdev
-sudo usermod -aG plugdev $(USER)
+sudo udevadm control --reload >$dn
+sudo udevadm trigger >$dn
+sudo groupadd -f plugdev >$dn
+sudo usermod -aG plugdev $(USER) >$dn
 }
