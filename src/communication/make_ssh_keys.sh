@@ -217,9 +217,3 @@ echo "SSH keys made and saved to Desktop/all_ssh_keys.txt"
 
 return 0
 }
-
-function print_ssh_keys {
-
-
-
-}
