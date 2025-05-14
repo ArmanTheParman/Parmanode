@@ -32,6 +32,7 @@ success "UDEV rules for easy HWW connections have been imported.
 
 
 function udev_patch {
+if [[ $OS == "Mac" ]] ; then return 0 ; fi
 sudo install -m 644 $pn/src/misc/udev/*.rules /etc/udev/rules.d >$dn
 sudo udevadm control --reload
 sudo udevadm trigger
