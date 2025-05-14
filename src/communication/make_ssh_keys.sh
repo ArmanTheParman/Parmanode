@@ -19,7 +19,6 @@ HostName github.com
 User git
 IdentityFile ~/.ssh/extra_keys/parminer-key
 IdentitiesOnly yes" | sudo tee -a ~/.ssh/config >$dn 
-debug end make_parminer_ssh_keys
 }
 
 function make_parmaraid_ssh_keys {
@@ -197,13 +196,13 @@ $(sudo cat $HOME/.ssh/extra_keys/parminer-key.pub)
 
 $(sudo cat $HOME/.ssh/extra_keys/parmacloud-key.pub)
 
-$(sudo cat $HOME/.ssh/extra_keys/parmans-key.pub)
+$(sudo cat $HOME/.ssh/extra_keys/parmanas-key.pub)
 
 $(sudo cat $HOME/.ssh/extra_keys/parmaraid-key.pub)
 
-$(sudo cat $HOME/.ssh/extra_keys/parmawebs-key.pub)
+$(sudo cat $HOME/.ssh/extra_keys/parmaweb-key.pub)
 
-$(sudo cat $HOME/.ssh/extra_keys/dataum-key.pub)
+$(sudo cat $HOME/.ssh/extra_keys/datum-key.pub)
 
 $(sudo cat $HOME/.ssh/extra_keys/parmasync-key.pub)
 
@@ -212,9 +211,15 @@ $(sudo cat $HOME/.ssh/extra_keys/uddns-key.pub)
 $(sudo cat $HOME/.ssh/extra_keys/parmascale-key.pub)
 
 
-" | tee -a $HOME/Desktop/all_ssh_keys.txt >$dn
+" | tee -a $HOME/Desktop/all_ssh_keys.txt >$dn 2>&1
 
 echo "SSH keys made and saved to Desktop/all_ssh_keys.txt"
 
 return 0
+}
+
+function print_ssh_keys {
+
+
+
 }
