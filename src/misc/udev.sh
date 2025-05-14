@@ -30,10 +30,10 @@ success "UDEV rules for easy HWW connections" "being imported"
 
 
 
-# echo "
-# sudo install -m 644 /home/parman/parmanode/Sparrow/lib/runtime/conf/udev/*.rules /etc/udev/rules.d
-# sudo udevadm control --reload
-# sudo udevadm trigger
-# sudo groupadd -f plugdev
-# sudo usermod -aG plugdev `whoami`
-# " >/dev/null
+echo "
+sudo install -m 644 /home/parman/parmanode/Sparrow/lib/runtime/conf/udev/*.rules /etc/udev/rules.d
+sudo udevadm control --reload
+sudo udevadm trigger
+sudo groupadd -f plugdev
+sudo usermod -aG plugdev `whoami`
+" >/dev/null
