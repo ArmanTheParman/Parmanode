@@ -20,20 +20,22 @@ sudo chmod +x $tmp/udev_aarch64
 sudo ./udev_aarch64 installudevrules
 fi
 
-
+sudo install -m 644 $pn/src/misc/udev/*.rules /etc/udev/rules.d >$dn
+sudo udevadm control --reload
+sudo udevadm trigger
+sudo groupadd -f plugdev
+sudo usermod -aG plugdev $(USER)
 
 
 installed_conf_add "udev-end"
-success "UDEV rules for easy HWW connections" "being imported"
+success "UDEV rules for easy HWW connections have been imported.
+    This is a necessary fiddly step to make hardware wallets work
+    on Linux."
 
 }
 
 
 
 # echo "
-# sudo install -m 644 /home/parman/parmanode/Sparrow/lib/runtime/conf/udev/*.rules /etc/udev/rules.d
-# sudo udevadm control --reload
-# sudo udevadm trigger
-# sudo groupadd -f plugdev
-# sudo usermod -aG plugdev `whoami`
+
 # " >/dev/null
