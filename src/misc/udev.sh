@@ -26,16 +26,10 @@ sudo udevadm trigger
 sudo groupadd -f plugdev
 sudo usermod -aG plugdev $(USER)
 
-
 installed_conf_add "udev-end"
+
 success "UDEV rules for easy HWW connections have been imported.
     This is a necessary fiddly step to make hardware wallets work
     on Linux."
 
 }
-
-
-
-# echo "
-
-# " >/dev/null
