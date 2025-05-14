@@ -7,7 +7,9 @@ enable_tor_general
 fi
 
 #put in patch 10 later
-udev_patch
+test -f $dp/.udev_patch || {
+    udev_patch && touch $dp/.udev_patch
+}
 
 #Docker containers sometimes won't have $USER variable set...
 if [[ -e /.dockerenv && -z $USER ]] ; then
