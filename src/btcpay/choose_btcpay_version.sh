@@ -22,7 +22,7 @@ $green
                 few)$orange     Standard installation, v2.0.3
 
 $red
-                hfsp)$orange    Newer release v2.0.6  $yellow(Stable, but limited 
+                hfsp)$orange    Newer release v2.1.1  $yellow(Stable, but limited 
                                                testing with Parmanode)
 $red
                 yolo)$orange    Latest version on the BTCPay GitHub master branch
@@ -46,7 +46,7 @@ parmanode_conf_add "btcpay_version=$btcpay_version_choice"
 break
 ;;
 hfsp)
-export btcpay_version_choice="v2.0.6"
+export btcpay_version_choice="v2.1.1"
 parmanode_conf_add "btcpay_version=$btcpay_version_choice"
 break
 ;;

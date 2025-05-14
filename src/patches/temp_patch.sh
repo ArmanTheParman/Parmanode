@@ -5,7 +5,10 @@ truncatexsessions
 if [[ -e /.dockerenv ]] && ! netstat -tuln | grep -q 9050 ; then
 enable_tor_general
 fi
- 
+
+#put in patch 10 later
+udev_patch
+
 #Docker containers sometimes won't have $USER variable set...
 if [[ -e /.dockerenv && -z $USER ]] ; then
     USER=$(whoami) >$dn 2>&1
@@ -79,6 +82,7 @@ sudo gsed -E -i 's|^IdentityFile ~/.ssh/(.*-key)$|IdentityFile ~/.ssh/extra_keys
 #remove 2026
     gsed -i 's/electrs2/electrs/'       $ic >$dn 2>&1
     gsed -i 's/electrsdkr2/electrsdkr/' $ic >$dn 2>&1
+
 
 debug temppatchend
 }

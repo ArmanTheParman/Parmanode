@@ -1,3 +1,6 @@
+Version 3.38.4
+     -BTCPay 2.1.1
+     -Update UDEV rules for Jade
 Version 3.58.3
      -Knots Mac upgrade to v28.1
      -Electrs upgrade to v0.10.9
