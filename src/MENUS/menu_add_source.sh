@@ -658,4 +658,17 @@ else
    #not installed
 parmatwin_n="#$cyan                             twin)    $orange    ParmaTwin                                   #"
 fi
+
+#nym
+unset num_i nym_p nym_n
+if grep -q "nym-end" $HOME/.parmanode/installed.conf ; then 
+  #installed
+nym_i="#                                      Nym VPN                                         #"
+elif grep -q "X11-start" $HOME/.parmanode/installed.conf ; then 
+   #partially installed
+nym_p="#                                      Nym VPN                                         #"
+else
+   #not installed
+nym_n="#$cyan                              nym)    $orange    NymVPN                                      #"
+fi
 }

@@ -12,3 +12,15 @@ installed_config_remove "nym-start"
 if [[ $swwflag == "true" ]] ; then unset swwflag ; return 1 ; fi
 success "Nym VPN installed"
 }
+
+function uninstall_nym {
+
+stop_nym 2>$dn
+sudo apt remove --purge nym-vpn
+rm -rf $hp/nym
+installed_config_remove "nym-"
+
+
+
+
+}

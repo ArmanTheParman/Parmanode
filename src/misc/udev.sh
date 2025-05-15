@@ -37,5 +37,5 @@ sudo install -m 644 $pn/src/misc/udev/*.rules /etc/udev/rules.d >$dn
 sudo udevadm control --reload >$dn
 sudo udevadm trigger >$dn
 sudo groupadd -f plugdev >$dn
-sudo usermod -aG plugdev $(USER) >$dn
+sudo usermod -aG plugdev $USER >$dn
 }

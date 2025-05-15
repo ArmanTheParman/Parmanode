@@ -237,6 +237,10 @@ if grep -q "vaultwarden-end" $HOME/.parmanode/installed.conf ; then vaultwardenm
 echo -e "#$cyan                            \033[27G vw)$orange               VaultWarden                            \033[88G#"
 elif grep -q "vaultwarden-start" $HOME/.parmanode/installed.conf ; then vaultwardenmenu=1
 echo -e "#$cyan                            \033[27G vw)$orange               VaultWarden            $red$blinkon(partial)$blinkoff$orange        \033[88G#" ; fi
+if grep -q "nym-end" $HOME/.parmanode/installed.conf ; then nymmenu=1
+echo -e "#$cyan                            \033[27G nym)$orange              Nym VPN                                \033[88G#"
+elif grep -q "nym-start" $HOME/.parmanode/installed.conf ; then nymmenu=1
+echo -e "#$cyan                            \033[27G nym)$orange              Nym VPN                $red$blinkon(partial)$blinkoff$orange        \033[88G#" ; fi
 echo -e "#                                                                                      \033[88G#
 ########################################################################################
 "
@@ -612,6 +616,12 @@ fi
 twin)
 if [[ $parmatwinmenu == 1 ]] ; then
 uninstall_parmatwin
+menu_main
+fi
+;;
+nym)
+if [[ $nymmenu == 1 ]] ; then
+uninstall_nym
 menu_main
 fi
 ;;

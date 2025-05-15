@@ -127,7 +127,7 @@ if grep -q "vaultwarden-end" $ic ; then vaultwardenapp=1
 ### Education
 if [[ -d $hp/parman_books ]] ; then parman_booksapp=1
                        echo -e "                        $cyan  pb)  $orange       ParmaBooks " ; count=$((count +1)) ; fi
-### Tor related 
+### Privacy related 
 if which tor >$dn 2>&1 ; then torapp=1
                        echo -e "                        $cyan  t)$orange          Tor " ; count=$((count +1)) ; fi
 if grep -q "tor-server-end" $ic ; then torserverapp=1
@@ -140,6 +140,8 @@ if grep -q "qbittorrent-end" $ic ; then qbittorrentapp=1
                        echo -e "                        $cyan  qbit)$orange       QBittorrent " ; count=$((count +1)) ; fi
 if grep -q "torssh-end" $ic ; then torsshapp=1
                        echo -e "                        $cyan  tssh)$orange       Tor SSH " ; count=$((count +1)) ; fi
+if grep -q "nym-end" $ic ; then nymapp=1
+                       echo -e "                        $cyan  nym)$orange        Nym VPN " ; count=$((count +1)) ; fi
 echo -e "                            
 #######################################################################################
 "
@@ -390,13 +392,21 @@ tssh)
    else invalid
    fi
    ;;
-pool)
-   if [[ $public_poolapp == 1 ]] ; then
-   menu_public_pool
+nym)
+   if [[ $nymapp == 1 ]] ; then
+   menu_nym
     if [[ -n $1 ]] ; then clear ; return 0 ; fi
    else invalid
    fi
    ;;
+
+# pool)
+#    if [[ $public_poolapp == 1 ]] ; then
+#    menu_public_pool
+#     if [[ -n $1 ]] ; then clear ; return 0 ; fi
+#    else invalid
+#    fi
+#    ;;
 
 ex)
    if [[ $electrumxapp == 1 ]] ; then
