@@ -1,4 +1,6 @@
 function install_nym {
+if [[ $OS == "Mac" ]] ; then no_mac ; return 1 ; fi
+
 unset swwflag
 mkdir $hp/nym
 installed_config_add "nym-start"
