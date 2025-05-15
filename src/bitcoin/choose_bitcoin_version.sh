@@ -134,6 +134,9 @@ set_terminal ; echo -e "
     Please note, the Parmanode automatic compile script won't work with every version,
     especially early versions. Won't hurt to try. I might work on this in the future.
 
+    Also, Bitcoin Core devs removed the autogen.sh file and changed the compile
+    process. Parmanode will not compile for you for versions greater then 28.
+
 ########################################################################################
 "
 choose xpmq ; read choice

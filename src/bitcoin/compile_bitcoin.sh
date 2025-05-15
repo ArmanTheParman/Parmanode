@@ -49,7 +49,7 @@ fi
     unset export GIT_COMMITTER_NAME
     unset export GIT_COMMITTER_EMAIL
 
-
+#after version 28, this breaks. autogen no longer used.
 ./autogen.sh || { enter_continue "Something seems to have gone wrong. Proceed with caution." ; }
 
 while true ; do
