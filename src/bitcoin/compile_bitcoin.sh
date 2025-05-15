@@ -80,6 +80,9 @@ break ;;
 esac
 done
 
+if [[ $deis == "true" ]] ; then
+cp $pn/src/bitcoin/deis.svg $hp/bitcoin/src/qt/res/src/bitcoin.svg
+fi
 
 while true ; do
 clear ; echo -e "
