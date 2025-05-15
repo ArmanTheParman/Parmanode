@@ -1,5 +1,5 @@
 function install_nym {
-
+unset swwflag
 mkdir $hp/nym
 installed_config_add "nym-start"
 cd $hp/nym
@@ -8,5 +8,7 @@ sudo dpkg -i /tmp/nym-repo-setup_1.0.1_amd64.deb || sww
 sudo apt install nym-vpn || sww
 installed_config_add "nym-end"
 installed_config_remove "nym-start"
+
+if [[ $swwflag == "true" ]] ; then unset swwflag ; return 1 ; fi
 success "Nym VPN installed"
 }
