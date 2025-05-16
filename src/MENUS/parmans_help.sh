@@ -399,14 +399,14 @@ $orange
     a private custom data server in miniPC/NUC form factor, with a 16TB drive. 
     It is also everything a ParmanodL Bitcoin node is but not in Laptop form.
 
-    When you take your data in your own hands, like your bitcoin, you need to make
-    sure you don't lose it. ParmaDrive helps you do that.
+    When you hold your own data, like your bitcoin, you need to make sure you don't 
+    lose it. ParmaDrive helps you do that.
 
     ${green}The first step$orange is to take your data in your own hands. One reason is so no pervert 
     at Google or Apple is lurking through your family images, for example. 
 
     ${green}The second step$orange is to make a backup that is kept OFFSITE, geographically 
-    separating you data like you would your Bitcoin Private keys.
+    separating your data like you would your Bitcoin Private keys.
 
     ${green}The third step$orange, optional, it to have your local data sync each day to your offsite
     data storage location. This can be done via ParmaSync, where a 'ParmaTwin', 
