@@ -283,8 +283,8 @@ stop_btcpay
 docker start btcpay #container only
 set_terminal
 echo -e "${green}Updating to version $version. This can take a few minutes. \nSit back and stacks some sats...$orange"
-docker exec -itu parman btcpay bash -c "cd /home/parman/parmanode/NBXplorer && git checkout $nbxplorerversion && ./build.sh"
-docker exec -itu parman btcpay bash -c "cd /home/parman/parmanode/btcpayserver && git checkout $version && ./build.sh"
+docker exec -itu parman btcpay bash -c "cd /home/parman/parmanode/NBXplorer ; git pull ; git checkout $nbxplorerversion && ./build.sh"
+docker exec -itu parman btcpay bash -c "cd /home/parman/parmanode/btcpayserver ; git pull ; git checkout $version && ./build.sh"
 restart_btcpay
 success "BTCPay Server has been updated to version $version"
 parmanode_conf_remove "btcpay_version"
@@ -302,8 +302,8 @@ stop_btcpay
 set_terminal 
 echo -e "${green}Updating to version $version. This can take a few minutes. \nSit back and stacks some sats...$orange"
 docker start btcpay #container only
-docker exec -itu parman btcpay bash -c "cd /home/parman/parmanode/NBXplorer && git checkout $nbxplorerversion && ./build.sh"
-docker exec -itu parman btcpay bash -c "cd /home/parman/parmanode/btcpayserver && git checkout $version && ./build.sh"
+docker exec -itu parman btcpay bash -c "cd /home/parman/parmanode/NBXplorer ; git pull ; git checkout $nbxplorerversion && ./build.sh"
+docker exec -itu parman btcpay bash -c "cd /home/parman/parmanode/btcpayserver ; git pull ; git checkout $version && ./build.sh"
 restart_btcpay
 success "BTCPay Server has been updated to version $cyan$version$orange"
 parmanode_conf_remove "btcpay_version"
