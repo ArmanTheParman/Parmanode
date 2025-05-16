@@ -9,9 +9,17 @@ set_terminal_high ; echo -e "
 $cyan
                  s)$orange         System Review (Free)
 $cyan
-                 v)$orange         Video Call - 2 hour session
-$cyan
                  mm) $orange       Mentorship info
+$cyan 
+                 pn)$orange        Buy a ParmanodL Laptop - A Node and Wallet in one
+$cyan 
+                 pd)$orange        Buy a ParmaDrive - Bespoke private data server
+$cyan
+                 pag)$orange       Buy a ParmAirGap - Airgapped Laptop
+$cyan
+                 pz)$orange        Buy a ParmAirGap Zero - Airgapped Pi Zero
+$cyan
+                 v)$orange         Video Call - 2 hour session
 $cyan
                  bsr) $orange      Bitcoin Security Review
 $cyan
@@ -24,12 +32,7 @@ $cyan
                  pp)$orange        Privacy course
 $cyan                
                  btcp) $orange     BTC ParmanPay
-$cyan
-                 pag)$orange       Buy a ParmAirGap - Airgapped Laptop
-$cyan
-                 pz)$orange        Buy a ParmaZero - Airgapped Pi Zero
-$cyan 
-                 pn)$orange        Buy a ParmanodL Laptop - A Node and Wallet in one
+
                  
 $bright_blue
     Email:         armantheparman@protonmail.com
@@ -72,10 +75,13 @@ pag)
      parmairgap
      ;;
 pz)
-     parmazero
+     parmairgapzero
      ;;
 pn)
      parmanodl_laptop
+     ;;
+pd)
+     parmandrive
      ;;
 *)
      invalid
@@ -349,25 +355,24 @@ enter_continue ; jump $enter_cont
 }
 
 
-function parmazero {
+function parmairgapzero {
 set_terminal ; echo -e "
 ########################################################################################$cyan
-                                   ParmaZero $orange
+                                ParmaAirGap Zero $orange
 ########################################################################################
 
-    A ParmaZero is a low powered Pi Zero single board computer that has no Wifi or
+    A ParmaAirGap Zero is a low powered Pi Zero single board computer that has no Wifi or
     BlueTooth capability, with necessary software to function as an AirGapped Bitcoin 
     computer - Similar to a SeedSigner but with more functionality. Similar to a
     ParmAirGap but much less powerful, slower, and cheaper.
 $bright_blue
     More info and purchase options...
-    https://armantheparman.com/buy-pi-zero/
+    https://parmanode.com/pagz
 $orange
 ########################################################################################
 "
 enter_continue ; jump $enter_cont 
 }
-
 
 function parmanodl_laptop {
 set_terminal ; echo -e "
@@ -382,4 +387,39 @@ $orange
 ########################################################################################
 "
 enter_continue ; jump $enter_cont 
+}
+
+function parmandrive {
+set_terminal ; echo -e "
+########################################################################################
+$blue
+                                P A R M A D R I V E  
+$orange
+    The primary purpose of a ParmaDrive is to help you get your data off Google. It is 
+    a private custom data server in miniPC/NUC form factor, with a 16TB drive. 
+    It is also everything a ParmanodL Bitcoin node is but not in Laptop form.
+
+    When you take your data in your own hands, like your bitcoin, you need to make
+    sure you don't lose it. ParmaDrive helps you do that.
+
+    ${green}The first step$orange is to take your data in your own hands. One reason is so no pervert 
+    at Google or Apple is lurking through your family images, for example. 
+
+    ${green}The second step$orange is to make a backup that is kept OFFSITE, geographically 
+    separating you data like you would your Bitcoin Private keys.
+
+    ${green}The third step$orange, optional, it to have your local data sync each day to your offsite
+    data storage location. This can be done via ParmaSync, where a 'ParmaTwin', 
+    basically a friend (or stranger you don't even need to trust), also has a 
+    ParmaDrive with each machine backing up data (encrypted) to the other. The 
+    ParmaTwin could even just be your own second ParmaDrive you keep in another 
+    property. For extra redundance, you could back up to a third location.
+
+$blue
+    More info and purchase options...
+
+    https://parmanode.com/parmadrive
+$orange
+########################################################################################
+" ; enter_continue ; jump $enter_cont 
 }
