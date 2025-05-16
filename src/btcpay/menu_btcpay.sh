@@ -277,7 +277,7 @@ jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit ;; a|A|p|P) return 1 ;; m|M) back2main ;;
 pp)
-version="v2.0.3"
+version="v2.1.1"
 stop_btcpay 
 docker start btcpay #container only
 set_terminal
@@ -291,7 +291,7 @@ return 0
 ;;
 s)
 announce "Please enter the version you want in the format v0.0.0 for example:
-\n$cyan    v2.0.3$orange"
+\n$cyan    v2.1.1$orange"
 version=$enter_cont
 if [[ ! $version =~ ^v ]] ; then version=v${version} ; fi #if user types a number, add a v prefix
 if [[ ! $version =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]] ; then announce "Incorrect format." ; continue ; fi
