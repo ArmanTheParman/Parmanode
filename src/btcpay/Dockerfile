@@ -38,7 +38,7 @@ USER parman
 
 # install NBX
 RUN cd ~/parmanode && git clone https://github.com/dgarage/NBXplorer
-RUN cd ~/parmanode/NBXplorer && git checkout v2.5.0 && chown -R parman ./* ; ./build.sh
+RUN cd ~/parmanode/NBXplorer && git checkout v2.5.26 && chown -R parman ./* ; ./build.sh
 RUN mkdir -p ~/.nbxplorer/Main
 
 #install BTCpayserver
