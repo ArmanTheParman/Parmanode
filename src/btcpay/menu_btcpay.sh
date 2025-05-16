@@ -278,10 +278,12 @@ case $choice in
 q|Q) exit ;; a|A|p|P) return 1 ;; m|M) back2main ;;
 pp)
 version="v2.1.1"
+nbxplorerversion="v2.5.26"
 stop_btcpay 
 docker start btcpay #container only
 set_terminal
 echo -e "${green}Updating to version $version. This can take a few minutes. \nSit back and stacks some sats...$orange"
+docker exec -itu parman btcpay bash -c "cd /home/parman/parmanode/NBXplorer && git checkout $nbxplorerversion && ./build.sh"
 docker exec -itu parman btcpay bash -c "cd /home/parman/parmanode/btcpayserver && git checkout $version && ./build.sh"
 restart_btcpay
 success "BTCPay Server has been updated to version $version"
@@ -293,12 +295,14 @@ s)
 announce "Please enter the version you want in the format v0.0.0 for example:
 \n$cyan    v2.1.1$orange"
 version=$enter_cont
+nbxplorerversion="v2.5.26"
 if [[ ! $version =~ ^v ]] ; then version=v${version} ; fi #if user types a number, add a v prefix
 if [[ ! $version =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]] ; then announce "Incorrect format." ; continue ; fi
 stop_btcpay 
 set_terminal 
 echo -e "${green}Updating to version $version. This can take a few minutes. \nSit back and stacks some sats...$orange"
 docker start btcpay #container only
+docker exec -itu parman btcpay bash -c "cd /home/parman/parmanode/NBXplorer && git checkout $nbxplorerversion && ./build.sh"
 docker exec -itu parman btcpay bash -c "cd /home/parman/parmanode/btcpayserver && git checkout $version && ./build.sh"
 restart_btcpay
 success "BTCPay Server has been updated to version $cyan$version$orange"
