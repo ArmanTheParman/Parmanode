@@ -11,6 +11,8 @@ elif [[ $1 == d2 ]] ; then export debug=2
 elif [[ $1 == d3 ]] ; then export debug=3  #bre docker no-cache build
 fi
 
+if [[ $1 == "deis" ]] ; then export deis="true" ; fi
+
 #Can be used to source parmanode script and then open a bash terminal with the functions
 #loaded. Eg 'rp bash'. Good for testing.
 if [[ $1 == bash ]] ; then export bash=1 ; fi
