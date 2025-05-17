@@ -9,6 +9,7 @@ cd $HOME/parmanode/bitcoin
 if [[ $btcpayinstallsbitcoin != "true" ]] ; then
 
 if [[ $bitcoin_choice == "knots" ]] ; then printversion=$knotsversion ; else printversion=$version; fi
+#currently will never execute, deis is only compiled
 if [[ $clientchoice == "deis" ]] ; then printversion="Deis v${deisversion}" ; fi
 set_terminal
 echo -e "
