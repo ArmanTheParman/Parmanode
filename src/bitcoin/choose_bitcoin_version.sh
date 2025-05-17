@@ -14,8 +14,9 @@ set_terminal 32 120 ; echo -e "$orange
 ########################################################################################################################$green
                 THERE ARE SEVERAL WAYS TO INSTALL BITCOIN WITH PARMANODE. PLEASE CHOOSE WISELY ...$orange
 ########################################################################################################################
+$cyan
+                    Which flavour of the Bitcoin client do you want to install?
 
-    Which flavour of the Bitcoin client do you want to install?
 
 $green
 <enter>  or  k)     ${orange}Bitcoin Knots (default, filters spam)$blue
