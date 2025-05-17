@@ -1,6 +1,6 @@
 function choose_bitcoin_version {
-if [[ $version == self ]] ; then return 0 ; fi
-if [[ $OS == Mac ]] ; then return 0 ; fi
+if [[ $version == "self" ]] ; then return 0 ; fi
+if [[ $OS == "Mac" ]] ; then return 0 ; fi
 
 if [[ $btcpayinstallsbitcoin == "true" || $btcdockerchoice == "yes" ]] ; then
 parmanode_conf_add "bitcoin_choice=precompiled"
@@ -10,88 +10,53 @@ fi
 
 
 while true ; do
-#default version set at the beginning of instll_bitcoin()
-set_terminal 40 120 ; echo -e "
+set_terminal 32 120 ; echo -e "$orange
+########################################################################################################################$green
+                THERE ARE SEVERAL WAYS TO INSTALL BITCOIN WITH PARMANODE. PLEASE CHOOSE WISELY ...$orange
 ########################################################################################################################
-$cyan
-                THERE ARE SEVERAL WAYS TO INSTALL BITCOIN WITH PARMANODE. PLEASE CHOOSE WISELY ...
-$orange
-########################################################################################################################
-$green
 
-   hit <enter>)       Pre-compiled Bitcoin KNOTS, v$knotsversion, verified with gpg $blinkon(recommended)$blinkoff
+    Which flavour of the Bitcoin client do you want to install?
+
 $green
-         knots)       Guided compile Bitcoin KNOTS, v$knotsversion
+<enter>  or  k)     ${orange}Bitcoin Knots (default, filters spam)$blue
+                    Maintained by Luke Dashjr
 $yellow
-          core)       Pre-compiled Bitcoin CORE v$version, verified with gpg
-
-          hfsp)       Guided compile Bitcoin CORE v$version
-
-          rekt)       Guided compile Bitcoin CORE, v$version, (with FILTER-ORDINALS patch by Luke Dashjr)
-$blue
-          info)       Read how to compile yourself, and import the installation to Parmanode. You can come back to 
-                      this menu after selecting this. 
+         knutz)     ${orange}Bitcoin Deis (forks Core client v28.1 with filter ordinals patch)$blue
+                    Maintained by Parman
 $red
-           few)       Custom version (you choose) - Download and verify 'trusted' releases
+             c)     ${orange}Bitcoin Core (for spam enjooyers)
+$cyan
+          info)     ${orange}Read how to compile yourself, and import the installation to Parmanode. You can come back to 
+                    this menu after selecting this. 
+$cyan
+        import)     ${orange}IMPORT binaries you have compiled yourself (or previously downloaded without the help of the 
+                    Parmanode install process). 'Binaries' refers to the executable files, eg bitcoind and 
+                    bitcoin-qt, not the blockchain.
+                    
 
-          yolo)       Guided compile custom version (you choose) 
 
-       builder)       Guided compile of most recent Github update, i.e. pre-release
-                      (for testing only)
-
-        import)       IMPORT binaries you have compiled yourself (or previously downloaded without the help of the 
-                      Parmanode install process). 'Binaries' refers to the executable files, eg bitcoind and 
-                      bitcoin-qt, not the blockchain.
-$green$blinkon
-        nutz)         Bitcoin Deis, a fork of the Bitcoin Core QT client interface, still in consensus of course.$blinkoff
-
-$orange
 ########################################################################################################################
 "
-choose "xpmq" 
-unset bitcoin_compile ordinals_patch knotsbitcoin byo_bitcoin
-read choice
+choose "xpmq" ; read choice
 jump $choice || { invalid ; continue ; } ; set_terminal
-
 case $choice in
 q|Q) exit 0 ;; p|P) return 1 ;; m|M) back2main ;;
-pck|pk|kp|"")
-parmanode_conf_add "bitcoin_choice=knots"
-export bitcoin_compile="false" 
-export knotsbitcoin="true" ; version="$knotsmajor-knots" ; break ;;
-0|27|c|core)
-parmanode_conf_add "bitcoin_choice=precompiled"
-export bitcoin_compile="false" ; break ;;
-few|custom) 
-parmanode_conf_add "bitcoin_choice=precompiled"
-select_custom_version || return 1
-export bitcoin_compile="false" ; break ;;
-yolo) 
-parmanode_conf_add "bitcoin_choice=compiled"
-select_custom_version || return 1
-export bitcoin_compile="true" ; break ;;
-hfsp) 
-parmanode_conf_add "bitcoin_choice=compiled"
-export bitcoin_compile="true" ; break ;;
-rekt)
-parmanode_conf_add "bitcoin_choice=compiled"
-export bitcoin_compile="true" ; export ordinals_patch="true" ; break ;;
-knots)
-parmanode_conf_add "bitcoin_choice=knots"
-export bitcoin_compile="true"
-export knotsbitcoin="true" ; export version="28.1-knots" ; break ;;
-builder)
-parmanode_conf_add "bitcoin_choice=compiled"
-export bitcoin_compile="true" ; export version="master" ; break ;;
+k|"")
+export clientchoice="knots" ; break
+;;
+knutz|d)
+export clientchoice="deis"
+parmanode_conf_add "bitcoin_choice=deis"
+export bitcoin_compile="true" ; deis="true" ; return 0
+;;
+c)
+export clientchoice="core"
+break
+;;
 info)
 bitcoin_compile_instructions
-return 0
+continue
 ;;
-nutz)
-parmanode_conf_add "bitcoin_choice=compiled"
-export bitcoin_compile="true" ; deis="true" ; break 
-;;
-
 import)
 set_terminal ; echo -e "
 ########################################################################################
@@ -116,15 +81,125 @@ return 0
 fi
 ;;
 
-*) 
+*)
 invalid ;;
 esac
 done
 
-if [[ $bitcoin_compile != "false" ]] ; then
-# $hp/bitcoin directory made earlier for downloading compiled bitcoin. Can delete.
-sudo rm -rf $hp/bitcoin >$dn 2>&1
-fi
+
+[[ $clientchoice == "knots" ]] && while true ; do
+
+set_terminal 40 120 ; echo -e "
+########################################################################################################################
+    More questions, sorry...
+
+$cyan
+     1)$orange     Pre-compiled Bitcoin KNOTS, v$knotsversion, verified with gpg $blinkon(recommended)$blinkoff
+$cyan
+     2)$orange     Guided compile Bitcoin KNOTS, v$knotsversion
+
+
+########################################################################################################################
+"
+choose "xpmq" 
+read choice
+jump $choice || { invalid ; continue ; } ; set_terminal
+
+case $choice in
+q|Q) exit 0 ;; p|P) return 1 ;; m|M) back2main ;;
+1)
+parmanode_conf_add "bitcoin_choice=knots"
+export bitcoin_compile="false" 
+export knotsbitcoin="true" ; version="$knotsmajor-knots" ; return 0 ;;
+2)
+parmanode_conf_add "bitcoin_choice=knots"
+export bitcoin_compile="true"
+export knotsbitcoin="true" ; export version="28.1-knots" ; return 0 ;;
+*)
+invalid ;;
+esac
+done
+
+while true ; do
+set_terminal 40 120 ; echo -e "
+########################################################################################################################
+    More questions, sorry...
+$cyan
+          core)       ${orange}Pre-compiled Bitcoin CORE v$version, verified with gpg
+$cyan
+          hfsp)       ${orange}Guided compile Bitcoin CORE v$version
+$cyan
+          rekt)       ${orange}Guided compile Bitcoin CORE, v$version, (with FILTER-ORDINALS patch by Luke Dashjr)
+$cyan
+           few)       ${orange}Custom Bitcoin Core version (you choose) - Download and verify 'trusted' releases
+$cyan
+          yolo)       ${orange}Guided compile custom Bitcoin Core version (you choose) 
+$cyan
+       builder)       ${orange}Guided compile of most recent Bitcoin Core Github update, i.e. pre-release
+                      (for testing only)
+$orange
+########################################################################################################################
+"
+choose "xpmq" 
+unset ordinals_patch bitcoin_compile
+read choice
+jump $choice || { invalid ; continue ; } ; set_terminal
+
+case $choice in
+q|Q) exit 0 ;; p|P) return 1 ;; m|M) back2main ;;
+
+0|27|c|core)
+parmanode_conf_add "bitcoin_choice=precompiled"
+export core="true" ; export bitcoin_compile="false" ; return 0 ;;
+few|custom) 
+parmanode_conf_add "bitcoin_choice=precompiled"
+select_custom_version || return 1
+export core="true" ; export bitcoin_compile="false" ; return 0 ;;
+yolo) 
+parmanode_conf_add "bitcoin_choice=compiled"
+select_custom_version || return 1
+export bitcoin_compile="true" ; return 0 ;;
+hfsp) 
+parmanode_conf_add "bitcoin_choice=compiled"
+export bitcoin_compile="true" ; return 0 ;;
+rekt)
+parmanode_conf_add "bitcoin_choice=compiled"
+export bitcoin_compile="true" ; export ordinals_patch="true" ; return 0 ;;
+builder)
+parmanode_conf_add "bitcoin_choice=compiled"
+export bitcoin_compile="true" ; export version="master" ; return 0 ;;
+esac
+done
+
+
+while true ; do
+#default version set at the beginning of instll_bitcoin()
+set_terminal 40 120 ; echo -e "
+########################################################################################################################
+$cyan
+$orange
+########################################################################################################################
+
+
+
+
+########################################################################################################################
+"
+choose "xpmq" 
+read choice
+jump $choice || { invalid ; continue ; } ; set_terminal
+
+case $choice in
+q|Q) exit 0 ;; p|P) return 1 ;; m|M) back2main ;;
+
+
+
+
+
+*) 
+invalid ;;
+esac
+done
 
 }
 

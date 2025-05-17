@@ -17,7 +17,7 @@ cd $hp || { enter_continue "Can't change directory. Aborting." ; return 1 ; }
 
 [[ -e $hp/bitcoin_github ]] && sudo rm -rf $hp/bitcoin_github >$dn 2>&1
 
-if [[ $knotsbitcoin != "true" ]] ; then  
+if [[ $clientchoice == "core" ]] ; then  
 
     git clone https://github.com/bitcoin/bitcoin.git bitcoin_github || { announce "Something went wrong with the download. Aborting." ; return 1 ; }
     
@@ -33,14 +33,37 @@ if [[ $knotsbitcoin != "true" ]] ; then
                 git add . ; git commit -m "ordinals patch applied"
             fi
 
-elif [[ $knotsbitcoin == "true" ]] ; then 
-    set_github_config
+elif [[ $clientchohice == "knots" ]] ; then 
+
     if [[ -e $hp/bitcoinknots_github ]] ; then 
         cd $hp/bitcoinknots_github ; git fetch ; git pull ; git checkout origin/HEAD ; git pull 
     else
         cd $hp && git clone https://github.com/bitcoinknots/bitcoin.git bitcoinknots_github && cd bitcoinknots_github
     fi
 
+elif  [[ $clientchoice == "deis" ]] ; then #includes fileter ordinals patch
+
+git clone https://github.com/armantheparman/deis bitcoin_github || { announce "Something went wrong with the download. Aborting." ; return 1 ; }
+
+cd $hp/bitcoin_github || { announce "Unable to change to bitcoin_github directory. Aborting." ; return 1 ; }
+
+#res/icons
+cp $pn/src/deis/icons/deis.png $hp/bitcoin_github/src/qt/res/icons/bitcoin.png
+cp $pn/src/deis/icons/deis.ico $hp/bitcoin_github/src/qt/res/icons/bitcoin.ico
+#svg
+cp $pn/src/deis/deis.svg $hp/bitcoin_github/src/qt/res/src/bitcoin.svg
+#doc
+cp $pn/src/deis/share/icons/pixmaps/bitcoin64.png $hp/bitcoin_github/doc/bitcoin_logo_doxygen.png
+#share/pixmaps
+rm $hp/bitcoin_github/share/pixmaps/*
+cp $pn/src/deis/share/icons/pixmaps/* $hp/bitcoin_github/share/pixmaps/*
+
+    for file in $(find $hp/bitcoin_github -type f) ; do
+        gsed -i "s/Bitcoin Core/Bitcoin Deis/g" $file
+    done
+
+#so qt is compile...
+export gui=yes 
 fi
 
 #clean up variables
@@ -52,7 +75,7 @@ fi
 #after version 28, this breaks. autogen no longer used.
 ./autogen.sh || { enter_continue "Something seems to have gone wrong. Proceed with caution." ; }
 
-while true ; do
+[[ $clientchoice == "deis" ]] || while true ; do
 set_terminal ; echo -e "
 ########################################################################################
 
@@ -72,31 +95,15 @@ $orange
 choose "xpmq" ; read choice
 case $choice in
 q|Q) exit 0 ;; p|P|M|m) back2main ;;
-1) gui=no ; break ;;
-2) gui=yes ; 
+1) export gui=no ; break ;;
+2) export gui=yes ; 
 bitcoin_compile_dependencies "GUI" || return 1
 break ;;
 *) invalid ;;
 esac
 done
 
-if [[ $deis == "true" ]] ; then
-#res/icons
-cp $pn/src/deis/icons/deis.png $hp/bitcoin_github/src/qt/res/icons/bitcoin.png
-cp $pn/src/deis/icons/deis.ico $hp/bitcoin_github/src/qt/res/icons/bitcoin.ico
-#svg
-cp $pn/src/deis/deis.svg $hp/bitcoin_github/src/qt/res/src/bitcoin.svg
-#doc
-cp $pn/src/deis/share/icons/pixmaps/bitcoin64.png $hp/bitcoin_github/doc/bitcoin_logo_doxygen.png
-#share/pixmaps
-rm $hp/bitcoin_github/share/pixmaps/*
-cp $pn/src/deis/share/icons/pixmaps/* $hp/bitcoin_github/share/pixmaps/*
 
-    for file in $(find $hp/bitcoin_github -type f) ; do
-        gsed -i "s/Bitcoin Core/Bitcoin Deis/g" $file
-    done
-
-fi
 
 while true ; do
 clear ; echo -e "

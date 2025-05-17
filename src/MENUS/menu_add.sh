@@ -11,7 +11,7 @@ bitcoin_new="#                                                                  
 menuaddnewbitcoin="false"
 else
 bitcoin_new="#                                                                                      #
-#$green                      b)           Bitcoin Core/Knots                            $orange     #
+#$green                      b)           Bitcoin Deis/Knots/Core                       $orange     #
 #                                                                                      #
 #$green                      bs)          Import own Bitcoin Core/Knots binaries        $orange     #
 #                                                                                      #"
