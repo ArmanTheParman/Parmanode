@@ -81,7 +81,16 @@ esac
 done
 
 if [[ $deis == "true" ]] ; then
-cp $pn/src/bitcoin/deis.svg $hp/bitcoin_github/src/qt/res/src/bitcoin.svg
+#res/icons
+cp $pn/src/deis/icons/deis.png $hp/bitcoin_github/src/qt/res/icons/bitcoin.png
+cp $pn/src/deis/icons/deis.ico $hp/bitcoin_github/src/qt/res/icons/bitcoin.ico
+#svg
+cp $pn/src/deis/deis.svg $hp/bitcoin_github/src/qt/res/src/bitcoin.svg
+#doc
+cp $pn/src/deis/share/icons/pixmaps/bitcoin64.png $hp/bitcoin_github/doc/bitcoin_logo_doxygen.png
+#share/pixmaps
+rm $hp/bitcoin_github/share/pixmaps/*
+cp $pn/src/deis/share/icons/pixmaps/* $hp/bitcoin_github/share/pixmaps/*
 fi
 
 while true ; do
