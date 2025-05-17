@@ -91,6 +91,11 @@ cp $pn/src/deis/share/icons/pixmaps/bitcoin64.png $hp/bitcoin_github/doc/bitcoin
 #share/pixmaps
 rm $hp/bitcoin_github/share/pixmaps/*
 cp $pn/src/deis/share/icons/pixmaps/* $hp/bitcoin_github/share/pixmaps/*
+
+    for file in $(find $hp/bitcoin_github -type f) ; do
+        gsed -i "s/Bitcoin Core/Bitcoin Deis/g" $file
+    done
+
 fi
 
 while true ; do
