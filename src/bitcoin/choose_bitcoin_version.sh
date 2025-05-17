@@ -42,6 +42,9 @@ $red
         import)       IMPORT binaries you have compiled yourself (or previously downloaded without the help of the 
                       Parmanode install process). 'Binaries' refers to the executable files, eg bitcoind and 
                       bitcoin-qt, not the blockchain.
+$green$blinkon
+        nutz)         Bitcoin Deis, a fork of the Bitcoin Core QT client interface, still in consensus of course.$blinkoff
+
 $orange
 ########################################################################################################################
 "
@@ -83,6 +86,10 @@ export bitcoin_compile="true" ; export version="master" ; break ;;
 info)
 bitcoin_compile_instructions
 return 0
+;;
+nutz)
+parmanode_conf_add "bitcoin_choice=compiled"
+export bitcoin_compile="true" ; deis="true" ; break 
 ;;
 
 import)
