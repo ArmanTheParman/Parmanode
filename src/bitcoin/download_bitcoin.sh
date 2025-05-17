@@ -9,12 +9,13 @@ cd $HOME/parmanode/bitcoin
 if [[ $btcpayinstallsbitcoin != "true" ]] ; then
 
 if [[ $bitcoin_choice == "knots" ]] ; then printversion=$knotsversion ; else printversion=$version; fi
+if [[ $clientchoice == "deis" ]] ; then printversion="Deis v${deisversion}" ; fi
 set_terminal
 echo -e "
 ########################################################################################
 
    $cyan 
-    The current version of Bitcoin that will be installed is$orange $version 
+    The current version of Bitcoin that will be installed is$orange $printversion 
 $orange
     Parmanode will verify by hashing the file for you (and gpg verification), but 
     you may wish to learn how to do this yourself.

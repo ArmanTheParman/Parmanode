@@ -10,6 +10,7 @@ export bitcoin_compile="false"
 #Check download file, verify, and printouts, are correct when changing...
 ########################################################################################
 export knotsversion=28.1 
+export deisversion=28.1
 export knotsdate=20250305 
 export knotsmajor=28.x
 export knotsextension="tar.gz"
