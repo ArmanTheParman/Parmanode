@@ -47,20 +47,22 @@ git clone https://github.com/armantheparman/deis bitcoin_github || { announce "S
 
 cd $hp/bitcoin_github || { announce "Unable to change to bitcoin_github directory. Aborting." ; return 1 ; }
 
-#res/icons
-cp $pn/src/deis/icons/deis.png $hp/bitcoin_github/src/qt/res/icons/bitcoin.png
-cp $pn/src/deis/icons/deis.ico $hp/bitcoin_github/src/qt/res/icons/bitcoin.ico
-#svg
-cp $pn/src/deis/deis.svg $hp/bitcoin_github/src/qt/res/src/bitcoin.svg
-#doc
-cp $pn/src/deis/share/icons/pixmaps/bitcoin64.png $hp/bitcoin_github/doc/bitcoin_logo_doxygen.png
-#share/pixmaps
-rm $hp/bitcoin_github/share/pixmaps/*
-cp $pn/src/deis/share/icons/pixmaps/* $hp/bitcoin_github/share/pixmaps/*
 
-    for file in $(find $hp/bitcoin_github -type f) ; do
-        gsed -i "s/Bitcoin Core/Bitcoin Deis/g" $file
-    done
+### these changes are not part of Bitcoin Deis repo, but kept here for historical reasons.
+# #res/icons
+# cp $pn/src/deis/icons/deis.png $hp/bitcoin_github/src/qt/res/icons/bitcoin.png
+# cp $pn/src/deis/icons/deis.ico $hp/bitcoin_github/src/qt/res/icons/bitcoin.ico
+# #svg
+# cp $pn/src/deis/deis.svg $hp/bitcoin_github/src/qt/res/src/bitcoin.svg
+# #doc
+# cp $pn/src/deis/share/icons/pixmaps/deis64.png $hp/bitcoin_github/doc/bitcoin_logo_doxygen.png
+# #share/pixmaps
+# rm $hp/bitcoin_github/share/pixmaps/*
+# cp $pn/src/deis/share/pixmaps/* $hp/bitcoin_github/share/pixmaps/*
+
+#     for file in $(find $hp/bitcoin_github -type f) ; do
+#         gsed -i "s/Bitcoin Core/Bitcoin Deis/g" $file
+#     done
 
 #so qt is compile...
 export gui=yes 
