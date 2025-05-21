@@ -1,6 +1,5 @@
 Version 3.59.0
      -Bitcoin Deis
-     -Sparrow 2.2.0
 Version 3.58.4
      -BTCPay 2.1.1 with NBXplorer v2.5.26
      -Update UDEV rules for Jade

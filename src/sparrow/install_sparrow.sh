@@ -5,7 +5,7 @@
 
 function install_sparrow {
 
-export sparrow_version="2.2.0"
+export sparrow_version="2.1.3"
 
 if [[ -e $HOME/.sparrow ]] ; then
 sned_sats
