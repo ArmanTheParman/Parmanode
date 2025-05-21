@@ -12,6 +12,7 @@ while true ; do
                                 ;;
     esac
 done
+clear
 
 #clean up previous downloads if any
 sudo rm -rf $hp/"*parrow-*" >$dn
