@@ -4,7 +4,7 @@ menu_add_source
 if [[ -e $hp/parman_books ]] ; then UPDATE="${red}UPDATE$orange " ; endline="                  #" ; else unset UPDATE ; endline="                         #"; fi
 
 if ! grep -q "parmaview-end" $ic ; then 
-parmaviewmenu="\n#$cyan              pv)$orange      ParmaView (web interfact, coming soon)                         #
+parmaviewmenu="\n#$cyan              pv)$orange      ParmaView (web interface, coming soon)                         #
 #                                                                                      #"
 unset pvremove
 elif grep -q "parmaview-end" $ic ; then 
