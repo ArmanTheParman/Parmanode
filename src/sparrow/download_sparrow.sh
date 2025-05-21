@@ -1,7 +1,6 @@
 function download_sparrow {
 cd $HOME/parmanode
 while true ; do 
-    export sparrow_version="2.1.3"
     announce "Installing Sparrow Version $sparrow_version. If you want a different
     version, try typing the value in. Othewise just hit <enter> for the default."
     jump || $enter_cont
