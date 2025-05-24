@@ -72,8 +72,14 @@ if [[ $OS == "Linux" ]] ; then
         # calls this function earlier is discarded). 
         remove_parmanode_fstab
         
+        # Remove partition number (order of these two lines matters)
+            disk=$(echo $disk | sed 's/p[0-9]$//') #remove the partition number for nvme format
+            disk=$(echo $disk | sed 's/[0-9]$//') #remove the partition number for ssd format
+            debug "disk is now $disk"
+        fi
+
         # Formats the drive and labels it "parmanode" - uses standard linux type, ext4
-        sudo mkfs.ext4 -F -L "parmanode" $disk || enter_continue
+        { sudo mkfs.ext4 -F -L "parmanode" $disk sww
         sudo tune2fs -m 1 $disk >$dn 2>&1
         sudo blkid >$dn ; sleep 1 #need to refresh
 
