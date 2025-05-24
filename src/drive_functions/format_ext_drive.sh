@@ -78,7 +78,7 @@ if [[ $OS == "Linux" ]] ; then
             debug "disk is now $disk"
 
         # Formats the drive and labels it "parmanode" - uses standard linux type, ext4
-        { sudo mkfs.ext4 -F -L "parmanode" $disk sww
+        sudo mkfs.ext4 -F -L "parmanode" $disk || sww
         sudo tune2fs -m 1 $disk >$dn 2>&1
         sudo blkid >$dn ; sleep 1 #need to refresh
 
