@@ -75,7 +75,7 @@ if [[ $OS == "Linux" ]] ; then
         # Remove partition number (order of these two lines matters)
             disk=$(echo $disk | sed 's/p[0-9]$//') #remove the partition number for nvme format
             disk=$(echo $disk | sed 's/[0-9]$//') #remove the partition number for ssd format
-            debug "disk is now $disk"
+            debug "disk is now $disk, after removing partition number"
 
         # Formats the drive and labels it "parmanode" - uses standard linux type, ext4
         sudo mkfs.ext4 -F -L "parmanode" $disk || sww
