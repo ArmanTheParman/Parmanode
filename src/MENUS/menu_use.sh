@@ -121,7 +121,7 @@ if grep -q "nostrrelay-end" $ic ; then nostrrelayapp=1
 if grep -q "X11-end" $ic ; then X11app=1
                        echo -e "                        $cyan  x11)  $orange      X11 Forwarding " ; count=$((count +1)) ; fi
 if grep -q "nginx-end" $ic ; then nginxapp=1
-                       echo -e "                        $cyan  ng)  $orange      Nginx " ; count=$((count +1)) ; fi
+                       echo -e "                        $cyan  ng)  $orange       Nginx " ; count=$((count +1)) ; fi
 if grep -q "vaultwarden-end" $ic ; then vaultwardenapp=1
                        echo -e "                        $cyan  vw)  $orange       VaultWarden" ; count=$((count +1)) ; fi
 ### Education
