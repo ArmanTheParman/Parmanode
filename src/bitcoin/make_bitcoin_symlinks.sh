@@ -8,12 +8,21 @@ if [[ $btcpayinstallsbitcoin == "true" ]] ; then return 0 ; fi
 if [[ $OS == "Linux" && $drive == "internal" ]] ; then
     return 0 
     #no symlink needed
-    fi
+fi
 
 if [[ $OS == "Linux" && $drive == "external" ]] ; then
+    
+    #check if non-symlink bitcoin dir exists in target location
+    if test -e $HOME/.bitcoin && ! test -L $HOME/.bittcoin ; then
+        btemp="$HOME/.bitcoin_$(shasum -a 256 <<<$(date) | cut -c1-8)" 
+        mv $HOME/.bitcoin $btemp >$dn 2>&1
+        announce "An bitcoin directory already exists in the internal file system. It has been
+        -r    moved to $btemp"
+    fi 
+
     cd $HOME && ln -s /media/$(whoami)/parmanode/.bitcoin/ .bitcoin  
     break  #symlink can be made without errors even if target doesn't exist yet
-    fi
+fi
 
 if [[ $OS == "Mac" && $drive == "internal" ]] ; then
     cd $HOME/Library/"Application Support"/ ; rm -rf  Bitcoin

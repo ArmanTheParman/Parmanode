@@ -1,4 +1,3 @@
-
 function make_bitcoin_directories {
 
 if [[ $skip_make_bitcoin_directories == "true" ]] ; then return 0 ; fi
