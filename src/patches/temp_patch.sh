@@ -60,11 +60,6 @@ fi
 [[ -e $hp/mempool/docker/docker-compose.yml ]] && 
     gsed -i 's/on-failure/unless-stopped/g' $hp/mempool/docker/docker-compose.yml >/dev/null 2>&1
         
-
-[[ -e $bc ]] && if grep -q "onion" $bc && ! grep -q "rpcbind=127.0.0.1" $bc ; then
-    echo "rpcbind=127.0.0.1" | tee -a $bc >$dn 2>&1
-fi
-
 if [[ $OS == Linux ]] && [[ -e /etc/systemd/system/socat.service  ]] ; then
     if grep -q '}' /etc/systemd/system/socat.service ; then
         sudo gsed -i '/}/d' /etc/systemd/system/socat.service >/dev/null 2>&1
