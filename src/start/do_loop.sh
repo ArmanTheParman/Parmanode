@@ -67,7 +67,8 @@ else
     [[ $premium == 1 ]] || autoupdate
 fi
 if [[ $needs_restart == "true" ]] ; then
-announce "An update to Parmanode was made to the latest version. Please restart Parmanode
+clear
+printf "An update to Parmanode was made to the latest version. Please restart Parmanode
     by typing 'rp' and <enter> at the prompt."
 exit
 fi

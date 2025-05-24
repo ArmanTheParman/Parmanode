@@ -48,5 +48,9 @@ printf "
     To run Parmanode, close this terminal, then\033[5m\033[31m OPEN A NEW TERMINAL WINDOW\033[0m, and
     type 'rp' (from any directory) followed by <enter>.
 
+    'rp' is a shortcut to the run_parmanode.sh file:
+
+        $HOME/parman_programs/parmanode/run_parmanode.sh
+
 ########################################################################################
 "
