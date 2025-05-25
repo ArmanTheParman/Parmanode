@@ -20,10 +20,8 @@ $(cat ~/.ssh/extra_keys/parmascale-key.pub)$blue\n" ; return 1 ; }
     if [[ ! -d $pp/parmascale ]] ; then
     git clone git@github-parmascale:armantheparman/parmascale.git $pp/parmascale || { enter_continue "\n$blue    Something went wrong. Contact Parman.\n
     \r    Please contact Parman to enable ParmaScale on your machine.\n$orange" ; return 1 ; }
-    success_blue "ParmaScale has been installed. Go to the USE menu to use."
     else
     cd $pp/parmascale && please_wait && git pull >$dn 2>&1
-    announce_blue "ParmaScale updated. Go to the USU menu to use."
     fi
 
 source_premium
