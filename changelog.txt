@@ -1,3 +1,5 @@
+Version 3.60.1
+     -Bitcoin install will check Tor preference first
 Version 3.60.0
      -Nym VPN
 Version 3.59.0
