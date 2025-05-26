@@ -44,7 +44,7 @@ while [[ -z $ONION_ADDR ]] ; do
 [[ -z $install_bitcoin_variable ]] && get_onion_address_variable "bitcoin"
 sleep 1.5
 count=$((1 + count))
-if [[ $count -gt 4 ]] ; then announce "Couldn't get onion address. Aborting." ; return 1 ; fi
+if [[ $count -gt 4 ]] ; then log "bitcoin" "Couldn't get onion address. Aborting." ; return 1 ; fi
 done
 ########################################################################################
 
