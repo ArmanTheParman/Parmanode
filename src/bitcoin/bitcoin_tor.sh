@@ -29,11 +29,14 @@ fi
 #Need the Onion address
 #Bitcoind stopping - start it up inside this function later
 
+if [[ -z $install_bitcoin_variable ]] ; then
     restart_tor
-
     stop_bitcoin
+fi
     add_rpcbind #modifications might inadvertently delete rpcbind
+if [[ -z $install_bitcoin_variable ]] ; then
     start_bitcoin
+fi
 
 unset $ONION_ADDR
 while [[ -z $ONION_ADDR ]] ; do
@@ -83,11 +86,11 @@ if [[ $2 == "onlyout" ]] ; then
     fi
 
 restart_tor
+if [[ -z $install_bitcoin_variable ]] ; then
 stop_bitcoin
 start_bitcoin
+fi
 
-set_terminal ; 
-success "Changes have been made to torrc file & bitcoin.conf file,
-    and Tor has been restarted."
+set_terminal
 }
 

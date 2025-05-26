@@ -5,7 +5,6 @@ function install_bitcoin {
 
 #set compile to false, and make true later depending on choices
 export bitcoin_compile="false"
-
 ########################################################################################
 #Check download file, verify, and printouts, are correct when changing...
 ########################################################################################
@@ -108,7 +107,7 @@ fi
 
 #setup bitcoin.conf
 make_bitcoin_conf || return 1
-debug "after make bitcoin conf"
+menu_bitcoiin_tor || return 1
 #make a script that service file will use
 if [[ $OS == "Linux" && $btcpayinstallsbitcoin != "true" && $btcdockerchoice != "yes" ]] ; then
     make_mount_check_script 
@@ -228,6 +227,7 @@ $orange
   
 enter_continue
 fi
+
 unset importdrive install_bitcoin_variable raid enter_cont
 set_terminal
 return 0

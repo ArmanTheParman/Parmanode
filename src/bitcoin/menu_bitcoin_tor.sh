@@ -8,7 +8,7 @@ if ! which tor >$dn 2>&1 ; then set_terminal
 enter_continue "
     You need to install Tor first. Aborting.
     "
-    return 0
+    return 1
 fi
 
 while true ; do
@@ -84,7 +84,7 @@ m|M) back2main ;; Q|q|quit|QUIT|Quit) exit 0 ;; p|P) return 1 ;;
     break ;;
 
 "3")
-    bitcoin_tor "toronly" "onlyout" 
+    bitcoin_tor "toronly" "onlyout" #both $1 and $2 needed
     check_bitcoin_tor_status
     break ;;
 
