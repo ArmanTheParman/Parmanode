@@ -108,7 +108,7 @@ jump $choice || { invalid ; continue ; } ; set_terminal
 
 case $choice in
 q|Q) exit 0 ;; p|P) return 1 ;; m|M) back2main ;;
-1)
+1|"")
 parmanode_conf_add "bitcoin_choice=knots"
 export bitcoin_compile="false" 
 export knotsbitcoin="true" ; version="$knotsmajor-knots" ; return 0 ;;
