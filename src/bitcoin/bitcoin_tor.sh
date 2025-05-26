@@ -41,11 +41,10 @@ fi
 unset $ONION_ADDR
 please_wait
 while [[ -z $ONION_ADDR ]] ; do
-if [[ $count -gt 0 ]] ; then echo "will try up to 12 times while it thinks" ; fi
 [[ -z $install_bitcoin_variable ]] && get_onion_address_variable "bitcoin"
 sleep 1.5
 count=$((1 + count))
-if [[ $count -gt 12 ]] ; then announce "Couldn't get onion address. Aborting." ; return 1 ; fi
+if [[ $count -gt 4 ]] ; then announce "Couldn't get onion address. Aborting." ; return 1 ; fi
 done
 ########################################################################################
 
