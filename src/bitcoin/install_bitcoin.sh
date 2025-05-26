@@ -97,8 +97,6 @@ make_bitcoin_directories || return 1
     # installed.conf entry gets made when parmanode/bitcoin directory gets made.
     # symlinks created (before Bitcoin installed)
 
-debug "after make_bitcoin_directories"
-
 #compile bitcoin if chosen
 compile_bitcoin || return 1
 
@@ -108,27 +106,22 @@ if [[ $bitcoin_compile == "false" ]] ; then
 download_bitcoin || return 1
 fi
 
-debug "after download_bitcoin"
-
 #setup bitcoin.conf
 make_bitcoin_conf || return 1
 debug "after make bitcoin conf"
 #make a script that service file will use
 if [[ $OS == "Linux" && $btcpayinstallsbitcoin != "true" && $btcdockerchoice != "yes" ]] ; then
     make_mount_check_script 
-    debug "make_mount_check_script"
 fi
 
 #make service file - this allows automatic start up after a reboot
 if [[ $OS == "Linux" && $btcpayinstallsbitcoin != "true" ]] ; then 
     make_bitcoind_service_file
-    debug "make_bitcoind_service_file"
 fi
 
 if [[ $btcpayinstallsbitcoin != "true" ]] ; then
 sudo chown -R $USER: $HOME/.bitcoin/ 
 fi
-debug "pause"
 
 if [[ $btcpayinstallsbitcoin != "true"  && $btcdockerchoice != "yes" ]] ; then
 #setting password. Managing behaviour of called function with variable and arguments.
@@ -141,7 +134,6 @@ export dontstartbitcoin="true" && set_rpc_authentication "s" "install" && unset 
 ;;
 esac
 
-debug "before start_bitcoin"
 please_wait && start_bitcoin
 fi #end not btcpainstallsbitcoin
 
@@ -154,9 +146,7 @@ fi
 
 if [[ $btcdockerchoice == "yes" ]] ; then
 unset btcdockerchoice
-debug "before install_btcpay_mac_child"
 install_btcpay_mac_child || return 1
-debug "after install_btcpay_mac_child"
 store_BTC_container_IP
 success "Bitcoin and BTCPay Server has been installed in a Docker Container."
 #end bitcoin then btcpay install here

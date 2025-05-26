@@ -177,10 +177,6 @@ if grep -q "torssh-end" $HOME/.parmanode/installed.conf ; then torsshmenu=1
 echo -e "#$cyan                            \033[27G tssh)$orange             Tor SSH                                \033[88G#"
 elif grep -q "torssh-start" $HOME/.parmanode/installed.conf ; then torsshmenu=1
 echo -e "#$cyan                            \033[27G tssh)$orange             Tor SSH $red$blinkon(partial)$blinkoff$orange                       \033[88G#" ; fi
-if grep -q "electrs-end" $HOME/.parmanode/installed.conf ; then electrsmenu=1
-echo -e "#$cyan                            \033[27G ers)$orange              electrs                                \033[88G#"
-elif grep -q "electrs-start" $HOME/.parmanode/installed.conf ; then electrsmenu=1
-echo -e "#$cyan                            \033[27G ers)$orange              electrs $red$blinkon(partial)$blinkoff$orange                       \033[88G#" ; fi
 if grep -q "public_pool-end" $HOME/.parmanode/installed.conf ; then public_poolmenu=1
 echo -e "#$cyan                            \033[27G pool)$orange             Public Pool                            \033[88G#"
 elif grep -q "public_pool-start" $HOME/.parmanode/installed.conf ; then public_poolmenu=1
