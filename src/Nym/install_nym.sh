@@ -1,7 +1,7 @@
 function install_nym {
-announce "Not available just yet" ; return 1
 
 if [[ $OS == "Mac" ]] ; then no_mac ; return 1 ; fi
+
 if echo $chip | grep -q 'arm' ; then sww "Not available for ARM chips" ; return 1 ; fi 
 
 unset swwflag

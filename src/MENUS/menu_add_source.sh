@@ -669,6 +669,6 @@ elif grep -q "X11-start" $HOME/.parmanode/installed.conf ; then
 nym_p="#                                      Nym VPN                                         #"
 else
    #not installed
-nym_n="#$cyan                             nym)    $orange     NymVPN                                      #"
+nym_n="#$cyan                             nym)    $orange     Nym VPN                                     #"
 fi
 }

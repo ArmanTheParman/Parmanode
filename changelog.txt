@@ -1,3 +1,5 @@
+Version 3.60.0
+     -Nym VPN
 Version 3.59.0
      -Bitcoin Deis
 Version 3.58.4
