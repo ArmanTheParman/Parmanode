@@ -14,16 +14,6 @@ return 0
 }
 
 
-function check_chip {
-#Expected resulting options
-    # x86_64, arm64, aarch64, armv6l, armv7l
-
-    export chip="$(uname -m)" 
-
-    parmanode_conf_add "chip=$chip"
-
-}
-
 function check_architecture {
 if [[ $(uname) == Linux ]] ; then
 

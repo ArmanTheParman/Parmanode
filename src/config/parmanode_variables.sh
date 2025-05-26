@@ -24,15 +24,19 @@ if [[ $1 == skipverify || $2 == skipverify || $3 == skipverify ]] ; then export 
 #save position of working directory. 
 export original_dir=$(pwd) >/dev/null 2>&1
 
+export chip="$(uname -m)" 
+
 #Using $() can run some code inside and the output is then a string.
 #Here, $(uname) returns either "Linux" or "Darwin" for Macs.
 if [[ $(uname) == "Linux" ]] ; then
+    export OS="Linux" 
     export parmanode_drive="/media/$USER/parmanode"
     export bashrc="$HOME/.bashrc"
     export macprefix=""
     export torrc="/etc/tor/torrc"
     export varlibtor="/var/lib/tor"
 elif [[ $(uname) == "Darwin" ]] ; then
+    export OS="Mac"
     export macprefix="$(brew --prefix 2>/dev/null)" ; if [[ -z $macprefix ]] ; then export macprefix="/usr/local" ; fi
     export parmanode_drive="/Volumes/parmanode"
     export bashrc="$HOME/.zshrc"
@@ -88,11 +92,6 @@ elif [[ -d "$HOME/tmp" ]] ; then
 else
    mkdir -p $HOME/tmp >/dev/null 2>&1
    export tmp="$HOME/tmp" 
-fi
-
-#if parmanode.conf gets corrupted, this makes sure the OS variable exists
-if ! grep -q "OS=" $pc >/dev/null 2>&1 ; then
-which_os
 fi
 
 #Premium Configs
