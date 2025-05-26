@@ -1,2 +1,2 @@
-I attest that block 826262 is valid and this can be used in bitcoin.conf if anyone trusts me:
-assumevalid=00000000000000000001da0b9f8bf35ea3f43ce535dd0f92427a204f68d41af5
+I attest that block 888888 is valid and this can be used in bitcoin.conf if anyone trusts me:
+assumevalid=00000000000000000001347938c263a968987bf444eb9596ab0597f721e4e9e8

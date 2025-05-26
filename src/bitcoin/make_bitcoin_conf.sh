@@ -26,6 +26,7 @@ rpcallowip=192.168.0.0/16
 rpcallowip=172.16.0.0/12
 
 rpcservertimeout=120
+assumevalid=00000000000000000001347938c263a968987bf444eb9596ab0597f721e4e9e8 #hash for block 888,888
 EOF
 
 if [[ -n $IP ]] && [[ $(echo "$IP" | wc -l | tr -d ' ' ) == 1 ]] && echo $IP | grep -qE '^[0-9]' ; then 
