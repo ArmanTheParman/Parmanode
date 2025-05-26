@@ -31,7 +31,7 @@ $cyan
 
 $orange                              s)         I enjoy shitcoining
 
-$green                              n)         No pruning
+$green                              n)         No pruning (default)
 
 $orange
 ########################################################################################
@@ -58,7 +58,7 @@ set_terminal
             continue                # continue results in the loop starting over.
             ;;
         
-        n|N|No|NO|no)
+        n|N|No|NO|no|"")
             export prune_value="0"
             break                   #break goes out of loop, and on to writing prune value to parmanode.conf
             ;;
