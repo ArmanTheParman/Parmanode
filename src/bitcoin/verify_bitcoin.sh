@@ -33,7 +33,7 @@ $(ls -lah $hp/bitcoin/ | gsed -n '4,$p' | awk '{print "    "$9" .........."$5}')
 $cyan        $hp/bitcoin $orange
       \r    for you to manually check." ; case $enter_cont in yolo) true ;; *) return 1 ;; esac ; fi
 else
-    if ! shasum -a 256 --check SHA256SUMS >$dn | grep -q ": OK" ; then
+    if ! shasum -a 256 --check SHA256SUMS 2>$dn | grep -q ": OK" ; then
     sww "${orange}Checksum failed. Aborting. Sometimes this happens for unexplainable reasons. 
     Try uninstalling the partial Bitcoin installation and try again. (Error code VBSS256)
     
