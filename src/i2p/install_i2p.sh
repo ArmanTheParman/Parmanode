@@ -1,5 +1,9 @@
 function install_i2p {
 if [[ $OS == "Mac" ]] ; then no_mac ; return 1 ; fi
+if [[ $computer_type == "Pi" ]] ; then 
+announce "Not yet available for Raspberry Pi; Please give me some time to work on it."
+return 1 ;
+fi
 
 while true ; do
 set_terminal ; echo -e "
