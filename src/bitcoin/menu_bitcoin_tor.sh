@@ -25,13 +25,16 @@ elif [[ $bitcoin_tor_status == tc ]] ; then
     local status_print="Clearnet & Tor (option 1)"
 
 elif [[ $bitcoin_tor_status == tonlyout ]] ; then
-    local status_print="Strict Tor, only out (option 3)"
+    local status_print="Strict Tor, Stealth (option 3)"
 
 elif [[ $bitcoin_tor_status == tori2p ]] ; then
     local status_print="Strict Tor and I2P (option 5)"
 
 elif [[ $bitcoin_tor_status == i2p ]] ; then
     local status_print="Strict I2P only (option 6)"
+
+elif [[ $bitcoin_tor_status == i2ponlyout ]] ; then
+    local status_print="Strict I2P Stealth (option 7)"
 fi
 
 
@@ -73,6 +76,8 @@ $cyan
     5)$orange    I2P and Tor (no clearnet)
 $cyan
     6)$orange    I2P only (no clearnet, no Tor)
+$cyan
+    7)$orange    Stealth I2P, only OUTWARD connections
 
 
 $bright_magenta    Current Status: $status_print$orange
@@ -117,10 +122,22 @@ m|M) back2main ;; Q|q|quit|QUIT|Quit) exit 0 ;; p|P) return 1 ;;
     bitcoin_tor_remove
     parmanode_conf_remove "bitcoin_tor_status"
     check_bitcoin_tor_status
-    bitcoin_i2p "only"
+    bitcoin_i2p 
     parmanode_conf_remove "bitcoin_tor_status"
     parmanode_conf_add "bitcoin_tor_status=i2p"
     continue ;;
+"7") 
+    bitcoin_tor_remove
+    parmanode_conf_remove "bitcoin_tor_status"
+    check_bitcoin_tor_status
+    bitcoin_i2p 
+    sudo gsed -i "/discover=/d" $bc
+    echo "discover=0" | sudo tee -a $bc >$dn 2>&1
+    parmanode_conf_remove "bitcoin_tor_status"
+    parmanode_conf_add "bitcoin_tor_status=i2ponlyout"
+    continue ;;
+
+
 "")
 continue ;;
 *)
