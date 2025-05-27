@@ -86,33 +86,33 @@ m|M) back2main ;; Q|q|quit|QUIT|Quit) exit 0 ;; p|P) return 1 ;;
     bitcoin_tor "torandclearnet" 
     check_bitcoin_tor_status #sets status in parmanode.conf
     remove_bitcoin_i2p
-    break ;;
+    continue ;;
 
 "2")
     bitcoin_tor "toronly" 
     check_bitcoin_tor_status
     remove_bitcoin_i2p
-    break ;;
+    continue ;;
 
 "3")
     bitcoin_tor "toronly" "onlyout" #both $1 and $2 needed
     check_bitcoin_tor_status
     remove_bitcoin_i2p
-    break ;;
+    continue ;;
 
 "4")
     bitcoin_tor_remove 
     parmanode_conf_remove "bitcoin_tor_status"
     check_bitcoin_tor_status    
     remove_bitcoin_i2p
-    break ;;
+    continue ;;
 "5")
     bitcoin_tor "toronly"
     check_bitcoin_tor_status
     bitcoin_i2p
     parmanode_conf_remove "bitcoin_tor_status"
     parmanode_conf_add "bitcoin_tor_status=tori2p"
-    break ;;
+    continue ;;
 "6") 
     bitcoin_tor_remove
     parmanode_conf_remove "bitcoin_tor_status"
@@ -120,7 +120,7 @@ m|M) back2main ;; Q|q|quit|QUIT|Quit) exit 0 ;; p|P) return 1 ;;
     bitcoin_i2p "only"
     parmanode_conf_remove "bitcoin_tor_status"
     parmanode_conf_add "bitcoin_tor_status=i2p"
-    break ;;
+    continue ;;
 "")
 continue ;;
 *)
