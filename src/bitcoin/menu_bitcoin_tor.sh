@@ -119,9 +119,14 @@ done
 
 
 function bitcoin_i2p {
-
-
+    echo "onlynet=i2p" | sudo tee -a $bc >$dn 2>&1
     echo "i2psam=127.0.0.1:7656" | sudo tee -a $bc >$dn 2>&1
     echo "i2pacceptincoming=1" | sudo tee -a $bc >$dn 2>&1
     echo "proxy=127.0.0.1:9050" | sudo tee -a $bc >$dn 2>&1 #always need it, settings don't need it, so always remove when removing i2p
+}
+
+function remove_bitcoin_i2p {
+    sudo gsed -i "/i2psam=/d" $bc
+    sudo gsed -i "/i2pacceptincoming=/d" $bc
+    sudo gsed -i "/proxy=127/d" $bc
 }
