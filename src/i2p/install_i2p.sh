@@ -67,7 +67,7 @@ sudo cp i2p-archive-keyring.gpg /usr/share/keyrings
 sudo apt-get update
 sudo apt-get install i2p i2p-keyring
 installed_config_add "i2p-end"
-installed_config_add "i2p-new"
+installed_config_add "i2p-new" #flag to tell  users of the old version to reinstall (if end exists and new doesn't)
 success "I2P installed"
 start_i2p
 }
