@@ -15,7 +15,7 @@ sudo gsed -i  "/onlynet/d"                  $bc
 
 add_rpcbind #adds 0.0.0.0
 
-rm $HOME/.bitcoin/onion* >$dn
+rm $HOME/.bitcoin/onion* >$dn 2>&1
 start_bitcoin
 set_terminal
 return 0
