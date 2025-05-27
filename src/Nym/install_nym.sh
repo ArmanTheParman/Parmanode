@@ -2,7 +2,7 @@ function install_nym {
 
 if [[ $OS == "Mac" ]] ; then no_mac ; return 1 ; fi
 
-if echo $chip | grep -qE 'arm|aarch' ; then ; export forpi="true" ; fi 
+if echo $chip | grep -qE 'arm|aarch' ; then export forpi="true" ; fi 
 
 unset swwflag
 installed_config_add "nym-start"
