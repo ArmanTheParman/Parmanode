@@ -22,10 +22,10 @@ sudo apt-get install -y default-jre
 mkdir -p $hp/i2p ; cd $hp/i2p
 curl -LO https://geti2p.net/en/download/2.8.2/clearnet/https/files.i2p-projekt.de/i2pinstall_2.8.2.jar
 java -jar i2pinstall_2.8.2.jar
-./i2prouter start
-
+start_i2p
+installed_config_remove "i2p-start"
+installed_config_add "i2p-end"
 success "I2P installed. Access via: http://127.0.0.1:7657"
-
 }
 
 function menu_i2p {
@@ -51,10 +51,10 @@ choose "xpmq" ; read choice
 jump $choice
 case $choice in q|Q) exit  0 ;; m|M) back2main ;; p|P) return 1 ;;
 start)
-        $hp/i2p/i2prouter start
+        start_i2p
 ;;
 stop)
-        $hp/i2p/i2prouter stop
+        stop_i2p
 ;;  
 *)
 invalid
@@ -65,4 +65,30 @@ continue
 esac
 done
 
+}
+
+function start_i2p { $hp/i2p/i2prouter start ; }
+function stop_i2p  { $hp/i2p/i2prouter stop  ; }
+
+function uninstall_i2p {
+while true ; do
+set_terminal ; echo -e "
+########################################################################################
+$cyan
+                                 Uninstall I2P 
+$orange
+    Are you sure? (y) (n)
+
+########################################################################################
+"
+choose "xpmq" ; read choice
+jump $choice || { invalid ; continue ; } ; set_terminal
+case $choice in
+q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;; y) break ;; n) return 1 ;; *) invalid ;;
+esac
+done
+stop_i2p
+sudo rm -rf $HOME/parmanode/i2p >$dn 2>&1
+installed_config_remove "i2p-"
+success "I2P uninstalled"
 }

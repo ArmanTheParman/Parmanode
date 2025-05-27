@@ -237,6 +237,10 @@ if grep -q "nym-end" $HOME/.parmanode/installed.conf ; then nymmenu=1
 echo -e "#$cyan                            \033[27G nym)$orange              Nym VPN                                \033[88G#"
 elif grep -q "nym-start" $HOME/.parmanode/installed.conf ; then nymmenu=1
 echo -e "#$cyan                            \033[27G nym)$orange              Nym VPN                $red$blinkon(partial)$blinkoff$orange        \033[88G#" ; fi
+if grep -q "i2p-end" $HOME/.parmanode/installed.conf ; then i2pmenu=1
+echo -e "#$cyan                            \033[27G  ii)$orange              I2P                                    \033[88G#"
+elif grep -q "i2p-start" $HOME/.parmanode/installed.conf ; then i2pmenu=1
+echo -e "#$cyan                            \033[27G  ii)$orange              I2P                    $red$blinkon(partial)$blinkoff$orange        \033[88G#" ; fi
 echo -e "#                                                                                      \033[88G#
 ########################################################################################
 "
@@ -618,6 +622,12 @@ fi
 nym)
 if [[ $nymmenu == 1 ]] ; then
 uninstall_nym
+menu_main
+fi
+;;
+ii|i2p)
+if [[ $i2pmenu == 1 ]] ; then
+uninstall_i2p
 menu_main
 fi
 ;;

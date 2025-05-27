@@ -671,4 +671,17 @@ else
    #not installed
 nym_n="#$cyan                             nym)    $orange     Nym VPN                                     #"
 fi
+
+#i2p
+unset i2p_i i2p_p i2p_n
+if grep -q "i2p-end" $HOME/.parmanode/installed.conf ; then 
+  #installed
+i2p_i="#                                      I2P                                             #"
+elif grep -q "X11-start" $HOME/.parmanode/installed.conf ; then 
+   #partially installed
+i2p_p="#                                      I2P                                             #"
+else
+   #not installed
+i2p_n="#$cyan                             ii)    $orange      I2P                                         #"
+fi
 }

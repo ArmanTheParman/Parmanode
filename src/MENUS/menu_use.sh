@@ -142,6 +142,8 @@ if grep -q "torssh-end" $ic ; then torsshapp=1
                        echo -e "                        $cyan  tssh)$orange       Tor SSH " ; count=$((count +1)) ; fi
 if grep -q "nym-end" $ic ; then nymapp=1
                        echo -e "                        $cyan  nym)$orange        Nym VPN " ; count=$((count +1)) ; fi
+if grep -q "i2p-end" $ic ; then i2papp=1
+                       echo -e "                        $cyan   ii)$orange        I2P "     ; count=$((count +1)) ; fi
 echo -e "                            
 #######################################################################################
 "
@@ -395,6 +397,13 @@ tssh)
 nym)
    if [[ $nymapp == 1 ]] ; then
    menu_nym
+    if [[ -n $1 ]] ; then clear ; return 0 ; fi
+   else invalid
+   fi
+   ;;
+ii|i2p)
+   if [[ $i2papp == 1 ]] ; then
+   menu_i2p
     if [[ -n $1 ]] ; then clear ; return 0 ; fi
    else invalid
    fi
