@@ -32,42 +32,12 @@ installed_config_remove "i2p-start"
 curl -LO https://parmanode.com/i2pinstall_2.8.2.jar
 shasum -a 256 ./i2pinstall_2.8.2.jar | grep -q "cd606827a9bca363bd6b3c89664772ec211d276cce3148f207643cc5e5949b8a" ||  { sww "shasum failed." ; return 1 ; }
 java -jar i2pinstall_2.8.2.jar
-start_i2p
+make_i2p_service
+
 installed_config_add "i2p-end"
 success "I2P installed"
 }
 
-function start_i2p { $HOME/i2p/i2prouter start ; }
-function stop_i2p  { $HOME/i2p/i2prouter stop  ; }
-
-function uninstall_i2p {
-while true ; do
-set_terminal ; echo -e "
-########################################################################################
-$cyan
-                                 Uninstall I2P 
-$orange
-    Are you sure? (y) (n)
-
-########################################################################################
-"
-choose "xpmq" ; read choice
-jump $choice || { invalid ; continue ; } ; set_terminal
-case $choice in
-q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;; y) break ;; n) return 1 ;; *) invalid ;;
-esac
-done
-stop_i2p
-
-if [[ $computer_type == "Pi" ]] ; then
-sudo apt-get remove --purge -y i2p i2p-keyring
-else
-sudo rm -rf $HOME/i2p >$dn 2>&1
-fi
-
-installed_config_remove "i2p-"
-success "I2P uninstalled"
-}
 
 function install_i2p_for_Pi {
 
@@ -99,4 +69,36 @@ sudo apt-get install i2p i2p-keyring
 installed_config_add "i2p-end"
 success "I2P installed"
 start_i2p
+}
+
+
+function make_i2p_service {
+
+
+cat <<EOF >$dp/scripts/i2p.sh
+#!/bin/bash
+cd ~/i2p
+./i2prouter start
+exec java -cp "lib/*:lib/i2p.jar" net.i2p.sam.SAMBridge
+EOF
+sudo chmod +x $dp/scripts/i2p_sam.sh
+
+cat <<EOF >/etc/systemd/system/i2p.service
+[Unit]
+Description=I2P Router
+Wants=network.target
+
+[Service]
+WorkingDirectory=$HOME/i2p
+ExecStart=$dp/scripts/i2p_sam.sh
+User=$USER
+Group=$USER
+
+[Install]
+WantedBy=multi-user.target" 
+EOF
+
+sudo systemctl daemon-reload
+sudo systemctl enable --now i2p.service
+
 }

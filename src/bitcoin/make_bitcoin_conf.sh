@@ -7,6 +7,10 @@ if [[ $1 == prune ]] ; then export prune=$2 ; fi #assumes arguments are "prune" 
 #Overrides any existing file named bitcoin.conf
 set_terminal
 
+#onlynet=ipv4 is for clearnet, =i2p and =onion also possilbe. Can have more than one. Omitting onlynet allows all.
+#proxy=127.0.0.1:9050 is need for i2p even though it doesn't use it.
+#listenonion=1 is default, needs to be off to disable tor
+
 cat << EOF > $tmp/bitcoin.conf
 server=1
 txindex=1
@@ -27,6 +31,8 @@ rpcallowip=172.16.0.0/12
 
 rpcservertimeout=120
 assumevalid=00000000000000000001347938c263a968987bf444eb9596ab0597f721e4e9e8 #hash for block 888,888
+
+
 EOF
 
 if [[ -n $IP ]] && [[ $(echo "$IP" | wc -l | tr -d ' ' ) == 1 ]] && echo $IP | grep -qE '^[0-9]' ; then 
