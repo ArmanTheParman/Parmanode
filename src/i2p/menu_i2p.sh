@@ -9,7 +9,7 @@ set_terminal ; echo -e "
 ########################################################################################$cyan
                                    I2P Menu$orange
 ########################################################################################
-$i2prunningmenu
+    $i2prunningmenu
 $cyan
                       start)$orange           Start I2P daemon
 $cyan
