@@ -17,28 +17,32 @@ source $dp/parmanode.conf >$dn 2>&1
 
 if [[ $bitcoin_tor_status == t ]] ; then
     local status_print="Tor enabled (option 2)"
-
+    local showtor="true"
 elif [[ $bitcoin_tor_status == c ]] ; then
     local status_print="Clearnet (option 4)"
-
+    unset  showtor
 elif [[ $bitcoin_tor_status == tc ]] ; then
     local status_print="Clearnet & Tor (option 1)"
+    local showtor="true"
 
 elif [[ $bitcoin_tor_status == tonlyout ]] ; then
     local status_print="Strict Tor, Stealth (option 3)"
+    local showtor="true"
 
 elif [[ $bitcoin_tor_status == tori2p ]] ; then
     local status_print="Strict Tor and I2P (option 5)"
+    local showtor="true"
 
 elif [[ $bitcoin_tor_status == i2p ]] ; then
     local status_print="Strict I2P only (option 6)"
-
+    unset showtor
 elif [[ $bitcoin_tor_status == i2ponlyout ]] ; then
     local status_print="Strict I2P Stealth (option 7)"
+    unset showtor
 fi
 
 
-if sudo cat $macprefix/var/lib/tor/bitcoin-service/hostname >$dn && [[ $bitcoin_tor_status != c ]] && [[ ! $bitcoin_tor_status =~ "= i2p" ]] ; then #space in " i2p" excludes tori2p
+if sudo cat $macprefix/var/lib/tor/bitcoin-service/hostname >$dn && [[ $showtor == "true" ]] ; then 
 get_onion_address_variable bitcoin 
 tortext="
 $bright_blue    Onion adress: $ONION_ADDR
