@@ -126,6 +126,7 @@ function bitcoin_i2p {
 }
 
 function remove_bitcoin_i2p {
+    sudo gsed -i "/onlynet=i2p/d" $bc
     sudo gsed -i "/i2psam=/d" $bc
     sudo gsed -i "/i2pacceptincoming=/d" $bc
     sudo gsed -i "/proxy=127/d" $bc
