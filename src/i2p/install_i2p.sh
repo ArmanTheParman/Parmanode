@@ -67,7 +67,7 @@ sudo cp i2p-archive-keyring.gpg /usr/share/keyrings
 sudo apt-get update
 sudo apt-get install i2p i2p-keyring
 installed_config_add "i2p-end"
-installed_config_add "i2p-new2" #flag to tell  users of the old version to reinstall (if end exists and new doesn't)
+installed_config_add "i2p-new3" #flag to tell  users of the old version to reinstall (if end exists and new doesn't)
 success "I2P installed"
 start_i2p
 }
@@ -82,7 +82,7 @@ cd ~/i2p
 ./i2prouter-nowrapper
 exec java -cp "lib/*:lib/i2p.jar" net.i2p.sam.SAMBridge
 EOF
-sudo chmod +x $dp/scripts/i2p_sam.sh
+sudo chmod +x $dp/scripts/i2p.sh
 
 cat <<EOF | sudo tee /etc/systemd/system/i2p.service
 [Unit]
@@ -96,7 +96,7 @@ User=$USER
 Group=$USER
 
 [Install]
-WantedBy=multi-user.target" 
+WantedBy=multi-user.target
 EOF
 
 sudo systemctl daemon-reload
