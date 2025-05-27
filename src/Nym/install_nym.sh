@@ -8,7 +8,7 @@ unset swwflag
 installed_config_add "nym-start"
 
 if [[ $forpi == "true" ]] ; then
-sudo apt-get install --y pkg-config build-essential libssl-dev
+sudo apt-get install -y pkg-config build-essential libssl-dev
 which cargo >$dn 2>&1 || curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y 
 git clone https://github.com/nymtech/nym.git $hp/nym
 cd $hp/nym
