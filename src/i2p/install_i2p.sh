@@ -20,7 +20,8 @@ done
 set_terminal
 sudo apt-get install -y default-jre 
 mkdir -p $hp/i2p ; cd $hp/i2p
-curl -LO https://geti2p.net/en/download/2.8.2/clearnet/https/files.i2p-projekt.de/i2pinstall_2.8.2.jar
+curl -LO https://parmanode.com/i2pinstall_2.8.2.jar
+shasum -a ./i2pinstall_2.8.2.jar | grep -q "cd606827a9bca363bd6b3c89664772ec211d276cce3148f207643cc5e5949b8a" ||  { sww "shasum failed." ; return 1 ; }
 java -jar i2pinstall_2.8.2.jar
 start_i2p
 installed_config_remove "i2p-start"

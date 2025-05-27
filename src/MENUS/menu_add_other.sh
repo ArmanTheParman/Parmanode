@@ -2,7 +2,7 @@ function menu_add_other {
 while true
 menu_add_source
 do
-set_terminal 40 88
+set_terminal 42 88
 echo -e "
 ########################################################################################
 #                                                                                      #
