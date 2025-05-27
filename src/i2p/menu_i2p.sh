@@ -1,7 +1,10 @@
 function menu_i2p {
 while true ; do
-unset i2prunningmenu
-pgrep i2p >/dev/null 2>&1 && export i2prunningmenu="\nI2P is$green RUNNING$orange"
+if pgrep i2p >/dev/null 2>&1 ; then 
+export i2prunningmenu="\nI2P is$green RUNNING$orange"
+else
+export i2prunningmenu="\nI2P is$red NOT RUNNING$orange"
+fi
 set_terminal ; echo -e "
 ########################################################################################$cyan
                                    I2P Menu$orange
