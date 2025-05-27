@@ -27,12 +27,10 @@ case $choice in q|Q) exit  0 ;; m|M) back2main ;; p|P) return 1 ;;
 start)
         clear
         start_i2p
-        clear ; sleep 1
 ;;
 stop)
         clear
         stop_i2p
-        clear ; sleep 1
 ;;  
 *)
 invalid
