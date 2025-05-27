@@ -91,7 +91,7 @@ Wants=network.target
 
 [Service]
 WorkingDirectory=$HOME/i2p
-ExecStart=$dp/scripts/i2p_sam.sh
+ExecStart=$dp/scripts/i2p.sh
 User=$USER
 Group=$USER
 
