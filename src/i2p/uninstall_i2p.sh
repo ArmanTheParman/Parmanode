@@ -23,6 +23,7 @@ else
 sudo rm -rf $HOME/i2p >$dn 2>&1
 fi
 
+sudo rm $dp/scripts/i2p.sh
 sudo systemctl disable i2p.service >$dn 2>&1
 sudo rm -rf etc/systemd/system/i2p.service 2>&1
 
