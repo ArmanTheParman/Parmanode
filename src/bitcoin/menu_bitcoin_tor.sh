@@ -38,7 +38,7 @@ elif [[ $bitcoin_tor_status == i2ponlyout ]] ; then
 fi
 
 
-if sudo cat $macprefix/var/lib/tor/bitcoin-service/hostname >$dn && [[ $bitcoin_tor_status != c ]] && [[ $bitcoin_tor_status =~ " i2p" ]] ; then #space in " i2p" excludes tori2p
+if sudo cat $macprefix/var/lib/tor/bitcoin-service/hostname >$dn && [[ $bitcoin_tor_status != c ]] && [[ $bitcoin_tor_status =~ "= i2p" ]] ; then #space in " i2p" excludes tori2p
 get_onion_address_variable bitcoin 
 tortext="
 $bright_blue    Onion adress: $ONION_ADDR
