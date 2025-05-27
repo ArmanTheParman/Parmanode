@@ -13,7 +13,7 @@ which cargo >$dn 2>&1 || curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.
 git clone https://github.com/nymtech/nym.git $hp/nym
 cd $hp/nym
 git checkout v1.1.22
-cross build --target aarch64-unknown-linux-gnu --release
+cargo build --release
 else
 mkdir $hp/nym
 cd $hp/nym
@@ -26,11 +26,4 @@ if [[ $swwflag == "true" ]] ; then unset swwflag ; return 1 ; fi
 installed_config_add "nym-end"
 installed_config_remove "nym-start"
 success "Nym VPN installed"
-}
-
-function install_nym_pi {
-
-cargo install cross --git https://github.com/cross-rs/cross
-cd nym
-git checkout v1.1.22
 }
