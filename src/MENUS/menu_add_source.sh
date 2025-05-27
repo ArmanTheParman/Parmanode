@@ -37,7 +37,7 @@ elif grep -q "fulcrum-start" $HOME/.parmanode/installed.conf ; then
 fulcrum_p="#                                      Fulcrum                                         #"
 else
    #not installed
-fulcrum_n="#$cyan                             f)$orange           Fulcrum (an Electrum Server)                #"
+fulcrum_n="#$cyan                             f)$orange           Fulcrum                                     #" 
     if grep -q "fulcrumdkr-" $ic ; then unset fulcrum_n ; fi
 fi
 #FULCRUMDKR
@@ -50,7 +50,7 @@ elif grep -q "fulcrumdkr-start" $HOME/.parmanode/installed.conf ; then
 fulcrumdkr_p="#                                      Fulcrum (Docker)                                #"
 else
    #not installed
-fulcrumdkr_n="#$cyan                             fd)$orange          Fulcrum (an Electrum Server in Docker)      #"
+fulcrumdkr_n="#$cyan                             fd)$orange          Fulcrum (in Docker)                         #"
     if grep -q "fulcrum-" $ic ; then unset fulcrumdkr_n ; fi
 fi
 
