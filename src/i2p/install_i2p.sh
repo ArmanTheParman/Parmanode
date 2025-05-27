@@ -58,7 +58,13 @@ q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;; y) break ;; n) return 1 ;; *) in
 esac
 done
 stop_i2p
+
+if [[ $computer_type == "Pi" ]] ; then
+sudo apt-get remove --purge -y i2p i2p-keyring
+else
 sudo rm -rf $HOME/i2p >$dn 2>&1
+fi
+
 installed_config_remove "i2p-"
 success "I2P uninstalled"
 }
