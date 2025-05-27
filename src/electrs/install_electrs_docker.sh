@@ -1,5 +1,7 @@
 function install_electrs_docker {
 
+export skipformatting="true"
+
 # Docker container runs with tor daemon using dockerfile CMD
 # Data is synced to /electrs_db inside container.
 # External drive sync is volume mounted directly to external drive

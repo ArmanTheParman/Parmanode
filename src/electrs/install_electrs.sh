@@ -1,5 +1,5 @@
 function install_electrs {
-
+export skipformatting="true"
 export install_electrs_docker_variable="false"
 export electrsversion="v0.10.9"
 
