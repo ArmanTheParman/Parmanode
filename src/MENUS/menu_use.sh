@@ -1,5 +1,5 @@
 function menu_use {
-set_terminal
+
 while true ; do
 unset count
 unset raidapp

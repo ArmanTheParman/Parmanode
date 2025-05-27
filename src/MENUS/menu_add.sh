@@ -1,5 +1,4 @@
 function menu_add {
-set_terminal
 check_disk_space
 while true
 do
@@ -23,7 +22,7 @@ else
     unset partial_install
 fi
 
-set_terminal_higher
+set_terminal 34 88
 echo -en "
 ########################################################################################
 #                                                                                      #
