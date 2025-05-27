@@ -17,7 +17,7 @@ $orange
 "
 choose "epq" ; read choice
 jump $choice 
-case $choice in Q|q|Quit|QUIT) exit 0 ;; p|P) return 1 ;; "") break ;; *) invalid ;; esac ;
+case $choice in Q|q|Quit|QUIT) exit 0 ;; p|P) return 1 ;; ""|y|yes) break ;; *) invalid ;; esac ;
 done
 
 if [[ $computer_type == "Pi" ]] ; then 
@@ -84,7 +84,7 @@ exec java -cp "lib/*:lib/i2p.jar" net.i2p.sam.SAMBridge
 EOF
 sudo chmod +x $dp/scripts/i2p_sam.sh
 
-cat <<EOF >/etc/systemd/system/i2p.service
+cat <<EOF | sudo tee /etc/systemd/system/i2p.service
 [Unit]
 Description=I2P Router
 Wants=network.target
