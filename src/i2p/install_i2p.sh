@@ -10,6 +10,9 @@ $orange
     Parmanode will install the I2P daemon (It's not a browser) which will run in the 
     background.
 
+    The installation will have an ugly interface created by the I2P developers, please
+    choose the defaults so Parmanode menus don't get confused.
+
 ########################################################################################    
 "
 choose "epq" ; read choice
