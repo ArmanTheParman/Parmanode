@@ -1,11 +1,6 @@
 function install_i2p {
 if [[ $OS == "Mac" ]] ; then no_mac ; return 1 ; fi
 
-if [[ $computer_type == "Pi" ]] ; then 
-install_i2p_for_Pi || return 1 ;
-return 0 ;
-fi
-
 while true ; do
 set_terminal ; echo -e "
 ########################################################################################
@@ -24,6 +19,11 @@ choose "epq" ; read choice
 jump $choice 
 case $choice in Q|q|Quit|QUIT) exit 0 ;; p|P) return 1 ;; "") break ;; *) invalid ;; esac ;
 done
+
+if [[ $computer_type == "Pi" ]] ; then 
+install_i2p_for_Pi || return 1 ;
+return 0 ;
+fi
 
 set_terminal
 sudo apt-get install -y default-jre 
