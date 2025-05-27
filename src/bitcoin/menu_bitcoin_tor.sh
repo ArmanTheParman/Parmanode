@@ -139,7 +139,7 @@ m|M) back2main ;; Q|q|quit|QUIT|Quit) exit 0 ;; p|P) return 1 ;;
 
 
 "")
-continue ;;
+break ;;
 *)
     invalid ;;
 esac
