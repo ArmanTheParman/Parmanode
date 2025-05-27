@@ -32,8 +32,8 @@ installed_config_add "i2p-end"
 success "I2P installed"
 }
 
-function start_i2p { $hp/i2p/i2prouter start ; }
-function stop_i2p  { $hp/i2p/i2prouter stop  ; }
+function start_i2p { $HOME/i2p/i2prouter start ; }
+function stop_i2p  { $HOME/i2p/i2prouter stop  ; }
 
 function uninstall_i2p {
 while true ; do
@@ -53,7 +53,7 @@ q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;; y) break ;; n) return 1 ;; *) in
 esac
 done
 stop_i2p
-sudo rm -rf $HOME/parmanode/i2p >$dn 2>&1
+sudo rm -rf $HOME/i2p >$dn 2>&1
 installed_config_remove "i2p-"
 success "I2P uninstalled"
 }
