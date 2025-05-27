@@ -172,7 +172,7 @@ if [[ $OS == Linux ]] ; then
           export disk="/dev/$(diff $dp/before $dp/after | grep 'dev' | cut -d : -f 1 | grep -Eo 'dev/.+$' | cut -d / -f 2)"
       fi
     else
-      get_unique_line2 "$dp/before_lsblk" "$dp/after_lsblk"
+      get_unique_line "$dp/before_lsblk" "$dp/after_lsblk"
       export disk="/dev/$(tail -n1 $dp/.unique_line | awk '{print $1}' | grep -oE '[a-z]+.*')"
       debug "disk lsblk diff is $disk"
       #deprecated as it gives unexpected results...
