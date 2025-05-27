@@ -682,6 +682,6 @@ elif grep -q "X11-start" $HOME/.parmanode/installed.conf ; then
 i2p_p="#                                      I2P                                             #"
 else
    #not installed
-i2p_n="#$cyan                             ii)    $orange      I2P                                         #"
+i2p_n="#$cyan                           ii)    $orange        I2P                                         #"
 fi
 }
