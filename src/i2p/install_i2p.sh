@@ -30,16 +30,20 @@ success "I2P installed. Access via: http://127.0.0.1:7657"
 
 function menu_i2p {
 while true ; do
+
 set_terminal ; echo -e "
 ########################################################################################$cyan
                                    I2P Menu$orange
 ########################################################################################
-
+$i2prunningmenu
 $cyan
                       start)$orange           Start I2P daemon
 $cyan
                        stop)$orange           Stop I2P daemon
-    
+
+$pink
+ACCESS:   http://127.0.0.1:7657    
+$orange
 
 ########################################################################################
 "
