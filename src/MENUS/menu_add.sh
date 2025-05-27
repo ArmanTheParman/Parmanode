@@ -11,9 +11,9 @@ bitcoin_new="#                                                                  
 menuaddnewbitcoin="false"
 else
 bitcoin_new="#                                                                                      #
-#$green                      b)           Bitcoin Deis/Knots/Core                       $orange     #
+#$cyan                      b)$orange           Bitcoin Knots/Core/Deis                            #
 #                                                                                      #
-#$green                      bs)          Import own Bitcoin Core/Knots binaries        $orange     #
+#$cyan                     bs)$orange           Import own Bitcoin Core/Knots binaries             #
 #                                                                                      #"
 fi
 
@@ -35,13 +35,13 @@ echo -en "
 echo -en "${bitcoin_new}" ; echo -en "
 #$cyan                      n)$orange           Node related software ...                          #
 #                                                                                      #
+#$blue                     pp)$blue           Premium ...        $orange                                #
+#                                                                                      #
 #$cyan                      w)$orange           Wallet Software ...                                #
 #                                                                                      #
 #$cyan                      o)$orange           Other Software ...                                 #
 #                                                                                      #
 #$cyan                      e)$orange           Extras ...                                         #
-#                                                                                      #
-#$blue                     pp)$blue           Premium ...        $orange                                #
 #                                                                                      #
 #                                                                                      #
 ########################################################################################
