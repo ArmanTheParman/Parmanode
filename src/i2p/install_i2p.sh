@@ -79,7 +79,8 @@ function make_i2p_service {
 cat <<EOF >$dp/scripts/i2p.sh
 #!/bin/bash
 cd ~/i2p
-./i2prouter-nowrapper
+./i2prouter start
+sleep 5
 exec java -cp "lib/*:lib/i2p.jar" net.i2p.sam.SAMBridge
 EOF
 sudo chmod +x $dp/scripts/i2p.sh
