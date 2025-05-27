@@ -14,7 +14,7 @@ $orange
 "
 choose "epq" ; read choice
 jump $choice 
-case $choice in Q|q|Quit|QUIT) exit 0 ;; p|P) return 1 ;; "") break *) invalid ;; esac ;
+case $choice in Q|q|Quit|QUIT) exit 0 ;; p|P) return 1 ;; "") break ;; *) invalid ;; esac ;
 done
 
 set_terminal
