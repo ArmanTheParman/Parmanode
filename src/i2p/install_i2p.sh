@@ -1,8 +1,9 @@
 function install_i2p {
 if [[ $OS == "Mac" ]] ; then no_mac ; return 1 ; fi
+
 if [[ $computer_type == "Pi" ]] ; then 
-announce "Not yet available for Raspberry Pi; Please give me some time to work on it."
-return 1 ;
+install_i2p_for_Pi || return 1 ;
+return 0 ;
 fi
 
 while true ; do
@@ -60,4 +61,36 @@ stop_i2p
 sudo rm -rf $HOME/i2p >$dn 2>&1
 installed_config_remove "i2p-"
 success "I2P uninstalled"
+}
+
+function install_i2p_for_Pi {
+
+sudo apt-get install apt-transport-https lsb-release
+
+if grep -qi "buster" /etc/os-release; then
+echo "deb https://deb.i2p.net/ $(dpkg --status tzdata | grep Provides | cut -f2 -d'-') main" \
+  | sudo tee /etc/apt/sources.list.d/i2p.list
+
+#symlink necessary. Source downloaded later
+sudo ln -sf /usr/share/keyrings/i2p-archive-keyring.gpg /etc/apt/trusted.gpg.d/i2p-archive-keyring.gpg
+
+else
+echo "deb [signed-by=/usr/share/keyrings/i2p-archive-keyring.gpg] https://deb.i2p.net/ $(lsb_release -sc) main" \
+  | sudo tee /etc/apt/sources.list.d/i2p.list
+fi
+
+cd /$tmp
+curl -o i2p-archive-keyring.gpg https://geti2p.net/_static/i2p-archive-keyring.gpg
+gpg --import i2p-archive-keyring.gpg
+gpg --fingerprint killyourtv@i2pmail.org | grep -q "7840 E761 0F28 B904 7535  49D7 67EC E560 5BCF 1346" || { 
+           gpg --remove-key killyourtv@i2pmail.org 
+           sww "GPG key import failed." 
+           return 1 
+           }
+sudo cp i2p-archive-keyring.gpg /usr/share/keyrings
+sudo apt-get update
+sudo apt-get install i2p i2p-keyring
+installed_config_add "i2p-end"
+success "I2P installed"
+start_i2p
 }
