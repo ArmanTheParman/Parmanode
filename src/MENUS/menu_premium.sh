@@ -1,6 +1,6 @@
 function menu_premium {
 while true ; do
-unset parminer parmacloud parmanas another
+unset parminer parmacloud parmanas another parmascale parmaweb parmaraid datum parmasync uddns
 menu_add_source
 [[ ! -e $pp/parmascale ]] &&          parmascale="\n#$orange             scale)$blue        ParmaScale                                                 #
 #                                                                                      #"
