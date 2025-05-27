@@ -2,7 +2,7 @@ function install_nym {
 
 if [[ $OS == "Mac" ]] ; then no_mac ; return 1 ; fi
 
-if echo $chip | grep -q 'arm' ; then sww "Not available for ARM chips" ; return 1 ; fi 
+if echo $chip | grep -qE 'arm|aarch' ; then sww "Not available for ARM chips" ; return 1 ; fi 
 
 unset swwflag
 mkdir $hp/nym
