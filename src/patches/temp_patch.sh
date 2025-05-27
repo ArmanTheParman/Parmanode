@@ -76,7 +76,7 @@ sudo gsed -E -i 's|^IdentityFile ~/.ssh/(.*-key)$|IdentityFile ~/.ssh/extra_keys
     gsed -i 's/electrs2/electrs/'       $ic >$dn 2>&1
     gsed -i 's/electrsdkr2/electrsdkr/' $ic >$dn 2>&1
 
-test -d $dp/scripts || mkdir -q $dp/scripts >$dn 2>&1
+test -d $dp/scripts || mkdir -p $dp/scripts >$dn 2>&1
 
 debug temppatchend
 }
