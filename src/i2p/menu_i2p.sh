@@ -1,6 +1,6 @@
 function menu_i2p {
 while true ; do
-if pgrep i2p >/dev/null 2>&1 ; then 
+if sudo systemctl status i2p.service >/dev/null 2>&1 ; then 
 export i2prunningmenu="\nI2P is$green RUNNING$orange"
 else
 export i2prunningmenu="\nI2P is$red NOT RUNNING$orange"
