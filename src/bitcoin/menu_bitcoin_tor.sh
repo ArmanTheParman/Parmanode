@@ -44,7 +44,7 @@ fi
 set_terminal ; echo -e "
 ########################################################################################
 
-$cyan                        Tor options for Bitcoin (Linux only)   $orange
+$cyan                        Tor/I2P options for Bitcoin (Linux only)   $orange
 
 
     Option to change Bitcoin Tor Settings. Note if you use LND, it may stop running 
@@ -64,6 +64,10 @@ $cyan
 $cyan
     4)$orange    Make Bitcoin public (Remove Tor usage and stick to clearnet)
                  - Generally faster and more reliable
+$cyan
+    5)$orange    I2P and Tor (no clearnet)
+$cyan
+    6)$orange    I2P only (no clearnet, no Tor)
 
 
 $bright_magenta    Current Status: $status_print$orange
@@ -93,6 +97,17 @@ m|M) back2main ;; Q|q|quit|QUIT|Quit) exit 0 ;; p|P) return 1 ;;
     parmanode_conf_remove "bitcoin_tor_status"
     check_bitcoin_tor_status    
     break ;;
+"5")
+    bitcoin_tor "toronly"
+    check_bitcoin_tor_status
+    bitcoin_i2p
+    break ;;
+"6") 
+    bitcoin_tor_remove
+    parmanode_conf_remove "bitcoin_tor_status"
+    check_bitcoin_tor_status
+    bitcoin_i2p "only"
+    break ;;
 "")
 continue ;;
 *)
@@ -102,3 +117,11 @@ esac
 done
 }
 
+
+function bitcoin_i2p {
+
+
+    echo "i2psam=127.0.0.1:7656" | sudo tee -a $bc >$dn 2>&1
+    echo "i2pacceptincoming=1" | sudo tee -a $bc >$dn 2>&1
+    echo "proxy=127.0.0.1:9050" | sudo tee -a $bc >$dn 2>&1 #always need it, settings don't need it, so always remove when removing i2p
+}

@@ -66,7 +66,7 @@ if [[ $1 == "toronly" ]] ; then
     echo "onion=127.0.0.1:9050" | sudo tee -a $bc >$dn 2>&1
     echo "listenonion=1" | sudo tee -a $bc >$dn 2>&1
     sudo gsed -i "/externalip=/d" $bc
-    debug "onion is $ONION_ADDR"
+    echo "onlynet=onion" | sudo tee -a $bc >$dn 2>&1 #new, disallows outward clearnet connections
     echo "externalip=$ONION_ADDR" | sudo tee -a $bc >$dn 2>&1
     sudo gsed -i "/^bind=/d" $bc
     echo "bind=127.0.0.1" | sudo tee -a $bc >$dn 2>&1
