@@ -27,6 +27,11 @@ elif [[ $bitcoin_tor_status == tc ]] ; then
 elif [[ $bitcoin_tor_status == tonlyout ]] ; then
     local status_print="Strict Tor, only out (option 3)"
 
+elif [[ $bitcoin_tor_status == tori2p ]] ; then
+    local status_print="Strict Tor and I2P (option 5)"
+
+elif [[ $bitcoin_tor_status == i2p ]] ; then
+    local status_print="Strict I2P only (option 6)"
 fi
 
 
@@ -105,12 +110,16 @@ m|M) back2main ;; Q|q|quit|QUIT|Quit) exit 0 ;; p|P) return 1 ;;
     bitcoin_tor "toronly"
     check_bitcoin_tor_status
     bitcoin_i2p
+    parmanode_conf_remove "bitcoin_tor_status"
+    parmanode_conf_add "bitcoin_tor_status=tori2p"
     break ;;
 "6") 
     bitcoin_tor_remove
     parmanode_conf_remove "bitcoin_tor_status"
     check_bitcoin_tor_status
     bitcoin_i2p "only"
+    parmanode_conf_remove "bitcoin_tor_status"
+    parmanode_conf_add "bitcoin_tor_status=i2p"
     break ;;
 "")
 continue ;;
