@@ -64,7 +64,7 @@ echo -e "#                                                                      
 choose "xpmq" ; read choice
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
-q|Q) exit ;; p|P) return ;; m|M) back2main ;;
+q|Q) exit ;; p|P) menu_add ;; m|M) back2main ;;
     
 s|S|Sparrow|sparrow|SPARROW)
        if [[ -n $sparrow_n ]] ; then
