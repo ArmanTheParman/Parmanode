@@ -42,7 +42,7 @@ echo -en "$blue
 choose "xpmq" ; read choice
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
-q|Q) exit ;; p|P) return 0 ;; m|M) back2main ;;
+q|Q) exit ;; p|P) menu_add ;; m|M) back2main ;;
 sync)
 get_parmasync
 ;;
