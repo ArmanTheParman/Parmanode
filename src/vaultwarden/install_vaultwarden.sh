@@ -15,12 +15,13 @@ yesorno "Please be aware of a very nasty danger with password managers...
 
     Proceed to install VaultWarden?" || return 0
 
-
+clear
 install=vaultwarden
 if ! grep docker-end $ic ; then announce "Please install Docker first. Aborting" ; return 1 ; fi
 if ! docker ps >$dn ; then announce "Please start Docker first. Aborting." ; return 1 ; fi
 if ! sudo which nginx >$dn 2>&1 ; then install_nginx silent ; fi
 
+clear
 mkdir -p $hp/vaultwarden 
 installed_config_add "vaultwarden-start"
 
