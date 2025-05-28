@@ -74,7 +74,7 @@ echo "#                                                                         
 choose "xpmq" ; read choice  
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
-q|Q) exit ;; p|P) return ;; m|M) back2main ;;
+q|Q) exit ;; p|P) menu_add ;; m|M) back2main ;;
 
     B|b|bitcoin|Bitcoin)
         if [[ -n $bitcoin_n ]] ; then
