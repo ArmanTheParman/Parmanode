@@ -1,8 +1,10 @@
 function download_sparrow {
 cd $HOME/parmanode
 while true ; do 
-    announce "Installing Sparrow Version $sparrow_version. If you want a different
-    version, try typing the value in. Othewise just hit <enter> for the default."
+    announce "Installing Sparrow Version$green $sparrow_version$orange. 
+    
+    If you want a different version, try typing the value in. 
+    Othewise just hit$cyan <enter>$orange for the default."
     jump || $enter_cont
     case $enter_cont in     "") break 
                                 ;; 
