@@ -41,7 +41,7 @@ success "I2P installed"
 
 function install_i2p_for_Pi {
 
-sudo apt-get install apt-transport-https lsb-release
+sudo apt-get install -y apt-transport-https lsb-release
 
 if grep -qi "buster" /etc/os-release; then
 echo "deb https://deb.i2p.net/ $(dpkg --status tzdata | grep Provides | cut -f2 -d'-') main" \
@@ -65,7 +65,7 @@ gpg --fingerprint killyourtv@i2pmail.org | grep -q "7840 E761 0F28 B904 7535  49
            }
 sudo cp i2p-archive-keyring.gpg /usr/share/keyrings
 sudo apt-get update
-sudo apt-get install i2p i2p-keyring
+sudo apt-get install -y i2p i2p-keyring
 installed_config_add "i2p-end"
 installed_config_add "i2p-new4" #flag to tell  users of the old version to reinstall (if end exists and new doesn't)
 success "I2P installed"
