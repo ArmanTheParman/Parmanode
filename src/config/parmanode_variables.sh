@@ -94,6 +94,13 @@ else
    export tmp="$HOME/tmp" 
 fi
 
+#slowly remove calls to IP functions because this is here now...
+if [[ -e /.dockerenv ]] ; then #docker container detected
+    export IP=$( ip a | grep "inet" | grep 172 | awk '{print $2}' | cut -d '/' -f 1 | head -n1 )
+else 
+    export IP=$( ip a | grep "inet " | grep -v 127.0.0.1 | grep -v 172.1 | awk '{print $2}' | cut -d '/' -f 1 | head -n1 )
+fi
+
 #Premium Configs
 export PTWINCONF=$hp/parmatwin/parmatwin.conf
 export PSCONFIG=$hp/parmasync/parmasync.conf

@@ -1,13 +1,13 @@
 function make_ssl_certificates {
 
 set_terminal
-if [[ $OS == Linux ]] ; then
+if [[ $OS == "Linux" ]] ; then
     if 
         ! openssl version >$dn 2>&1 ; then clear ; echo -e "${green}Installing openssl...$orange" ; sudo apt-get update -y && sudo apt-get install openssl -y 
     fi
-elif [[ $OS == Mac ]] ; then
+elif [[ $OS == "Mac" ]] ; then
     if 
-        if [[ $OS == Mac ]] ; then brew_check || return 1 ; fi
+        if [[ $OS == "Mac" ]] ; then brew_check || return 1 ; fi
         ! openssl version >$dn 2>&1 ; then clear ; echo -e "${green}Installing openssl...$orange" ; brew install openssl 
     fi
 fi

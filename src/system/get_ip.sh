@@ -43,7 +43,7 @@ return 0
 fi
 
 #IP variable is printed for the user.
-if [[ $OS == Linux ]] ; then
+if [[ $OS == "Linux" ]] ; then
 message="    You can actually change the hostname of this computer. Just edit the name 
     in the file /etc/hostname. For example if you put 'parmanode' in there, just a 
     single line of text, then you can access the computer with:

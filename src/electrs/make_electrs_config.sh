@@ -1,12 +1,11 @@
 function make_electrs_config {
 local file="$HOME/.electrs/config.toml"
 
-nogsedtest
 mkdir -p $HOME/.electrs >$dn 2>&1
 
 if [[ $install_electrs_docker_variable == "false" ]] ; then
 
-    if [[ $drive_electrs == external ]] 
+    if [[ $drive_electrs == "external" ]] 
     then
        db_dir="$parmanode_drive/electrs_db"
     else
