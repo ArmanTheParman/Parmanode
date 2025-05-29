@@ -1,8 +1,3 @@
-# install_sparrow
-# unpack_sparrow
-# verify_sparrow
-# mac_sparrow_headsup
-
 function install_sparrow {
 
 export sparrow_version="2.2.2"
@@ -37,41 +32,32 @@ fi
 
 please_wait
 download_sparrow || return 1
-debug "sparrow downloaded"
 installed_conf_add "sparrow-start"
-debug "check if files have been downloaded, esp shasum file.
-should be found in $HOME/parmanode/"
 verify_sparrow || return 1
-debug "sparrow verified"
 if ! grep -q rpcuser $bc ; then _connect=cookie ; fi
 if grep -q electrs-end $ic ; then _connect=electrstcp ; fi
 if grep -q fulcrum-end $ic ; then _connect=fulcrumssl ; fi
 
 make_sparrow_config "$_connect" "silent"
 
-if [[ $OS == "Linux" ]] ; then unpack_sparrow ; fi
-if [[ $OS == "Mac" ]] ; then hdiutil attach $HOME/parmanode/Sparrow*
-    sudo cp -r /Volumes/Sparrow/Sparrow.app /Applications
-    diskutil unmountDisk /Volumes/Sparrow
-    fi
-
 if [[ $OS == "Linux" ]] ; then 
-    if ! grep -q udev-end $ic ; then
-    echo "installing udev rules..."
+    unpack_sparrow 
+    if ! grep -q udev-end $ic ; then echo "installing udev rules..."
     udev
     fi
+elif [[ $OS == "Mac" ]] ; then 
+    hdiutil attach $HOME/parmanode/Sparrow*
+    sudo cp -r /Volumes/Sparrow/Sparrow.app /Applications
+    diskutil unmountDisk /Volumes/Sparrow
 fi
 
 #move download files, tidy up
 mv $hp/*arrow-2.* $hp/Sparrow/ >$dn
-debug "moved sparrow files to $hp/Sparrow/"
 
-add_localhost_to_bitcoinconf
 add_server_1_to_bitcoinconf
 
 installed_conf_add "sparrow-end"
 
-mkdir
 success "Sparrow has been installed.
 
     If you want to be cautious and verify the software your self (good idea)
@@ -89,16 +75,10 @@ return 0
 }
 
 
-
-########################################################################################################################
-
-
 function unpack_sparrow {
 cd $HOME/parmanode
 tar -xvf sparrow*.gz
 }
-
-
 
 function mac_sparrow_headsup {
 

@@ -4,6 +4,7 @@ cd $HOME/parmanode/electrum
 
 tar -xvf Ele*.tar.gz
 mv ./Ele*/* ./
-find . -type d -name 'Electrum-*' -exec rm -rf {} + # removes all directories that start with Electrum-
+#find . -type d -name 'Electrum-*' -exec rm -rf {} + # removes all directories that start with Electrum-
+                                                     # leaving in case user needs to verify
 
 }

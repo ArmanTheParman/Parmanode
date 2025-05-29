@@ -14,7 +14,6 @@ rm $HOME/.sparrow/config >$dn 2>&1
 cp $pn/src/sparrow/config $HOME/.sparrow/config # copies template across
 
 # These settings can be written every time regardless of connection type...
-nogsedtest
 sudo gsed -i "/coreDataDir/c\\    \"coreDataDir\": \"$HOME/.bitcoin\"," $sparrowconf
 sudo gsed -i "/coreAuth\":/c\\    \"coreAuth\": \"$rpcuser:$rpcpassword\"," $sparrowconf
 # serverType is BITCOIN_CORE on the template
