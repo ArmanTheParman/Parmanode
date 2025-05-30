@@ -27,6 +27,7 @@ docker rm vaultwarden
 yesorno "Do you want to delete your data directory as well, ie where your passwords are?" &&
 yesorno "ARE YOU SURE???" &&
 rm -rf $hp/vaultwarden
+sudo rm $macprefix/etc/nginx/conf.d/vaultwarden.conf
 
 installed_config_remove "vaultwarden-"
 success "VaultWarden has been uninstalled"
