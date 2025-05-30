@@ -30,6 +30,8 @@ y|yes|YES|Y) break ;;
 esac
 done
 
+
+
 if grep -q "bitcoin" $ic #checks if bitcoin is installed in install config file.
 then uninstall_bitcoin #confirmation inside function 
 set_terminal
@@ -213,6 +215,12 @@ if grep -q "lnbits" $ic ; then
 uninstall_lnbits
 set_terminal
 fi
+if grep -q "vaultwarden" $ic ; then
+uninstall_vaultwarden
+set_terminal
+fi
+
+
 
 #### Premium apps
 if grep -q "parmascale" $ic ; then
