@@ -1,4 +1,5 @@
 function verify_electrum {
+    
 if [[ $skip_verify == "true" ]] ; return 0 ; fi
 
 cd $HOME/parmanode/electrum
