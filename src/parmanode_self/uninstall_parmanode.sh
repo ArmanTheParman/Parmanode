@@ -227,6 +227,10 @@ if grep -q "parmascale" $ic ; then
 uninstall_parmascale
 set_terminal
 fi
+if grep -q "parmanas" $ic ; then
+uninstall_parmanas
+set_terminal
+fi
 if grep -q "uddns" $ic ; then
 uninstall_uddns
 set_terminal
