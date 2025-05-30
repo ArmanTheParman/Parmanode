@@ -1,6 +1,6 @@
 function verify_electrum {
-    
-if [[ $skip_verify == "true" ]] ; return 0 ; fi
+
+if [[ $skip_verify == "true" ]] ; then return 0 ; fi
 
 cd $HOME/parmanode/electrum
 
