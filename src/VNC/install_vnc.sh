@@ -24,7 +24,8 @@ chmod +x ~/.vnc/xstartup
 # Set VNC password 
 if [ ! -f "$HOME/.vnc/passwd" ]; then
     clear
-    echo -e "Setting VNC password...$red max 8 characters.$orange"
+    echo -e "Setting VNC password...$red max 8 characters.$orange
+    This is the password you will use to log in to Parmanode via the browser."
     vncpasswd
 fi
 
