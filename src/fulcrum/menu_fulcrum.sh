@@ -1,6 +1,6 @@
 function menu_fulcrum {
 if ! grep "fulcrum" $ic | grep -q end ; then return 0 ; fi
-[[ -e $HOME/.fulcrum/fulcrum.log ]] && [[ ! -r $HOME/.fulcrum/fulcrum.log ]] && sudo chown $USER:$(id -g) +x $HOME/.fulcrum/fulcrum.log
+[[ -e $HOME/.fulcrum/fulcrum.log ]] && [[ ! -r $HOME/.fulcrum/fulcrum.log ]] && sudo chown $USER:$(id -gn) +x $HOME/.fulcrum/fulcrum.log
 while true ; do
 please_wait
 source $pc
