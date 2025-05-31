@@ -41,8 +41,8 @@ echo -e "$pink
 $green
     VNC (Virtual Network Computing) is now available from add-->other menu
 $orange
-    It allows you to run the full desktop of your computer in another computer's
-    browser.
+    It allows you to run the full desktop of your Parmanode computer in another 
+    computer's browser.
 
 ########################################################################################
 
