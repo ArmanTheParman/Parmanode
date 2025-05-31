@@ -42,7 +42,7 @@ User=parman
 #-- guarantee :1 is free
 ExecStartPre=/bin/bash -c '/usr/bin/vncserver -kill :1 >/dev/null 2>&1 || true; rm -f /tmp/.X1-lock /tmp/.X11-unix/X1 $HOME/.vnc/*:1.* || true'
 
-ExecStart=/usr/bin/vncserver :1 -geometry 1280x800 -depth 24
+ExecStart=/usr/bin/vncserver :1 -geometry 1920x1080 -depth 24
 
 ExecStop=/usr/bin/vncserver -kill :1
 
