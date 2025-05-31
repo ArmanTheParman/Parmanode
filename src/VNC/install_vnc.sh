@@ -37,9 +37,12 @@ After=network.target
 Type=forking
 User=$USER
 PAMName=login
+ExecStartPre=/bin/bash -c 'rm -f /tmp/.X1-lock /tmp/.X11-unix/X1 /home/parman/.vnc/*:1.* || true'
 ExecStart=/usr/bin/vncserver :1 -geometry $GEOMETRY -depth $DEPTH
-ExecStop=/bin/bash -c '/usr/bin/vncserver -kill :1 > /dev/null 2>&1 || true; rm -f /tmp/.X1-lock /tmp/.X11-unix/X1 /home/parman/.vnc/*:1.* || true'
-
+ExecStop=/bin/bash -c '
+  pkill -f "Xtightvnc :1" || true
+  rm -f /tmp/.X1-lock /tmp/.X11-unix/X1 /home/parman/.vnc/*:1.* || true
+'
 [Install]
 WantedBy=multi-user.target
 EOF
