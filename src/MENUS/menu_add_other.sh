@@ -33,7 +33,7 @@ if [[ -n $phoenix_n ]]         ; then echo -e  "$phoenix_n"; fi
 if [[ -n $vaultwarden_n ]]     ; then echo -e  "$vaultwarden_n"; fi
 if [[ -n $nym_n ]]             ; then echo -e  "$nym_n"; fi
 if [[ -n $i2p_n ]]             ; then echo -e  "$i2p_n"; fi
-#if [[ -n $vnc_n ]]             ; then echo -e  "$vnc_n"; fi
+if [[ -n $vnc_n ]]             ; then echo -e  "$vnc_n"; fi
 #if [[ -n $public_pool_n ]]     ; then echo -e  "$public_pool_n"; fi
 
 echo -e "#                                                                                      #
@@ -59,7 +59,7 @@ if [[ -n $phoenix_i ]]         ; then echo -e  "$phoenix_i"; fi
 if [[ -n $vaultwarden_i ]]     ; then echo -e  "$vaultwarden_i"; fi
 if [[ -n $nym_i ]]             ; then echo -e  "$nym_i"; fi
 if [[ -n $i2p_i ]]             ; then echo -e  "$i2p_i"; fi
-#if [[ -n $vnc_i ]]             ; then echo -e  "$vnc_i"; fi
+if [[ -n $vnc_i ]]             ; then echo -e  "$vnc_i"; fi
 #if [[ -n $public_pool_i ]]   ; then echo -e  "$public_pool_i"; fi
 
 echo -e "#                                                                                      #
@@ -85,7 +85,7 @@ if [[ -n $phoenix_p ]]         ; then echo  -e "$pink$phoenix_p$orange"; fi
 if [[ -n $vaultwarden_p ]]     ; then echo  -e "$pink$vaultwarden_p$orange"; fi
 if [[ -n $nym_p ]]             ; then echo -e  "$pink$nym_p$orange"; fi
 if [[ -n $i2p_p ]]             ; then echo -e  "$pink$i2p_p$orange"; fi
-#if [[ -n $vnc_p ]]             ; then echo -e  "$pink$vnc_p$orange"; fi
+if [[ -n $vnc_p ]]             ; then echo -e  "$pink$vnc_p$orange"; fi
 #if [[ -n $public_pool_p ]]     ; then echo -e "$pink$public_pool_p$orange"; fi
 
 echo "#                                                                                      #
