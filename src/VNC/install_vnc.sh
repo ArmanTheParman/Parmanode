@@ -16,7 +16,7 @@ mkdir -p ~/.vnc ; installed_conf_add "vnc-start"
 cat <<EOF | tee ~/.vnc/xstartup >$dn 2>&1
 #!/bin/sh
 xrdb $HOME/.Xresources
-startxfce4
+xfce4-terminal
 EOF
 chmod +x ~/.vnc/xstartup
 
@@ -38,7 +38,7 @@ Type=forking
 User=$USER
 PAMName=login
 ExecStart=/usr/bin/vncserver :1 -geometry $GEOMETRY -depth $DEPTH
-ExecStop=/usr/bin/vncserver -kill :1
+ExecStop=/bin/bash -c '/usr/bin/vncserver -kill :1 > /dev/null 2>&1 || true; rm -f /tmp/.X1-lock /tmp/.X11-unix/X1 /home/parman/.vnc/*:1.* || true'
 
 [Install]
 WantedBy=multi-user.target
