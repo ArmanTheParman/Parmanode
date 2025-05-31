@@ -30,3 +30,25 @@ enter_continue "Type in$green EndTheFed$orange to dismiss message permanently"
 case $enter_cont in EndTheFed|endthefed) echo "message_freeross=1" >> $hm ;; esac
 return 0
 }
+
+function vncishere {
+if grep "message_vnc=1" $hm ; then return 0 ; fi
+
+set_terminal
+echo -e "$pink
+########################################################################################
+
+$green
+    VNC (Virtual Network Computing) is now available from add-->other menu
+$orange
+    It allows you to run the full desktop of your computer in another computer's
+    browser.
+
+########################################################################################
+
+"
+enter_continue "Type in$green EndTheFed$orange to dismiss message permanently"
+case $enter_cont in EndTheFed|endthefed) echo "message_vnc=1" >> $hm ;; esac
+return 0
+}
+

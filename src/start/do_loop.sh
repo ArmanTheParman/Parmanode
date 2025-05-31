@@ -104,7 +104,8 @@ if [[ $btcpayinstallsbitcoin == "true" ]] ; then install_bitcoin ; exit ; fi
 
 #message of the day
 [[ $premium == 1 ]] || if [[ $1 != menu ]] && [[ ! $debug == 1 ]] ; then
-rossisfree 
+#rossisfree 
+vncishere
 ########################################################################################
 ########################################################################################
 motd
