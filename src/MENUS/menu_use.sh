@@ -412,7 +412,7 @@ ii|i2p)
    ;;
 vnc)
    if [[ $vncapp == 1 ]] ; then
-   menuvnc_
+   menu_vnc
     if [[ -n $1 ]] ; then clear ; return 0 ; fi
    else invalid
    fi
