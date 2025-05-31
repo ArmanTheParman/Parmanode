@@ -22,12 +22,13 @@ chmod +x ~/.vnc/xstartup
 
 # Set VNC password 
 if [ ! -f "$HOME/.vnc/passwd" ]; then
-    echo "Setting VNC password. You will be prompted..."
+    clear
+    echo "Setting VNC password... max 8 characters."
     vncpasswd
 fi
 
 
-cat <<EOF | sudo tee /etc/systemd/system/vnc.service
+cat <<EOF | sudo tee /etc/systemd/system/vnc.service >$dn 2>&1
 [Unit]
 Description=Start VNC session 
 After=network.target
@@ -43,7 +44,7 @@ ExecStop=/usr/bin/vncserver -kill :1
 WantedBy=multi-user.target
 EOF
 
-cat <<EOF | sudo tee /etc/systemd/system/noVNC.service
+cat <<EOF | sudo tee /etc/systemd/system/noVNC.service >$dn 2>&1
 [Unit]
 Description=No VNC
 After=network.target
@@ -60,8 +61,8 @@ Group=$(id -gn)
 WantedBy=multi-user.target
 EOF
 sudo systemctl daemon-reload
-sudo systemctl enable --now noVNC.service
-sudo systemctl enable --now vnc.service
+sudo systemctl enable --now noVNC.service >$dn 2>&1
+sudo systemctl enable --now vnc.service >$dn 2>&1
 
 
 # http://localhost:$NOVNC_PORT/vnc.html"
