@@ -1,4 +1,4 @@
-function install_novnc {
+function install_vnc {
 if [[ $OS == "Mac" ]] ; then no_mac ; return 1 ; fi
 
 
@@ -10,20 +10,21 @@ export NOVNC_PORT=21001
 
 install_novnc_dependencies
 
-# Set VNC password 
-if [ ! -f "$HOME/.vnc/passwd" ]; then
-    echo "Setting VNC password. You will be prompted..."
-    vncpasswd
-fi
-
 # Create xstartup 
 mkdir -p ~/.vnc
+installed_conf_add "vnc-start"
 cat <<EOF | tee ~/.vnc/xstartup >$dn 2>&1
 #!/bin/sh
 xrdb $HOME/.Xresources
 $DESKTOP_CMD &
 EOF
 chmod +x ~/.vnc/xstartup
+
+# Set VNC password 
+if [ ! -f "$HOME/.vnc/passwd" ]; then
+    echo "Setting VNC password. You will be prompted..."
+    vncpasswd
+fi
 
 
 cat <<EOF | sudo tee /etc/systemd/system/vnc.service
@@ -64,5 +65,9 @@ sudo systemctl enable --now vnc.service
 
 
 # http://localhost:$NOVNC_PORT/vnc.html"
-
+parmanode_conf_add "vnc-end"
+parmanode_conf_remove "vnc-start"
+success "Virtual Network Computing installed"
+return 0
 }
+

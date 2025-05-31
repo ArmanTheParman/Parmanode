@@ -11,6 +11,7 @@ unset electrsmenu trezormenu ledgermenu bitboxmenu parmashellmenu bredockermenu 
 unset anydeskmenu piholemenu torrelaymenu electrskdmenu piappsmenu torbmenu 
 unset public_poolmenu electrumxmenu thunderhubmenu lnddockermenu nginxmenu nostrrelaymenu litdmenu
 unset parmacloudmenu parmanostrmenu btcrecovermenu joinmarketmenu greenmenu X11menu phoenixmenu vaultwardenmenu
+unset nymmenu i2pmenu vncmenu
 
 echo -e "
 ########################################################################################
@@ -241,6 +242,10 @@ if grep -q "i2p-end" $HOME/.parmanode/installed.conf ; then i2pmenu=1
 echo -e "#$cyan                            \033[27G ii)$orange               I2P                                    \033[88G#"
 elif grep -q "i2p-start" $HOME/.parmanode/installed.conf ; then i2pmenu=1
 echo -e "#$cyan                            \033[27G ii)$orange               I2P                    $red$blinkon(partial)$blinkoff$orange        \033[88G#" ; fi
+if grep -q "vnc-end" $HOME/.parmanode/installed.conf ; then vncmenu=1
+echo -e "#$cyan                            \033[27G vnc)$orange              VNC                                    \033[88G#"
+elif grep -q "vnc-start" $HOME/.parmanode/installed.conf ; then vncmenu=1
+echo -e "#$cyan                            \033[27G vnc)$orange              VNC                    $red$blinkon(partial)$blinkoff$orange        \033[88G#" ; fi
 echo -e "#                                                                                      \033[88G#
 ########################################################################################
 "
@@ -628,6 +633,12 @@ fi
 ii|i2p)
 if [[ $i2pmenu == 1 ]] ; then
 uninstall_i2p
+menu_main
+fi
+;;
+vnc)
+if [[ $vncmenu == 1 ]] ; then
+uninstallvnc_
 menu_main
 fi
 ;;

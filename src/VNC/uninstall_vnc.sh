@@ -1,10 +1,9 @@
-function uninstall_parmashell {
-if [[ $1 != silent ]] ; then
+function uninstall_vnc {
 while true ; do
 set_terminal ; echo -e "
 ########################################################################################
 $cyan
-                                 Uninstall ParmaShell 
+                                 Uninstall VNC
 $orange
     Are you sure? (y) (n)
 
@@ -17,14 +16,10 @@ q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 n) return 1 ;; y) break ;;
 esac
 done
-fi
-nogsedtest
-sudo gsed -i '/Added by Parmanode below/,/Added by Parmanode above/d' "$bashrc"
-sudo gsed -i '/ParmaShell/d' "$bashrc"
 
-installed_config_remove "parmashell"
-if [[ $1 != silent ]] ; then
-success "ParmaShell" "being uninstalled."
-fi
+sudo rm -rf ~/.vnc/
+sudo systemctl disable vnc.service >$dn 2>&1
+sudo systemctl disable novnc.service >$dn 2>&1
+sudo rm /etc/systemd/system/{novnc.service,vnc.service} >$dn 2>&1
+success "Virtual Network Computing uninstalled"
 }
-
