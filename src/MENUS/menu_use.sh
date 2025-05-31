@@ -145,7 +145,7 @@ if grep -q "nym-end" $ic ; then nymapp=1
 if grep -q "i2p-end" $ic ; then i2papp=1
                        echo -e "                        $cyan  ii)$orange         I2P "     ; count=$((count +1)) ; fi
 if grep -q "vnc-end" $ic ; then vncapp=1
-                       echo -e "                        $cyan  ii)$orange         VNC "     ; count=$((count +1)) ; fi
+                       echo -e "                        $cyan  vnc)$orange        VNC "     ; count=$((count +1)) ; fi
 echo -e "                            
 #######################################################################################
 "
