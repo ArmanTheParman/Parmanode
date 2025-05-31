@@ -16,7 +16,7 @@ export DISPLAY_NUM=1
 export GEOMETRY="1920×1080"
 export DEPTH=24 #for colours
 export VNC_PORT=$((5900 + DISPLAY_NUM))
-export NOVNC_PORT=21001
+export NOVNC_PORT=21000
 
 install_novnc_dependencies
 
