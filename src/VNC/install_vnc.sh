@@ -17,8 +17,7 @@ cat <<EOF | tee ~/.vnc/xstartup >$dn 2>&1
 #!/bin/sh
 unset SESSION_MANAGER
 unset DBUS_SESSION_BUS_ADDRESS
-xfwm4 & 
-exec xfce4-terminal
+exec startxfce4
 EOF
 chmod +x ~/.vnc/xstartup
 
