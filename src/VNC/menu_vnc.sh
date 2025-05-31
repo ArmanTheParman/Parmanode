@@ -12,7 +12,7 @@ set_terminal 40 110 ; echo -e "
 
     VNC is: $vncprint
 
-    Connection :$cyan 127.0.0.1:19080$orange/vnc.html
+    Connection :$cyan 127.0.0.1:21000$orange/vnc.html
 $red
     Do remember to increase the size of the terminal window once you're connected via the browser, and then 
     refresh the page if the formattin is all messed up.$orange
