@@ -695,7 +695,7 @@ elif grep -q "X11-start" $HOME/.parmanode/installed.conf ; then
 vnc_p="#                                      VNC                                             #"
 else
    #not installed
-vnc_n="#$cyan                             vnc)   $orange       VNC                                         #"
+vnc_n="#$cyan                             vnc)   $orange      VNC                                         #"
 fi
 
 }
