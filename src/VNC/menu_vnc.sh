@@ -2,7 +2,7 @@ function menu_vnc {
 
 while true ; do 
 
-if sudo systemctl status vnc.service >$dn 2>&1 && sudo systemctl status novnc.service >$dn 2>&1 ; then 
+if sudo systemctl status vnc.service >$dn 2>&1 && sudo systemctl status noVNC.service >$dn 2>&1 ; then 
    export vncprint="${green}RUNNING$orange" ; else vncprint="${red}NOT RUNNING$orange" 
 fi
 set_terminal 40 110 ; echo -e "
@@ -12,7 +12,7 @@ set_terminal 40 110 ; echo -e "
 
     VNC is: $vncprint
 
-    Connection :$cyan  http://localhost:19080 ; http://$IP:19080 ; http://127.0.0.1:19080$orange
+    Connection :$cyan 127.0.0.1:19080$orange
 
 $green
                                       start)$orange         Start VNC

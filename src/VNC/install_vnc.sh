@@ -11,12 +11,14 @@ export NOVNC_PORT=21001
 install_novnc_dependencies
 
 # Create xstartup 
-mkdir -p ~/.vnc
-installed_conf_add "vnc-start"
+mkdir -p ~/.vnc ; installed_conf_add "vnc-start"
+
 cat <<EOF | tee ~/.vnc/xstartup >$dn 2>&1
 #!/bin/sh
-xrdb $HOME/.Xresources
-$DESKTOP_CMD &
+unset SESSION_MANAGER
+unset DBUS_SESSION_BUS_ADDRESS
+xfwm4 &    #window manager
+xterm    
 EOF
 chmod +x ~/.vnc/xstartup
 
