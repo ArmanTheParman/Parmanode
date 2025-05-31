@@ -3,7 +3,7 @@ if [[ $OS == "Mac" ]] ; then no_mac ; return 1 ; fi
 
 
 export DISPLAY_NUM=1
-export GEOMETRY="1280x800"
+export GEOMETRY="1920×1080"
 export DEPTH=24 #for colours
 export VNC_PORT=$((5900 + DISPLAY_NUM))
 export NOVNC_PORT=21001
@@ -15,8 +15,10 @@ mkdir -p ~/.vnc ; installed_conf_add "vnc-start"
 
 cat <<EOF | tee ~/.vnc/xstartup >$dn 2>&1
 #!/bin/sh
-xrdb $HOME/.Xresources
-xfce4-terminal
+unset SESSION_MANAGER
+unset DBUS_SESSION_BUS_ADDRESS
+xfwm4 & 
+exec xfce4-terminal
 EOF
 chmod +x ~/.vnc/xstartup
 
@@ -30,21 +32,25 @@ fi
 
 cat <<EOF | sudo tee /etc/systemd/system/vnc.service >$dn 2>&1
 [Unit]
-Description=Start VNC session 
+Description=Start VNC session
 After=network.target
 
 [Service]
 Type=forking
-User=$USER
-PAMName=login
-ExecStartPre=/bin/bash -c 'rm -f /tmp/.X1-lock /tmp/.X11-unix/X1 /home/parman/.vnc/*:1.* || true'
-ExecStart=/usr/bin/vncserver :1 -geometry $GEOMETRY -depth $DEPTH
-ExecStop=/bin/bash -c '
-  pkill -f "Xtightvnc :1" || true
-  rm -f /tmp/.X1-lock /tmp/.X11-unix/X1 /home/parman/.vnc/*:1.* || true
-'
+User=parman
+
+#-- guarantee :1 is free
+ExecStartPre=/bin/bash -c '/usr/bin/vncserver -kill :1 >/dev/null 2>&1 || true; rm -f /tmp/.X1-lock /tmp/.X11-unix/X1 $HOME/.vnc/*:1.* || true'
+
+ExecStart=/usr/bin/vncserver :1 -geometry 1280x800 -depth 24
+
+ExecStop=/usr/bin/vncserver -kill :1
+
+RemainAfterExit=yes
+
 [Install]
 WantedBy=multi-user.target
+
 EOF
 
 cat <<EOF | sudo tee /etc/systemd/system/noVNC.service >$dn 2>&1
