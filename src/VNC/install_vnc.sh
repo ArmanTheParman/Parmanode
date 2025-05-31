@@ -1,6 +1,16 @@
 function install_vnc {
 if [[ $OS == "Mac" ]] ; then no_mac ; return 1 ; fi
 
+yesorno "VNC (Virtual Network Computing) allows you to view your ParmanodL's desktop environment
+    through the browswer of another computer, giving you full access. 
+    
+    Instead of SSH log in (which is fine most of the time), you can use the browswer instead.
+    The layout will not be identical, but it's mostly good enough. For example, right clicks and 
+    pasting might not work as expected 100% of the time. You'll still be able to drag and drop 
+    files around, but not from the browswer to the host desktop.  
+$green
+    Install it?$orange" || return 1 
+
 
 export DISPLAY_NUM=1
 export GEOMETRY="1920×1080"
