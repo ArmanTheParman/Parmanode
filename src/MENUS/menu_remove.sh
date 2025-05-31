@@ -638,7 +638,7 @@ fi
 ;;
 vnc)
 if [[ $vncmenu == 1 ]] ; then
-uninstallvnc_
+uninstall_vnc
 menu_main
 fi
 ;;
