@@ -66,8 +66,8 @@ sudo systemctl enable --now vnc.service >$dn 2>&1
 
 
 # http://localhost:$NOVNC_PORT/vnc.html"
-parmanode_conf_add "vnc-end"
-parmanode_conf_remove "vnc-start"
+installed_conf_add "vnc-end"
+installed_conf_remove "vnc-start"
 success "Virtual Network Computing installed"
 return 0
 }

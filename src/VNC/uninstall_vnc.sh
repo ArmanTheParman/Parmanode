@@ -21,7 +21,7 @@ sudo rm -rf ~/.vnc/
 sudo systemctl disable vnc.service >$dn 2>&1
 sudo systemctl disable novnc.service >$dn 2>&1
 sudo rm /etc/systemd/system/{novnc.service,vnc.service} >$dn 2>&1
-parmanode_conf_remove "vnc-start"
-parmanode_conf_remove "vnc-end"
+installed_conf_remove "vnc-start"
+installed_conf_remove "vnc-end"
 success "Virtual Network Computing uninstalled"
 }
