@@ -88,9 +88,26 @@ Group=$(id -gn)
 WantedBy=multi-user.target
 EOF
 
-# if ! which novnc_proxy >$dn 2>&1 ; then
-# sudo gsed -i "s/ExecStart.*$/ExecStart=\/usr\/bin\/websockify --web=\/usr\/share\/novnc $NOVNC_PORT localhost:$VNC_PORT/" $noVNCservicefile >$dn 2>&1
-# fi
+while true ; do
+
+if sudo test -f /usr/share/novnc/utils/novnc_proxy ; then break ; fi
+
+if sudo test -f  /usr/share/novnc/utils/launch ; then 
+    sudo gsed -i 's/novnc_proxy/launch/' $noVNCservicefile >$dn 2>&1    
+    break
+fi
+
+if sudo grep -R "try to find websockify " /usr/share/novnc/utils/ ; then
+    name=$(sudo grep -R "try to find websockify " /usr/share/novnc/utils/ | head -n1 | cut -d  ' ' -f1 | cut -d : -f1 | cut -d / -f2)
+    name=$(basename $name)
+    sudo gsed -i "s/novnc_proxy/$name/" $noVNCservicefile >$dn 2>&1   
+    break
+fi
+break
+done
+
+
+sudo gsed -i "s/ExecStart.*$/ExecStart=\/usr\/bin\/websockify --web=\/usr\/share\/novnc $NOVNC_PORT localhost:$VNC_PORT/" $noVNCservicefile >$dn 2>&1
 
 sudo systemctl daemon-reload
 sudo systemctl enable --now noVNC.service >$dn 2>&1
