@@ -24,6 +24,7 @@ set_terminal 40 110 ; echo -e "
                                       Virtual Network Computing Menu            $orange                   
 ##############################################################################################################
 
+
     VNC is: $vncprint
     
     FROM SAME COMPUTER (pointless)
@@ -49,6 +50,7 @@ $green
                                       stop)$orange          Stop VNC 
                     $cyan
                                       restart)$orange       Resart VNC 
+
 
 $orange
 ##############################################################################################################
