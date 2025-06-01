@@ -11,7 +11,7 @@ fi
 if grep -q parmascale-end $ic ; then
 parmascaleIP=TailScale/ParmaScale:$blue $(sudo tailscale ip | head -n1 2>$dn)
 else
-parmascaleIP="${red}TailScale/ParmaScale: Not installed. Premium feature for ParmanodL/Parmadrives.$orange"
+parmascaleIP="TailScale/ParmaScale: Not installed. Premium feature for ParmanodL/Parmadrives."
 fi
 
 
