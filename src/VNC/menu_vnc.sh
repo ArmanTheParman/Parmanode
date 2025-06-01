@@ -28,7 +28,7 @@ set_terminal 40 110 ; echo -e "
     SSL Connection:$cyan http${red}s${cyan}://$IP:2100${red}1$cyan/vnc.html$orange
 
     From ANY computer over Tor from anywhere in the world:
-$vnctorprint
+    $vnctorprint
 
 $red
     Do remember to increase the size of the terminal window once you're connected via the browser, and then 
