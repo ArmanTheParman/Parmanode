@@ -27,17 +27,17 @@ set_terminal 40 110 ; echo -e "
     VNC is: $vncprint
     
     FROM SAME COMPUTER ONLY (pointless)
-    TCP Connection:$cyan http://127.0.0.1:21000/vnc.html$orange
-    TCP Connection:$cyan http://localhost:21000/vnc.html$orange
-    SSL Connection:$cyan http${red}s${cyan}://127.0.0.1:2100${red}1$cyan/vnc.html$orange
+      TCP Connection:$cyan http://127.0.0.1:21000/vnc.html$orange
+      TCP Connection:$cyan http://localhost:21000/vnc.html$orange
+      SSL Connection:$cyan http${red}s${cyan}://127.0.0.1:2100${red}1$cyan/vnc.html$orange
 
     FROM OTHER COMPUTERS, SAME NETWORK:
-    SSL Connection:$cyan http${red}s${cyan}://$(cat /etc/hostname):2100${red}1$cyan/vnc.html$orange
-    SSL Connection:$cyan http${red}s${cyan}://$IP:2100${red}1$cyan/vnc.html$orange
+      SSL Connection:$cyan http${red}s${cyan}://$(cat /etc/hostname):2100${red}1$cyan/vnc.html$orange
+      SSL Connection:$cyan http${red}s${cyan}://$IP:2100${red}1$cyan/vnc.html$orange
 
     From ANY computer from anywhere in the world:
-    $vnctorprint
-    $parmascaleIP
+      $vnctorprint
+      $parmascaleIP
 
 $red
     Do remember to increase the size of the terminal window once you're connected via the browser, and then 
