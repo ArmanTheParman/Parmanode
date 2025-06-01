@@ -1,13 +1,15 @@
 function menu_tools {
 
 while true ; do
-set_terminal_high
+set_terminal 46 88
 echo -ne "
 ########################################################################################$cyan
                                   TOOLS - PAGE 1  $orange
 ########################################################################################
 
 $cyan              aip)$orange   See the IPs of all devices connected on your network
+
+$cyan              hn)$orange    Change host name (Linux)
 
 $cyan              svr)$orange   Screen Video Recording$red$blinkon NEW$blinkoff$orange
 
@@ -46,7 +48,8 @@ q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 system_report
 return 0
 ;;
-
+    hn)
+        change_hostname ;;
  
     m|M) back2main ;;
 
@@ -155,4 +158,35 @@ apt-get update -y
 apt-get upgrade -y
 EOF
 sudo chmod +x $HOME/.parmanode/computer_upgrade_script.sh >$dn 2>&1
+}
+
+
+function change_hostname {
+
+if [[ $OS == "Linux" ]] ; then
+
+yesorno "Current hostname is$cyan $(cat /etc/hostname)orange. \n    Change?" || return
+current=$(cat /etc/hostname)
+announce "Please type in the hostname you want, then hit <enter>"
+jump $enter_cont
+newname="$enter_cont"
+echo $enter_cont | sudo tee /etc/hostname
+while IFS= read line ; do
+    if echo $line | grep -q "127.0." && echo $line | grep -q $current ; then
+       echo $line | gsed "s/$current/$newname/" 
+    else
+       echo $line 
+    fi
+done < /etc/hosts > $tmp/hosts
+sudo mv $tmp/hosts /etc/hosts
+sudo hostnamectl set-hostname $newname
+
+success "Hostname changed. You'll probably need to restart the computer to see the effects."
+return 0
+
+elif [[ $OS == "Mac" ]] ; then
+no_mac
+return 1
+fi
+
 }
