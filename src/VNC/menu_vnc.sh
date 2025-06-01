@@ -38,10 +38,10 @@ set_terminal 40 110 ; echo -e "
     FROM OTHER COMPUTERS WORLDWIDE:
       $vnctorprint
       $parmascaleIP
-
 $red
-    Do remember to increase the size of the terminal window once you're connected via the browser, and then 
-    refresh the page if the formatting is all messed up.$orange
+    The terminal window of Parmanode from within the browser connection needs manual resizing with the
+    mouse, and then refreshing the page to fix up the formatting derangement.
+    $orange
 
 $green
                                       start)$orange         Start VNC
