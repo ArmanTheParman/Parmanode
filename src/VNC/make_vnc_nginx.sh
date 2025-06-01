@@ -13,4 +13,5 @@ server {
     }
 }
 EOF
+sudo systemctl restart nginx >$dn 2>&1
 }
