@@ -103,11 +103,11 @@ if sudo grep -R "try to find websockify " /usr/share/novnc/utils/ ; then
     sudo gsed -i "s/novnc_proxy/$name/" $noVNCservicefile >$dn 2>&1   
     break
 fi
+sudo gsed -i "s/ExecStart.*$/ExecStart=\/usr\/bin\/websockify --web=\/usr\/share\/novnc $NOVNC_PORT localhost:$VNC_PORT/" $noVNCservicefile >$dn 2>&1
 break
 done
 
 
-sudo gsed -i "s/ExecStart.*$/ExecStart=\/usr\/bin\/websockify --web=\/usr\/share\/novnc $NOVNC_PORT localhost:$VNC_PORT/" $noVNCservicefile >$dn 2>&1
 
 sudo systemctl daemon-reload
 sudo systemctl enable --now noVNC.service >$dn 2>&1
