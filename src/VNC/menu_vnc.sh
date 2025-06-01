@@ -9,12 +9,10 @@ else
 fi
 
 if grep -q parmascale-end $ic ; then
-parmascaleIP=TailScale/ParmaScale:$blue $(sudo tailscale ip | head -n1 2>$dn)
+parmascaleIP="TailScale/ParmaScale:$blue $(sudo tailscale ip | head -n1 2>$dn)"
 else
 parmascaleIP="TailScale/ParmaScale:$cyan Not installed. Premium feature for ParmanodL/Parmadrives.$orange"
 fi
-
-
 
 if sudo systemctl status vnc.service >$dn 2>&1 && sudo systemctl status noVNC.service >$dn 2>&1 ; then 
    export vncprint="${green}RUNNING$orange" ; else vncprint="${red}NOT RUNNING$orange" 
