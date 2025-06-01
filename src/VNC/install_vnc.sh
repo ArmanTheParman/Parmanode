@@ -19,6 +19,7 @@ export GEOMETRY="1920×1080"
 export DEPTH=24 #for colours
 export VNC_PORT=$((5900 + DISPLAY_NUM))
 export NOVNC_PORT=21000
+export noVNCservicefile="/etc/systemd/system/noVNC.service"
 
 install_novnc_dependencies
 
@@ -69,7 +70,7 @@ WantedBy=multi-user.target
 
 EOF
 
-cat <<EOF | sudo tee /etc/systemd/system/noVNC.service >$dn 2>&1
+cat <<EOF | sudo tee /etc/systemd/system/$noVNCservicefile >$dn 2>&1
 [Unit]
 Description=No VNC
 After=network.target
@@ -86,6 +87,11 @@ Group=$(id -gn)
 [Install]
 WantedBy=multi-user.target
 EOF
+
+if ! which novnc_proxy >$dn 2>&1 ; then
+sudo gsed -i "s/ExecStart.*$/ExecStart=\/usr\/bin\/websockify --web=\/usr\/share\/novnc $NOVNC_PORT localhost:$VNC_PORT/" $noVNCservicefile >$dn 2>&1
+fi
+
 sudo systemctl daemon-reload
 sudo systemctl enable --now noVNC.service >$dn 2>&1
 sudo systemctl enable --now vnc.service >$dn 2>&1
@@ -99,4 +105,3 @@ installed_conf_remove "vnc-start"
 success "Virtual Network Computing installed"
 return 0
 }
-
