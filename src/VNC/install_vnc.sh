@@ -38,7 +38,10 @@ chmod +x ~/.vnc/xstartup
 if [ ! -f "$HOME/.vnc/passwd" ]; then
     clear
     echo -e "Setting VNC password...$red max 8 characters.$orange
-    \rThis is the password you will use to log in to Parmanode via the browser.\n"
+    \rThis is the password you will use to log in to Parmanode via the browser.\n
+    \rYou will be offered the option to set a 'view only password' which is
+    \rcompletely optional, allowing you to enter sessions where you can't  
+    \rinteract with the computer, only view it's contents, eg for presentations.\n"
     vncpasswd
 fi
 
