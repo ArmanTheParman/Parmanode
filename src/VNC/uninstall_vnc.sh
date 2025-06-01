@@ -19,7 +19,7 @@ done
 
 sudo rm -rf ~/.vnc/ $hp/vnc
 sudo systemctl disable vnc.service >$dn 2>&1
-sudo systemctl disable novnc.service >$dn 2>&1
+sudo systemctl disable noVNC.service >$dn 2>&1
 vnc_tor_remove
 sudo systemctl $macprefix/etc/nginx/conf.d/vnc.conf >$dn 2>&1
 sudo systemctl restart nginx >$dn 2>&1
