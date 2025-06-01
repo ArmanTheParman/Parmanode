@@ -14,3 +14,9 @@ restart_tor
 [[ $insall == "vnc" ]] || get_onion_address_variable "vaultwarden" 
 
 }
+
+function vnc_tor_remove {
+sudo gsed -i '/HiddenServiceDir.*vnc-service/d' $torrc
+sudo gsed -i '/HiddenServicePort.*7010 127.0.0.1/d' $torrc
+restart_tor
+}

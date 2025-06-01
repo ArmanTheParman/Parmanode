@@ -20,7 +20,10 @@ done
 sudo rm -rf ~/.vnc/ $hp/vnc
 sudo systemctl disable vnc.service >$dn 2>&1
 sudo systemctl disable novnc.service >$dn 2>&1
-sudo rm /etc/systemd/system/{novnc.service,vnc.service} >$dn 2>&1
+vnc_tor_remove
+sudo systemctl $macprefix/etc/nginx/conf.d/vnc.conf >$dn 2>&1
+sudo systemctl restart nginx >$dn 2>&1
+sudo rm /etc/systemd/system/{noVNC.service,vnc.service} >$dn 2>&1
 installed_conf_remove "vnc-start"
 installed_conf_remove "vnc-end"
 success "Virtual Network Computing uninstalled"
