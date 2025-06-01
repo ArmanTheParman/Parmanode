@@ -1,6 +1,7 @@
 function menu_vnc {
 
 while true ; do 
+get_onion_address_variable
 
 if sudo systemctl status vnc.service >$dn 2>&1 && sudo systemctl status noVNC.service >$dn 2>&1 ; then 
    export vncprint="${green}RUNNING$orange" ; else vncprint="${red}NOT RUNNING$orange" 
@@ -12,7 +13,13 @@ set_terminal 40 110 ; echo -e "
 
     VNC is: $vncprint
 
-    Connection :$cyan 127.0.0.1:21000/vnc.html$orange
+    TCP Connection:$cyan http://127.0.0.1:21000/vnc.html$orange
+    SSL Connection:$cyan http${red}s${cyan}://127.0.0.1:2100${red}1$cyan/vnc.html$orange
+    Tor Connection:$blue $tornvc http://$ONION_ADDR_VNC:7010/vnc.html$orange
+    Alternaives Names:
+    TCP Connection:$cyan http://localhost/vnc.html$orange
+    SSL Connection:$cyan http${red}s${cyan}://$(cat /etc/hostname):2100${red}1$cyan/vnc.html$orange
+    SSL Connection:$cyan http${red}s${cyan}://$IP:2100${red}1$cyan/vnc.html$orange
 $red
     Do remember to increase the size of the terminal window once you're connected via the browser, and then 
     refresh the page if the formatting is all messed up.$orange

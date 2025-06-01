@@ -22,6 +22,7 @@ install_novnc_dependencies
 
 # Create xstartup 
 mkdir -p ~/.vnc ; installed_conf_add "vnc-start"
+mkdir -p $hp/vnc
 
 cat <<EOF | tee ~/.vnc/xstartup >$dn 2>&1
 #!/bin/sh
@@ -82,7 +83,9 @@ EOF
 sudo systemctl daemon-reload
 sudo systemctl enable --now noVNC.service >$dn 2>&1
 sudo systemctl enable --now vnc.service >$dn 2>&1
-
+vnc_tor
+make_ssl_certificates vnc
+make_vnc_nginx
 
 # http://localhost:$NOVNC_PORT/vnc.html"
 installed_conf_add "vnc-end"

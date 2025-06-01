@@ -17,7 +17,7 @@ n) return 1 ;; y) break ;;
 esac
 done
 
-sudo rm -rf ~/.vnc/
+sudo rm -rf ~/.vnc/ $hp/vnc
 sudo systemctl disable vnc.service >$dn 2>&1
 sudo systemctl disable novnc.service >$dn 2>&1
 sudo rm /etc/systemd/system/{novnc.service,vnc.service} >$dn 2>&1

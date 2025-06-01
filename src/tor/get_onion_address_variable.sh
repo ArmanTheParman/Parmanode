@@ -68,6 +68,10 @@ if [[ $1 == "vaultwarden" ]] ; then
 export ONION_ADDR_VAULTWARDEN="$(sudo cat $varlibtor/vaultwarden-service/hostname 2>$dn)" 
 fi
 
+if [[ $1 == "vnc" ]] ; then
+export ONION_ADDR_VNC="$(sudo cat $varlibtor/vnc-service/hostname 2>$dn)" 
+fi
+
 return 0
 
 }
