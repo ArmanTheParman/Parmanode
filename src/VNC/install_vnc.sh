@@ -12,6 +12,7 @@ yesorno "VNC (Virtual Network Computing) allows you to view your ParmanodL's des
 $green
     Install it?$orange" || return 1 
 
+clear
 
 export DISPLAY_NUM=1
 export GEOMETRY="1920×1080"
@@ -37,7 +38,7 @@ chmod +x ~/.vnc/xstartup
 if [ ! -f "$HOME/.vnc/passwd" ]; then
     clear
     echo -e "Setting VNC password...$red max 8 characters.$orange
-    This is the password you will use to log in to Parmanode via the browser."
+    \rThis is the password you will use to log in to Parmanode via the browser.\n"
     vncpasswd
 fi
 

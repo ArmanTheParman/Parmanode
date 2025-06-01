@@ -1,7 +1,7 @@
 function menu_vnc {
 
 while true ; do 
-get_onion_address_variable
+get_onion_address_variable vnc
 if [[ -n $ONION_ADDR_VNC ]] ; then
     export vnctorprint="Tor Connection:$blue $tornvc http://$ONION_ADDR_VNC:7010/vnc.html$orange"
 else
