@@ -20,7 +20,7 @@ set_terminal 40 110 ; echo -e "
     
     FROM SAME COMPUTER ONLY (pointless)
     TCP Connection:$cyan http://127.0.0.1:21000/vnc.html$orange
-    TCP Connection:$cyan http://localhost/vnc.html$orange
+    TCP Connection:$cyan http://localhost:21000/vnc.html$orange
     SSL Connection:$cyan http${red}s${cyan}://127.0.0.1:2100${red}1$cyan/vnc.html$orange
 
     FROM OTHER COMPUTERS, SAME NETWORK:
