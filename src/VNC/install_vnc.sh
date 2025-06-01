@@ -76,7 +76,7 @@ After=network.target
 
 [Service]
 Type=simple
-ExecStart=/usr/share/novnc/utils/novnc_proxy --vnc localhost:$VNC_PORT --listen $NOVNC_PORT --cert $hp/vnc/cert.pem --key $hp/vnc/key.pem
+ExecStart=/usr/share/novnc/utils/novnc_proxy --vnc localhost:$VNC_PORT --listen $NOVNC_PORT 
 
 Restart=on-failure
 KillMode=process
