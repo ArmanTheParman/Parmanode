@@ -29,7 +29,21 @@ cd $hp/${1} 2>$dn #errors here handled next...
 local address=$IP #TEST THIS AGAIN
 if [[ $1 == "public_pool_ui" ]] ; then local address="localhost" ; fi
 
+
+#keep old version for a while, and new version only for vnc. Combine later if no errors after some time:
+if [[ $1 != "vnc" ]] ; then
+#old
 openssl req -newkey rsa:2048 -nodes -x509 -keyout key.pem -out cert.pem -days 36500 -subj "/C=/L=/O=/OU=/CN=$address/ST/emailAddress=/" >$dn 2>&1
+return 0
+else
+#new
+openssl req -newkey rsa:2048 -nodes -x509 -keyout key.pem -out cert.pem -days 36500 \
+    -subj "/C=/L=/O=/OU=/CN=$address/ST/emailAddress=/" \
+    -addext "subjectAltName=DNS:$address,DNS:localhost,IP:127.0.0.1,DNS:$(cat /etc/hostname || hostname)" >$dn 2>&1
+return 0
+fi
+ 
+
 }
 
 
