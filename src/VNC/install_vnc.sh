@@ -70,7 +70,7 @@ WantedBy=multi-user.target
 
 EOF
 
-cat <<EOF | sudo tee /etc/systemd/system/$noVNCservicefile 
+cat <<EOF | sudo tee $noVNCservicefile 
 [Unit]
 Description=No VNC
 After=network.target
