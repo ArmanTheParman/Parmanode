@@ -30,9 +30,9 @@ mkdir -p $hp/vnc
 cat <<EOF | tee ~/.vnc/xstartup >$dn 2>&1
 #!/bin/sh
 unset SESSION_MANAGER DBUS_SESSION_BUS_ADDRESS
-export XDG_CURRENT_DESKTOP=XFCE  # tells autostart apps this is an XFCE session, otherwise errors
+export XDG_CURRENT_DESKTOP=MATE # tells autostart apps this is an MATE session, otherwise errors can happen
 export DISPLAY=:1
-exec startxfce4
+exec mate-session
 EOF
 chmod +x ~/.vnc/xstartup
 
@@ -116,7 +116,7 @@ make_vnc_nginx
 
 # http://localhost:$NOVNC_PORT/vnc.html"
 installed_conf_add "vnc-end"
-installed_conf_add "vnc-vJune3"
+installed_conf_add "vnc-vJ3
 installed_conf_remove "vnc-start"
 success "Virtual Network Computing installed"
 return 0
