@@ -48,15 +48,16 @@ $green
                                     stop)$orange          Stop VNC 
                     $cyan
                                     restart)$orange       Resart VNC 
+
+$red          Troubleshooting options...
                     $cyan
                                     log)$orange           View log
                     $cyan
-                                    kill)$orange          Aggressive stop (if issues)
+                                    kill)$orange          Aggressive stop 
                     $cyan
                                     hack)$orange          View and tweak xstartup script
                     $cyan
-                                    service)$orange       View two service files used
-
+                                    service)$orange       View two service files and status
 
 $orange
 ##############################################################################################################
@@ -91,8 +92,8 @@ nano ~/.vnc/xstartup ;;
 vhack|hackv)
 vim ~/.vnc/xstartup ;;
 service)
-announce "Exit next screen with 'q'"
-cat /etc/systemd/system/{vnc.service,noVNC.service} | less
+announce "Activating less (uses vim style controls). Exit next screen with 'q'"
+{ cat /etc/systemd/system/{vnc.service,noVNC.service} ; sudo systemctl status  vnc.service noVNC.service ; } | less
 ;;
 *)
 invalid
