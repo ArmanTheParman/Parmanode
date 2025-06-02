@@ -56,6 +56,8 @@ $green
                                       kill)$orange          Aggressive stop (if issues)
                     $cyan
                                       hack)$orange          View and tweak xstartup script
+                    $cyan
+                                      service)$orange       View two service files used
 
 
 $orange
@@ -90,7 +92,10 @@ hack)
 nano ~/.vnc/xstartup ;;
 vhack|hackv)
 vim ~/.vnc/xstartup ;;
-
+service)
+announce "Exit next screen with 'q'"
+cat /etc/systemd/system/{vnc.service,noVNC.service} | less
+;;
 *)
 invalid
 ;;
