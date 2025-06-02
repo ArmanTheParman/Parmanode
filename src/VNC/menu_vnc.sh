@@ -78,7 +78,9 @@ less ~/.vnc/*.log
 ;;
 kill)
 vncserver -kill :1
-rm -rf /tmp/.X1-lock /tmp/.X11-unix/X1 ~/.vnc/*:1.*
+rm -rf /tmp/.X1-lock /tmp/.X11-unix/X1 ~/.vnc/*:1.* 2>$dn
+sudo pkill Xtigervnc Xtightvnc 2>$dn
+sudo rm -f /tmp/.X1-lock /tmp/.X11-unix/X1 2>$dn
 ;;
 *)
 invalid
