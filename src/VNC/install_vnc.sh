@@ -70,7 +70,7 @@ WantedBy=multi-user.target
 
 EOF
 
-cat <<EOF | sudo tee /etc/systemd/system/$noVNCservicefile >$dn 2>&1
+cat <<EOF | sudo tee /etc/systemd/system/$noVNCservicefile 
 [Unit]
 Description=No VNC
 After=network.target
@@ -87,6 +87,7 @@ Group=$(id -gn)
 [Install]
 WantedBy=multi-user.target
 EOF
+debug wait
 
 while true ; do
     if sudo test -f /usr/share/novnc/utils/novnc_proxy ; then 
