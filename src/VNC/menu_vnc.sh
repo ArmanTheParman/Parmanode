@@ -80,7 +80,6 @@ kill)
 vncserver -kill :1
 rm -rf /tmp/.X1-lock /tmp/.X11-unix/X1 ~/.vnc/*:1.*
 ;;
-;;
 *)
 invalid
 ;;
