@@ -80,7 +80,7 @@ WantedBy=multi-user.target
 
 EOF
 
-cat <<EOF | sudo tee $noVNCservicefile 
+cat <<EOF | sudo tee $noVNCservicefile >$dn
 [Unit]
 Description=No VNC
 After=network.target
@@ -97,25 +97,20 @@ Group=$(id -gn)
 [Install]
 WantedBy=multi-user.target
 EOF
-debug wait
 
 while true ; do
     if sudo test -f /usr/share/novnc/utils/novnc_proxy ; then 
-        debug "break 1"
         break 
     elif sudo test -f  /usr/share/novnc/utils/launch ; then 
-        sudo gsed -i 's/novnc_proxy/launch/' $noVNCservicefile #>$dn 2>&1    
-        debug "break 2"
+        sudo gsed -i 's/novnc_proxy/launch/' $noVNCservicefile >$dn 2>&1    
         break
     elif sudo grep -R "try to find websockify " /usr/share/novnc/utils/ ; then
         name=$(cd /usr/share/novnc/utils >$dn 2>&1 && sudo grep -R "try to find websockify " ./ | head -n1 | cut -d  ' ' -f1 | cut -d : -f1 | cut -d / -f2)
         name=$(basename $name)
-        sudo gsed -i "s/novnc_proxy/$name/" $noVNCservicefile #>$dn 2>&1   
-        debug "break 3"
+        sudo gsed -i "s/novnc_proxy/$name/" $noVNCservicefile >$dn 2>&1   
         break
     else
-        sudo gsed -i "s/ExecStart.*$/ExecStart=\/usr\/bin\/websockify --web=\/usr\/share\/novnc $NOVNC_PORT localhost:$VNC_PORT/" $noVNCservicefile #>$dn 2>&1
-        debug "break 4"
+        sudo gsed -i "s/ExecStart.*$/ExecStart=\/usr\/bin\/websockify --web=\/usr\/share\/novnc $NOVNC_PORT localhost:$VNC_PORT/" $noVNCservicefile >$dn 2>&1
         break
     fi
 done
