@@ -1,7 +1,12 @@
 function menu_add {
+
+
 check_disk_space
 while true
 do
+if [[ $OS == "Linux" ]] && sudo fuser /var/lib/dpkg/lock-frontend >$dn 2>&1 ; then
+announce "Careful, don't install anything while apt or apt-get is running"
+fi
 unset bitcoin_n menuaddnewbitcoin wordpress_available
 menu_add_source
 
