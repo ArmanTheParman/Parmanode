@@ -116,6 +116,7 @@ make_vnc_nginx
 
 # http://localhost:$NOVNC_PORT/vnc.html"
 installed_conf_add "vnc-end"
+installed_conf_add "vnc-vJune3"
 installed_conf_remove "vnc-start"
 success "Virtual Network Computing installed"
 return 0
