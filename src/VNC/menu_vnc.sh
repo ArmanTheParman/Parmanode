@@ -43,19 +43,19 @@ $red
 
 
 $green
-                                      start)$orange         Start VNC
+                                    start)$orange         Start VNC
                     $red
-                                      stop)$orange          Stop VNC 
+                                    stop)$orange          Stop VNC 
                     $cyan
-                                      restart)$orange       Resart VNC 
+                                    restart)$orange       Resart VNC 
                     $cyan
-                                      log)$orange           View log
+                                    log)$orange           View log
                     $cyan
-                                      kill)$orange          Aggressive stop (if issues)
+                                    kill)$orange          Aggressive stop (if issues)
                     $cyan
-                                      hack)$orange          View and tweak xstartup script
+                                    hack)$orange          View and tweak xstartup script
                     $cyan
-                                      service)$orange       View two service files used
+                                    service)$orange       View two service files used
 
 
 $orange
