@@ -50,6 +50,8 @@ $green
                                       restart)$orange       Resart VNC 
                     $cyan
                                       log)$orange           View log
+                    $cyan
+                                      kill)$orange          Aggressive stop (if issues)
 
 
 $orange
@@ -73,6 +75,11 @@ continue ;;
 log)
 ammounce "q to quit once log started."
 less ~/.vnc/*.log
+;;
+kill)
+vncserver -kill :1
+rm -rf /tmp/.X1-lock /tmp/.X11-unix/X1 ~/.vnc/*:1.*
+;;
 ;;
 *)
 invalid
