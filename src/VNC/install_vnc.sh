@@ -30,7 +30,7 @@ mkdir -p $hp/vnc
 cat <<EOF | tee ~/.vnc/xstartup >$dn 2>&1
 #!/bin/sh
 unset SESSION_MANAGER DBUS_SESSION_BUS_ADDRESS
-export XDG_CURRENT_DESKTOP=XFCE
+export XDG_CURRENT_DESKTOP=XFCE  # tells autostart apps this is an XFCE session, otherwise errors
 export DISPLAY=:1
 exec startxfce4
 EOF
