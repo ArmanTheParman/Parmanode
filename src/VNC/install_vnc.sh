@@ -66,7 +66,7 @@ Type=forking
 User=parman
 
 #-- guarantee :1 is free
-ExecStartPre=/usr/bin/vncserver -kill :1 || true
+ExecStartPre=-/usr/bin/vncserver -kill :1 || true
 ExecStartPre=/bin/bash -c 'rm -f /tmp/.X1-lock /tmp/.X11-unix/X1 $HOME/.vnc/*:1.* || true'
 
 ExecStart=/usr/bin/vncserver :1 -geometry 1920x1080 -depth 24
