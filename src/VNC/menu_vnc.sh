@@ -41,6 +41,8 @@ $red
     The terminal window of Parmanode from within the browser connection needs manual resizing with the
     mouse, and then refreshing the page to fix up the formatting derangement.
     $orange
+                    $cyan
+                                      kill)$orange          Aggressive stop (if issues)
 
 $green
                                       start)$orange         Start VNC
@@ -52,6 +54,8 @@ $green
                                       log)$orange           View log
                     $cyan
                                       kill)$orange          Aggressive stop (if issues)
+                    $cyan
+                                      hack)$orange          View and tweak xstartup script
 
 
 $orange
@@ -82,6 +86,11 @@ rm -rf /tmp/.X1-lock /tmp/.X11-unix/X1 ~/.vnc/*:1.* 2>$dn
 sudo pkill Xtigervnc Xtightvnc 2>$dn
 sudo rm -f /tmp/.X1-lock /tmp/.X11-unix/X1 2>$dn
 ;;
+hack)
+nano ~/.vnc/xstartup ;;
+vhack|hackv)
+vim ~/.vnc/xstartup ;;
+
 *)
 invalid
 ;;
