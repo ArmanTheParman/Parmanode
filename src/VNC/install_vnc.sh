@@ -98,7 +98,7 @@ while true ; do
         debug "break 2"
         break
     elif sudo grep -R "try to find websockify " /usr/share/novnc/utils/ ; then
-        name=$(sudo grep -R "try to find websockify " /usr/share/novnc/utils/ | head -n1 | cut -d  ' ' -f1 | cut -d : -f1 | cut -d / -f2)
+        name=$(cd /usr/share/novnc/utils >$dn 2>&1 && sudo grep -R "try to find websockify " /usr/share/novnc/utils/ | head -n1 | cut -d  ' ' -f1 | cut -d : -f1 | cut -d / -f2)
         name=$(basename $name)
         sudo gsed -i "s/novnc_proxy/$name/" $noVNCservicefile #>$dn 2>&1   
         debug "break 3"
