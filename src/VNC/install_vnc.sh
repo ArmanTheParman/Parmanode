@@ -27,22 +27,14 @@ install_novnc_dependencies
 mkdir -p ~/.vnc ; installed_conf_add "vnc-start"
 mkdir -p $hp/vnc
 
-if  [[ $debug == 1 ]] ; then
 cat <<EOF | tee ~/.vnc/xstartup >$dn 2>&1
 #!/bin/sh
 unset SESSION_MANAGER DBUS_SESSION_BUS_ADDRESS
-exec dbus-launch --exit-with-session xfce4-session
-EOF
-chmod +x ~/.vnc/xstartup
-else
-cat <<EOF | tee ~/.vnc/xstartup >$dn 2>&1
-#!/bin/sh
-unset SESSION_MANAGER
-unset DBUS_SESSION_BUS_ADDRESS
+export XDG_CURRENT_DESKTOP=XFCE
+export DISPLAY=:1
 exec startxfce4
 EOF
 chmod +x ~/.vnc/xstartup
-fi
 
 # Set VNC password 
 if [ ! -f "$HOME/.vnc/passwd" ]; then
