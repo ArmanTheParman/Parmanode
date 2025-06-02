@@ -17,7 +17,7 @@ fi
 if sudo systemctl status vnc.service >$dn 2>&1 && sudo systemctl status noVNC.service >$dn 2>&1 ; then 
    export vncprint="${green}RUNNING$orange" ; else vncprint="${red}NOT RUNNING$orange" 
 fi
-set_terminal 48 110 ; echo -e "
+set_terminal 50 110 ; echo -e "
 ##############################################################################################################$cyan
                                       Virtual Network Computing Menu            $orange                   
 ##############################################################################################################
