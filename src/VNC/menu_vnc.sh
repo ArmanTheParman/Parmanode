@@ -48,6 +48,8 @@ $green
                                       stop)$orange          Stop VNC 
                     $cyan
                                       restart)$orange       Resart VNC 
+                    $cyan
+                                      log)$orange           View log
 
 
 $orange
@@ -68,6 +70,10 @@ restart_vnc
 ;;
 "")
 continue ;;
+log)
+ammounce "q to quit once log started."
+less ~/.vnc/*.log
+;;
 *)
 invalid
 ;;
