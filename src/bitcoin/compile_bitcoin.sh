@@ -75,7 +75,7 @@ fi
     unset export GIT_COMMITTER_EMAIL
 
 #after version 28, this breaks. autogen no longer used.
-debug "version: $version ;  clientchoice: $clientchoice ; "
+debug "version: $version ;  clientchoice: $clientchoice ; pwd $pwd"
 ./autogen.sh || { enter_continue "Something seems to have gone wrong. Proceed with caution." ; }
 
 [[ $clientchoice == "deis" ]] || while true ; do
