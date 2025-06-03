@@ -133,6 +133,15 @@ sudo atp-get update -y
 sudo apt-get install podman -y || sww
 pip3 install podman-compose || sww
 
+. /etc/os-release 
+sudo sh -c "echo 'deb     http://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_${VERSION_ID}/ /' \
+  > /etc/apt/sources.list.d/devel:kubic:libcontainers:stable.list"
+curl -L https://download.opensuse.org/repositories/devel:kubic:libcontainers:stable/xUbuntu_${VERSION_ID}/Release.key \
+  | sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/libcontainers.gpg
+
+sudo apt update
+sudo apt install -y podman netavark aardvark-dns
+
 conf=/etc/containers/registries.conf
 search_line="registries = ['docker.io']"
 
