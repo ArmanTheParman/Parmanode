@@ -14,9 +14,9 @@ rm "${mempoolconf}E" >$dn 2>&1
 while true ; do 
 set_terminal
 
-if podman ps 2>$dn | grep -q mempool_web && \
-   podman ps 2>$dn | grep -q mempool/backend && \
-   podman ps 2>$dn | grep maria | grep -q docker-db ; then
+if docker ps 2>$dn | grep -q mempool_web && \
+   docker ps 2>$dn | grep -q mempool/backend && \
+   docker ps 2>$dn | grep maria | grep -q docker-db ; then
 running="                           MEMPOOL IS$green    Running$orange"
 else
 running="                           MEMPOOL IS$red    Not Running$orange"
@@ -145,17 +145,17 @@ change_mempool_backend
 
 log1)
 NODAEMON="true"
-pn_tmux "podman logs docker-api-1 2>&1 | less" ; unset NODAEMON
+pn_tmux "docker logs docker-api-1 2>&1 | less" ; unset NODAEMON
 unset NODAEMON
 ;;
 log2)
 NODAEMON="true"
-pn_tmux "podman logs docker-db-1 2>&1 | less" ; unset NODAEMON 
+pn_tmux "docker logs docker-db-1 2>&1 | less" ; unset NODAEMON 
 unset NODAEMON
 ;;
 log3)
 NODAEMON="true"
-pn_tmux "podman logs docker-mempool_web-1 2>&1 | less" ; unset NODAEMON 
+pn_tmux "docker logs docker-mempool_web-1 2>&1 | less" ; unset NODAEMON 
 unset NODAEMON
 ;;
 
@@ -168,13 +168,13 @@ announce "Choosee api$cyan (1)$orange, db$cyan (2)$orange, or web$cyan (3)$orang
     NODAEMON="true"
     case $enter_cont in
     1|api)
-        pn_tmux "podman logs docker-api-1 2>&1 | less" ; unset NODAEMON ; break
+        pn_tmux "docker logs docker-api-1 2>&1 | less" ; unset NODAEMON ; break
         ;;
     2|db)
-        pn_tmux "podman logs docker-db-1 2>&1 | less" ; unset NODAEMON ; break 
+        pn_tmux "docker logs docker-db-1 2>&1 | less" ; unset NODAEMON ; break 
         ;;
     3|web)
-        pn_tmux "podman logs docker-mempool_web-1 2>&1 | less" ; unset NODAEMON ; break
+        pn_tmux "docker logs docker-mempool_web-1 2>&1 | less" ; unset NODAEMON ; break
         ;;
     *)
         invalid 
@@ -439,7 +439,7 @@ fi
 function list_mempool_docker_IPs {
 
 rm $dp/docker_IPs >$dn 2>&1
-podman inspect -f '{{.Name}}={{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $(podman ps -q) \
+docker inspect -f '{{.Name}}={{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $(docker ps -q) \
 | gsed 's/^\///' | while read theip ; do echo $theip | tee -a $dp/docker_IPs >$dn 2>&1 ; done
 
 grep "docker-mempool_web-1" $dp/docker_IPs > $dp/mempool_IPs

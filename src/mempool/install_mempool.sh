@@ -1,6 +1,8 @@
 function install_mempool {
-
-which podman >$dn 2>&1 || install_podman
+if ! which docker >$dn 2>&1 ; then announce "Please install Docker first from Parmanode Add/Other menu, and START it. Aborting." ; return 1
+else
+    if ! docker ps >$dn ; then announce "Pease make sure you START the docker service first. Aborting for now." ; return 1 ; fi
+fi
 
 if ! grep -q bitcoin-end $HOME/.parmanode/installed.conf ; then
 announce "Mempool won't work without Bitcoin installed first. You can
@@ -38,21 +40,22 @@ rm $tmp/docker-compose.yml >$dn 2>&1
 choose_bitcoin_for_mempool
 
 cd $hp/mempool/docker 
-podman-compose up -d || debug "compose up didn't work"
+docker compose up -d || debug "compose up didn't work"
 
 #Final check to make sure the docker gatway IP is included in bitcoin.conf
+if docker ps >$dn 2>&1 ; then
 
-string="$(podman network inspect docker_PM_network | grep Gateway | awk '{print $2}' | tr -d ' ' | tr -d \" | cut -d \. -f 1)"
+string="$(docker network inspect docker_PM_network | grep Gateway | awk '{print $2}' | tr -d ' ' | tr -d \" | cut -d \. -f 1)"
 debug "string is $string"
 
 if [[ $string != 172 ]] ; then #would be unusualy for it not to be 172
 
-        if ! podman network inspect docker_PM_netowrk >$dn 2>&1 ; then 
+        if ! docker network inspect docker_PM_netowrk >$dn 2>&1 ; then 
         announce "some problem with starting the container. Aborting. Please let Parman know to fix."
         return 1
         fi
 
-    stringIP="$(podman network inspect docker_PM_network | grep Gateway | awk '{print $2}' | tr -d ' ' | tr -d \" )"
+    stringIP="$(docker network inspect docker_PM_network | grep Gateway | awk '{print $2}' | tr -d ' ' | tr -d \" )"
 
     if [[ -n $stringIP ]] ; then
       cp $bc $dp/backup_bitcoin.conf 
@@ -63,18 +66,18 @@ if [[ $string != 172 ]] ; then #would be unusualy for it not to be 172
     elif [[ $OS == Mac ]] ; then stop_bitcoin ; start_bitcoin
     fi
 
-    announce "An unusual IP address for the Podman Gateway was detected 
+    announce "An unusual IP address for the Docker Gateway was detected 
     (doesn't start with 172) and was addeed to bitcoin.conf as
-    rpcallowip=PodmanIP/16. There is a chance this could cause errors.
+    rpcallowip=DockerIP/16. There is a chance this could cause errors.
     A backup of bitcoin.conf has been saved to 
     $dp/backup_bitcoin.conf just in case you need to go back to it.
     Call Parman for help if you have issues (Telegram or Twitter).
     "
     restart_mempool
 
-fi 
+fi ; fi #end if docker ps
 
-if podman ps | grep -q mempool ; then
+if docker ps | grep -q mempool ; then
     installed_conf_add "mempool-end"
     filter_notice
     success "Mempool" "being installed"
@@ -97,9 +100,7 @@ $cyan
 $cyan
             2)$orange     v3.0
 $cyan
-            3)$orange     v3.2.1
-$cyan
-            4)$orange     Latest (pre-release, can be buggy, but cutting edge)
+            3)$orange     Latest (pre-release, can be buggy, but cutting edge)
 
 ########################################################################################
 "
@@ -114,9 +115,6 @@ break ;;
 export memversion="--branch v3.0 --single-branch"
 break ;;
 3)
-export memversion="--branch v3.2.1 --single-branch"
-break ;;
-4)
 export memversion="--depth 1"
 break ;;
 *)
@@ -124,35 +122,4 @@ invalid ;;
 esac
 done
 return 0
-}
-
-
-function install_podman {
-
-sudo atp-get update -y
-sudo apt-get install podman -y || sww
-pip3 install podman-compose || sww
-
-. /etc/os-release 
-sudo sh -c "echo 'deb     http://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_${VERSION_ID}/ /' \
-  > /etc/apt/sources.list.d/devel:kubic:libcontainers:stable.list"
-curl -L https://download.opensuse.org/repositories/devel:kubic:libcontainers:stable/xUbuntu_${VERSION_ID}/Release.key \
-  | sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/libcontainers.gpg
-
-sudo apt update
-sudo apt install -y podman netavark aardvark-dns
-
-conf=/etc/containers/registries.conf
-search_line="registries = ['docker.io']"
-
-if grep -q '^\[registries.search\]' "$conf"; then
-  # Append inside the existing section if not already present
-  grep -qF "$search_line" "$conf" || sed -i "/^\[registries.search\]/a $search_line" "$conf"
-else
-  # Add the whole section at the end
-  echo -e "\n[registries.search]\n$search_line" | sudo tee -a "$conf" >/dev/null
-fi
-
-return 0
-
 }

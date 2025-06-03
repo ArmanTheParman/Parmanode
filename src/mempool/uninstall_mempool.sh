@@ -19,12 +19,12 @@ n) return 1 ;;
 esac
 done
 
-if ! podman ps > $dn 2>&1 ; then
-announce "Podman needs to be running. Aborting."
+if ! docker ps > $dn 2>&1 ; then
+announce "Docker needs to be running. Aborting."
 return 1
 fi
 nogsedtest
-cd $hp/mempool/docker && podman-compose down
+cd $hp/mempool/docker && docker compose down
 #need sudo, some dirs have container permissions
 cd $hp && sudo rm -rf $hp/mempool
 sudo gsed -i "/mempool-service/d" $macprefix/etc/tor/torrc 
