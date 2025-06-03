@@ -33,7 +33,7 @@ debug "in client choice core"
                 git add . ; git commit -m "ordinals patch applied"
             fi
 
-elif [[ $clientchohice == "knots" ]] ; then 
+elif [[ $clientchoice == "knots" ]] ; then 
 
     if [[ -e $hp/bitcoinknots_github ]] ; then 
         cd $hp/bitcoinknots_github ; git fetch ; git pull ; git checkout $knotstag ; git pull 
