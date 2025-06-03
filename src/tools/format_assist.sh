@@ -200,7 +200,7 @@ $orange
     typed out exactly (replace \$UUID with the actual string of the UUID, and any spaces where they 
     shouldn't be can break your computer; eg no space after that comma).
   $red  
-    echo "UUID=\$UUID /media/$USER/parmanode ext4 defaults,nofail 0 2" | sudo tee -a /etc/fstab 
+    echo "UUID=\$UUID /media/$USER/parmanode ext4 defaults,nofail,x-systemd.device-timeout=20s 0 2" | sudo tee -a /etc/fstab 
     $orange
     It's best if you back up this file '/etc/fstab' so that if your computer 'breaks' you can restore it
     in emergency boot up mode. Note, sometimes, just removing the external drive and rebooting can work if 

@@ -158,7 +158,7 @@ y|Y)
 export $(sudo blkid -o export $disk | grep TYPE)
 export $(sudo blkid -o export $disk | grep UUID)
 sudo gsed -i "/parmanode/d" /etc/fstab
-echo "UUID=$UUID /media/$(whoami)/parmanode $TYPE defaults,nofail 0 2" | sudo tee -a /etc/fstab >$dn 2>&1
+echo "UUID=$UUID /media/$(whoami)/parmanode $TYPE defaults,nofail,x-systemd.device-timeout=20s 0 2" | sudo tee -a /etc/fstab >$dn 2>&1
 break
 ;;
 n|N)
@@ -238,7 +238,7 @@ y|Y)
 export $(sudo blkid -o export $disk | grep TYPE) 
 export $(sudo blkid -o export $disk | grep UUID) 
 sudo gsed -i "/parmanode/d" /etc/fstab
-echo "UUID=$UUID /media/$(whoami)/parmanode $TYPE defaults,nofail 0 2" | sudo tee -a /etc/fstab >$dn 2>&1
+echo "UUID=$UUID /media/$(whoami)/parmanode $TYPE defaults,nofail,x-systemd.device-timeout=20s 0 2" | sudo tee -a /etc/fstab >$dn 2>&1
 break
 ;;
 n|N)
@@ -272,7 +272,7 @@ if ! grep -q parmanode < /etc/fstab ; then
     # can't export everything, need grep, becuase if Label has spaces, causes error.
     export $(sudo blkid -o export $disk | grep TYPE) 
     export $(sudo blkid -o export $disk | grep UUID) 
-    echo "UUID=$UUID /media/$(whoami)/parmanode $TYPE defaults,nofail 0 2" | sudo tee -a /etc/fstab >$dn 2>&1
+    echo "UUID=$UUID /media/$(whoami)/parmanode $TYPE defaults,nofail,x-systemd.device-timeout=20s 0 2" | sudo tee -a /etc/fstab >$dn 2>&1
 fi
 
 success "MyNode Drive" "being imported to Parmanode."

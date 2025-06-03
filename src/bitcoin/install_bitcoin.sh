@@ -11,6 +11,7 @@ export bitcoin_compile="false"
 export knotsversion=28.1 
 export deisversion=28.1
 export knotsdate=20250305 
+export knotstag="v${knotsversion}.knots${knotsdate}"
 export knotsmajor=28.x
 export knotsextension="tar.gz"
 export coreexternsion="tar.gz"

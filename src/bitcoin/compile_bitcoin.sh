@@ -36,9 +36,9 @@ if [[ $clientchoice == "core" ]] ; then
 elif [[ $clientchohice == "knots" ]] ; then 
 
     if [[ -e $hp/bitcoinknots_github ]] ; then 
-        cd $hp/bitcoinknots_github ; git fetch ; git pull ; git checkout origin/HEAD ; git pull 
+        cd $hp/bitcoinknots_github ; git fetch ; git pull ; git checkout $knotstag ; git pull 
     else
-        cd $hp && git clone https://github.com/bitcoinknots/bitcoin.git bitcoinknots_github && cd bitcoinknots_github
+        cd $hp && git clone https://github.com/bitcoinknots/bitcoin.git bitcoinknots_github && cd bitcoinknots_github && git  checkout $knotstag
     fi
 
 elif  [[ $clientchoice == "deis" ]] ; then #includes fileter ordinals patch
