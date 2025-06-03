@@ -24,7 +24,7 @@ announce "Podman needs to be running. Aborting."
 return 1
 fi
 nogsedtest
-cd $hp/mempool/docker && podman compose down
+cd $hp/mempool/docker && podman-compose down
 #need sudo, some dirs have container permissions
 cd $hp && sudo rm -rf $hp/mempool
 sudo gsed -i "/mempool-service/d" $macprefix/etc/tor/torrc 
