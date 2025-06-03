@@ -38,7 +38,7 @@ rm $tmp/docker-compose.yml >$dn 2>&1
 choose_bitcoin_for_mempool
 
 cd $hp/mempool/docker 
-podman compose up -d || debug "compose up didn't work"
+podman-compose up -d || debug "compose up didn't work"
 
 #Final check to make sure the docker gatway IP is included in bitcoin.conf
 
