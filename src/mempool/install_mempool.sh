@@ -97,7 +97,9 @@ $cyan
 $cyan
             2)$orange     v3.0
 $cyan
-            3)$orange     Latest (pre-release, can be buggy, but cutting edge)
+            3)$orange     v3.2.1
+$cyan
+            4)$orange     Latest (pre-release, can be buggy, but cutting edge)
 
 ########################################################################################
 "
@@ -112,6 +114,9 @@ break ;;
 export memversion="--branch v3.0 --single-branch"
 break ;;
 3)
+export memversion="--branch v3.2.1 --single-branch"
+break ;;
+4)
 export memversion="--depth 1"
 break ;;
 *)
@@ -125,8 +130,20 @@ return 0
 function install_podman {
 
 sudo atp-get update -y
-sudo apt-get install podman podman-compose -y || sww
+sudo apt-get install podman -y || sww
+pip3 install podman-compose || sww
+
+conf=/etc/containers/registries.conf
+search_line="registries = ['docker.io']"
+
+if grep -q '^\[registries.search\]' "$conf"; then
+  # Append inside the existing section if not already present
+  grep -qF "$search_line" "$conf" || sed -i "/^\[registries.search\]/a $search_line" "$conf"
+else
+  # Add the whole section at the end
+  echo -e "\n[registries.search]\n$search_line" | sudo tee -a "$conf" >/dev/null
+fi
+
 return 0
+
 }
-
-
