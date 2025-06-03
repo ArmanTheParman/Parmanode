@@ -87,7 +87,7 @@ $cyan
 $bright_magenta    Current Status: $status_print$orange
 $tortext"
 
-choose "xpmq" ; if read choice
+choose "xpmq" ; read choice
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in 
 m|M) back2main ;; Q|q|quit|QUIT|Quit) exit 0 ;; p|P) return 1 ;;
