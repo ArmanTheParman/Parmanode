@@ -40,7 +40,7 @@ elif [[ $clientchohice == "knots" ]] ; then
     else
         cd $hp && git clone https://github.com/bitcoinknots/bitcoin.git bitcoinknots_github && cd bitcoinknots_github && git  checkout $knotstag
     fi
-
+debug "in client choice = knots; pwd $pdw"
 elif  [[ $clientchoice == "deis" ]] ; then #includes fileter ordinals patch
 
 git clone https://github.com/armantheparman/deis bitcoin_github || { announce "Something went wrong with the download. Aborting." ; return 1 ; }
@@ -67,7 +67,7 @@ cd $hp/bitcoin_github || { announce "Unable to change to bitcoin_github director
 #so qt is compile...
 export gui=yes 
 fi
-
+debug "line 70, pwd, $pwd"
 #clean up variables
     unset GIT_AUTHOR_NAME
     unset GIT_AUTHOR_EMAIL
