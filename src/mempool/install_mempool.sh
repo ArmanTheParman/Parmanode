@@ -1,8 +1,6 @@
 function install_mempool {
-if ! which docker >$dn 2>&1 ; then announce "Please install Docker first from Parmanode Add/Other menu, and START it. Aborting." ; return 1
-else
-    if ! docker ps >$dn ; then announce "Pease make sure you START the docker service first. Aborting for now." ; return 1 ; fi
-fi
+
+which podman >$dn 2>&1 || install_podman
 
 if ! grep -q bitcoin-end $HOME/.parmanode/installed.conf ; then
 announce "Mempool won't work without Bitcoin installed first. You can
@@ -40,22 +38,21 @@ rm $tmp/docker-compose.yml >$dn 2>&1
 choose_bitcoin_for_mempool
 
 cd $hp/mempool/docker 
-docker compose up -d || debug "compose up didn't work"
+podman compose up -d || debug "compose up didn't work"
 
 #Final check to make sure the docker gatway IP is included in bitcoin.conf
-if docker ps >$dn 2>&1 ; then
 
-string="$(docker network inspect docker_PM_network | grep Gateway | awk '{print $2}' | tr -d ' ' | tr -d \" | cut -d \. -f 1)"
+string="$(podman network inspect docker_PM_network | grep Gateway | awk '{print $2}' | tr -d ' ' | tr -d \" | cut -d \. -f 1)"
 debug "string is $string"
 
 if [[ $string != 172 ]] ; then #would be unusualy for it not to be 172
 
-        if ! docker network inspect docker_PM_netowrk >$dn 2>&1 ; then 
+        if ! podman network inspect docker_PM_netowrk >$dn 2>&1 ; then 
         announce "some problem with starting the container. Aborting. Please let Parman know to fix."
         return 1
         fi
 
-    stringIP="$(docker network inspect docker_PM_network | grep Gateway | awk '{print $2}' | tr -d ' ' | tr -d \" )"
+    stringIP="$(podman network inspect docker_PM_network | grep Gateway | awk '{print $2}' | tr -d ' ' | tr -d \" )"
 
     if [[ -n $stringIP ]] ; then
       cp $bc $dp/backup_bitcoin.conf 
@@ -66,18 +63,18 @@ if [[ $string != 172 ]] ; then #would be unusualy for it not to be 172
     elif [[ $OS == Mac ]] ; then stop_bitcoin ; start_bitcoin
     fi
 
-    announce "An unusual IP address for the Docker Gateway was detected 
+    announce "An unusual IP address for the Podman Gateway was detected 
     (doesn't start with 172) and was addeed to bitcoin.conf as
-    rpcallowip=DockerIP/16. There is a chance this could cause errors.
+    rpcallowip=PodmanIP/16. There is a chance this could cause errors.
     A backup of bitcoin.conf has been saved to 
     $dp/backup_bitcoin.conf just in case you need to go back to it.
     Call Parman for help if you have issues (Telegram or Twitter).
     "
     restart_mempool
 
-fi ; fi #end if docker ps
+fi 
 
-if docker ps | grep -q mempool ; then
+if podman ps | grep -q mempool ; then
     installed_conf_add "mempool-end"
     filter_notice
     success "Mempool" "being installed"
@@ -123,3 +120,13 @@ esac
 done
 return 0
 }
+
+
+function install_podman {
+
+sudo atp-get update -y
+sudo apt-get install podman podman-compose -y || sww
+return 0
+}
+
+
