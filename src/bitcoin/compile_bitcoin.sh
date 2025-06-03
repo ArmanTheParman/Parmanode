@@ -18,7 +18,7 @@ cd $hp || { enter_continue "Can't change directory. Aborting." ; return 1 ; }
 [[ -e $hp/bitcoin_github ]] && sudo rm -rf $hp/bitcoin_github >$dn 2>&1
 
 if [[ $clientchoice == "core" ]] ; then  
-
+debug "in client choice core"
     git clone https://github.com/bitcoin/bitcoin.git bitcoin_github || { announce "Something went wrong with the download. Aborting." ; return 1 ; }
     
     cd $hp/bitcoin_github || { announce "Unable to change to bitcoin_github directory. Aborting." ; return 1 ; }
@@ -38,11 +38,14 @@ elif [[ $clientchohice == "knots" ]] ; then
     if [[ -e $hp/bitcoinknots_github ]] ; then 
         cd $hp/bitcoinknots_github ; git fetch ; git pull ; git checkout $knotstag ; git pull 
     else
-        cd $hp && git clone https://github.com/bitcoinknots/bitcoin.git bitcoinknots_github && cd bitcoinknots_github && git  checkout $knotstag
+        cd $hp && git clone https://github.com/bitcoinknots/bitcoin.git bitcoinknots_github && cd bitcoinknots_github && git checkout $knotstag
+        debug "just cloned. pwd: $(pwd)
+
+        $(git status)"
     fi
 debug "in client choice = knots; pwd $(pdw)"
 elif  [[ $clientchoice == "deis" ]] ; then #includes fileter ordinals patch
-
+debug "in clientchoice deis"
 git clone https://github.com/armantheparman/deis bitcoin_github || { announce "Something went wrong with the download. Aborting." ; return 1 ; }
 
 cd $hp/bitcoin_github || { announce "Unable to change to bitcoin_github directory. Aborting." ; return 1 ; }
