@@ -1,9 +1,9 @@
-function menu_vnc {
+function menu_parmadesk {
 
 while true ; do 
-get_onion_address_variable vnc
-if [[ -n $ONION_ADDR_VNC ]] ; then
-    export vnctorprint="Tor Connection:$blue http://$ONION_ADDR_VNC:7010/vnc.html$orange"
+get_onion_address_variable parmadesk
+if [[ -n $ONION_ADDR_PARMADESK ]] ; then
+    export vnctorprint="Tor Connection:$blue http://$ONION_ADDR_PARMADESK:7010/vnc.html$orange"
 else
     export vnctorprint="Tor Connection:$blue http://put_onion_address_here:7010/vnc.html$orange  (onion address not detected)"
 fi
@@ -19,11 +19,11 @@ if sudo systemctl status vnc.service >$dn 2>&1 && sudo systemctl status noVNC.se
 fi
 set_terminal 49 110 ; echo -e "
 ##############################################################################################################$cyan
-                                      Virtual Network Computing Menu            $orange                   
+                                ParmaDesk - Virtual Network Computing Menu            $orange                   
 ##############################################################################################################
 
 
-    VNC is: $vncprint
+    ParmaDesk is: $vncprint
     
     FROM SAME COMPUTER (pointless)
       TCP Connection:$cyan http://127.0.0.1:21000/vnc.html$orange
@@ -43,17 +43,15 @@ $red
 
 
 $green
-                                    start)$orange         Start VNC
+                                    start)$orange         Start ParmaDesk
                     $red
-                                    stop)$orange          Stop VNC 
+                                    stop)$orange          Stop ParmaDesk
                     $cyan
-                                    restart)$orange       Resart VNC 
+                                    restart)$orange       Resart ParmaDesk
 
 $red          Troubleshooting options...
                     $cyan
                                     log)$orange           View log
-                    $cyan
-                                    kill)$orange          Aggressive stop 
                     $cyan
                                     hack)$orange          View and tweak xstartup script
                     $cyan
@@ -67,25 +65,19 @@ jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in 
 m|M) back2main ;; q|Q|QUIT|Quit) exit 0 ;; p|P) menu_use ;; 
 start|Start|START|S|s)
-start_vnc
+start_parmadesk
 ;;
 stop)
-stop_vnc
+stop_parmadesk
 ;;
 restart)
-restart_vnc
+restart_parmadesk
 ;;
 "")
 continue ;;
 log)
 ammounce "q to quit once log started."
 less ~/.vnc/*.log
-;;
-kill)
-vncserver -kill :1
-rm -rf /tmp/.X1-lock /tmp/.X11-unix/X1 ~/.vnc/*:1.* 2>$dn
-sudo pkill Xtigervnc Xtightvnc 2>$dn
-sudo rm -f /tmp/.X1-lock /tmp/.X11-unix/X1 2>$dn
 ;;
 hack)
 nano ~/.vnc/xstartup ;;

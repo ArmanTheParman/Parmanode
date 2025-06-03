@@ -144,8 +144,8 @@ if grep -q "nym-end" $ic ; then nymapp=1
                        echo -e "                        $cyan  nym)$orange        Nym VPN " ; count=$((count +1)) ; fi
 if grep -q "i2p-end" $ic ; then i2papp=1
                        echo -e "                        $cyan  ii)$orange         I2P "     ; count=$((count +1)) ; fi
-if grep -q "vnc-end" $ic ; then vncapp=1
-                       echo -e "                        $cyan  vnc)$orange        VNC "     ; count=$((count +1)) ; fi
+if grep -q "parmadesk-end" $ic ; then parmadeskapp=1
+                       echo -e "                        $cyan  pd)$orange         ParmaDesk VNC" ; count=$((count +1)) ; fi
 echo -e "                            
 #######################################################################################
 "
@@ -410,9 +410,9 @@ ii|i2p)
    else invalid
    fi
    ;;
-vnc)
-   if [[ $vncapp == 1 ]] ; then
-   menu_vnc
+pd|vnc)
+   if [[ $parmadeskapp == 1 ]] ; then
+   menu_parmadesk
     if [[ -n $1 ]] ; then clear ; return 0 ; fi
    else invalid
    fi

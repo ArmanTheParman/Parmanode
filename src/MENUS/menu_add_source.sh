@@ -685,17 +685,17 @@ else
 i2p_n="#$cyan                             ii)    $orange      I2P                                         #"
 fi
 
-#vnc
-unset vnc_i vnc_p vnc_n 
-if grep -q "vnc-end" $HOME/.parmanode/installed.conf ; then 
+#parmadesk vnc
+unset parmadesk_i parmadesk_p parmadesk_n 
+if grep -q "parmadesk-end" $HOME/.parmanode/installed.conf ; then 
   #installed
-vnc_i="#                                      VNC                                             #"
+parmadesk_i="#                                      ParmaDesk VNC                                   #"
 elif grep -q "X11-start" $HOME/.parmanode/installed.conf ; then 
    #partially installed
-vnc_p="#                                      VNC                                             #"
+parmadesk_p="#                                      ParmaDesk VNC                                   #"
 else
    #not installed
-vnc_n="#$cyan                             vnc)   $orange      VNC                                         #"
+parmadesk_n="#$cyan                             pd)   $orange       VNC                                         #"
 fi
 
 }

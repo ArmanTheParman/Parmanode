@@ -1,4 +1,4 @@
-function make_vnc_nginx {
+function make_parmadesk_nginx {
 
 cat <<EOF | sudo tee $macprefix/etc/nginx/conf.d/vnc.conf >$dn 2>&1
 server {

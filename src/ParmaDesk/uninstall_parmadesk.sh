@@ -1,9 +1,9 @@
-function uninstall_vnc {
+function uninstall_parmadesk {
 while true ; do
 set_terminal ; echo -e "
 ########################################################################################
 $cyan
-                                 Uninstall VNC
+                                 Uninstall ParmaDesk
 $orange
     Are you sure? (y) (n)
 
@@ -20,7 +20,7 @@ done
 sudo rm -rf ~/.vnc/ $hp/vnc
 sudo systemctl disable vnc.service >$dn 2>&1
 sudo systemctl disable noVNC.service >$dn 2>&1
-vnc_tor_remove
+parmadesk_tor_remove
 sudo systemctl $macprefix/etc/nginx/conf.d/vnc.conf >$dn 2>&1
 sudo systemctl restart nginx >$dn 2>&1
 sudo rm /etc/systemd/system/{noVNC.service,vnc.service} >$dn 2>&1

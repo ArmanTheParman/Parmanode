@@ -1,4 +1,4 @@
-function install_novnc_dependencies {
+function install_parmadesk_dependencies {
 # Dependencies
 server="tightvncserver"
 
