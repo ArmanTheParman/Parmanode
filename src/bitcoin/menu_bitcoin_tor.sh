@@ -87,7 +87,7 @@ $cyan
 $bright_magenta    Current Status: $status_print$orange
 $tortext"
 
-choose "xpmq" ; read choice
+choose "xpmq" ; if read choice
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in 
 m|M) back2main ;; Q|q|quit|QUIT|Quit) exit 0 ;; p|P) return 1 ;;
@@ -95,18 +95,21 @@ m|M) back2main ;; Q|q|quit|QUIT|Quit) exit 0 ;; p|P) return 1 ;;
     bitcoin_tor "torandclearnet" 
     check_bitcoin_tor_status #sets status in parmanode.conf
     remove_bitcoin_i2p
+    if [[ $install == "bitcoin" ]] ; then return 0 ; fi
     continue ;;
 
 "2")
     bitcoin_tor "toronly" 
     check_bitcoin_tor_status
     remove_bitcoin_i2p
+    if [[ $install == "bitcoin" ]] ; then return 0 ; fi
     continue ;;
 
 "3")
     bitcoin_tor "toronly" "onlyout" #both $1 and $2 needed
     check_bitcoin_tor_status
     remove_bitcoin_i2p
+    if [[ $install == "bitcoin" ]] ; then return 0 ; fi
     continue ;;
 
 "4")
@@ -114,6 +117,7 @@ m|M) back2main ;; Q|q|quit|QUIT|Quit) exit 0 ;; p|P) return 1 ;;
     parmanode_conf_remove "bitcoin_tor_status"
     check_bitcoin_tor_status    
     remove_bitcoin_i2p
+    if [[ $install == "bitcoin" ]] ; then return 0 ; fi
     continue ;;
 "5")
     bitcoin_tor "toronly"
@@ -121,18 +125,20 @@ m|M) back2main ;; Q|q|quit|QUIT|Quit) exit 0 ;; p|P) return 1 ;;
     bitcoin_i2p
     parmanode_conf_remove "bitcoin_tor_status"
     parmanode_conf_add "bitcoin_tor_status=tori2p"
+    if [[ $install == "bitcoin" ]] ; then return 0 ; fi
     continue ;;
 "6") 
-    if ! grep -q "i2p-end" $ic ; then install_i2p || continue ; fi
+    if ! grep -q "i2p-end" $ic ; then install_i2p || { sww ; continue ; } ; fi
     bitcoin_tor_remove
     parmanode_conf_remove "bitcoin_tor_status"
     check_bitcoin_tor_status
     bitcoin_i2p 
     parmanode_conf_remove "bitcoin_tor_status"
     parmanode_conf_add "bitcoin_tor_status=i2p"
+    if [[ $install == "bitcoin" ]] ; then return 0 ; fi
     continue ;;
 "7") 
-    if ! grep -q "i2p-end" $ic ; then install_i2p || continue ; fi
+    if ! grep -q "i2p-end" $ic ; then install_i2p || { sww ; continue ; } ; fi
     bitcoin_tor_remove
     parmanode_conf_remove "bitcoin_tor_status"
     check_bitcoin_tor_status
@@ -141,6 +147,7 @@ m|M) back2main ;; Q|q|quit|QUIT|Quit) exit 0 ;; p|P) return 1 ;;
     echo "discover=0" | sudo tee -a $bc >$dn 2>&1
     parmanode_conf_remove "bitcoin_tor_status"
     parmanode_conf_add "bitcoin_tor_status=i2ponlyout"
+    if [[ $install == "bitcoin" ]] ; then return 0 ; fi
     continue ;;
 
 
