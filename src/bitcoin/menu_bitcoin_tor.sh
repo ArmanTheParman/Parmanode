@@ -38,6 +38,9 @@ elif [[ $bitcoin_tor_status == "i2p" ]] ; then
 elif [[ $bitcoin_tor_status == "i2ponlyout" ]] ; then
     local status_print="Strict I2P Stealth (option 7)"
     unset showtor
+else
+    local status_print="Unknown. Make a selection to enforce."
+    unset showtor
 fi
 
 
