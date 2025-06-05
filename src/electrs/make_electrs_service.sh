@@ -32,7 +32,7 @@ StandardError=append:/home/$USER/.electrs/run_electrs.log
 [Install]
 WantedBy=multi-user.target" | sudo tee /etc/systemd/system/electrs.service >$dn 2>&1
 
-sudo systemctl daemon-reload >$dn
-sudo systemctl enable electrs.service >$dn
+sudo systemctl daemon-reload >$dn 2>&1
+sudo systemctl enable --now electrs.service >$dn 2>&1
 
 }
