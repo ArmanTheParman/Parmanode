@@ -92,7 +92,7 @@ while [[ -z $ONION_ADDR ]] ; do
 [[ -z $install_bitcoin_variable ]] && get_onion_address_variable "bitcoin"
 sleep 1.5
 count=$((1 + count))
-if [[ $count -gt 4 ]] ; return 1 ; fi
+if [[ $count -gt 4 ]] ; then return 1 ; fi
 done
 
 }
