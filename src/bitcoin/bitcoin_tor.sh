@@ -38,14 +38,6 @@ if [[ -z $install_bitcoin_variable ]] ; then
     start_bitcoin
 fi
 
-unset $ONION_ADDR
-please_wait
-while [[ -z $ONION_ADDR ]] ; do
-[[ -z $install_bitcoin_variable ]] && get_onion_address_variable "bitcoin"
-sleep 1.5
-count=$((1 + count))
-if [[ $count -gt 4 ]] ; then log "bitcoin" "Couldn't get onion address. Aborting." ; return 1 ; fi
-done
 ########################################################################################
 
 
@@ -93,5 +85,15 @@ start_bitcoin
 fi
 
 set_terminal
+
+unset $ONION_ADDR
+please_wait
+while [[ -z $ONION_ADDR ]] ; do
+[[ -z $install_bitcoin_variable ]] && get_onion_address_variable "bitcoin"
+sleep 1.5
+count=$((1 + count))
+if [[ $count -gt 4 ]] ; return 1 ; fi
+done
+
 }
 
