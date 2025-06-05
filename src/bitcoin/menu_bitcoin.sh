@@ -96,7 +96,7 @@ fi
 debug "bitcoin menu..."
 set_terminal 52 88
 if grep -q "disable_bitcoin=true" $pc ; then
-         output1="                   Bitcoin is$red DISABLED$orange" 
+         output1="                   Bitcoin is$red DISABLED (type disable to toggle)$orange" 
 fi
 
 
@@ -301,6 +301,9 @@ menu_btcpay_manr
 ;;
 tips)
 bitcoin_tips
+;;
+disable)
+disable_bitcoin
 ;;
 "")
 continue ;;
