@@ -1,10 +1,12 @@
 function check_bitcoin_tor_status {
+#Function destined for deletion
+
 
 while true ; do
 source $pc
 
 # if no "onion" text in bitcoin.conf, can't be a tor node
-if [[ $bitcoin_tor_status ==  ]] ; then
+
 if ! grep -q onion $bc ; then
     parmanode_conf_remove "bitcoin_tor_status="
     parmanode_conf_add "bitcoin_tor_status=c"
