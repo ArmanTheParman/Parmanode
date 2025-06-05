@@ -6,4 +6,5 @@ fi
 source $HOME/parman_programs/parmanode/source_parmanode.sh
 source_parmanode
 source_premium
+parmanode_variables
 a
