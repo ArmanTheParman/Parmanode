@@ -13,30 +13,29 @@ fi
 
 while true ; do
 unset tortext
-source $dp/parmanode.conf >$dn 2>&1 
+source $pc >$dn 2>&1 
 
-if [[ $bitcoin_tor_status == t ]] ; then
-    local status_print="Tor enabled (option 2)"
-    local showtor="true"
-elif [[ $bitcoin_tor_status == c ]] ; then
-    local status_print="Clearnet (option 4)"
-    unset  showtor
-elif [[ $bitcoin_tor_status == tc ]] ; then
+if [[ $bitcoin_tor_status == "torandclearnet" ]] ; then
     local status_print="Clearnet & Tor (option 1)"
     local showtor="true"
-
-elif [[ $bitcoin_tor_status == tonlyout ]] ; then
+elif [[ $bitcoin_tor_status == "toronly" ]] ; then
+    local status_print="Tor enabled (option 2)"
+    local showtor="true"
+elif [[ $bitcoin_tor_status == "clearnet" ]] ; then
+    local status_print="Clearnet (option 4)"
+    unset  showtor
+elif [[ $bitcoin_tor_status == "onlyout" ]] ; then
     local status_print="Strict Tor, Stealth (option 3)"
     local showtor="true"
 
-elif [[ $bitcoin_tor_status == tori2p ]] ; then
+elif [[ $bitcoin_tor_status == "tori2p" ]] ; then
     local status_print="Strict Tor and I2P (option 5)"
     local showtor="true"
 
-elif [[ $bitcoin_tor_status == i2p ]] ; then
+elif [[ $bitcoin_tor_status == "i2p" ]] ; then
     local status_print="Strict I2P only (option 6)"
     unset showtor
-elif [[ $bitcoin_tor_status == i2ponlyout ]] ; then
+elif [[ $bitcoin_tor_status == "i2ponlyout" ]] ; then
     local status_print="Strict I2P Stealth (option 7)"
     unset showtor
 fi
@@ -93,21 +92,21 @@ case $choice in
 m|M) back2main ;; Q|q|quit|QUIT|Quit) exit 0 ;; p|P) return 1 ;;
 "1")
     bitcoin_tor "torandclearnet" 
-    check_bitcoin_tor_status #sets status in parmanode.conf
+#    check_bitcoin_tor_status #sets status in parmanode.conf #delete this function later
     remove_bitcoin_i2p
     if [[ $install == "bitcoin" ]] ; then return 0 ; fi
     continue ;;
 
 "2")
     bitcoin_tor "toronly" 
-    check_bitcoin_tor_status
+#    check_bitcoin_tor_status
     remove_bitcoin_i2p
     if [[ $install == "bitcoin" ]] ; then return 0 ; fi
     continue ;;
 
 "3")
     bitcoin_tor "toronly" "onlyout" #both $1 and $2 needed
-    check_bitcoin_tor_status
+#    check_bitcoin_tor_status
     remove_bitcoin_i2p
     if [[ $install == "bitcoin" ]] ; then return 0 ; fi
     continue ;;
@@ -115,13 +114,14 @@ m|M) back2main ;; Q|q|quit|QUIT|Quit) exit 0 ;; p|P) return 1 ;;
 "4")
     bitcoin_tor_remove 
     parmanode_conf_remove "bitcoin_tor_status"
-    check_bitcoin_tor_status    
+    parmanode_conf_add "bitcoin_tor_status=clearnet"
+#    check_bitcoin_tor_status    
     remove_bitcoin_i2p
     if [[ $install == "bitcoin" ]] ; then return 0 ; fi
     continue ;;
 "5")
     bitcoin_tor "toronly"
-    check_bitcoin_tor_status
+#    check_bitcoin_tor_status
     bitcoin_i2p
     parmanode_conf_remove "bitcoin_tor_status"
     parmanode_conf_add "bitcoin_tor_status=tori2p"
@@ -131,7 +131,7 @@ m|M) back2main ;; Q|q|quit|QUIT|Quit) exit 0 ;; p|P) return 1 ;;
     if ! grep -q "i2p-end" $ic ; then install_i2p || { sww ; continue ; } ; fi
     bitcoin_tor_remove
     parmanode_conf_remove "bitcoin_tor_status"
-    check_bitcoin_tor_status
+#    check_bitcoin_tor_status
     bitcoin_i2p 
     parmanode_conf_remove "bitcoin_tor_status"
     parmanode_conf_add "bitcoin_tor_status=i2p"
@@ -141,7 +141,7 @@ m|M) back2main ;; Q|q|quit|QUIT|Quit) exit 0 ;; p|P) return 1 ;;
     if ! grep -q "i2p-end" $ic ; then install_i2p || { sww ; continue ; } ; fi
     bitcoin_tor_remove
     parmanode_conf_remove "bitcoin_tor_status"
-    check_bitcoin_tor_status
+#    check_bitcoin_tor_status
     bitcoin_i2p 
     sudo gsed -i "/discover=/d" $bc >$dn 2>&1
     echo "discover=0" | sudo tee -a $bc >$dn 2>&1
