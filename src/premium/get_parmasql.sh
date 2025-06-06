@@ -16,17 +16,20 @@ $green
     return 1
 }
 
-make_parmasql_ssh_keys && { announce_blue "ParmaSQL SSH keys made. Please contact Parman to enable.
+make_parmasql_ssh_keys && { 
+announce_blue "ParmaSQL SSH keys made. Please contact Parman to enable.
 $green
 
 $HOME/.ssh/extra_keys/parmasql-key ...
 
-$(cat ~/.ssh/extra_keys/parmasql-key.pub)$blue\n" ; return 1 ; }
+$(cat ~/.ssh/extra_keys/parmasql-key.pub)$blue\n"  
+return 1 
+}
 
 #If ParmaSQL is enabled and SSH keys are made, clone the repo and run the script
 
     if [[ ! -d $pp/parmasql ]] ; then
-    git clone git@github-parmasql:armantheparman/parmasql.git $pp/parmasql || { enter_continue "\n$blue    Something went wrong. Contact Parman.\n
+    git clone git@github-parmasql:armantheparman/parmasql.git $pp/parmasql || { sww "\n$blue    Something went wrong. Contact Parman.\n
     \r    Please contact Parman to enable ParmaSQL on your machine.\n$orange" ; return 1 ; }
     else
     cd $pp/parmasql && please_wait && git pull >$dn 2>&1

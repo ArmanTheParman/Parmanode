@@ -20,6 +20,9 @@ function source_premium {
     [[ -e $dp/.parmanas_enabled ]] && [[ -e $pp/parmanas ]] && for file in $pp/parmanas/src/*.sh ; do
 	    source $file
 	done
+    [[ -e $dp/.parmasql_enabled ]] && [[ -e $pp/parmasql ]] && for file in $pp/parmasql/src/*.sh ; do
+	    source $file
+	done
 #custom
     if ! test -f $dp/donotsourceparmadrive ; then
 		[[ -e $pp/parmadrive ]] && for file in $pp/parmadrive/src/*.sh ; do
