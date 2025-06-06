@@ -28,11 +28,11 @@ set_terminal 49 110 ; echo -e "
     FROM SAME COMPUTER (pointless)
       TCP Connection:$cyan http://127.0.0.1:21000/vnc.html$orange
       TCP Connection:$cyan http://localhost:21000/vnc.html$orange
-      SSL Connection:$cyan http${red}s${cyan}://127.0.0.1:2100${red}1$cyan/vnc.html$orange
+      SSL Connection:$cyan http${red}s${cyan}://127.0.0.1:2100${red}1$cyan/$orange
 
     FROM OTHER COMPUTERS ON THE SAME NETWORK:
-      SSL Connection:$cyan http${red}s${cyan}://$(cat /etc/hostname):2100${red}1$cyan/vnc.html$orange
-      SSL Connection:$cyan http${red}s${cyan}://$IP:2100${red}1$cyan/vnc.html$orange
+      SSL Connection:$cyan http${red}s${cyan}://$(cat /etc/hostname):2100${red}1$cyan/$orange
+      SSL Connection:$cyan http${red}s${cyan}://$IP:2100${red}1$cyan/$orange
 
     FROM OTHER COMPUTERS WORLDWIDE:
       $vnctorprint

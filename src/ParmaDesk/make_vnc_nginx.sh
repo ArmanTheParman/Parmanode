@@ -13,6 +13,12 @@ server {
         proxy_set_header Connection "upgrade";
     }
 
+    location = / {
+        proxy_pass http://localhost:21000/vnc.html;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+    }
+
     location / {
         proxy_pass http://localhost:21000;
         proxy_set_header Host \$host;
