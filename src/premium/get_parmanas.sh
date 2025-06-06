@@ -3,7 +3,7 @@ function get_parmanas {
     [[ ! -e $dp/.parmanas_enabled ]] && {
     announce_blue "${cyan}ParmaNas (Network Attached Storage) is not enabled by default in Parmanode.
 
-    It comes with all purchased fully-synced ParmanodL laptops and ParmaCloud machines 
+    It comes with all purchased fully-synced ParmanodL laptops and ParmaDrive machines 
     (16TB self-hosted cloud data + Parmanode Bitcoin Node.)
 
     Contact Parman for more info, or see...
