@@ -80,6 +80,10 @@ ud)
 get_uddns
 ;;
 
+psql)
+get_parmasql
+;;
+
 *)
     invalid
     continue
