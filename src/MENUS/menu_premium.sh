@@ -2,6 +2,8 @@ function menu_premium {
 while true ; do
 unset parminer parmacloud parmanas another parmascale parmaweb parmaraid datum parmasync uddns
 menu_add_source
+[[ ! -e $pp/parmasql ]]   &&          parmasql="\n#$orange              psql)$blue        ParmaSQL                                                   #
+#                                                                                      #"
 [[ ! -e $pp/parmascale ]] &&          parmascale="\n#$orange             scale)$blue        ParmaScale                                                 #
 #                                                                                      #"
 [[ ! -e $pp/parminer ]] &&          parminer="\n#$orange                pm)$blue        ParMiner                                                   #
@@ -35,7 +37,7 @@ echo -en "$blue
 #$orange               PREMIUM FEATURES AVAILABLE FOR A SMOL FEE:$green CONACT PARMAN          $blue     #
 ########################################################################################
 #                                                                                      #
-#                                                                                      #$parmasync$parmascale$datum$parmanas$parminer$parmacloud$parmaweb$parmaraid$uddns
+#                                                                                      #$parmasync$parmascale$datum$parmanas$parminer$parmacloud$parmaweb$parmaraid$uddns$parmasql
 #                                                                                      #
 ########################################################################################
 "
