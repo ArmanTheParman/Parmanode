@@ -159,6 +159,25 @@ IdentityFile ~/.ssh/extra_keys/parmascale-key
 IdentitiesOnly yes" | sudo tee -a ~/.ssh/config >$dn
 }
 
+function make_parmasql_ssh_keys {
+debug start make_parmasql_ssh_keys
+#usage...
+#make_parmasql_ssh_keys && { announce_blue "ParmaSQL SSH keys made. Please contact Parman to enable." ; continue ; }
+
+sudo test -f $HOME/.ssh/extra_keys/parmasql-key.pub && return 1 # 1 is logically success here for the calling function
+
+mkdir -p ~/.ssh/extra_keys
+ssh-keygen -t rsa -b 4096 -f $HOME/.ssh/extra_keys/parmasql-key -N "" -C "$USER parmasql"
+
+grep -q "github-parmasql" ~/.ssh/config >$dn 2>&1 || 
+echo "
+Host github-parmasql
+HostName github.com
+User git
+IdentityFile ~/.ssh/extra_keys/parmasql-key
+IdentitiesOnly yes" | sudo tee -a ~/.ssh/config >$dn
+debug end make_parmasql_ssh_keys
+}
 function make_parmadrive_ssh_keys {
 sudo test -f ~/.ssh/parmadrive-key && return 0
 ssh-keygen -t rsa -b 4096 -f ~/.ssh/extra_keys/parmadrive-key -N "" -C "$USER parmadrive"
@@ -180,6 +199,7 @@ make_datum_ssh_keys
 make_parmasync_ssh_keys
 make_uddns_ssh_keys
 make_parmascale_ssh_keys
+make_parmasql_ssh_keys
 }
 
 function get_all_ssh_keys {
@@ -210,6 +230,7 @@ $(sudo cat $HOME/.ssh/extra_keys/uddns-key.pub)
 
 $(sudo cat $HOME/.ssh/extra_keys/parmascale-key.pub)
 
+$(sudo cat $HOME/.ssh/extra_keys/parmanas-key.pub)
 
 " | tee -a $HOME/Desktop/all_ssh_keys.txt >$dn 2>&1
 
