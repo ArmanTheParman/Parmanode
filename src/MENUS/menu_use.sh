@@ -633,7 +633,15 @@ twin)
    else invalid
    fi
    ;;
-
+psql) 
+   if [[ $parmasqlapp == 1 ]] ; then
+   please_wait
+   cd $pp/parmasql/ && git stash >$dn 2>&1 ; git pull >$dn 2>&1
+   menu_parmasql
+   if [[ -n $1 ]] ; then clear ; return 0 ; fi
+   else invalid
+   fi
+   ;;
 *)
    invalid
    clear
