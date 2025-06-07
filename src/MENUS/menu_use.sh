@@ -146,6 +146,8 @@ if grep -q "i2p-end" $ic ; then i2papp=1
                        echo -e "                        $cyan  ii)$orange         I2P "     ; count=$((count +1)) ; fi
 if grep -q "parmadesk-end" $ic ; then parmadeskapp=1
                        echo -e "                        $cyan  pd)$orange         ParmaDesk VNC" ; count=$((count +1)) ; fi
+if grep -q "parmasql-end" $ic ; then parmasqlapp=1
+                       echo -e "                        $cyan  psql)$orange       ParmaSQL" ; count=$((count +1)) ; fi
 echo -e "                            
 #######################################################################################
 "

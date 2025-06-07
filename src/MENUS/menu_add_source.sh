@@ -695,7 +695,19 @@ elif grep -q "X11-start" $HOME/.parmanode/installed.conf ; then
 parmadesk_p="#                                      ParmaDesk VNC                                   #"
 else
    #not installed
-parmadesk_n="#$cyan                             pd)   $orange       VNC                                         #"
+parmadesk_n="#$cyan                             pd)   $orange       ParmaDesk VNC                               #"
 fi
 
+#parmasql
+unset parmasql_i parmasql_p parmasql_n 
+if grep -q "parmasql-end" $HOME/.parmanode/installed.conf ; then 
+  #installed
+parmasql_i="#                                      ParmaSQL Database                               #"
+elif grep -q "X11-start" $HOME/.parmanode/installed.conf ; then 
+   #partially installed
+parmasql_p="#                                      ParmaSQL Database                               #"
+else
+   #not installed
+parmasql_n="#$cyan                             pd)   $orange       ParmaSQL Database                           #"
+fi
 }

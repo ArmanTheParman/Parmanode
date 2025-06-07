@@ -11,7 +11,7 @@ unset electrsmenu trezormenu ledgermenu bitboxmenu parmashellmenu bredockermenu 
 unset anydeskmenu piholemenu torrelaymenu electrskdmenu piappsmenu torbmenu 
 unset public_poolmenu electrumxmenu thunderhubmenu lnddockermenu nginxmenu nostrrelaymenu litdmenu
 unset parmacloudmenu parmanostrmenu btcrecovermenu joinmarketmenu greenmenu X11menu phoenixmenu vaultwardenmenu
-unset nymmenu i2pmenu parmadeskmenu
+unset nymmenu i2pmenu parmadeskmenu parmasqlmenu
 
 echo -e "
 ########################################################################################
@@ -246,6 +246,10 @@ if grep -q "parmadesk-end" $HOME/.parmanode/installed.conf ; then parmadeskmenu=
 echo -e "#$cyan                            \033[27G pd)$orange               ParmaDesk VNC                          \033[88G#"
 elif grep -q "parmadesk-start" $HOME/.parmanode/installed.conf ; then parmadeskmenu=1
 echo -e "#$cyan                            \033[27G pd)$orange               ParmaDesk VNC          $red$blinkon(partial)$blinkoff$orange        \033[88G#" ; fi
+if grep -q "parmasql-end" $HOME/.parmanode/installed.conf ; then parmasqlmenu=1
+echo -e "#$cyan                            \033[27G psql)$orange             ParmaSQL                               \033[88G#"
+elif grep -q "parmasql-start" $HOME/.parmanode/installed.conf ; then parmasqlmenu=1
+echo -e "#$cyan                            \033[27G psql)$orange             ParmaSQL               $red$blinkon(partial)$blinkoff$orange        \033[88G#" ; fi
 echo -e "#                                                                                      \033[88G#
 ########################################################################################
 "
@@ -639,6 +643,12 @@ fi
 pd|vnc)
 if [[ $parmadeskmenu == 1 ]] ; then
 uninstall_parmadesk
+menu_main
+fi
+;;
+psql)
+if [[ $parmasqlmenu == 1 ]] ; then
+uninstall_parmasql
 menu_main
 fi
 ;;
