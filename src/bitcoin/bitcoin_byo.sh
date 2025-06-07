@@ -4,7 +4,7 @@ set_terminal ; echo -e "
 $cyan
              How to bring in your existing Bitcoin data from another drive.
 $orange
-    If your data is from Umberl, Mynode, or RaspiBlitz, then it's better to abort
+    If your data is from Umbrel, Mynode, or RaspiBlitz, then it's better to abort
     and use the custom import drive function.
 
     To import your exiting Bitcoin data on a non-Parmanode drive, do the following: 
