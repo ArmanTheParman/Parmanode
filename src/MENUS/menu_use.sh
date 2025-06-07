@@ -542,6 +542,7 @@ pm)
 if [[ $parminerapp == 1 ]] ; then
 please_wait
 cd $pp/parminer/ && git stash >$dn 2>&1 ; git pull >$dn 2>&1
+source_premium
 $pp/parminer/run_parminer.sh
 if [[ -n $1 ]] ; then clear ; return 0 ; fi
 else invalid
@@ -552,10 +553,7 @@ dt)
 if [[ $datumapp == 1 ]] ; then
 please_wait
 cd $pp/datum/ && git stash >$dn 2>&1 ; git pull >$dn 2>&1
-
-for i in $pp/datum/*/*.sh ; do
-    source $i
-done
+source_premium
 menu_datum
 if [[ -n $1 ]] ; then clear ; return 0 ; fi
 else invalid
@@ -566,10 +564,7 @@ ud)
 if [[ $uddnsapp == 1 ]] ; then
 please_wait
 cd $pp/uddns/ && git stash >$dn 2>&1 ; git pull >$dn 2>&1
-
-for i in $pp/uddns/*/*.sh ; do
-    source $i
-done
+source_premium
 menu_uddns
 if [[ -n $1 ]] ; then clear ; return 0 ; fi
 else invalid
@@ -580,6 +575,7 @@ pdrive)
 if [[ $parmadriveapp == 1 ]] ; then
 please_wait
 cd $pp/parmadrive/ 2>$dn && git stash >$dn 2>&1 && git pull >$dn 2>&1
+source_premium
 menu_parmadrive
 if [[ -n $1 ]] ; then clear ; return 0 ; fi
 else invalid
@@ -590,6 +586,7 @@ pnas)
 if [[ $parmanasapp == 1 ]] ; then
 please_wait
 cd $pp/parmanas/ && git stash >$dn 2>&1 ; git pull >$dn 2>&1
+source_premium
 $pp/parmanas/run_parmanas.sh
 if [[ -n $1 ]] ; then clear ; return 0 ; fi
 else invalid
@@ -599,7 +596,8 @@ fi
 scale)
 if [[ $parmascaleapp == 1 ]] ; then
 please_wait
-cd $pp/parmascale/ && git stash >$dn 2>&1 ; git pull >$dn 2>&1
+cd $pp/parmascale/ && git stash >$dn 2>&1 ; git pull >$dn 2>&
+source_premium
 menu_parmascale
 if [[ -n $1 ]] ; then clear ; return 0 ; fi
 else invalid
@@ -618,6 +616,7 @@ sync)
    if [[ $parmasyncapp == 1 ]] ; then
    please_wait
    cd $pp/parmasync/ && git stash >$dn 2>&1 ; git pull >$dn 2>&1
+   source_premium
    menu_parmasync
    debug "after menu_parmasync"
    if [[ -n $1 ]] ; then clear ; return 0 ; fi
@@ -628,6 +627,7 @@ twin)
    if [[ $parmatwinapp == 1 ]] ; then
    please_wait
    cd $pp/parmasync/ && git stash >$dn 2>&1 ; git pull >$dn 2>&1
+   source_premium
    menu_parmatwin
    if [[ -n $1 ]] ; then clear ; return 0 ; fi
    else invalid
@@ -637,6 +637,7 @@ psql)
    if [[ $parmasqlapp == 1 ]] ; then
    please_wait
    cd $pp/parmasql/ && git stash >$dn 2>&1 ; git pull >$dn 2>&1
+   source_premium
    menu_parmasql
    if [[ -n $1 ]] ; then clear ; return 0 ; fi
    else invalid
