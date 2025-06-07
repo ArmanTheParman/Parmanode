@@ -72,6 +72,10 @@ if [[ $1 == "vnc" ]] ; then
 export ONION_ADDR_VNC="$(sudo cat $varlibtor/vnc-service/hostname 2>$dn)" 
 fi
 
+if [[ $1 == "psql" ]] ; then
+export ONION_ADDR_SQL="$(sudo cat $varlibtor/psql-service/hostname 2>$dn)" 
+fi
+
 return 0
 
 }

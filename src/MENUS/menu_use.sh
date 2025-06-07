@@ -11,7 +11,7 @@ unset electrumxapp thunderhubapp websiteapp lnddockerapp nostrrelay litdapp parm
 unset parmanostrapp btcrecoverapp joinmarketapp greenapp parman_booksapp X11app phoenixapp
 unset parminerapp parmanasapp parmascaleapp vaultwardenapp
 
-set_terminal 34 88
+set_terminal 36 88
 echo -e "
 ########################################################################################
 
@@ -596,7 +596,7 @@ fi
 scale)
 if [[ $parmascaleapp == 1 ]] ; then
 please_wait
-cd $pp/parmascale/ && git stash >$dn 2>&1 ; git pull >$dn 2>&
+cd $pp/parmascale/ && git stash >$dn 2>&1 ; git pull >$dn 2>&1
 source_premium
 menu_parmascale
 if [[ -n $1 ]] ; then clear ; return 0 ; fi

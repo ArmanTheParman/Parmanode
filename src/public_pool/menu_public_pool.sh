@@ -38,7 +38,7 @@ $cyan
       (newtor)$orange         Refresh onion address
 
 
-      The user interfact can be access from your browser at:
+      The user interface can be access from your browser at:
 $cyan
                    http://localhost:505${red}0$cyan  
                    http://127.0.0.1:505${red}1$cyan

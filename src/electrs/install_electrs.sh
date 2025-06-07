@@ -161,7 +161,7 @@ installed_config_add "electrs-end"
 # if [[ $electrs_compile == "true" ]] ; then
 #     backup_electrs
 # fi
-
+electrs_tor
 success "electrs" "being installed"
 
 isbitcoinrunning

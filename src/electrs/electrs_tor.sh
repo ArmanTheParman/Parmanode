@@ -10,15 +10,4 @@ if ! sudo grep "HiddenServicePort 7004 127.0.0.1:50005" $torrc | grep -v "^#" >$
 fi
 
 restart_tor
-
-get_onion_address_variable "electrs" 
-
-parmanode_conf_add "electrs_tor=true"
-
-set_terminal ; echo -e "
-########################################################################################
-    FYI, changes have been made to torrc file, and Tor has been restarted.
-########################################################################################
-"
-enter_continue ; jump $enter_cont
 }
