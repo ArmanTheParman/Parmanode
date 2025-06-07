@@ -43,6 +43,8 @@ if grep -q "website-end" $ic ; then websiteapp=1
                        echo -e "                        $cyan  pw)$blue         WordPress Website (ParmaWeb)$orange" ; count=$((count +1)) ; fi
 if grep -q "parmaraid-end" $ic ; then raidapp=1
                        echo -e "                   $cyan       rr)$blue         RAID" ; count=$((count +1)) ; fi
+if grep -q "parmasql-end" $ic ; then parmasqlapp=1
+                       echo -e "                        $cyan  psql)$blue       ParmaSQL" ; count=$((count +1)) ; fi
 ### Bitcoin 
 if grep -q "bitcoin-end" $ic ; then bitcoinapp=1
                        echo -e "                        $cyan  b)$orange          Bitcoin " ; count=$((count +1)) ; fi
@@ -146,8 +148,6 @@ if grep -q "i2p-end" $ic ; then i2papp=1
                        echo -e "                        $cyan  ii)$orange         I2P "     ; count=$((count +1)) ; fi
 if grep -q "parmadesk-end" $ic ; then parmadeskapp=1
                        echo -e "                        $cyan  pd)$orange         ParmaDesk VNC" ; count=$((count +1)) ; fi
-if grep -q "parmasql-end" $ic ; then parmasqlapp=1
-                       echo -e "                        $cyan  psql)$orange       ParmaSQL" ; count=$((count +1)) ; fi
 echo -e "                            
 #######################################################################################
 "
