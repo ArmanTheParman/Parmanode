@@ -1,5 +1,5 @@
 function get_onion_address_variable {
-if [[ $1 == "bitcoin" ]] ; then
+if [[ $1 == "bitcoin" ]] || [[ -z $1 ]] ; then
 export ONION_ADDR="$(sudo cat $varlibtor/bitcoin-service/hostname 2>$dn)"
 fi
 

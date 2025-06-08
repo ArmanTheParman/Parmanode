@@ -46,6 +46,13 @@ if [[ $1 == "torandclearnet" ]] ; then
     echo "onion=127.0.0.1:9050" | sudo tee -a $bc >$dn 2>&1
     echo "listenonion=1" | sudo tee -a $bc >$dn 2>&1
     sudo gsed -i "/externalip=/d" $bc
+    while [[ -z $ONION_ADDR ]] && [[ $count -lt 2 ]] ; do
+        restart_tor
+        sleep 3
+        get_onion_address_variable
+        count=$((count + 1))
+    done 
+    [[ -z $ONION_ADDR ]] && sww "Some issue with getting onion address. Try later or switch to no Tor."
     echo "externalip=$ONION_ADDR" | sudo tee -a $bc >$dn 2>&1
     sudo gsed -i "/discover=/d" $bc
     echo "discover=1" | sudo tee -a $bc >$dn 2>&1
@@ -59,6 +66,13 @@ if [[ $1 == "toronly" ]] ; then
     echo "listenonion=1" | sudo tee -a $bc >$dn 2>&1
     sudo gsed -i "/externalip=/d" $bc
     echo "onlynet=onion" | sudo tee -a $bc >$dn 2>&1 #new, disallows outward clearnet connections
+        while [[ -z $ONION_ADDR ]] && [[ $count -lt 2 ]] ; do
+        restart_tor
+        sleep 3
+        get_onion_address_variable
+        count=$((count + 1))
+    done 
+    [[ -z $ONION_ADDR ]] && sww "Some issue with getting onion address. Try later or switch to no Tor."
     echo "externalip=$ONION_ADDR" | sudo tee -a $bc >$dn 2>&1
     sudo gsed -i "/^bind=/d" $bc
     echo "bind=127.0.0.1" | sudo tee -a $bc >$dn 2>&1
