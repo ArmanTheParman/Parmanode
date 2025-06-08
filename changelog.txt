@@ -1,5 +1,5 @@
 Version 3.62.4
-     -small VNC bug fixed
+     -small VNC bugs fixed
 Version 3.62.1
      -Version Network Computing smol tweaks
      -Change_hostname tool
