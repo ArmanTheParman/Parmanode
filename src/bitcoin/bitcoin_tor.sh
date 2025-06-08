@@ -49,7 +49,7 @@ if [[ $1 == "torandclearnet" ]] ; then
     while [[ -z $ONION_ADDR ]] && [[ $count -lt 2 ]] ; do
         restart_tor
         sleep 3
-        get_onion_address_variable
+        get_onion_address_variable "bitcoin"
         count=$((count + 1))
     done 
     [[ -z $ONION_ADDR ]] && sww "Some issue with getting onion address. Try later or switch to no Tor."
@@ -69,7 +69,7 @@ if [[ $1 == "toronly" ]] ; then
         while [[ -z $ONION_ADDR ]] && [[ $count -lt 2 ]] ; do
         restart_tor
         sleep 3
-        get_onion_address_variable
+        get_onion_address_variable "bitcoin"
         count=$((count + 1))
     done 
     [[ -z $ONION_ADDR ]] && sww "Some issue with getting onion address. Try later or switch to no Tor."
