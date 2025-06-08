@@ -80,10 +80,9 @@ test -d $dp/scripts || mkdir -p $dp/scripts >$dn 2>&1
 
 gsed -i 's/vnc-/parmadesk-/g' $ic >$dn 2>&1
 
-if sudo test -f $macprefix/etc/nginx/conf.d/vnc.conf && sudo grep -q "proxy_set_header Host ;" $macprefex/etc/nginx/conf.d/vnc.conf ; then
-sudo gsed -i 's/proxy_set_header Host ;/proxy_set_header Host \$host ;/' $macprefex/etc/nginx/conf.d/vnc.conf >$dn 2>&1
-sudo gsed -i 's/proxy_set_header X-Real-IP ;/proxy_set_header X-Real-IP \$remote_addr;/' $macprefex/etc/nginx/conf.d/vnc.conf >$dn 2>&1
-sudo systemctl restart nginx >$dn 2>&1
+if { grep -q vnc- $ic || grep -q parmadesk- $ic ; } && test -f $dp/.vncfixed ; then
+announce "PARMADESK VNC had some bugs which have been fixed. Please reinstall ParmaDesk"
+touch $dp/.vncfixed
 fi
 
 debug temppatchend
