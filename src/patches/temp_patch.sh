@@ -80,7 +80,7 @@ test -d $dp/scripts || mkdir -p $dp/scripts >$dn 2>&1
 
 gsed -i 's/vnc-/parmadesk-/g' $ic >$dn 2>&1
 
-if { grep -q vnc- $ic || grep -q parmadesk- $ic ; } && test -f $dp/.vncfixed ; then
+if { grep -q vnc- $ic || grep -q parmadesk- $ic ; } && ! test -f $dp/.vncfixed ; then
 announce "PARMADESK VNC had some bugs which have been fixed. Please reinstall ParmaDesk"
 touch $dp/.vncfixed
 fi
