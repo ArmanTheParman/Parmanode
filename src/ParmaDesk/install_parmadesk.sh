@@ -28,7 +28,7 @@ install_parmadesk_dependencies
 
 # Create xstartup 
 mkdir -p ~/.vnc ; installed_conf_add "parmadesk-start"
-mkdir -p $hp/vnc
+mkdir -p $hp/parmadesk
 
 cat <<EOF | tee ~/.vnc/xstartup >$dn 2>&1
 #!/bin/sh
