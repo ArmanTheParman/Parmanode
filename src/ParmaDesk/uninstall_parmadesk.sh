@@ -24,7 +24,7 @@ parmadesk_tor_remove
 sudo systemctl $macprefix/etc/nginx/conf.d/vnc.conf >$dn 2>&1
 sudo systemctl restart nginx >$dn 2>&1
 sudo rm /etc/systemd/system/{noVNC.service,vnc.service} >$dn 2>&1
-installed_conf_remove "vnc-start"
-installed_conf_remove "vnc-end"
+installed_conf_remove "vnc-"
+installed_conf_remove "parmadesk-"
 success "Virtual Network Computing uninstalled"
 }
