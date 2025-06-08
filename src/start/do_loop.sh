@@ -69,7 +69,7 @@ fi
 if [[ $needs_restart == "true" ]] ; then
 clear
 printf "An update to Parmanode was made to the latest version. Please restart Parmanode
-    by typing 'rp' and <enter> at the prompt."
+    by typing 'rp' and <enter> at the prompt.\n"
 exit
 fi
 fi #end btcpayinstallsbitcoin
