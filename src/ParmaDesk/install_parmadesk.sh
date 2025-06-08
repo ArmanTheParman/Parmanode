@@ -119,7 +119,7 @@ make_parmadesk_nginx
 
 # http://localhost:$NOVNC_PORT/vnc.html"
 installed_conf_add "parmadesk-end"
-installed_conf_add "parmadesk-vJ3"
+installed_conf_add "parmadesk-vJ4"
 installed_conf_remove "parmadesk-start"
 success "ParmaDesk Virtual Network Computing installed"
 return 0
