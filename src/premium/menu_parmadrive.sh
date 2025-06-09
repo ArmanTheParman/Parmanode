@@ -92,7 +92,7 @@ echo -e "$blue
 
 
             Encryption:   $parmadrive1_lockstatus $blue$encryption_menu $raidmenu
-            Mountpoint:   $mount$cyan   /srv/parmadrive $blue $mountmenu 
+            Mountpoint:   $mount$yellow   /srv/parmadrive $blue $mountmenu 
             $proton  
 
 $raidmenuchoice
