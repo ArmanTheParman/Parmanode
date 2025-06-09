@@ -1,7 +1,11 @@
 function menu_premium {
 while true ; do
-unset parminer parmacloud parmanas another parmascale parmaweb parmaraid datum parmasync uddns
+unset parminer parmacloud parmanas another parmascale parmaweb parmaraid datum parmasync uddns plex menuplex
 menu_add_source
+if ! grep -q "parmaplex-end" $ic ; then parmasql="\n#$orange              plex)$blue        ParmaPlex (Plex Media Server)                              #
+#                                                                                      #"
+menuplex=1
+fi
 [[ ! -e $pp/parmasql ]]   &&          parmasql="\n#$orange              psql)$blue        ParmaSQL                                                   #
 #                                                                                      #"
 [[ ! -e $pp/parmascale ]] &&          parmascale="\n#$orange             scale)$blue        ParmaScale                                                 #
@@ -36,7 +40,7 @@ echo -en "$blue
 #$orange               PREMIUM FEATURES AVAILABLE FOR A SMOL FEE:$green CONACT PARMAN          $blue     #
 ########################################################################################
 #                                                                                      #
-#                                                                                      #$parmasync$parmascale$datum$parmanas$parminer$parmacloud$parmaweb$parmaraid$uddns$parmasql
+#                                                                                      #$parmasync$parmascale$datum$parmanas$parminer$parmacloud$parmaweb$parmaraid$uddns$parmasql$plex
 #                                                                                      #
 ########################################################################################
 "
@@ -83,6 +87,16 @@ psql)
 get_parmasql
 ;;
 
+plex)
+if [[ -n $menuplex ]] ; then
+announce_blue "
+    ParmaPlex is only available on purchased ParmaDrive machines.
+    See $cyan
+    
+    https://parmanode.com/parmadrive$blue
+    "
+fi
+;;
 *)
     invalid
     continue
