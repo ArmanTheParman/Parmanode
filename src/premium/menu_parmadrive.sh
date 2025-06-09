@@ -91,8 +91,8 @@ echo -e "$blue
 ########################################################################################
 
 
-            Encryption: $parmadrive1_lockstatus $blue$encryption_menu $raidmenu
-            Mountpoint:$cyan /srv/parmadrive $mount $blue $mountmenu 
+            Encryption:   $parmadrive1_lockstatus $blue$encryption_menu $raidmenu
+            Mountpoint:$cyan   /srv/parmadrive $mount $blue $mountmenu 
             $proton  
 
 $raidmenuchoice
