@@ -1,9 +1,7 @@
 function menu_parmadrive {
 [[ $OS == "Mac" ]] && no_mac && return 1
 
-#Can't rug pull earlies users by changing the Drive menu. They had no PD_VERSION number in the config.
 source $pdc
-[[ -z $PD_VERSION ]] || { menu_parmadrive_2 || return 1 ; return 0 ; }
 
 function swwd {
 echo -e "    ${blue}Something went wrong. If you keep getting errors, sometimes you just need to
