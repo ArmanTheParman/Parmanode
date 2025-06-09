@@ -23,7 +23,7 @@ echo -e "
 ### Premium
 if grep -q "parmadrive-end" $ic ; then
                        echo -e "                   $cyan       pdrive)$blue     ParmaDrive$orange" ; parmadriveapp=1 ; count=$((count +1)) ; fi
-if [[ -e $pp/parmanpremium ]] ; then 
+if grep -q "parmaplex-end" $ic ; then 
                        echo -e "                   $cyan       plex)$blue       ParmaPlex Media Server$orange" ; parmanpremiumapp=1 ; count=$((count +1)) ; fi
 if grep -q "parmanas-end" $ic ; then 
                        echo -e "                   $cyan       pnas)$blue       ParmaNas$orange" ; parmanasapp=1 ; count=$((count +1)) ; fi

@@ -250,6 +250,10 @@ if grep -q "parmasql-end" $HOME/.parmanode/installed.conf ; then parmasqlmenu=1
 echo -e "#$cyan                            \033[27G psql)$orange             ParmaSQL                               \033[88G#"
 elif grep -q "parmasql-start" $HOME/.parmanode/installed.conf ; then parmasqlmenu=1
 echo -e "#$cyan                            \033[27G psql)$orange             ParmaSQL               $red$blinkon(partial)$blinkoff$orange        \033[88G#" ; fi
+if grep -q "parmaplex-end" $HOME/.parmanode/installed.conf ; then parmaplexmenu=1
+echo -e "#$cyan                            \033[27G plex)$orange             ParmaPlex                              \033[88G#"
+elif grep -q "parmaplex-start" $HOME/.parmanode/installed.conf ; then parmaplexmenu=1
+echo -e "#$cyan                            \033[27G plex)$orange             ParmaPlex               $red$blinkon(partial)$blinkoff$orange        \033[88G#" ; fi
 echo -e "#                                                                                      \033[88G#
 ########################################################################################
 "
@@ -652,6 +656,13 @@ uninstall_parmasql
 menu_main
 fi
 ;;
+plex)
+if [[ $parmaplexmenu == 1 ]] ; then
+uninstall_parmaplex
+menu_main
+fi
+;;
+
 
 *)
 	invalid

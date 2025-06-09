@@ -2,7 +2,7 @@ function menu_premium {
 while true ; do
 unset parminer parmacloud parmanas another parmascale parmaweb parmaraid datum parmasync uddns plex 
 menu_add_source
-if ! grep -q "parmaplex-end" $ic ; then parmasql="\n#$orange              plex)$blue        ParmaPlex (Plex Media Server)                              #
+if ! grep -q "parmaplex-end" $ic ; then plex="\n#$orange              plex)$blue        ParmaPlex (Plex Media Server)                              #
 #                                                                                      #"
 fi
 [[ ! -e $pp/parmasql ]]   &&          parmasql="\n#$orange              psql)$blue        ParmaSQL                                                   #
@@ -87,7 +87,7 @@ get_parmasql
 ;;
 
 plex)
-get_parmanpremium
+get_parmanpremium plex
 ;;
 *)
     invalid

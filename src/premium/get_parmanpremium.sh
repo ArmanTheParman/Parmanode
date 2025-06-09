@@ -1,5 +1,21 @@
 function get_parmanpremium {
 
+if [[ $1 == "plex" ]] ; then
+
+[[ ! -e $dp/.parmanpremium_enabled ]] && {
+    announce_blue "
+    Plex with Parmanode is only available on purchased ParmaDrive machines.
+    See $cyan
+    
+    https://parmanode.com/parmadrive$blue
+    "
+return 1
+}
+
+fi
+
+
+# $1 is null, generic, plex not specified - nothing calls this yet
 [[ ! -e $dp/.parmanpremium_enabled ]] && {
     announce_blue "
     ParmanPremium is only available on purchased ParmaDrive machines.
@@ -30,4 +46,5 @@ return 1
     fi
 
     source_premium
+    if [[ $1 == "plex" ]] ; then installed_config_add "parmaplex-end" ; fi
 }
