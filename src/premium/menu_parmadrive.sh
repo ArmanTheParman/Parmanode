@@ -64,7 +64,7 @@ if grep -q parmaraid-end $ic ; then
     raid="${green}disassembled${blue}"
     raidstatus=disassembled
     fi
-raidmenu="RAID is: $raid"
+raidmenu="\n            RAID is: $raid"
 unset mountmenu mount2 mounted2
 else
 unset raidmenu raid raidstatus
@@ -84,8 +84,7 @@ echo -e "$blue
 ########################################################################################
 
 
-            Encryption: $parmadrive1_lockstatus $blue$encryption_menu 
-            $raidmenu
+            Encryption: $parmadrive1_lockstatus $blue$encryption_menu $raidmenu
             Mountpoint:$cyan /srv/parmadrive $mount $blue $mountmenu 
             $proton  
 
