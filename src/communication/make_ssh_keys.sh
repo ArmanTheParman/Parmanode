@@ -178,6 +178,24 @@ IdentityFile ~/.ssh/extra_keys/parmasql-key
 IdentitiesOnly yes" | sudo tee -a ~/.ssh/config >$dn
 debug end make_parmasql_ssh_keys
 }
+function make_parmanpremium_ssh_keys {
+debug start make_parmanpremium_ssh_keys
+#usage...
+
+sudo test -f $HOME/.ssh/extra_keys/parmanpremium-key.pub && return 1 # 1 is logically success here for the calling function
+
+mkdir -p ~/.ssh/extra_keys
+ssh-keygen -t rsa -b 4096 -f $HOME/.ssh/extra_keys/parmanpremium-key -N "" -C "$USER parmanpremium"
+
+grep -q "github-parmanpremium" ~/.ssh/config >$dn 2>&1 || 
+echo "
+Host github-parmanpremium
+HostName github.com
+User git
+IdentityFile ~/.ssh/extra_keys/parmanpremium-key
+IdentitiesOnly yes" | sudo tee -a ~/.ssh/config >$dn
+debug end make_parmanpremium_ssh_keys
+}
 function make_parmadrive_ssh_keys {
 sudo test -f ~/.ssh/parmadrive-key && return 0
 ssh-keygen -t rsa -b 4096 -f ~/.ssh/extra_keys/parmadrive-key -N "" -C "$USER parmadrive"
@@ -200,6 +218,7 @@ make_parmasync_ssh_keys
 make_uddns_ssh_keys
 make_parmascale_ssh_keys
 make_parmasql_ssh_keys
+make_parmanpremium_ssh_keys
 }
 
 function get_all_ssh_keys {
