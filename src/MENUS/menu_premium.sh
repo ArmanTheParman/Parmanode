@@ -1,10 +1,9 @@
 function menu_premium {
 while true ; do
-unset parminer parmacloud parmanas another parmascale parmaweb parmaraid datum parmasync uddns plex menuplex
+unset parminer parmacloud parmanas another parmascale parmaweb parmaraid datum parmasync uddns plex 
 menu_add_source
 if ! grep -q "parmaplex-end" $ic ; then parmasql="\n#$orange              plex)$blue        ParmaPlex (Plex Media Server)                              #
 #                                                                                      #"
-menuplex=1
 fi
 [[ ! -e $pp/parmasql ]]   &&          parmasql="\n#$orange              psql)$blue        ParmaSQL                                                   #
 #                                                                                      #"
@@ -88,14 +87,7 @@ get_parmasql
 ;;
 
 plex)
-if [[ -n $menuplex ]] ; then
-announce_blue "
-    ParmaPlex is only available on purchased ParmaDrive machines.
-    See $cyan
-    
-    https://parmanode.com/parmadrive$blue
-    "
-fi
+get_parmanpremium
 ;;
 *)
     invalid

@@ -23,12 +23,12 @@ echo -e "
 ### Premium
 if grep -q "parmadrive-end" $ic ; then
                        echo -e "                   $cyan       pdrive)$blue     ParmaDrive$orange" ; parmadriveapp=1 ; count=$((count +1)) ; fi
+if [[ -e $pp/parmanpremium ]] ; then 
+                       echo -e "                   $cyan       plex)$blue       ParmaPlex Media Server$orange" ; parmanpremiumapp=1 ; count=$((count +1)) ; fi
 if grep -q "parmanas-end" $ic ; then 
                        echo -e "                   $cyan       pnas)$blue       ParmaNas$orange" ; parmanasapp=1 ; count=$((count +1)) ; fi
 if grep -q "parmascale-end" $ic ; then
                        echo -e "                   $cyan       scale)$blue      ParmaScale$orange" ; parmascaleapp=1 ; count=$((count +1)) ; fi
-if [[ -e $pp/parminer ]] ; then 
-                       echo -e "                   $cyan       pm)$blue         ParMiner$orange" ; parminerapp=1 ; count=$((count +1)) ; fi
 if [[ -e $pp/datum ]] ; then 
                        echo -e "                   $cyan       dt)$blue         Datum$orange" ; datumapp=1 ; count=$((count +1)) ; fi
 if [[ -e $pp/uddns ]] ; then 
@@ -639,6 +639,16 @@ psql)
    cd $pp/parmasql/ && git stash >$dn 2>&1 ; git pull >$dn 2>&1
    source_premium
    menu_parmasql
+   if [[ -n $1 ]] ; then clear ; return 0 ; fi
+   else invalid
+   fi
+   ;;
+plex) 
+   if [[ $parmanpremiumapp == 1 ]] ; then
+   please_wait
+   cd $pp/parmanpremium/ && git stash >$dn 2>&1 ; git pull >$dn 2>&1
+   source_premium
+   menu_parmaplex
    if [[ -n $1 ]] ; then clear ; return 0 ; fi
    else invalid
    fi
