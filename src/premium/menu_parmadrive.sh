@@ -57,6 +57,10 @@ else
 fi
 
 if grep -q parmaraid-end $ic ; then
+
+    raidmenuchoice="$orange
+                          pr)$cyan           ParmaRaid Menu"
+
     if sudo blkid | grep -q $RAIDUUID ; then
     raid="${green}assembled${blue}"
     raidstatus=assembled
@@ -75,8 +79,10 @@ else
 proton="Proton Drive:$red NOT MOUNTED$blue"
 fi
 
-raidmenuchoice="$orange
-                          pr)$cyan           ParmaRaid Menu"
+if [[ $debug ==1 ]] ; then
+raidmenu="\n            RAID is: $raid"
+fi
+
 clear
 echo -e "$blue
 ########################################################################################$orange
