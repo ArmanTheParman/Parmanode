@@ -81,6 +81,8 @@ fi
 
 #### delete later
 if [[ $debug == 1 ]] ; then
+    raidmenuchoice="$orange
+                          pr)$cyan           ParmaRaid Menu"
 raidmenu="\n            RAID is: $raid"
 fi
 
