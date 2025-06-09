@@ -80,11 +80,11 @@ proton="Proton Drive:$red NOT MOUNTED$blue"
 fi
 
 #### delete later
-if [[ $debug == 1 ]] ; then
-    raidmenuchoice="$orange
-                          pr)$cyan           ParmaRaid Menu"
-raidmenu="\n            RAID is: $raid"
-fi
+# if [[ $debug == 1 ]] ; then
+#     raidmenuchoice="$orange
+#                           pr)$cyan           ParmaRaid Menu"
+# raidmenu="\n            RAID is: $raid"
+# fi
 
 clear
 echo -e "$blue
