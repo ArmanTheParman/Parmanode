@@ -19,32 +19,34 @@ source $pdc
 while true ; do
 set_terminal 45
 
-if lsblk | grep -q ParmaDrive ; then #works as long as the internal drive is called ParmanodL not Parmadrive
-parmadrive_lockstatus="${green}UNLOCKED" 
-locked="unlocked"
+if lsblk -o UUID | grep -q $PARMADRIVE1LUKSUUID ; then  #at least one drive exists, so check it
+parmadrive1_lockstatus="${green}UNLOCKED" 
+locked1="unlocked"
 else
-parmadrive_lockstatus="${red}LOCKED"
-locked="locked"
+parmadrive1_lockstatus="${red}LOCKED"
+locked1="locked"
 fi
 
-if [[ -n $PARMADRIVE2DEVUUID ]] ; then #if there is a config entry, then it's a 2, not 1 drive system.
-    if  lsblk | grep -q ParmaDrive2 ; then 
+if [[ -n $PARMADRIVE2DEVUUID ]] ; then #if there is a config entry, then it's a 2 drive, not 1 drive system.
+    if  lsblk -o UUID | grep -q $PARMADRIVE2LUKSUUID ; then 
         parmadrive2_lockstatus="${green}UNLOCKED" 
         locked2="unlocked"
     else
         parmadrive2_lockstatus="${red}LOCKED"
         locked2="locked"
     fi
+    #extra text for the menu if there is a second drive...
     encryption_menu="Encryption2:$parmadrive2_lockstatus $blue" #stays even if there is RAID. Other 2-drive variables will be unset with RAID present.
 
-
-    if sudo mountpoint /srv/parmadrive2 >/dev/null 2>&1 ; then #test 2nd mountpoint for 2 drive system, but unset if a raid.
+    #test 2nd mountpoint for 2 drive system, but later unset if a raid.
+    if sudo mountpoint /srv/parmadrive2 >/dev/null 2>&1 ; then 
         mount2="${green}MOUNTED" 
         mounted2="mounted" 
     else 
         mount2="${red}NOT MOUNTED" 
         mounted2="not mounted"
     fi
+
     mountmenu="\nMountpoint:$cyan /srv/parmadrive2 $mount2 $blue" #unsets if raid exists, code later.
 fi
 
@@ -75,6 +77,8 @@ else
 proton="Proton Drive:$red NOT MOUNTED$blue"
 fi
 
+raidmenuchoice="$orange
+                          pr)$cyan           ParmaRaid Menu"
 clear
 echo -e "$blue
 ########################################################################################$orange
@@ -87,8 +91,7 @@ echo -e "$blue
             Mountpoint:$cyan /srv/parmadrive $mount $blue $mountmenu 
             $proton  
 
-$orange
-                          pr)$cyan           ParmaRaid menu
+$raidmenuchoice
 $orange
                           ul)$cyan           Unlock drive(s)
 $orange 
@@ -159,7 +162,7 @@ mount|mm)
 
 if yesorno_blue "Drive 1 or 2" "1" "ParmaDrive" "2" "ParmaDrive2" ; then
     [[ $mounted == "mounted" ]] && announce_blue "Already mounted" && continue
-    [[ $locked == "locked" ]] && announce_blue "Can't mount a locked drive" && continue
+    [[ $locked1 == "locked" ]] && announce_blue "Can't mount a locked drive" && continue
     docker ps >$dn || { sww "Make sure that Docker is fully stopped before mounting" ; case $enter_cont in yolo) true ;; *) continue ;; esac ; }
     sudo mount /srv/parmadrive || swwd #specify the mountpoint only as it is in fstab
 else
