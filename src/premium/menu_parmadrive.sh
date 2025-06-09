@@ -80,7 +80,7 @@ proton="Proton Drive:$red NOT MOUNTED$blue"
 fi
 
 #### delete later
-if [[ $debug ==1 ]] ; then
+if [[ $debug == 1 ]] ; then
 raidmenu="\n            RAID is: $raid"
 fi
 
