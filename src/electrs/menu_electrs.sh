@@ -23,10 +23,7 @@ fi
 
 #Tor status
 if  [[ -e $macprefix/etc/tor/torrc && $electrsis == "nondocker" && $1 != fast ]] \
-    && sudo grep -q "electrs" $macprefix/etc/tor/torrc \
-    && grep -q "electrs_tor=true" $pc \
-    && sudo cat $macprefix/var/lib/tor/electrs-service/hostname | grep -q "onion" >$dn 2>&1 ; then
-
+    && sudo test -f $macprefix/var/lib/tor/electrs-service/hostname  >$dn 2>&1 ; then
         E_tor="${green}on${orange}"
         E_tor_logic=on
         get_onion_address_variable "electrs" 
