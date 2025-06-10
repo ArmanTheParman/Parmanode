@@ -106,6 +106,7 @@ echo -en "
 $dockerbitcoinmenu
 ########################################################################################
 
+
 "
 echo -e "$output1"
 echo ""
@@ -131,7 +132,8 @@ echo -e "$output3$cyan               n)$orange            Access Bitcoin node in
                upd)$orange          Update Bitcoin wizard $cyan
                tips)$orange         Tips by Parman ...  $btcman $cyan
                o)$orange            OTHER...
-                                                         
+
+
 ########################################################################################
 "
 choose "xpmq" ; read choice
