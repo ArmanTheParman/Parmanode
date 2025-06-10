@@ -102,21 +102,21 @@ echo -e "$blue
 
 $raidmenuchoice
 $orange
-                          ul)$cyan           Unlock drive(s)
+                      unlock)$cyan           Unlock drive(s)
 $orange 
                          key) $cyan          Unlock with USB drive key
 $orange
-                          mm)        $cyan   Mount Drive
+                       mount)        $cyan   Mount Drive
 $orange
-                          um)       $cyan    Unmount Drive 
+                     unmount)       $cyan    Unmount Drive 
 $orange
-                          ll)          $cyan Lock drive(s)
+                        lock)          $cyan Lock drive(s)
 $orange
                           db)  $cyan         Why stop Docker and bitcoin?...
 $orange
                           mp)$cyan           Mount Proton
 $orange
-                         ump)$cyan           Unmount Proton
+                         up)$cyan           Unmount Proton
 
 $blue
 ########################################################################################
@@ -243,7 +243,7 @@ else
 fi
 ;;
 
-ll|lock)
+lock)
 [[ $raidstatus == "assembled" ]] && { yesorno_blue "Can't lock a RAID drive if it's assembled. Try anyway?" || continue ; }
 
 [[ -z $PARMADRIVE2DEVUUID ]] && {
@@ -304,7 +304,8 @@ sudo systemctl start rclone-proton.service || { sww && continue ; }
 sleep 3
 success_blue "Proton Mounted"
 ;;
-ump)
+
+up)
 sudo systemctl stop rclone-proton.service || { sww && continue ; }
 sleep 2
 success_blue "Proton Unmounted"
