@@ -11,7 +11,7 @@ After=network-online.target
 Wants=network-online.target
 
 [Service]
-ExecStartPre=$HOME/.parmanode/mount_check.sh
+ExecStartPre=$HOME/.parmanode/scripts/mount_check.sh
 ExecStart=/usr/local/bin/bitcoind -daemon \\
                             -pid=/run/bitcoind/bitcoind.pid \\
                             -conf=$HOME/.bitcoin/bitcoin.conf \\

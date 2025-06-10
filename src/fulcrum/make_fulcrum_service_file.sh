@@ -1,6 +1,6 @@
 function make_fulcrum_service_file {
 
-if [[ ! -e $dp/mount_check.sh ]] ; then make_mount_check_script ; fi
+if [[ ! -e $dp/scripts/mount_check.sh ]] ; then make_mount_check_script ; fi
 
 echo "[Unit]
 Description=Fulcrum_daemon
@@ -8,7 +8,7 @@ After=network-online.target
 Wants=network-online.target
 
 [Service]
-ExecStartPre=$HOME/.parmanode/mount_check.sh
+ExecStartPre=$HOME/.parmanode/scripts/mount_check.sh
 ExecStart=/usr/local/bin/Fulcrum $HOME/.fulcrum/fulcrum.conf 
 StandardOutput=append:/home/parman/.fulcrum/fulcrum.log
 StandardError=inherit
