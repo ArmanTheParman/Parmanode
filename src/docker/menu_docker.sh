@@ -47,6 +47,10 @@ stop|STOP|Stop)
 sudo systemctl stop docker.service docker.socket
 if sudo grep -q "/var/lib/docker" /etc/fstab ; then sudo umount /var/lib/docker $dn 2>&1 ; fi
 ;;
+ps)
+clear
+docker ps
+enter_continue
 *)
 invalid
 ;;
