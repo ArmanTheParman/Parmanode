@@ -6,7 +6,7 @@ if ! grep -q "docker-end" $ic ; then return 0 ; fi
 if [[ -f $dp/parmadrive.conf ]] ; then
     source $pdc
     if [[ $DOCKERMOUNT == "external" ]] ; then
-        mountwarning="$yellow\nNote that the external ParmaDrive must be mounted for Docker to run.\n$orange"
+        mountwarning="$yellow\n    Note that the external ParmaDrive must be mounted for Docker to run.\n$orange"
     else
         unset mountwarning
     fi
