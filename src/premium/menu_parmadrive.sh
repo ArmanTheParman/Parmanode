@@ -130,7 +130,10 @@ menu_parmaraid
 
 ul|unlock)
 #if no d2, then single drive
-[[ -z $PARMADRIVE2DEVUUID ]] && { sudo cryptsetup open UUID=$PARMADRIVE1DEVUUID ParmaDrive1 || swwd ; } 
+[[ -z $PARMADRIVE2DEVUUID ]] && { 
+    sudo cryptsetup open UUID=$PARMADRIVE1DEVUUID ParmaDrive1 || swwd 
+    continue
+}
 
 
 if yesorno_blue "Drive 1 or 2" "1" "ParmaDrive1" "2" "ParmaDrive2" ; then
@@ -147,6 +150,15 @@ fi
 key)
 keydev=$(readlink -f /dev/disk/by-id/$USBKEYBYID)
 ! sudo blkid | grep -q $keydev && announce_blue "Expected USB Key device not detected. Trying anyway."
+
+[[ -z $PARMADRIVE2DEVUUID ]] && {
+    clear 
+    echo -e "${blue}Attempting to unlock ParmaDrive1...\n"
+    sudo dd if=$keydev count=4096 bs=1 | sudo cryptsetup open --key-file=- UUID=$PARMADRIVE1DEVUUID ParmaDrive1 || swwd 
+    echo ""
+    continue
+}
+
 
 if yesorno_blue "Drive 1 or 2" "1" "ParmaDrive1" "2" "ParmaDrive2" ; then
 clear ; echo -e "${blue}Attempting to unlock ParmaDrive1...\n"
