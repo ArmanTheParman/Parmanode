@@ -1,21 +1,32 @@
 function menu_docker {
 
-source $pdc
-
 if [[ $OS == "Mac" ]] ; then no_mac ; return 1 ; fi
 if ! grep -q "docker-end" $ic ; then return 0 ; fi
 
+if [[ -f $dp/parmadrive.conf ]] ; then
+    source $pdc
+    if [[ $DOCKERMOUNT == "external" ]] ; then
+        mountwarning="\nNote that the external ParmaDrive must be mounted for Docker to run.\n"
+    else
+        unset mountwarning
+    fi
+else
+    unset mountwarning
+fi
+
+
 while true ; do set_terminal 
 if docker ps >$dn 2>&1 ; then
-local running="\n    Docker is${green} RUNNING"
+local running="    Docker is${green} RUNNING"
 else
-local running="\n    Docker is${red} NOT RUNNING"
+local running="    Docker is${red} NOT RUNNING"
 fi
 echo -e "
 
 ########################################################################################
                  $cyan              Docker Menu            $orange                   
 ########################################################################################
+$mountwarning
 $running
 $green
          start)$orange                 Start Docker Service and Socket
