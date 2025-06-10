@@ -116,7 +116,7 @@ $orange
 $orange
                           mp)$cyan           Mount Proton
 $orange
-                         up)$cyan           Unmount Proton
+                          up)$cyan           Unmount Proton
 
 $blue
 ########################################################################################
