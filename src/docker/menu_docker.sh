@@ -1,5 +1,7 @@
 function menu_docker {
 
+source $pdc
+
 if [[ $OS == "Mac" ]] ; then no_mac ; return 1 ; fi
 
 if ! grep -q "docker-end" $ic ; then return 0 ; fi
@@ -29,11 +31,15 @@ q|Q|QUIT|Quit) exit 0 ;; p|P) menu_use ;; m|M) back2main ;;
 
 start|Start|START|S|s)
 clear
+if sudo grep -q "/var/lib/docker" /etc/fstab ; then mount /var/lib/docker >$dn 2>&1 ; fi
+
+sleep 1
 sudo systemctl start docker.service docker.socket
 enter_continue "Done"
 ;;
 stop|STOP|Stop)
 sudo systemctl stop docker.service docker.socket
+if sudo grep -q "/var/lib/docker" /etc/fstab ; then umount /var/lib/docker $dn 2>&1 ; fi
 enter_continue "Done"
 ;;
 *)
