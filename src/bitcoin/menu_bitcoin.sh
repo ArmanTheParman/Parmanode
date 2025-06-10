@@ -132,6 +132,7 @@ echo -e "$output3$cyan               n)$orange            Access Bitcoin node in
                tips)$orange         Tips by Parman ...  $btcman $cyan
                o)$orange            OTHER...
 
+
 ########################################################################################
 "
 choose "xpmq" ; read choice
