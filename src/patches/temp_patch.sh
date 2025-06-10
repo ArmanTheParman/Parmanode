@@ -76,14 +76,17 @@ sudo gsed -E -i 's|^IdentityFile ~/.ssh/(.*-key)$|IdentityFile ~/.ssh/extra_keys
     gsed -i 's/electrs2/electrs/'       $ic >$dn 2>&1
     gsed -i 's/electrsdkr2/electrsdkr/' $ic >$dn 2>&1
 
-#introduce a scripts directory. Needs some refactoring
+#introduce a scripts directory. Needs some refactoring --- add to patch function later
 test -d $dp/scripts || mkdir -p $dp/scripts >$dn 2>&1
 
-mv $dp/update_external_IP2.sh $dp/scripts >$dn 2>&1
-mv $dp/mount_check.sh $dp/scripts/mount_check.sh >$dn 2>&1
+mv $dp/update_external_IP2.sh $dp/scripts >$dn 2>&1 #mac and linux ok
+if [[ $OS == "Linux" ]] ; then
+mv $dp/mount_check.sh $dp/scripts/mount_check.sh >$dn 2>&1 
+mv $dp/update_script.sh $dp/scripts/update_script.sh >$dn 2>&1
     #rewrite paths in existing service files
 local bitcoin_service="/etc/systemd/system/bitcoind.service"
 local fulcrum_service="/etc/systemd/system/fulcrum.service"
+local crontabfile="/etc/crontab"
 if sudo test -f $bitcoin_service >$dn 2>&1 && sudo grep -q 'parmanode/mount_check.sh' $bitcoin_service ; then
 debug "changing bitcoinservice"
    sudo gsed -i 's/mount_check.sh/scripts\/mount_check.sh/' $bitcoin_service >$dn 2>&1 
@@ -94,6 +97,8 @@ if sudo test -f $fulcrum_service >$dn 2>&1 && sudo grep -q 'parmanode/mount_chec
    sudo gsed -i 's/mount_check.sh/scripts\/mount_check.sh/' $fulcrum_service >$dn 2>&1 
    sudo systemctl daemon-reload
 fi
+
+fi # end linux
 
 gsed -i 's/vnc-/parmadesk-/g' $ic >$dn 2>&1
 
