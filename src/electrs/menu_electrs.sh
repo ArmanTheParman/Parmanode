@@ -49,7 +49,7 @@ else #electrsis nondocker
         electrs_version=$($HOME/parmanode/electrs/target/release/electrs --version 2>$dn)
 fi
 
-set_terminal 50 88
+set_terminal 40 88
 
 echo -e "
 ########################################################################################
