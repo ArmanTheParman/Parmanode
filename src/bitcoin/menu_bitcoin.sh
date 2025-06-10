@@ -5,7 +5,7 @@ export debuglogfile="$HOME/.bitcoin/debug.log"
 
 if grep -q "btccombo" $ic >$dn 2>&1 ; then
 dockerbitcoinmenu=" $pink                Bitcoin in Docker Container with BTCPay Server $orange"
-btcman="$cyan      man)$orange          Explore Bitcoin/BTCPay container (manr for root)"
+btcman="\n\r          $cyan     man)$orange          Explore Bitcoin/BTCPay container (manr for root)\n"
 else
 unset btcman dockerbitcoinmenu
 fi
@@ -132,21 +132,14 @@ echo -ne "$output3 $cyan
                log)$orange          Bitcoin debug.log 
             $cyan
                bc)$orange           Inspect edit bitcoin.conf file (bcv for vim)
-            $cyan
-               up)$orange           Set, remove, or change RPC user/pass
             $bright_blue
                tor)$orange          Tor/I2P menu options for Bitcoin...
             $cyan
-               mm)$orange           Migrate/Revert an external drive...
-            $cyan
-               delete)$orange       Delete blockchain data and start over
-            $cyan
-               upd)$orange          Update Bitcoin wizard
-            $cyan
-               tips)$orange         Tips by Parman ...
-         $btcman
-         $cyan      o)$orange            OTHER...
-
+               mm)$orange           Migrate/Revert an external drive...  $cyan
+               delete)$orange       Delete blockchain data and start over $cyan
+               upd)$orange          Update Bitcoin wizard $cyan
+               tips)$orange         Tips by Parman ...  $btcman $cyan
+               o)$orange            OTHER...
                                                          
 ########################################################################################
 "
@@ -249,11 +242,6 @@ continue
 bcv)
 vim_warning
 vim $HOME/.bitcoin/bitcoin.conf
-;;
-
-up)
-set_rpc_authentication
-continue
 ;;
 
 tor|TOR|Tor)
