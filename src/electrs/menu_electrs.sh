@@ -70,8 +70,7 @@ echo -e "
          echo -e "                  PLEASE WAIT A MOMENT AND REFRESH FOR ONION ADDRESS TO APPEAR"
       elif [[ -n $ONION_ADDR_ELECTRS ]] ; then
          echo -e "
-      TOR:$bright_blue 
-                  $ONION_ADDR_ELECTRS:7004:t $orange
+      TOR:$blue        $ONION_ADDR_ELECTRS:7004:t $orange
          $yellow \e[G\e[41G(From any computer in the world)$orange"
       fi
 elif [[ $electrsis == "nondocker" && $electrsrunning == "false" ]] ; then
