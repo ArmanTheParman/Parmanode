@@ -78,6 +78,7 @@ sudo gsed -E -i 's|^IdentityFile ~/.ssh/(.*-key)$|IdentityFile ~/.ssh/extra_keys
 
 #introduce a scripts directory. Needs some refactoring
 test -d $dp/scripts || mkdir -p $dp/scripts >$dn 2>&1
+
 # mv $dp/update_external_IP2.sh $dp/scripts >$dn 2>&1
 # mv $dp/mount_check.sh $dp/scripts/mount_check.sh >$dn 2>&1
 #     #rewrite paths in existing service files
