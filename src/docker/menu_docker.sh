@@ -54,7 +54,7 @@ enter_continue
 ;;
 nn)
 clear
-docker network
+docker network ls
 enter_continue
 ;;
 *)
