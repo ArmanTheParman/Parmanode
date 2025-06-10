@@ -3,7 +3,7 @@ check_disk_space
 ########################################################################################
 #Used by autoupdate toggle function
 if [[ $1 == on ]] ; then
-echo "30 3 * * * $USER $HOME/.parmanode/update_script.sh" | sudo tee -a /etc/crontab >$dn 2>&1
+echo "30 3 * * * $USER $HOME/.parmanode/scripts/update_script.sh" | sudo tee -a /etc/crontab >$dn 2>&1
 sudo systemctl reload cron >$dn 2>&1 #fails silently on mac
 return 0
 fi
@@ -56,12 +56,12 @@ m|M) back2main ;; q|Q) exit ;; p|P) return 1 ;;
 
 y|Y) 
 hide_messages_add "autoupdate" "1" 
-cat << 'EOF' > $HOME/.parmanode/update_script.sh
+cat << 'EOF' > $HOME/.parmanode/scripts/update_script.sh
 #!/bin/bash
 cd $HOME/parman_programs/parmanode && git config pull.rebase false && git pull
 EOF
 
-sudo chmod +x $HOME/.parmanode/update_script.sh
+sudo chmod +x $HOME/.parmanode/scripts/update_script.sh
 
 autoupdate on
 break

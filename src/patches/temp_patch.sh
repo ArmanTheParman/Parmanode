@@ -83,7 +83,8 @@ mv $dp/update_external_IP2.sh $dp/scripts >$dn 2>&1 #mac and linux ok
 
 if test -f $dp/update_script.sh ; then
     mv $dp/update_script.sh $dp/scripts/update_script.sh >$dn 2>&1
-    sudo cp /etc/crontab $tmp/crontab && sudo gsed 's/parmanode\/update_script.sh/parmanode\/scripts\/update_script.sh/' /$tmp/crontab >$dn 2>&1
+    debug "tmp is $tmp"
+    sudo cp /etc/crontab $tmp/crontab && sudo gsed -i 's/parmanode\/update_script.sh/parmanode\/scripts\/update_script.sh/' /$tmp/crontab >$dn 2>&1
     sudo mv $tmp/crontab /etc/crontab >$dn 2>&1
 fi
 
