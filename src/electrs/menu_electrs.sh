@@ -104,29 +104,19 @@ echo -e "
                    Will sync to the $cyan$drive_electrs$orange drive"
 fi
 fi #end electrsis docker
-echo -e "
+echo -en "
 $green
-      (start)   $orange Start electrs 
-$red
-      (stop) $orange    Stop electrs 
-$cyan
-      (restart)$orange  Restart electrs
-$cyan
-      (i)$orange        Important info / Troubleshooting
-$cyan
-      (remote)$orange   Choose which Bitcoin for electrs to connect to
-$cyan
-      (c)$orange        How to connect your Electrum wallet to electrs 
-$cyan	    
-      (log)$orange      Inspect electrs logs
-$cyan
-      (ec)$orange       Inspect and edit config file (ecv for vim)
-$cyan
+      (start)   $orange Start electrs $red
+      (stop) $orange    Stop electrs $cyan
+      (restart)$orange  Restart electrs $cyan
+      (i)$orange        Important info / Troubleshooting $cyan
+      (remote)$orange   Choose which Bitcoin for electrs to connect to $cyan
+      (c)$orange        How to connect your Electrum wallet to electrs $cyan	    
+      (log)$orange      Inspect electrs logs $cyan
+      (ec)$orange       Inspect and edit config file (ecv for vim) $cyan
       (dc)$orange       electrs database corrupted? -- Use this to start fresh."
-
 if [[ $electrsis == "nondocker" ]] ; then echo -e "$cyan
-      (tor)$orange      Enable/Disable Tor connections to electrs -- Status : $E_tor"  ; else echo -e "
-$cyan      
+      (tor)$orange      Enable/Disable Tor connections to electrs -- Status : $E_tor"  ; else echo -e "$cyan      
       (newtor)$orange   Refresh Tor address
 " 
 fi
