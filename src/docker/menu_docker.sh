@@ -35,6 +35,7 @@ enter_continue "Done"
 stop|STOP|Stop)
 sudo systemctl stop docker.service docker.socket
 enter_continue "Done"
+;;
 *)
 invalid
 ;;
@@ -42,12 +43,3 @@ invalid
 esac
 done
 } 
-
-
-function run_green {
-if [[ $OS == Mac ]] ; then
-open /Applications/Blockstream*app
-elif [[ $OS == Linux ]] ; then
-$hp/green/Blockstream*.AppImage >$dn 2>&1 &
-fi
-}
