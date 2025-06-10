@@ -69,8 +69,7 @@ echo -e "
       if [[ -z $ONION_ADDR_ELECTRS ]] && [[ $E_tor_logic == "on" ]] ; then
          echo -e "                  PLEASE WAIT A MOMENT AND REFRESH FOR ONION ADDRESS TO APPEAR"
       elif [[ -n $ONION_ADDR_ELECTRS ]] ; then
-         echo -e "
-      TOR:$bright_blue 
+         echo -e "TOR:$bright_blue 
                   $ONION_ADDR_ELECTRS:7004:t $orange
          $yellow \e[G\e[41G(From any computer in the world)$orange"
       fi
@@ -84,7 +83,7 @@ fi #end electrs running or not
 if [[ $electrsis == docker ]] ; then
 
 
-if [[ $electrsrunning == "true" ]] ; then echo -e "
+if [[ $electrsrunning == "true" ]] ; then echo -en "
       ELECTRS IS:$green RUNNING$orange
 
       STATUS:     $green$electrs_sync$orange ($drive_electrs drive)
