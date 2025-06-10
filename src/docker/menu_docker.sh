@@ -42,12 +42,10 @@ if sudo grep -q "/var/lib/docker" /etc/fstab ; then sudo mount /var/lib/docker >
 
 sleep 1
 sudo systemctl start docker.service docker.socket
-enter_continue "Done"
 ;;
 stop|STOP|Stop)
 sudo systemctl stop docker.service docker.socket
 if sudo grep -q "/var/lib/docker" /etc/fstab ; then sudo umount /var/lib/docker $dn 2>&1 ; fi
-enter_continue "Done"
 ;;
 *)
 invalid
