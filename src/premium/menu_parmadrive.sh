@@ -152,7 +152,7 @@ fi
 ;;
 key)
 keydev=$(readlink -f /dev/disk/by-id/$USBKEYBYID)
-! sudo blkid | grep -q $keydev && announce_blue "Expected USB Key device not detected. Trying anyway."
+! lsblk -o  path | grep -q $keydev && announce_blue "Expected USB Key device not detected. Trying anyway."
 
 [[ -z $PARMADRIVE2DEVUUID ]] && {
     clear 
