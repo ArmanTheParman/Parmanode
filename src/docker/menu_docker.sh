@@ -3,13 +3,20 @@ function menu_docker {
 source $pdc
 
 if [[ $OS == "Mac" ]] ; then no_mac ; return 1 ; fi
-
 if ! grep -q "docker-end" $ic ; then return 0 ; fi
-while true ; do set_terminal ; echo -e "
+
+while true ; do set_terminal 
+if docker ps >$dn 2>&1 ;
+local running="\n    Docker is${green} RUNNING"
+else
+local running="\n    Docker is${red} NOT RUNNING"
+fi
+echo -e "
+
 ########################################################################################
                  $cyan              Docker Menu            $orange                   
 ########################################################################################
-
+$running
 $green
          start)$orange                 Start Docker Service and Socket
 $red

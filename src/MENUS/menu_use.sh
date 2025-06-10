@@ -108,6 +108,8 @@ if grep -q "phoenix-end" $ic ; then phoenixapp=1
 if grep -q "public_pool-end" $ic ; then public_poolapp=1
                        echo -e "                        $cyan  pool)$orange       Public Pool " ; count=$((count +1)) ; fi
 ### General
+if grep -q "docker-end" $ic ; then dockerapp=1
+                       echo -e "                        $cyan  dkr)$orange        Docker" ; count=$((count +1)) ; fi
 if grep -q "parmaview-end" $ic ; then parmaviewapp=1
                        echo -e "                        $cyan  pv)$orange         ParmaView" ; count=$((count +1)) ; fi
 if grep -q "parmashell-end" $ic ; then parmashellapp=1
@@ -323,6 +325,14 @@ ll|LL|Ll)
 pv|pview)
    if [[ $parmaviewapp == 1 ]] ; then
    menu_parmaview 
+    if [[ -n $1 ]] ; then clear ; return 0 ; fi
+   else invalid
+   fi
+   ;;
+
+docker|dkr)
+   if [[ $dockerapp == 1 ]] ; then
+   menu_docker
     if [[ -n $1 ]] ; then clear ; return 0 ; fi
    else invalid
    fi
