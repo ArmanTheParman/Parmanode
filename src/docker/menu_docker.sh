@@ -51,6 +51,12 @@ ps)
 clear
 docker ps
 enter_continue
+;;
+nn)
+clear
+docker network
+enter_continue
+;;
 *)
 invalid
 ;;
