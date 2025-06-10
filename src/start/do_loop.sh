@@ -111,7 +111,7 @@ if [[ $btcpayinstallsbitcoin == "true" ]] ; then install_bitcoin ; exit ; fi
 motd
 fi
 #Commands that refresh data
-pn_tmux "$dp/update_external_IP2.sh" "checking_external_IP"
+pn_tmux "$dp/scripts/update_external_IP2.sh" "checking_external_IP"
 test_8333_reachable
 
 jump $1

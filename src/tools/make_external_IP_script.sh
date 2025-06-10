@@ -1,9 +1,9 @@
 function make_external_IP_script {
 
-test -f $dp/update_external_IP2.sh && return 0
+test -f $dp/scripts/update_external_IP2.sh && return 0
 rm $dp/update_external_IP.sh >/dev/null 2>&1
 
-cat <<'EOF' >> $dp/update_external_IP2.sh
+cat <<'EOF' >> $dp/scripts/update_external_IP2.sh
 #!/bin/bash
 count=0
 unset IP
@@ -20,5 +20,5 @@ grep -q "external_IP=" $HOME/.parmanode/parmanode.conf || echo "external_IP=$IP"
 exit 0
 EOF
 
-sudo chmod +x $dp/update_external_IP2.sh
+sudo chmod +x $dp/scripts/update_external_IP2.sh
 }

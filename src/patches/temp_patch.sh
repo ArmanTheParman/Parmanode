@@ -77,6 +77,7 @@ sudo gsed -E -i 's|^IdentityFile ~/.ssh/(.*-key)$|IdentityFile ~/.ssh/extra_keys
     gsed -i 's/electrsdkr2/electrsdkr/' $ic >$dn 2>&1
 
 test -d $dp/scripts || mkdir -p $dp/scripts >$dn 2>&1
+mv $dp/update_external_IP2.sh $dp/scripts
 
 gsed -i 's/vnc-/parmadesk-/g' $ic >$dn 2>&1
 
