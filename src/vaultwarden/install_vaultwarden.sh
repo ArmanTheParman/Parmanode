@@ -7,7 +7,7 @@ yesorno "Please be aware of a very nasty danger with password managers...
     and reading of the passwords, never storing the actual passwords anywhere
     in readable format.
 
-    But just because the database/server never sees you're passwords, it doesn't 
+    But just because the database/server never sees your passwords, it doesn't 
     mean you're automatically safe. The client computer "sees" your decryption 
     password (because you type it to unlock), and if that leaks, ALL your passwords
     are exposed, including the bitcoin seed phrase you should never have added in 
