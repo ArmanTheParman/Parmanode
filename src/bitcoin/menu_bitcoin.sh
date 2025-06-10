@@ -114,23 +114,16 @@ echo ""
 echo -e "$output4"
 echo -e ""
 if ! ( [[ $bitcoinrunning == "true" ]] && pgrep bitcoin-qt >$dn 2>&1 ) ; then
-echo -ne "
+echo -e "
 $green
-               start)$orange        Start Bitcoin
-            $red
-               stop)$orange         Stop Bitcoin
-            $cyan"
-
+               start)$orange        Start Bitcoin $red
+               stop)$orange         Stop Bitcoin $cyan"
     if [[ $bitcoinrunning == "true" ]] ; then
-        echo -ne "
-               restart)$orange      Restart Bitcoin \n"
+        echo -e "               restart)$orange      Restart Bitcoin"
     fi
 fi
-echo -ne "$output3 $cyan
-               n)$orange            Access Bitcoin node information 
-            $cyan
-               log)$orange          Bitcoin debug.log 
-            $cyan
+echo -e "$output3$cyan               n)$orange            Access Bitcoin node information $cyan
+               log)$orange          Bitcoin debug.log $cyan
                bc)$orange           Inspect edit bitcoin.conf file (bcv for vim) $bright_blue
                tor)$orange          Tor/I2P menu options for Bitcoin...  $cyan
                mm)$orange           Migrate/Revert an external drive...  $cyan
