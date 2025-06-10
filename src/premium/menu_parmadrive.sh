@@ -129,10 +129,14 @@ menu_parmaraid
 ;;
 
 ul|unlock)
-if yesorno_blue "Drive 1 or 2" "1" "ParmaDrive" "2" "ParmaDrive2" ; then
+#if no d2, then single drive
+[[ -z $PARMADRIVE2DEVUUID ]] && { sudo cryptsetup open UUID=$PARMADRIVE1DEVUUID ParmaDrive1 || swwd ; } 
+
+
+if yesorno_blue "Drive 1 or 2" "1" "ParmaDrive1" "2" "ParmaDrive2" ; then
 ! sudo blkid | grep -q $PARMADRIVE1DEVUUID && announce_blue "Expected drive not detected, trying to unlock anyway..."
 clear
-sudo cryptsetup open UUID=$PARMADRIVE1DEVUUID ParmaDrive || swwd
+sudo cryptsetup open UUID=$PARMADRIVE1DEVUUID ParmaDrive1 || swwd
 else
 ! sudo blkid | grep -q $PARMADRIVE2DEVUUID && announce_blue "Expected drive not detected, trying to unlock anyway..."
 clear
@@ -144,10 +148,10 @@ key)
 keydev=$(readlink -f /dev/disk/by-id/$USBKEYBYID)
 ! sudo blkid | grep -q $keydev && announce_blue "Expected USB Key device not detected. Trying anyway."
 
-if yesorno_blue "Drive 1 or 2" "1" "ParmaDrive" "2" "ParmaDrive2" ; then
-clear ; echo -e "${blue}Attempting to unlock ParmaDrive...\n"
+if yesorno_blue "Drive 1 or 2" "1" "ParmaDrive1" "2" "ParmaDrive2" ; then
+clear ; echo -e "${blue}Attempting to unlock ParmaDrive1...\n"
 sudo blkid | grep -q "$PARMADRIVE1DEVUUID" && {
-    sudo dd if=$keydev count=4096 bs=1 | sudo cryptsetup open --key-file=- UUID=$PARMADRIVE1DEVUUID ParmaDrive || swwd ; } 
+    sudo dd if=$keydev count=4096 bs=1 | sudo cryptsetup open --key-file=- UUID=$PARMADRIVE1DEVUUID ParmaDrive1 || swwd ; } 
 echo ""
 else
 clear ; echo -e "${blue}Attempting to unlock ParmaDrive2...\n"
@@ -166,7 +170,7 @@ mount|mm)
     continue
 }
 
-if yesorno_blue "Drive 1 or 2" "1" "ParmaDrive" "2" "ParmaDrive2" ; then
+if yesorno_blue "Drive 1 or 2" "1" "ParmaDrive1" "2" "ParmaDrive2" ; then
     [[ $mounted == "mounted" ]] && announce_blue "Already mounted" && continue
     [[ $locked1 == "locked" ]] && announce_blue "Can't mount a locked drive" && continue
     docker ps >$dn || { sww "Make sure that Docker is fully stopped before mounting" ; case $enter_cont in yolo) true ;; *) continue ;; esac ; }
@@ -197,7 +201,7 @@ yesorno_blue "Be mindful that unmount won't work if Docker is running or if Bitc
 }
     
 
-if yesorno_blue "Drive 1 or 2" "1" "ParmaDrive" "2" "ParmaDrive2" ; then
+if yesorno_blue "Drive 1 or 2" "1" "ParmaDrive1" "2" "ParmaDrive2" ; then
 [[ $mounted != "mounted" ]] && announce_blue "Can't unmount a drive that isn't mounted." && continue
     docker ps >$dn || { sww "Make sure that Docker is fully stopped before unmounting. yolo to ignore." ; case $enter_cont in yolo) true ;; *) continue ;; esac ; }
     pgrep bitcoin >$dn || { sww "Make sure that bitcoin is fully stopped before unmounting"             ; case $enter_cont in yolo) true ;; *) continue ;; esac ; }
@@ -211,9 +215,9 @@ fi
 ll|lock)
 [[ $raidstatus == "assembled" ]] && { yesorno_blue "Can't lock a RAID drive if it's assembled. Try anyway?" || continue ; }
 
-if yesorno_blue "Drive 1 or 2" "1" "ParmaDrive" "2" "ParmaDrive2" ; then
+if yesorno_blue "Drive 1 or 2" "1" "ParmaDrive1" "2" "ParmaDrive2" ; then
 [[ $mounted == "mounted" ]] && announce_blue "Can't lock the drive if it's mounted" && continue
-sudo cryptsetup luksClose /dev/mapper/ParmaDrive || swwd
+sudo cryptsetup luksClose /dev/mapper/ParmaDrive1 || swwd
 else
 [[ $mounted2 == "mounted" ]] && announce_blue "Can't lock the drive if it's mounted" && continue
 sudo cryptsetup luksClose /dev/mapper/ParmaDrive2 || swwd
