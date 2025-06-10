@@ -55,7 +55,6 @@ echo -e "
 ########################################################################################
                                 ${cyan}Electrs $electrs_version Menu${orange} 
 ########################################################################################
-
 "
 if [[ $electrsis == "nondocker" && $electrsrunning == "true" ]] ; then
 echo -e "
@@ -106,7 +105,6 @@ echo -e "
 fi
 fi #end electrsis docker
 echo -e "
-
 $green
       (start)   $orange Start electrs 
 $red
