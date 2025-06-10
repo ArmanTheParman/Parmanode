@@ -94,7 +94,7 @@ if [[ $bitcoinrunning == "true" ]] && tail -n15 $HOME/.bitcoin/debug.log | grep 
 fi
 
 debug "bitcoin menu..."
-set_terminal 52 88
+set_terminal 42 88
 if grep -q "disable_bitcoin=true" $pc ; then
          output1="                   Bitcoin is$red DISABLED (type disable to toggle)$orange" 
 fi
@@ -131,10 +131,8 @@ echo -ne "$output3 $cyan
             $cyan
                log)$orange          Bitcoin debug.log 
             $cyan
-               bc)$orange           Inspect edit bitcoin.conf file (bcv for vim)
-            $bright_blue
-               tor)$orange          Tor/I2P menu options for Bitcoin...
-            $cyan
+               bc)$orange           Inspect edit bitcoin.conf file (bcv for vim) $bright_blue
+               tor)$orange          Tor/I2P menu options for Bitcoin...  $cyan
                mm)$orange           Migrate/Revert an external drive...  $cyan
                delete)$orange       Delete blockchain data and start over $cyan
                upd)$orange          Update Bitcoin wizard $cyan
