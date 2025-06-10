@@ -4,7 +4,7 @@ if ! grep -qE "bitcoin-end" $ic ; then return 0 ; fi
 export debuglogfile="$HOME/.bitcoin/debug.log" 
 
 if grep -q "btccombo" $ic >$dn 2>&1 ; then
-dockerbitcoinmenu=" $pink                Bitcoin in Docker Container with BTCPay Server $orange"
+dockerbitcoinmenu="\n $pink                Bitcoin in Docker Container with BTCPay Server $orange\n"
 btcman="\n\r          $cyan     man)$orange          Explore Bitcoin/BTCPay container (manr for root)\n"
 else
 unset btcman dockerbitcoinmenu
@@ -102,8 +102,7 @@ fi
 
 echo -en "
 ########################################################################################$cyan
-                                  Bitcoin Menu${orange}                               
-$dockerbitcoinmenu
+                                  Bitcoin Menu${orange}    $dockerbitcoinmenu
 ########################################################################################
 
 
@@ -132,7 +131,6 @@ echo -e "$output3$cyan               n)$orange            Access Bitcoin node in
                upd)$orange          Update Bitcoin wizard $cyan
                tips)$orange         Tips by Parman ...  $btcman $cyan
                o)$orange            OTHER...
-
 
 ########################################################################################
 "
