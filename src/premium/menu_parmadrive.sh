@@ -301,11 +301,12 @@ $blue
 
 mp) 
 sudo systemctl start rclone-proton.service || { sww && continue ; } 
-success_blue "Proton Mounted"
 sleep 3
+success_blue "Proton Mounted"
 ;;
 ump)
 sudo systemctl stop rclone-proton.service || { sww && continue ; }
+sleep 2
 success_blue "Proton Unmounted"
 ;;
 
