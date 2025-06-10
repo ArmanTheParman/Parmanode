@@ -104,15 +104,15 @@ $raidmenuchoice
 $orange
                       unlock)$cyan           Unlock drive(s)
 $orange 
-                         key) $cyan          Unlock with USB drive key
+                         key)$cyan           Unlock with USB drive key
 $orange
-                       mount)        $cyan   Mount Drive
+                       mount)$cyan           Mount Drive
 $orange
-                     unmount)       $cyan    Unmount Drive 
+                     unmount)$cyan           Unmount Drive 
 $orange
-                        lock)          $cyan Lock drive(s)
+                        lock)$cyan           Lock drive(s)
 $orange
-                          db)  $cyan         Why stop Docker and bitcoin?...
+                          db)$cyan           Why stop Docker and bitcoin?...
 $orange
                           mp)$cyan           Mount Proton
 $orange
