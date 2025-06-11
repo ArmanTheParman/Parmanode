@@ -15,32 +15,31 @@ else
 fi
 
 
-while true ; do set_terminal 
+while true ; do set_terminal 38 110
 if docker ps >$dn 2>&1 ; then
 local running="    Docker is${green} RUNNING"
 else
 local running="    Docker is${red} NOT RUNNING"
 fi
 echo -e "
-
-########################################################################################
-                 $cyan              Docker Menu            $orange                   
-########################################################################################
+##############################################################################################################$cyan              
+                                             Docker Menu            $orange                   
+##############################################################################################################
 $mountwarning
 $running
 $green
-         start)$orange                 Start Docker Service and Socket
-$red
-          stop)$orange                 Stop Docker Service and Socket
-$cyan
-            ps)$orange                 List running docker containers
-$cyan            
-            nn)$orange                 List docker networks
-$red
-         purge)$orange                 Purge data for stopped and unused containers
+                    start)$orange                 Start Docker Service and Socket
+            $red
+                    stop)$orange                 Stop Docker Service and Socket (This is rarely needed)
+            $cyan
+                        ps)$orange                 List running docker containers
+            $cyan            
+                        nn)$orange                 List docker networks
+            $red
+                    purge)$orange                 Purge data for stopped and unused containers
 
 
-########################################################################################
+##############################################################################################################
 "
 choose "xpmq" ; read choice 
 jump $choice || { invalid ; continue ; } ; set_terminal
