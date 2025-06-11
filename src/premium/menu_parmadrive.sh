@@ -18,7 +18,7 @@ enter_continue
 source $pdc
 
 while true ; do
-set_terminal 41
+set_terminal 38
 
 if lsblk -o UUID | grep -q $PARMADRIVE1LUKSUUID ; then  #at least one drive exists, so check it
 parmadrive1_lockstatus="${green}UNLOCKED" 
