@@ -13,7 +13,7 @@ $cyan
     $2
 $red
     Type 'hide' to not see this tip anymore.
-    To undo this action, juse manually delete the text, $1 
+    To undo this action, just manually delete the text,$green $1 $red
     from $dp/hide_commands.conf 
 $orange
     $goback$orange
