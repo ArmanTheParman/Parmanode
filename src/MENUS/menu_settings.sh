@@ -1,7 +1,6 @@
 function menu_settings {
 while true ; do
 debug "in settings"
-source $hm >$dn 2>&1 
 set_terminal ; echo -ne "
 ########################################################################################$cyan
                                    SETTINGS    $orange

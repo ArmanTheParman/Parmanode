@@ -1,12 +1,7 @@
 function intro {
-if [[ -f $HOME/.parmanode/hide_messages.conf ]] ; then
-. $HOME/.parmanode/hide_messages.conf >$dn
-fi
 
 set_terminal
-if [[ ${message_intro} != "1" ]] ; then 
-while true
-do
+[[ -f $HOME/.parmanode/hide_messages.conf ]] && ! grep -q "message_intro=1" $hm && while true ; do
 echo -e "$orange
 ########################################################################################
 
@@ -44,8 +39,10 @@ read choice ; set_terminal
 case $choice in 
 s|S) dirty_shitcoiner ; continue ;;
 q|Q|QUIT|Quit|quit) exit 0 ;;
-endthefed|EndTheFed|ENDTHEFED|end) hide_messages_add "intro" "1" ; set_terminal ; break ;;
+endthefed|EndTheFed|ENDTHEFED|end) echo "message_intro=1" | tee -a $hm ; set_terminal ; break ;;
 *) break ;; #invalid won't work here, there'll be a never ending loop
-esac ; done ; fi ; set_terminal ; return 0
+esac 
+set_terminal 
+done 
 }
 

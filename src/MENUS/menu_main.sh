@@ -5,7 +5,7 @@ unset enter_cont choice version
 while true ; do
 
 source $pn/version.conf >$dn
-source $hm >$dn 2>&1 #hide messages
+
 if [[ $vPatch -gt 9 ]] ; then space="" ; else space=" " ; fi #in case version num_er is high, adjust menu border
 
 cd $pn >$dn
@@ -17,7 +17,7 @@ else
 output_branch="   $space $orange"
 fi
 
-if [[ $debug = 1 ]] ; then
+if [[ $debug == 1 ]] ; then
 debugstatus="#${red}    Debug mode is on$orange                                                                  #"
 else
 debugstatus="#                                                                                      #"
@@ -137,9 +137,9 @@ remove|REMOVE)
 l|L|log) 
     menu_log_config ;;
 icon)
-    desktop_icon && echo "hide_desktop_icon=1" >> $hm ;;
+    desktop_icon && echo "hide_desktop_icon=1" | tee -a $hm >$dn ;;
 dx)
-    echo "hide_desktop_icon=1" >> $hm ;;
+    echo "hide_desktop_icon=1" | tee -a $hm >$dn ;;
 e|E)
     menu_education ;;
 t|T)

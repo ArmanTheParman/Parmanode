@@ -25,7 +25,6 @@ fi
 if [[ ${message_motd} == "1" ]] ; then return 0 ; fi #hide message choice
 
 #Censorship
-source $hm >$dn 2>&1
 
 censor_fuck=("1" "10" "18" "23" "32" "36" "37" "40" "49" "55" "63" "65")
 censor_shit=("9" "17" "21" "23" "55" "58" "63" "67")
