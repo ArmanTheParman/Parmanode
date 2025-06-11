@@ -12,11 +12,11 @@ announce "The command that will run:\n
 $cyan
     $2
 $red
-Type 'hide' to not see this tip anymore 
-Manually delete the text, $1, from $dp/hide_commands.conf 
-to undo this action.
+    Type 'hide' to not see this tip anymore.
+    To undo this action, juse manually delete the text, $1 
+    from $dp/hide_commands.conf 
 $orange
-$goback$orange
+    $goback$orange
 "
 
 unset goback ; jump $enter_cont ; clear
