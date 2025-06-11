@@ -52,7 +52,7 @@ if [[ $1 == "torandclearnet" ]] ; then
         get_onion_address_variable "bitcoin"
         count=$((count + 1))
     done 
-    [[ -z $ONION_ADDR ]] && sww "Some issue with getting onion address. Try later or switch to no Tor."
+    [[ -z $ONION_ADDR ]] && sww "Some issue with getting onion address. Try later or switch to no Tor." && return 1
     echo "externalip=$ONION_ADDR" | sudo tee -a $bc >$dn 2>&1
     sudo gsed -i "/discover=/d" $bc
     echo "discover=1" | sudo tee -a $bc >$dn 2>&1
@@ -72,7 +72,7 @@ if [[ $1 == "toronly" ]] ; then
         get_onion_address_variable "bitcoin"
         count=$((count + 1))
     done 
-    [[ -z $ONION_ADDR ]] && sww "Some issue with getting onion address. Try later or switch to no Tor."
+    [[ -z $ONION_ADDR ]] && sww "Some issue with getting onion address. Try later or switch to no Tor." && return 1
     echo "externalip=$ONION_ADDR" | sudo tee -a $bc >$dn 2>&1
     sudo gsed -i "/^bind=/d" $bc
     echo "bind=127.0.0.1" | sudo tee -a $bc >$dn 2>&1
