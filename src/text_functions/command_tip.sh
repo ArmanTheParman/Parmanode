@@ -5,7 +5,7 @@ function command_tip {
 
 set_terminal 
 
-if [[ -n $3 ]] ; then goback="Hit $3 to go back\n" ; fi
+if [[ -n $3 ]] ; then goback="Hit $3 to go back" ; fi
 
 if grep -q "$1" $hc ; then return 0 ; fi
 announce "The command that will run:\n
