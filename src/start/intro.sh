@@ -3,7 +3,7 @@ if [[ -f $HOME/.parmanode/hide_messages.conf ]] ; then
 . $HOME/.parmanode/hide_messages.conf >$dn
 fi
 
-set_terminal_high
+set_terminal
 if [[ ${message_intro} != "1" ]] ; then 
 while true
 do
