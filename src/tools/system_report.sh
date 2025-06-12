@@ -179,8 +179,8 @@ echor "cpuinfo"
 echor "$(cat /proc/cpuinfo | head -n20)"
 echo -e "----------------------------------------------------------------------------------------" >> $report
 
-heading "BASHRC/ZSHRC"
-echor "$(sudo cat $bashrc)"
+heading "BASHRC/ZSHRC tail 30"
+echor "$(sudo cat $bashrc | tail -n30)"
 
 delete_private
 clear
