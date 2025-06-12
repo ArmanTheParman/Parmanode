@@ -4,7 +4,7 @@ function udev {
 if [[ $OS == "Mac" ]] ; then return 0 ; fi
 clear
 echo -e "Importing UDEV rules for hardware wallet connections..."
-please_wait noclear
+echo -e "Please wait..."
 
 if [[ $chip == "x86_64" ]] ; then
 cd $tmp
