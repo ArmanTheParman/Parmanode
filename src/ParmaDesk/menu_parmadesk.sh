@@ -1,7 +1,7 @@
 function menu_parmadesk {
 
 while true ; do 
-get_onion_address_variable parmadesk
+get_onion_address_variable vnc
 if [[ -n $ONION_ADDR_PARMADESK ]] ; then
     export vnctorprint="Tor Connection:$blue http://$ONION_ADDR_PARMADESK:7010/vnc.html$orange"
 else
