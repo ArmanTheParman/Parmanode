@@ -1,6 +1,6 @@
 function menu_premium {
 while true ; do
-unset parminer parmacloud parmanas another parmascale parmaweb parmaraid datum parmasync uddns plex 
+unset parminer parmacloud parmanas another parmascale parmaweb parmaraid datum parmasync uddns plex parmasql
 menu_add_source
 if ! grep -q "parmaplex-end" $ic ; then plex="\n#$orange              plex)$blue        ParmaPlex (Plex Media Server)                              #
 #                                                                                      #"
