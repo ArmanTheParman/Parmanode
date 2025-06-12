@@ -109,6 +109,8 @@ echor ".bitcoin contents..."
 echor "$(ls -m)"
 echor "bitcoin.conf..."
 echor "$(cat $HOME/.bitcoin/bitcoin.conf)"
+echor "Journalctl -exu bitcoind"
+echor "$(journalctl -exu bitcoind | tail -n100)"
 echor "getblockchaininfo..."
 echor "$(bitcoin-cli getblockchaininfo)"
 fi
@@ -148,7 +150,7 @@ echor "Mempool docker compose \n $(cat $hp/mempool/docker/docker-compose.yml)"
 
 heading "TOR"
 echor "$(which tor)"
-echor "$(sudo cat $torrc)"
+echor "$(sudo cat $torrc | sed '/^#/d')"
 
 heading "THUNDERHUB"
 echor "$(sudo cat $hp/thunderhub/account_1.yaml)"
