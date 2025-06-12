@@ -116,11 +116,14 @@ sudo systemctl enable --now vnc.service >$dn 2>&1
 parmadesk_tor
 make_ssl_certificates parmadesk
 make_parmadesk_nginx
-
 # http://localhost:$NOVNC_PORT/vnc.html"
 installed_conf_add "parmadesk-end"
 installed_conf_add "parmadesk-vJ4"
 installed_conf_remove "parmadesk-start"
+
+#remove this later  when fix removed from temp_patch()
+touch $dp/.vncfixed 
+
 success "ParmaDesk Virtual Network Computing installed"
 return 0
 }
