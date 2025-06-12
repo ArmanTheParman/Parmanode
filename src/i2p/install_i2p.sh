@@ -19,9 +19,8 @@ choose "epq" ; read choice
 jump $choice 
 case $choice in Q|q|Quit|QUIT) exit 0 ;; p|P) return 1 ;; ""|y|yes) break ;; *) invalid ;; esac ;
 done
-
 if [[ $computer_type == "Pi" ]] ; then 
-install_i2p_for_Pi || return 1 ;
+clear ; install_i2p_for_Pi || return 1 ;
 return 0 ;
 fi
 
