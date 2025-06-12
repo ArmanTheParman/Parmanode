@@ -71,6 +71,7 @@ choose "xq" ; read choice
 case $choice in
 N|no|NO|No|n) return 0 ;;
 y|Y|YES|Yes|yes) 
+clear
 update_parmanode refresh ; return 0 ;;
 on)
 autoupdate on
