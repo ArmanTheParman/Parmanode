@@ -69,9 +69,6 @@ echor "$(cd $pd ; ls -ma)"
 heading "LOG COUNTER"
 echor "$(cat $dp/log_counter.conf)"
 
-heading "PARMNODE CONF"
-echor "$(cat $HOME/.parmanode/parmanode.conf)"
-
 heading "PARMANODE.CONF"
 echor "$(cat $dp/parmanode.conf)"
 
