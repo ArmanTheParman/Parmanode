@@ -1,4 +1,9 @@
 function install_mempool {
+
+if grep -q mempool-end $ic ; then announce "Mempool already installed." ; jump $enter_cont ; return 0 ; fi
+if grep -q mempool-start $ic ; then announce "Mempool partially installed." ; jump $enter_cont ; uninstall_mempool ; return 0 ; fi
+
+
 if ! which docker >$dn 2>&1 ; then announce "Please install Docker first from Parmanode Add/Other menu, and START it. Aborting." ; return 1
 else
     if ! docker ps >$dn ; then announce "Pease make sure you START the docker service first. Aborting for now." ; return 1 ; fi

@@ -1,8 +1,7 @@
 function install_nym {
 
 if [[ $OS == "Mac" ]] ; then no_mac ; return 1 ; fi
-
-if echo $chip | grep -qE 'arm|aarch' ; then export forpi="true" ; fi 
+if [[ $computer_type = "Pi" ]] ; then announce "Not available for Pi yet, sorry." ; return 1 ; fi
 
 unset swwflag
 mkdir $hp/nym

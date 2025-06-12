@@ -1,4 +1,8 @@
 function install_electrs {
+
+if  grep -q electrs-end $ic ; then announce "Electrs already installed" ; jump $enter_cont ; return 0 ; fi
+if  grep -q electrs-start $ic ; then announce "Electrs partially installed" ; jump $enter_cont ; unintsll_electrs ; return 0 ; fi
+
 export skipformatting="true"
 export install_electrs_docker_variable="false"
 export electrsversion="v0.10.9"

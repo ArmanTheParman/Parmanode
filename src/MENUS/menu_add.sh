@@ -55,6 +55,18 @@ jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 
+express)
+export express="true" #internal drive used initially for fast setup
+install_bitcoin 
+install_electrs
+install_docker
+install_mempool
+install_electrum
+install_sparrow
+
+;;
+
+
 B|b|bitcoin|Bitcoin)
         if [[ -z $menuaddnewbitcoin ]] ; then
         set_terminal 

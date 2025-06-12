@@ -1,5 +1,8 @@
 function install_bitcoin {
 
+if grep -q bitcoin-end $ic ; then announce "Bitcoin already installed" ; jump $enter_cont ; return 0 ; fi
+if grep -q bitcoin-start $ic ; then announce "Bitcoin partially installed" ; jump $enter_cont ; uninstall_bitcoin ; return 0 ; fi
+
 # if installing bitcoin inside a docker container, then using btcpayinstallsbitcoin="true"
 # if installing bitcoin and btcpay together in docker (initiated by a bitcoin install), then using btcdockerchoice="yes"
 
