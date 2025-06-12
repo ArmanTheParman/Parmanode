@@ -25,3 +25,5 @@ unset goback ; jump $enter_cont ; clear
 
 return 0
 }
+
+function command_tip { command_tip_blue $@ ; }
