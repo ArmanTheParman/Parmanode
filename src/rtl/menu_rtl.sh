@@ -93,6 +93,7 @@ enable_tor_rtl
 else
 disable_tor_rtl
 fi
+sleep 2.5
 
 ;;
 
