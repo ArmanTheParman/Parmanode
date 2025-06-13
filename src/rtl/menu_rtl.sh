@@ -5,7 +5,7 @@ unset tor_message ONION_ADDR_RTL
 
 if grep -q "rtl_tor" $pc ; then
 get_onion_address_variable rtl
-tor_message="      RTL Onion Address:$bright_blue
+[[ -n $ONION_ADDR_RTL ]] && tor_message="      RTL Onion Address:$bright_blue
 
             $ONION_ADDR_RTL:7005 $orange
                   "
