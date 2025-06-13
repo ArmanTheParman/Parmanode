@@ -107,7 +107,7 @@ echo -en "
 $green
       (start)   $orange  Start electrs $red
       (stop) $orange     Stop electrs $cyan
-      (restart)$orange   Restart electrs $cyan
+    
       (i)$orange         Important info / Troubleshooting $cyan
       (remote)$orange    Choose which Bitcoin for electrs to connect to $cyan
       (c)$orange         How to connect your Electrum wallet to electrs $cyan	    
