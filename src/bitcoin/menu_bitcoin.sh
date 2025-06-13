@@ -130,6 +130,7 @@ echo -e "$output3$cyan               n)$orange            Access Bitcoin node in
                delete)$orange       Delete blockchain data and start over $cyan
                upd)$orange          Update Bitcoin wizard $cyan
                tips)$orange         Tips by Parman ...  $btcman $cyan
+               disable)$orange      Toggle on/off (for when manually copying blocks)
                o)$orange            OTHER...
 
 
