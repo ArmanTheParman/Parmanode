@@ -153,7 +153,8 @@ $cyan
 
                           
                CURRENT SPARROW CONNECTION TYPE: $cyan$connection$orange
-
+$red$blinkon
+         If Sparrow is running, make sure to shut it down before proceeding.$blinkoff
 
 $cyan             d)  $orange     Bitcoin via tcp (default)
 
@@ -189,12 +190,15 @@ return 0
 ;;
 
 ftor)
-sparrow_fulcrumtor
+set_terminal
+rm $HOME/.sparrow/config
+make_sparrow_config "fulcrumtor"
 return 0
 ;;
 
 etor)
-sparrow_electrstor
+set_terminal
+make_sparrow_config "electrstor"
 return 0
 ;;
 

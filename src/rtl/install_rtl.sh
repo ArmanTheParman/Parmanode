@@ -40,7 +40,7 @@ run_rtl_docker
 mv $tmp/RTL-Config.json $HOME/parmanode/rtl
 
 rtl_password_changer
-
+enable_tor_rtl
 start_rtl || { announce "RTL failed to run" ; return 1 ; }
 
 success "RTL" "being installed."
