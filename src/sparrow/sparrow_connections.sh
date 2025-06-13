@@ -12,12 +12,6 @@ announce \
 return 1
 fi
 
-if ! grep -q "fulcrum_tor" $pc ; then
-announce \
-"Please enable TOR in Fulcrum menu first."
-return 1 
-fi
-
 
 set_terminal
 echo "If Sparrow is running, make sure to shut it down before proceeding."
@@ -38,14 +32,6 @@ if ! grep -Eq "electrs-end" $ic && ! grep -Eq "electrsdkr-end" $ic ; then
 announce \
 "Please install electrs first."
 return 1 
-fi
-
-if ! grep -q "electrs_tor" $pc ; then
-debug "etor
-$(cat $ic)"
-announce \
-"Please enable TOR in electrs menu first."
-return 1
 fi
 
 set_terminal

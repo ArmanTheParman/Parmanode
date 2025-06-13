@@ -30,17 +30,17 @@ if ! ps -x | grep lnd | grep bin >$dn 2>&1  && ! docker ps | grep -q lnd ; then 
 echo -e "      
 
 $green
-      (start)$orange          Start RTL Docker container
+      start)$orange          Start RTL Docker container
 $red
-      (stop)$orange           Stop RTL Docker container
+      stop)$orange           Stop RTL Docker container
 $cyan
-      (restart)$orange        Restart RTL Docker container
+      restart)$orange        Restart RTL Docker container
 $cyan
-      (pw)$orange             Password Change
+      pw)$orange             Password Change
 $cyan
-      (lnd)$orange            Reinstall RTL to reconnect with LND (need if LND reset)
+      lnd)$orange            Reinstall RTL to reconnect with LND (need if LND reset)
 $cyan
-      (t)$orange              Enable/Disable RTL access over Tor
+      t)$orange              Enable/Disable RTL access over Tor
 
       
 
