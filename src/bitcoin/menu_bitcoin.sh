@@ -232,7 +232,7 @@ enter_continue ; jump $enter_cont
 nano $HOME/.bitcoin/bitcoin.conf
 continue
 ;;
-bcv)
+vbc|bcv)
 vim_warning
 vim $HOME/.bitcoin/bitcoin.conf
 ;;
