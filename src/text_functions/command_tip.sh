@@ -4,6 +4,9 @@ function command_tip_blue {
 # $3 = goback signal -- need code to hand that from calling function
 # $4 = extra optional text
 
+#skip if user has cancelled this popup
+if grep -q "$1" $hc ; then return 0 ; fi
+
 extra_text="\n$4\n"
 
 set_terminal 
@@ -24,7 +27,14 @@ $blue
 
 unset goback ; jump $enter_cont ; clear
 
-[[ $enter_cont == "$3" ]] && return 1 #need || after command_tip call for this to do anything
+case $enter_cont in
+"$3")
+return 1 #need || after command_tip call for this to do anything
+;;
+hide)
+echo "$1" | tee -a $hc >$dn 2>&1
+;;
+esac
 
 return 0
 }
