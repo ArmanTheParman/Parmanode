@@ -2,6 +2,9 @@ function command_tip_blue {
 # $1 = for hiding
 # $2 = the command
 # $3 = goback signal -- need code to hand that from calling function
+# $4 = extra optional text
+
+extra_text="\n$4\n"
 
 set_terminal 
 
@@ -16,7 +19,7 @@ $red
     To undo this action, just manually delete the text,$green $1 $red
     from $dp/hide_commands.conf 
 $blue
-    $goback
+    $goback $extra_text
 "
 
 unset goback ; jump $enter_cont ; clear
@@ -25,5 +28,3 @@ unset goback ; jump $enter_cont ; clear
 
 return 0
 }
-
-function command_tip { command_tip_blue $@ ; }
