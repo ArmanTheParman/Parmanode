@@ -14,7 +14,7 @@ do
 done
 
 mv $HOME/.bitcoin "${final_directory}" >$dn 2>&1
-set_terminal ; echo "Moved $HOME/.bitcoin to $final_directory"
+set_terminal ; echo "Moved $HOME/.bitcoin (internal drive) to $final_directory"
 enter_continue
 return 0
 }
