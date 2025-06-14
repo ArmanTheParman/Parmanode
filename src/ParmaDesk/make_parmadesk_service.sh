@@ -10,7 +10,7 @@ while true ; do
 sleep 86400
 done
 EOF
-sudo chmod +x $dp/scripts/parmadek.sh
+sudo chmod +x $dp/scripts/parmadesk.sh
 
 cat << EOF | sudo tee /etc/systemd/system/parmadesk.service >$dn 2>&1
 [Unit]
