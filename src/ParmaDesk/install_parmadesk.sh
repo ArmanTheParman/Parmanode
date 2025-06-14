@@ -127,7 +127,33 @@ Group=$(id -gn)
 [Install]
 WantedBy=multi-user.target
 EOF
+
+cat << EOF | tee $dp/scripts/parmadesk.sh >$dn 2>&1 && sudo chmod +x $dp/scripts/parmadesk.sh
+#!/bin/bash
+for file in ~/.vnc/*log ; do
+   > \$file
+done
+EOF
+
+cat <<EOF | sudo tee /etc/systemd/system/parmadesk_log_cleanup.service >$dn
+[Unit]
+Description=ParmaDesk Log Cleanup
+
+[Service]
+Type=simple
+ExecStart=$dp/scripts/parmadesk.sh
+
+Restart=always
+RestartSec=84600
+User=$USER
+Group=$(id -gn)
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
 sudo systemctl daemon-reload
 sudo systemctl enable --now noVNC.service >$dn 2>&1
 sudo systemctl enable --now vnc.service >$dn 2>&1
+sudo systemctl enable --now parmadesk_log_cleanup.service >$dn 2>&1
 }
