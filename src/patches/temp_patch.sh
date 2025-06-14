@@ -115,9 +115,9 @@ announce "PARMADESK VNC had some bugs which have been fixed. Please reinstall Pa
 touch $dp/.vncfixed
 fi
 
-if [[ $OS == "Linux" ]] && grep -q parmadesk-end $ic && ! sudo test -f /etc/systemd/system/parmadesk.sh ; then
-make_parmadesk_service
-fi
+# if [[ $OS == "Linux" ]] && grep -q parmadesk-end $ic && ! sudo test -f /etc/systemd/system/parmadesk.sh ; then
+# make_parmadesk_service
+# fi
 
 # would be good to have a run once function, I might make that later and add this in:
 test -f $hc || touch $dp/hide_commands.conf
