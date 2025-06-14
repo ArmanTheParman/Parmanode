@@ -123,7 +123,7 @@ installed_conf_remove "parmadesk-start"
 
 #remove this later  when fix removed from temp_patch()
 touch $dp/.vncfixed 
-
+make_parmadesk_service
 success "ParmaDesk Virtual Network Computing installed"
 return 0
 }
