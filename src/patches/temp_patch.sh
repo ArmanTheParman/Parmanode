@@ -115,8 +115,13 @@ announce "PARMADESK VNC had some bugs which have been fixed. Please reinstall Pa
 touch $dp/.vncfixed
 fi
 
-#remove in Jan 2026
-sound_error_suppression # for older installations of parmadesk which didn't have this function
+#for older installations of parmadesk which didn't have this function #remove in Jan 2026
+if grep -q parmadesk-end $ic && ! test -f ~/.asoundrc ; then
+    for file in ~/.vnc/*log ; do
+    > $file
+    done
+    sound_error_suppression 
+fi
 
 # if [[ $OS == "Linux" ]] && grep -q parmadesk-end $ic && ! sudo test -f /etc/systemd/system/parmadesk.sh ; then
 # make_parmadesk_service
