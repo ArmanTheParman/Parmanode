@@ -1,4 +1,5 @@
 function make_parmadesk_service {
+    return 0
 cat << EOF | tee $dp/scripts/parmadesk.sh >$dn 2>&1
 #!/bin/bash
 for file in ~/.vnc/*log ; do
