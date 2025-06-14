@@ -26,25 +26,25 @@ q|Q) exit ;; p|P) return 0 ;; m|M) back2main ;;
 
 b|B|Bitcoin|bitcoin)
 choose_bitcoin_for_mempool
-restart_mempool
+[[ $install != "mempool" ]] && restart_mempool
 break
 ;;
 
 e|E)
 choose_electrs_for_mempool
-restart_mempool
+[[ $install != "mempool" ]] && restart_mempool
 break
 ;; 
 
 f|F)
 choose_fulcrum_for_mempool
-restart_mempool
+[[ $install != "mempool" ]] && restart_mempool
 break
 ;;
 
 ex)
 choose_electrumx_for_mempool
-restart_mempool
+[[ $install != "mempool" ]] && restart_mempool
 break
 ;;
 

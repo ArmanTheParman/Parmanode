@@ -37,9 +37,11 @@ if ! sudo grep "HiddenServicePort 8280 127.0.0.1:8180"  $torrc | grep -v "^#" >$
 fi
 
 restart_tor
-restart_mempool 
+
+[[ $install != "mempool" ]] && restart_mempool 
+
 get_onion_address_variable "mempool" 
-announce "FYI, changes have been made to torrc file, and Tor has been restarted."
+
 return 0
 }
 

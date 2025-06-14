@@ -1,4 +1,5 @@
 function install_mempool {
+export install=mempool
 
 if grep -q mempool-end $ic ; then announce "Mempool already installed." ; jump $enter_cont ; return 0 ; fi
 if grep -q mempool-start $ic ; then announce "Mempool partially installed." ; jump $enter_cont ; uninstall_mempool ; return 0 ; fi
@@ -42,7 +43,14 @@ installed_config_add "mempool-start"
 make_mempool_docker_compose
 cp $tmp/docker-compose.yml $hp/mempool/docker/docker-compose.yml
 rm $tmp/docker-compose.yml >$dn 2>&1
+
+enable_mempool_tor
+
+if grep -q "electrs-end" $ic || grep -q "electrsdkr-end" $ic ; then
+choose_electrs_for_mempool 
+else
 choose_bitcoin_for_mempool
+fi
 
 cd $hp/mempool/docker 
 docker compose up -d || debug "compose up didn't work"

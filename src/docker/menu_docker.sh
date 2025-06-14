@@ -28,15 +28,15 @@ echo -e "
 $mountwarning
 $running
 $green
-                    start)$orange                 Start Docker Service and Socket
+                   start)$orange                 Start Docker Service and Socket
             $red
                     stop)$orange                 Stop Docker Service and Socket (This is rarely needed)
             $cyan
-                        ps)$orange                 List running docker containers
+                      ps)$orange                 List running docker containers
             $cyan            
-                        nn)$orange                 List docker networks
+                      nn)$orange                 List docker networks
             $red
-                    purge)$orange                 Purge data for stopped and unused containers
+                   purge)$orange                 Purge data for stopped and unused containers
 
 
 ##############################################################################################################

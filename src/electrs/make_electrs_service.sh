@@ -14,8 +14,8 @@ Group=$(id -ng)
 Type=simple
 KillMode=process
 TimeoutSec=60
-Restart=always
-RestartSec=60
+Restart=on-failure
+RestartSec=300
 
 Environment=\"RUST_BACKTRACE=1\"
 

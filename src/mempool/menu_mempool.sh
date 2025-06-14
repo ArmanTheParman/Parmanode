@@ -1,4 +1,5 @@
 function menu_mempool {
+unset install
 
 if ! grep -q "mempool-end" $ic ; then return 0 ; fi
 
