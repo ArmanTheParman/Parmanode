@@ -50,7 +50,7 @@ if [ ! -f "$HOME/.vnc/passwd" ]; then
     vncpasswd #this is not a custom parmanode function
 fi
 
-
+sound_error_suppression
 make_parmadesk_service
 
 while true ; do
@@ -128,32 +128,37 @@ Group=$(id -gn)
 WantedBy=multi-user.target
 EOF
 
-cat << EOF | tee $dp/scripts/parmadesk.sh >$dn 2>&1 && sudo chmod +x $dp/scripts/parmadesk.sh
-#!/bin/bash
-for file in ~/.vnc/*log ; do
-   > \$file
-done
-EOF
 
-cat <<EOF | sudo tee /etc/systemd/system/parmadesk_log_cleanup.service >$dn
-[Unit]
-Description=ParmaDesk Log Cleanup
-
-[Service]
-Type=simple
-ExecStart=$dp/scripts/parmadesk.sh
-
-Restart=always
-RestartSec=84600
-User=$USER
-Group=$(id -gn)
-
-[Install]
-WantedBy=multi-user.target
-EOF
 
 sudo systemctl daemon-reload
 sudo systemctl enable --now noVNC.service >$dn 2>&1
 sudo systemctl enable --now vnc.service >$dn 2>&1
 sudo systemctl enable --now parmadesk_log_cleanup.service >$dn 2>&1
+}
+
+
+function sound_error_suppression {
+
+#without this, the log file gets spammed, and very large, if sound isn't configured.
+[[ -f ~/.asoundrc ]] && return 0
+
+cat > ~/.asoundrc <<EOF
+pcm.!default {
+  type file
+  slave.pcm "null_sink"
+  file "/dev/null"
+  format raw
+}
+
+pcm.null_sink {
+  type null
+}
+
+ctl.!default {
+  type hw
+  card -1
+}
+EOF
+
+
 }
