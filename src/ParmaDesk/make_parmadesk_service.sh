@@ -1,6 +1,6 @@
 function make_parmadesk_service {
 
-cat << EOF | tee $dp/scripts/parmadesk.sh
+cat << EOF | tee $dp/scripts/parmadesk.sh >$dn 2>&1
 #!/bin/bash
 trap "exit 0" SIGTERM
 while true ; do
@@ -12,7 +12,8 @@ done
 EOF
 sudo chmod +x $dp/scripts/parmadek.sh
 
-echo "[Unit]
+cat << EOF | sudo tee /etc/systemd/system/parmadesk.service >$dn 2>&1
+[Unit]
 Description=ParmaDesk Service: A 24 hour loop to keep log files small
 
 [Service]
@@ -28,7 +29,8 @@ Group=$(whoami)
 Restart=on-failure
 RestartSec=3000
 [Install]
-WantedBy=multi-user.target" | sudo tee /etc/systemd/system/parmadesk.service >$dn 2>&1
+WantedBy=multi-user.target
+EOF
 
 sudo systemctl daemon-reload 2>$dn
 sudo systemctl enable --now parmadesk.service 2>$dn
