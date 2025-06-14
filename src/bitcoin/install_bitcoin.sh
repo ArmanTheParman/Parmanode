@@ -48,7 +48,7 @@ fi #end btcdockerchoice
 
 #btcpayinstallsbitcoin=true if installing from btcpay Dockerfile
 
-export install=bitcoin
+export install="bitcoin"
 export install_bitcoin_variable="true" #don't use same name as function!
 
 if [[ -e /.dockerenv && $btcpayinstallsbitcoin != "true" ]] ; then announce "Bitcoin can be installed inside a Docker container, but may not

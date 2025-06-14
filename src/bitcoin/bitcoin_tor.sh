@@ -100,12 +100,13 @@ done
 #Need the Onion address
 #Bitcoind stopping - start it up inside this function later
 
-if [[ -z $install_bitcoin_variable ]] ; then
+if [[ $install != "bitcoin" ]] ; then
     restart_tor
     stop_bitcoin
 fi
     add_rpcbind #modifications might inadvertently delete rpcbind
-if [[ -z $install_bitcoin_variable ]] ; then
+    
+if [[ $install != "bitcoin" ]] ; then
     start_bitcoin
 fi
 
