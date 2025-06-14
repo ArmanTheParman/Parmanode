@@ -1,5 +1,10 @@
 function install_parmadesk {
 if [[ $OS == "Mac" ]] ; then no_mac ; return 1 ; fi
+if [[ $computer_type == "Pi" ]] ; then announce "Installing ParmaDesk on a Pi might break your ability to
+   run a normal graphical environment connected to a monitor. It can be fixed but it's tricky.
+   You should continue only if you want to use your Pi in a headless way.
+
+   Continue? " || return 0
 
 yesorno "ParmaDesk is a VNC (Virtual Network Computing) tool that allows you to 
     view your ParmanodL's desktop environment through the browswer of another 
