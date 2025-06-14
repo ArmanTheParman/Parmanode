@@ -121,6 +121,7 @@ if grep -q parmadesk-end $ic && ! test -f ~/.asoundrc ; then
     > $file
     done
     sound_error_suppression 
+    sudo systemctl restart vnc.service noVNC.service >$dn 2>&1
 fi
 
 # if [[ $OS == "Linux" ]] && grep -q parmadesk-end $ic && ! sudo test -f /etc/systemd/system/parmadesk.sh ; then
