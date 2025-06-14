@@ -1,5 +1,5 @@
 function bitcoin_tor {
-nogsedtest
+
 install_tor
 
 if [[ ! -e $varlibtor ]] ; then mkdir -p $varlibtor >$dn 2>&1 ; fi
@@ -24,22 +24,6 @@ fi
 if ! sudo grep "HiddenServicePort 8333 127.0.0.1:8333" $torrc | grep -v "^#" >$dn 2>&1 ; then 
     echo "HiddenServicePort 8333 127.0.0.1:8333" | sudo tee -a $torrc >$dn 2>&1
 fi
-
-########################################################################################
-#Need the Onion address
-#Bitcoind stopping - start it up inside this function later
-
-if [[ -z $install_bitcoin_variable ]] ; then
-    restart_tor
-    stop_bitcoin
-fi
-    add_rpcbind #modifications might inadvertently delete rpcbind
-if [[ -z $install_bitcoin_variable ]] ; then
-    start_bitcoin
-fi
-
-########################################################################################
-
 
 if [[ $1 == "torandclearnet" ]] ; then
     sudo gsed -i "/onion=/d" $bc
@@ -111,6 +95,22 @@ sleep 1.5
 count=$((1 + count))
 if [[ $count -gt 4 ]] ; then return 1 ; fi
 done
+
+########################################################################################
+#Need the Onion address
+#Bitcoind stopping - start it up inside this function later
+
+if [[ -z $install_bitcoin_variable ]] ; then
+    restart_tor
+    stop_bitcoin
+fi
+    add_rpcbind #modifications might inadvertently delete rpcbind
+if [[ -z $install_bitcoin_variable ]] ; then
+    start_bitcoin
+fi
+
+########################################################################################
+
 
 }
 
