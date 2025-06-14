@@ -51,6 +51,7 @@ if [ ! -f "$HOME/.vnc/passwd" ]; then
 fi
 
 sound_error_suppression
+make_parmadesk_log_cleanup_service
 make_parmadesk_service
 
 while true ; do
@@ -128,8 +129,6 @@ Group=$(id -gn)
 WantedBy=multi-user.target
 EOF
 
-
-
 sudo systemctl daemon-reload
 sudo systemctl enable --now noVNC.service >$dn 2>&1
 sudo systemctl enable --now vnc.service >$dn 2>&1
@@ -159,6 +158,27 @@ ctl.!default {
   card -1
 }
 EOF
+}
 
+function make_parmadesk_log_cleanup_service {
+sudo test -f parmadesk_log_cleanup.service >$dn 2>&1 && return 0 
 
+cat <<EOF | sudo tee /etc/systemd/system/parmadesk_log_cleanup.service >$dn 2>&1
+[Unit]
+Description=ParmaDesk noisy log cleanup
+
+[Service]
+Type=simple
+ExecStart=/bin/bash -c 'for f in /home/$USER/.vnc/*.log; do > "\$f"; done'
+
+Restart=always
+RestartSec=40000
+User=$USER
+Group=$(id -gn)
+
+[Install]
+WantedBy=multi-user.target
+EOF
+sudo systemctl daemon-reload
+sudo systemctl enable --now parmadesk_log_cleanup.service >$dn 2>&1
 }

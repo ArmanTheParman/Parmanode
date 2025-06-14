@@ -120,6 +120,7 @@ if grep -q parmadesk-end $ic && ! test -f ~/.asoundrc ; then
     for file in ~/.vnc/*log ; do
     > $file
     done
+    make_parmadesk_log_cleanup_service
     sound_error_suppression 
     sudo systemctl restart vnc.service noVNC.service >$dn 2>&1
 fi
