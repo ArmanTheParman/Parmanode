@@ -32,6 +32,6 @@ WantedBy=multi-user.target
 EOF
 
 sudo systemctl daemon-reload 2>$dn
-sudo systemctl enable parmadesk.service 2>$dn
-sudo systemctl start parmadesk.service >$dn
+#sudo systemctl enable parmadesk.service 2>$dn
+#sudo systemctl start parmadesk.service >$dn
 }
