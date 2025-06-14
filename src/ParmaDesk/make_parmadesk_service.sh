@@ -1,5 +1,5 @@
 function make_parmadesk_service {
-
+return 0
 cat << EOF | tee $dp/scripts/parmadesk.sh >$dn 2>&1
 #!/bin/bash
 trap "exit 0" SIGTERM
