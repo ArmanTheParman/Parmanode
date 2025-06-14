@@ -43,8 +43,13 @@ WantedBy=multi-user.target
 EOF
 
 sudo systemctl daemon-reload
+sudo systemctl enable --now parmadesk_log_cleanup.service >$dn 2>&1
 sudo systemctl enable --now noVNC.service >$dn 2>&1
 sudo systemctl enable --now vnc.service >$dn 2>&1
-sudo systemctl enable --now parmadesk_log_cleanup.service >$dn 2>&1
+
+# yesorno "Do you want to have Parmadesk start on boot? If you do, you may 
+#     completely lose your regular graphical interface when you log in. If
+#     you don't"
+
 }
 

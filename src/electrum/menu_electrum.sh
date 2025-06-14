@@ -95,7 +95,7 @@ echo -e "
 
     Files: $bright_blue
 
-$(ls $HOME/.electrum/wallets)
+$(ls $HOME/.electrum/wallets 2>$dn)
 
 $orange
 ########################################################################################

@@ -21,7 +21,7 @@ sudo rm -rf ~/.vnc/ $hp/vnc $hp/parmadesk
 sudo systemctl disable vnc.service >$dn 2>&1
 sudo systemctl disable noVNC.service >$dn 2>&1
 parmadesk_tor_remove
-sudo systemctl $macprefix/etc/nginx/conf.d/vnc.conf >$dn 2>&1
+sudo rm $macprefix/etc/nginx/conf.d/vnc.conf >$dn 2>&1
 sudo systemctl restart nginx >$dn 2>&1
 sudo rm /etc/systemd/system/{noVNC.service,vnc.service} >$dn 2>&1
 rm ~/.asoundrc 
