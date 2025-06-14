@@ -21,7 +21,7 @@ stop_vaultwarden
 docker rm vaultwarden
 
 yesorno "Do you want to delete your data directory as well, ie where your passwords are?" &&
-yesorno "ARE YOU SURE???" && rm -rf $HOME/.vw_data
+yesorno "ARE YOU SURE???" && sudo rm -rf $HOME/.vw_data
 
 rm -rf $hp/vaultwarden
 sudo rm $macprefix/etc/nginx/conf.d/vaultwarden.conf
