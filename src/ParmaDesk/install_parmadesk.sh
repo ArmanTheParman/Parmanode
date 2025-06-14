@@ -5,6 +5,7 @@ if [[ $computer_type == "Pi" ]] ; then announce "Installing ParmaDesk on a Pi mi
    You should continue only if you want to use your Pi in a headless way.
 
    Continue? " || return 0
+fi
 
 yesorno "ParmaDesk is a VNC (Virtual Network Computing) tool that allows you to 
     view your ParmanodL's desktop environment through the browswer of another 
