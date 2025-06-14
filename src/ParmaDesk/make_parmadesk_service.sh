@@ -1,5 +1,4 @@
 function make_parmadesk_service {
-return 0
 cat << EOF | tee $dp/scripts/parmadesk.sh >$dn 2>&1
 #!/bin/bash
 trap "exit 0" SIGTERM
@@ -33,5 +32,6 @@ WantedBy=multi-user.target
 EOF
 
 sudo systemctl daemon-reload 2>$dn
-sudo systemctl enable --now parmadesk.service 2>$dn
+sudo systemctl enable parmadesk.service 2>$dn
+sudo systemctl start parmadesk.service >$dn
 }
