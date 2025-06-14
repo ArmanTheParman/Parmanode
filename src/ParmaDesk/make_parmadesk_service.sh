@@ -13,7 +13,7 @@ EOF
 sudo chmod +x $dp/scripts/parmadek.sh
 
 echo "[Unit]
-Description=ParmaDesk Service
+Description=ParmaDesk Service: A 24 hour loop to keep log files small
 
 [Service]
 Type=simple
