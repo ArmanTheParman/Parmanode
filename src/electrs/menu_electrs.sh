@@ -105,18 +105,19 @@ fi
 fi #end electrsis docker
 echo -en "
 $green
-      (start)   $orange  Start electrs $red
-      (stop) $orange     Stop electrs $cyan
+      start)   $orange  Start electrs $red
+      stop) $orange     Stop electrs $cyan
     
-      (i)$orange         Important info / Troubleshooting $cyan
-      (remote)$orange    Choose which Bitcoin for electrs to connect to $cyan
-      (c)$orange         How to connect your Electrum wallet to electrs $cyan	    
-      (log)$orange       Inspect electrs logs $cyan
-      (ec)$orange        Inspect and edit config file (ecv for vim) $cyan
-      (dc)$orange        electrs database corrupted? -- Use this to start fresh."
+      i)$orange         Important info / Troubleshooting $cyan
+      remote)$orange    Choose which Bitcoin for electrs to connect to $cyan
+      c)$orange         How to connect your Electrum wallet to electrs $cyan	    
+      cert)$orange      See electrs SSL certificate$cyan
+      log)$orange       Inspect electrs logs $cyan
+      ec)$orange        Inspect and edit config file (ecv for vim) $cyan
+      dc)$orange        electrs database corrupted? -- Use this to start fresh."
 if [[ $electrsis == "nondocker" ]] ; then echo -e "$cyan
-      (tor)$orange       Enable/Disable Tor connections to electrs -- Status : $E_tor"  ; else echo -e "$cyan      
-      (newtor)$orange    Refresh Tor address
+      tor)$orange       Enable/Disable Tor connections to electrs -- Status : $E_tor"  ; else echo -e "$cyan      
+      newtor)$orange    Refresh Tor address
 " 
 fi
 echo -e "
@@ -195,6 +196,20 @@ fi
 c|C)
 electrum_wallet_info
 continue
+;;
+cert)
+sudo true
+announce "You can copy this text, and make a file on a remote computer, then point
+    your Sparrow wallet to it (there is a field for the SSL certificate in the
+    connection window. For Electrum wallet, the certificate is fetched without
+    manual input:
+
+    Here it is:$cyan
+
+    $(sudo cat ~/.electrs/cert.pem)
+
+    $orange
+    "
 ;;
 
 log|LOG|Log)
