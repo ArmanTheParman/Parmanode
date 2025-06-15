@@ -58,7 +58,7 @@ fi
 debug 1
 sound_error_suppression
 debug 2
-make_parmadesk_log_cleanup_service
+#make_parmadesk_log_cleanup_service
 debug 3
 make_parmadesk_service
 debug 4
