@@ -8,7 +8,7 @@ Description=ParmaDesk noisy log cleanup
 
 [Service]
 Type=forking
-ExecStart=/bin/bash -c 'for f in /home/$USER/.vnc/*.log; do > "\$f"; done'
+ExecStart=/bin/bash -c 'for f in /home/$USER/.vnc/*.log ; do > "\$f" ; done'
 
 Restart=always
 RestartSec=40000
