@@ -207,9 +207,7 @@ announce "You can copy this text, and make a file on a remote computer, paste in
     Here it is:$cyan
 
 $(sudo cat ~/.electrs/cert.pem)
-
-    $orange
-    "
+    $orange "
 ;;
 
 log|LOG|Log)
