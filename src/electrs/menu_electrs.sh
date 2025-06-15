@@ -199,10 +199,10 @@ continue
 ;;
 cert)
 sudo true
-announce "You can copy this text, and make a file on a remote computer, then point
-    your Sparrow wallet to it (there is a field for the SSL certificate in the
-    connection window. For Electrum wallet, the certificate is fetched without
-    manual input:
+announce "You can copy this text, and make a file on a remote computer, paste in
+    the certificate, then point your Sparrow wallet to it (there is a field for 
+    the SSL certificate in the connection window). For Electrum wallet, the 
+    certificate is fetched without manual input:
 
     Here it is:$cyan
 
