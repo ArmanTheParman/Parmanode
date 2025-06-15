@@ -25,7 +25,7 @@ fi
 
 sudo rm $dp/scripts/i2p.sh
 sudo systemctl disable i2p.service >$dn 2>&1
-sudo rm -rf etc/systemd/system/i2p.service 2>&1
+sudo rm /etc/systemd/system/i2p.service >$dn 2>&1
 
 installed_config_remove "i2p-"
 success "I2P uninstalled"
