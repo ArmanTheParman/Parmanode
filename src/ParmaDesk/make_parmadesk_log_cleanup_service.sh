@@ -7,7 +7,7 @@ cat <<EOF | sudo tee /etc/systemd/system/parmadesk_log_cleanup.service >$dn 2>&1
 Description=ParmaDesk noisy log cleanup
 
 [Service]
-Type=simple
+Type=forking
 ExecStart=/bin/bash -c 'for f in /home/$USER/.vnc/*.log; do > "\$f"; done'
 
 Restart=always
