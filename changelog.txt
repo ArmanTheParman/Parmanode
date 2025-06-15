@@ -1,3 +1,5 @@
+Version 3.62.5
+     -Electrs/Fulcrum/ElectrumX certificate in menu
 Version 3.62.4
      -small VNC bugs fixed
      -vnc log file spam silenced

@@ -96,25 +96,16 @@ fi #end electrumx running or not
 echo -en "
 
 $green
-      start)$orange    Start Electrum X 
-$red
-      stop)$orange     Stop Electrum X
-$cyan
-      restart)$orange  Restart Electrum X
-$cyan
-      remote)$orange   Choose which Bitcoin instance for Electrum X to connect to
-$cyan
-      log)$orange      Inspect Electrum X logs
-$cyan
-      ec)$orange       Inspect and edit config file (ecv for vim)
-$cyan
+      start)$orange    Start Electrum X $red
+      stop)$orange     Stop Electrum X $cyan
+      restart)$orange  Restart Electrum X $cyan
+      remote)$orange   Choose which Bitcoin instance for Electrum X to connect to $cyan
+      cert)$orange     See ElectrumX SSL certificate$cyan
+      log)$orange      Inspect Electrum X logs $cyan
+      ec)$orange       Inspect and edit config file (ecv for vim) $cyan
       dc)$orange       Electrum X database corrupted? -- Use this to start fresh."
-
-if [[ $OS == Linux ]] ; then echo -e "
-$cyan
-      tor)$orange      Enable/Disable Tor connections to Electrum X -- Status : $E_tor"  ; else echo -e "
-$cyan
-      newtor)$orange   Refresh Tor address
+if [[ $OS == Linux ]] ; then echo -e "${cyan}tor)$orange      Enable/Disable Tor connections to Electrum X -- Status : $E_tor"  
+else echo -e "${cyan}newtor)$orange   Refresh Tor address
 " 
 fi
 echo -e "
@@ -171,6 +162,20 @@ set_terminal
 c|C)
 electrum_wallet_info
 continue
+;;
+
+cert)
+sudo true
+announce "
+    You can copy this text, and make a file on a remote computer, paste in
+    the certificate, then point your Sparrow wallet to it (there is a field for 
+    the SSL certificate in the connection window). For Electrum wallet, the 
+    certificate is fetched without manual input:
+
+    Here it is:$cyan
+
+$(sudo cat $hp/electrumx/cert.pem)
+    $orange "
 ;;
 
 log|LOG|Log)

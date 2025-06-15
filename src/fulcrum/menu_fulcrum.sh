@@ -64,25 +64,17 @@ echo -en "$orange
 fi
 echo -e "
 $green
-      (start)   $orange Start Fulcrum 
-$red
-      (stop)  $orange   Stop Fulcrum 
-$cyan
-      (restart)$orange  Restart Fulcrum
-$cyan
-      (c)$orange        How to connect your Electrum wallet to Fulcrum
-$cyan
-      (log)$orange      Inspect Fulcrum logs (real time)
-$cyan
-      (brlog)$orange    Browse Fulcrum log (static)
-$cyan
-      (fc)$orange       Inspect and edit fulcrum.conf file (fcv for vim)
-$cyan
-      (tor)$orange      Toggle Tor connections to Fulcrum -- Fulcrum Tor Status : $F_tor
-$cyan
-      (man)$orange      Manually explore the docker container
-$cyan    
-      (dc)$orange       Fulcrum database corrupted? -- Use this to start fresh.
+      start)   $orange Start Fulcrum $red
+      stop)  $orange   Stop Fulcrum $cyan
+      restart)$orange  Restart Fulcrum $cyan
+      c)$orange        How to connect your Electrum wallet to Fulcrum $cyan
+      cert)$orange     See Fulcrum SSL certificate$cyan
+      log)$orange      Inspect Fulcrum logs (real time) $cyan
+      brlog)$orange    Browse Fulcrum log (static) $cyan
+      fc)$orange       Inspect and edit fulcrum.conf file (fcv for vim) $cyan
+      tor)$orange      Toggle Tor connections to Fulcrum -- Fulcrum Tor Status : $F_tor $cyan
+      man)$orange      Manually explore the docker container $cyan    
+      dc)$orange       Fulcrum database corrupted? -- Use this to start fresh.
 "
 if grep -q "fulcrum_tor" $HOME/.parmanode/parmanode.conf ; then 
 get_onion_address_variable "fulcrum"
@@ -128,6 +120,19 @@ electrum_wallet_info
 continue
 ;;
 
+cert)
+sudo true
+announce "
+    You can copy this text, and make a file on a remote computer, paste in
+    the certificate, then point your Sparrow wallet to it (there is a field for 
+    the SSL certificate in the connection window). For Electrum wallet, the 
+    certificate is fetched without manual input:
+
+    Here it is:$cyan
+
+$(sudo cat ~/.fulcrum/cert.pem)
+    $orange "
+;;
 log|LOG|Log)
 set_terminal
 log_counter
