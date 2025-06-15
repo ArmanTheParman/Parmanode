@@ -55,11 +55,13 @@ if [ ! -f "$HOME/.vnc/passwd" ]; then
     \rinteract with the computer, only view it's contents, eg for presentations.\n"
     vncpasswd #this is not a custom parmanode function
 fi
-
+debug 1
 sound_error_suppression
+debug 2
 make_parmadesk_log_cleanup_service
+debug 3
 make_parmadesk_service
-
+debug 4
 while true ; do
     if sudo test -f /usr/share/novnc/utils/novnc_proxy ; then 
         break 
@@ -76,11 +78,14 @@ while true ; do
         break
     fi
 done
-
+debug 5
 
 parmadesk_tor
+debug 6
 make_ssl_certificates parmadesk
+debug 7
 make_parmadesk_nginx
+debug 8
 # http://localhost:$NOVNC_PORT/vnc.html"
 installed_conf_add "parmadesk-end"
 installed_conf_add "parmadesk-vJ4"
