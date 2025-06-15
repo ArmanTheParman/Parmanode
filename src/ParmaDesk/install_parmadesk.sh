@@ -56,7 +56,7 @@ if [ ! -f "$HOME/.vnc/passwd" ]; then
     vncpasswd #this is not a custom parmanode function
 fi
 sound_error_suppression
-[[ $debug == 1 ]] & make_parmadesk_log_cleanup_service
+make_parmadesk_log_cleanup_service
 make_parmadesk_service
 while true ; do
     if sudo test -f /usr/share/novnc/utils/novnc_proxy ; then 
