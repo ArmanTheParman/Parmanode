@@ -4,7 +4,7 @@ while true ; do
 clear
 
 if [[ $OS == "Linux" ]] ; then 
-    if sudo systemctl status tor > $tmp/tor ; then
+    if sudo systemctl status tor >$dn 2>&1 ; then
     torrunning="true"
     torrunningtext="${green}RUNNING"
     else
