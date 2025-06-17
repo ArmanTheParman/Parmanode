@@ -7,7 +7,7 @@ function command_tip_blue {
 #skip if user has cancelled this popup
 if grep -q "$1" $hc ; then return 0 ; fi
 
-extra_text="\n$4\n"
+extra_text="\n    $4\n"
 
 set_terminal 
 
