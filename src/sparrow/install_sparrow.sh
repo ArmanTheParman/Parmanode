@@ -76,8 +76,9 @@ return 0
 
 
 function unpack_sparrow {
-cd $HOME/parmanode
+cd $hp
 tar -xvf sparrow*.gz
+mv sparrow*.gz $tmp
 }
 
 function mac_sparrow_headsup {
