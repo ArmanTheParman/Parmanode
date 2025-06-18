@@ -20,8 +20,6 @@ $cyan
 $cyan
                   conf)$orange          Edit nginx.conf (confv for vim)
 $cyan
-                  st)$orange            Edit stream.conf
-    $cyan              
                   cd)$orange            Edit files in conf.d
 $cyan
                   t)$orange             Test nginx configuration (nginx -t)
@@ -51,15 +49,6 @@ sudo nano /etc/nginx/nginx.conf
 
 confv) 
 vim_warning ; sudo vim /etc/nginx/nginx.conf 
-;;
-
-st)
-set_terminal ; echo -e "${green}n$orange for nano editor,$green v$orange for vim, <enter> alone to go back" ; read editor     case $editor in
-    case $editor in
-    "") continue ;;
-    n) sudo nano /etc/nginx/stream.conf ;;
-    v) vim_warning ; sudo vim /etc/nginx/stream.conf ;;
-    esac
 ;;
 
 cd)
