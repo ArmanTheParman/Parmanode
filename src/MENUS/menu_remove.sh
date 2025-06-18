@@ -58,6 +58,10 @@ if grep -q "website-end" $HOME/.parmanode/installed.conf ; then websitemenu=1
 echo -e "#$cyan                            \033[27G pw)$blue               WordPress Website (ParmaWeb)           $orange\033[88G#"
 elif grep -q "website-start" $HOME/.parmanode/installed.conf ; then websitemenu=1
 echo -e "#$cyan                            \033[27G pw)$blue               WordPress Website         $red$blinkon(partial)$blinkoff$orange       \033[88G#" ; fi
+if grep -q "parmasql-end" $HOME/.parmanode/installed.conf ; then parmasqlmenu=1
+echo -e "#$cyan                            \033[27G psql)$blue             ParmaSQL                               \033[88G#"
+elif grep -q "parmasql-start" $HOME/.parmanode/installed.conf ; then parmasqlmenu=1
+echo -e "#$cyan                            \033[27G psql)$blue             ParmaSQL               $red$blinkon(partial)$blinkoff$orange        \033[88G#" ; fi
 if grep -q "bitcoin-end" $HOME/.parmanode/installed.conf ; then bitcoinmenu=1
 echo -e "#$cyan                            \033[27G bitcoin)$orange          Bitcoin                                \033[88G#"
 elif grep -q "bitcoin-start" $HOME/.parmanode/installed.conf ; then bitcoinmenu=1
@@ -246,10 +250,6 @@ if grep -q "parmadesk-end" $HOME/.parmanode/installed.conf ; then parmadeskmenu=
 echo -e "#$cyan                            \033[27G pd)$orange               ParmaDesk VNC                          \033[88G#"
 elif grep -q "parmadesk-start" $HOME/.parmanode/installed.conf ; then parmadeskmenu=1
 echo -e "#$cyan                            \033[27G pd)$orange               ParmaDesk VNC          $red$blinkon(partial)$blinkoff$orange        \033[88G#" ; fi
-if grep -q "parmasql-end" $HOME/.parmanode/installed.conf ; then parmasqlmenu=1
-echo -e "#$cyan                            \033[27G psql)$orange             ParmaSQL                               \033[88G#"
-elif grep -q "parmasql-start" $HOME/.parmanode/installed.conf ; then parmasqlmenu=1
-echo -e "#$cyan                            \033[27G psql)$orange             ParmaSQL               $red$blinkon(partial)$blinkoff$orange        \033[88G#" ; fi
 if grep -q "parmaplex-end" $HOME/.parmanode/installed.conf ; then parmaplexmenu=1
 echo -e "#$cyan                            \033[27G plex)$orange             ParmaPlex                              \033[88G#"
 elif grep -q "parmaplex-start" $HOME/.parmanode/installed.conf ; then parmaplexmenu=1
