@@ -1,17 +1,17 @@
 function menu_bitcoin_tor {
 
-if ! which tor >$dn 2>&1 ; then set_terminal
-install_tor
+if ! which tor >$dn 2>&1 ; then 
+    clear 
+    install_tor
 fi
 
-if ! which tor >$dn 2>&1 ; then set_terminal
-enter_continue "
-    You need to install Tor first. Aborting.
-    "
+if ! which tor >$dn 2>&1 ; then 
+    enter_continue "You need to install Tor first. Aborting."
     return 1
 fi
 
 while true ; do
+clear
 unset tortext
 source $pc >$dn 2>&1 
 
@@ -55,7 +55,7 @@ else tortext="
 ########################################################################################
 "
 fi
-set_terminal ; echo -e "
+set_terminal 40 88 ; echo -e "
 ########################################################################################
 
 $cyan                        Tor/I2P options for Bitcoin (Linux only)   $orange
