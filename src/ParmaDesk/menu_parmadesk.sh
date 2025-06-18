@@ -48,6 +48,8 @@ $green
                                     stop)$orange          Stop ParmaDesk
                     $cyan
                                     restart)$orange       Resart ParmaDesk
+                    $cyan
+                                    pass)$orange          Change ParmaDesk password 
 
 $red          Troubleshooting options...
                     $cyan
@@ -72,6 +74,9 @@ stop_parmadesk
 ;;
 restart)
 restart_parmadesk
+;;
+pass)
+set_vnc_password
 ;;
 "")
 continue ;;

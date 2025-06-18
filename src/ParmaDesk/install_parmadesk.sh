@@ -45,16 +45,7 @@ exec mate-session
 EOF
 chmod +x ~/.vnc/xstartup
 
-# Set VNC password 
-if [ ! -f "$HOME/.vnc/passwd" ]; then
-    clear
-    echo -e "Setting VNC password...$red max 8 characters.$orange
-    \rThis is the password you will use to log in to Parmanode via the browser.\n
-    \rYou will be offered the option to set a 'view only password' which is
-    \rcompletely optional, allowing you to enter sessions where you can't  
-    \rinteract with the computer, only view it's contents, eg for presentations.\n"
-    vncpasswd #this is not a custom parmanode function
-fi
+set_vnc_password
 sound_error_suppression
 make_parmadesk_log_cleanup_service
 make_parmadesk_service
@@ -87,4 +78,14 @@ installed_conf_remove "parmadesk-start"
 touch $dp/.vncfixed 
 success "ParmaDesk Virtual Network Computing installed"
 return 0
+}
+
+function set_vnc_password {
+    clear
+    echo -e "Setting VNC password...$red max 8 characters.$orange
+    \rThis is the password you will use to log in to Parmanode via the browser.\n
+    \rYou will be offered the option to set a 'view only password' which is
+    \rcompletely optional, allowing you to enter sessions where you can't  
+    \rinteract with the computer, only view it's contents, eg for presentations.\n"
+    vncpasswd #this is not a custom parmanode function
 }
