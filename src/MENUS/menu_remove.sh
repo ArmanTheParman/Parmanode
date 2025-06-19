@@ -59,7 +59,7 @@ echo -e "#$cyan                            \033[27G pw)$blue               WordP
 elif grep -q "website-start" $HOME/.parmanode/installed.conf ; then websitemenu=1
 echo -e "#$cyan                            \033[27G pw)$blue               WordPress Website         $red$blinkon(partial)$blinkoff$orange       \033[88G#" ; fi
 if grep -q "parmasql-end" $HOME/.parmanode/installed.conf ; then parmasqlmenu=1
-echo -e "#$cyan                            \033[27G psql)$blue             ParmaSQL                               \033[88G#"
+echo -e "#$cyan                            \033[27G psql)$blue             ParmaSQL                               $orange\033[88G#"
 elif grep -q "parmasql-start" $HOME/.parmanode/installed.conf ; then parmasqlmenu=1
 echo -e "#$cyan                            \033[27G psql)$blue             ParmaSQL               $red$blinkon(partial)$blinkoff$orange        \033[88G#" ; fi
 if grep -q "bitcoin-end" $HOME/.parmanode/installed.conf ; then bitcoinmenu=1
