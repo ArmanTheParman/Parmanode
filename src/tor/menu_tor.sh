@@ -33,9 +33,9 @@ set_terminal ; echo -e "
 
 
 
-$green                  stop)         $orange  Stop Tor                  
+$green                  start)      $orange    Start Tor (normally starts automatically)
 
-$red                  start)      $orange    Start Tor (normally starts automatically)
+$red                  stop)         $orange  Stop Tor                  
                                                                  
 $cyan                  restart)$orange        Restart Tor
                                                             
