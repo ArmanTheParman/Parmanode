@@ -5,7 +5,6 @@ pc...
 $(cat $pc)
 "
 set_github_config
-make_parmanode_ssh_keys
 fix_bitcoin_conf
 
 #log file location has changed, delete the old one. Update has changed electrs start command.

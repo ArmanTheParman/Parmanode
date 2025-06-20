@@ -116,6 +116,8 @@ test_8333_reachable
 
 jump $1
 
+#
+make_parmanode_ssh_keys
 
 # This is the main program, which is a menu that loops.
 #Parminer borrows do_loop function, but don't go to parmanode menu
