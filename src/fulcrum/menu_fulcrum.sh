@@ -28,7 +28,7 @@ else
     f_tor="off"
 fi
 
-unset fulcrum_status fulcrum_sync 
+unset fulcrum_status fulcrum_sync fulcrum_status2
 menu_fulcrum_status
 
 isfulcrumrunning 
@@ -39,6 +39,8 @@ else
 RUNNING="RUNNING"
 fi
 
+fulcrum_status2="$fulcrum_status -- $red<enter> to refresh status$orange"
+
 set_terminal  47 88
 echo -e "
 ########################################################################################
@@ -46,7 +48,7 @@ echo -e "
 ########################################################################################"
 if [[ $fulcrumrunning == "true" ]] ; then echo -en "
       FULCRUM IS :$green   $RUNNING$orange 
-      STATUS     :   $fulcrum_status
+      STATUS     :   $fulcrum_status2
       BLOCK      :   $fulcrum_sync 
       DRIVE      :   $drive_fulcrum $orange
 
@@ -207,7 +209,9 @@ fi
 dc|DC|Dc|dC)
 fulcrum_database_corrupted
 ;;
-
+"")
+continue
+;;
 *)
 invalid
 ;;
