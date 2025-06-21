@@ -31,8 +31,6 @@ fi
 unset fulcrum_status fulcrum_sync 
 menu_fulcrum_status
 
-fulcrum_message="${blinkon}Type$red r$orange to refresh${blinkoff}$orange"
-
 isfulcrumrunning 
 
 if is_fulcrum_shutting_down ; then
@@ -47,9 +45,9 @@ echo -e "
                                    ${cyan}Fulcrum Menu${orange}                               
 ########################################################################################"
 if [[ $fulcrumrunning == "true" ]] ; then echo -en "
-      FULCRUM IS :$green   $RUNNING$orange $isbitcoinrunning_fulcrum 
+      FULCRUM IS :$green   $RUNNING$orange 
       STATUS     :   $fulcrum_status
-      BLOCK      :   $fulcrum_sync $fulcrum_message
+      BLOCK      :   $fulcrum_sync 
       DRIVE      :   $drive_fulcrum $orange
 
 
@@ -59,7 +57,6 @@ if [[ $fulcrumrunning == "true" ]] ; then echo -en "
                   "
    else
 echo -en "$orange
-                   $isbitcoinrunning_fulcrum 
                    FULCRUM IS$red NOT RUNNING$orange -- CHOOSE \"start\" TO RUN"
 fi
 echo -e "
