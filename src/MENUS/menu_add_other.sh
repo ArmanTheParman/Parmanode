@@ -139,7 +139,7 @@ tws|TWS|Tws)
 pbx|Pbx)
       if [[ -n $parmabox_n ]] ; then
       install_parmabox
-      return 0
+      menu_add_other
       fi
       ;;
 any|ANY|Any)
