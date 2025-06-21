@@ -39,7 +39,7 @@ else
 RUNNING="RUNNING"
 fi
 
-fulcrum_status2="$fulcrum_status -- $red<enter> to refresh status$orange"
+fulcrum_status2="$fulcrum_status    $red<enter> to refresh status$orange"
 
 set_terminal  47 88
 echo -e "
