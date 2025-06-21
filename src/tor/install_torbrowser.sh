@@ -25,7 +25,8 @@ debug "Check import"
 gpg --verify --status-fd 1 tor*asc > $tmp/tor_gpg_output.delete 2>&1 
 
 if grep -iq "GOOD" $tmp/tor_gpg_output.delete ; then
-announce "GPG verification$green passed$orange."
+echo "GPG verification$green passed$orange."
+sleep 2
 rm $tmp/tor_gpg_output.delete >$dn
 else
 debug "check output"
