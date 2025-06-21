@@ -70,7 +70,6 @@ $green
       brlog)$orange    Browse Fulcrum log (static) $cyan
       fc)$orange       Inspect and edit fulcrum.conf file (fcv for vim) $cyan
       tor)$orange      Toggle Tor connections to Fulcrum -- Fulcrum Tor Status : $F_tor $cyan
-      man)$orange      Manually explore the docker container $cyan    
       dc)$orange       Fulcrum database corrupted? -- Use this to start fresh.
 "
 if grep -q "fulcrum_tor" $HOME/.parmanode/parmanode.conf ; then 
@@ -197,18 +196,6 @@ vim_warning
 sudo vim $fc
 ;;
 
-man)
-yesorno "Do you want to log in as the root user or parman (sudo password: parmanode)" "r" "root" "pp" "parman" \
-         && {
-            clear
-            docker exec -itu root fulcrum bash
-            continue
-         }
-         clear
-         docker exec -itu parman fulcrum bash
-         ;;
-
- 
 tor|TOR|Tor)
 if [[ $f_tor == "off" ]] ; then
 fulcrum_tor
