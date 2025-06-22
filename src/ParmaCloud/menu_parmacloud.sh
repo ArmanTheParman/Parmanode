@@ -123,7 +123,7 @@ set_terminal ; echo -e "$blue
 ########################################################################################
 $orange"
 read user
-docker exec -it nextcloud-aio-nextcloud bash -c "sudo -u www-data php /var/www/html/occ user:resetpassword $user" || { enter_continue "some error" ; return 1 ; }
+docker exec -itu root nextcloud-aio-nextcloud bash -c "php /var/www/html/occ user:resetpassword $user" || { enter_continue "some error" ; return 1 ; }
 success_blue "Password change done." 
 }
 
