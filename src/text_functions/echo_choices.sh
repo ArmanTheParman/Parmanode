@@ -1,7 +1,7 @@
 function enter_continue {
 if [[ $1 -gt 0 ]] 2>$dn ; then 
     echo -e "${yellow}Hit ${cyan}<enter>${yellow} to continue.$orange\n"  
-    read -t $1 enter_cont || enter_cont="" 
+    read -r -t $1 enter_cont || enter_cont="" 
 else
 echo -en "$1\n"
 unset enter_cont
@@ -10,9 +10,9 @@ if [[ $installer == parmanodl ]] ; then return 0 ; fi
 [[ $2 != silent ]] && echo -e "${yellow}Hit ${cyan}<enter>${yellow} to continue.$orange\n"  
 
 if [[ $silentecho == "true" ]] ; then
-read -s enter_cont
+read -r -s enter_cont
 else
-    if [[ $2 -gt 0 ]] 2>$dn ; then read -t $2 enter_cont ; else read enter_cont ; fi
+    if [[ $2 -gt 0 ]] 2>$dn ; then read -r -t $2 enter_cont ; else read -r enter_cont ; fi
 fi
 fi #end -gt 0
 
@@ -28,7 +28,7 @@ return 0
 
 function enter_or_quit {
 echo -e " ${yellow}Hit ${cyan}<enter>${yellow} to continue.$yellow, or $red q$yellow to quit.$orange" 
-read enter_cont ; export enter_cont
+read -r enter_cont ; export enter_cont
 if [[ $enter_cont == debugon ]] ; then export debug=1 ; fi
 if [[ $enter_cont == debugoff ]] ; then export debug=0 ; fi
 if [[ $enter_cont == q ]] ; then exit ; fi
@@ -39,7 +39,7 @@ return 0
 function enter_abort {
 echo -e " ${yellow}Hit ${cyan}<enter>${yellow} to continue, or$red a$yellow to abort.$orange" 
 #use this in a loop...
-#read choice ; case $choice in a|A) return 1 ;; "") break ;; esac ; done
+#read -r choice ; case $choice in a|A) return 1 ;; "") break ;; esac ; done
 return 0
 }
 
@@ -133,7 +133,7 @@ function invalid_blue {
 if [[ -n $invalid_flag ]] ; then unset invalid_flag ; return 1 ; fi 
 
 set_terminal
-echo -e " ${blue}Invalid choice. Hit ${orange}<enter>${blue} before trying again. $blue" ; read invalid
+echo -e " ${blue}Invalid choice. Hit ${orange}<enter>${blue} before trying again. $blue" ; read -r invalid
 if [[ $invalid == 'q' || $invalid == "exit" ]] ; then exit ; fi
 return 0
 }
@@ -142,7 +142,7 @@ function invalid {
 if [[ -n $invalid_flag ]] ; then unset invalid_flag ; return 1 ; fi 
 
 set_terminal
-echo -e " ${yellow}Invalid choice. Hit ${cyan}<enter>${yellow} before trying again. $orange" ; read invalid
+echo -e " ${yellow}Invalid choice. Hit ${cyan}<enter>${yellow} before trying again. $orange" ; read -r invalid
 if [[ $invalid == 'q' || $invalid == "exit" ]] ; then exit ; fi
 return 0
 }

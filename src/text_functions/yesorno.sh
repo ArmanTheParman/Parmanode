@@ -41,7 +41,7 @@ $orange
     OR '${red}q$orange' to quit, or '${red}m$orange' for main menu
 
 "
-read choice
+read -r choice
 case $choice in
 q|Q) exit ;; m|M) back2main ;;
 "$y") return 0 ;;
@@ -98,7 +98,7 @@ $cyan
     OR '${red}q$orange' to quit, or '${red}m$orange' for main menu
 
 "
-read choice
+read -r choice
 case $choice in
 q|Q) exit ;; m|M) back2main ;;
 "$y") return 0 ;;
