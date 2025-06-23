@@ -77,7 +77,7 @@ else
 unset raidmenu raid raidstatus
 fi
 
-if mountpoint /srv/proton_drive ; then proton="Proton Drive:$green MOUNTED$yellow       /srv/proton_drive"
+if mountpoint /srv/proton_drive ; then proton="Proton Drive:$green MOUNTED$yellow   /srv/proton_drive"
 else
 proton="Proton Drive:$red NOT MOUNTED$blue"
 fi
