@@ -217,7 +217,7 @@ yesorno_blue "Be mindful that unmount won't work if Docker is running or if Bitc
     Continue with unmount now?" || continue
 
 [[ -n $raidmenu ]] && { 
-    [[ $(docker ps | wc -l) -gt 1 ]] &docker ps >$dn && { sww "Make sure that Docker is fully stopped before unmounting. yolo to ignore." ; case $enter_cont in yolo) true ;; *) continue ;; esac ; }
+    [[ $(docker ps 2>$dn | wc -l) -gt 1 ]] && docker ps >$dn 2>&1 && { sww "Make sure that Docker is fully stopped before unmounting. yolo to ignore." ; case $enter_cont in yolo) true ;; *) continue ;; esac ; }
     pgrep bitcoin >$dn && { sww "Make sure that bitcoin is fully stopped before unmounting"             ; case $enter_cont in yolo) true ;; *) continue ;; esac ; }
     sudo unmount /var/lib/docker
     sudo umount /srv/parmadrive || { swwd ; continue ; } 
@@ -226,7 +226,7 @@ yesorno_blue "Be mindful that unmount won't work if Docker is running or if Bitc
     
 [[ -z $PARMADRIVE2DEVUUID ]] && {
     [[ $mounted != "mounted" ]] && announce_blue "Can't unmount a drive that isn't mounted." && continue
-    [[ $(docker ps | wc -l) -gt 1 ]] && { sww "Make sure that Docker is fully stopped before unmounting. yolo to ignore." ; case $enter_cont in yolo) true ;; *) continue ;; esac ; }
+    [[ $(docker ps 2>$dn | wc -l) -gt 1 ]] && { sww "Make sure that Docker is fully stopped before unmounting. yolo to ignore." ; case $enter_cont in yolo) true ;; *) continue ;; esac ; }
     pgrep bitcoin >$dn && { sww "Make sure that bitcoin is fully stopped before unmounting"             ; case $enter_cont in yolo) true ;; *) continue ;; esac ; }
     sudo umount /srv/parmadrive || swwd
     continue
@@ -234,7 +234,7 @@ yesorno_blue "Be mindful that unmount won't work if Docker is running or if Bitc
 
 if yesorno_blue "Drive 1 or 2" "1" "ParmaDrive1" "2" "ParmaDrive2" ; then
 [[ $mounted != "mounted" ]] && announce_blue "Can't unmount a drive that isn't mounted." && continue
-    [[ $(docker ps | wc -l) -gt 1 ]] && { sww "Make sure that Docker is fully stopped before unmounting. yolo to ignore." ; case $enter_cont in yolo) true ;; *) continue ;; esac ; }
+    [[ $(docker ps 2>$dn | wc -l) -gt 1 ]] && { sww "Make sure that Docker is fully stopped before unmounting. yolo to ignore." ; case $enter_cont in yolo) true ;; *) continue ;; esac ; }
     pgrep bitcoin >$dn && { sww "Make sure that bitcoin is fully stopped before unmounting"             ; case $enter_cont in yolo) true ;; *) continue ;; esac ; }
     sudo umount /srv/parmadrive || swwd
 else
