@@ -31,6 +31,7 @@ if [[ $1 == "torandclearnet" ]] ; then
     echo "listenonion=1" | sudo tee -a $bc >$dn 2>&1
     sudo gsed -i "/externalip=/d" $bc
     get_onion_address_variable "bitcoin"
+    count=0
     while [[ -z $ONION_ADDR ]] && [[ $count -lt 4 ]] ; do
         restart_tor
         sleep 3
