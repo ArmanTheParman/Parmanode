@@ -11,7 +11,7 @@ unset electrumxapp thunderhubapp websiteapp lnddockerapp nostrrelay litdapp parm
 unset parmanostrapp btcrecoverapp joinmarketapp greenapp parman_booksapp X11app phoenixapp
 unset parminerapp parmanasapp parmascaleapp vaultwardenapp
 
-set_terminal 36 88
+set_terminal 40 88
 echo -e "
 ########################################################################################
 
