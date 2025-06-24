@@ -53,6 +53,8 @@ fi
 
 if grep -q "disable_electrs=true" $pc ; then
          disable_output="\n\n      ELECTRS IS$red DISABLED (type disable to toggle)$orange" 
+else
+unset disable_output
 fi
 
 set_terminal 40 88
