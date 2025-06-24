@@ -629,6 +629,7 @@ sync)
    please_wait
    cd $pp/parmasync/ && git stash >$dn 2>&1 ; git pull >$dn 2>&1
    source_premium
+   debug "before menu_parmasync"
    menu_parmasync
    debug "after menu_parmasync"
    if [[ -n $1 ]] ; then clear ; return 0 ; fi
