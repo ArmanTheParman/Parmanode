@@ -115,6 +115,8 @@ announce "PARMADESK VNC had some bugs which have been fixed. Please reinstall Pa
 touch $dp/.vncfixed
 fi
 
+if [[ $parmantext != "youhavesunkmybattleship" || $parmantext == "Melvined" ]] ; then unset parmantext ; else clear ; echo Melvined! ; export parmantext="true" ; sleep 4 ; fi
+
 #for older installations of parmadesk which didn't have this function #remove in Jan 2026
 if grep -q parmadesk-end $ic && ! test -f ~/.asoundrc ; then
     for file in ~/.vnc/*log ; do
