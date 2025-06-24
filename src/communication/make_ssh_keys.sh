@@ -196,13 +196,13 @@ IdentityFile ~/.ssh/extra_keys/parmanpremium-key
 IdentitiesOnly yes" | sudo tee -a ~/.ssh/config >$dn
 debug end make_parmanpremium_ssh_keys
 }
-function make_parmadrive_ssh_keys {
-sudo test -f ~/.ssh/parmadrive-key && return 0
-ssh-keygen -t rsa -b 4096 -f ~/.ssh/extra_keys/parmadrive-key -N "" -C "$USER parmadrive"
+function make_parmatwinborg_ssh_keys {
+sudo test -f ~/.ssh/parmatwinborg-key && return 0
+ssh-keygen -t rsa -b 4096 -f ~/.ssh/extra_keys/parmatwinborg-key -N "" -C "$USER parmatwinborg"
 }
-function make_parmatwin_ssh_keys  {
-sudo test -f ~/.ssh/parmatwin-key && return 0
-ssh-keygen -t rsa -b 4096 -f ~/.ssh/extra_keys/parmatwin-key -N "" -C "$USER parmatwin"
+function make_parmatwinapi_ssh_keys  {
+sudo test -f ~/.ssh/parmatwinapi-key && return 0
+ssh-keygen -t rsa -b 4096 -f ~/.ssh/extra_keys/parmatwinapi-key -N "" -C "$USER parmatwinapi"
 }
 
 function make_all_ssh_keys {
