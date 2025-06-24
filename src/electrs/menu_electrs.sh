@@ -52,7 +52,7 @@ else #electrsis nondocker
 fi
 
 if grep -q "disable_electrs=true" $pc ; then
-         disable_output="\n\n      ELECTRS IS$red DISABLED (type disable to toggle)$orange\n" 
+         disable_output="\n\n      ELECTRS IS$red DISABLED (type disable to toggle)$orange" 
 fi
 
 set_terminal 40 88
@@ -60,8 +60,7 @@ set_terminal 40 88
 echo -e "
 ########################################################################################
                                 ${cyan}Electrs $electrs_version Menu${orange} 
-########################################################################################$disable_output
-"
+########################################################################################$disable_output"
 if [[ $electrsis == "nondocker" && $electrsrunning == "true" ]] ; then
 echo -e "
       ELECTRS IS:$green RUNNING$orange
