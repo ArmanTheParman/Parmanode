@@ -5,9 +5,11 @@ while true ; do
 if grep -q "electrsdkr" $ic ; then 
     electrsis=docker
     logfile=$HOME/.electrs/run_electrs.log
+    unset disble_electrs
 else
     electrsis=nondocker
     logfile=$HOME/.electrs/run_electrs.log 
+    disable_electrs_menu="\n$red      disable)$orange   Toggle on/off (for when manually copying data)\n$cyan"
 fi
 
 set_terminal
@@ -49,12 +51,16 @@ else #electrsis nondocker
         electrs_version=$($HOME/parmanode/electrs/target/release/electrs --version 2>$dn)
 fi
 
+if grep -q "disable_electrs=true" $pc ; then
+         disable_output="\n\n      ELECTRS IS$red DISABLED (type disable to toggle)$orange\n" 
+fi
+
 set_terminal 40 88
 
 echo -e "
 ########################################################################################
                                 ${cyan}Electrs $electrs_version Menu${orange} 
-########################################################################################
+########################################################################################$disable_output
 "
 if [[ $electrsis == "nondocker" && $electrsrunning == "true" ]] ; then
 echo -e "
@@ -106,8 +112,7 @@ fi #end electrsis docker
 echo -en "
 $green
       start)   $orange  Start electrs $red
-      stop) $orange     Stop electrs $cyan
-    
+      stop) $orange     Stop electrs $disable_electrs_menu $cyan
       i)$orange         Important info / Troubleshooting $cyan
       remote)$orange    Choose which Bitcoin for electrs to connect to $cyan
       c)$orange         How to connect your Electrum wallet to electrs $cyan	    
@@ -152,6 +157,10 @@ docker_stop_electrs
 else
 stop_electrs
 fi
+;;
+
+disable)
+disable_electrs
 ;;
 
 logdel)
@@ -331,5 +340,16 @@ elif [[ $bsync == "false" ]] ; then
         export electrs_sync="Wait...$orange"
     fi
 
+fi
+}
+
+function disable_electrs {
+clear
+if grep -q "disable_electrs=true" $pc ; then
+sudo systemctl enable electrs.service
+sudo gsed -i "/disable_electrs=true/d" $pc
+else
+sudo systemctl disable electrs.service
+echo "disable_electrs=true" | tee -a $pc >$dn 2>&1
 fi
 }
