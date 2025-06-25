@@ -6,7 +6,7 @@ else
     if sudo which nginx >$dn 2>&1 ; then 
     set_terminal 
     installed_conf_add "nginx-end"     
-    return 1 
+    return 0 
     else
     installed_conf_remove "nginx-"
     fi

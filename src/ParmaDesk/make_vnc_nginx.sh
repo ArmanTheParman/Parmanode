@@ -1,5 +1,7 @@
 function make_parmadesk_nginx {
 
+install_nginx 
+
 cat <<EOF | sudo tee $macprefix/etc/nginx/conf.d/vnc.conf >$dn 2>&1
 server {
     listen 21001 ssl;
