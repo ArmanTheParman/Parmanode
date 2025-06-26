@@ -11,6 +11,6 @@ for file in $pp/parmaraid/src/*.sh ; do
 source $file
 done
 
-install_raid
+install_parmaraid
 return 0
 }
