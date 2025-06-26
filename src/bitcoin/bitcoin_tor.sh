@@ -6,6 +6,7 @@ if [[ ! -e $varlibtor ]] ; then mkdir -p $varlibtor >$dn 2>&1 ; fi
 if [[ ! -e $torrc ]] ; then sudo touch $torrc >$dn 2>&1 ; fi
 
 #start fresh
+sudo gsed -i "/discover=/d" $bc >$dn 2>&1
 sudo gsed -i "/onion/d" $bc
 sudo gsed -iE "/^bind=/d" $bc
 sudo gsed -i "/onlynet/d" $bc
@@ -25,6 +26,9 @@ if ! sudo grep "HiddenServicePort 8333 127.0.0.1:8333" $torrc | grep -v "^#" >$d
     echo "HiddenServicePort 8333 127.0.0.1:8333" | sudo tee -a $torrc >$dn 2>&1
 fi
 
+# discover=0 (dont advertise clearnet IP) ; if not set, default is 1
+
+
 if [[ $1 == "torandclearnet" ]] ; then
     sudo gsed -i "/onion=/d" $bc
     echo "onion=127.0.0.1:9050" | sudo tee -a $bc >$dn 2>&1
@@ -41,7 +45,6 @@ if [[ $1 == "torandclearnet" ]] ; then
     [[ -z $ONION_ADDR ]] && sww "Some issue with getting onion address. Try later or switch to no Tor." && return 1
     echo "externalip=$ONION_ADDR" | sudo tee -a $bc >$dn 2>&1
     sudo gsed -i "/discover=/d" $bc
-    echo "discover=1" | sudo tee -a $bc >$dn 2>&1
     parmanode_conf_remove "bitcoin_tor_status"
     parmanode_conf_add "bitcoin_tor_status=torandclearnet"
     fi
@@ -49,6 +52,7 @@ if [[ $1 == "torandclearnet" ]] ; then
 if [[ $1 == "toronly" ]] ; then
     sudo gsed -i "/onion=/d" $bc
     echo "onion=127.0.0.1:9050" | sudo tee -a $bc >$dn 2>&1
+    echo "discover=0" | sudo tee -a $bc >$dn 2>&1
     echo "listenonion=1" | sudo tee -a $bc >$dn 2>&1
     sudo gsed -i "/externalip=/d" $bc
     echo "onlynet=onion" | sudo tee -a $bc >$dn 2>&1 #new, disallows outward clearnet connections
