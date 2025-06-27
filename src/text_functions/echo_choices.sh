@@ -17,6 +17,7 @@ fi
 fi #end -gt 0
 
 export enter_cont
+
 if [[ $enter_cont == q ]] ; then exit ; fi
 if [[ $enter_cont == d ]] ; then #switch
     if [[ $debug == 1 ]] ; then export debug=0 ; fi
