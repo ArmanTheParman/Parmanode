@@ -1,10 +1,17 @@
 function menu_parmadrive {
 [[ $OS == "Mac" ]] && no_mac && return 1
-
-makesuredocker="Make sure all docker containers are stopped"
-
-
 source $pdc
+
+#Newer versions of Parmadrive have Raid first, then encrypt the Raid. This directs them to a different menu
+#and those with older version can continue to use this  menu
+if [[ -n $RAIDLUKSUUID ]] ; then
+    menu_parmadrive_raid || return 1
+    return 0
+fi
+
+if [[ $DOCKERMOUNT == "external" ]] ; then
+makesuredocker="Make sure all docker containers are stopped"
+fi
 
 function swwd {
 echo -e "    ${blue}Something went wrong. If you keep getting errors, sometimes you just need to
@@ -15,12 +22,10 @@ $1
 enter_continue
 }
 
-source $pdc
-
 while true ; do
 set_terminal 42
 
-if lsblk -o UUID | grep -qE "$PARMADRIVE1LUKSUUID|$RAIDLUKSUUID" ; then  #at least one drive exists, so check it
+if lsblk -o UUID | grep -qE "$PARMADRIVE1LUKSUUID" ; then  #at least one drive exists, so check it
 parmadrive1_lockstatus="${green}UNLOCKED" 
 locked1="unlocked"
 else
