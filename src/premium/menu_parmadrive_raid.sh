@@ -119,8 +119,8 @@ mount|mm)
 
 if [[ $DOCKERMOUNT == "external" ]] ; then
 [[ $(docker ps | wc -l) -gt 1 ]] && { sww "Make sure that Docker is fully stopped before mounting" ; case $enter_cont in yolo) true ;; *) continue ;; esac ; }
-sudo mount /srv/parmadrive || swwd #specify the mountpoint only as it is in fstab
 fi
+sudo mount /srv/parmadrive || swwd #specify the mountpoint only as it is in fstab
 ;;
 
 unmount|um|umm)
