@@ -20,7 +20,7 @@ source $pdc
 while true ; do
 set_terminal 42
 
-if lsblk -o UUID | grep -q "$PARMADRIVE1LUKSUUID|$RAIDLUKSUUID" ; then  #at least one drive exists, so check it
+if lsblk -o UUID | grep -qE "$PARMADRIVE1LUKSUUID|$RAIDLUKSUUID" ; then  #at least one drive exists, so check it
 parmadrive1_lockstatus="${green}UNLOCKED" 
 locked1="unlocked"
 else
