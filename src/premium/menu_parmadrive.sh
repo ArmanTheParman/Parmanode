@@ -71,7 +71,7 @@ if grep -q parmaraid-end $ic ; then
     raid="${green}disassembled${blue}"
     raidstatus=disassembled
     fi
-raidmenu="\n            RAID is: $raid"
+raidmenu="\n            RAID is:      $raid"
 unset mountmenu mount2 mounted2
 else
 unset raidmenu raid raidstatus
