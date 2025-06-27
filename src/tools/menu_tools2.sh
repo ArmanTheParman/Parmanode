@@ -26,6 +26,8 @@ $cyan              qr)$orange        QRencode command line tool (Linux and Mac)
 
 $cyan              uo)$orange        UTXOracle                                                    
 
+$cyan              lnf)$orange       Install Linux non-free packages and backports
+
 $orange
 ########################################################################################
 "
@@ -70,6 +72,15 @@ NODAEMON=true
 pn_tmux "python3 $pn/src/tools/UTXOracle.py 
     echo 'hit <enter> to continue' ; read" "UTXOracl"
 unset NODAEMON
+;;
+
+lnf)
+clear
+echo 'deb http://deb.debian.org/debian bookworm-backports main' | sudo tee -a /etc/apt/sources.list
+sudo apt-get update -y
+sudo apt install -t bookworm-backports linux-image-amd64 linux-headers-amd64 -y
+sudo apt-get install firmware-iwlwifi firmware-linux firmware-linux-nonfree -y
+enter_continue "done"
 ;;
 
 pass)

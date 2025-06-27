@@ -1,5 +1,6 @@
 Version 3.62.6
      -Fulcrum Startup bug fixed
+     -Linux backporsts and non-free packages option in tools2 menu
 Version 3.62.5
      -Electrs/Fulcrum/ElectrumX certificate in menu
 Version 3.62.4
