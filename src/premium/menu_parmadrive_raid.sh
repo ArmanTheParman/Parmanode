@@ -99,7 +99,7 @@ menu_parmaraid
 ;;
 
 ul|unlock)
-sudo cryptsetup open UUID=$PARMADRIVE1DEVUUID ParmaDrive1 || swwd 
+sudo cryptsetup open UUID=$RAIDUUID ParmaDrive1 || swwd 
 ;;
 
 key)
@@ -108,7 +108,7 @@ keydev=$(readlink -f /dev/disk/by-id/$USBKEYBYID)
 
 clear 
 echo -e "${blue}Attempting to unlock ParmaDrive1...\n"
-sudo dd if=$keydev count=4096 bs=1 | sudo cryptsetup open --key-file=- UUID=$PARMADRIVE1DEVUUID ParmaDrive1 || swwd 
+sudo dd if=$keydev count=4096 bs=1 | sudo cryptsetup open --key-file=- UUID=$RAIDUUID ParmaDrive1 || swwd 
 echo ""
 ;;
 
