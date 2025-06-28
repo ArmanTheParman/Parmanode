@@ -40,7 +40,7 @@ else
 fi
 
 debug "before set terminal"
-set_terminal 52 88
+set_terminal 54 88
 echo -en "
 ########################################################################################
                                 ${cyan}BTCPay Server Menu${orange}
@@ -80,6 +80,8 @@ $cyan
              exp)$orange          Manage container $red (for experts) $orange
 $cyan
              pp)$orange           BTC ParmanPay - Online payment app, worldwide access
+$cyan
+             search)$orange       Locate a string in your BTCPay database...
 
 $enable_tor_menu
     FOR ACCESS:     
@@ -202,6 +204,10 @@ menu_nbxplorer_log
 
 pp|PP|Pp|pP)
 btcparmanpay
+;;
+
+search)
+btcpay_search_string
 ;;
 
 tor)
@@ -637,4 +643,33 @@ function btcpaycontainerspps {
     else
     export containerbtcpayrunning="${red}NOT RUNNING$orange"
     fi
+}
+
+
+function btcpay_search_string {
+
+announce "This tool will return for you the table and row where your specific search
+    string is found. It can be useful if you're searching for a customer name, for
+    example, with the matching invoice ID. More complex searches can be made if you
+    manipulate the btcpayserver database winthin postgres manually yourself.
+
+    Please type in your search string, or$red x$orange to return"
+jump $enter_cont
+case $enter_cont in x) return ;; esac
+
+#start search 
+DB="btcpayserver"
+USER="parman"
+SEARCH="$enter_cont"
+
+psql -U "$USER" -d "$DB" -Atc "
+SELECT table_name, column_name
+FROM information_schema.columns
+WHERE table_schema = 'public'
+AND data_type IN ('text', 'character varying')
+" | while IFS='|' read -r table column; do
+  echo "Searching $table.$column"
+  psql -U "$USER" -d "$DB" -c "SELECT * FROM \"$table\" WHERE \"$column\" ILIKE '%$SEARCH%' LIMIT 5;" 2>/dev/null
+done
+enter_continue
 }
