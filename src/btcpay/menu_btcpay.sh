@@ -691,7 +691,6 @@ AND data_type IN ('text', 'character varying', 'json', 'jsonb')
     done
   fi
 done
-"
+" | less -R
 
-enter_continue
 }
