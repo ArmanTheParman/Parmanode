@@ -657,7 +657,6 @@ announce "This tool will return for you the table and row where your specific se
 jump $enter_cont
 case $enter_cont in x) return ;; esac
 
-# Start search
 DB="btcpayserver"
 USER="parman"
 SEARCH="$enter_cont"
@@ -667,9 +666,13 @@ psql -U \"$USER\" -d \"$DB\" -Atc \"
 SELECT table_name, column_name
 FROM information_schema.columns
 WHERE table_schema = 'public'
-AND data_type IN ('text', 'character varying')
+AND data_type IN ('text', 'character varying', 'json', 'jsonb')
 \" | while IFS='|' read -r table column; do
-  output=\$(psql -U \"$USER\" -d \"$DB\" -t -c \"SELECT * FROM \\\"\$table\\\" WHERE \\\"\$column\\\" ILIKE '%$SEARCH%' LIMIT 5;\" 2>/dev/null)
+  output=\$(psql -U \"$USER\" -d \"$DB\" -t -c \"
+    SELECT * FROM \\\"\$table\\\" 
+    WHERE CAST(\\\"\$column\\\" AS text) ILIKE '%$SEARCH%' 
+    LIMIT 5;
+  \" 2>/dev/null)
   if [ \"\$(echo \"\$output\" | grep -v '^\s*$' | wc -l)\" -gt 0 ]; then
     echo \"Match in \$table.\$column\"
     echo \"\$output\"
