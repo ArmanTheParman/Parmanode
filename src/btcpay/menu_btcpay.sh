@@ -657,6 +657,9 @@ announce "This tool will return for you the table and row where your specific se
 jump $enter_cont
 case $enter_cont in x) return ;; esac
 
+docker exec btcpay which jq >$dn 2>&1 || docker exec -u root btcpay bash -c "apt update -y ; apt install jq -y"
+clear
+
 DB="btcpayserver"
 USER="parman"
 SEARCH="$enter_cont"
@@ -668,20 +671,27 @@ FROM information_schema.columns
 WHERE table_schema = 'public'
 AND data_type IN ('text', 'character varying', 'json', 'jsonb')
 \" | while IFS='|' read -r table column; do
-  output=\$(psql -U \"$USER\" -d \"$DB\" -P pager=off -t -c \"
-    SELECT * FROM \\\"\$table\\\" 
+  rows=\$(psql -U \"$USER\" -d \"$DB\" -t -c \"
+    SELECT CAST(\\\"\$column\\\" AS text)
+    FROM \\\"\$table\\\" 
     WHERE CAST(\\\"\$column\\\" AS text) ILIKE '%$SEARCH%' 
     LIMIT 5;
   \" 2>/dev/null)
-  if [ \"\$(echo \"\$output\" | grep -v '^\s*$' | wc -l)\" -gt 0 ]; then
+
+  clean=\$(echo \"\$rows\" | grep -v '^\s*\$')
+
+  if [ -n \"\$clean\" ]; then
     echo
-    echo \"======================\"
-    echo \"MATCH IN: \$table.\$column\"
-    echo \"======================\"
-    echo \"\$output\" | sed 's/^/    /'
-    echo
+    echo -e \"\e[1;32m======================\"
+    echo -e \"MATCH IN: \$table.\$column\"
+    echo -e \"======================\e[0m\"
+    echo \"\$clean\" | while read -r line; do
+      echo \"\$line\" | jq . || echo \"\$line\"  # try to pretty-print, else raw
+      echo
+    done
   fi
 done
 "
+
 enter_continue
 }
