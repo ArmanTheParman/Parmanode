@@ -668,14 +668,17 @@ FROM information_schema.columns
 WHERE table_schema = 'public'
 AND data_type IN ('text', 'character varying', 'json', 'jsonb')
 \" | while IFS='|' read -r table column; do
-  output=\$(psql -U \"$USER\" -d \"$DB\" -t -c \"
+  output=\$(psql -U \"$USER\" -d \"$DB\" -P pager=off -t -c \"
     SELECT * FROM \\\"\$table\\\" 
     WHERE CAST(\\\"\$column\\\" AS text) ILIKE '%$SEARCH%' 
     LIMIT 5;
   \" 2>/dev/null)
   if [ \"\$(echo \"\$output\" | grep -v '^\s*$' | wc -l)\" -gt 0 ]; then
-    echo \"Match in \$table.\$column\"
-    echo \"\$output\"
+    echo
+    echo \"======================\"
+    echo \"MATCH IN: \$table.\$column\"
+    echo \"======================\"
+    echo \"\$output\" | sed 's/^/    /'
     echo
   fi
 done
