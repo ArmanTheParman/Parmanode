@@ -14,9 +14,6 @@ sudo gsed -i "/listenonion=1/d" $bc
 
 enable_tor_general
 
-if ! grep "listen=1" $bc >$dn 2>&1 ; then
-    echo "listen=1" | sudo tee -a $bc >$dn 2>&1
-fi
 
 if ! sudo grep "HiddenServiceDir $varlibtor/bitcoin-service/" $torrc | grep -v "^#" >$dn 2>&1 ; then 
     echo "HiddenServiceDir $varlibtor/bitcoin-service/" | sudo tee -a $torrc >$dn 2>&1
