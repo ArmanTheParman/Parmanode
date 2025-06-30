@@ -23,7 +23,7 @@ else
 fi
 source $HOME/.parmanode/sparrow.connection >$dn
 
-set_terminal_high ; echo -en "
+set_terminal ; echo -en "
 ########################################################################################
                   $cyan         Sparrow Menu -- Version $sversion                  $orange      
 ########################################################################################
