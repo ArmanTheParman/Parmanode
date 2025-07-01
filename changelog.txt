@@ -1,3 +1,5 @@
+Version 3.62.7
+     -small change to parminer startup
 Version 3.62.6
      -Fulcrum Startup bug fixed
      -Linux backporsts and non-free packages option in tools2 menu
