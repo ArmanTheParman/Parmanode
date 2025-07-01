@@ -161,7 +161,7 @@ for i in jq vim unzip tmux ssh tor ufw mdadm gparted ; do
 which $i >$dn || { 
     needs=needs
     if [[ $1 == gparted ]] ; then needs=wants ; fi
-    yesorno "Parmanode needs to install $i to continue. OK?" || if [[ $1 != "gparted" ]] ; then return ; else continue ; fi
+    yesorno "Parmanode $needs to install $i to continue. OK?" || if [[ $1 != "gparted" ]] ; then return ; else continue ; fi
     test -f $tmp/updateonce || { sudo apt-get update -y ; touch $tmp/updateonce ; }
     sudo apt install $i -y
     }
