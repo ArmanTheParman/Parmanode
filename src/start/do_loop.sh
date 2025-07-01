@@ -177,5 +177,11 @@ which netstat >$dn || {
     sudo apt install net-tools -y
     }
 
+{ which notify-send >$dn && which strace >$dn ; } || { 
+    yesorno "Parmanode needs to install libnotify-bin to continue. OK?" || exit 
+    test -f $tmp/updateonce || { sudo apt-get update -y ; touch $tmp/updateonce ; }
+    sudo apt install libnotify-bin -y
+    }
+
 rm $tmp/updateonce 2>$dn
 }
