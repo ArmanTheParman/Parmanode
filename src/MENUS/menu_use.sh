@@ -626,13 +626,15 @@ cloud)
    ;;
 
 sync) 
+   #parmasync available on ParmaDrives only
+   #The parmasync dir will silently fail to update once new versions are released
+   #so there are no backwards compatability issues with older ParmaDrives
+   #The menu_parmasync file needs to remain in $pp/parmasync
    if [[ $parmasyncapp == 1 ]] ; then
    please_wait
-   cd $pp/parmasync/ && git stash >$dn 2>&1 ; git pull >$dn 2>&1
+   cd $pp/parmasync/ && git stash >$dn 2>&1 ; git pull >$dn 2>&1 #be careful changing this, can break things
    source_premium
-   debug "before menu_parmasync"
    menu_parmasync
-   debug "after menu_parmasync"
    if [[ -n $1 ]] ; then clear ; return 0 ; fi
    else invalid
    fi
