@@ -56,6 +56,9 @@ fi
 #then delete the file so it doesn't ask again. 
 # .new_install created inside a function that creates .parmanode directory for the first time
 
+#test for dependencies and install.
+parmanode_dependencies || exit
+
 if [[ $btcpayinstallsbitcoin != "true" ]] ; then
 if [[ -e $HOME/.parmanode/.new_install ]] ; then
 	# If Parmanode has never run before, make sure to get latest version of Parmanode
@@ -147,4 +150,32 @@ if { [[ $(uname) == "Darwin" ]] && which docker >$dn       ; } ||
 else 
           installed_config_remove "docker"
 fi
+}
+
+
+function parmanode_dependencies {
+
+rm $tmp/updateonce >$dn 2>&1
+
+for i in jq vim unzip tmux ssh tor ufw mdadm gparted ; do
+which $i >$dn || { 
+    yesorno "Parmanode needs to install $i to continue. OK?" || exit 
+    test -f $tmp/updateonce || { sudo apt-get update -y ; touch $tmp/updateonce ; }
+    sudo apt install $i -y
+    }
+done
+
+which nc >$dn || { 
+    yesorno "Parmanode needs to install netcat-tradiational to continue. OK?" || exit 
+    test -f $tmp/updateonce || { sudo apt-get update -y ; touch $tmp/updateonce ; }
+    sudo apt install netcat-traditional -y
+    }
+
+which netstat >$dn || { 
+    yesorno "Parmanode needs to install net-tools to continue. OK?" || exit 
+    test -f $tmp/updateonce || { sudo apt-get update -y ; touch $tmp/updateonce ; }
+    sudo apt install net-tools -y
+    }
+
+rm $tmp/updateonce 2>$dn
 }
