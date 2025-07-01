@@ -58,7 +58,6 @@ fi
 
 #test for dependencies and install.
 [[ $OS == "Linux" ]] && { parmanode_dependencies || exit ; }
-#[[ $OS == "Mac" ]] && update_computer 
 
 if [[ $btcpayinstallsbitcoin != "true" ]] ; then
 if [[ -e $HOME/.parmanode/.new_install ]] ; then
