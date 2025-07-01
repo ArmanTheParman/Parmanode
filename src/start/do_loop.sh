@@ -154,34 +154,49 @@ fi
 
 
 function parmanode_dependencies {
-
+grep -q "dependency_check1=passed" $pc && return 0
 rm $tmp/updateonce >$dn 2>&1
 
 for i in jq vim unzip tmux ssh tor ufw mdadm gparted ; do
 which $i >$dn || { 
-    yesorno "Parmanode needs to install $i to continue. OK?" || exit 
+    yesorno "Parmanode needs to install $i to continue. OK?" || return 1
     test -f $tmp/updateonce || { sudo apt-get update -y ; touch $tmp/updateonce ; }
     sudo apt install $i -y
     }
 done
 
 which nc >$dn || { 
-    yesorno "Parmanode needs to install netcat-tradiational to continue. OK?" || exit 
+    yesorno "Parmanode needs to install netcat-tradiational to continue. OK?" || return 1 
     test -f $tmp/updateonce || { sudo apt-get update -y ; touch $tmp/updateonce ; }
     sudo apt install netcat-traditional -y
     }
 
 which netstat >$dn || { 
-    yesorno "Parmanode needs to install net-tools to continue. OK?" || exit 
+    yesorno "Parmanode needs to install net-tools to continue. OK?" ||  return 1
     test -f $tmp/updateonce || { sudo apt-get update -y ; touch $tmp/updateonce ; }
     sudo apt install net-tools -y
     }
 
 { which notify-send >$dn && which strace >$dn ; } || { 
-    yesorno "Parmanode needs to install libnotify-bin to continue. OK?" || exit 
+    yesorno "Parmanode needs to install libnotify-bin to continue. OK?" || return 1 
     test -f $tmp/updateonce || { sudo apt-get update -y ; touch $tmp/updateonce ; }
     sudo apt install libnotify-bin -y
     }
 
+which tune2fs >$dn || { 
+    yesorno "Parmanode needs to install e2fsprogs to continue. OK?" || return 1
+    test -f $tmp/updateonce || { sudo apt-get update -y ; touch $tmp/updateonce ; }
+    sudo apt install e2fsprogs -y
+    }
+
+sudo systemctl status ssh >$dn 2>&1 || sudo systemctl start s sh >$dn 2>&1
+
+if ! dpkg -l | grep -q libfuse ; then
+test -f $tmp/updateonce || { sudo apt-get update -y ; touch $tmp/updateonce ; }
+sudo apt-get install -y fuse3
+sudo apt-get install -y libfuse2
+fi
+
+parmanode_conf_add "dependency_check1=passed"
 rm $tmp/updateonce 2>$dn
 }
