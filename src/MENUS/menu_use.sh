@@ -555,7 +555,7 @@ if [[ $parminerapp == 1 ]] ; then
 please_wait
 cd $pp/parminer/ && git stash >$dn 2>&1 ; git pull >$dn 2>&1
 source_premium
-$pp/parminer/run_parminer.sh
+menu_parminer
 if [[ -n $1 ]] ; then clear ; return 0 ; fi
 else invalid
 fi

@@ -42,8 +42,6 @@ function gp { pn ; git pull ; a ; }
 function ct { cat /etc/crontab ; }
 function rp { pn ; ./run_parmanode.sh $@ ; }
 function e { exit ; }
-function pm { pp ; cd parminer ; a ; }
-function rpm { pm ; ./run_parminer.sh $@ ; }
 
 function capslock {
 clear
