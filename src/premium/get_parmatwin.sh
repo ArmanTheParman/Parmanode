@@ -1,6 +1,6 @@
-function get_parmasync {
-[[ ! -e $dp/.parmasync_enabled ]] && 
-    
+function get_parmatwin {
+
+[[ ! -e $dp/.parmatwin_enabled ]] && 
 announce_blue "ParmaSync/ParmaTwin software is available for PARMADRIVE machines only.
 
     PARMASYNC is a remote backup service allowing you to back up encrypted data over 
@@ -22,16 +22,17 @@ announce_blue "ParmaSync/ParmaTwin software is available for PARMADRIVE machines
         https://parmanode.com/parmadrive$blue
       " && return 1
 
-    if [[ ! -d $pp/parmasync ]] ; then
+
+    if [[ ! -d $pp/parmatwin ]] ; then
     echo -e "$blue"
-    git clone git@github-parmasync:armantheparman/parmasync.git $pp/parmasync || { enter_continue "\n$blue    Something went wrong. Contact Parman.\n
-    \r    Please contact Parman to enable ParmaSync on your machine.\n$orange" ; return 1 ; }
+    git clone git@github-parmatwin:armantheparman/parmatwin.git $pp/parmatwin || { enter_continue "\n$blue    Something went wrong. Contact Parman.\n
+    \r    Please contact Parman to enable ParmaTwin on your machine.\n$orange" ; return 1 ; }
     source_premium
-    install_parmasync 
+    install_parmatwin
     return 0
     else
-    cd $pp/parmasync && please_wait && git pull >$dn 2>&1
-    announce_blue "ParmaSync  updated. Go to the USE menu to use."
+    cd $pp/parmatwin && please_wait && git pull >$dn 2>&1
+    announce_blue "ParmaTwin updated. Go to the USE menu to use."
     fi
 
 source_premium

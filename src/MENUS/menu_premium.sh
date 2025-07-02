@@ -1,6 +1,6 @@
 function menu_premium {
 while true ; do
-unset parminer parmacloud parmanas another parmascale parmaweb parmaraid datum parmasync uddns plex parmasql
+unset parminer parmacloud parmanas another parmascale parmaweb parmaraid datum parmasync uddns plex parmasql parmatwin
 menu_add_source
 if ! grep -q "parmaplex-end" $ic ; then plex="\n#$orange              plex)$blue        ParmaPlex (Plex Media Server)                              #
 #                                                                                      #"
@@ -24,13 +24,12 @@ another="true"
 fi
 parmaraid="\n#$orange                pr)$blue        ParmaRAID                                                  #
 #                                                                                      #"
-unset datum
 [[ ! -e $pp/datum ]] &&        datum="\n#$orange                dt)$blue        Datum-Gateway-Parmanode $green only 42 sats!$blue                     #
 #                                                                                      #"
-unset parmasync 
-[[ ! -e $pp/parmasync ]] &&      parmasync="\n#$orange              sync)$blue        ParmaSync - reciprical backup with remote ParmaTwin        #
+[[ ! -e $pp/parmasync ]] &&      parmasync="\n#$orange              sync)$blue        ParmaSync - Backup to a remote ParmaTwin                   #
 #                                                                                      #"
-unset uddns
+[[ ! -e $pp/parmatwin ]] &&      parmatwin="\n#$orange              twin)$blue        ParmaTwin - Be a data server for a ParmaSync Computer      #
+#                                                                                      #"
 [[ ! -e $pp/uddns ]] &&                  uddns="\n#$orange                ud)$blue        UDDNS - Parman's Uncomplicated Dynamic DNS Service         #
 #                                                                                      #"
 set_terminal
@@ -39,7 +38,7 @@ echo -en "$blue
 #$orange               PREMIUM FEATURES AVAILABLE FOR A SMOL FEE:$green CONACT PARMAN          $blue     #
 ########################################################################################
 #                                                                                      #
-#                                                                                      #$parmasync$parmascale$datum$parmanas$parminer$parmacloud$parmaweb$parmaraid$uddns$parmasql$plex
+#                                                                                      #$parmasync$parmatwin$parmascale$datum$parmanas$parminer$parmacloud$parmaweb$parmaraid$uddns$parmasql$plex
 #                                                                                      #
 ########################################################################################
 "
@@ -49,6 +48,9 @@ case $choice in
 q|Q) exit ;; p|P) menu_add ;; m|M) back2main ;;
 sync)
 get_parmasync
+;;
+twin)
+get_parmatwin
 ;;
 scale)
 get_parmascale

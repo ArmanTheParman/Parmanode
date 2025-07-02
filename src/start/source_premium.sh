@@ -17,6 +17,9 @@ function source_premium {
     [[ -e $dp/.parmasync_enabled ]] && [[ -e $pp/parmasync ]] && for file in $pp/parmasync/src/*.sh ; do
 	    source $file
 	done
+    [[ -e $dp/.parmatwin_enabled ]] && [[ -e $pp/parmatwin ]] && for file in $pp/parmatwin/src/*.sh ; do
+	    source $file
+	done
     [[ -e $dp/.parmanas_enabled ]] && [[ -e $pp/parmanas ]] && for file in $pp/parmanas/src/*.sh ; do
 	    source $file
 	done
