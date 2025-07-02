@@ -643,7 +643,7 @@ sync)
 twin) 
    if [[ $parmatwinapp == 1 ]] ; then
    please_wait
-   cd $pp/parmasync/ && git stash >$dn 2>&1 ; git pull >$dn 2>&1
+   cd $pp/parmatwin/ && git stash >$dn 2>&1 ; git pull >$dn 2>&1
    source_premium
    menu_parmatwin
    if [[ -n $1 ]] ; then clear ; return 0 ; fi
