@@ -630,6 +630,7 @@ sync)
    #The parmasync dir will silently fail to update once new versions are released
    #so there are no backwards compatability issues with older ParmaDrives
    #The menu_parmasync file needs to remain in $pp/parmasync
+   #current parmasync at version 2
    if [[ $parmasyncapp == 1 ]] ; then
    please_wait
    cd $pp/parmasync/ && git stash >$dn 2>&1 ; git pull >$dn 2>&1 #be careful changing this, can break things
