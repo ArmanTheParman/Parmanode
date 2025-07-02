@@ -4,7 +4,7 @@ if [[ $1 == "plex" ]] ; then
 
 [[ ! -e $dp/.parmanpremium_enabled ]] && {
     announce_blue "
-    Plex with Parmanode is only available on purchased ParmaDrive machines.
+    Plex with Parmanode is only available on purchased ParmaDrive/ParmanodL machines.
     See $cyan
     
     https://parmanode.com/parmadrive$blue
