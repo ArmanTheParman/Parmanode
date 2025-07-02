@@ -27,6 +27,7 @@ announce_blue "ParmaSync/ParmaTwin software is available for PARMADRIVE machines
     echo -e "$blue"
     git clone git@github-parmatwin:armantheparman/parmatwin.git $pp/parmatwin || { enter_continue "\n$blue    Something went wrong. Contact Parman.\n
     \r    Please contact Parman to enable ParmaTwin on your machine.\n$orange" ; return 1 ; }
+    installed_conf_add "parmatwin-start"
     source_premium
     install_parmatwin
     return 0
