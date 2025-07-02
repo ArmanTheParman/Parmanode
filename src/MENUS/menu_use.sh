@@ -645,7 +645,9 @@ twin)
    please_wait
    cd $pp/parmatwin/ && git stash >$dn 2>&1 ; git pull >$dn 2>&1
    source_premium
+   debug before menu parmatwin
    menu_parmatwin
+   debug after menu parmatwin
    if [[ -n $1 ]] ; then clear ; return 0 ; fi
    else invalid
    fi
