@@ -460,7 +460,7 @@ function jump_qpm {
 case $1 in
 q|Q) exit ;;
 p|P) debug "in jump_qpm, p" ; return 1 ;;
-m|returnM) back2main ;;
+m|M) back2main ;;
 esac
 return 0
 }
