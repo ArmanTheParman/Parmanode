@@ -200,9 +200,13 @@ function make_parmatwinborg_ssh_keys {
 sudo test -f ~/.ssh/parmatwinborg-key && return 0
 ssh-keygen -t rsa -b 4096 -f ~/.ssh/extra_keys/parmatwinborg-key -N "" -C "$USER parmatwinborg"
 }
-function make_parmatwinapi_ssh_keys  {
+function make_parmatwinapi_ssh_keys {
 sudo test -f ~/.ssh/parmatwinapi-key && return 0
 ssh-keygen -t rsa -b 4096 -f ~/.ssh/extra_keys/parmatwinapi-key -N "" -C "$USER parmatwinapi"
+}
+function make_parmatwinsftp_ssh_keys {
+sudo test -f ~/.ssh/parmatwinsftp-key && return 0
+ssh-keygen -t rsa -b 4096 -f ~/.ssh/extra_keys/parmatwinsftp-key -N "" -C "$USER parmatwinsftp"
 }
 
 function make_all_ssh_keys {
