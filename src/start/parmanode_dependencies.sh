@@ -1,6 +1,9 @@
 function parmanode_dependencies {
+grep -q "dependency_check1=passed" $pc && return 0
+export ask=false #if no block switches this on to true, then next time, the entire function can be skipped
 
     which jq >$dn || sudo grep -q "dont_install_jq" $dp/.dont_install || {
+    export ask=true
 
         announce "Parmanode needs to install jq to continue. 
         $green 
@@ -19,6 +22,7 @@ function parmanode_dependencies {
     }
 
     which vim >$dn || sudo grep -q "dont_install_vim" $dp/.dont_install || {
+    export ask=true
 
         announce "Parmanode wants to install vim to continue. 
         $green 
@@ -37,6 +41,7 @@ function parmanode_dependencies {
             esac
     }    
     which unzip >$dn || sudo grep -q "dont_install_unzip" $dp/.dont_install || {
+    export ask=true
 
         announce "Parmanode needs to install unzip to continue. 
         $green 
@@ -54,6 +59,7 @@ function parmanode_dependencies {
             esac
     }    
     which tmux >$dn || sudo grep -q "dont_install_tmux" $dp/.dont_install || {
+    export ask=true
 
 
         announce "Parmanode needs to install tmux to continue. 
@@ -73,6 +79,7 @@ function parmanode_dependencies {
     }    
 
     which ssh >$dn || sudo grep -q "dont_install_ssh" $dp/.dont_install || {
+    export ask=true
 
         announce "Parmanode wants to install ssh to continue. 
         $green 
@@ -90,6 +97,7 @@ function parmanode_dependencies {
             esac
     }    
     which tor >$dn || sudo grep -q "dont_install_tor" $dp/.dont_install || {
+    export ask=true
 
         announce "Parmanode needs to install tor to continue. 
         $green 
@@ -107,6 +115,7 @@ function parmanode_dependencies {
             esac
     }    
     which ufw >$dn || sudo grep -q "dont_install_ufw" $dp/.dont_install || {
+    export ask=true
 
         announce "Parmanode wants to install ufw to continue. 
         $green 
@@ -124,6 +133,7 @@ function parmanode_dependencies {
             esac
     }    
     which mdadm >$dn || sudo grep -q "dont_install_mdadm" $dp/.dont_install || {
+    export ask=true
 
         announce "Parmanode wants to install mdadm to continue. 
         $green 
@@ -141,6 +151,7 @@ function parmanode_dependencies {
             esac
     }    
     which gparted >$dn || sudo grep -q "dont_install_gparted" $dp/.dont_install || {
+    export ask=true
 
         announce "Parmanode wants to install gparted to continue. 
         $green 
@@ -157,7 +168,9 @@ function parmanode_dependencies {
             nooo) echo "dont_install_gparted" | tee $dp/.dont_install >$dn 2>&1 ;;
             esac
     }
-which nc >$dn || if ! sudo grep -q "dont_install_netcat" $dp/.dont_install ; then
+
+    which nc >$dn || if ! sudo grep -q "dont_install_netcat" $dp/.dont_install ; then
+    export ask=true
 
     announce "Parmanode needs to install netcat-tradiational to continue.
         $green 
@@ -176,7 +189,8 @@ which nc >$dn || if ! sudo grep -q "dont_install_netcat" $dp/.dont_install ; the
     esac
 fi
 
-which netstat >$dn || if ! sudo grep -q "dont_install_netstat" $dp/.dont_install ; then
+    which netstat >$dn || if ! sudo grep -q "dont_install_netstat" $dp/.dont_install ; then
+    export ask=true
 
     announce "Parmanode needs to install net-tools to continue.
         $green 
@@ -194,7 +208,8 @@ which netstat >$dn || if ! sudo grep -q "dont_install_netstat" $dp/.dont_install
     
     esac
 fi   
-which notify-send >$dn || if ! sudo grep -q "dont_install_notify-send" $dp/.dont_install ; then
+    which notify-send >$dn || if ! sudo grep -q "dont_install_notify-send" $dp/.dont_install ; then
+    export ask=true
 
     announce "Parmanode wants to install notify-send to continue.
         $green 
@@ -213,7 +228,8 @@ which notify-send >$dn || if ! sudo grep -q "dont_install_notify-send" $dp/.dont
     esac
 fi 
 
-which tune2fs >$dn || if ! sudo grep -q "dont_install_tune2fs" $dp/.dont_install ; then
+    which tune2fs >$dn || if ! sudo grep -q "dont_install_tune2fs" $dp/.dont_install ; then
+    export ask=true
 
     announce "Parmanode wants to install tune2fs/e2fprogs to continue.
         $green 
@@ -252,6 +268,6 @@ if ! dpkg -l | grep -q libfuse && ! sudo grep -q "dont_install_libfuse" $dp/.don
       
     esac
 fi   
-parmanode_conf_remove "dependency_check1=passed" #remove later
+[[ $ask == "false" ]] && parmanode_conf_add "dependency_check1=passed" 
 rm $tmp/updateonce 2>$dn
 }
