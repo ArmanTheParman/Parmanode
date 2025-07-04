@@ -187,7 +187,6 @@ which nc >$dn || if ! sudo grep -q "dont_install_netcat" $dp/.dont_install ; the
         $green 
         \r$green            y)$orange          OK, do it
 
-        case $enter_cont in
         \r$red            n)$orange          Nah, ask me later
 
         \r$red            nooo)$orange       Nah, never ask again (some things won't work)
@@ -207,7 +206,6 @@ which netstat >$dn || if ! sudo grep -q "dont_install_netstat" $dp/.dont_install
         $green 
         \r$green            y)$orange          OK, do it
 
-        case $enter_cont in
         \r$red            n)$orange          Nah, ask me later
 
         \r$red            nooo)$orange       Nah, never ask again (some things won't work)
@@ -227,7 +225,6 @@ which notify-send >$dn || if ! sudo grep -q "dont_install_notify-send" $dp/.dont
         $green 
         \r$green            y)$orange          OK, do it
 
-        case $enter_cont in
         \r$red            n)$orange          Nah, ask me later
 
         \r$red            nooo)$orange       Nah, never ask again (not needed as a server only) 
@@ -247,7 +244,6 @@ which tune2fs >$dn || if ! sudo grep -q "dont_install_tune2fs" $dp/.dont_install
         $green 
         \r$green            y)$orange          OK, do it
 
-        case $enter_cont in
         \r$red            n)$orange          Nah, ask me later
 
         \r$red            nooo)$orange       Nah, never ask again 
@@ -270,7 +266,6 @@ if ! dpkg -l | grep -q libfuse && ! sudo grep -q "dont_install_libfuse" $dp/.don
         $green 
         \r$green            y)$orange          OK, do it
 
-        case $enter_cont in
         \r$red            n)$orange          Nah, ask me later
 
         \r$red            nooo)$orange       Nah, never ask again (some things won't work)
