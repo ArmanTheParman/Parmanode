@@ -196,17 +196,17 @@ IdentityFile ~/.ssh/extra_keys/parmanpremium-key
 IdentitiesOnly yes" | sudo tee -a ~/.ssh/config >$dn
 debug end make_parmanpremium_ssh_keys
 }
-function make_parmatwinborg_ssh_keys {
-sudo test -f ~/.ssh/parmatwinborg-key && return 0
-ssh-keygen -t rsa -b 4096 -f ~/.ssh/extra_keys/parmatwinborg-key -N "" -C "$USER parmatwinborg"
+function make_parmasyncborg_ssh_keys {
+sudo test -f ~/.ssh/parmasyncborg-key && return 0
+ssh-keygen -t rsa -b 4096 -f ~/.ssh/extra_keys/parmasyncborg-key -N "" -C "$USER parmasyncborg"
 }
-function make_parmatwinapi_ssh_keys {
-sudo test -f ~/.ssh/parmatwinapi-key && return 0
-ssh-keygen -t rsa -b 4096 -f ~/.ssh/extra_keys/parmatwinapi-key -N "" -C "$USER parmatwinapi"
+function make_parmasyncapi_ssh_keys {
+sudo test -f ~/.ssh/parmasyncapi-key && return 0
+ssh-keygen -t rsa -b 4096 -f ~/.ssh/extra_keys/parmasyncapi-key -N "" -C "$USER parmasyncapi"
 }
-function make_parmatwinsftp_ssh_keys {
-sudo test -f ~/.ssh/parmatwinsftp-key && return 0
-ssh-keygen -t rsa -b 4096 -f ~/.ssh/extra_keys/parmatwinsftp-key -N "" -C "$USER parmatwinsftp"
+function make_parmasyncsftp_ssh_keys {
+sudo test -f ~/.ssh/parmasyncsftp-key && return 0
+ssh-keygen -t rsa -b 4096 -f ~/.ssh/extra_keys/parmasyncsftp-key -N "" -C "$USER parmasyncsftp"
 }
 
 function make_all_ssh_keys {
