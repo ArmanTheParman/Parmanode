@@ -157,7 +157,6 @@ function parmanode_dependencies {
             nooo) echo "dont_install_gparted" | tee $dp/.dont_install >$dn 2>&1 ;;
             esac
     }
-debug "after gparted"
 which nc >$dn || if ! sudo grep -q "dont_install_netcat" $dp/.dont_install ; then
 
     announce "Parmanode needs to install netcat-tradiational to continue.
@@ -195,7 +194,6 @@ which netstat >$dn || if ! sudo grep -q "dont_install_netstat" $dp/.dont_install
     
     esac
 fi   
-debug 198
 which notify-send >$dn || if ! sudo grep -q "dont_install_notify-send" $dp/.dont_install ; then
 
     announce "Parmanode wants to install notify-send to continue.
@@ -233,9 +231,7 @@ which tune2fs >$dn || if ! sudo grep -q "dont_install_tune2fs" $dp/.dont_install
  
     esac
 fi 
-debug 236
 sudo systemctl status ssh >$dn 2>&1 || sudo systemctl start ssh >$dn 2>&1
-debug 238
 if ! dpkg -l | grep -q libfuse && ! sudo grep -q "dont_install_libfuse" $dp/.dont_install ; then
 [[ $APT_UPDATE == "true" ]] || { sudo apt-get update -y && export APT_UPDATE="true" ; }
 
@@ -256,7 +252,6 @@ if ! dpkg -l | grep -q libfuse && ! sudo grep -q "dont_install_libfuse" $dp/.don
       
     esac
 fi   
-debug 259
 parmanode_conf_remove "dependency_check1=passed" #remove later
 rm $tmp/updateonce 2>$dn
 }

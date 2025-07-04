@@ -57,7 +57,7 @@ fi
 # .new_install created inside a function that creates .parmanode directory for the first time
 
 #test for dependencies and install.
-[[ $OS == "Linux" ]] && { parmanode_dependencies || exit ; }
+[[ $OS == "Linux" ]] && parmanode_dependencies 
 
 if [[ $btcpayinstallsbitcoin != "true" ]] ; then
 if [[ -e $HOME/.parmanode/.new_install ]] ; then
