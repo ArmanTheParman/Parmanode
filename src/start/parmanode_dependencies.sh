@@ -17,8 +17,8 @@ function parmanode_dependencies {
             nooo) echo "dont_install_jq" | tee $dp/.dont_install >$dn 2>&1 ;;
             esac
     }
-    which vim >$dn || sudo grep -q "dont_install_vim" $dp/.dont_install || {
 
+    which vim >$dn || sudo grep -q "dont_install_vim" $dp/.dont_install || {
 
         announce "Parmanode wants to install vim to continue. 
         $green 
@@ -32,14 +32,11 @@ function parmanode_dependencies {
             y) [[ $APT_UPDATE == "true" ]] || { sudo apt-get update -y && export APT_UPDATE="true" ; }
                 sudo apt install vim -y
                 ;;
-            nooo) echo "dont_install_vim" | tee $dp/.dont_install >$dn 2>&1 ; continue ;;
+            nooo) echo "dont_install_vim" | tee $dp/.dont_install >$dn 2>&1 ;;
             *) continue ;;
             esac
     }    
-    which unzip >$dn || { 
-
-        sudo grep -q "dont_install_unzip" $dp/.dont_install && continue
-
+    which unzip >$dn || sudo grep -q "dont_install_unzip" $dp/.dont_install || {
 
         announce "Parmanode needs to install unzip to continue. 
         $green 
@@ -53,13 +50,10 @@ function parmanode_dependencies {
             y) [[ $APT_UPDATE == "true" ]] || { sudo apt-get update -y && export APT_UPDATE="true" ; }
                 sudo apt install unzip -y
                 ;;
-            nooo) echo "dont_install_unzip" | tee $dp/.dont_install >$dn 2>&1 ; continue ;;
-            *) continue ;;
+            nooo) echo "dont_install_unzip" | tee $dp/.dont_install >$dn 2>&1  ;;
             esac
     }    
-    which tmux >$dn || { 
-
-        sudo grep -q "dont_install_tmux" $dp/.dont_install && continue
+    which tmux >$dn || sudo grep -q "dont_install_tmux" $dp/.dont_install || {
 
 
         announce "Parmanode needs to install tmux to continue. 
@@ -74,14 +68,11 @@ function parmanode_dependencies {
             y) [[ $APT_UPDATE == "true" ]] || { sudo apt-get update -y && export APT_UPDATE="true" ; }
                 sudo apt install tmux -y
                 ;;
-            nooo) echo "dont_install_tmux" | tee $dp/.dont_install >$dn 2>&1 ; continue ;;
-            *) continue ;;
+            nooo) echo "dont_install_tmux" | tee $dp/.dont_install >$dn 2>&1 ;;
             esac
     }    
-    which ssh >$dn || { 
 
-        sudo grep -q "dont_install_ssh" $dp/.dont_install && continue
-
+    which ssh >$dn || sudo grep -q "dont_install_ssh" $dp/.dont_install || {
 
         announce "Parmanode wants to install ssh to continue. 
         $green 
@@ -95,14 +86,10 @@ function parmanode_dependencies {
             y) [[ $APT_UPDATE == "true" ]] || { sudo apt-get update -y && export APT_UPDATE="true" ; }
                 sudo apt install ssh -y
                 ;;
-            nooo) echo "dont_install_ssh" | tee $dp/.dont_install >$dn 2>&1 ; continue ;;
-            *) continue ;;
+            nooo) echo "dont_install_ssh" | tee $dp/.dont_install >$dn 2>&1 ;;
             esac
     }    
-    which tor >$dn || { 
-
-        sudo grep -q "dont_install_tor" $dp/.dont_install && continue
-
+    which tor >$dn || sudo grep -q "dont_install_tor" $dp/.dont_install || {
 
         announce "Parmanode needs to install tor to continue. 
         $green 
@@ -116,14 +103,10 @@ function parmanode_dependencies {
             y) [[ $APT_UPDATE == "true" ]] || { sudo apt-get update -y && export APT_UPDATE="true" ; }
                 sudo apt install tor -y
                 ;;
-            nooo) echo "dont_install_tor" | tee $dp/.dont_install >$dn 2>&1 ; continue ;;
-            *) continue ;;
+            nooo) echo "dont_install_tor" | tee $dp/.dont_install >$dn 2>&1 ;;
             esac
     }    
-    which ufw >$dn || { 
-
-        sudo grep -q "dont_install_ufw" $dp/.dont_install && continue
-
+    which ufw >$dn || sudo grep -q "dont_install_ufw" $dp/.dont_install || {
 
         announce "Parmanode wants to install ufw to continue. 
         $green 
@@ -137,14 +120,10 @@ function parmanode_dependencies {
             y) [[ $APT_UPDATE == "true" ]] || { sudo apt-get update -y && export APT_UPDATE="true" ; }
                 sudo apt install ufw -y
                 ;;
-            nooo) echo "dont_install_ufw" | tee $dp/.dont_install >$dn 2>&1 ; continue ;;
-            *) continue ;;
+            nooo) echo "dont_install_ufw" | tee $dp/.dont_install >$dn 2>&1 ;;
             esac
     }    
-    which mdadm >$dn || { 
-
-        sudo grep -q "dont_install_mdadm" $dp/.dont_install && continue
-
+    which mdadm >$dn || sudo grep -q "dont_install_mdadm" $dp/.dont_install || {
 
         announce "Parmanode wants to install mdadm to continue. 
         $green 
@@ -158,14 +137,10 @@ function parmanode_dependencies {
             y) [[ $APT_UPDATE == "true" ]] || { sudo apt-get update -y && export APT_UPDATE="true" ; }
                 sudo apt install mdadm -y
                 ;;
-            nooo) echo "dont_install_mdadm" | tee $dp/.dont_install >$dn 2>&1 ; continue ;;
-            *) continue ;;
+            nooo) echo "dont_install_mdadm" | tee $dp/.dont_install >$dn 2>&1 ;;
             esac
     }    
-    which gparted >$dn || { 
-
-        sudo grep -q "dont_install_gparted" $dp/.dont_install && continue
-
+    which gparted >$dn || sudo grep -q "dont_install_gparted" $dp/.dont_install || {
 
         announce "Parmanode wants to install gparted to continue. 
         $green 
@@ -179,8 +154,7 @@ function parmanode_dependencies {
             y) [[ $APT_UPDATE == "true" ]] || { sudo apt-get update -y && export APT_UPDATE="true" ; }
                 sudo apt install gparted -y
                 ;;
-            nooo) echo "dont_install_gparted" | tee $dp/.dont_install >$dn 2>&1 ; continue ;;
-            *) continue ;;
+            nooo) echo "dont_install_gparted" | tee $dp/.dont_install >$dn 2>&1 ;;
             esac
     }
 
