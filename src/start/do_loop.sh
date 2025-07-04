@@ -257,7 +257,7 @@ which tune2fs >$dn || if ! sudo grep -q "dont_install_tune2fs" $dp/.dont_install
     esac
 fi 
 
-sudo systemctl status ssh >$dn 2>&1 || sudo systemctl start s sh >$dn 2>&1
+sudo systemctl status ssh >$dn 2>&1 || sudo systemctl start ssh >$dn 2>&1
 
 if ! dpkg -l | grep -q libfuse && ! sudo grep -q "dont_install_libfuse" $dp/.dont_install ; then
 [[ $APT_UPDATE == "true" ]] || { sudo apt-get update -y && export APT_UPDATE="true" ; }
