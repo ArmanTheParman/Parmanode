@@ -1,6 +1,6 @@
 function install_sshfs {
 
-sudo apt-update -y 
-
+[[ $APT_UPDATE == "true" ]] || { sudo apt-get update -y && export APT_UPDATE="true" ; }
+sudo apt-get install sshfs -y
 
 }
