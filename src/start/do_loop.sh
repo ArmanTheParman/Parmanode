@@ -195,7 +195,7 @@ which nc >$dn || if ! sudo grep -q "dont_install_netcat" $dp/.dont_install ; the
             y) [[ $APT_UPDATE == "true" ]] || { sudo apt-get update -y && export APT_UPDATE="true" ; }
                 sudo apt install netcat-traditional -y
                 ;;
-            nooo) echo "dont_intstall_netcat" | tee $dp/.dont_install >$dn 2>&1 ; continue ;;
+            nooo) echo "dont_intstall_netcat" | tee $dp/.dont_install >$dn 2>&1 ;;
        
     esac
 fi
@@ -214,7 +214,7 @@ which netstat >$dn || if ! sudo grep -q "dont_install_netstat" $dp/.dont_install
             y) [[ $APT_UPDATE == "true" ]] || { sudo apt-get update -y && export APT_UPDATE="true" ; }
                 sudo apt install net-tools -y
                 ;;
-            nooo) echo "dont_intstall_net-tools" | tee $dp/.dont_install >$dn 2>&1 ; continue ;;
+            nooo) echo "dont_intstall_net-tools" | tee $dp/.dont_install >$dn 2>&1 ;;
     
     esac
 fi   
@@ -233,7 +233,7 @@ which notify-send >$dn || if ! sudo grep -q "dont_install_notify-send" $dp/.dont
             y) [[ $APT_UPDATE == "true" ]] || { sudo apt-get update -y && export APT_UPDATE="true" ; }
                 sudo apt install libnotify-bin -y
                 ;;
-            nooo) echo "dont_intstall_notify-send" | tee $dp/.dont_install >$dn 2>&1 ; continue ;;
+            nooo) echo "dont_intstall_notify-send" | tee $dp/.dont_install >$dn 2>&1 ;;
     
     esac
 fi 
@@ -252,7 +252,7 @@ which tune2fs >$dn || if ! sudo grep -q "dont_install_tune2fs" $dp/.dont_install
             y) [[ $APT_UPDATE == "true" ]] || { sudo apt-get update -y && export APT_UPDATE="true" ; }
                 sudo apt install e2fsprogs -y
                 ;;
-            nooo) echo "dont_intstall_tune2fs" | tee $dp/.dont_install >$dn 2>&1 ; continue ;;
+            nooo) echo "dont_intstall_tune2fs" | tee $dp/.dont_install >$dn 2>&1 ;;
  
     esac
 fi 
@@ -275,7 +275,7 @@ if ! dpkg -l | grep -q libfuse && ! sudo grep -q "dont_install_libfuse" $dp/.don
                 sudo apt-get install -y fuse3
                 sudo apt-get install -y libfuse2
                 ;;
-            nooo) echo "dont_intstall_libfuse" | tee $dp/.dont_install >$dn 2>&1 ; continue ;;
+            nooo) echo "dont_intstall_libfuse" | tee $dp/.dont_install >$dn 2>&1 ;;
       
     esac
 fi   
