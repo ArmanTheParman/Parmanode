@@ -159,7 +159,7 @@ grep -q "dependency_check1=passed" $pc && return 0
 for i in jq vim unzip tmux ssh tor ufw mdadm gparted ; do
 which $i >$dn || { 
     export needs="needs"
-    if [[ $1 == gparted ]] ; then export needs="wants" ; fi
+    if [[ $i == gparted ]] ; then export needs="wants" ; fi
     yesorno "Parmanode $needs to install $i to continue. OK?" || if [[ $1 != "gparted" ]] ; then return ; else continue ; fi
     [[ $APT_UPDATE == "true" ]] || { sudo apt-get update -y && export APT_UPDATE="true" ; }
     sudo apt install $i -y
