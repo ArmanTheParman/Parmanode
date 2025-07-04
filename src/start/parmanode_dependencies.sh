@@ -157,7 +157,7 @@ function parmanode_dependencies {
             nooo) echo "dont_install_gparted" | tee $dp/.dont_install >$dn 2>&1 ;;
             esac
     }
-
+debug "after gparted"
 which nc >$dn || if ! sudo grep -q "dont_install_netcat" $dp/.dont_install ; then
 
     announce "Parmanode needs to install netcat-tradiational to continue.
