@@ -10,7 +10,7 @@ function write_to_fstab {
 
    TYPE=$(blkid | grep $UUID | awk '{print $5}' | cut -d \" -f 2)
    debug "TYPE detected, $TYPE"
-   echo "UUID=$UUID /media/$(whoami)/parmanode $TYPE defaults,nofail,noatime,nodiratime,x-systemd.device-timeout=20s 0 2" | sudo tee -a /etc/fstab > $dn 
+   echo "UUID=$UUID /media/$(whoami)/parmanode $TYPE defaults,nofail,noatime,x-systemd.device-timeout=20s 0 2" | sudo tee -a /etc/fstab > $dn 
    log "bitcoin" "fstab grep output for parmanode:" && \
    grep "parmanode" /etc/fstab >> $HOME/.parmanode/bitcoin.log     
    sudo systemctl daemon-reload >$dn 2>&1 #needed to reload fstab to systemd
@@ -27,6 +27,6 @@ function write_to_fstab2 {
 
         if [ -z $UUID ] ; then debug "no UUID" ; return 1 ; fi
         sudo gsed -i "/$UUID/d" /etc/fstab >$dn 2>&1
-        echo "UUID=$UUID /media/$(whoami)/parmanode $TYPE defaults,nofail,noatime,nodiratime,x-systemd.device-timeout=20s 0 2" | sudo tee -a /etc/fstab >$dn 
+        echo "UUID=$UUID /media/$(whoami)/parmanode $TYPE defaults,nofail,noatime,x-systemd.device-timeout=20s 0 2" | sudo tee -a /etc/fstab >$dn 
         sudo systemctl daemon-reload >$dn 2>&1 #needed to reload fstab to systemd
 }
