@@ -88,7 +88,7 @@ if [[ $version == "self" ]] ; then break ; fi
 
 if [[ $OS == "Linux" && $drive == "external" ]] ; then
     sudo chown -R $USER /media/$USER/parmanode >$dn 2>&1 \
-    || log "bitcoin" "unable to execute chown in intstall_bitcoin function" 
+    || log "bitcoin" "unable to execute chown in install_bitcoin function" 
 fi
 
 prune_choice || return 1 
