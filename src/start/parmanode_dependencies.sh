@@ -1,9 +1,6 @@
 function parmanode_dependencies {
 
-    which jq >$dn || { 
-
-        sudo grep -q "dont_install_jq" $dp/.dont_install && continue
-
+    which jq >$dn || sudo grep -q "dont_install_jq" $dp/.dont_install || {
 
         announce "Parmanode needs to install jq to continue. 
         $green 
@@ -17,13 +14,10 @@ function parmanode_dependencies {
             y) [[ $APT_UPDATE == "true" ]] || { sudo apt-get update -y && export APT_UPDATE="true" ; }
                 sudo apt install jq -y
                 ;;
-            nooo) echo "dont_install_jq" | tee $dp/.dont_install >$dn 2>&1 ; continue ;;
-            *) continue ;;
+            nooo) echo "dont_install_jq" | tee $dp/.dont_install >$dn 2>&1 ;;
             esac
     }
-    which vim >$dn || { 
-
-        sudo grep -q "dont_install_vim" $dp/.dont_install && continue
+    which vim >$dn || sudo grep -q "dont_install_vim" $dp/.dont_install || {
 
 
         announce "Parmanode wants to install vim to continue. 
