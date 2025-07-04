@@ -204,9 +204,9 @@ function make_parmasyncapi_ssh_keys {
 sudo test -f ~/.ssh/parmasyncapi-key && return 0
 ssh-keygen -t rsa -b 4096 -f ~/.ssh/extra_keys/parmasyncapi-key -N "" -C "$USER parmasyncapi"
 }
-function make_parmasyncsftp_ssh_keys {
-sudo test -f ~/.ssh/parmasyncsftp-key && return 0
-ssh-keygen -t rsa -b 4096 -f ~/.ssh/extra_keys/parmasyncsftp-key -N "" -C "$USER parmasyncsftp"
+function make_parmasyncsshfs_ssh_keys {
+sudo test -f ~/.ssh/parmasyncsshfs-key && return 0
+ssh-keygen -t rsa -b 4096 -f ~/.ssh/extra_keys/parmasyncsshfs-key -N "" -C "$USER parmasyncsshfs"
 }
 
 function make_all_ssh_keys {
