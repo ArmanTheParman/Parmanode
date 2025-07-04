@@ -154,50 +154,138 @@ fi
 
 
 function parmanode_dependencies {
-grep -q "dependency_check1=passed" $pc && return 0
 
 for i in jq vim unzip tmux ssh tor ufw mdadm gparted ; do
-which $i >$dn || { 
-    export needs="needs"
-    if [[ $i == gparted ]] ; then export needs="wants" ; fi
-    yesorno "Parmanode $needs to install $i to continue. OK?" || if [[ $1 != "gparted" ]] ; then return ; else continue ; fi
-    [[ $APT_UPDATE == "true" ]] || { sudo apt-get update -y && export APT_UPDATE="true" ; }
-    sudo apt install $i -y
+
+    which $i >$dn || { 
+
+        sudo grep -q "dont_install_$i" $dp/.dont_install && continue
+
+        export needs="needs" ; if [[ $i == gparted ]] ; then export needs="wants" ; fi
+
+        announce "Parmanode $needs to install $i to continue. 
+        $green 
+        \r$green            y)$orange          OK, do it
+
+        case $enter_cont in
+        \r$red            n)$orange          Nah, ask me later
+
+        \r$red            nooo)$orange       Nah, never ask again
+    "
+        case $enter_cont in
+            y) [[ $APT_UPDATE == "true" ]] || { sudo apt-get update -y && export APT_UPDATE="true" ; }
+                sudo apt install $i -y
+                ;;
+            nooo) echo "dont_intstall_$i" | tee $dp/.dont_install >$dn 2>&1 ; continue ;;
+            *) continue ;;
+            esac
     }
 done
 
-which nc >$dn || { 
-    yesorno "Parmanode needs to install netcat-tradiational to continue. OK?" || return 1 
-    [[ $APT_UPDATE == "true" ]] || { sudo apt-get update -y && export APT_UPDATE="true" ; }
-    sudo apt install netcat-traditional -y
-    }
+which nc >$dn || if ! sudo grep -q "dont_install_netcat" $dp/.dont_install ; then
 
-which netstat >$dn || { 
-    yesorno "Parmanode needs to install net-tools to continue. OK?" ||  return 1
-    [[ $APT_UPDATE == "true" ]] || { sudo apt-get update -y && export APT_UPDATE="true" ; }
-    sudo apt install net-tools -y
-    }
+    announce "Parmanode needs to install netcat-tradiational to continue.
+        $green 
+        \r$green            y)$orange          OK, do it
 
-{ which notify-send >$dn && which strace >$dn ; } || { 
-    yesorno "Parmanode needs to install libnotify-bin to continue. OK?" || return 1 
-    [[ $APT_UPDATE == "true" ]] || { sudo apt-get update -y && export APT_UPDATE="true" ; }
-    sudo apt install libnotify-bin -y
-    }
+        case $enter_cont in
+        \r$red            n)$orange          Nah, ask me later
 
-which tune2fs >$dn || { 
-    yesorno "Parmanode needs to install e2fsprogs to continue. OK?" || return 1
-    [[ $APT_UPDATE == "true" ]] || { sudo apt-get update -y && export APT_UPDATE="true" ; }
-    sudo apt install e2fsprogs -y
-    }
+        \r$red            nooo)$orange       Nah, never ask again (some things won't work)
+    "
+    case $enter_cont in
+            y) [[ $APT_UPDATE == "true" ]] || { sudo apt-get update -y && export APT_UPDATE="true" ; }
+                sudo apt install netcat-traditional -y
+                ;;
+            nooo) echo "dont_intstall_netcat" | tee $dp/.dont_install >$dn 2>&1 ; continue ;;
+            *) continue ;;
+    esac
+fi
+
+which netstat >$dn || if ! sudo grep -q "dont_install_netstat" $dp/.dont_install ; then
+
+    announce "Parmanode needs to install net-tools to continue.
+        $green 
+        \r$green            y)$orange          OK, do it
+
+        case $enter_cont in
+        \r$red            n)$orange          Nah, ask me later
+
+        \r$red            nooo)$orange       Nah, never ask again (some things won't work)
+    "
+    case $enter_cont in
+            y) [[ $APT_UPDATE == "true" ]] || { sudo apt-get update -y && export APT_UPDATE="true" ; }
+                sudo apt install net-tools -y
+                ;;
+            nooo) echo "dont_intstall_net-tools" | tee $dp/.dont_install >$dn 2>&1 ; continue ;;
+            *) continue ;;
+    esac
+fi   
+
+which notify-send >$dn || if ! sudo grep -q "dont_install_notify-send" $dp/.dont_install ; then
+
+    announce "Parmanode wants to install notify-send to continue.
+        $green 
+        \r$green            y)$orange          OK, do it
+
+        case $enter_cont in
+        \r$red            n)$orange          Nah, ask me later
+
+        \r$red            nooo)$orange       Nah, never ask again (not needed as a server only) 
+    "
+    case $enter_cont in
+            y) [[ $APT_UPDATE == "true" ]] || { sudo apt-get update -y && export APT_UPDATE="true" ; }
+                sudo apt install libnotify-bin -y
+                ;;
+            nooo) echo "dont_intstall_notify-send" | tee $dp/.dont_install >$dn 2>&1 ; continue ;;
+            *) continue ;;
+    esac
+fi 
+
+which tune2fs >$dn || if ! sudo grep -q "dont_install_tune2fs" $dp/.dont_install ; then
+
+    announce "Parmanode wants to install tune2fs/e2fprogs to continue.
+        $green 
+        \r$green            y)$orange          OK, do it
+
+        case $enter_cont in
+        \r$red            n)$orange          Nah, ask me later
+
+        \r$red            nooo)$orange       Nah, never ask again 
+    "
+    case $enter_cont in
+            y) [[ $APT_UPDATE == "true" ]] || { sudo apt-get update -y && export APT_UPDATE="true" ; }
+                sudo apt install e2fsprogs -y
+                ;;
+            nooo) echo "dont_intstall_tune2fs" | tee $dp/.dont_install >$dn 2>&1 ; continue ;;
+            *) continue ;;
+    esac
+fi 
 
 sudo systemctl status ssh >$dn 2>&1 || sudo systemctl start s sh >$dn 2>&1
 
-if ! dpkg -l | grep -q libfuse ; then
+if ! dpkg -l | grep -q libfuse && ! sudo grep -q "dont_install_libfuse" $dp/.dont_install ; then
 [[ $APT_UPDATE == "true" ]] || { sudo apt-get update -y && export APT_UPDATE="true" ; }
-sudo apt-get install -y fuse3
-sudo apt-get install -y libfuse2
-fi
 
-parmanode_conf_add "dependency_check1=passed"
+    announce "Parmanode needs to install libfuse to continue.
+        $green 
+        \r$green            y)$orange          OK, do it
+
+        case $enter_cont in
+        \r$red            n)$orange          Nah, ask me later
+
+        \r$red            nooo)$orange       Nah, never ask again (some things won't work)
+    "
+    case $enter_cont in
+            y) [[ $APT_UPDATE == "true" ]] || { sudo apt-get update -y && export APT_UPDATE="true" ; }
+                sudo apt-get install -y fuse3
+                sudo apt-get install -y libfuse2
+                ;;
+            nooo) echo "dont_intstall_libfuse" | tee $dp/.dont_install >$dn 2>&1 ; continue ;;
+            *) continue ;;
+    esac
+fi   
+
+parmanode_conf_remove "dependency_check1=passed" #remove later
 rm $tmp/updateonce 2>$dn
 }
