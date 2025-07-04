@@ -167,7 +167,6 @@ for i in jq vim unzip tmux ssh tor ufw mdadm gparted ; do
         $green 
         \r$green            y)$orange          OK, do it
 
-        case $enter_cont in
         \r$red            n)$orange          Nah, ask me later
 
         \r$red            nooo)$orange       Nah, never ask again
