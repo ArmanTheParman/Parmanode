@@ -197,7 +197,7 @@ jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit 0 ;; p|P) return 0 ;; n|N) break ;; m|M) back2main ;;
 y|Y)
-sudo apt-get update -y
+sudo apt-get update -y && export APT_UPDATE="true"
 sudo apt-get --fix-broken install -y
 sudo apt-get install baobab ncdu -y
 success "Baobab has been installed. Just type 'baobab' in the terminal to run it.

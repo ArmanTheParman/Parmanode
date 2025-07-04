@@ -17,7 +17,7 @@ if [[ $OS == Mac ]] ; then
 elif [[ $OS == Linux ]] ; then
     if ! which docker >$dn 2>&1 ; then announce "Please install Docker first. Aborting" ; return 1 ; fi
     if ! which python3 >$dn ; then
-        sudo apt-get update -y && sudo apt-get install python3 -y
+        sudo apt-get update -y && export APT_UPDATE="true" && sudo apt-get install python3 -y
     fi
 fi
 

@@ -9,7 +9,7 @@ Installing dependecies...
 xxd
 "
 sleep 1
-sudo apt-get update -y && sudo apt-get install xxd -y 
+sudo apt-get update -y && export APT_UPDATE="true" && sudo apt-get install xxd -y 
 fi
 
 if [[ $OS == Mac ]] ; then announce "Mac needs xxd to be installed to continue. Please

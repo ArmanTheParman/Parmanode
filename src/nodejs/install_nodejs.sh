@@ -40,7 +40,7 @@ echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] \
 https://deb.nodesource.com/node_$NODE_MAJOR.x nodistro main" \
 | sudo tee /etc/apt/sources.list.d/nodesource.list >$dn 2>&1
 
-sudo apt-get update -y
+sudo apt-get update -y && export APT_UPDATE="true"
 
 while true ; do
 set_terminal ; echo -e "

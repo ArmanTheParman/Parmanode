@@ -199,7 +199,7 @@ function joinmarket_dependencies {
 #INSTALL SOCAT
 if ! which socat >$dn 2>&1 ; then
     if [[ $OS == "Mac" ]]   ; then brew_check || return 1 ; brew install socat ; fi
-    if [[ $OS == "Linux" ]] ; then sudo apt-get update -y ; sudo apt-get install socat -y ; fi
+    if [[ $OS == "Linux" ]] ; then sudo apt-get update -y && export APT_UPDATE="true" ; sudo apt-get install socat -y ; fi
 fi
 
 #JoinMarket requires Python >=3.8, <3.13 installed.
@@ -246,7 +246,7 @@ return 0
 fi
 
 if [[ $OS == "Linux" ]] ; then
-sudo apt-get update -y 
+sudo apt-get update -y && export APT_UPDATE="true"
 sudo apt-get install python3
 return 0
 fi

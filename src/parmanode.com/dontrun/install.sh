@@ -16,7 +16,7 @@ exit
 fi
 
 if ! which git >/dev/null ; then
-sudo apt-get update -y 
+sudo apt-get update -y && export APT_UPDATE="true"
 sudo apt-get install git -y
 fi
 

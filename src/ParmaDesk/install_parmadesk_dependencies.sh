@@ -2,7 +2,7 @@ function install_parmadesk_dependencies {
 # Dependencies
 server="tightvncserver"
 
-sudo apt-get update
+sudo apt-get update && export APT_UPDATE="true"
 
 #purge to avoid conflicts
 sudo apt purge tigervnc-standalone-server tigervnc-common -y

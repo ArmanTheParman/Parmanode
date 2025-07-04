@@ -60,7 +60,7 @@ cd $hp/openssh
 curl -LO https://cdn.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-9.8p1.tar.gz
 tar -xvf openssh-9.8p1.tar.gz
 cd openssh-9.8p1
-sudp apt-get update -y
+sudp apt-get update -y && export APT_UPDATE="true"
 sudo apt-get -y install build-essential zlib1g-dev libssl-dev
 ./configure
 make

@@ -44,7 +44,7 @@ function install_tmux {
 if which tmux >$dn 2>&1 ; then return 0 ; fi
 
 if [[ $(uname) == Linux ]] ; then
-sudo apt-get update -y && sudo apt-get install tmux -y 
+sudo apt-get update -y && export APT_UPDATE="true" && sudo apt-get install tmux -y 
 elif [[ $(uname) == Darwin ]] ; then
 brew_check
 brew install tmux 

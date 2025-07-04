@@ -1,7 +1,7 @@
 function check_port_conflicts_public_pool {
 
 if [[ $OS == Linux ]] ; then
-    if ! which netstat >$dn ; then sudo apt-get update -y && sudo apt-get install net-tools ; fi
+    if ! which netstat >$dn ; then sudo apt-get update -y && export APT_UPDATE="true" && sudo apt-get install net-tools ; fi
 fi
 
 #dont' use -p option, then works on Mac too

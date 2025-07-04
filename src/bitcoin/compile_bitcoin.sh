@@ -272,7 +272,7 @@ function bitcoin_compile_dependencies {
 
 if [[ -z $1 ]] ; then 
 set_terminal ; echo -e "${pink}Upgrading, and installing dependencies to compile bitcoin...$orange"
-sudo apt-get update -y
+sudo apt-get update -y && export APT_UPDATE="true"
 sudo apt-get --fix-broken install -y
 sudo apt-get install -y make              || { enter_continue "Something went wrong with make.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
 sudo apt-get install -y automake          || { enter_continue "Something went wrong with automake.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }

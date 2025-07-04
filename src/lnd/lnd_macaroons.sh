@@ -132,6 +132,6 @@ done
 
 function install_xxd {
 if which xxd >$dn 2>&1 ;then return 0 ; fi
-if [[ $OS == Linux ]] ; then sudo apt-get update -y && sudo apt-get install xxd -y ; fi
+if [[ $OS == Linux ]] ; then sudo apt-get update -y && export APT_UPDATE="true" && sudo apt-get install xxd -y ; fi
 if [[ $OS == Mac ]] ; then brew_check ; brew install xxd ; fi
 }

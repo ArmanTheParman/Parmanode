@@ -3,6 +3,6 @@ function install_borg {
 
 clear
 echo -e "$blue"
-sudo apt-get update -y
+sudo apt-get update -y && export APT_UPDATE="true"
 sudo apt-get install borgbackup fuse3 -y || sww
 }

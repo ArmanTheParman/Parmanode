@@ -200,7 +200,7 @@ Please wait...
 
     if [[ $OS == Linux ]] ; then
         
-        sudo apt-get update -y
+        sudo apt-get update -y && export APT_UPDATE="true"
         if ! which vim ; then sudo apt-get install vim -y ; fi
         if ! which git ; then sudo apt-get install git -y ; fi
         if ! which ssh ; then sudo apt-get install ssh -y ; fi
@@ -244,7 +244,7 @@ fi # end if $1 != install
     
     #Linux needs qemu
     if [[ $OS == Linux ]] ; then
-    sudo apt-get update
+    sudo apt-get update -y && export APT_UPDATE="true"
     sudo apt-get install -y qemu binfmt-support qemu-user-static
     docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
     fi

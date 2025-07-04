@@ -6,7 +6,7 @@ case $enter_cont in q) return ;; esac
 
 if [[ $OS == Linux ]] && ! which nmap >$dn ; then
     if  yesorno "OK to install nmap?" ; then 
-        clear && sudo apt-get update -y && sudo apt-get install nmap -y 
+        clear && sudo apt-get update -y && export APT_UPDATE="true" && sudo apt-get install nmap -y 
     else
         return 1
     fi

@@ -3,7 +3,7 @@ X11_preamble || return 1
 clear
 #install openssh, Linux only, Mac has it by default.
 if [[ $OS == "Linux" ]] ; then 
-    sudo apt-get update -y
+    sudo apt-get update -y && export APT_UPDATE="true"
     sudo apt-get install openssh-server -y
     if ! which xauth >$dn 2>&1 ; then sudo apt-get install xuath -y ; fi
 fi

@@ -162,7 +162,7 @@ fi
 
 function install_fuse {
 if [[ $1 != noupdate ]] ; then
-sudo apt-get update -y
+sudo apt-get update -y && export APT_UPDATE="true"
 fi
 
 if ! dpkg -l | grep -q libfuse ; then

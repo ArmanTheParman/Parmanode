@@ -43,7 +43,7 @@ curl -LO https://github.com/ACINQ/phoenixd/releases/download/v0.4.2/phoenix-0.4.
 }
 
 function unzip_phoenix {
-which unzip >$dn || sudo apt-get update -y && sudo apt-get install unzip -y
+which unzip >$dn || sudo apt-get update -y && export APT_UPDATE="true" && sudo apt-get install unzip -y
 unzip -j *.zip
 }
 

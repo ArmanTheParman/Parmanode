@@ -15,7 +15,7 @@ else
         brew_check Nginx || return 1
         brew install nginx 
     elif [[ $OS == "Linux" ]] ; then
-        sudo apt-get update -y && sudo apt-get install nginx-full -y 
+        sudo apt-get update -y && export APT_UPDATE="true" && sudo apt-get install nginx-full -y 
         sudo systemctl restart nginx
     fi
 

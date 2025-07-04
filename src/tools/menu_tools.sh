@@ -66,7 +66,7 @@ return 0
 
     uc|UC|update|UPDATE|Update)
     if [[ $OS == "Linux" ]] ; then 
-        sudo apt-get update -y && sudo apt-get upgrade -y 
+        sudo apt-get update -y && export APT_UPDATE="true" && sudo apt-get upgrade -y 
         sudo apt-get --fix-broken install -y
         enter_continue
         success "Your computer" "being updated"

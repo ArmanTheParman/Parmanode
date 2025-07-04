@@ -44,7 +44,7 @@ announce "${green}Will install Core Lightning dependencies and setup
     virtual environment...$orange"
 
 
-sudo apt-get update -y
+sudo apt-get update -y && export APT_UPDATE="true"
 sudo apt-get install -y \
   jq autoconf automake build-essential git libtool libsqlite3-dev libffi-dev \
   python3 python3-pip net-tools zlib1g-dev libsodium-dev gettext \

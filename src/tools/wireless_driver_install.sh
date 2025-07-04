@@ -20,7 +20,7 @@ esac
 done
 
 
-sudo apt-get update -y
+sudo apt-get update -y && export APT_UPDATE="true"
 sudo apt-get upgrade -y
 
 if [[ $computer_type == Pi ]] ; then

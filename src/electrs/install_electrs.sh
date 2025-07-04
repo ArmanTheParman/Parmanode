@@ -21,7 +21,7 @@ sned_sats
 fi
 
 if [[ $OS == "Linux" ]] && ! which socat >$dn 2>&1 ; then 
-    sudo apt-get update -y 
+    sudo apt-get update -y && export APT_UPDATE="true"
     sudo apt install socat -y 
 elif [[ $OS == Mac ]] && ! which socat >$dn 2>&1 ; then 
     brew_check || return 1 

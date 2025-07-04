@@ -3,7 +3,7 @@ function build_dependencies_electrs {
 if [[ $OS == Linux ]] ; then
 debug "in build dependencies, if linux"
 please_wait
-sudo apt-get update -y >$dn 2>&1
+sudo apt-get update -y >$dn 2>&1 && export APT_UPDATE="true"
 sudo apt-get --fix-broken install -y 2>&1
 if ! which jq >$dn ; then sudo apt-get install -y jq ; fi
 if ! which clang >$dn ; then sudo apt-get install -y clang ; fi

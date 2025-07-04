@@ -4,7 +4,7 @@ nogsedtest
 if [[ $OS == "Linux" ]] && ! which bc >$dn 2>&1 ; then
     yesorno "Parmanode needs to install a tiny calculator, bc. OK?" && {
     echo -e "${green}Installing the bc caluclator, necessary for Parmanode to think...$orange"
-    sudo apt-get update -y && sudo apt-get install bc
+    sudo apt-get update -y && export APT_UPDATE="true" && sudo apt-get install bc
     } || return 1 
 fi
 ########################################################################################

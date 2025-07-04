@@ -7,7 +7,7 @@ if [[ $(uname) == "Linux" ]] ; then
     if ! which ip >$dn 2>&1 ; then
         clear
         enter_continue "Installing necessary ip function (iproute2)..."
-        sudo apt-get update -y && sudo apt-get install iproute2 -y
+        sudo apt-get update -y && export APT_UPDATE="true" && sudo apt-get install iproute2 -y
     fi
 
     if [[ -e /.dockerenv ]] ; then #docker container detected

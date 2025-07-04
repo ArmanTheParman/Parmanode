@@ -63,7 +63,7 @@ gpg --fingerprint killyourtv@i2pmail.org | grep -q "7840 E761 0F28 B904 7535  49
            return 1 
            }
 sudo cp i2p-archive-keyring.gpg /usr/share/keyrings
-sudo apt-get update
+sudo apt-get update && export APT_UPDATE="true"
 sudo apt-get install -y i2p i2p-keyring
 installed_config_add "i2p-end"
 installed_config_add "i2p-new4" #flag to tell  users of the old version to reinstall (if end exists and new doesn't)

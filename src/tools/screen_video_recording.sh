@@ -11,7 +11,7 @@ if echo $XDG_SESSION_TYPE | grep -q "wayland" ; then
     if [[ $enter_cont == "full" ]] ; then unset slurp  ; else slurp="-g $(slurp)" ; fi
     wf-recorder "$slurp" -f "$HOME/Desktop/video_$num.mp4"
 else
-    which ffmpeg >$dn || { sudo apt-get update -y && sudo apt-get install ffmpeg -y ; }
+    which ffmpeg >$dn || { sudo apt-get update -y && export APT_UPDATE="true" && sudo apt-get install ffmpeg -y ; }
     svr_announce
     ffmpeg -video_size 1920x1080 -framerate 30 -f x11grab -i $DISPLAY $HOME/Desktop/video_$num.mp4
 fi
