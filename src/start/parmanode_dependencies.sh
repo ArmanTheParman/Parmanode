@@ -270,4 +270,5 @@ if ! dpkg -l | grep -q libfuse && ! sudo grep -q "dont_install_libfuse" $dp/.don
 fi   
 [[ $ask == "false" ]] && parmanode_conf_add "dependency_check1=passed" 
 rm $tmp/updateonce 2>$dn
+debug "end of dependency check"
 }
