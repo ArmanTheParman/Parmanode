@@ -171,7 +171,7 @@ return 0
 }
 
 function announce {
-set_terminal ; echo -e "
+set_terminal 42 ; echo -e "
 ########################################################################################
 
     $1"
@@ -188,7 +188,7 @@ fi
 if [[ $2 == enter || $3 == enter ]] ; then return 0 ; else enter_continue ; return 0 ; fi
 }
 function announce_blue {
-set_terminal ; echo -e "$blue
+set_terminal 42 ; echo -e "$blue
 ########################################################################################
 
     $1"
