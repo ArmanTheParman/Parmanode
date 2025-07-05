@@ -22,6 +22,11 @@ clear
 tmux
 invalid_flag=set
 ;;
+premium)
+clear
+menu_premium
+invalid_flag=set
+;;
 
 debugon)
 export debug=1
