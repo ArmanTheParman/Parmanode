@@ -14,6 +14,9 @@ function source_premium {
     [[ -e $dp/.parmascale_enabled ]] && [[ -e $pp/parmascale ]] && for file in $pp/parmascale/src/*.sh ; do
 	    source $file
 	done
+    [[ -e $dp/.parmacloud_enabled ]] && [[ -e $pp/parmacloud ]] && for file in $pp/parmacloud/src/*.sh ; do
+	    source $file
+	done
     [[ -e $dp/.parmasync_enabled ]] && [[ -e $pp/parmasync ]] && for file in $pp/parmasync/src/*.sh ; do
 	    source $file
 	done
