@@ -31,6 +31,7 @@ announce_blue "ParmaSync/ParmaTwin software is available for PARMADRIVE machines
     installed_conf_add "parmatwin-start"
     source_premium
     install_parmatwin
+    debug after install parmatwin
     return 0
     else
     cd $pp/parmatwin && please_wait && git pull >$dn 2>&1
