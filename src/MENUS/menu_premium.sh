@@ -48,48 +48,60 @@ case $choice in
 q|Q) exit ;; p|P) menu_add ;; m|M) back2main ;;
 sync)
 get_parmasync
+debug after install
 ;;
 twin)
 get_parmatwin
+debug after install
 ;;
 scale)
 get_parmascale
+debug after install
 ;;
 
 pnas)
 get_parmanas
+debug after install
 ;;
 
 cloud)
 get_parmacloud
+debug after install
 ;;
 
 pm)
 get_parminer
+debug after install
 ;;
 
 web)
 get_parmaweb
+debug after install
 ;;
 
 pr)
 get_parmaraid
+debug after install
 ;;
 
 dt)
 get_datum
+debug after install
 ;;
 
 ud)
 get_uddns
+debug after install
 ;;
 
 psql)
 get_parmasql
+debug after install
 ;;
 
 plex)
 get_parmanpremium plex
+debug after install
 ;;
 *)
     invalid
