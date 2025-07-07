@@ -32,5 +32,5 @@ $(cat ~/.ssh/extra_keys/parmanas-key.pub)$blue\n" ; return 1 ; }
     fi
 
     source_premium
-    install_parmanas
+    install_parmanas || return 1
 }

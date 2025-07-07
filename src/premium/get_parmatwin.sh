@@ -30,7 +30,7 @@ announce_blue "ParmaSync/ParmaTwin software is available for PARMADRIVE machines
     \r    Please contact Parman to enable ParmaTwin on your machine.\n$orange" ; return 1 ; }
     installed_conf_add "parmatwin-start"
     source_premium
-    install_parmatwin
+    install_parmatwin || return 1
     debug after install parmatwin
     return 0
     else

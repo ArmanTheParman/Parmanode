@@ -28,7 +28,7 @@ announce_blue "ParmaSync/ParmaTwin software is available for PARMADRIVE machines
     git clone git@github-parmasync:armantheparman/parmasync.git $pp/parmasync || { enter_continue "\n$blue    Something went wrong. Contact Parman.\n
     \r    Please contact Parman to enable ParmaSync on your machine.\n$orange" ; return 1 ; }
     source_premium
-    install_parmasync 
+    install_parmasync || return 1
     return 0
     else
     cd $pp/parmasync && please_wait && git pull >$dn 2>&1

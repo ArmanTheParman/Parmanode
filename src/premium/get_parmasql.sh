@@ -36,5 +36,5 @@ return 1
     fi
 
     source_premium
-    install_parmasql
+    install_parmasql || return 1
 }
