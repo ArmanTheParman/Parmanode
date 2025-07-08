@@ -1,3 +1,5 @@
+Version 3.62.8
+     -Dependency check bug, Debian install programs detection needed 'sudo' for many programs.
 Version 3.62.7
      -parmanode dependancy check streamlined
      -small change to parminer startup
