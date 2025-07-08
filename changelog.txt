@@ -1,6 +1,7 @@
 Version 3.62.7
      -parmanode dependancy check streamlined
      -small change to parminer startup
+     -BTCPay 2.1.6 option
 Version 3.62.6
      -Fulcrum Startup bug fixed
      -Linux backporsts and non-free packages option in tools2 menu
