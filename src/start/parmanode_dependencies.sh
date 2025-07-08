@@ -15,7 +15,7 @@ export ask=false #if no block switches this on to true, then next time, the enti
     "
         case $enter_cont in
             y) [[ $APT_UPDATE == "true" ]] || { sudo apt-get update -y && export APT_UPDATE="true" ; }
-                sudo apt install jq -y
+                sudo apt-get install jq -y
                 ;;
             nooo) echo "dont_install_jq" | tee $dp/.dont_install >$dn 2>&1 ;;
             esac
@@ -34,7 +34,7 @@ export ask=false #if no block switches this on to true, then next time, the enti
     "
         case $enter_cont in
             y) [[ $APT_UPDATE == "true" ]] || { sudo apt-get update -y && export APT_UPDATE="true" ; }
-                sudo apt install vim -y
+                sudo apt-get install vim -y
                 ;;
             nooo) echo "dont_install_vim" | tee $dp/.dont_install >$dn 2>&1 ;;
             *) continue ;;
@@ -53,7 +53,7 @@ export ask=false #if no block switches this on to true, then next time, the enti
     "
         case $enter_cont in
             y) [[ $APT_UPDATE == "true" ]] || { sudo apt-get update -y && export APT_UPDATE="true" ; }
-                sudo apt install unzip -y
+                sudo apt-get install unzip -y
                 ;;
             nooo) echo "dont_install_unzip" | tee $dp/.dont_install >$dn 2>&1  ;;
             esac
@@ -72,7 +72,7 @@ export ask=false #if no block switches this on to true, then next time, the enti
     "
         case $enter_cont in
             y) [[ $APT_UPDATE == "true" ]] || { sudo apt-get update -y && export APT_UPDATE="true" ; }
-                sudo apt install tmux -y
+                sudo apt-get install tmux -y
                 ;;
             nooo) echo "dont_install_tmux" | tee $dp/.dont_install >$dn 2>&1 ;;
             esac
@@ -91,7 +91,7 @@ export ask=false #if no block switches this on to true, then next time, the enti
     "
         case $enter_cont in
             y) [[ $APT_UPDATE == "true" ]] || { sudo apt-get update -y && export APT_UPDATE="true" ; }
-                sudo apt install ssh -y
+                sudo apt-get install ssh -y
                 ;;
             nooo) echo "dont_install_ssh" | tee $dp/.dont_install >$dn 2>&1 ;;
             esac
@@ -109,7 +109,7 @@ export ask=false #if no block switches this on to true, then next time, the enti
     "
         case $enter_cont in
             y) [[ $APT_UPDATE == "true" ]] || { sudo apt-get update -y && export APT_UPDATE="true" ; }
-                sudo apt install tor -y
+                sudo apt-get install tor -y
                 ;;
             nooo) echo "dont_install_tor" | tee $dp/.dont_install >$dn 2>&1 ;;
             esac
@@ -127,7 +127,7 @@ export ask=false #if no block switches this on to true, then next time, the enti
     "
         case $enter_cont in
             y) [[ $APT_UPDATE == "true" ]] || { sudo apt-get update -y && export APT_UPDATE="true" ; }
-                sudo apt install ufw -y
+                sudo apt-get install ufw -y
                 ;;
             nooo) echo "dont_install_ufw" | tee $dp/.dont_install >$dn 2>&1 ;;
             esac
@@ -145,7 +145,7 @@ export ask=false #if no block switches this on to true, then next time, the enti
     "
         case $enter_cont in
             y) [[ $APT_UPDATE == "true" ]] || { sudo apt-get update -y && export APT_UPDATE="true" ; }
-                sudo apt install mdadm -y
+                sudo apt-get install mdadm -y
                 ;;
             nooo) echo "dont_install_mdadm" | tee $dp/.dont_install >$dn 2>&1 ;;
             esac
@@ -163,7 +163,7 @@ export ask=false #if no block switches this on to true, then next time, the enti
     "
         case $enter_cont in
             y) [[ $APT_UPDATE == "true" ]] || { sudo apt-get update -y && export APT_UPDATE="true" ; }
-                sudo apt install gparted -y
+                sudo apt-get install gparted -y
                 ;;
             nooo) echo "dont_install_gparted" | tee $dp/.dont_install >$dn 2>&1 ;;
             esac
@@ -182,7 +182,7 @@ export ask=false #if no block switches this on to true, then next time, the enti
     "
     case $enter_cont in
             y) [[ $APT_UPDATE == "true" ]] || { sudo apt-get update -y && export APT_UPDATE="true" ; }
-                sudo apt install netcat-traditional -y
+                sudo apt-get install netcat-traditional -y
                 ;;
             nooo) echo "dont_install_netcat" | tee $dp/.dont_install >$dn 2>&1 ;;
        
@@ -202,7 +202,7 @@ fi
     "
     case $enter_cont in
             y) [[ $APT_UPDATE == "true" ]] || { sudo apt-get update -y && export APT_UPDATE="true" ; }
-                sudo apt install net-tools -y
+                sudo apt-get install net-tools -y
                 ;;
             nooo) echo "dont_install_net-tools" | tee $dp/.dont_install >$dn 2>&1 ;;
     
@@ -221,7 +221,7 @@ fi
     "
     case $enter_cont in
             y) [[ $APT_UPDATE == "true" ]] || { sudo apt-get update -y && export APT_UPDATE="true" ; }
-                sudo apt install libnotify-bin -y
+                sudo apt-get install libnotify-bin -y
                 ;;
             nooo) echo "dont_install_notify-send" | tee $dp/.dont_install >$dn 2>&1 ;;
     
@@ -241,7 +241,7 @@ fi
     "
     case $enter_cont in
             y) [[ $APT_UPDATE == "true" ]] || { sudo apt-get update -y && export APT_UPDATE="true" ; }
-                sudo apt install e2fsprogs -y
+                sudo apt-get install e2fsprogs -y
                 ;;
             nooo) echo "dont_install_tune2fs" | tee $dp/.dont_install >$dn 2>&1 ;;
  
