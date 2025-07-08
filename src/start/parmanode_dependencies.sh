@@ -132,7 +132,7 @@ export ask=false #if no block switches this on to true, then next time, the enti
             nooo) echo "dont_install_ufw" | tee $dp/.dont_install >$dn 2>&1 ;;
             esac
     }    
-    which mdadm >$dn || sudo grep -q "dont_install_mdadm" $dp/.dont_install || {
+    dkpg -l | grep -q mdadm >$dn 2>&1 || sudo grep -q "dont_install_mdadm" $dp/.dont_install || {
     export ask=true
 
         announce "Parmanode wants to install mdadm to continue. 
