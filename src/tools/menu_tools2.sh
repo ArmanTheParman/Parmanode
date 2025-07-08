@@ -77,7 +77,7 @@ unset NODAEMON
 lnf)
 clear
 echo 'deb http://deb.debian.org/debian bookworm-backports main' | sudo tee -a /etc/apt/sources.list
-sudo apt-get update -y && export APT_UPDATE="true"
+apt_get_upate
 sudo apt install -t bookworm-backports linux-image-amd64 linux-headers-amd64 -y
 sudo apt-get install firmware-iwlwifi firmware-linux firmware-linux-nonfree -y
 enter_continue "done"

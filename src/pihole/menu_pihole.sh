@@ -108,7 +108,7 @@ q|Q) exit 0 ;; n|N|NO|no|p|P) return 1 ;; m|M) back2main ;; y|Y|YES|Yes|yes) bre
 done
 
 if ! which unbound >$dn 2>&1 ; then
-sudo apt-get update -y && export APT_UPDATE="true"
+apt_get_update
 sudo apt-get install unbound -y
 else
 sudo systemctl enable unbound

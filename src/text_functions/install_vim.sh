@@ -1,7 +1,7 @@
 function install_vim {
 
 if [[ $OS == Linux ]] ; then
-sudo apt-get update -y && export APT_UPDATE="true"
+apt_get_upate
 sudo apt-get install vim -y
 else
 brew_check || return 1
