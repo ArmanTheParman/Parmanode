@@ -197,15 +197,15 @@ IdentitiesOnly yes" | sudo tee -a ~/.ssh/config >$dn
 debug end make_parmanpremium_ssh_keys
 }
 function make_parmasyncborg_ssh_keys {
-sudo test -f ~/.ssh/parmasyncborg-key && return 0
+sudo test -f ~/.ssh/extra_keys/parmasyncborg-key && return 0
 ssh-keygen -t rsa -b 4096 -f ~/.ssh/extra_keys/parmasyncborg-key -N "" -C "$USER parmasyncborg"
 }
 function make_parmasyncapi_ssh_keys {
-sudo test -f ~/.ssh/parmasyncapi-key && return 0
+sudo test -f ~/.ssh/extra_keys/parmasyncapi-key && return 0
 ssh-keygen -t rsa -b 4096 -f ~/.ssh/extra_keys/parmasyncapi-key -N "" -C "$USER parmasyncapi"
 }
 function make_parmasyncsshfs_ssh_keys {
-sudo test -f ~/.ssh/parmasyncsshfs-key && return 0
+sudo test -f ~/.ssh/extra_keys/parmasyncsshfs-key && return 0
 ssh-keygen -t rsa -b 4096 -f ~/.ssh/extra_keys/parmasyncsshfs-key -N "" -C "$USER parmasyncsshfs"
 }
 
