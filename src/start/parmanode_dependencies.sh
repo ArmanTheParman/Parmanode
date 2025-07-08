@@ -228,7 +228,7 @@ fi
     esac
 fi 
 
-    which tune2fs >$dn || if ! sudo grep -q "dont_install_tune2fs" $dp/.dont_install ; then
+    sudo which tune2fs >$dn || if ! sudo grep -q "dont_install_tune2fs" $dp/.dont_install ; then
     export ask=true
 
     announce "Parmanode wants to install tune2fs/e2fprogs to continue.
