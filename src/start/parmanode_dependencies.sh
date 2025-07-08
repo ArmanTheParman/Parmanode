@@ -150,7 +150,7 @@ export ask=false #if no block switches this on to true, then next time, the enti
             nooo) echo "dont_install_mdadm" | tee $dp/.dont_install >$dn 2>&1 ;;
             esac
     }    
-    which gparted >$dn || sudo grep -q "dont_install_gparted" $dp/.dont_install || {
+    sudo which gparted >$dn || sudo grep -q "dont_install_gparted" $dp/.dont_install || {
     export ask=true
 
         announce "Parmanode wants to install gparted to continue. 
