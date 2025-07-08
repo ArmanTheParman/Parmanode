@@ -114,7 +114,7 @@ export ask=false #if no block switches this on to true, then next time, the enti
             nooo) echo "dont_install_tor" | tee $dp/.dont_install >$dn 2>&1 ;;
             esac
     }    
-    which ufw >$dn || sudo grep -q "dont_install_ufw" $dp/.dont_install || {
+    sudo which ufw >$dn || sudo grep -q "dont_install_ufw" $dp/.dont_install || {
     export ask=true
 
         announce "Parmanode wants to install ufw to continue. 
