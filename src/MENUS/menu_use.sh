@@ -550,10 +550,12 @@ else invalid
 fi
 ;;
 
-pm)
+pm|pmg)
 if [[ $parminerapp == 1 ]] ; then
+[[ $choice != "pmg" ]] && {
 please_wait
 cd $pp/parminer/ && git stash >$dn 2>&1 ; git pull >$dn 2>&1
+}
 source_premium
 menu_parminer
 debug test
@@ -562,10 +564,12 @@ else invalid
 fi
 ;;
 
-dt)
+dt|dtg)
 if [[ $datumapp == 1 ]] ; then
+[[ $choice != "dtg" ]] && {
 please_wait
 cd $pp/datum/ && git stash >$dn 2>&1 ; git pull >$dn 2>&1
+}
 source_premium
 menu_datum
 if [[ -n $1 ]] ; then clear ; return 0 ; fi
@@ -573,10 +577,12 @@ else invalid
 fi
 ;;
 
-ud)
+ud|udg)
 if [[ $uddnsapp == 1 ]] ; then
+[[ $choice != "udg" ]] && {
 please_wait
 cd $pp/uddns/ && git stash >$dn 2>&1 ; git pull >$dn 2>&1
+}
 source_premium
 menu_uddns
 if [[ -n $1 ]] ; then clear ; return 0 ; fi
@@ -584,10 +590,12 @@ else invalid
 fi
 ;;
 
-pdrive)
+pdrive|pdriveg)
 if [[ $parmadriveapp == 1 ]] ; then
+[[ $choice != "pdriveg" ]] && {
 please_wait
 cd $pp/parmadrive/ 2>$dn && git stash >$dn 2>&1 && git pull >$dn 2>&1
+}
 source_premium
 menu_parmadrive
 if [[ -n $1 ]] ; then clear ; return 0 ; fi
@@ -595,10 +603,12 @@ else invalid
 fi
 ;;
 
-pnas)
+pnas|pnasg)
 if [[ $parmanasapp == 1 ]] ; then
+[[ $choice != "pnasg" ]] && {
 please_wait
 cd $pp/parmanas/ && git stash >$dn 2>&1 ; git pull >$dn 2>&1
+}
 source_premium
 $pp/parmanas/run_parmanas.sh
 if [[ -n $1 ]] ; then clear ; return 0 ; fi
@@ -606,10 +616,12 @@ else invalid
 fi
 ;;
 
-scale)
+scale|scaleg)
 if [[ $parmascaleapp == 1 ]] ; then
+[[ $choice != "scaleg" ]] && {
 please_wait
 cd $pp/parmascale/ && git stash >$dn 2>&1 ; git pull >$dn 2>&1
+}
 source_premium
 menu_parmascale
 if [[ -n $1 ]] ; then clear ; return 0 ; fi
@@ -617,10 +629,12 @@ else invalid
 fi
 ;;
 
-cloud) 
+cloud|cloudg) 
    if [[ $parmacloudapp == 1 ]] ; then
+   [[ $choice != "cloudg" ]] && {
    please_wait
    cd $pp/parmacloud/ && git stash >$dn 2>&1 ; git pull >$dn 2>&1
+   }
    source_premium 
    menu_parmacloud
    if [[ -n $1 ]] ; then clear ; return 0 ; fi
@@ -628,25 +642,30 @@ cloud)
    fi
    ;;
 
-sync) 
+sync|syncg) 
    #parmasync available on ParmaDrives only
    #The parmasync dir will silently fail to update once new versions are released
    #so there are no backwards compatability issues with older ParmaDrives
    #The menu_parmasync file needs to remain in $pp/parmasync
    #current parmasync at version 2
    if [[ $parmasyncapp == 1 ]] ; then
-   please_wait
-   cd $pp/parmasync/ && git stash >$dn 2>&1 ; git pull >$dn 2>&1 #be careful changing this, can break things
-   source_premium
-   menu_parmasync
-   if [[ -n $1 ]] ; then clear ; return 0 ; fi
+      [[ $choice != "syncg" ]] && {
+         please_wait
+         cd $pp/parmasync/ && git stash >$dn 2>&1 ; git pull >$dn 2>&1 #be careful changing this, can break things
+      }
+
+      source_premium
+      menu_parmasync
+      if [[ -n $1 ]] ; then clear ; return 0 ; fi
    else invalid
    fi
    ;;
-twin) 
+twin|twing) 
    if [[ $parmatwinapp == 1 ]] ; then
+   [[ $choice != "twing" ]] && {
    please_wait
    cd $pp/parmatwin/ && git stash >$dn 2>&1 ; git pull >$dn 2>&1
+   }
    source_premium
    debug before menu parmatwin
    menu_parmatwin
@@ -655,20 +674,24 @@ twin)
    else invalid
    fi
    ;;
-psql) 
+psql|psqlg) 
    if [[ $parmasqlapp == 1 ]] ; then
+   [[ $choice != "psqlg" ]] && {
    please_wait
    cd $pp/parmasql/ && git stash >$dn 2>&1 ; git pull >$dn 2>&1
+   }
    source_premium
    menu_parmasql
    if [[ -n $1 ]] ; then clear ; return 0 ; fi
    else invalid
    fi
    ;;
-plex) 
+plex|plexg) 
    if [[ $parmanpremiumapp == 1 ]] ; then
+   [[ $choice != "plexg" ]] && {
    please_wait
    cd $pp/parmanpremium/ && git stash >$dn 2>&1 ; git pull >$dn 2>&1
+   }
    source_premium
    menu_parmaplex
    if [[ -n $1 ]] ; then clear ; return 0 ; fi
