@@ -619,6 +619,9 @@ fi
 
 cloud) 
    if [[ $parmacloudapp == 1 ]] ; then
+   please_wait
+   cd $pp/parmacloud/ && git stash >$dn 2>&1 ; git pull >$dn 2>&1
+   source_premium 
    menu_parmacloud
    if [[ -n $1 ]] ; then clear ; return 0 ; fi
    else invalid
