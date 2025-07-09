@@ -469,3 +469,19 @@ m|M) back2main ;;
 esac
 return 0
 }
+
+function jump_qmp {
+jump_qpm $1 || return 1
+}
+function jump_pqm {
+jump_qpm $1 || return 1
+}
+function jump_pmq {
+jump_qpm $1 || return 1
+}
+function jump_mpq {
+jump_qpm $1 || return 1
+}
+function jump_mqp {
+jump_qpm $1 || return 1
+}
