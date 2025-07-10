@@ -3,6 +3,6 @@ echo -e "    ${blue}Something went wrong
 	
 $1	
 "
-swwflag="true"
+export swwflag="true"
 enter_continue
 }
