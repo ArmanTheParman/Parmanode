@@ -5,4 +5,5 @@ $1
 "
 export swwflag="true"
 enter_continue
+case $enter_cont in tmux) tmux ;; esac
 }
