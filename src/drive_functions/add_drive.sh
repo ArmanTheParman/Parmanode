@@ -112,15 +112,12 @@ if [[ -L /media/$USER/parmanode/.bitcoin ]] ; then
 fi
 debug "chown parmanode directories"
 
-set_terminal ; echo -e "
-########################################################################################
-
-    If you saw no errors, your drive should now be$green mounted$orange.
-
-########################################################################################
-"
-enter_continue
-jump $enter_cont
+if mountpoint $parmanode_drive >$dn 2>&1 ; then
+success "Drive mounted"
 return 0
+else
+sww ; return 1
+fi
+
 }
 
