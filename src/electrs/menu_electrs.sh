@@ -119,7 +119,7 @@ $green
       c)$orange         How to connect your Electrum wallet to electrs $cyan	    
       cert)$orange      See electrs SSL certificate$cyan
       log)$orange       Inspect electrs logs $cyan
-      ec)$orange        Inspect and edit config file (ecv for vim) $cyan
+      conf)$orange      Inspect and edit config file (ecv for vim) $cyan
       dc)$orange        electrs database corrupted? -- Use this to start fresh."
 if [[ $electrsis == "nondocker" ]] ; then echo -e "$cyan
       tor)$orange       Enable/Disable Tor connections to electrs -- Status : $E_tor"  ; else echo -e "$cyan      
@@ -250,7 +250,7 @@ fi
 TMUX=$TMUX2
 ;;
 
-ec|EC|Ec|eC)
+conf)
 echo -e "
 ########################################################################################
     
@@ -265,7 +265,7 @@ enter_continue ; jump $enter_cont
 nano $HOME/.electrs/config.toml
 ;;
 
-ecv)
+confv|vconf)
 vim_warning ; vim $HOME/.electrs/config.toml
 ;;
 
