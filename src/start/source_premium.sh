@@ -35,7 +35,7 @@ function source_premium {
 #custom
     if ! test -f $dp/donotsourceparmadrive ; then
 		[[ -e $pp/parmadrive ]] && for file in $pp/parmadrive/parmadrive/src/*.sh ; do
-			source $file
+			source $file >$dn 2>&1
 		done
 	fi
 } 
