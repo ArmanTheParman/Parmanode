@@ -45,7 +45,7 @@ if [[ -n $PARMADRIVE2DEVUUID ]] ; then #if there is a config entry, then it's a 
     encryption_menu="Encryption2:$parmadrive2_lockstatus $blue" #stays even if there is RAID. Other 2-drive variables will be unset with RAID present.
 
     #test 2nd mountpoint for 2 drive system, but later unset if a raid.
-    if sudo mountpoint /srv/parmadrive2 >/dev/null 2>&1 ; then 
+    if sudo mountpoint -q /srv/parmadrive2 >/dev/null 2>&1 ; then 
         mount2="${green}MOUNTED" 
         mounted2="mounted" 
     else 
@@ -56,7 +56,7 @@ if [[ -n $PARMADRIVE2DEVUUID ]] ; then #if there is a config entry, then it's a 
     mountmenu="\nMountpoint:$cyan /srv/parmadrive2 $mount2 $blue" #unsets if raid exists, code later.
 fi
 
-if sudo mountpoint /srv/parmadrive >/dev/null 2>&1 ; then
+if sudo mountpoint -q /srv/parmadrive >/dev/null 2>&1 ; then
     mount="${green}MOUNTED" 
     mounted="mounted" 
 else 
@@ -82,7 +82,7 @@ else
 unset raidmenu raid raidstatus
 fi
 
-if mountpoint /srv/proton_drive ; then proton="Proton Drive:$green MOUNTED$yellow   /srv/proton_drive"
+if sudo mountpoint -q /srv/proton_drive ; then proton="Proton Drive:$green MOUNTED$yellow   /srv/proton_drive"
 else
 proton="Proton Drive:$red NOT MOUNTED$blue"
 fi
@@ -307,7 +307,12 @@ $blue
 mp) 
 sudo systemctl start rclone-proton.service || { sww && continue ; } 
 sleep 3
-success_blue "Proton Mounted"
+if sudo mountpoint -q /srv/proton_drive ; then
+    success_blue "Proton Mounted"
+else
+    sww "Type$red force$blue to try a forceful unmount, then try mounting again."
+    case $enter_cont in force) fuserumount -u /srv/proton_drive ; sleep 1 ; esac
+fi
 ;;
 
 up)
