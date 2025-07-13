@@ -46,10 +46,10 @@ if [[ -n $PARMADRIVE2DEVUUID ]] ; then #if there is a config entry, then it's a 
 
     #test 2nd mountpoint for 2 drive system, but later unset if a raid.
     if sudo mountpoint -q /srv/parmadrive2 >/dev/null 2>&1 ; then 
-        mount2="${green}MOUNTED" 
+        mount2="${green}\033[50G MOUNTED" 
         mounted2="mounted" 
     else 
-        mount2="${red}NOT MOUNTED" 
+        mount2="${red}\033[50G NOT MOUNTED" 
         mounted2="not mounted"
     fi
 
@@ -57,10 +57,10 @@ if [[ -n $PARMADRIVE2DEVUUID ]] ; then #if there is a config entry, then it's a 
 fi
 
 if sudo mountpoint -q /srv/parmadrive >/dev/null 2>&1 ; then
-    mount="${green}MOUNTED" 
+    mount="${green}\033[50G MOUNTED" 
     mounted="mounted" 
 else 
-    mount="${red}NOT MOUNTED" 
+    mount="${red}\033[50G NOT MOUNTED" 
     mounted="not mounted"
 fi
 
@@ -82,9 +82,9 @@ else
 unset raidmenu raid raidstatus
 fi
 
-if mountpoint -q /srv/proton_drive ; then proton="Proton Drive:$green MOUNTED$yellow   /srv/proton_drive"
+if mountpoint -q /srv/proton_drive ; then proton="Proton Drive:$green \033[50G MOUNTED$yellow   /srv/proton_drive"
 else
-proton="Proton Drive:$red NOT MOUNTED$blue"
+proton="Proton Drive:$red \033[50G NOT MOUNTED$blue"
 fi
 
 #### delete later
