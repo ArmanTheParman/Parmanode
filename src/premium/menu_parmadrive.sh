@@ -198,7 +198,6 @@ mount|mm)
     continue
 }
 
-
 if yesorno_blue "Drive 1 or 2" "1" "ParmaDrive1" "2" "ParmaDrive2" ; then
     [[ $mounted == "mounted" ]] && announce_blue "Already mounted" && continue
     [[ $locked1 == "locked" ]] && announce_blue "Can't mount a locked drive" && continue
@@ -212,7 +211,8 @@ fi
 ;;
 
 unmount|um|umm)
-yesorno_blue "Be mindful that unmount won't work if Docker is running or if Bitcoin is running.
+if docker ps >$dn 2>&1 || bitcoin-cli --version ; then 
+    yesorno_blue "Be mindful that unmount won't work if Docker is running or if Bitcoin is running.
     Because normally their directories exist on the external hard drive. 
     You need to stop them first.
 
@@ -220,6 +220,7 @@ yesorno_blue "Be mindful that unmount won't work if Docker is running or if Bitc
     computer, and then detach the drive.
     
     Continue with unmount now?" || continue
+fi
 
 [[ -n $raidmenu ]] && { 
     [[ $(docker ps 2>$dn | wc -l) -gt 1 ]] && docker ps >$dn 2>&1 && { sww "Make sure that Docker is fully stopped before unmounting. yolo to ignore." ; case $enter_cont in yolo) true ;; *) continue ;; esac ; }
