@@ -82,7 +82,7 @@ else
 unset raidmenu raid raidstatus
 fi
 
-if mountpoint -q /srv/proton_drive ; then proton="Proton Drive:$green MOUNTED$yellow  \033[45G /srv/proton_drive"
+if mountpoint -q /srv/proton_drive ; then proton="Proton Drive:$green MOUNTED$yellow  \033[40G /srv/proton_drive"
 else
 proton="Proton Drive:$red NOT MOUNTED$blue"
 fi
@@ -102,7 +102,7 @@ echo -e "$blue
 
 
             Encryption:   $parmadrive1_lockstatus $blue$encryption_menu $raidmenu
-            Mountpoint:   $mount$yellow  \033[45G /srv/parmadrive $blue $mountmenu 
+            Mountpoint:   $mount$yellow  \033[40G /srv/parmadrive $blue $mountmenu 
             $proton  
 
 $raidmenuchoice
