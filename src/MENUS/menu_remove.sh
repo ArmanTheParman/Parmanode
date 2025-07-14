@@ -11,7 +11,7 @@ unset electrsmenu trezormenu ledgermenu bitboxmenu parmashellmenu bredockermenu 
 unset anydeskmenu piholemenu torrelaymenu electrskdmenu piappsmenu torbmenu 
 unset public_poolmenu electrumxmenu thunderhubmenu lnddockermenu nginxmenu nostrrelaymenu litdmenu
 unset parmacloudmenu parmanostrmenu btcrecovermenu joinmarketmenu greenmenu X11menu phoenixmenu vaultwardenmenu
-unset nymmenu i2pmenu parmadeskmenu parmasqlmenu
+unset nymmenu i2pmenu parmadeskmenu parmasqlmenu parmatwinmenu parmasyncmenu
 
 echo -e "
 ########################################################################################
