@@ -126,7 +126,7 @@ debug "1"
         fi
         
         echo -e "$red
-        sometimes waiting for bitcoin to laod up is needed.
+        Sometimes waiting for bitcoin to load up is needed.
         Trying again every 5 seconds...$orange
         (q to quit)
         "

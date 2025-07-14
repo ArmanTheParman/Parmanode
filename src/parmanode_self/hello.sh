@@ -9,7 +9,7 @@ function hello {
 #    Bill Gates like purposes.
 
 #The command is run in the background (using the & directive), for parallel 
-#    execution and speed. Don't want to slow down laod times.
+#    execution and speed. Don't want to slow down load times.
 
 #A specific single purpose onion address has been created as an identifier under 
 #    /var/lib/tor/parmanode-service using make_parmanode_tor_service function.
