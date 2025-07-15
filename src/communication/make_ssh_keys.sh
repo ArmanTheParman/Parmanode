@@ -199,14 +199,20 @@ debug end make_parmanpremium_ssh_keys
 function make_parmasyncborg_ssh_keys {
 sudo test -f ~/.ssh/extra_keys/parmasyncborg-key && return 0
 ssh-keygen -t rsa -b 4096 -f ~/.ssh/extra_keys/parmasyncborg-key -N "" -C "$USER parmasyncborg"
+sudo cp ~/.ssh/extra_keys/parmasyncborg-key* /root/.ssh/extra_keys/
+sudo chown root:root /root/.ssh/extra_keys/parmasyncborg-key*
 }
 function make_parmasyncapi_ssh_keys {
 sudo test -f ~/.ssh/extra_keys/parmasyncapi-key && return 0
 ssh-keygen -t rsa -b 4096 -f ~/.ssh/extra_keys/parmasyncapi-key -N "" -C "$USER parmasyncapi"
+sudo cp ~/.ssh/extra_keys/parmasyncapi-key* /root/.ssh/extra_keys/
+sudo chown root:root /root/.ssh/extra_keys/parmasyncapi-key*
 }
 function make_parmasyncsshfs_ssh_keys {
 sudo test -f ~/.ssh/extra_keys/parmasyncsshfs-key && return 0
 ssh-keygen -t rsa -b 4096 -f ~/.ssh/extra_keys/parmasyncsshfs-key -N "" -C "$USER parmasyncsshfs"
+sudo cp ~/.ssh/extra_keys/parmasyncsshfs-key* /root/.ssh/extra_keys/
+sudo chown root:root /root/.ssh/extra_keys/parmasyncsshfs-key*
 }
 
 function make_all_ssh_keys {
