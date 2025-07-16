@@ -59,63 +59,70 @@ choose xpmq ; read choice ; clear
 jump $choice ; jump_mpq || return 1
 unset table chain v n
 case $choice in
-l*)
+l*|s*|z*)
 #choose table
-   if [[ $choice =~ ^lf.* ]] ; then table="filter" ; fi
-   if [[ $choice =~ ^ln.* ]] ; then table="nat" ; fi
-   if [[ $choice =~ ^lm.* ]] ; then table="mangle" ; fi
-   if [[ $choice =~ ^lr.* ]] ; then table="raw" ; fi
-   if [[ $choice =~ ^ls.* ]] ; then table="security" ; fi
+   if [[ $choice =~ ^.f.* ]] ; then table="filter" ; fi
+   if [[ $choice =~ ^.n.* ]] ; then table="nat" ; fi
+   if [[ $choice =~ ^.m.* ]] ; then table="mangle" ; fi
+   if [[ $choice =~ ^.r.* ]] ; then table="raw" ; fi
+   if [[ $choice =~ ^.s.* ]] ; then table="security" ; fi
 #choose chain
-   if [[ $choice =~ ^l.a.* ]] ; then chain="" ; fi
-   if [[ $choice =~ ^l.i.* ]] ; then chain="INPUT" ; fi
-   if [[ $choice =~ ^l.o.* ]] ; then chain="OUTPUT" ; fi
-   if [[ $choice =~ ^l.f.* ]] ; then chain="FORWARD" ; fi
-   if [[ $choice =~ ^l.p.* ]] ; then chain="PREROUTING" ; fi
-   if [[ $choice =~ ^l.t.* ]] ; then chain="POSTROUTING" ; fi
+   if [[ $choice =~ ^..a.* ]] ; then chain="" ; fi
+   if [[ $choice =~ ^..i.* ]] ; then chain="INPUT" ; fi
+   if [[ $choice =~ ^..o.* ]] ; then chain="OUTPUT" ; fi
+   if [[ $choice =~ ^..f.* ]] ; then chain="FORWARD" ; fi
+   if [[ $choice =~ ^..p.* ]] ; then chain="PREROUTING" ; fi
+   if [[ $choice =~ ^..t.* ]] ; then chain="POSTROUTING" ; fi
 #invalid...
-   if [[ $choice =~ ^lf(t|p) ]] ; then invalid ; continue ; fi
-   if [[ $choice =~ ^lnf ]] ; then invalid ; continue ; fi
-   if [[ $choice =~ ^lmp ]] ; then invalid ; continue ; fi
-   if [[ $choice =~ ^lr(t|i|f) ]] ; then invalid ; continue ; fi
-   if [[ $choice =~ ^ls(t|p) ]] ; then invalid ; continue ; fi
+   if [[ $choice =~ ^.f(t|p) ]] ; then invalid ; continue ; fi
+   if [[ $choice =~ ^.nf ]] ; then invalid ; continue ; fi
+   if [[ $choice =~ ^.r(t|i|f) ]] ; then invalid ; continue ; fi
+   if [[ $choice =~ ^.s(t|p) ]] ; then invalid ; continue ; fi
 #verbose and name resolution disabling
    if [[ $choice =~ .*,v.* ]] ; then v="-v" ; fi
    if [[ $choice =~ .*,n.* ]] ; then n="-n" ; fi
 
-   sudo iptables -t $table -L $chain $v $n | less
+case $choice in 
+   l*)
+   sudo iptables -t $table -L $chain $v $n | less ;;
+   s*)
+   sudo iptables -t $table -S $chain | less ;;
+   z*)
+   sudo iptables -t $table -Z $chain | less ;;
+   esac
 ;;
-
-lo)
-sudo iptables -t filter -L OUTPUT -v
-enter_continue
-;;
-li)
-sudo iptables -t filter -L INPUT -v 
-enter_continue
-;;
-#Alternatives
-#  sudo iptables-save
-#  -n disables name resolution
 
 t)
 [[ -z $toggle ]] && export toggle=on && continue
 unset toggle
 ;;
-syntax)
-sudo iptables -S
-enter_continue 
-;;
-fw)
-sudo iptables -t filter -L FORWARD -v --line-numbers 
-enter_continue
-;;
 
-z)
-sudo iptables -Z
+
+z*)
+  if [[ $choice =~ zf ]] ; then table="filter" ; fi
+  if [[ $choice =~ zn ]] ; then table="nat" ; fi
+  if [[ $choice =~ zm ]] ; then table="mangle" ; fi
+  if [[ $choice =~ zr ]] ; then table="raw" ; fi
+  if [[ $choice =~ zs ]] ; then table="security" ; fi
+#choose chain
+   if [[ $choice =~ ^z.a.* ]] ; then chain="" ; fi
+   if [[ $choice =~ ^z.i.* ]] ; then chain="INPUT" ; fi
+   if [[ $choice =~ ^z.o.* ]] ; then chain="OUTPUT" ; fi
+   if [[ $choice =~ ^z.f.* ]] ; then chain="FORWARD" ; fi
+   if [[ $choice =~ ^z.p.* ]] ; then chain="PREROUTING" ; fi
+   if [[ $choice =~ ^z.t.* ]] ; then chain="POSTROUTING" ; fi
+#invalid...
+   if [[ $choice =~ ^zf(t|p) ]] ; then invalid ; continue ; fi
+   if [[ $choice =~ ^znf ]] ; then invalid ; continue ; fi
+   if [[ $choice =~ ^zr(t|i|f) ]] ; then invalid ; continue ; fi
+   if [[ $choice =~ ^zs(t|p) ]] ; then invalid ; continue ; fi
+
+
 enter_continue
 ;;
 esac
 done
 }
 
+#Alternatives
+#  sudo iptables-save
