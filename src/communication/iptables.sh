@@ -56,7 +56,8 @@ choose xpmq ; read choice ; clear
 jump $choice ; jump_mpq || return 1
 case $choice in
 t)
-export toggle=on
+[[ -z $toggle ]] && export toggle=on && continue
+unset toggle
 ;;
 syntax)
 sudo iptables -S
