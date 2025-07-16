@@ -96,29 +96,8 @@ t)
 [[ -z $toggle ]] && export toggle=on && continue
 unset toggle
 ;;
-
-
-z*)
-  if [[ $choice =~ zf ]] ; then table="filter" ; fi
-  if [[ $choice =~ zn ]] ; then table="nat" ; fi
-  if [[ $choice =~ zm ]] ; then table="mangle" ; fi
-  if [[ $choice =~ zr ]] ; then table="raw" ; fi
-  if [[ $choice =~ zs ]] ; then table="security" ; fi
-#choose chain
-   if [[ $choice =~ ^z.a.* ]] ; then chain="" ; fi
-   if [[ $choice =~ ^z.i.* ]] ; then chain="INPUT" ; fi
-   if [[ $choice =~ ^z.o.* ]] ; then chain="OUTPUT" ; fi
-   if [[ $choice =~ ^z.f.* ]] ; then chain="FORWARD" ; fi
-   if [[ $choice =~ ^z.p.* ]] ; then chain="PREROUTING" ; fi
-   if [[ $choice =~ ^z.t.* ]] ; then chain="POSTROUTING" ; fi
-#invalid...
-   if [[ $choice =~ ^zf(t|p) ]] ; then invalid ; continue ; fi
-   if [[ $choice =~ ^znf ]] ; then invalid ; continue ; fi
-   if [[ $choice =~ ^zr(t|i|f) ]] ; then invalid ; continue ; fi
-   if [[ $choice =~ ^zs(t|p) ]] ; then invalid ; continue ; fi
-
-
-enter_continue
+*)
+invalid
 ;;
 esac
 done
