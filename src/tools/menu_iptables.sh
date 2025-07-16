@@ -40,7 +40,7 @@ $green
      THERE ARE 5 TABLES, each with chains: ('t' to toggle)
 $show
 
-     ${red}Add ',v' to the selection for verbose 
+     ${red}Add ',v' to the selection for verbose (includes data count)
      Add ',n' to disable name resolution 
      eg lnt,v,n$orange
 
