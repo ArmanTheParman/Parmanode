@@ -4,6 +4,14 @@ if [[ $debug != 1 ]] ; then
     if [[ $OS == "Mac" ]] ; then no_mac ; return 1 ; fi
 fi
 
+sudo which iptables >$dn 2>&1 || {
+    if yesorno "IPTables is not installed. Do it?" ; then 
+        sudo apt-get update -y ; sudo apt-get install iptables -y 
+    else
+        return 1
+    fi
+}
+
 while true ; do
 if [[ $toggle == "on" ]] ; then     
 

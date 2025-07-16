@@ -28,6 +28,8 @@ $cyan              uo)$orange        UTXOracle
 
 $cyan              lnf)$orange       Install Linux non-free packages and backports
 
+$cyan              ipt)$orange       IPTables menu $green$blinkon(NEW)$blinkoff 
+
 $orange
 ########################################################################################
 "
@@ -90,11 +92,15 @@ yesorno "Are you sure you want to change your computer's password? If yes, you'l
 passwd && success "The password has been changed."
 ;;
 
-
 qr)
 which qrencode >$dn || install_qrencode || continue
 menu_qrencode
 ;;
+
+ipt)
+menu_iptables
+;;
+
 "")
 continue ;;
 *)
