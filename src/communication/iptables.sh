@@ -36,22 +36,22 @@ $show
      eg lnt,v,n$orange
 
 $cyan
-  lfa/lfi/lfo/lff)$orange         List FILTER Table Rules $green(ALL/INPUT/OUTPUT/FORWARD)$orange
+    lfa/lfi/lfo/lff)$orange         List FILTER Table Rules $green    (ALL/INPUT/OUTPUT/FORWARD)$orange
 $cyan
-  lna/lnp/lnt/lno/lni)$orange     List NAT Table Rules $green(ALL/PREROUTING/POSTROUTING/OUTPUT/INPUT)$orange
+    lna/lnp/lnt/lno/lni)$orange     List NAT Table Rules $green       (ALL/PREROUTING/POSTROUTING/OUTPUT/INPUT)$orange
 $cyan
-  lma/lmp/lmi/lmf/lmo/lmt)$orange List MANGLE Table Rules $green(ALL/PREROUTING/INPUT/FORWARD/OUPUT/POSTROUTING)$orange
+    lma/lmp/lmi/lmf/lmo/lmt)$orange List MANGLE Table Rules $green    (ALL/PREROUTING/INPUT/FORWARD/OUPUT/POSTROUTING)$orange
 $cyan
-  lra/lrp/lro)$orange             List RAW Table Rules $green(ALL/PREROUTING/OUTPUT)$orange
+    lra/lrp/lro)$orange             List RAW Table Rules $green       (ALL/PREROUTING/OUTPUT)$orange
 $cyan
-  lsa/lsi/lso/lsf)$orange         List SECURITY Table Rules $green(ALL/INPUT/OUTPUT/FORWARD)$orange
+    lsa/lsi/lso/lsf)$orange         List SECURITY Table Rules $green  (ALL/INPUT/OUTPUT/FORWARD)$orange
 $cyan
-  z*)$orange                      Zero data count from selected list combination above. Type$green z$orange and$green selection $orange
+    z*)$orange                      Zero data count from selected list combination above. Type$green z$orange and$green selection $orange
                                     ${red}Eg: zmi will zero the mangle input chain$orange
 $cyan
-  za)$orange                      Zero data count for all tables and all chains
+    za)$orange                      Zero data count for all tables and all chains
 $cyan
-  s*)$orange                      See a list of the$green syntax$orange used to add rules. Type$green s$orange and$green selection $orange
+    s*)$orange                      See a list of the$green syntax$orange used to add rules. Type$green s$orange and$green selection $orange
                                     ${red}Eg: srp will show syntax rules in the the raw prerouting chain$orange
 $orange
 ################################################################################################################################
