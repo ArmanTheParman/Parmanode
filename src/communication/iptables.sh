@@ -25,10 +25,10 @@ fi
 
 echo -e "
 ################################################################################################################################$cyan
-                                               IP Tables Menu$orange
+                                                   IP Tables Menu$orange
 ################################################################################################################################
 $green
-    THERE ARE 5 TABLES, each with chains: ('t' to toggle)
+     THERE ARE 5 TABLES, each with chains: ('t' to toggle)
 $show
 
      ${red}Add ',v' to the selection for verbose 
@@ -47,12 +47,12 @@ $cyan
     lsa/lsi/lso/lsf)$orange         List SECURITY Table Rules $green  (ALL/INPUT/OUTPUT/FORWARD)$orange
 $cyan
     z*)$orange                      Zero data count from selected list combination above. Type$green z$orange and$green selection $orange
-                                    ${red}Eg: zmi will zero the mangle input chain$orange
+                             ${red}Eg: zmi will zero the mangle input chain$orange
 $cyan
     za)$orange                      Zero data count for all tables and all chains
 $cyan
     s*)$orange                      See a list of the$green syntax$orange used to add rules. Type$green s$orange and$green selection $orange
-                                    ${red}Eg: srp will show syntax rules in the the raw prerouting chain$orange
+                             ${red}Eg: srp will show syntax rules in the the raw prerouting chain$orange
 $orange
 ################################################################################################################################
 "
