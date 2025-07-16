@@ -1,11 +1,13 @@
 function menu_iptables {
 
-if [[ $OS == "Mac" ]] ; then no_mac ; return 1 ; fi
+if [[ $debug != 1 ]] ; then 
+    if [[ $OS == "Mac" ]] ; then no_mac ; return 1 ; fi
+fi
 
 while true ; do
 if [[ $toggle == "on" ]] ; then     
 
-export show="     FILTER:     INPUT / OUTPUT / FORWARD
+export show="\n$blue     FILTER:     INPUT / OUTPUT / FORWARD
 
      NAT:        PREROUTING / POSTROUTING / OUTPUT / INPUT
 
