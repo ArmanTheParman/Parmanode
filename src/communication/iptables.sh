@@ -25,5 +25,6 @@ sudo iptables -t filter -L -v -n --line-numbers
 enter_continue
 ;;
 esac
+done
 }
 
