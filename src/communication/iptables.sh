@@ -83,12 +83,14 @@ l*|s*|z*)
    if [[ $choice =~ .*,n.* ]] ; then n="-n" ; fi
 
 case $choice in 
+   za)
+   sudo iptables -Z ; enter_continue ;;
    l*)
    sudo iptables -t $table -L $chain $v $n | less ;;
    s*)
    sudo iptables -t $table -S $chain | less ;;
    z*)
-   sudo iptables -t $table -Z $chain | less ;;
+   sudo iptables -t $table -Z $chain ; enter_continue ;;
    esac
 ;;
 
