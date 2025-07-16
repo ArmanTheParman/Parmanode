@@ -42,7 +42,8 @@ $show
 
      ${red}Add ',v' to the selection for verbose (includes data count)
      Add ',n' to disable name resolution 
-     eg lnt,v,n$orange
+     eg lnt,v,n
+     Replace chain letter with 'x' for any custom chain you made$orange
 
 $cyan
     lfa/lfi/lfo/lff)$orange         List FILTER Table Rules $green    (ALL/INPUT/OUTPUT/FORWARD)$orange
@@ -85,6 +86,7 @@ l*|s*|z*)
    if [[ $choice =~ ^..f.* ]] ; then chain="FORWARD" ; fi
    if [[ $choice =~ ^..p.* ]] ; then chain="PREROUTING" ; fi
    if [[ $choice =~ ^..t.* ]] ; then chain="POSTROUTING" ; fi
+   if [[ $choice =~ ^..x.* ]] ; then announce "Please enter the custom chain name" ; chain="$enter_cont" ; fi
 #invalid...
    if [[ $choice =~ ^.f(t|p) ]] ; then invalid ; continue ; fi
    if [[ $choice =~ ^.nf ]] ; then invalid ; continue ; fi
