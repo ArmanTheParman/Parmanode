@@ -30,9 +30,10 @@ echo -e "
 $green
     THERE ARE 5 TABLES, each with chains: ('t' to toggle)
 $show
-    ${red}Add ',v' to the selection for verbose 
-    Add ',n' to disable name resolution 
-    eg lnt,v,n$orange
+
+     ${red}Add ',v' to the selection for verbose 
+     Add ',n' to disable name resolution 
+     eg lnt,v,n$orange
 
 $cyan
   lfa/lfi/lfo/lff)$orange         List FILTER Table Rules $green(ALL/INPUT/OUTPUT/FORWARD)$orange
