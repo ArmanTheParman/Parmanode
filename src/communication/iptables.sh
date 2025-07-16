@@ -25,8 +25,9 @@ fi
 
 echo -e "
 ################################################################################################################################$cyan
-                                                   IP Tables Menu$orange
+                                                     IPTables Menu$orange
 ################################################################################################################################
+
 $green
      THERE ARE 5 TABLES, each with chains: ('t' to toggle)
 $show
@@ -54,6 +55,7 @@ $cyan
     s*)$orange                      See a list of the$green syntax$orange used to add rules. Type$green s$orange and$green selection $orange
                              ${red}Eg: srp will show syntax rules in the the raw prerouting chain$orange
 $orange
+
 ################################################################################################################################
 "
 choose xpmq ; read choice ; clear
