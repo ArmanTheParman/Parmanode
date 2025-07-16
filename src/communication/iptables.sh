@@ -17,7 +17,7 @@ export show="\n$blue     FILTER:     INPUT / OUTPUT / FORWARD
 
      SECURITY:   INPUT / OUTPUT / FORWARD"
 
-set_terminal 45 128
+set_terminal 48 128
 else
 unset show
 set_terminal 38 128
@@ -55,6 +55,7 @@ $cyan
     s*)$orange                      See a list of the$green syntax$orange used to add rules. Type$green s$orange and$green selection $orange
                              ${red}Eg: srp will show syntax rules in the the raw prerouting chain$orange
 $orange
+
 
 ################################################################################################################################
 "
