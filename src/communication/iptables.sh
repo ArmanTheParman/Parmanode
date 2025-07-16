@@ -20,7 +20,7 @@ export show="\n$blue     FILTER:     INPUT / OUTPUT / FORWARD
 set_terminal 48 128
 else
 unset show
-set_terminal 38 128
+set_terminal 40 128
 fi
 
 echo -e "
