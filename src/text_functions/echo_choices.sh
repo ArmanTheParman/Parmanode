@@ -18,12 +18,13 @@ fi #end -gt 0
 
 export enter_cont
 
-if [[ $enter_cont == q ]] ; then exit ; fi
-if [[ $enter_cont == d ]] ; then #switch
+case $enter_cont in
+q) exit ;; tmux) tmux ;; x)  set +x ;; debugon) export debug=1 fi ;; debugoff) export debug=0 ;;
+d)
     if [[ $debug == 1 ]] ; then export debug=0 ; fi
     if [[ $debug == 0 ]] ; then export debug=1 ; fi
-fi
-if [[ $enter_cont == x ]] ; then set +x ; fi
+    ;;
+esac
 return 0
 }
 
