@@ -22,7 +22,7 @@ clear
 tmux
 invalid_flag=set
 ;;
-premium)
+ppp|premium)
 clear
 menu_premium
 invalid_flag=set
