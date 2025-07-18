@@ -1,27 +1,9 @@
 function install_i2p {
 if [[ $OS == "Mac" ]] ; then no_mac ; return 1 ; fi
 
-while true ; do
-set_terminal ; echo -e "
-########################################################################################
-$cyan
-                                   Install I2P
-$orange    
-    Parmanode will install the I2P daemon (It's not a browser) which will run in the 
-    background.
-
-    The installation will have an ugly interface created by the I2P developers, please
-    choose the defaults so Parmanode menus don't get confused.
-
-########################################################################################    
-"
-choose "epq" ; read choice
-jump $choice 
-case $choice in Q|q|Quit|QUIT) exit 0 ;; p|P) return 1 ;; ""|y|yes) break ;; *) invalid ;; esac ;
-done
 if [[ $computer_type == "Pi" ]] ; then 
-clear ; install_i2p_for_Pi || return 1 ;
-return 0 ;
+  clear ; install_i2p_for_Pi || return 1 ;
+  return 0 ;
 fi
 
 set_terminal
