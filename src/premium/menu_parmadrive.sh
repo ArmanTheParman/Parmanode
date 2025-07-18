@@ -311,6 +311,12 @@ sleep 3
 if sudo mountpoint -q /srv/proton_drive ; then
     success_blue "Proton Mounted"
 else
+    sleep 3
+    if sudo mountpoint -q /srv/proton_drive ; then
+        success_blue "Proton Mounted"
+        continue
+    fi
+
     sww "Type$red force$blue to try a forceful unmount, then try mounting again."
     case $enter_cont in force) fuserumount -u /srv/proton_drive ; sleep 1 ; esac
 fi
