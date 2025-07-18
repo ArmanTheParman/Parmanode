@@ -82,7 +82,7 @@ else
 unset raidmenu raid raidstatus
 fi
 
-if mountpoint -q /srv/proton_drive ; then proton="Proton Drive:$green MOUNTED$yellow  \033[40G /srv/proton_drive"
+if sudo mountpoint -q /srv/proton_drive ; then proton="Proton Drive:$green MOUNTED$yellow  \033[40G /srv/proton_drive"
 else
 proton="Proton Drive:$red NOT MOUNTED$blue"
 fi
@@ -308,7 +308,7 @@ $blue
 mp) 
 sudo systemctl start rclone-proton.service || { sww && continue ; } 
 sleep 3
-if mountpoint -q /srv/proton_drive ; then
+if sudo mountpoint -q /srv/proton_drive ; then
     success_blue "Proton Mounted"
 else
     sww "Type$red force$blue to try a forceful unmount, then try mounting again."
