@@ -5,7 +5,7 @@ while true ; do
 if grep -q "electrsdkr" $ic ; then 
     electrsis=docker
     logfile=$HOME/.electrs/run_electrs.log
-    unset disble_electrs
+    unset disable_electrs_menu
 else
     electrsis=nondocker
     logfile=$HOME/.electrs/run_electrs.log 

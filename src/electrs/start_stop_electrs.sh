@@ -1,4 +1,6 @@
 function start_electrs { #non-docker function
+source $pc
+if [[ $disable_electrs == "true" ]] ; then return 1 ; fi
 
 please_wait
 if [[ $OS == Linux ]] ; then 
@@ -20,8 +22,9 @@ if [[ $OS == Linux ]] ; then sudo systemctl stop electrs.service ; fi
 if [[ $OS == Mac ]] ; then pkill -INT electrs ; stop_socat electrs ; fi
 }
 
-
 function restart_electrs {
+source $pc
+if [[ $disable_electrs == "true" ]] ; then return 1 ; fi
 please_wait
 if [[ $OS == Linux ]] ; then sudo systemctl restart electrs.service ; fi 
 if [[ $OS == Mac ]] ; then stop_electrs ; start_electrs ; fi
