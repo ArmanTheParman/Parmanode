@@ -64,6 +64,8 @@ if [[ -e $HOME/.bitcoin/bitcoin.conf ]] ; then while true ; do
 if [[ $1 == "refresh" ]] ; then
     yesorno "Would  you like to refresh your bitcoin.conf file to the Parmanode default?" || return 1
     gsed -i '/prune_value=/d' $pc
+    unset prune_value
+    source $pc
     break
 fi
 
