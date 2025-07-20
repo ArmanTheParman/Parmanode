@@ -218,8 +218,7 @@ RU|Ru)
     umbrel_import_reverse
     ;;
 bcr|BCR|Bcr)
-make_bitcoin_conf refresh
-success "bitcoin.conf refreshed to Parmanode default"
+make_bitcoin_conf refresh && success "bitcoin.conf refreshed to Parmanode default"
 continue
 ;;
 
