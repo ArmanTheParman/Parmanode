@@ -64,7 +64,8 @@ if [[ -e $HOME/.bitcoin/bitcoin.conf ]] ; then while true ; do
 if [[ $1 == "refresh" ]] ; then
     yesorno "Would  you like to refresh your bitcoin.conf file to the Parmanode default?" || return 1
     break
-else
+fi
+
 set_terminal ; echo -e "
 ########################################################################################
 
@@ -95,7 +96,6 @@ m|M) back2main ;;
     yolo|YOLO|Yolo) apply_prune_bitcoin_conf ; return 0 ;; 
     *) invalid ;; 
 esac 
-fi #end if not refresh block
 done ; fi
 
 sudo cp $tmp/bitcoin.conf $file && log "bitcoin" "bitcoin conf made"  
