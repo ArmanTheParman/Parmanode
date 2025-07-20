@@ -35,6 +35,7 @@ assumevalid=00000000000000000001347938c263a968987bf444eb9596ab0597f721e4e9e8 #ha
 
 EOF
 
+# Makes sure the internal IP is allowed to connect to the RPC server
 if [[ -n $IP ]] && [[ $(echo "$IP" | wc -l | tr -d ' ' ) == 1 ]] && echo $IP | grep -qE '^[0-9]' ; then 
 IP1="$(echo "$IP" | cut -d \. -f 1 2>$dn)" 
 IP2="$(echo "$IP" | cut -d \. -f 2 2>$dn)"
@@ -42,20 +43,28 @@ IP1and2="$IP1.$IP2."
 echo rpcallowip="${IP1and2}0.0/16" | tee -a $tmp/bitcoin.conf >$dn 2>&1
 fi
 
-file="$HOME/.bitcoin/bitcoin.conf"
-loop=do
-if [[ $1 == umbrel ]] ; then export prune=0 ; loop="break" ; file="$mount_point/.bitcoin/bitcoin.conf" ; fi
+#bitcoin conf path to be modified can vary depending on the calling function, normal call or umbrel
+if [[ $1 == umbrel ]] ; then 
+    export prune=0 
+    loop="break" 
+    file="$mount_point/.bitcoin/bitcoin.conf" 
+else
+    file="$HOME/.bitcoin/bitcoin.conf"
+    loop=do
+fi
 
 
+# umbrel has loop-break, so will exit early anyway
+if [[ -e $HOME/.bitcoin/bitcoin.conf ]] ; then while true ; do
 
-if [[ -e $HOME/.bitcoin/bitcoin.conf ]] # if a bitcoin.conf file exists
-	then 
+    if [[ $installer == parmanodl || $loop == "break" ]] ; then export prune=0 ; break ; fi #overwrites any existing conf file 
+    
+    if [[ $btcpayinstallsbitcoin != "true" && $btcdockerchoice != "yes" ]] || [[ $btcpay_combo == "true" ]] ; then
 
-        while true ; do
-        if [[ $installer == parmanodl || $loop == "break" ]] ; then export prune=0 ; break ; fi #overwrites any existing conf file 
-
-if [[ $btcpayinstallsbitcoin != "true" && $btcdockerchoice != "yes" ]] || [[ $btcpay_combo == "true" ]] ; then
-
+if [[ $1 == "refresh" ]] ; then
+    yesorno "Would  you like to refresh your bitcoin.conf file to the Parmanode default?" || return 1
+    break
+else
 set_terminal ; echo -e "
 ########################################################################################
 
@@ -86,15 +95,18 @@ m|M) back2main ;;
     yolo|YOLO|Yolo) apply_prune_bitcoin_conf ; return 0 ;; 
     *) invalid ;; 
 esac 
-done
-fi
+fi #end if not refresh block
+done ; fi
 
 sudo cp $tmp/bitcoin.conf $file && log "bitcoin" "bitcoin conf made"  
 debug "Bitcoin conf copied from tmp
 $(cat $HOME/.bitcoin/bitcoin.conf)"
 
 sudo chown -R $USER:$(id -gn) $file
-apply_prune_bitcoin_conf "$@" # Here is where the prune choice is added to bitcoin.conf
+
+# Here is where the prune choice is added to bitcoin.conf
+#currently only "umbre" is the supported argument
+apply_prune_bitcoin_conf "$@" 
 }
 
 ########################################################################################
@@ -108,7 +120,7 @@ fi
 }
 
 function fix_bitcoin_conf {
-nogsedtest
+
 if [[ ! -e $bc ]] ; then return 0 ; fi
 
 add_rpcbind

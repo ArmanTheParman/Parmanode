@@ -125,6 +125,7 @@ fi
 echo -e "$output3$cyan               n)$orange            Access Bitcoin node information $cyan
                log)$orange          Bitcoin debug.log $cyan
                bc)$orange           Inspect edit bitcoin.conf file (bcv for vim) $bright_blue
+               bcr)$orange          Refresh bitcoin.conf file to Parmanode default $cyan
                tor)$orange          Tor/I2P menu options for Bitcoin...  $cyan
                mm)$orange           Migrate/Revert an external drive...  $cyan
                delete)$orange       Delete blockchain data and start over $cyan
@@ -216,6 +217,11 @@ continue ;;
 RU|Ru)
     umbrel_import_reverse
     ;;
+bcr|BCR|Bcr)
+make_bitcoin_conf refresh
+success "bitcoin.conf refreshed to Parmanode default"
+continue
+;;
 
 bc|BC)
 echo -e "
