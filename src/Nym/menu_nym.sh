@@ -1,4 +1,5 @@
 function menu_nym {
+    announce "Use the Start menu to find Nym and run it that way."
     return 0
 set_terminal
 echo "$orange
