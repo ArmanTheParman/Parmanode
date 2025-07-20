@@ -1,6 +1,8 @@
 function menu_nym {
     announce "Use the Start menu to find Nym and run it that way."
     return 0
+
+#beginnings of a menu, but the idea  was abandoned, seems pointless for Nym.
 set_terminal
 echo "$orange
 ########################################################################################$cyan
@@ -17,8 +19,6 @@ $cyan
 $cyan
 $cyan
 $cyan
-
-
 
 ########################################################################################"
 choose xpmq ;  read choice 
