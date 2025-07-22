@@ -212,11 +212,11 @@ fi
 
 unmount|um|umm)
 if docker ps >$dn 2>&1 || bitcoin-cli --version ; then 
-    yesorno_blue "Be mindful that unmount won't work if Docker is running or if Bitcoin is running.
-    Because normally their directories exist on the external hard drive. 
-    You need to stop them first.
+    yesorno_blue "Be mindful that unmount won't work if there are programs running with directories 
+    syncing there, eg Docker, Bitcoin, or Electrs. If this is the case, they need to be stopped 
+    before unmounting to proceed successfully/safely. 
 
-    If all you want to do is detach the drive safely, it's easier to shut down the 
+    If all you want to do is detach the drive, it's usually easier to shut down the 
     computer, and then detach the drive.
     
     Continue with unmount now?" || continue
