@@ -8,6 +8,7 @@ sudo gsed -i "/onlynet/d" $bc
 sudo gsed -i "/listenonion=1/d" $bc
 sudo gsed -i "/listen=0/d" $bc
 sudo gsed -i "/externalip=/d" $bc >$dn 2>&1
+sudo gsed -i -E "/^\s*$/d" $bc >$dn 2>&1
 
 if [[ $1 == "clearnet" ]] ; then
     sudo gsed -i "/onion=/d" $bc
