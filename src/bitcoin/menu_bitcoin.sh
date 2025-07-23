@@ -218,7 +218,7 @@ RU|Ru)
     umbrel_import_reverse
     ;;
 bcr|BCR|Bcr)
-make_bitcoin_conf refresh && success "bitcoin.conf refreshed to Parmanode default"
+make_bitcoin_conf refresh && gsed -i '/bitcoiin_tor_status/d' $pc >$dn 2>&1 && success "bitcoin.conf refreshed to Parmanode default"
 continue
 ;;
 
