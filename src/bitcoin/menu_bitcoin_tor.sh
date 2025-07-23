@@ -128,6 +128,7 @@ m|M) back2main ;; Q|q|quit|QUIT|Quit) exit 0 ;; p|P) return 1 ;;
     continue ;;
 "5")
     bitcoin_tor "toronly"
+    remove_bitcoin_i2p
 #    check_bitcoin_tor_status
     bitcoin_i2p
     parmanode_conf_remove "bitcoin_tor_status"
@@ -137,6 +138,7 @@ m|M) back2main ;; Q|q|quit|QUIT|Quit) exit 0 ;; p|P) return 1 ;;
 "6") 
     if ! grep -q "i2p-end" $ic ; then install_i2p || { sww ; continue ; } ; fi
     bitcoin_tor_remove
+    remove_bitcoin_i2p # to avoid duplications
     parmanode_conf_remove "bitcoin_tor_status"
 #    check_bitcoin_tor_status
     bitcoin_i2p 
@@ -147,6 +149,7 @@ m|M) back2main ;; Q|q|quit|QUIT|Quit) exit 0 ;; p|P) return 1 ;;
 "7") 
     if ! grep -q "i2p-end" $ic ; then install_i2p || { sww ; continue ; } ; fi
     bitcoin_tor_remove
+    remove_bitcoin_i2p # to avoid duplications
     parmanode_conf_remove "bitcoin_tor_status"
 #    check_bitcoin_tor_status
     bitcoin_i2p 
