@@ -84,7 +84,7 @@ $cyan
     6)$orange    I2P only (no clearnet, no Tor)
 $cyan
     7)$orange    Stealth I2P, only OUTWARD connections
-
+$cyan
     8)$orange    Confused option - Clearnet only, with outbound connections only.
 
 
