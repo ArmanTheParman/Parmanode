@@ -173,7 +173,6 @@ esac
 done
 }
 
-
 function bitcoin_i2p {
     echo "onlynet=i2p" | sudo tee -a $bc >$dn 2>&1
     echo "i2psam=127.0.0.1:7656" | sudo tee -a $bc >$dn 2>&1
