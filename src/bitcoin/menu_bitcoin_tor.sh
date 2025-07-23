@@ -85,6 +85,8 @@ $cyan
 $cyan
     7)$orange    Stealth I2P, only OUTWARD connections
 
+    8)$orange    Confused option - Clearnet only, with outbound connections only.
+
 
 $bright_magenta    Current Status: $status_print$orange
 $tortext"
@@ -114,7 +116,7 @@ m|M) back2main ;; Q|q|quit|QUIT|Quit) exit 0 ;; p|P) return 1 ;;
     if [[ $install == "bitcoin" ]] ; then return 0 ; fi
     continue ;;
 
-"4")
+"4"|"8")
     bitcoin_tor_remove 
     parmanode_conf_remove "bitcoin_tor_status"
     parmanode_conf_add "bitcoin_tor_status=clearnet"
