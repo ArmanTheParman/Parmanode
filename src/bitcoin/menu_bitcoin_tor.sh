@@ -155,6 +155,7 @@ m|M) back2main ;; Q|q|quit|QUIT|Quit) exit 0 ;; p|P) return 1 ;;
     bitcoin_i2p 
     sudo gsed -i "/discover=/d" $bc >$dn 2>&1
     sudo gsed -i "/listenonion/d" $bc >$dn 2>&1
+    sudo gsed -i "/i2pacceptincoming/d" $bc >$dn 2>&1
     echo "listen=0" | sudo tee -a $bc >$dn 2>&1
     echo "discover=0" | sudo tee -a $bc >$dn 2>&1
     parmanode_conf_remove "bitcoin_tor_status"
