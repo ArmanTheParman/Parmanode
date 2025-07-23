@@ -1,16 +1,24 @@
 function bitcoin_tor {
 
-install_tor
-
-if [[ ! -e $varlibtor ]] ; then mkdir -p $varlibtor >$dn 2>&1 ; fi
-if [[ ! -e $torrc ]] ; then sudo touch $torrc >$dn 2>&1 ; fi
-
 #start fresh
 sudo gsed -i "/discover=/d" $bc >$dn 2>&1
 sudo gsed -i "/onion/d" $bc
 sudo gsed -iE "/^bind=/d" $bc
 sudo gsed -i "/onlynet/d" $bc
 sudo gsed -i "/listenonion=1/d" $bc
+
+if [[ $1 == "clearnet" ]] ; then
+    sudo gsed -i "/onion=/d" $bc
+    echo "onion=127.0.0.1:9050" | sudo tee -a $bc >$dn 2>&1
+    echo "listenonion=1" | sudo tee -a $bc >$dn 2>&1
+    sudo gsed -i "/externalip=/d" $bc >$dn 2>&1
+    local exit_early="true" #no need to get onion address
+fi
+
+install_tor
+
+if [[ ! -e $varlibtor ]] ; then mkdir -p $varlibtor >$dn 2>&1 ; fi
+if [[ ! -e $torrc ]] ; then sudo touch $torrc >$dn 2>&1 ; fi
 
 enable_tor_general
 
@@ -25,12 +33,11 @@ fi
 
 # discover=0 (dont advertise clearnet IP) ; if not set, default is 1
 
-
 if [[ $1 == "torandclearnet" ]] ; then
     sudo gsed -i "/onion=/d" $bc
     echo "onion=127.0.0.1:9050" | sudo tee -a $bc >$dn 2>&1
     echo "listenonion=1" | sudo tee -a $bc >$dn 2>&1
-    sudo gsed -i "/externalip=/d" $bc
+    sudo gsed -i "/externalip=/d" $bc >$dn 2>&1
     get_onion_address_variable "bitcoin"
     count=0
     while [[ -z $ONION_ADDR ]] && [[ $count -lt 4 ]] ; do
@@ -86,6 +93,9 @@ start_bitcoin
 fi
 
 set_terminal
+
+if [[ $exit_early == "true" ]] ; then return 0 ; fi
+
 
 unset $ONION_ADDR
 please_wait

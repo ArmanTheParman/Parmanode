@@ -118,6 +118,8 @@ m|M) back2main ;; Q|q|quit|QUIT|Quit) exit 0 ;; p|P) return 1 ;;
 
 "4"|"8")
     bitcoin_tor_remove 
+    case $choice in "8") sudo echo "listen=0" | sudo tee -a $bc >$dn 2>&1 ; sudo echo "discover=0" | sudo tee -a $bc >$dn 2>&1 ; esac
+    bitcoin_tor "clearnet"
     parmanode_conf_remove "bitcoin_tor_status"
     parmanode_conf_add "bitcoin_tor_status=clearnet"
 #    check_bitcoin_tor_status    
