@@ -1,5 +1,6 @@
 Version 3.63.1
      -Improvements to Bitcoin Tor menu
+     -Valatile Jouranald option in Drive menu
 Version 3.63.0
      -IPtables Menu
 Version 3.62.8

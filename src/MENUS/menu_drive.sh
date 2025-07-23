@@ -47,21 +47,23 @@ $orange
 
 ________________________________________________________________________________________                    
 $cyan
-                      fs)$orange           Free up some space (internal drive)
+                fs)$orange           Free up some space (internal drive)
 $cyan
-                    info)$orange           Reserved space info
+               vol)$orange           Toggle journal logs volatile (push to RAM)...
 $cyan
-                      um)$orange           Unmount Parmanode external drive 
+              info)$orange           Reserved space info
 $cyan
-                   mount)$orange           Mount Parmanode externl drive
+                um)$orange           Unmount Parmanode external drive 
 $cyan
-                    dfat)$orange           Drive format assist tool
+             mount)$orange           Mount Parmanode externl drive
+$cyan
+              dfat)$orange           Drive format assist tool
 $cyan 
-                      md)$orange           Import/Migrate/Revert an external drive
+                md)$orange           Import/Migrate/Revert an external drive
 $cyan
-                      de)$orange           Drive encryption - info
+                de)$orange           Drive encryption - info
 $cyan
-                      ps)$orange           Adjust SSD power saving
+                ps)$orange           Adjust SSD power saving
 
 ########################################################################################
 "
@@ -69,6 +71,22 @@ choose xpmq ; read choice
 jump $choice
 case $choice in
 q|Q) exit ;; p|P) return 0 ;; m|M) back2main ;;
+vol)
+source /etc/systemd/journald.conf >$dn 2>&1
+if [[ $Storage == "volatile" ]] ; then
+    gsed -i '/Storage=volatile/d' /etc/systemd/journald.conf >$dn 2>&1
+    announce "Journal logs are now persistent."
+    continue 
+else
+yesorno "This will stop saving journal logs to disk, and push them to RAM instead.
+    This is a good idea for SSDs especially, and can save some space.
+
+    OK to proceed?" || return 1
+echo "Storage=volatile" | sudo tee -a /etc/systemd/journald.conf >$dn 2>&1
+announce "Journal logs are now volatile."
+fi
+sudo systemctl restart systemd-journald
+;;
 info)
 announce "The reserved space on the drive is for drive recovery functionality. You
     can squeeze more space out of the drive by setting the reserve percentage to zero.
