@@ -154,12 +154,13 @@ m|M) back2main ;; Q|q|quit|QUIT|Quit) exit 0 ;; p|P) return 1 ;;
 #    check_bitcoin_tor_status
     bitcoin_i2p 
     sudo gsed -i "/discover=/d" $bc >$dn 2>&1
+    sudo gsed -i "/listenonion/d" $bc >$dn 2>&1
+    echo "listen=0" | sudo tee -a $bc >$dn 2>&1
     echo "discover=0" | sudo tee -a $bc >$dn 2>&1
     parmanode_conf_remove "bitcoin_tor_status"
     parmanode_conf_add "bitcoin_tor_status=i2ponlyout"
     if [[ $install == "bitcoin" ]] ; then return 0 ; fi
     continue ;;
-
 
 "")
 break ;;
