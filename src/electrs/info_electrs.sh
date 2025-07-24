@@ -51,7 +51,7 @@ set_terminal ; echo -e "
 $cyan
     Ports:
 $orange
-        Because Parmamnode supports both Fulcrum AND electrs as "Electrum Servers",
+        Because Parmanode supports both Fulcrum AND electrs as "Electrum Servers",
         the typical ports 50001 and 50002 has been reserved for Fulcrum, and 
         50005/50006 is used for electrs. This is to avoid any port conflicts.
 
