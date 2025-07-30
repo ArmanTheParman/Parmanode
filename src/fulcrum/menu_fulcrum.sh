@@ -41,8 +41,8 @@ fi
 
 fulcrum_status2="$fulcrum_status    $red<enter> to refresh status$orange"
 
-if grep -q "disable_electrs=true" $pc ; then
-         disable_output="\n\n      ELECTRS IS$red DISABLED (type disable to toggle)$orange" 
+if grep -q "disable_fulcrum=true" $pc ; then
+         disable_output="\n\n      FULCRUM IS$red DISABLED (type disable to toggle)$orange" 
 else
 unset disable_output
 fi
