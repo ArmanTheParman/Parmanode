@@ -137,6 +137,9 @@ menu_electrumx || return 1
 ;;
 
 start | START)
+
+if grep -q "disable_electrumx=true" $pc ; then announce "ELECTRUMX IS DISABLED" ; continue ; fi
+
 start_electrumx 
 sleep 1
 ;;

@@ -102,6 +102,9 @@ menu_use
 r) please_wait ; menu_fulcrum_status ;; 
 
 start | START)
+
+if grep -q "disable_fulcrum=true" $pc ; then announce "FULCRUM IS DISABLED" ; continue ; fi
+
 set_terminal
 echo "Fulcrum starting..."
 start_fulcrum 
