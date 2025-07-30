@@ -1,13 +1,13 @@
 FROM rust:1.75
 
-RUN apt-get update -y
-RUN apt-get install -y git
-RUN apt-get install -y cmake
-RUN apt-get install -y build-essential
-RUN apt-get install -y socat
-RUN apt-get install -y procps
-RUN apt-get install -y clang 
-
+RUN apt-get update -y && apt-get install -y --no-install-recommends \
+    git \
+    cmake \
+    build-essential \
+    socat \
+    procps \
+    clang \
+    && rm -rf /var/lib/apt/lists/*
 #Make users and groups and directories
 RUN groupadd -r parman && useradd -m -g parman -u 1000 parman 
 RUN chown -R parman:parman /home/parman/

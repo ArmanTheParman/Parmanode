@@ -51,7 +51,7 @@ preamble_install_electrs_docker || return 1
 
 set_terminal ; please_wait
 
-docker build -t electrs $pn/src/electrs/ ; log "electrsdkr" "docker build done"
+docker build -t electrs $pn/src/electrs/
 echo -e " $red
 Pausing here; you can see if the build failed or not."
 enter_continue
