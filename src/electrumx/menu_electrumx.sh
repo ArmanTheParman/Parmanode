@@ -109,7 +109,7 @@ $green
       log)$orange      Inspect Electrum X logs $cyan
       ec)$orange       Inspect and edit config file (ecv for vim) $cyan
       dc)$orange       Electrum X database corrupted? -- Use this to start fresh."
-if [[ $OS == Linux ]] ; then echo -e "${cyan}tor)$orange      Enable/Disable Tor connections to Electrum X -- Status : $E_tor"  
+if [[ $OS == Linux ]] ; then echo -e "${cyan}      tor)$orange      Enable/Disable Tor connections to Electrum X -- Status : $E_tor"  
 else echo -e "${cyan}newtor)$orange   Refresh Tor address
 " 
 fi
