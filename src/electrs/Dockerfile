@@ -1,7 +1,6 @@
 FROM rust:1.75
 
 RUN apt-get update -y
-RUN apt-get install -y vim
 RUN apt-get install -y git
 RUN apt-get install -y cmake
 RUN apt-get install -y build-essential

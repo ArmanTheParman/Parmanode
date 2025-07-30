@@ -144,16 +144,17 @@ info_electrs
 ;;
 
 start | START)
-if [[ $electrsis == docker ]] ; then 
+if [[ $electrsis == "docker" ]] ; then 
 docker_start_electrs
 else
+if grep -q "disable_electrs=true" $pc ; then announce "ELECTRS IS DISABLED" ; continue ; fi
 start_electrs 
 sleep 1
 fi
 ;;
 
 stop | STOP) 
-if [[ $electrsis == docker ]] ; then 
+if [[ $electrsis == "docker" ]] ; then 
 docker_stop_electrs
 else
 stop_electrs
