@@ -94,7 +94,7 @@ elif [[ $electrumxrunning == "false" ]] ; then
 echo -en "
       ELECTRUMX IS:$red NOT RUNNING$orange -- CHOOSE \"start\" TO RUN
 
-      Will sync to the $cyan$drive_electrumx$orange drive"
+      Will sync to the$cyan$drive_electrumx$orange drive"
 fi #end electrumx running or not
 
 echo -e "
