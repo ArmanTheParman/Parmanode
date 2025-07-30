@@ -97,7 +97,7 @@ echo -en "
       Will sync to the $cyan$drive_electrumx$orange drive"
 fi #end electrumx running or not
 
-echo -en "
+echo -e "
 
 $green
       start)$orange    Start Electrum X $red
