@@ -24,7 +24,7 @@ source $dp/parmanode.conf >$dn 2>&1
 
 if [[ $refresh == "true" ]] ; then
     if [[ $electrumxrunning == "true" ]] ; then 
-        menu_electrumx_status # get electrs_sync variable (block number)
+        menu_electrumx_status # get electrumx_sync variable (block number)
     fi
 else
     electrumx_sync="${blinkon}${orange}Type$red r$orange to refresh${blinkoff}$orange"
@@ -311,5 +311,20 @@ if pgrep electrumx >$dn 2>&1 ; then
 export electrumxrunning="true"
 else
 export electrumxrunning="false"
+fi
+}
+
+
+function disable_electrumx {
+clear
+
+if grep -q "disable_electrumx=true" $pc ; then #electrumx is disabled, enable it...
+
+        sudo systemctl enable electrumx.service
+        sudo gsed -i "/disable_electrumx=true/d" $pc #delete line
+
+else #electrumx is not disabled, disable it...
+        sudo systemctl disable electrumx.service
+        echo "disable_electrumx=true" | tee -a $pc >$dn 2>&1 #add line
 fi
 }
