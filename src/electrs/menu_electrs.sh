@@ -166,6 +166,11 @@ fi
 ;;
 
 disable)
+if [[ $electrsis == "docker" ]] ; then 
+docker_stop_electrs
+else
+stop_electrs
+fi
 disable_electrs
 ;;
 
