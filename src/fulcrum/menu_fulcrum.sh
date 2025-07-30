@@ -41,11 +41,17 @@ fi
 
 fulcrum_status2="$fulcrum_status    $red<enter> to refresh status$orange"
 
+if grep -q "disable_electrs=true" $pc ; then
+         disable_output="\n\n      ELECTRS IS$red DISABLED (type disable to toggle)$orange" 
+else
+unset disable_output
+fi
+
 set_terminal  47 88
 echo -e "
 ########################################################################################
                                    ${cyan}Fulcrum Menu${orange}                               
-########################################################################################"
+########################################################################################$disable_output"
 if [[ $fulcrumrunning == "true" ]] ; then echo -en "
       FULCRUM IS :$green   $RUNNING$orange 
       STATUS     :   $fulcrum_status2
@@ -64,7 +70,8 @@ fi
 echo -e "
 $green
       start)   $orange Start Fulcrum $red
-      stop)  $orange   Stop Fulcrum $cyan
+      stop)  $orange   Stop Fulcrum $red
+      disable)$orange  Toggle on/off (for when manually copying data)$cyan
       restart)$orange  Restart Fulcrum $cyan
       c)$orange        How to connect your Electrum wallet to Fulcrum $cyan
       cert)$orange     See Fulcrum SSL certificate$cyan
@@ -106,6 +113,11 @@ set_terminal
 echo "Stopping Fulcrum ..."
 stop_fulcrum 
 set_terminal
+;;
+
+disable)
+stop_fulcrum
+disable_fulcrum
 ;;
 
 restart|Rrestart) 
@@ -257,5 +269,32 @@ if docker exec -it fulcrum bash -c "cat /home/parman/.fulcrum/fulcrum.log  | tai
 return 0
 else
 return 1
+fi
+}
+
+function disable_fulcrum {
+clear
+
+if grep -q "disable_fulcrum=true" $pc ; then #fulcrum is disabled, enable it...
+
+    if grep -q fulcrum-end $ic ; then
+        sudo systemctl enable fulcrum.service
+        sudo gsed -i "/disable_fulcrum=true/d" $pc #delete line
+    elif grep -q fulcrumdkr-end $ic ; then
+        rename fulcrum_disabled fulcrum
+        sudo gsed -i "/disable_fulcrum=true/d" $pc #delete line
+    fi
+
+else #fulcrum is not disabled, disable it...
+
+    if grep -q fulcrum-end $ic ; then
+        sudo systemctl disable fulcrum.service
+        echo "disable_fulcrum=true" | tee -a $pc >$dn 2>&1 #add line
+    elif grep -q fulcrumdkr-end $ic ; then
+        docker ps | grep -q fulcrum && return 1 #already running, don't rename it, potentially dangerous
+        rename fulcrum fulcrum_disabled
+        echo "disable_fulcrum=true" | tee -a $pc >$dn 2>&1 #add line
+    fi
+
 fi
 }
