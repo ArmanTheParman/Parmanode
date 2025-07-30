@@ -2,8 +2,6 @@ function menu_electrs {
 if ! grep "electrs" $ic  | grep -q end ; then return 0 ; fi
 while true ; do
 
-disable_electrs_menu="\n$red      disable)$orange   Toggle on/off (for when manually copying data)\n$cyan"
-
 if grep -q "electrsdkr" $ic ; then 
     electrsis=docker
     logfile=$HOME/.electrs/run_electrs.log

@@ -55,12 +55,16 @@ fi
 #Get version
 electrumx_version=$(grep -Eo 'software version: ElectrumX.+$' $logfile | tail -n1 | grep -Eo [0-1].+$ | xargs)
 
-set_terminal  50 88
+if grep -q "disable_electrumx=true" $pc ; then
+         disable_output="\n\n      ELECTRUMX IS$red DISABLED (type disable to toggle)$orange" 
+else
+unset disable_output
+fi
 
-echo -en "
+set_terminal  50 88 ; echo -en "
 ########################################################################################
                                 ${cyan}Electrum X $electrumx_version Menu${orange} 
-########################################################################################
+########################################################################################$disable_output
 "
 if [[ -n $log_size && $log_size -gt 100000000 ]] ; then echo -e "$red
     THE LOG FILE SIZE IS GETTING BIG. TYPE 'logdel' AND <enter> TO CLEAR IT.
@@ -97,7 +101,8 @@ echo -en "
 
 $green
       start)$orange    Start Electrum X $red
-      stop)$orange     Stop Electrum X $cyan
+      stop)$orange     Stop Electrum X $red
+      disable)$orange  Toggle on/off (for when manually copying data)$cyan
       restart)$orange  Restart Electrum X $cyan
       remote)$orange   Choose which Bitcoin instance for Electrum X to connect to $cyan
       cert)$orange     See ElectrumX SSL certificate$cyan
@@ -140,6 +145,10 @@ stop | STOP)
 stop_electrumx
 ;;
 
+disable)
+stop_electrumx
+disable_electrumx
+;;
 logdel)
 please_wait
 stop_electrumx
