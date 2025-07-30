@@ -114,7 +114,7 @@ fi #end electrsis docker
 echo -en "
 $green
       start)   $orange  Start electrs $red
-      stop) $orange     Stop electrs $disable_electrs_menu $red
+      stop) $orange     Stop electrs $red
       disable)$orange   Toggle on/off (for when manually copying data)$cyan
       i)$orange         Important info / Troubleshooting $cyan
       remote)$orange    Choose which Bitcoin for electrs to connect to $cyan
