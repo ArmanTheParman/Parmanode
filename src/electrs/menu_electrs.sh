@@ -2,15 +2,16 @@ function menu_electrs {
 if ! grep "electrs" $ic  | grep -q end ; then return 0 ; fi
 while true ; do
 
+disable_electrs_menu="\n$red      disable)$orange   Toggle on/off (for when manually copying data)\n$cyan"
+
 if grep -q "electrsdkr" $ic ; then 
     electrsis=docker
     logfile=$HOME/.electrs/run_electrs.log
-    unset disable_electrs_menu
 else
     electrsis=nondocker
     logfile=$HOME/.electrs/run_electrs.log 
-    disable_electrs_menu="\n$red      disable)$orange   Toggle on/off (for when manually copying data)\n$cyan"
 fi
+
 
 set_terminal
 
@@ -113,7 +114,8 @@ fi #end electrsis docker
 echo -en "
 $green
       start)   $orange  Start electrs $red
-      stop) $orange     Stop electrs $disable_electrs_menu $cyan
+      stop) $orange     Stop electrs $disable_electrs_menu $red
+      disable)$orange   Toggle on/off (for when manually copying data)$cyan
       i)$orange         Important info / Troubleshooting $cyan
       remote)$orange    Choose which Bitcoin for electrs to connect to $cyan
       c)$orange         How to connect your Electrum wallet to electrs $cyan	    
@@ -144,10 +146,12 @@ info_electrs
 ;;
 
 start | START)
+
+if grep -q "disable_electrs=true" $pc ; then announce "ELECTRS IS DISABLED" ; continue ; fi
+
 if [[ $electrsis == "docker" ]] ; then 
 docker_start_electrs
 else
-if grep -q "disable_electrs=true" $pc ; then announce "ELECTRS IS DISABLED" ; continue ; fi
 start_electrs 
 sleep 1
 fi
@@ -347,11 +351,27 @@ fi
 
 function disable_electrs {
 clear
-if grep -q "disable_electrs=true" $pc ; then
-sudo systemctl enable electrs.service
-sudo gsed -i "/disable_electrs=true/d" $pc
-else
-sudo systemctl disable electrs.service
-echo "disable_electrs=true" | tee -a $pc >$dn 2>&1
+
+if grep -q "disable_electrs=true" $pc ; then #electrs is disabled, enable it...
+
+    if grep -q electrs-end $ic ; then
+        sudo systemctl enable electrs.service
+        sudo gsed -i "/disable_electrs=true/d" $pc #delete line
+    elif grep -q electrsdkr-end $ic ; then
+        rename electrs_disabled electrs
+        sudo gsed -i "/disable_electrs=true/d" $pc #delete line
+    fi
+
+else #electrs is not disabled, disable it...
+
+    if grep -q electrs-end $ic ; then
+        sudo systemctl disable electrs.service
+        echo "disable_electrs=true" | tee -a $pc >$dn 2>&1 #add line
+    elif grep -q electrsdkr-end $ic ; then
+        docker ps | grep -q electrs && return 1 #already running, don't rename it, potentially dangerous
+        rename electrs electrs_disabled
+        echo "disable_electrs=true" | tee -a $pc >$dn 2>&1 #add line
+    fi
+
 fi
 }
