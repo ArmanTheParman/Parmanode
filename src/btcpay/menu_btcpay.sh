@@ -60,27 +60,17 @@ $output2"
 
 echo -e "
 
-$cyan
-             start)$orange        Start Docker container and BTCPay
-$cyan
-             stop)$orange         Start Docker container and BTCPay
-$cyan
-             rs)$orange           Restart BTCPay Docker container
-$cyan
-             c)$orange            Connect BTCPay to LND
-$cyan
-             conf)$orange         Config files ...
-$cyan
-             log)$orange          Logs ...
-$cyan
-             br)$orange           Backup / Restore BTCPay data ...$red (new!)
-$cyan
-             up)$orange           Update BTCPay ... $red (new!)
-$cyan
-             exp)$orange          Manage container $red (for experts) $orange
-$cyan
-             pp)$orange           BTC ParmanPay - Online payment app, worldwide access
-$cyan
+$green
+             start)$orange        Start Docker container and BTCPay $red
+             stop)$orange         Start Docker container and BTCPay $green
+             restart)$orange      Restart BTCPay Docker container $cyan
+             c)$orange            Connect BTCPay to LND $cyan
+             conf)$orange         Config files ...  $cyan
+             log)$orange          Logs ...  $cyan
+             br)$orange           Backup / Restore BTCPay data ...$red (new!) $cyan
+             up)$orange           Update BTCPay ... $red (new!) $cyan
+             exp)$orange          Manage container $red (for experts) $orange $cyan
+             pp)$orange           BTC ParmanPay - Online payment app, worldwide access $cyan
              search)$orange       Locate a string in your BTCPay database...
 
 $enable_tor_menu
