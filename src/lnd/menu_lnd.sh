@@ -174,7 +174,7 @@ else
 unset disable_output
 fi
 
-set_terminal 55 88 ; echo -e "
+set_terminal 45 88 ; echo -e "
 ########################################################################################$cyan
                                 LND Menu${orange} - v$lnd_version                               
 ########################################################################################$disable_output
