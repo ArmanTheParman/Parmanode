@@ -212,6 +212,7 @@ choose "xpmq" ; read choice
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in 
 m|M) back2main ;; q|Q|QUIT|Quit) exit 0 ;;
+"") continue ;;
 p|P) 
 if [[ $1 == overview ]] ; then return 0 ; fi
 menu_use ;; 
