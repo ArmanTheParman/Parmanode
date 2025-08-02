@@ -80,11 +80,6 @@ export lnd_version=$(lncli --version | cut -d - -f 1 | cut -d ' ' -f 3)
 unset dkrmenu inside_docker
 elif [[ $lnddockermenu == "true" ]] ; then
 export lnd_version=$(docker exec lnd lncli --version | cut -d - -f 1 | cut -d ' ' -f 3)
-dkrmenu="
-      (dks)            Start Docker container (and LND)
-
-      (dkst)           Stop Docker container (and LND)
-"
 inside_docker="(within running Docker container)"
 fi
 
@@ -173,10 +168,16 @@ else #docker
     fi
 fi
 
+if grep -q "disable_lnd=true" $pc ; then
+         disable_output="\n\n      LND IS$red DISABLED (type disable to toggle)$orange" 
+else
+unset disable_output
+fi
+
 set_terminal 55 88 ; echo -e "
 ########################################################################################$cyan
                                 LND Menu${orange} - v$lnd_version                               
-########################################################################################
+########################################################################################$disable_output
 
 "
 if [[ $lndrunning == "true" ]] ;  then echo -ne "
@@ -190,28 +191,17 @@ echo -ne "
 $menuDockerIP
 
 $cyan
-      i)$orange              Important info
-$cyan
-      s)$orange              Start $LND $orange$inside_docker 
-$cyan
-      stop)$orange           Stop $LND $orange$inside_docker 
-$cyan
-      rs)$orange             Restart $LND $inside_docker
-$cyan
-      mwt)$orange            Watchtower Service Menu$pink NEW
-$dkrmenu
-      log)$orange            Inspect LND logs
-$cyan
-      conf)$orange           Inspect and edit $lndconf file (confv for vim)
-$cyan
-      scb)$orange            Static Channel Backup 
-$bright_blue
-      t)$orange              Enable/disable TOR $pink $orange      Currently: $colour1$lndtor$orange
-$cyan
-      th)$orange             Enable/disable Clearnet with Tor      Currently: $colour2$torhybrid$orange
-$cyan
-      w)$orange              ... wallet options
-$cyan
+      i)$orange              Important info $cyan
+      s)$orange              Start $LND $orange$inside_docker $cyan
+      stop)$orange           Stop $LND $orange$inside_docker $cyan
+      rs)$orange             Restart $LND $inside_docker $cyan
+      mwt)$orange            Watchtower Service Menu$pink NEW 
+      log)$orange            Inspect LND logs $cyan
+      conf)$orange           Inspect and edit $lndconf file (confv for vim) $cyan
+      scb)$orange            Static Channel Backup $bright_blue
+      t)$orange              Enable/disable TOR $pink $orange      Currently: $colour1$lndtor$orange $cyan
+      th)$orange             Enable/disable Clearnet with Tor      Currently: $colour2$torhybrid$orange $cyan
+      w)$orange              ... wallet options $cyan
       mm)$orange             ... more options
 $lnd_onion $clearnetURI
 $red $blinkon                                                      r to refresh $blinkoff$orange       
@@ -225,11 +215,17 @@ p|P)
 if [[ $1 == overview ]] ; then return 0 ; fi
 menu_use ;; 
 i|I|info|Info) lnd_info ; continue ;;
-s|S|start|START|Start) start_lnd  ; continue ;;
+s|S|start|START|Start) 
+if grep -q "disable_lnd=true" $pc ; then announce "LND IS DISABLED" ; continue ; fi
+start_lnd  ; continue 
+;;
 stop|STOP|Stop) stop_lnd ; continue ;; 
 rs|RS|Rs|restart|RESTART|Restart) restart_lnd ; continue ;;
 r|R) menu_lnd ;;
-
+disable)
+stop_lnd
+disable_lnd
+;;
 t|T|tor)
 if [[ $lndtor == Disabled ]] ; then
 lnd_tor only
@@ -479,5 +475,32 @@ fi
 
 if [[ $1 != skipsuccess ]] ; then
 success "LND" "having Tor-only reversed"
+fi
+}
+
+function disable_lnd {
+clear
+
+if grep -q "disable_lnd=true" $pc ; then #lnd is disabled, enable it...
+
+    if grep -q lnd-end $ic ; then
+        sudo systemctl enable lnd.service
+        sudo gsed -i "/disable_lnd=true/d" $pc #delete line
+    elif grep -q lnddocker-end $ic ; then
+        rename lnd_disabled lnd
+        sudo gsed -i "/disable_lnd=true/d" $pc #delete line
+    fi
+
+else #lnd is not disabled, disable it...
+
+    if grep -q lnd-end $ic ; then
+        sudo systemctl disable lnd.service
+        echo "disable_lnd=true" | tee -a $pc >$dn 2>&1 #add line
+    elif grep -q lnddocker-end $ic ; then
+        docker ps | grep -q lnd && return 1 #already running, don't rename it, potentially dangerous
+        rename lnd lnd_disabled
+        echo "disable_lnd=true" | tee -a $pc >$dn 2>&1 #add line
+    fi
+
 fi
 }
