@@ -18,9 +18,15 @@ n) return 1 ;; y) break ;;
 esac
 done
 fi
-nogsedtest
+
 sudo gsed -i '/Added by Parmanode below/,/Added by Parmanode above/d' "$bashrc"
 sudo gsed -i '/ParmaShell/d' "$bashrc"
+
+if [[ $OS == "Linux" ]] ; then
+    file=/root/.bashrc
+    sudo gsed -i '/Added by Parmanode below/,/Added by Parmanode above/d' "$file"
+    sudo gsed -i '/ParmaShell/d' "$file"
+fi
 
 installed_config_remove "parmashell"
 if [[ $1 != silent ]] ; then
