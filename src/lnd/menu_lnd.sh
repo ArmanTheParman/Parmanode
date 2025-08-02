@@ -192,7 +192,7 @@ $menuDockerIP
 
 $cyan
       i)$orange              Important info $green
-      s)$orange              Start $LND $orange$inside_docker $red
+      start)$orange              Start $LND $orange$inside_docker $red
       stop)$orange           Stop $LND $orange$inside_docker $red
       disable)$orange        Toggle on/off (for when manually copying data)$cyan
       rs)$orange             Restart $LND $inside_docker $cyan
