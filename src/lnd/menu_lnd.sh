@@ -196,11 +196,11 @@ $cyan
       stop)$orange           Stop $LND $orange$inside_docker $red
       disable)$orange        Toggle on/off (for when manually copying data)$cyan
       rs)$orange             Restart $LND $inside_docker $cyan
-      mwt)$orange            Watchtower Service Menu$pink NEW 
+      mwt)$orange            Watchtower Service Menu$pink NEW $cyan
       log)$orange            Inspect LND logs $cyan
       conf)$orange           Inspect and edit $lndconf file (confv for vim) $cyan
       scb)$orange            Static Channel Backup $bright_blue
-      t)$orange              Enable/disable TOR $pink $orange      Currently: $colour1$lndtor$orange $cyan
+      tor)$orange              Enable/disable TOR $pink $orange      Currently: $colour1$lndtor$orange $cyan
       th)$orange             Enable/disable Clearnet with Tor      Currently: $colour2$torhybrid$orange $cyan
       w)$orange              ... wallet options $cyan
       mm)$orange             ... more options
