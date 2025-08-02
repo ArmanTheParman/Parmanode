@@ -395,7 +395,8 @@ if ! docker exec -itu postgres btcpay bash -c "pg_dumpall -U postgres" > $tempdi
 fi
 
 #tar it all up
-if tar -czf $target $tempdir/* >$dn 2>&1 ; then
+cd $tempdir
+if tar -czf $target ./* >$dn 2>&1 ; then
     rm -rf $tempdir 2>$dn 
     success "A backup has been created at $target. \n\n    
     \r    Please keep it safe. Use Parmanode to restore whenever needed. Note, 
