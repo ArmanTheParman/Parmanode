@@ -191,9 +191,10 @@ echo -ne "
 $menuDockerIP
 
 $cyan
-      i)$orange              Important info $cyan
-      s)$orange              Start $LND $orange$inside_docker $cyan
-      stop)$orange           Stop $LND $orange$inside_docker $cyan
+      i)$orange              Important info $green
+      s)$orange              Start $LND $orange$inside_docker $red
+      stop)$orange           Stop $LND $orange$inside_docker $red
+      disable)$orange        Toggle on/off (for when manually copying data)$cyan
       rs)$orange             Restart $LND $inside_docker $cyan
       mwt)$orange            Watchtower Service Menu$pink NEW 
       log)$orange            Inspect LND logs $cyan
