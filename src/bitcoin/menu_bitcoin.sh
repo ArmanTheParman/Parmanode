@@ -75,11 +75,11 @@ fi
 
 
 if [[ $OS == Linux && $bitcoinrunning == "false" ]] && which bitcoin-qt >$dn 2>&1 ; then
-output3="\n$green               qtstart)$orange      Start Bitcoin Qt \n"
+output3="$green               qtstart)$orange      Start Bitcoin Qt \n"
 fi
 
 if [[ $OS == Linux && $bitcoinrunning == "true" ]] && pgrep bitcoin-qt >$dn 2>&1 ; then
-output3="\n$red               qtstop)$orange       Stop Bitcoin Qt \n"
+output3="$red               qtstop)$orange       Stop Bitcoin Qt \n"
 fi
 
 output4="                   Bitcoin Data Usage: $red$(du -shL $HOME/.bitcoin | cut -f1)"$orange
@@ -119,10 +119,11 @@ $green
                start)$orange        Start Bitcoin $red
                stop)$orange         Stop Bitcoin $cyan"
     if [[ $bitcoinrunning == "true" ]] ; then
-        echo -e "               restart)$orange      Restart Bitcoin"
+        echo -e "$green               restart)$orange      Restart Bitcoin"
     fi
 fi
-echo -e "$output3$cyan               n)$orange            Access Bitcoin node information $cyan
+echo -e "$output3$red               disable)$orange      Disable Bitcoin toggle$cyan
+               n)$orange            Access Bitcoin node information $cyan
                log)$orange          Bitcoin debug.log $cyan
                bc)$orange           Inspect edit bitcoin.conf file (bcv for vim) $bright_blue
                bcr)$orange          Refresh bitcoin.conf file to Parmanode default $cyan
