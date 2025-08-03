@@ -40,7 +40,7 @@ else
 fi
 
 debug "before set terminal"
-set_terminal 54 88
+set_terminal 50 88
 echo -en "
 ########################################################################################
                                 ${cyan}BTCPay Server Menu${orange}
