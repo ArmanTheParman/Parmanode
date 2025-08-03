@@ -96,14 +96,14 @@ jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit ;; p|P) menu_add ;; m|M) back2main ;;
 
-ps|PS|Ps)
+parmashell|ps|PS|Ps)
      if [[ -n $parmashell_n ]] ; then
      install_parmashell
      return 0
      fi
      ;;
 
-d|D)
+docker|d|D)
      if [[ -n $docker_n ]] ; then
      set_terminal
      if [[ $OS == Linux ]] ; then install_docker_linux ; fi
@@ -111,7 +111,7 @@ d|D)
      return 0
      fi
      ;; 
-nr)
+nostrrelay|nr)
     if [[ -n $nostrrelay_n ]] ; then
     install_nostrrelay
     return 0
@@ -130,44 +130,44 @@ t|T|tor|Tor)
        return 0 
        fi
        ;;
-tws|TWS|Tws)
+torserver|tws|TWS|Tws)
       if [[ -n $torserver_n ]] ; then
       install_tor_webserver
       return 0
       fi
       ;;
-pbx|Pbx)
+parmabox|pbx|Pbx)
       if [[ -n $parmabox_n ]] ; then
       install_parmabox
       menu_add_other
       fi
       ;;
-any|ANY|Any)
+anydesk|any|ANY|Any)
      if [[ -n $anydesk_n ]] ; then
      install_anydesk
      return 0 
      fi
      ;;
-pih|PiH|Pih)
+pihole|pih|PiH|Pih)
      if [[ -n $pihole_n ]] ; then
      install_pihole
      return 0 
      fi
      ;;
 
-trl|TRL|Trl) 
+torrelay|trl|TRL|Trl) 
     if [[ -n $torrelay_n ]] ; then
     install_torrelay
     return 0
     fi
     ;;
-piap|PIAP)
+piapps|piap|PIAP)
     if [[ -n $piapps_n ]] ; then
     install_piapps
     return 0
     fi
     ;;
-torb|TORB)
+torbrowser|torb|TORB)
     if [[ -n $torb_n ]] ; then
     install_torbrowser
     return 0
@@ -179,20 +179,20 @@ qbit|Qbit)
     return 0
     fi
     ;;
-tssh)
+torssh|tssh)
     if [[ -n $torssh_n ]] ; then
     install_torssh
     return 0
     fi
     ;;
 
-ng)
+nginx|ng)
     if [[ -n $nginx_n ]] ; then
     install_nginx && success "Nginx installed" 
     return 0
     fi
     ;;
-pnostr)
+parmanostr|pnostr)
     if [[ -n $parmanostr_n ]] ; then
     install_parmanostr
     return 0
@@ -208,13 +208,13 @@ x11|X11)
     fi
     ;;
     
-pho|PHO)
+phoenix|pho|PHO)
     if [[ -n $phoenix_n ]] ; then
     install_phoenix
     return 0
     fi
     ;;
-vw)
+vaultwarden|vw)
     if [[ -n $vaultwarden_n ]] ; then
     install_vaultwarden
     return 0
@@ -232,7 +232,7 @@ ii|i2p)
     return 0
     fi
     ;;
-pd|vnc)
+parmadesk|pd|vnc)
     if [[ -n $parmadesk_n ]] ; then
     install_parmadesk
     return 0
