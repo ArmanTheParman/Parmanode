@@ -213,8 +213,8 @@ fi
 unmount|um|umm)
 if docker ps >$dn 2>&1 || bitcoin-cli --version ; then 
     yesorno_blue "Be mindful that unmount won't work if there are programs running with directories 
-    syncing there, eg Docker, Bitcoin, or Electrs. If this is the case, they need to be stopped 
-    before unmounting to proceed successfully/safely. 
+    syncing there, eg Docker, Bitcoin, or Electrs. If this is the case, they need to 
+    be stopped before unmounting to proceed successfully/safely. 
 
     If all you want to do is detach the drive, it's usually easier to shut down the 
     computer, and then detach the drive.
@@ -225,7 +225,7 @@ fi
 [[ -n $raidmenu ]] && { 
     [[ $(docker ps 2>$dn | wc -l) -gt 1 ]] && docker ps >$dn 2>&1 && { sww "Make sure that Docker is fully stopped before unmounting. yolo to ignore." ; case $enter_cont in yolo) true ;; *) continue ;; esac ; }
     pgrep bitcoin >$dn && { sww "Make sure that bitcoin is fully stopped before unmounting"             ; case $enter_cont in yolo) true ;; *) continue ;; esac ; }
-    sudo unmount /var/lib/docker
+    sudo umount /var/lib/docker
     sudo umount /srv/parmadrive || { swwd ; continue ; } 
     continue
 }
