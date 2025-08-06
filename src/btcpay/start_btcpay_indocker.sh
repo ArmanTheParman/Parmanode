@@ -25,3 +25,6 @@ set_terminal ; echo -e "
 enter_continue
 return 1
 }    
+
+
+/usr/bin/dotnet run --no-launch-profile --no-build -c Release --project "home/parman/parmanode/btcpayserver/BTCPayServer/BTCPayServer.csproj" -- $@ 

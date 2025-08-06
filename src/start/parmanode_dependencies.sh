@@ -17,7 +17,7 @@ export ask=false #if no block switches this on to true, then next time, the enti
             y) [[ $APT_UPDATE == "true" ]] || { sudo apt-get update -y && export APT_UPDATE="true" ; }
                 sudo apt-get install jq -y
                 ;;
-            nooo) echo "dont_install_jq" | tee $dp/.dont_install >$dn 2>&1 ;;
+            nooo) echo "dont_install_jq" | tee -a $dp/.dont_install >$dn 2>&1 ;;
             esac
     }
 
@@ -36,7 +36,7 @@ export ask=false #if no block switches this on to true, then next time, the enti
             y) [[ $APT_UPDATE == "true" ]] || { sudo apt-get update -y && export APT_UPDATE="true" ; }
                 sudo apt-get install vim -y
                 ;;
-            nooo) echo "dont_install_vim" | tee $dp/.dont_install >$dn 2>&1 ;;
+            nooo) echo "dont_install_vim" | tee -a $dp/.dont_install >$dn 2>&1 ;;
             *) continue ;;
             esac
     }    
@@ -55,7 +55,7 @@ export ask=false #if no block switches this on to true, then next time, the enti
             y) [[ $APT_UPDATE == "true" ]] || { sudo apt-get update -y && export APT_UPDATE="true" ; }
                 sudo apt-get install unzip -y
                 ;;
-            nooo) echo "dont_install_unzip" | tee $dp/.dont_install >$dn 2>&1  ;;
+            nooo) echo "dont_install_unzip" | tee -a $dp/.dont_install >$dn 2>&1  ;;
             esac
     }    
     which tmux >$dn || sudo grep -q "dont_install_tmux" $dp/.dont_install || {
@@ -74,7 +74,7 @@ export ask=false #if no block switches this on to true, then next time, the enti
             y) [[ $APT_UPDATE == "true" ]] || { sudo apt-get update -y && export APT_UPDATE="true" ; }
                 sudo apt-get install tmux -y
                 ;;
-            nooo) echo "dont_install_tmux" | tee $dp/.dont_install >$dn 2>&1 ;;
+            nooo) echo "dont_install_tmux" | tee -a $dp/.dont_install >$dn 2>&1 ;;
             esac
     }    
 
@@ -93,7 +93,7 @@ export ask=false #if no block switches this on to true, then next time, the enti
             y) [[ $APT_UPDATE == "true" ]] || { sudo apt-get update -y && export APT_UPDATE="true" ; }
                 sudo apt-get install ssh -y
                 ;;
-            nooo) echo "dont_install_ssh" | tee $dp/.dont_install >$dn 2>&1 ;;
+            nooo) echo "dont_install_ssh" | tee -a $dp/.dont_install >$dn 2>&1 ;;
             esac
     }    
     which tor >$dn || sudo grep -q "dont_install_tor" $dp/.dont_install || {
@@ -111,7 +111,7 @@ export ask=false #if no block switches this on to true, then next time, the enti
             y) [[ $APT_UPDATE == "true" ]] || { sudo apt-get update -y && export APT_UPDATE="true" ; }
                 sudo apt-get install tor -y
                 ;;
-            nooo) echo "dont_install_tor" | tee $dp/.dont_install >$dn 2>&1 ;;
+            nooo) echo "dont_install_tor" | tee -a $dp/.dont_install >$dn 2>&1 ;;
             esac
     }    
     sudo which ufw >$dn || sudo grep -q "dont_install_ufw" $dp/.dont_install || {
@@ -129,7 +129,7 @@ export ask=false #if no block switches this on to true, then next time, the enti
             y) [[ $APT_UPDATE == "true" ]] || { sudo apt-get update -y && export APT_UPDATE="true" ; }
                 sudo apt-get install ufw -y
                 ;;
-            nooo) echo "dont_install_ufw" | tee $dp/.dont_install >$dn 2>&1 ;;
+            nooo) echo "dont_install_ufw" | tee -a $dp/.dont_install >$dn 2>&1 ;;
             esac
     }    
     dpkg -l | grep -q mdadm >$dn 2>&1 || sudo grep -q "dont_install_mdadm" $dp/.dont_install || {
@@ -147,7 +147,7 @@ export ask=false #if no block switches this on to true, then next time, the enti
             y) [[ $APT_UPDATE == "true" ]] || { sudo apt-get update -y && export APT_UPDATE="true" ; }
                 sudo apt-get install mdadm -y
                 ;;
-            nooo) echo "dont_install_mdadm" | tee $dp/.dont_install >$dn 2>&1 ;;
+            nooo) echo "dont_install_mdadm" | tee -a $dp/.dont_install >$dn 2>&1 ;;
             esac
     }    
     sudo which gparted >$dn || sudo grep -q "dont_install_gparted" $dp/.dont_install || {
@@ -165,7 +165,7 @@ export ask=false #if no block switches this on to true, then next time, the enti
             y) [[ $APT_UPDATE == "true" ]] || { sudo apt-get update -y && export APT_UPDATE="true" ; }
                 sudo apt-get install gparted -y
                 ;;
-            nooo) echo "dont_install_gparted" | tee $dp/.dont_install >$dn 2>&1 ;;
+            nooo) echo "dont_install_gparted" | tee -a $dp/.dont_install >$dn 2>&1 ;;
             esac
     }
 
@@ -184,7 +184,7 @@ export ask=false #if no block switches this on to true, then next time, the enti
             y) [[ $APT_UPDATE == "true" ]] || { sudo apt-get update -y && export APT_UPDATE="true" ; }
                 sudo apt-get install netcat-traditional -y
                 ;;
-            nooo) echo "dont_install_netcat" | tee $dp/.dont_install >$dn 2>&1 ;;
+            nooo) echo "dont_install_netcat" | tee -a $dp/.dont_install >$dn 2>&1 ;;
        
     esac
 fi
@@ -204,7 +204,7 @@ fi
             y) [[ $APT_UPDATE == "true" ]] || { sudo apt-get update -y && export APT_UPDATE="true" ; }
                 sudo apt-get install net-tools -y
                 ;;
-            nooo) echo "dont_install_net-tools" | tee $dp/.dont_install >$dn 2>&1 ;;
+            nooo) echo "dont_install_net-tools" | tee -a $dp/.dont_install >$dn 2>&1 ;;
     
     esac
 fi   
@@ -223,7 +223,7 @@ fi
             y) [[ $APT_UPDATE == "true" ]] || { sudo apt-get update -y && export APT_UPDATE="true" ; }
                 sudo apt-get install libnotify-bin -y
                 ;;
-            nooo) echo "dont_install_notify-send" | tee $dp/.dont_install >$dn 2>&1 ;;
+            nooo) echo "dont_install_notify-send" | tee -a $dp/.dont_install >$dn 2>&1 ;;
     
     esac
 fi 
@@ -243,7 +243,7 @@ fi
             y) [[ $APT_UPDATE == "true" ]] || { sudo apt-get update -y && export APT_UPDATE="true" ; }
                 sudo apt-get install e2fsprogs -y
                 ;;
-            nooo) echo "dont_install_tune2fs" | tee $dp/.dont_install >$dn 2>&1 ;;
+            nooo) echo "dont_install_tune2fs" | tee -a $dp/.dont_install >$dn 2>&1 ;;
  
     esac
 fi 
@@ -264,7 +264,7 @@ if ! dpkg -l | grep -q libfuse && ! sudo grep -q "dont_install_libfuse" $dp/.don
                 sudo apt-get install -y fuse3
                 sudo apt-get install -y libfuse2
                 ;;
-            nooo) echo "dont_install_libfuse" | tee $dp/.dont_install >$dn 2>&1 ;;
+            nooo) echo "dont_install_libfuse" | tee -a $dp/.dont_install >$dn 2>&1 ;;
       
     esac
 fi   
