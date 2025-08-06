@@ -27,4 +27,4 @@ return 1
 }    
 
 
-/usr/bin/dotnet run --no-launch-profile --no-build -c Release --project "home/parman/parmanode/btcpayserver/BTCPayServer/BTCPayServer.csproj" -- $@ 
+# /usr/bin/dotnet run --no-launch-profile --no-build -c Release --project "home/parman/parmanode/btcpayserver/BTCPayServer/BTCPayServer.csproj" -- $@ 
