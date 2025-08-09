@@ -40,7 +40,7 @@ if ! grep -q "motd=" $pc ; then
 fi
 
 #DON'T FORGET TO CHANGE THE MOD TO THE HIGHEST NUMBERERD MESSAGE + 1
-motd=$((motd % 70))
+motd=$((motd % 85))
 
 if [[ $forkids == 1 ]] ; then
     found=1
@@ -1635,6 +1635,278 @@ $another
 "
 enter_continue ; jump $enter_cont ; choice="$enter_cont"
 fi ; case $choice in endthefed|EndTheFed|ENDTHEFED|end) hide_messages_add "motd" "1" ; return 0 ;; esac
+
+if [[ $motd == 70 ]] ; then
+set_terminal ; echo -e "
+########################################################################################
+$cyan
+                                 Message of the day $orange
+
+
+    There are people who say I'm buying bitcoin with I hope that I can sell it to 
+    someone in the future for a higher price. 
+
+    No, you can't have my bitcoin even if you pay a higher price. 
+
+    I'm gonna need someone to shine my shoes though, interested?
+
+$orange
+######################################################################################## 
+$another
+"
+enter_continue ; jump $enter_cont ; choice="$enter_cont"
+fi ; case $choice in endthefed|EndTheFed|ENDTHEFED|end) hide_messages_add "motd" "1" ; return 0 ;; esac
+
+if [[ $motd == 71 ]] ; then
+set_terminal ; echo -e "
+########################################################################################
+$cyan
+                                 Message of the day $orange
+
+
+    If you think HODLing is painful, rather than liberating and joyous,  you're 
+    missing some critical understanding I suspect.
+
+$orange
+######################################################################################## 
+$another
+"
+enter_continue ; jump $enter_cont ; choice="$enter_cont"
+fi ; case $choice in endthefed|EndTheFed|ENDTHEFED|end) hide_messages_add "motd" "1" ; return 0 ;; esac
+
+if [[ $motd == 72 ]] ; then
+set_terminal ; echo -e "
+########################################################################################
+$cyan
+                                 Message of the day $orange
+
+
+    I don't buy Bitcoin because tyranny can't win. 
+
+    I buy it because it might.
+
+$orange
+######################################################################################## 
+$another
+"
+enter_continue ; jump $enter_cont ; choice="$enter_cont"
+fi ; case $choice in endthefed|EndTheFed|ENDTHEFED|end) hide_messages_add "motd" "1" ; return 0 ;; esac
+
+
+if [[ $motd == 73 ]] ; then
+set_terminal ; echo -e "
+########################################################################################
+$cyan
+                                 Message of the day $orange
+
+
+    There is no such thing as a Bitcoiner with shitcoins, they are shitcoiners with 
+    Bitcoin.
+
+$orange
+######################################################################################## 
+$another
+"
+enter_continue ; jump $enter_cont ; choice="$enter_cont"
+fi ; case $choice in endthefed|EndTheFed|ENDTHEFED|end) hide_messages_add "motd" "1" ; return 0 ;; esac
+
+if [[ $motd == 74 ]] ; then
+set_terminal ; echo -e "
+########################################################################################
+$cyan
+                                 Message of the day $orange
+
+
+    Hot tip: you don't need to learn about NFTs, altcoins, or any other type of scam.
+
+$orange
+######################################################################################## 
+$another
+"
+enter_continue ; jump $enter_cont ; choice="$enter_cont"
+fi ; case $choice in endthefed|EndTheFed|ENDTHEFED|end) hide_messages_add "motd" "1" ; return 0 ;; esac
+
+if [[ $motd == 75 ]] ; then
+set_terminal ; echo -e "
+########################################################################################
+$cyan
+                                 Message of the day $orange
+
+
+    Democracy is a 51% attack on freedom.
+
+$orange
+######################################################################################## 
+$another
+"
+enter_continue ; jump $enter_cont ; choice="$enter_cont"
+fi ; case $choice in endthefed|EndTheFed|ENDTHEFED|end) hide_messages_add "motd" "1" ; return 0 ;; esac
+
+if [[ $motd == 76 ]] ; then
+set_terminal ; echo -e "
+########################################################################################
+$cyan
+                                 Message of the day $orange
+
+
+    Bitcoin at 100k might feel like winning for some people, but I'm not satisfied 
+    until central banks and the pedophile rings they facilitate are destroyed.
+
+$orange
+######################################################################################## 
+$another
+"
+enter_continue ; jump $enter_cont ; choice="$enter_cont"
+fi ; case $choice in endthefed|EndTheFed|ENDTHEFED|end) hide_messages_add "motd" "1" ; return 0 ;; esac
+
+if [[ $motd == 77 ]] ; then
+set_terminal ; echo -e "
+########################################################################################
+$cyan
+                                 Message of the day $orange
+
+
+    Countries are not "run". 
+
+    They are ruled. 
+
+    People and businesses do not need a government to operate, they are "petmitted", 
+    by rulers, who practice extortion through the threat, ultimately, of violence.
+
+    It is the government that is run, not the country.
+
+$orange
+######################################################################################## 
+$another
+"
+enter_continue ; jump $enter_cont ; choice="$enter_cont"
+fi ; case $choice in endthefed|EndTheFed|ENDTHEFED|end) hide_messages_add "motd" "1" ; return 0 ;; esac
+
+if [[ $motd == 78 ]] ; then
+set_terminal ; echo -e "
+########################################################################################
+$cyan
+                                 Message of the day $orange
+
+
+    Arguing that shitcoins are a gateway to Bitcoin is like arguing that sexual abuse 
+    as a child is a gateway to a loving relationship as an adult.
+
+$orange
+######################################################################################## 
+$another
+"
+enter_continue ; jump $enter_cont ; choice="$enter_cont"
+fi ; case $choice in endthefed|EndTheFed|ENDTHEFED|end) hide_messages_add "motd" "1" ; return 0 ;; esac
+
+if [[ $motd == 79 ]] ; then
+set_terminal ; echo -e "
+########################################################################################
+$cyan
+                                 Message of the day $orange
+
+
+    Quick reminder that your government is not your country, it's your ruler.
+
+$orange
+######################################################################################## 
+$another
+"
+enter_continue ; jump $enter_cont ; choice="$enter_cont"
+fi ; case $choice in endthefed|EndTheFed|ENDTHEFED|end) hide_messages_add "motd" "1" ; return 0 ;; esac
+
+if [[ $motd == 80 ]] ; then
+set_terminal ; echo -e "
+########################################################################################
+$cyan
+                                 Message of the day $orange
+
+
+    Bitcoin will help you get rich while simultaneously teaching you that you don't 
+    need to be.
+
+$orange
+######################################################################################## 
+$another
+"
+enter_continue ; jump $enter_cont ; choice="$enter_cont"
+fi ; case $choice in endthefed|EndTheFed|ENDTHEFED|end) hide_messages_add "motd" "1" ; return 0 ;; esac
+
+if [[ $motd == 81 ]] ; then
+set_terminal ; echo -e "
+########################################################################################
+$cyan
+                                 Message of the day $orange
+
+
+    You don't have to explain to another Bitcoiner how unbelievably profound a way 
+    Bitcoin has changed them as a person, including their whole outlook on life, not 
+    just their own but the whole species.
+
+    A simple nod will do; they know.
+
+$orange
+######################################################################################## 
+$another
+"
+enter_continue ; jump $enter_cont ; choice="$enter_cont"
+fi ; case $choice in endthefed|EndTheFed|ENDTHEFED|end) hide_messages_add "motd" "1" ; return 0 ;; esac
+
+if [[ $motd == 82 ]] ; then
+set_terminal ; echo -e "
+########################################################################################
+$cyan
+                                 Message of the day $orange
+
+
+    There are an awful lot of people who know nothing about the tech who are in it 
+    for the tech.
+
+$orange
+######################################################################################## 
+$another
+"
+enter_continue ; jump $enter_cont ; choice="$enter_cont"
+fi ; case $choice in endthefed|EndTheFed|ENDTHEFED|end) hide_messages_add "motd" "1" ; return 0 ;; esac
+
+if [[ $motd == 83 ]] ; then
+set_terminal ; echo -e "
+########################################################################################
+$cyan
+                                 Message of the day $orange
+
+
+    Do not load your main Bitcoin stack wallet on your phone as a watching wallet. 
+    Delete that immediately.
+
+$orange
+######################################################################################## 
+$another
+"
+enter_continue ; jump $enter_cont ; choice="$enter_cont"
+fi ; case $choice in endthefed|EndTheFed|ENDTHEFED|end) hide_messages_add "motd" "1" ; return 0 ;; esac
+
+if [[ $motd == 84 ]] ; then
+set_terminal ; echo -e "
+########################################################################################
+$cyan
+                                 Message of the day $orange
+
+
+    The largest criminal organisation in a region, by DEFINITION, is the government.
+
+    If a crime organisation becomes bigger than the government, it would then BE the 
+    government.
+
+    Once you see it you can't unsee it.
+
+$orange
+######################################################################################## 
+$another
+"
+enter_continue ; jump $enter_cont ; choice="$enter_cont"
+fi ; case $choice in endthefed|EndTheFed|ENDTHEFED|end) hide_messages_add "motd" "1" ; return 0 ;; esac
+
 }
 
 #DON'T FORGET TO CHANGE THE MOD TO THE HIGHEST NUMBERERD MESSAGE + 1

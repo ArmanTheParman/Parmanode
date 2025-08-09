@@ -1,5 +1,6 @@
 Version 3.64.0
      -MAC Spoof tool
+     -Message of the day additions
 Version 3.63.1
      -Improvements to Bitcoin Tor menu
      -Valatile Jouranald option in Drive menu
