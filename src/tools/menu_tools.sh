@@ -7,29 +7,32 @@ echo -ne "
                                   TOOLS - PAGE 1  $orange
 ########################################################################################
 
-$cyan              aip)$orange   See the IPs of all devices connected on your network
 
-$cyan              hn)$orange    Change host name (Linux)
+$cyan          spoofmac)$orange   See the IPs of all devices connected on your network
 
-$cyan              svr)$orange   Screen Video Recording$red$blinkon NEW$blinkoff$orange
+$cyan          aip)$orange        See the IPs of all devices connected on your network
 
-$cyan              ip)$orange    What's my computer's IP address?
+$cyan          hn)$orange         Change host name (Linux)
 
-$cyan              uc)$orange    Update computer (apt-get for Linux, Homebrew for Macs)
+$cyan          svr)$orange        Screen Video Recording$red$blinkon NEW$blinkoff$orange
 
-$cyan              sr)$orange    System report (for getting troubleshooting help)
+$cyan          ip)$orange         What's my computer's IP address?
 
-$cyan              d)$orange     Delete all preferences to hide menu messages
+$cyan          uc)$orange         Update computer (apt-get for Linux, Homebrew for Macs)
 
-$cyan              pn)$orange    ParmanodL - Flash a mircoSD for a Raspberry Pi
+$cyan          sr)$orange         System report (for getting troubleshooting help)
+
+$cyan          d)$orange          Delete all preferences to hide menu messages
+
+$cyan          pn)$orange         ParmanodL - Flash a mircoSD for a Raspberry Pi
                                                                                       
-$cyan              ps)$orange    ParmaShell info 
+$cyan          ps)$orange         ParmaShell info 
 
-$cyan              rs)$orange    Parman's easy AF Rsync tool new
+$cyan          rs)$orange         Parman's easy AF Rsync tool new
 
-$cyan              cc)$orange    Upgrade ColdCard firmware wizard             
+$cyan          cc)$orange         Upgrade ColdCard firmware wizard             
 $red $blinkon
-              n)     Next page of tools ...   $blinkoff
+          n)          Next page of tools ...   $blinkoff
 $orange
 ########################################################################################
 "
@@ -40,6 +43,9 @@ q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 
     n|next)
     menu_tools2
+    ;;
+    spoofmac)
+    spoof_mac
     ;;
     
    sr)

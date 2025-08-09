@@ -1,29 +1,27 @@
 function spoof_mac {
+if [[ $OS == "Mac" ]] ; then nomac ; return 1 ; fi
 
-#not finished
+if sudo test -f /etc/NetworkManager/conf.d/20-parmanode-spoof_mac.conf >$dn 2>&1 ; then
+yesorno "the$green Spoof MAC Tool$orange is already installed, do you want to uninstall it?" || return 1
+sudo rm /etc/NetworkManager/conf.d/20-parmanode-spoof_mac.conf >$dn 2>&1 
+return 0
+fi
 
-#install mac changer
-  #apt_update 
-  #sudo apt install macchanger
-
-
-#test network connection statusband get id
-
-announce "
-The spoof MAC tool creates a fake temporary and random
-    MAC (Media Access Control) address for Ethernet or WiFi 
-    hardware, which can help fight against tracking and 
+yesorno "The$green Spoof MAC Tool$orange creates a fake temporary and random MAC (Media Access Control) 
+    address for Ethernet or WiFi hardware, which can help fight against tracking and 
     improve your privacy online. 
-
-    Turn off your WiFi, or disable/disconnect your Ethernet 
-    connection first before hitting <enter>."
     
-enter_continue
+    Installing this will result in a new MAC address whenever you switch off then 
+    on your WiFi or Ethernet hardware. Eg (click 'WiFi' off, or 'Wired' off, or
+    unplug and replug your Ethernet cable)." || return 1
+    
 
-#check which network turned off
+cat<<EOF | sudo tee /etc/NetworkManager/conf.d/20-parmanode-spoof_mac.conf >$dn
+[device]
+wifi.scan-rand-mac-address=yes
 
-#randomise mac
-
-#announce to turn back on
-
+[connection]
+wifi.cloned-mac-address=random
+ethernet.cloned-mac-address=random
+EOF
 }
