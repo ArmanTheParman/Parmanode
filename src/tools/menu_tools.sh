@@ -1,7 +1,7 @@
 function menu_tools {
 
 while true ; do
-set_terminal 46 88
+set_terminal 42 88
 echo -ne "
 ########################################################################################$cyan
                                   TOOLS - PAGE 1  $orange
