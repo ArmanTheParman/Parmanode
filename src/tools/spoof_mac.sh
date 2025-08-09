@@ -3,7 +3,7 @@ if [[ $OS == "Mac" ]] ; then nomac ; return 1 ; fi
 
 if sudo test -f /etc/NetworkManager/conf.d/20-parmanode-spoof_mac.conf >$dn 2>&1 ; then
 yesorno "the$green Spoof MAC Tool$orange is already installed, do you want to uninstall it?" || return 1
-sudo rm /etc/NetworkManager/conf.d/20-parmanode-spoof_mac.conf >$dn 2>&1 
+sudo rm /etc/NetworkManager/conf.d/20-parmanode-spoof_mac.conf >$dn 2>&1 && success "Uninstalled the Spoof MAC Tool"
 return 0
 fi
 
@@ -24,4 +24,6 @@ wifi.scan-rand-mac-address=yes
 wifi.cloned-mac-address=random
 ethernet.cloned-mac-address=random
 EOF
+success "The$green Spoof MAC Tool$orange has been installed. 
+    You can now switch off and on your WiFi or Ethernet hardware to enable the change."
 }
