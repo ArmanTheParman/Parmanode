@@ -90,7 +90,7 @@ else
 fi
 
     
-write_to_fstab2 ; debug "fstab done"
+write_to_fstab ; debug "fstab done"
 clear
 echo "Testing fstab mount..." ; sleep 2
 sudo umount $parmanode_drive
