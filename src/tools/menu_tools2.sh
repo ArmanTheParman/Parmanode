@@ -30,6 +30,8 @@ $cyan              lnf)$orange       Install Linux non-free packages and backpor
 
 $cyan              ipt)$orange       IPTables menu $green$blinkon(NEW)$blinkoff 
 
+$cyan              grub)$orange      Install (or reinstall) GRUB bootloader 
+
 $orange
 ########################################################################################
 "
@@ -101,6 +103,10 @@ ipt)
 menu_iptables
 ;;
 
+grub)
+install_grub
+;;
+
 "")
 continue ;;
 *)
@@ -110,4 +116,6 @@ esac
 done
 return 0
 }
+
+
 
