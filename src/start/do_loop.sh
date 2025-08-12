@@ -23,6 +23,7 @@ deactivate >/dev/null 2>&1
 
 gsed_symlink 
 parmanode_variables $@ #CANNOT USE CUSTOM DEBUG FUNCTION BEFORE THIS"
+test -f $hm || touch $hm
 
 source_premium
 

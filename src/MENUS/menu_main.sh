@@ -54,7 +54,7 @@ fi
 # if statements in the menu printout makes the menu dynamic, ie changes according to the
 # tests performed. Variables are set to assist logic in the menu choice execution part
 # of the code at the bottom.
-debug "before  main menu"
+debug "before main menu"
 set_terminal 46
 echo -en "$orange
 ########################################################################################
