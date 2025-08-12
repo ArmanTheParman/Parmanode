@@ -359,6 +359,7 @@ if grep -q "disable_electrs=true" $pc ; then #electrs is disabled, enable it...
 
     if grep -q electrs-end $ic ; then
         sudo systemctl enable electrs.service
+        debug "enabled electrs.service"
         sudo gsed -i "/disable_electrs=true/d" $pc #delete line
     elif grep -q electrsdkr-end $ic ; then
         rename electrs_disabled electrs
