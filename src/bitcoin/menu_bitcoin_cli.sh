@@ -22,7 +22,7 @@ $cyan
                    $cyan                     
                         (gcc)$orange          Get connection count    
         $cyan        
-                        (gpi)$orange          Get peer info 
+                        (gpi)$orange          Get peer info (q to exit it)
         $cyan        
                         (gbh)$orange          Get blockhash   
             $cyan    
