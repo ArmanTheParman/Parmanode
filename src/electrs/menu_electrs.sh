@@ -356,7 +356,7 @@ function disable_electrs {
 clear
 
 if grep -q "disable_electrs=true" $pc ; then #electrs is disabled, enable it...
-
+debug "electrs is disabled, enabling it now..."
     if grep -q electrs-end $ic ; then
         sudo systemctl enable electrs.service
         debug "enabled electrs.service"
@@ -367,7 +367,7 @@ if grep -q "disable_electrs=true" $pc ; then #electrs is disabled, enable it...
     fi
 
 else #electrs is not disabled, disable it...
-
+debug "electrs is not disabled, disabling it now..."
     if grep -q electrs-end $ic ; then
         sudo systemctl disable electrs.service
         echo "disable_electrs=true" | tee -a $pc >$dn 2>&1 #add line
