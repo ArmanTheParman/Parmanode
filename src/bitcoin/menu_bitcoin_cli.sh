@@ -19,6 +19,10 @@ $cyan
                         (gi)$orange           Get info            
     $cyan            
                         (ni)$orange           Net info
+                   $cyan                     
+                        (gcc)$orange          Get connection count    
+        $cyan        
+                        (gpi)$orange          Get peer info 
         $cyan        
                         (gbh)$orange          Get blockhash   
             $cyan    
@@ -31,8 +35,6 @@ $cyan
                         (gmi)$orange          Get mempool info    
                $cyan 
                         (gtosi)$orange        Get tx out set info 
-                   $cyan                     
-                        (gcc)$orange          Get connection count    
                $cyan 
                         (vm)$orange           Verify a message
 
@@ -183,6 +185,17 @@ continue
 fi
     /usr/local/bin/bitcoin-cli gettxoutsetinfo
     enter_continue
+    set_terminal
+    continue
+    ;;
+gpi)
+if [[ $OS == Mac ]] ; then
+curl -s --user $rpcuser:$rpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getpeerinfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
+enter_continue
+continue
+fi
+    set_terminal
+    /usr/local/bin/bitcoin-cli getpeerinfo | less 
     set_terminal
     continue
     ;;
