@@ -8,7 +8,7 @@ echo -ne "
 ########################################################################################
 
 
-$cyan          spoofmac)$orange   See the IPs of all devices connected on your network
+$cyan          spoofmac)$orange   Spoof your MAC address when connecting to internet 
 
 $cyan          aip)$orange        See the IPs of all devices connected on your network
 
