@@ -1,9 +1,9 @@
 
 function check_ext_ip_update_automation_allowed {
-return 0
-if ! test -f $pdc ; then return 1 ; fi
 
-if grep "parmaguard=" $pdc >$dn 2>&1 ; then return 0 ; fi
+if ! test -f $pdc ; then return 1 ; fi
+if ! grep "PARMAGUARD_INSTALLED=true" $pdc ; then return 1 ; fi #only for later version of ParmaDrives with this feature installed
+if grep "parmaguard=" $pdc >$dn 2>&1 ; then return 0 ; fi #if this exists, the question has already been asked and answered
 
 set_terminal
 if yesorno_blue "
