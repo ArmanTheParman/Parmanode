@@ -2,6 +2,8 @@ function menu_parmadrive {
 [[ $OS == "Mac" ]] && no_mac && return 1
 source $pdc
 
+check_ext_ip_update_automation_allowed
+
 #Newer versions of Parmadrive have Raid first, then encrypt the Raid. This directs them to a different menu
 #and those with older version can continue to use this  menu
 if [[ -n $RAIDLUKSUUID ]] ; then
