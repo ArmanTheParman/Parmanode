@@ -74,6 +74,7 @@ function sdr { sudo systemctl daemon-reload ; }
 function sstatus { sudo systemctl status "$1" ; }
 function sls { systemctl list-units --type=service --all ; }
 function jfexu { journalctl -exu "$1" ; }
+function l { a ; lsblk ; }
 
 function colour { export PS1='\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]$ ' ; }
 function color { colour ; }
