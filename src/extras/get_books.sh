@@ -42,7 +42,7 @@ else
 cd $hp
 git clone --depth 1 https://github.com/ArmanTheParman/parman_books.git
 
-success "Parman's recommended computer books has been downloaded and can be
+success "${orange}Parman's recommended computer books has been downloaded and can be
     found on your drive at: $cyan
 
     $hp/parman_books/ $orange
