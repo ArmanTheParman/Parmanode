@@ -173,7 +173,7 @@ echo -e "#$cyan                            \033[27G piap)$orange             PiA
 if grep -q "torb-end" $HOME/.parmanode/installed.conf ; then torbmenu=1
 echo -e "#$cyan                            \033[27G torb)$orange             Tor Browser                            \033[88G#"
 elif grep -q "torb-start" $HOME/.parmanode/installed.conf ; then torbmenu=1
-echo -e "#$cyan                            \033[27G torb)$orange             Tor Browse  $red$blinkon(partial)$blinkoff$orange                   \033[88G#" ; fi
+echo -e "#$cyan                            \033[27G torb)$orange             Tor Browser  $red$blinkon(partial)$blinkoff$orange                   \033[88G#" ; fi
 if grep -q "qbittorrent-end" $HOME/.parmanode/installed.conf ; then qbittorrentmenu=1
 echo -e "#$cyan                            \033[27G qbit)$orange             QBittorrent                            \033[88G#"
 elif grep -q "qbittorrent-start" $HOME/.parmanode/installed.conf ; then torbmenu=1
