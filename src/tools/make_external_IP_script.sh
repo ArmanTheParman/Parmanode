@@ -8,7 +8,7 @@ cat <<'EOF' >> $dp/scripts/update_external_IP2.sh
 count=0
 unset IP
 while true ; do 
-    IP=$(curl -s ifconfig.me)
+    IP=$(curl -4 ifconfig.me)
     [[ -n "$IP" ]] && break
     sleep 2 
     count=$((count + 1))
