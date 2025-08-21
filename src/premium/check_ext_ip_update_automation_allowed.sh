@@ -14,8 +14,8 @@ if yesorno_blue "
     at the current IP address location, and if it's move (stolen), auto unlock at 
     boot is disabled.
 
-    Sometimes, you IP address changes. ParmaDrive can detect this and have the ParmaGuard
-    server update the number.
+    Sometimes, you IP address changes. ParmaDrive can detect this and have the 
+    ParmaGuard server update the number.
 
     This can only be done when the ParmaDrive is already decrypted.
 
