@@ -1,40 +1,30 @@
 function menu_tools {
 
 while true ; do
-set_terminal 42 88
+set_terminal 42 100 
 echo -ne "
-########################################################################################$cyan
+####################################################################################################$cyan
                                   TOOLS - PAGE 1  $orange
-########################################################################################
+####################################################################################################
 
 
 $cyan          spoofmac)$orange   Spoof your MAC address when connecting to internet 
-
+$cyan          pay)$orange        Generate a normal lightning invoice from a LN address
 $cyan          aip)$orange        See the IPs of all devices connected on your network
-
 $cyan          hn)$orange         Change host name (Linux)
-
 $cyan          svr)$orange        Screen Video Recording$red$blinkon NEW$blinkoff$orange
-
 $cyan          ip)$orange         What's my computer's IP address?
-
 $cyan          uc)$orange         Update computer (apt-get for Linux, Homebrew for Macs)
-
 $cyan          sr)$orange         System report (for getting troubleshooting help)
-
 $cyan          d)$orange          Delete all preferences to hide menu messages
-
 $cyan          pn)$orange         ParmanodL - Flash a mircoSD for a Raspberry Pi
-                                                                                      
 $cyan          ps)$orange         ParmaShell info 
-
 $cyan          rs)$orange         Parman's easy AF Rsync tool new
-
 $cyan          cc)$orange         Upgrade ColdCard firmware wizard             
 $red $blinkon
           n)          Next page of tools ...   $blinkoff
 $orange
-########################################################################################
+####################################################################################################
 "
 choose "xpmq" ; read choice 
 jump $choice || { invalid ; continue ; } ; set_terminal
@@ -46,6 +36,9 @@ q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
     ;;
     spoofmac)
     spoof_mac
+    ;;
+    pay)
+    pay_lightning_address
     ;;
     
    sr)
