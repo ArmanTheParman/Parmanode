@@ -91,7 +91,14 @@ $cyan
 $bright_magenta    Current Status: $status_print$orange
 $tortext"
 
-choose "xpmq" ; read choice
+choose "xpmq" 
+
+if [[ $parmanodl_build == "true" ]] ; then
+choice="1"
+else
+read choice
+fi
+
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in 
 m|M) back2main ;; Q|q|quit|QUIT|Quit) exit 0 ;; p|P) return 1 ;;

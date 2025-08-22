@@ -58,7 +58,7 @@ add_server_1_to_bitcoinconf
 
 installed_conf_add "sparrow-end"
 
-success "Sparrow has been installed.
+[[ $parmanodl_build == "true" ]] || success "Sparrow has been installed.
 
     If you want to be cautious and verify the software your self (good idea)
     in addition to Parmanode having done it for you, you can do that. The

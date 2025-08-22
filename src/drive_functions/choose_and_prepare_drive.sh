@@ -1,5 +1,5 @@
 function choose_and_prepare_drive {
-if [[ $version == self ]] ; then return 0 ; fi
+if [[ $version == "self" ]] ; then return 0 ; fi
 # Expect argument, either Bitcoin or Fulcrum or Electrs or Electrumx or nostr for $1
 # chooses between internal and external drive
 # Should have called the function "choose_and_prepare_drive, without "parmanode" - fix later"
@@ -28,7 +28,7 @@ $green
 $red
                 (i)     Use an INTERNAL drive $orange
 "
-if [[ $1 == Bitcoin ]] ; then
+if [[ $1 == "Bitcoin" ]] ; then
     echo -e "$text" 
     echo -e "$text_bitcoin_byo" 
 fi 
@@ -42,7 +42,12 @@ echo "##########################################################################
 "
 choose "xpmq" #echo statment about above options, previous menu, or quit.
 
+if [[ $parmanodl_build == "true" ]] ; then
+choice="i"
+else
 read choice #user's choice stored in variable, choice
+fi
+
 jump $choice || { invalid ; continue ; } ; set_terminal
 
 else
@@ -52,7 +57,7 @@ fi
 case $choice in
 
 ext)
-if [[ $1 == Bitcoin ]] ; then
+if [[ $1 == "Bitcoin" ]] ; then
     log "importdrive" "$1 install, choice to import drive"
     import_drive_options || return 1
     export drive="external" ; parmanode_conf_add "drive=external"
@@ -65,7 +70,7 @@ fi
 ;;
 
 np)
-if [[ $1 == nostr ]] ; then
+if [[ $1 == "nostr" ]] ; then
     export drive_nostr=custom
     parmanode_conf_add "drive_nostr=custom"
     return 0

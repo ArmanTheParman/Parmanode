@@ -1,6 +1,6 @@
 function download_sparrow {
 cd $HOME/parmanode
-while true ; do 
+while [[ $parmanodl_build != "true" ]] ; do 
     announce "Installing Sparrow Version$green $sparrow_version$orange. 
     
     If you want a different version, try typing the value in. 

@@ -38,7 +38,14 @@ $cyan
 
 ########################################################################################################################
 "
-choose "xpmq" ; read choice
+choose "xpmq" 
+
+if [[ $parmanodl_build == "true" ]] ; then
+choice=""
+else
+read choice
+fi
+
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit 0 ;; p|P) return 1 ;; m|M) back2main ;;
@@ -103,7 +110,13 @@ $cyan
 ########################################################################################################################
 "
 choose "xpmq" 
+
+if [[ $parmanodl_build == "true" ]] ; then
+choice=""
+else
 read choice
+fi
+
 jump $choice || { invalid ; continue ; } ; set_terminal
 
 case $choice in

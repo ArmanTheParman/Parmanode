@@ -1,7 +1,7 @@
 function install_electrum {
 
 if [[ -e $HOME/.electrum ]] ; then
-while true ; do
+while [[ $parmanodl_build != "true" ]] ; do
 set_terminal
 echo -e "
 ########################################################################################
@@ -34,7 +34,7 @@ set_terminal
 
 mac_electrum_headsup
 
-if [[ $computer_type == Pi ]] ; then 
+if [[ $computer_type == "Pi" ]] ; then 
 export python_install="true"
 fi
 
@@ -161,7 +161,7 @@ fi
 }
 
 function install_fuse {
-if [[ $1 != noupdate ]] ; then
+if [[ $1 != "noupdate" ]] ; then
 sudo apt-get update -y && export APT_UPDATE="true"
 fi
 

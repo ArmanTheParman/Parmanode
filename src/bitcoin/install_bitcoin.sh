@@ -57,7 +57,7 @@ fi
 
 if ! [[ $btcpayinstallsbitcoin == "true" || $btcdockerchoice == "yes" ]] ; then
 
-announce "So you want to install Bitcoin - nice one. May I take to this opportunity 
+[[ $parmanod_build == "true" ]] || announce "So you want to install Bitcoin - nice one. May I take to this opportunity 
     to direct you to an essay I wrote about why it's important to run a node? 
     You might want to save this link for later...$cyan
 
@@ -138,7 +138,7 @@ export dontstartbitcoin="true" && set_rpc_authentication "s" "install" && unset 
 ;;
 esac
 
-please_wait && start_bitcoin
+please_wait && { [[ $parmanodl_build == "true" ]] || start_bitcoin ; }
 fi #end not btcpainstallsbitcoin
 
 if [[ $btcpayinstallsbitcoin == "true" ]] || [[ $btcpay_combo == "true" ]] ; then
@@ -203,7 +203,7 @@ $orange
 " && installed_conf_add "bitcoin-end"
 
     #Just in case - what? again? Anyway, I'll leave it.
-    sudo chown -R $USER:$USER $parmanode_drive>$dn 2>&1
+    sudo chown -R $USER:$USER $parmanode_drive >$dn 2>&1
 
     enter_continue
 fi

@@ -16,7 +16,6 @@ else
     enter_continue ; return 1 ; fi
 fi
 
-echo -e "${green}SHA256 verification passed"
-sleep 2
+[[ $parmanodl_build == "true" ]] || { echo -e "${green}SHA256 verification passed" ; sleep 2 ; }
 
 }
