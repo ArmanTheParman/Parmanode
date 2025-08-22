@@ -1,6 +1,6 @@
 function install_vaultwarden {
 
-yesorno "Please be aware of a very nasty danger with password managers...
+[[ $parmanodl_build == "true" ]] || yesorno "Please be aware of a very nasty danger with password managers...
 
     They are not magical tools, they are databases that store your password in an
     encrypted way. You access them with a master password, resulting in decryption

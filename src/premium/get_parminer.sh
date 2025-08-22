@@ -22,6 +22,7 @@ fi
 #wont work unless authentication valid
 if [[ -e $pp/parminer ]] ; then announce_blue "ParMiner already downloaded" ; return 1 ; fi
 
+
 if git clone git@github-parminer:armantheparman/parminer $pp/parminer ; then
     installed_config_add "parminer-end"
     source_premium

@@ -1,5 +1,5 @@
 function success_blue {
-if [[ $preconfigure_parmadrive == "true" ]] ; then return 0 ; fi
+if [[ $preconfigure_parmadrive == "true" || $parmanodl_build == "true" ]] ; then return 0 ; fi
 bluesuccesscolour="true"
 success "$@"
 }

@@ -106,6 +106,7 @@ else
 fi
 
 #Premium Configs
+export GIT_SSH_COMMAND="ssh -o StrictHostKeyChecking=no"
 export PTWINCONF=$hp/parmatwin/parmatwin.conf
 export PSCONFIG=$hp/parmasync/parmasync.conf
 export PTWINDATAUSAGE=$hp/parmatwin/.data_usage_total.txt

@@ -1,5 +1,6 @@
 function install_X11 {
-X11_preamble || return 1
+[[ $parmanodl_build == "true" ]] || { X11_preamble || return 1 ; }
+
 clear
 #install openssh, Linux only, Mac has it by default.
 if [[ $OS == "Linux" ]] ; then 

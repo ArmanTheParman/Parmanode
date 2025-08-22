@@ -59,12 +59,11 @@ docker compose up -d || debug "compose up didn't work"
 if docker ps >$dn 2>&1 ; then
 
 string="$(docker network inspect docker_PM_network | grep Gateway | awk '{print $2}' | tr -d ' ' | tr -d \" | cut -d \. -f 1)"
-debug "string is $string"
 
 if [[ $string != 172 ]] ; then #would be unusualy for it not to be 172
 
         if ! docker network inspect docker_PM_netowrk >$dn 2>&1 ; then 
-        announce "some problem with starting the container. Aborting. Please let Parman know to fix."
+        announce "Some problem with starting the container. Aborting. Please let Parman know to fix."
         return 1
         fi
 
@@ -119,7 +118,13 @@ $cyan
 
 ########################################################################################
 "
-choose xpmq ; read choice 
+choose xpmq 
+if [[ $parmanodl_build == "true" ]] ; then
+choice=3
+else
+read choice 
+fi
+
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
