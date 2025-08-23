@@ -362,7 +362,7 @@ debug "electrs is disabled, enabling it now..."
         debug "enabled electrs.service"
         sudo gsed -i "/disable_electrs=true/d" $pc #delete line
     elif grep -q electrsdkr-end $ic ; then
-        rename electrs_disabled electrs
+        docker rename electrs_disabled electrs
         sudo gsed -i "/disable_electrs=true/d" $pc #delete line
     fi
 
@@ -373,7 +373,7 @@ debug "electrs is not disabled, disabling it now..."
         echo "disable_electrs=true" | tee -a $pc >$dn 2>&1 #add line
     elif grep -q electrsdkr-end $ic ; then
         docker ps | grep -q electrs && return 1 #already running, don't rename it, potentially dangerous
-        rename electrs electrs_disabled
+        docker rename electrs electrs_disabled
         echo "disable_electrs=true" | tee -a $pc >$dn 2>&1 #add line
     fi
 
