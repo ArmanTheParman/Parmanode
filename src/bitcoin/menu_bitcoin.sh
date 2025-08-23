@@ -127,6 +127,7 @@ echo -e "$output3$red               disable)$orange      Disable Bitcoin toggle$
                log)$orange          Bitcoin debug.log $cyan
                bc)$orange           Inspect edit bitcoin.conf file (bcv for vim) $bright_blue
                bcr)$orange          Refresh bitcoin.conf file to Parmanode default $cyan
+               max)$orange          Set max upload target (default 25GB shared per day)$cyan
                tor)$orange          Tor/I2P menu options for Bitcoin...  $cyan
                mm)$orange           Migrate/Revert an external drive...  $cyan
                delete)$orange       Delete blockchain data and start over $cyan
@@ -218,6 +219,40 @@ continue ;;
 RU|Ru)
     umbrel_import_reverse
     ;;
+max)
+    announce "You can set the maximum amount of data that your node will upload to others
+    for the specific purpose of helping them download the blockchain. This does not 
+    include mempool transaction data.
+
+    For unlimited, use '0'.
+
+    Any value you enter is in MiB.
+    
+    Hit <enter> alone for the default, which is 25000 Mib (~24.4 GiB)."
+    enter_continue ; jump $enter_cont
+
+    case $enter_cont in 
+    "") 
+    gsed -i 's/maxuploadtarget=.*$/maxuploadtarget=25000/' $bc >$dn 2>&1 
+    success "Maxuploadtarget set to 25000 MiB (25 GiB)"
+    ;;
+    0)
+    gsed -i '/maxuploadtarget=.*$/d' $bc >$dn 2>&1
+    success "Maxuploadtarget set to unlimited"
+    ;;
+    esac
+
+    [[ $enter_cont =~ ^[0-9]+$ ]] || { invalid ; continue ; }
+
+    case $enter_cont in
+    *)
+    gsed -i "s/maxuploadtarget=.*$/maxuploadtarget=$enter_cont/" $bc >$dn 2>&1
+    success "Maxuploadtarget set to $enter_cont MiB"
+    ;;
+    esac
+;;
+
+
 bcr|BCR|Bcr)
 yesorno  "Are you sure you want to refresh bitcoin.conf? 
     
