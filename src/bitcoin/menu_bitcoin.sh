@@ -229,7 +229,7 @@ max)
     Any value you enter is in MiB.
     
     Hit <enter> alone for the default, which is 25000 Mib (~24.4 GiB)."
-    enter_continue ; jump $enter_cont
+    jump $enter_cont
 
     case $enter_cont in 
     "") 
