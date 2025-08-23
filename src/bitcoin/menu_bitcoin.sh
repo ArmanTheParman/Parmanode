@@ -246,6 +246,12 @@ max)
 
     case $enter_cont in
     *)
+    grep -q "maxuploadtarget=" $bc || {
+        echo "maxuploadtarget=$enter_cont" | sudo tee -a $bc >$dn 2>&1
+        success "Maxuploadtarget set to $enter_cont MiB"
+        continue
+        
+    }
     gsed -i "s/maxuploadtarget=.*$/maxuploadtarget=$enter_cont/" $bc >$dn 2>&1
     success "Maxuploadtarget set to $enter_cont MiB"
     ;;
