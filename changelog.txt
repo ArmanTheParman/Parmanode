@@ -1,3 +1,5 @@
+Version 3.64.2
+     -Maxuploadtarget added to bitcoin
 Version 3.64.1
      -pay_lightning_address
 Version 3.64.0
