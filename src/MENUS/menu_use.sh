@@ -597,6 +597,7 @@ please_wait
 cd $pp/parmadrive/ 2>$dn && git stash >$dn 2>&1 && git pull >$dn 2>&1
 }
 source_premium
+debug "after source premium"
 menu_parmadrive
 if [[ -n $1 ]] ; then clear ; return 0 ; fi
 else invalid
