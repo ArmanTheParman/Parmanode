@@ -126,6 +126,7 @@ echo -e "$output3$red               disable)$orange      Disable Bitcoin toggle$
                n)$orange            Access Bitcoin node information $cyan
                log)$orange          Bitcoin debug.log $cyan
                bc)$orange           Inspect edit bitcoin.conf file (bcv for vim) $bright_blue
+               dc)$orange           OP_RETURN and datacarrier tweaks...
                bcr)$orange          Refresh bitcoin.conf file to Parmanode default $cyan
                max)$orange          Set max upload target (default 25GB shared per day)$cyan
                tor)$orange          Tor/I2P menu options for Bitcoin...  $cyan
@@ -180,6 +181,25 @@ start_bitcoin
 c|C)
 connect_wallet_info
 continue
+;;
+
+dc)
+announce "OP_RETURN is a section in a transaction where arbitrary data can be added. 
+    The default limit is 83 bytes for Bitcoin Core (the limit soon to be removed 
+    and eventually not changable by the user) and 40 bytes by Bitcoin Knots.
+
+    You can set this to zero, or a number of your choice up to 10000.
+    
+    Enter a number, or just hit <enter> to go back."
+
+    case $enter_cont in
+    "") continue ;;
+    0) gsed -i -E '/^datacarrier(size)?=/d' $bc >$dn 2>&1 ; echo "datacarrier=0" | tee -a $bc >$dn 2>&1 ; enter_continue "Done" ;;
+    *)
+    [[ $enter_cont =~ ^[0-9]+$ ]] || { invalid && continue ; }
+    [[ $enter_cont -le 10000 ]] || { invalid && continue ; }
+    gsed -i -E '/^datacarrier(size)?=/d' $bc >$dn 2>&1 ; echo "datacarrier=1" | tee -a $bc >$dn 2>&1 
+    echo "datacarriersize=$enter_cont" | tee -a $bc >$dn 2>&1 
 ;;
 
 n|N)

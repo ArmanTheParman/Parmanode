@@ -31,7 +31,7 @@ yesorno "Linux system log files can get really big and waste space. OK to 'vacuu
     them up and limit to 500 MB?" || return 1
 please_wait
 sudo journalctl --vacuum-size=500M >$dn 2>&1
-sudo test -f /etc/systemd/journald.conf 2>&1 && sudo gsed -iE 's/^.*SystemMaxUse.*$/SystemMaxUse=500M/' /etc/systemd/journald.conf >$dn 2>&1
+sudo test -f /etc/systemd/journald.conf 2>&1 && sudo gsed -i -E 's/^.*SystemMaxUse.*$/SystemMaxUse=500M/' /etc/systemd/journald.conf >$dn 2>&1
 fi
 }
 

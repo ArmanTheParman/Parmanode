@@ -3,13 +3,13 @@ nogsedtest
 #use $1 to turn on or off
 if [[ $1 == on ]] ; then
 
-    sudo gsed -iE 's/^.*X11UseLocalhost.*$/X11UseLocalhost yes/' $file >$dn 2>&1
+    sudo gsed -i -E 's/^.*X11UseLocalhost.*$/X11UseLocalhost yes/' $file >$dn 2>&1
     #if X11DisplayOffset is commented out, activate to 10, otherwise leave whaever setting there is
-    sudo gsed -iE 's/^#X11DisplayOffset.+$/X11DisplayOffset 10/' $file >$dn 2>&1 
+    sudo gsed -i -E 's/^#X11DisplayOffset.+$/X11DisplayOffset 10/' $file >$dn 2>&1 
     #if X11 forwarding is active (yes or no), delete and make it yes.
-    sudo gsed -iE 's/^X11Forwarding.+$/X11Forwarding yes/' $file >$dn 2>&1 
+    sudo gsed -i -E 's/^X11Forwarding.+$/X11Forwarding yes/' $file >$dn 2>&1 
     #if X11 forwarding is commented out, remove comment and make it yes.
-    sudo gsed -iE 's/^#X11Forwarding.+$/X11Forwarding yes/' $file >$dn 2>&1 
+    sudo gsed -i -E 's/^#X11Forwarding.+$/X11Forwarding yes/' $file >$dn 2>&1 
     #check if desired setting is active and exit (and only 1 occurance). 
     if      [[ $(grep -qE "^X11Forwarding yes$" $file | wc -l) == 1 ]] ; then restart_sshd ; return 0 ; fi
     #check if any stray settings and abort
@@ -29,9 +29,9 @@ if [[ $1 == on ]] ; then
 
 elif [[ $1 == off ]] ; then
 
-    sudo gsed -iE 's/^.*X11UseLocalhost.*$/#X11UseLocalhost yes/' $file >$dn 2>&1
-    sudo gsed -Ei 's/^X11Forwarding.+$/#X11Forwarding yes/' $file >$dn 2>&1
-    sudo gsed -Ei 's/^X11DisplayOffset.+$/#X11DisplayOffset 10/' $file >$dn 2>&1
+    sudo gsed -i -E 's/^.*X11UseLocalhost.*$/#X11UseLocalhost yes/' $file >$dn 2>&1
+    sudo gsed -i -E 's/^X11Forwarding.+$/#X11Forwarding yes/' $file >$dn 2>&1
+    sudo gsed -i -E 's/^X11DisplayOffset.+$/#X11DisplayOffset 10/' $file >$dn 2>&1
     restart_sshd    
 
 fi

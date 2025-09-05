@@ -3,7 +3,7 @@ function bitcoin_tor {
 #start fresh
 sudo gsed -i "/discover=/d" $bc >$dn 2>&1
 sudo gsed -i "/onion/d" $bc
-sudo gsed -iE "/^bind=/d" $bc
+sudo gsed -i -E "/^bind=/d" $bc
 sudo gsed -i "/onlynet/d" $bc
 sudo gsed -i "/listenonion=1/d" $bc
 sudo gsed -i "/listen=0/d" $bc
