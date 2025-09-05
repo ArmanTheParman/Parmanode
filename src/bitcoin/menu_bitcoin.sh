@@ -202,7 +202,7 @@ announce "OP_RETURN is a section in a transaction where arbitrary data can be ad
     echo "datacarriersize=$enter_cont" | tee -a $bc >$dn 2>&1 
 ;;
     esac
-
+;;
 n|N)
 if ! grep -q "btccombo" $ic && [[ $OS == Mac ]] ; then no_mac ; continue ; fi
 
