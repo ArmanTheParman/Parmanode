@@ -1,3 +1,5 @@
+Version 3.64.4
+     -bug fix
 Version 3.64.3
      -customisable datacarrier option for bitcoin.conf
 Version 3.64.2
