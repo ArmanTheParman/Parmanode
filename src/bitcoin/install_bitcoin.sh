@@ -18,11 +18,11 @@ export knotstag="v${knotsversion}.knots${knotsdate}"
 export knotsmajor=28.x
 export knotsextension="tar.gz"
 export coreexternsion="tar.gz"
-[[ $OS == "Mac" ]] && export knotsversion=28.1 && export knotsdate=20250305 && knotsmajor=28.x && knotsextension="zip" && coreexternsion="tar.gz"
+[[ $OS == "Mac" ]] && export knotsversion=29.1 && export knotsdate=20250903 && knotsmajor=29.x && knotsextension="zip" && coreexternsion="tar.gz"
 ########################################################################################
 
 if [[ $version != "self" ]] ; then
-    export version="28.1"
+    export version="28.1" #applies only to Core choice, mac or linux 
 fi
 
 if [[ $btcpay_combo == "true" ]] ; then
