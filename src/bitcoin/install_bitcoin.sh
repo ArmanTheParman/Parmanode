@@ -11,11 +11,11 @@ export bitcoin_compile="false"
 ########################################################################################
 #Check download file, verify, and printouts, are correct when changing...
 ########################################################################################
-export knotsversion=28.1 
+export knotsversion=29.1 
 export deisversion=28.1
-export knotsdate=20250305 
+export knotsdate=20250903 
 export knotstag="v${knotsversion}.knots${knotsdate}"
-export knotsmajor=28.x
+export knotsmajor=29.x
 export knotsextension="tar.gz"
 export coreexternsion="tar.gz"
 [[ $OS == "Mac" ]] && export knotsversion=29.1 && export knotsdate=20250903 && knotsmajor=29.x && knotsextension="zip" && coreexternsion="tar.gz"
