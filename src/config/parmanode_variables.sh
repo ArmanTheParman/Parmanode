@@ -15,7 +15,7 @@ if [[ $1 == "deis" ]] ; then export deis="true" ; fi
 
 #Can be used to source parmanode script and then open a bash terminal with the functions
 #loaded. Eg 'rp bash'. Good for testing.
-if [[ $1 == bash ]] ; then export bash=1 ; fi
+if [[ $1 == "bash" ]] ; then export bash=1 ; fi
 
 #used for debugging
 if [[ $1 == skipverify || $2 == skipverify || $3 == skipverify ]] ; then export verify=skip ; fi

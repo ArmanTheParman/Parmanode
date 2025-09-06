@@ -1,5 +1,5 @@
 function get_Mac_version {
-if [[ $(uname) != Darwin ]] ; then return 0 ; fi
+if [[ $(uname) != "Darwin" ]] ; then return 0 ; fi
 
 export MacOSVersion=$(sw_vers | grep ProductVersion | awk '{print $ 2}')
 export MacOSVersion_major=$(sw_vers | grep ProductVersion | cut -d \. -f 1 | grep -Eo '[0-9]+$')

@@ -7,27 +7,14 @@ set_terminal  ; echo -e "
     You have choices for installing Bitcoin with Parmanode... $orange
 
 
-$cyan    1)$bright_blue    Bitcoin Knots version $knotsversion $orange
+            $cyan    k)$orange    Bitcoin Knots version $knotsversion (MacOS 13+) 
 
-$cyan    2)$orange    Bitcoin QT version $version
+            $cyan  old)$orange    Bitcoin Knots version 28.1 (for older Macs) 
 
-$cyan    3)$red    Bitcoin in Docker (bundled with BTCPay)$orange 
+            $cyan  bqt)$orange    Bitcoin Core QT version $version  
 
-            This is a new addition to Parmanode: You can opt to install Bitcoin 
-            AND BTCPay Server together in a Docker container. You'll have all the 
-            same menu options in Parmanode, but you won't have the Bitcoin-QT GUI pop-up. 
-            Docker needs to be running for Bitcoin to be running.
-
-$green
-
-    What'll it be?
-
-$cyan                   1)$green     All the cool kids are running Knots
-
-$cyan                   2)$orange     Bitcoin Core
-
-$cyan                   3)$red     Bitcoin Core inside BTCPay Docker Container
-
+            $cyan   bd)$red    Bitcoin Core in Docker (bundled with BTCPay)
+            
 $orange
 ########################################################################################
 "
@@ -36,24 +23,33 @@ jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 
-2)
+bqt)
 export btcdockerchoice=no
 export bitcoin_compile="false"
 break
 ;;
-1)
+old|k|"")
+if [[ $choice == "old" ]] ; then #cose old knots...
+    [[ $OS == "Mac" ]] && export knotsversion=29.1 && export knotsdate=20250903 && knotsmajor=29.x && knotsextension="zip" && coreexternsion="tar.gz"
+else #chose new knots...
+    [[ $MacOSVersion_major -gt "12" ]] || { yesorno "You need Mac Version 13 or greater to run this newer version of Knots. 
+        Your system is:
+$blue
+$(sw_vers)
+$orange
+        Continue?" || continue ; 
+        }
+fi
 parmanode_conf_add "bitcoin_choice=knots"
 export knotsbitcoin="true" ; export version="Knots-$knotsversion" ; export bitcoin_compile="false" 
 export btcdockerchoice=no
 break
 ;;
-3)
+bd)
 export btcdockerchoice=yes
 export bitcoin_compile="false"
 break
 ;;
-"")
-continue ;;
 *)
 invalid
 ;;
