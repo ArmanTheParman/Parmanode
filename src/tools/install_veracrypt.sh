@@ -2,7 +2,7 @@ function install_veracrypt {
 
 if [[ $(uname) == "Darwin" ]] ; then no_mac ; return 1 ; fi
 apt_get_update
-sudo apt-get install -y libwxgtk3.2-1 dmsetup ibwxgtk3.0-gtk3-0v5
+sudo apt-get install -y libwxgtk3.2-1 dmsetup 
 
 #make directories and detect install start
 mkdir $hp/veracrypt
