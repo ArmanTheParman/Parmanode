@@ -2,7 +2,7 @@ function install_veracrypt {
 
 if [[ $(uname) == "Darwin" ]] ; then no_mac ; return 1 ; fi
 apt_get_update
-apt-get install -y libwxgtk3.2-1 dmsetup
+sudo apt-get install -y libwxgtk3.2-1 dmsetup
 
 #make directories and detect install start
 mkdir $hp/veracrypt
@@ -18,9 +18,9 @@ gpg --keyserver keyserver.ubuntu.com --recv-keys 0x680D16DE
 gpg --verify veracrypt.deb.sig veracrypt.deb || { announce "PGP verification failed!" ; return 1 ; }
 
 # Install the VeraCrypt package
-dpkg -i veracrypt.deb
+sudo dpkg -i veracrypt.deb
 # Fix any missing dependencies
-apt-get install -f -y
+sudo apt-get install -f -y
 
 install_conf_add "veracrypt-end"
 success "VeraCrypt has been installed successfully!"
