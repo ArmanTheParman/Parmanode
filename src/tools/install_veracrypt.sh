@@ -10,8 +10,9 @@ installed_conf_add "veracrypt-start"
 cd $hp/veracrypt
 
 #download
-curl -LO https://launchpad.net/veracrypt/trunk/1.26.7/+download/veracrypt-1.26.7-Debian-13-amd64.deb
-curl -LO https://launchpad.net/veracrypt/trunk/1.26.7/+download/veracrypt-1.26.7-Debian-13-amd64.deb.sig
+
+curl -LO https://github.com/veracrypt/VeraCrypt/releases/download/VeraCrypt_1.26.24/veracrypt-1.26.24-Debian-12-amd64.deb
+curl -LO https://github.com/veracrypt/VeraCrypt/releases/download/VeraCrypt_1.26.24/veracrypt-1.26.24-Debian-12-amd64.deb.sig
 
 #verify
 gpg --keyserver hkps://keys.openpgp.org --recv-keys 5069A233D55A0EEB174A5FC3821ACD02680D16DE
