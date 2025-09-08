@@ -15,7 +15,7 @@ curl -LO https://launchpad.net/veracrypt/trunk/1.26.7/+download/veracrypt-1.26.7
 
 #verify
 gpg --keyserver hkps://keys.openpgp.org --recv-keys 5069A233D55A0EEB174A5FC3821ACD02680D16DE
-gpg --verify veracrypt*sig veracrypt*deb || { announce "PGP verification failed!" ; return 1 ; }
+gpg --verify veracrypt*sig veracrypt*deb || { sww "PGP verification failed!" ; return 1 ; }
 
 # Install the VeraCrypt package
 sudo dpkg -i veracrypt.deb
