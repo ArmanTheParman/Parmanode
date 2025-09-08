@@ -255,9 +255,9 @@ echo -e "#$cyan                            \033[27G pd)$orange               Par
 elif grep -q "parmadesk-start" $HOME/.parmanode/installed.conf ; then parmadeskmenu=1
 echo -e "#$cyan                            \033[27G pd)$orange               ParmaDesk VNC          $red$blinkon(partial)$blinkoff$orange        \033[88G#" ; fi
 if grep -q "veracrypt-end" $HOME/.parmanode/installed.conf ; then veracryptmenu=1
-echo -e "#$cyan                            \033[27G pd)$orange               VeraCrypt                              \033[88G#"
+echo -e "#$cyan                            \033[27G vc)$orange               VeraCrypt                              \033[88G#"
 elif grep -q "veracrtyp-start" $HOME/.parmanode/installed.conf ; then veracryptmenu=1
-echo -e "#$cyan                            \033[27G pd)$orange               VeraCryp    t          $red$blinkon(partial)$blinkoff$orange        \033[88G#" ; fi
+echo -e "#$cyan                            \033[27G vc)$orange               VeraCryp    t          $red$blinkon(partial)$blinkoff$orange        \033[88G#" ; fi
 echo -e "#                                                                                      \033[88G#
 ########################################################################################
 "
@@ -651,6 +651,12 @@ fi
 pd|vnc)
 if [[ $parmadeskmenu == 1 ]] ; then
 uninstall_parmadesk
+menu_main
+fi
+;;
+vc|VC)
+if [[ $veracryptmenu == 1 ]] ; then
+uninstall_veracrypt
 menu_main
 fi
 ;;
