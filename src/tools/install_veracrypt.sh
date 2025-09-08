@@ -10,8 +10,8 @@ installed_conf_add "veracrypt-start"
 cd $hp/veracrypt
 
 #download
-curl -LO veracrypt.deb https://launchpad.net/veracrypt/trunk/1.26.7/+download/veracrypt-1.26.7-Debian-13-amd64.deb
-curl -LO veracrypt.deb.sig https://launchpad.net/veracrypt/trunk/1.26.7/+download/veracrypt-1.26.7-Debian-13-amd64.deb.sig
+curl -LO https://launchpad.net/veracrypt/trunk/1.26.7/+download/veracrypt-1.26.7-Debian-13-amd64.deb
+curl -LO https://launchpad.net/veracrypt/trunk/1.26.7/+download/veracrypt-1.26.7-Debian-13-amd64.deb.sig
 
 #verify
 gpg --keyserver keyserver.ubuntu.com --recv-keys 0x680D16DE 
@@ -29,5 +29,5 @@ success "VeraCrypt has been installed successfully!"
 
 function uninstall_veracrypt {
     # code not finished
-    rm $hp/veracrypt
+    rm -rf $hp/veracrypt
 }
