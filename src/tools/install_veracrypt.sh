@@ -19,7 +19,8 @@ gpg --keyserver hkps://keys.openpgp.org --recv-keys 5069A233D55A0EEB174A5FC3821A
 gpg --verify veracrypt*sig veracrypt*deb || { sww "PGP verification failed!" ; return 1 ; }
 
 # Install the VeraCrypt package
-sudo dpkg -i veracrypt.deb
+sudo dpkg -i ./veracrypt*deb
+
 # Fix any missing dependencies
 sudo apt-get install -f -y
 
