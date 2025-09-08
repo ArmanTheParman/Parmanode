@@ -26,7 +26,6 @@ install_conf_add "veracrypt-end"
 success "VeraCrypt has been installed successfully!"
 }
 
-
 function uninstall_veracrypt {
     # code not finished
     rm -rf $hp/veracrypt
