@@ -11,7 +11,7 @@ unset electrsmenu trezormenu ledgermenu bitboxmenu parmashellmenu bredockermenu 
 unset anydeskmenu piholemenu torrelaymenu electrskdmenu piappsmenu torbmenu 
 unset public_poolmenu electrumxmenu thunderhubmenu lnddockermenu nginxmenu nostrrelaymenu litdmenu
 unset parmacloudmenu parmanostrmenu btcrecovermenu joinmarketmenu greenmenu X11menu phoenixmenu vaultwardenmenu
-unset nymmenu i2pmenu parmadeskmenu parmasqlmenu parmatwinmenu parmasyncmenu
+unset nymmenu i2pmenu parmadeskmenu parmasqlmenu parmatwinmenu parmasyncmenu parmaplexmenu veracryptmenu
 
 echo -e "
 ########################################################################################
@@ -62,6 +62,10 @@ if grep -q "parmasql-end" $HOME/.parmanode/installed.conf ; then parmasqlmenu=1
 echo -e "#$cyan                            \033[27G psql)$blue             ParmaSQL                               $orange\033[88G#"
 elif grep -q "parmasql-start" $HOME/.parmanode/installed.conf ; then parmasqlmenu=1
 echo -e "#$cyan                            \033[27G psql)$blue             ParmaSQL               $red$blinkon(partial)$blinkoff$orange        \033[88G#" ; fi
+if grep -q "parmaplex-end" $HOME/.parmanode/installed.conf ; then parmaplexmenu=1
+echo -e "#$cyan                            \033[27G plex)$orange             ParmaPlex                              \033[88G#"
+elif grep -q "parmaplex-start" $HOME/.parmanode/installed.conf ; then parmaplexmenu=1
+echo -e "#$cyan                            \033[27G plex)$orange             ParmaPlex               $red$blinkon(partial)$blinkoff$orange        \033[88G#" ; fi
 if grep -q "bitcoin-end" $HOME/.parmanode/installed.conf ; then bitcoinmenu=1
 echo -e "#$cyan                            \033[27G bitcoin)$orange          Bitcoin                                \033[88G#"
 elif grep -q "bitcoin-start" $HOME/.parmanode/installed.conf ; then bitcoinmenu=1
@@ -250,10 +254,10 @@ if grep -q "parmadesk-end" $HOME/.parmanode/installed.conf ; then parmadeskmenu=
 echo -e "#$cyan                            \033[27G pd)$orange               ParmaDesk VNC                          \033[88G#"
 elif grep -q "parmadesk-start" $HOME/.parmanode/installed.conf ; then parmadeskmenu=1
 echo -e "#$cyan                            \033[27G pd)$orange               ParmaDesk VNC          $red$blinkon(partial)$blinkoff$orange        \033[88G#" ; fi
-if grep -q "parmaplex-end" $HOME/.parmanode/installed.conf ; then parmaplexmenu=1
-echo -e "#$cyan                            \033[27G plex)$orange             ParmaPlex                              \033[88G#"
-elif grep -q "parmaplex-start" $HOME/.parmanode/installed.conf ; then parmaplexmenu=1
-echo -e "#$cyan                            \033[27G plex)$orange             ParmaPlex               $red$blinkon(partial)$blinkoff$orange        \033[88G#" ; fi
+if grep -q "veracrypt-end" $HOME/.parmanode/installed.conf ; then veracryptmenu=1
+echo -e "#$cyan                            \033[27G pd)$orange               VeraCrypt                              \033[88G#"
+elif grep -q "veracrtyp-start" $HOME/.parmanode/installed.conf ; then veracryptmenu=1
+echo -e "#$cyan                            \033[27G pd)$orange               VeraCryp    t          $red$blinkon(partial)$blinkoff$orange        \033[88G#" ; fi
 echo -e "#                                                                                      \033[88G#
 ########################################################################################
 "

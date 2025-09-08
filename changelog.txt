@@ -1,5 +1,6 @@
 Version 3.64.5
      -Knots v29.1 Mac and Linux
+     -VeraCrypt
 Version 3.64.4
      -bug fix 
 Version 3.64.3

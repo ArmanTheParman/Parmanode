@@ -31,4 +31,5 @@ success "VeraCrypt has been installed successfully!"
 function uninstall_veracrypt {
     # code not finished
     rm -rf $hp/veracrypt
+    sudo rm /usr/bin/veracrypt
 }
