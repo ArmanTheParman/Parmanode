@@ -15,6 +15,14 @@ parmaviewmenu="\n#$cyan              pv)$red      REMOVE ParmaView failed instal
 #                                                                                      #"
 fi
 
+if  ! grep -q "veracrypt-end" $ic ; then
+veracryptview="\n#$cyan              vc)$orange      VeraCrypt - disk encryption tool                               #
+#                                                                                      #"
+else
+unset veracryptview
+fi
+
+
 set_terminal
 echo -en "
 ########################################################################################
@@ -40,6 +48,12 @@ choose "xpmq" ; read choice
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit ;; p|P) menu_add ;; m|M) back2main ;;
+
+vc)
+if [[ -n $veracryptview ]] ; then
+install_veracrypt
+fi
+;;
 
 pv)
 [[ -z $parmaviewmenu ]] && invlid && continue

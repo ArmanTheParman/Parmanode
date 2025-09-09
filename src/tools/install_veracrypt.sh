@@ -10,19 +10,14 @@ installed_conf_add "veracrypt-start"
 cd $hp/veracrypt
 
 #download
-
-curl -LO https://github.com/veracrypt/VeraCrypt/releases/download/VeraCrypt_1.26.24/veracrypt-console-1.26.24-Debian-12-amd64.deb
-curl -LO https://github.com/veracrypt/VeraCrypt/releases/download/VeraCrypt_1.26.24/veracrypt-console-1.26.24-Debian-12-amd64.deb.sig
+curl -LO https://github.com/veracrypt/VeraCrypt/releases/download/VeraCrypt_1.26.24/VeraCrypt-1.26.24-x86_64.AppImage
+curl -LO https://github.com/veracrypt/VeraCrypt/releases/download/VeraCrypt_1.26.24/VeraCrypt-1.26.24-x86_64.AppImage.sig
 
 #verify
 gpg --keyserver hkps://keys.openpgp.org --recv-keys 5069A233D55A0EEB174A5FC3821ACD02680D16DE
 gpg --verify veracrypt*sig veracrypt*deb || { sww "PGP verification failed!" ; return 1 ; }
 
-# Install the VeraCrypt package
-sudo dpkg -i ./veracrypt*deb
-
-# Fix any missing dependencies
-sudo apt-get install -f -y
+sudo chmod +x ./*.AppImage
 
 install_conf_add "veracrypt-end"
 success "VeraCrypt has been installed successfully!"
@@ -31,5 +26,28 @@ success "VeraCrypt has been installed successfully!"
 function uninstall_veracrypt {
     # code not finished
     rm -rf $hp/veracrypt
-    sudo rm /usr/bin/veracrypt
+}
+
+function menu_veracrypt {
+set_terminal ; echo -e "
+########################################################################################
+                                 VeraCrypt Menu
+########################################################################################
+
+              
+$cyan
+              s)$orange             Start VeraCrypt (graphical)
+
+
+
+########################################################################################
+"
+read choice ; set_terminal
+jump $choice 
+jump_pmq $choice || return 1
+case $choice in
+s) $hp/veracrypt/v*.AppImage
+;;
+esac
+done
 }

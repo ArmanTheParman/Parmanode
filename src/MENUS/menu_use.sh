@@ -6,10 +6,10 @@ unset raidapp
 unset bitcoinapp fulcrumapp fulcrumdkrapp btcpayapp torapp lndapp sparrowapp rtlapp electrumapp 
 unset torserverapp specterapp btcrpcexplorerapp electrsapp lnbitsapp trezorapp bitboxapp
 unset ledgerapp parmashellapp parmaviewapp parmaboxapp anydeskapp piholeapp torrelayapp
-unset electrsdkrapp torbapp qbittorrentapp mempoolapp torsshapp public_poolapp
+unset electrsdkrapp torbapp qbittorrentapp mempoolapp torsshapp public_poolapp nymapp
 unset electrumxapp thunderhubapp websiteapp lnddockerapp nostrrelay litdapp parmacloudapp
 unset parmanostrapp btcrecoverapp joinmarketapp greenapp parman_booksapp X11app phoenixapp
-unset parminerapp parmanasapp parmascaleapp vaultwardenapp
+unset parminerapp parmanasapp parmascaleapp vaultwardenapp veracryptapp parmadeskapp i2papp
 
 set_terminal 40 88
 echo -e "
@@ -152,6 +152,8 @@ if grep -q "i2p-end" $ic ; then i2papp=1
                        echo -e "                        $cyan  ii)$orange         I2P "     ; count=$((count +1)) ; fi
 if grep -q "parmadesk-end" $ic ; then parmadeskapp=1
                        echo -e "                        $cyan  pd)$orange         ParmaDesk VNC" ; count=$((count +1)) ; fi
+if grep -q "veracrypt-end" $ic ; then veracryptapp=1
+                       echo -e "                        $cyan  vc)$orange         VeraCrypt" ; count=$((count +1)) ; fi
 echo -e "                            
 #######################################################################################
 "
@@ -432,13 +434,13 @@ pd|vnc)
    fi
    ;;
 
-# pool)
-#    if [[ $public_poolapp == 1 ]] ; then
-#    menu_public_pool
-#     if [[ -n $1 ]] ; then clear ; return 0 ; fi
-#    else invalid
-#    fi
-#    ;;
+vc|VC|Vc)
+   if [[ $veracryptapp == 1 ]] ; then
+   menu_veracrypt
+   if [[ -n $1 ]] ; then clear ; return 0 ; fi
+   else invalid
+   fi
+   ;;
 
 ex)
    if [[ $electrumxapp == 1 ]] ; then

@@ -167,6 +167,4 @@ fi
 
 if ! dpkg -l | grep -q libfuse ; then
 sudo apt-get install -y fuse3
-sudo apt-get install -y libfuse2
-fi
-}
+sudo apt-get install -y libfuse2 libfuse3-3

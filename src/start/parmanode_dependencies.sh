@@ -262,7 +262,7 @@ if ! dpkg -l | grep -q libfuse && ! sudo grep -q "dont_install_libfuse" $dp/.don
     case $enter_cont in
             y) [[ $APT_UPDATE == "true" ]] || { sudo apt-get update -y && export APT_UPDATE="true" ; }
                 sudo apt-get install -y fuse3
-                sudo apt-get install -y libfuse2
+                sudo apt-get install -y libfuse2 libfuse3-3
                 ;;
             nooo) echo "dont_install_libfuse" | tee -a $dp/.dont_install >$dn 2>&1 ;;
       
