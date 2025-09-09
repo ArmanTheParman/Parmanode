@@ -50,7 +50,7 @@ function menu_veracrypt {
 while true ; do
 set_terminal ; echo -e "
 ########################################################################################
-                                 VeraCrypt Menu
+                                  VeraCrypt Menu
 ########################################################################################
 
               
@@ -65,7 +65,7 @@ read choice ; set_terminal
 jump $choice 
 jump_pmq $choice || return 1
 case $choice in
-s) $hp/veracrypt/v*.AppImage
+s) $hp/veracrypt/*.AppImage
 ;;
 esac
 done
