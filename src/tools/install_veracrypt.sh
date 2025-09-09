@@ -29,6 +29,7 @@ function uninstall_veracrypt {
 }
 
 function menu_veracrypt {
+while true ; do
 set_terminal ; echo -e "
 ########################################################################################
                                  VeraCrypt Menu
