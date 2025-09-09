@@ -256,8 +256,8 @@ elif grep -q "parmadesk-start" $HOME/.parmanode/installed.conf ; then parmadeskm
 echo -e "#$cyan                            \033[27G pd)$orange               ParmaDesk VNC          $red$blinkon(partial)$blinkoff$orange        \033[88G#" ; fi
 if grep -q "veracrypt-end" $HOME/.parmanode/installed.conf ; then veracryptmenu=1
 echo -e "#$cyan                            \033[27G vc)$orange               VeraCrypt                              \033[88G#"
-elif grep -q "veracrtyp-start" $HOME/.parmanode/installed.conf ; then veracryptmenu=1
-echo -e "#$cyan                            \033[27G vc)$orange               VeraCryp    t          $red$blinkon(partial)$blinkoff$orange        \033[88G#" ; fi
+elif grep -q "veracrypt-start" $HOME/.parmanode/installed.conf ; then veracryptmenu=1
+echo -e "#$cyan                            \033[27G vc)$orange               VeraCrypt              $red$blinkon(partial)$blinkoff$orange        \033[88G#" ; fi
 echo -e "#                                                                                      \033[88G#
 ########################################################################################
 "
