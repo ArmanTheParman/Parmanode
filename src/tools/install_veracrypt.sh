@@ -66,6 +66,7 @@ jump $choice
 jump_pmq $choice || return 1
 case $choice in
 s) nohup $hp/veracrypt/*.AppImage >$dn 2>&1 & 
+return
 ;;
 esac
 done
