@@ -24,8 +24,26 @@ success "VeraCrypt has been installed successfully!"
 }
 
 function uninstall_veracrypt {
-    # code not finished
+while true ; do
+set_terminal ; echo -e "
+########################################################################################
+$cyan
+                                 Uninstall VeraCrypt
+$orange
+    Are you sure? (y) (n)
+
+########################################################################################
+"
+choose xpmq ; read choice
+jump $choice || { invalid ; continue ; } ; set_terminal
+case $choice in
+q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
+n) return 1 ;; y) break ;;
+esac
+done
     rm -rf $hp/veracrypt
+    installed_conf_remove "veracrypt"
+    success "VeraCrypt uninstalled"
 }
 
 function menu_veracrypt {
