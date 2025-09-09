@@ -61,7 +61,7 @@ $cyan
 
 ########################################################################################
 "
-read choice ; set_terminal
+choose xpmq ; read choice ; set_terminal
 jump $choice 
 jump_pmq $choice || return 1
 case $choice in
