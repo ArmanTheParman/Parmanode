@@ -65,7 +65,7 @@ read choice ; set_terminal
 jump $choice 
 jump_pmq $choice || return 1
 case $choice in
-s) $hp/veracrypt/*.AppImage
+s) nohup $hp/veracrypt/*.AppImage >$dn 2>&1 & 
 ;;
 esac
 done
