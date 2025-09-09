@@ -39,9 +39,7 @@ echo -en "
 #$cyan              pb)$orange      ${UPDATE}Parman's recommended free books (pdfs)$endline
 #                                                                                      #
 #$cyan              cl)$orange      Core Lightning                                                 #
-#                                                                                      #
-#$cyan              vc)$orange      VeraCrypt - disk encryption tool                               #
-#                                                                                      #$parmaviewmenu
+#                                                                                      #$veracryptview$parmaviewmenu
 ########################################################################################
 "
 choose "xpmq" ; read choice
