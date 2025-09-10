@@ -175,6 +175,7 @@ ap|AP|Ap|aP)
 
 uany) menu_use any ;; 
 ub) menu_use b ;; 
+b) menu_use b ;;
 ubb) menu_use bb ;;
 ubre) menu_use bre ;; 
 ubtcp) menu_use btcp ;;
