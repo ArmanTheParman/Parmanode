@@ -43,9 +43,9 @@ set_terminal 34 ; echo -e "
 $orange
     Connections:
 $cyan
-    https://localhost:8383$orange     \033[34GFrom this computer only$cyan
-    https://127.0.0.1:8383$orange     \033[34GFrom this computer only$cyan
-    https://$IP:8383$orange           \033[34GFrom any computer on your network $orange
+    http://localhost:8383$orange     \033[34GFrom this computer only$cyan
+    http://127.0.0.1:8383$orange     \033[34GFrom this computer only$cyan
+    http://$IP:8383$orange           \033[34GFrom any computer on your network $orange
 
     Tor:$blue
     http://$ONION_ADDR_ALBY:7011    $orange \n\033[58G
