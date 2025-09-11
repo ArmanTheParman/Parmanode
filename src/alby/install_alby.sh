@@ -40,7 +40,7 @@ $cyan
     https://127.0.0.1:8383$orange     \033[58GFrom this computer only$cyan
     https://$IP:8383$orange           \033[58GFrom any computer on your network $orange
     Tor:$blue
-    http://$ONION_ADDR_ALBY:7011    $orange \033[69G From any computer in the world 
+    http://$ONION_ADDR_ALBY:7011    $orange \n\033[69G From any computer in the world 
 
 $green
                               start)$orange         Start Alby docker container
