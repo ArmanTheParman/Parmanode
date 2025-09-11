@@ -34,11 +34,14 @@ set_terminal 38 110 ; echo -e "
 
 $runningalbymenu
 $orange
-    Connection:
+    Connections:
+
             https://localhost:8383     From this computer only
             https://127.0.0.1:8383     From this computer only
-            https://$IP: 8383          From any computer on your network $blue                   
-            http://$ONION_ADDR_ALBY:7011    From any computer in the world over Tor
+            https://$IP:8383           From any computer on your network $blue                   
+    Tor:
+            http://$ONION_ADDR_ALBY:7011    
+            From any computer in the world 
 
 $green
                   start)$orange         Start Alby docker container
