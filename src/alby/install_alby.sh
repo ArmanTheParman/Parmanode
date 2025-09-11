@@ -33,7 +33,7 @@ else
 runningalbymenu="Alby is ${red}NOT RUNNING"
 fi
 
-set_terminal 38 110 ; echo -e "
+set_terminal 34 110 ; echo -e "
 ##############################################################################################################
                                                 Alby Menu
 ##############################################################################################################
@@ -53,6 +53,7 @@ $green
                               start)$orange         Start Alby docker container
 $red
                               stop)$orange          Stop Alby docker container
+
 
 $orange
     See LND menu for LND macaroons
