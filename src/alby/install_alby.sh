@@ -47,7 +47,6 @@ $green
                   start)$orange         Start Alby docker container
 $red
                   stop)$orange          Stop Alby docker container
-$cyan
 
 
     See LND menu for LND macaroons
