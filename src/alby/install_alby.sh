@@ -36,9 +36,9 @@ $runningalbymenu
 $orange
     Connections:
 
-            https://localhost:8383     From this computer only
-            https://127.0.0.1:8383     From this computer only
-            https://$IP:8383           From any computer on your network $blue                   
+            https://localhost:8383     \033[58GFrom this computer only
+            https://127.0.0.1:8383     \033[58GFrom this computer only
+            https://$IP:8383           \033[58GFrom any computer on your network $blue                   
     Tor:
             http://$ONION_ADDR_ALBY:7011    
             From any computer in the world 
