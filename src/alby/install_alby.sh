@@ -80,7 +80,7 @@ lnd_macaroons
 ;;
 tls)
 clear
-cat $HOME/.lnd/tls.cert
+xxd -p $HOME/.lnd/tls.cert
 enter_continue
 ;;
 "") 
