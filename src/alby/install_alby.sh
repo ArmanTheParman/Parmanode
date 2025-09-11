@@ -38,9 +38,9 @@ $orange
 
             https://localhost:8383     \033[58GFrom this computer only
             https://127.0.0.1:8383     \033[58GFrom this computer only
-            https://$IP:8383           \033[58GFrom any computer on your network $blue                   
-    Tor:
-            http://$ONION_ADDR_ALBY:7011    
+            https://$IP:8383           \033[58GFrom any computer on your network 
+    Tor:$blue
+            http://$ONION_ADDR_ALBY:7011    $orange
             From any computer in the world 
 
 $green
