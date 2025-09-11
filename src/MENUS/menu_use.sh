@@ -9,7 +9,7 @@ unset ledgerapp parmashellapp parmaviewapp parmaboxapp anydeskapp piholeapp torr
 unset electrsdkrapp torbapp qbittorrentapp mempoolapp torsshapp public_poolapp nymapp
 unset electrumxapp thunderhubapp websiteapp lnddockerapp nostrrelay litdapp parmacloudapp
 unset parmanostrapp btcrecoverapp joinmarketapp greenapp parman_booksapp X11app phoenixapp
-unset parminerapp parmanasapp parmascaleapp vaultwardenapp veracryptapp parmadeskapp i2papp
+unset parminerapp parmanasapp parmascaleapp vaultwardenapp veracryptapp parmadeskapp i2papp albyapp
 
 set_terminal 40 88
 echo -e "
@@ -154,6 +154,8 @@ if grep -q "parmadesk-end" $ic ; then parmadeskapp=1
                        echo -e "                        $cyan  pd)$orange         ParmaDesk VNC" ; count=$((count +1)) ; fi
 if grep -q "veracrypt-end" $ic ; then veracryptapp=1
                        echo -e "                        $cyan  vc)$orange         VeraCrypt" ; count=$((count +1)) ; fi
+if grep -q "alby-end" $ic ; then albyapp=1
+                       echo -e "                        $cyan  alby)$orange         Alby" ; count=$((count +1)) ; fi
 echo -e "                            
 #######################################################################################
 "
@@ -437,6 +439,14 @@ pd|vnc)
 vc|VC|Vc)
    if [[ $veracryptapp == 1 ]] ; then
    menu_veracrypt
+   if [[ -n $1 ]] ; then clear ; return 0 ; fi
+   else invalid
+   fi
+   ;;
+
+alby|Alby|ALBY)
+   if [[ $albyapp == 1 ]] ; then
+   menu_alby
    if [[ -n $1 ]] ; then clear ; return 0 ; fi
    else invalid
    fi

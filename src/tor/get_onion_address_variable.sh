@@ -76,6 +76,10 @@ if [[ $1 == "psql" ]] ; then
 export ONION_ADDR_SQL="$(sudo cat $varlibtor/psql-service/hostname 2>$dn)" 
 fi
 
+if [[ $1 == "alby" ]] ; then
+export ONION_ADDR_ALBY="$(sudo cat $varlibtor/alby-service/hostname 2>$dn)" 
+fi
+
 return 0
 
 }

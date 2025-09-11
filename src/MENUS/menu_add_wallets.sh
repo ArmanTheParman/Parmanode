@@ -26,6 +26,7 @@ if [[ -n $green_n ]]               ; then echo -e  "$green_n"   ; fi
 if [[ -n $ledger_n ]]           ; then echo -e  "$ledger_n"; fi
 if [[ -n $btcrecover_n ]]      ; then echo -e  "$btcrecover_n"; fi
 if [[ -n $joinmarket_n ]]      ; then echo -e  "$joinmarket_n"; fi
+if [[ -n $alby_n ]]      ; then echo -e  "$alby_n"; fi
 
 
 echo -e "#                                                                                      #
@@ -43,6 +44,7 @@ if [[ -n $green_i ]]           ; then echo -e  "$green_i"; fi
 if [[ -n $ledger_i ]]          ; then echo -e  "$ledger_i"; fi
 if [[ -n $btcrecover_i ]]      ; then echo -e  "$btcrecover_i"; fi
 if [[ -n $joinmarket_i ]]      ; then echo -e  "$joinmarket_i"; fi
+if [[ -n $alby_i ]]      ; then echo -e  "$alby_i"; fi
 echo -e "#                                                                                      #
 #$red Failed installs (need to uninstall)...                                              $orange #
 #                                                                                      #"
@@ -58,6 +60,7 @@ if [[ -n $green_p ]]           ; then echo -e "$pink$green_p$orange"; fi
 if [[ -n $ledger_p ]]          ; then echo -e "$pink$ledger_p$orange"; fi
 if [[ -n $btcrecover_p ]]      ; then echo -e  "$pink$btcrecover_p$orange"; fi
 if [[ -n $joinmarket_p ]]      ; then echo -e  "$pink$joinmarket_p$orange"; fi
+if [[ -n $alby_p ]]      ; then echo -e  "$pink$alby_p$orange"; fi
 echo -e "#                                                                                      #
 ########################################################################################
 "
@@ -137,6 +140,12 @@ btcr)
 join) 
       if [[ -n $joinmarket_n ]] ; then
       install_joinmarket
+      back2main 
+      fi
+      ;;
+alby) 
+      if [[ -n $alby_n ]] ; then
+      install_alby
       back2main 
       fi
       ;;

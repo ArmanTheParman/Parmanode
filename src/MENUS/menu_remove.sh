@@ -258,6 +258,10 @@ if grep -q "veracrypt-end" $HOME/.parmanode/installed.conf ; then veracryptmenu=
 echo -e "#$cyan                            \033[27G vc)$orange               VeraCrypt                              \033[88G#"
 elif grep -q "veracrypt-start" $HOME/.parmanode/installed.conf ; then veracryptmenu=1
 echo -e "#$cyan                            \033[27G vc)$orange               VeraCrypt              $red$blinkon(partial)$blinkoff$orange        \033[88G#" ; fi
+if grep -q "alby-end" $HOME/.parmanode/installed.conf ; then albymenu=1
+echo -e "#$cyan                            \033[27G alby)$orange               Alby                                 \033[88G#"
+elif grep -q "veracrypt-start" $HOME/.parmanode/installed.conf ; then veracryptmenu=1
+echo -e "#$cyan                            \033[27G alby)$orange               Ably                 $red$blinkon(partial)$blinkoff$orange        \033[88G#" ; fi
 echo -e "#                                                                                      \033[88G#
 ########################################################################################
 "
@@ -657,6 +661,12 @@ fi
 vc|VC)
 if [[ $veracryptmenu == 1 ]] ; then
 uninstall_veracrypt
+menu_main
+fi
+;;
+alby|Alby|ALBY)
+if [[ $albymenu == 1 ]] ; then
+uninstall_alby
 menu_main
 fi
 ;;

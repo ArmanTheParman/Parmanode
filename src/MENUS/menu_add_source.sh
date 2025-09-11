@@ -710,4 +710,19 @@ else
    #not installed
 parmasql_n="#$cyan                             pd)   $orange       ParmaSQL Database                           #"
 fi
+
+
+#alby
+unset alby_i alby_p alby_n 
+if grep -q "alby-end" $HOME/.parmanode/installed.conf ; then 
+  #installed
+alby_i="#                                      Alby                                            #"
+elif grep -q "X11-start" $HOME/.parmanode/installed.conf ; then 
+   #partially installed
+alby_p="#                                      Alby                                            #"
+else
+   #not installed
+alby_n="#$cyan                             pd)   $orange       ParmaSQL Database                           #"
+alby_n="#$cyan                             alby) $orange       Alby (lightning wallet)                     #"
+fi
 }

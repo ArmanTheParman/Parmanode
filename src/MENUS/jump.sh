@@ -4,6 +4,18 @@ case $1 in
 q|quit|exit) exit ;;
 m|main) back2main ;;
 
+b)
+clear
+menu_bitcoin
+invalid_flag=set
+;;
+
+ualby)
+clear
+menu_alby
+invalid_flag=set
+;;
+
 command)
 clear
 while true ; do
