@@ -29,7 +29,7 @@ while true ; do
 get_onion_address_variable "alby"
 set_terminal 38 110 ; echo -e "
 ##############################################################################################################
-                                              Alby Menu
+                                               Alby Menu
 ##############################################################################################################
 
 $runningalbymenu
@@ -44,13 +44,13 @@ $cyan
             From any computer in the world 
 
 $green
-                  start)$orange         Start Alby docker container
+                              start)$orange         Start Alby docker container
 $red
-                  stop)$orange          Stop Alby docker container
+                              stop)$orange          Stop Alby docker container
 
-
+$pink
     See LND menu for LND macaroons
-
+$orange
 ##############################################################################################################
 "
 choose xpmq ; read choice ; set_terminal
