@@ -42,17 +42,17 @@ set_terminal 34 110 ; echo -e "
 $orange
     Connections:
 $cyan
-    https://localhost:8383$orange     \033[58GFrom this computer only$cyan
-    https://127.0.0.1:8383$orange     \033[58GFrom this computer only$cyan
-    https://$IP:8383$orange           \033[58GFrom any computer on your network $orange
+    https://localhost:8383$orange     \033[34GFrom this computer only$cyan
+    https://127.0.0.1:8383$orange     \033[34GFrom this computer only$cyan
+    https://$IP:8383$orange           \033[34GFrom any computer on your network $orange
 
     Tor:$blue
     http://$ONION_ADDR_ALBY:7011    $orange \n\033[58G
 
 $green
-                              start)$orange         Start Alby docker container
+                                  start)$orange         Start Alby docker container
 $red
-                              stop)$orange          Stop Alby docker container
+                                  stop)$orange          Stop Alby docker container
 
 
 $orange
