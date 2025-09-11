@@ -51,9 +51,9 @@ $cyan
     http://$ONION_ADDR_ALBY:7011    $orange \n\033[58G
 
 $green
-                                  start)$orange         Start Alby docker container
+                      start)$orange         Start Alby docker container
 $red
-                                  stop)$orange          Stop Alby docker container
+                      stop)$orange          Stop Alby docker container
 
 
 $orange
