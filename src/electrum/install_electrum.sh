@@ -11,21 +11,21 @@ echo -e "
 
      This is indicated by the presence of the directory $HOME/.electrum
 
-     You can go back and properly uninstall before proceeding, or proceed now anyway,
-     but be warned, there could be unexpected behaviour.
+     You can go back and properly uninstall before proceeding, or proceed now anyway.
+     Electrum will use your previous settings. 
      
      You have options:
 $green
                     a)        Abort, and maybe uninstall other Electrum version
 $red    
-                    yolo)     Proceed with installation. Reckless!
+                    c)        Continue with installation. 
 $orange
 ########################################################################################
 "
 choose "xpmq" ; read choice 
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
-q|Q) exit ;; q|P|a|A) return 1 ;; M|m) back2main ;; yolo) break ;; *) invalid ;;
+q|Q) exit ;; q|P|a|A) return 1 ;; M|m) back2main ;; c) break ;; *) invalid ;;
 esac
 done
 fi
