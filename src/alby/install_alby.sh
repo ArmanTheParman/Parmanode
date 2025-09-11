@@ -35,7 +35,7 @@ fi
 
 set_terminal 34 ; echo -e "
 ########################################################################################
-                                     Alby Menu
+                                      Alby Menu
 ########################################################################################
 
 
@@ -66,9 +66,11 @@ jump $choice ; jump_pmq $choice
 case $choice in
 start)
 start_alby
+sleep 3
 ;;
 stop)
 stop_alby
+sleep 3
 ;;
 "") 
 : ;;
