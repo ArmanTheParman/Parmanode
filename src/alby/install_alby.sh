@@ -58,6 +58,8 @@ $red
                       stop)$orange          Stop Alby docker container
 $cyan
                       mm)$orange            See Parmanode LND macroons
+$cyan
+                      tls)$orange           See LND tls.cert
 
 
 ########################################################################################
@@ -75,6 +77,11 @@ sleep 3
 ;;
 mm)
 lnd_macaroons
+;;
+tls)
+clear
+cat $HOME/.lnd/tls.cert
+enter_continue
 ;;
 "") 
 : ;;
