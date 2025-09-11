@@ -38,7 +38,7 @@ set_terminal 38 110 ; echo -e "
                                                 Alby Menu
 ##############################################################################################################
 
-$runningalbymenu
+    $runningalbymenu
 $orange
     Connections:
 $cyan
