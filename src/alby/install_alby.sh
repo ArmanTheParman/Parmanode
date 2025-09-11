@@ -80,6 +80,7 @@ lnd_macaroons
 ;;
 tls)
 clear
+echo -e "\n$HOME/.lnd/tls.cert\n"
 xxd -p $HOME/.lnd/tls.cert
 enter_continue
 ;;
