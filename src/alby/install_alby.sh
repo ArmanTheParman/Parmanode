@@ -47,9 +47,9 @@ $green
 $red
                               stop)$orange          Stop Alby docker container
 
-$pink
-    See LND menu for LND macaroons
 $orange
+    See LND menu for LND macaroons
+
 ##############################################################################################################
 "
 choose xpmq ; read choice ; set_terminal
