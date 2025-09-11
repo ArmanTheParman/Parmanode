@@ -716,12 +716,13 @@ fi
 unset alby_i alby_p alby_n 
 if grep -q "alby-end" $HOME/.parmanode/installed.conf ; then 
   #installed
-alby_i="#                                      Alby                                            #"
+alby_i="#                                      AlbyHub                                         #"
 elif grep -q "X11-start" $HOME/.parmanode/installed.conf ; then 
    #partially installed
-alby_p="#                                      Alby                                            #"
+alby_p="#                                      AlbyHub                                         #"
 else
    #not installed
 alby_n="#$cyan                             alby) $orange       Alby (lightning wallet)                     #"
+alby_n="#$cyan                             alby) $orange       AlbyHub (for lightning wallets)             #"
 fi
 }

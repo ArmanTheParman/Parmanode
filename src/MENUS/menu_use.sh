@@ -155,7 +155,7 @@ if grep -q "parmadesk-end" $ic ; then parmadeskapp=1
 if grep -q "veracrypt-end" $ic ; then veracryptapp=1
                        echo -e "                        $cyan  vc)$orange         VeraCrypt" ; count=$((count +1)) ; fi
 if grep -q "alby-end" $ic ; then albyapp=1
-                       echo -e "                        $cyan  alby)$orange       Alby" ; count=$((count +1)) ; fi
+                       echo -e "                        $cyan  alby)$orange       AlbyHub" ; count=$((count +1)) ; fi
 echo -e "                            
 #######################################################################################
 "

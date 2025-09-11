@@ -1,5 +1,7 @@
 function install_alby {
 
+[[ $OS == "Mac" ]] && { no_mac ; return 1 ; }
+
 mkdir $hp/alby
 cat<<EOF >$hp/alby/docker-compose.yml
 services:
@@ -34,8 +36,8 @@ runningalbymenu="Alby is ${red}NOT RUNNING"
 fi
 
 set_terminal 34 ; echo -e "
-########################################################################################
-                                      Alby Menu
+#######################################################################################
+                                    AlbyHub Menu
 ########################################################################################
 
 
@@ -54,10 +56,9 @@ $green
                       start)$orange         Start Alby docker container
 $red
                       stop)$orange          Stop Alby docker container
+$cyan
+                      mm)$orange            See Parmanode LND macroons
 
-
-$orange
-    See LND menu for LND macaroons
 
 ########################################################################################
 "
@@ -71,6 +72,9 @@ sleep 3
 stop)
 stop_alby
 sleep 3
+;;
+mm)
+lnd_macaroons
 ;;
 "") 
 : ;;

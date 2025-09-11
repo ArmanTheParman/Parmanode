@@ -259,9 +259,9 @@ echo -e "#$cyan                            \033[27G vc)$orange               Ver
 elif grep -q "veracrypt-start" $HOME/.parmanode/installed.conf ; then veracryptmenu=1
 echo -e "#$cyan                            \033[27G vc)$orange               VeraCrypt              $red$blinkon(partial)$blinkoff$orange        \033[88G#" ; fi
 if grep -q "alby-end" $HOME/.parmanode/installed.conf ; then albymenu=1
-echo -e "#$cyan                            \033[27G alby)$orange               Alby                                 \033[88G#"
+echo -e "#$cyan                            \033[27G alby)$orange               AlbyHub                              \033[88G#"
 elif grep -q "alby-start" $HOME/.parmanode/installed.conf ; then veracryptmenu=1
-echo -e "#$cyan                            \033[27G alby)$orange               Ably                 $red$blinkon(partial)$blinkoff$orange        \033[88G#" ; fi
+echo -e "#$cyan                            \033[27G alby)$orange               AblyHub              $red$blinkon(partial)$blinkoff$orange        \033[88G#" ; fi
 echo -e "#                                                                                      \033[88G#
 ########################################################################################
 "
