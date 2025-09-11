@@ -722,6 +722,6 @@ elif grep -q "X11-start" $HOME/.parmanode/installed.conf ; then
 alby_p="#                                      Alby                                            #"
 else
    #not installed
-alby_n="#$cyan                             alby) $orange     Alby (lightning wallet)                     #"
+alby_n="#$cyan                             alby) $orange       Alby (lightning wallet)                     #"
 fi
 }
