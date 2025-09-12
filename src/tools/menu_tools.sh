@@ -21,8 +21,8 @@ $cyan          pn)$orange         ParmanodL - Flash a mircoSD for a Raspberry Pi
 $cyan          ps)$orange         ParmaShell info 
 $cyan          rs)$orange         Parman's easy AF Rsync tool new
 $cyan          cc)$orange         Upgrade ColdCard firmware wizard             
-$red $blinkon
-          n)          Next page of tools ...   $blinkoff
+$red 
+          n)$blinkon          Next page of tools ...   $blinkoff
 $orange
 ####################################################################################################
 "
