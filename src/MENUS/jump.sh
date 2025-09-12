@@ -268,7 +268,7 @@ menu_remove
 invalid_flag=set
 ;;
 
-use|muse)
+u|use|muse)
 menu_use
 invalid_flag=set
 ;;
