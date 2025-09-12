@@ -12,7 +12,7 @@ $cyan          spoofmac)$orange   Spoof your MAC address when connecting to inte
 $cyan          pay)$orange        Generate a normal lightning invoice from a LN address
 $cyan          aip)$orange        See the IPs of all devices connected on your network
 $cyan          hn)$orange         Change host name (Linux)
-$cyan          svr)$orange        Screen Video Recording$red$blinkon NEW$blinkoff$orange
+$cyan          svr)$orange        Screen Video Recording
 $cyan          ip)$orange         What's my computer's IP address?
 $cyan          uc)$orange         Update computer (apt-get for Linux, Homebrew for Macs)
 $cyan          sr)$orange         System report (for getting troubleshooting help)
