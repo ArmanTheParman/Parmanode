@@ -113,11 +113,11 @@ echo -en "
 
 
 "
-echo -e "    $output1"
+echo -e "       $output1"
 echo ""
-echo -e "    $output2"
+echo -e "       $output2"
 echo ""
-echo -e "    $output4"
+echo -e "       $output4"
 echo -e ""
 if ! ( [[ $bitcoinrunning == "true" ]] && pgrep bitcoin-qt >$dn 2>&1 ) ; then
 echo -e "
