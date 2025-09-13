@@ -94,7 +94,7 @@ if [[ $bitcoinrunning == "true" ]] && tail -n15 $HOME/.bitcoin/debug.log | grep 
 fi
 
 debug "bitcoin menu..."
-set_terminal 42 100 
+set_terminal 43 100 
 if grep -q "disable_bitcoin=true" $pc ; then
          output1="                   Bitcoin is$red DISABLED (type disable to toggle)$orange" 
 fi
