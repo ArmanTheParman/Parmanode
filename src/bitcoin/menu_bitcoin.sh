@@ -507,8 +507,10 @@ $cyan
     https://x.com/parman_the/status/1966540916530745816
 $orange
     Proceed?" || return 1
-
+clear
 stop_bitcoin
+sudo rm -f $hp/bitcoin
+mkdir $hp/bitcoin
 #download binaries, exract to directory, swap old with new.
 export clientchoice="knots" 
 export knotsversion="28.1"
