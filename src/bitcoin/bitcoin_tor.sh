@@ -55,7 +55,7 @@ if [[ $1 == "torandclearnet" ]] ; then
 if [[ $1 == "toronly" ]] ; then
     sudo gsed -i "/onion=/d" $bc
     echo "onion=127.0.0.1:9050" | sudo tee -a $bc >$dn 2>&1
-    echo "discover=0" | sudo tee -a $bc >$dn 2>&1
+    grep -q "discover=0" $bc || echo "discover=0" | sudo tee -a $bc >$dn 2>&1
     echo "listenonion=1" | sudo tee -a $bc >$dn 2>&1
     echo "onlynet=onion" | sudo tee -a $bc >$dn 2>&1 #new, disallows outward clearnet connections
         while [[ -z $ONION_ADDR ]] && [[ $count -lt 4 ]] ; do
@@ -78,7 +78,8 @@ if [[ $2 == "onlyout" ]] ; then
     sudo gsed -i "/onlynet/d" $bc
     sudo gsed -i "/listenonion=1/d" $bc
     echo "listen=0" | sudo tee -a $bc >$dn 2>&1
-    echo "discover=0" | sudo tee -a $bc >$dn 2>&1
+    gsed -i "/externalip/d" $bc >$dn 2>&1
+    grep -q "discover=0" $bc || echo "discover=0" | sudo tee -a $bc >$dn 2>&1
     parmanode_conf_remove "bitcoin_tor_status"
     parmanode_conf_add "bitcoin_tor_status=onlyout"
     add_rpcbind 
