@@ -61,7 +61,7 @@ yesorno "Are you sure you want to run Core? The 5 developers in charge are pushi
     you can visit: $cyan
 
     https://x.com/parman_the/status/1966540916530745816
-    $parman
+    $orange
 
     Knots is the way.
 
