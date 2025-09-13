@@ -21,12 +21,16 @@ $orange
     Parmanode will verify by hashing the file for you (and gpg verification), but 
     you may wish to learn how to do this yourself.
 
+    My guide on this:
+    $cyan
+                      https://armantheparman.com/gpg/
+$orange
     The downloaded files will be at:
-$pink    
+$cyan
                       $HOME/parmanode/bitcoin/
 $orange
     To learn more about how to verify yourself:
-$pink
+$cyan
                       https://armantheparman.com/gpg-articles 
 $orange
 
