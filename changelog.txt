@@ -1,5 +1,6 @@
 Version 3.65.1
      -removed old v2.5 for mempool
+     -fixed bitcoin bug for tor only out option
 Version 3.65.0
      -AlbyHub
 Version 3.64.5
