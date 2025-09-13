@@ -517,7 +517,7 @@ export knotsversion="28.1"
 export knotsdate="20250305"
 export knotsmajor="28.x"
 export knotstag="v${knotsversion}.knots${knotsdate}"
-cd $HOME/parmanode/bitcoin
+cd $hp/bitcoin
 download_bitcoin_getfiles || { enter_continue "Something went wrong." ; return 1 ; }
 verify_bitcoin || return 1
 sudo mkdir -p /usr/local/bin/bitcoin_old
