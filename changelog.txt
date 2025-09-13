@@ -1,3 +1,5 @@
+Version 3.66.0
+     -Bitcoin war cry - run knots, not Core
 Version 3.65.1
      -removed old v2.5 for mempool
      -fixed bitcoin bug for tor only out option
