@@ -58,6 +58,7 @@ yesorno "Are you sure you want to run Core?$red The 5 developers in charge$orang
     There is a war going on right now, we need to send a signal to them to stop this
     madness. To read my public fights about this and get some background, 
     you can visit: $cyan
+    
 
     https://x.com/parman_the/status/1966540916530745816
     $orange
