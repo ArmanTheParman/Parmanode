@@ -102,16 +102,16 @@ fi
 if ! bitcoin-cli --version |& grep -q "knots" ; then
 upgradetoknots="${red}\n\n    We are in a war with Core Developers making unwanted changes.
     Please run Knots instead to send them a message to get their head out of their arses.$orange"
-show_knots="$red BITCOIN CORE"
+show_knots="$red BITCOIN CORE (JPEG relay client)"
 else
-show_knots="$green BITCOIN KNOTS"
+show_knots="$green      BITCOIN KNOTS"
 unset upgradetoknots
 fi
 
 
 echo -en "
 ####################################################################################################$cyan
-                                        $show_knots Menu${orange}    $dockerbitcoinmenu $upgradetoknots
+                                   $show_knots Menu${orange}    $dockerbitcoinmenu $upgradetoknots
 ####################################################################################################
 
 
