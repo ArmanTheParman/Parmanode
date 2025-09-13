@@ -504,7 +504,7 @@ yesorno "
     which is the beginning of a chain of Tweets I put in my Twitter Highlights
     section for easy access:
 $cyan
-    https://x.com/parman_the/status/1966463279418769900
+    https://x.com/parman_the/status/1966540916530745816
 $orange
     Proceed?" || return 1
 
