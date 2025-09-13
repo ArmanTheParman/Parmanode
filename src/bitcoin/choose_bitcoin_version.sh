@@ -8,8 +8,6 @@ export bitcoin_compile="false"
 return 0
 fi
 
-echo test
-
 while true ; do
 set_terminal 32 120 ; echo -e "$orange
 ########################################################################################################################$green
