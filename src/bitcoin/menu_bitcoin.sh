@@ -104,7 +104,7 @@ upgradetoknots="${red}\n\n    We are in a war with Core Developers making unwant
     Please run Knots instead to send them a message to get their head out of their arses.$orange"
 show_knots="$red BITCOIN CORE $yellow(Node, and JPEG relay client)$red"
 else
-show_knots="$green               BITCOIN KNOTS"
+show_knots="$green              BITCOIN KNOTS"
 unset upgradetoknots
 fi
 
