@@ -113,39 +113,39 @@ echo -en "
 
 
 "
-echo -e "$output1"
+echo -e "    $output1"
 echo ""
-echo -e "$output2"
+echo -e "    $output2"
 echo ""
-echo -e "$output4"
+echo -e "    $output4"
 echo -e ""
 if ! ( [[ $bitcoinrunning == "true" ]] && pgrep bitcoin-qt >$dn 2>&1 ) ; then
 echo -e "
 $green
-               start)$orange        Start Bitcoin $red
-               stop)$orange         Stop Bitcoin $cyan"
+                   start)$orange        Start Bitcoin $red
+                   stop)$orange         Stop Bitcoin $cyan"
 
     if [[ -n $upgradetoknots ]] ; then
-        echo -e "$green               k)$orange     Upgrade to Knots" 
+        echo -e "$green                   k)$orange     Upgrade to Knots" 
     fi
     if [[ $bitcoinrunning == "true" ]] ; then
-        echo -e "$green               restart)$orange      Restart Bitcoin"
+        echo -e "$green                   restart)$orange      Restart Bitcoin"
     fi
 fi
-echo -e "$output3$red               disable)$orange      Disable Bitcoin toggle$cyan
-               n)$orange            Access Bitcoin node information $cyan
-               log)$orange          Bitcoin debug.log $cyan
-               bc)$orange           Inspect edit bitcoin.conf file (bcv for vim) $bright_blue
-               dc)$orange           OP_RETURN and datacarrier tweaks...
-               bcr)$orange          Refresh bitcoin.conf file to Parmanode default $cyan
-               max)$orange          Set max upload target (default 25GB shared per day)$cyan
-               tor)$orange          Tor/I2P menu options for Bitcoin...  $cyan
-               mm)$orange           Migrate/Revert an external drive...  $cyan
-               delete)$orange       Delete blockchain data and start over $cyan
-               upd)$orange          Update Bitcoin wizard $cyan
-               tips)$orange         Tips by Parman ...  $btcman $cyan
-               disable)$orange      Toggle on/off (for when manually copying blocks)$cyan
-               o)$orange            OTHER...
+echo -e "$output3$red                   disable)$orange      Disable Bitcoin toggle$cyan
+                   n)$orange            Access Bitcoin node information $cyan
+                   log)$orange          Bitcoin debug.log $cyan
+                   bc)$orange           Inspect edit bitcoin.conf file (bcv for vim) $bright_blue
+                   dc)$orange           OP_RETURN and datacarrier tweaks...
+                   bcr)$orange          Refresh bitcoin.conf file to Parmanode default $cyan
+                   max)$orange          Set max upload target (default 25GB shared per day)$cyan
+                   tor)$orange          Tor/I2P menu options for Bitcoin...  $cyan
+                   mm)$orange           Migrate/Revert an external drive...  $cyan
+                   delete)$orange       Delete blockchain data and start over $cyan
+                   upd)$orange          Update Bitcoin wizard $cyan
+                   tips)$orange         Tips by Parman ...  $btcman $cyan
+                   disable)$orange      Toggle on/off (for when manually copying blocks)$cyan
+                   o)$orange            OTHER...
 
 
 ####################################################################################################
