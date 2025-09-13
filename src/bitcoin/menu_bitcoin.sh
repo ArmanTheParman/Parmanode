@@ -94,15 +94,20 @@ if [[ $bitcoinrunning == "true" ]] && tail -n15 $HOME/.bitcoin/debug.log | grep 
 fi
 
 debug "bitcoin menu..."
-set_terminal 38 88
+set_terminal 38 100 
 if grep -q "disable_bitcoin=true" $pc ; then
          output1="                   Bitcoin is$red DISABLED (type disable to toggle)$orange" 
+fi
+
+if ! bitcoin-cli --version |& grep -q "knots" ; then
+upgradetoknots="${red}${blinkon}\n\n   We are in a war with Core Developers making unwanted changes.
+\n    Please run Knots instead to send them a message to get their head out of their arses."
 fi
 
 
 echo -en "
 ########################################################################################$cyan
-                                   Bitcoin Menu${orange}    $dockerbitcoinmenu
+                                   Bitcoin Menu${orange}    $dockerbitcoinmenu $upgradetoknots
 ########################################################################################
 
 
@@ -118,6 +123,10 @@ echo -e "
 $green
                start)$orange        Start Bitcoin $red
                stop)$orange         Stop Bitcoin $cyan"
+
+    if [[ -n $upgradetoknots ]] ; then
+        echo -e "$green               k)$orange     Upgrade to Knots" 
+    fi
     if [[ $bitcoinrunning == "true" ]] ; then
         echo -e "$green               restart)$orange      Restart Bitcoin"
     fi
@@ -141,7 +150,7 @@ echo -e "$output3$red               disable)$orange      Disable Bitcoin toggle$
 ########################################################################################
 "
 choose "xpmq" ; read choice
-jump $choice || { invalid ; continue ; } ; set_terminal
+jump $choice || { invalid ; continue ; } ; clear
 case $choice in
 q|Q) exit ;; m|M) back2main ;;
 p|P)
@@ -156,10 +165,10 @@ echo "hide_port_8333_message=1" >> $hm
 test_8333_reachable
 please_wait
 sleep 5
-set_terminal
+clear
 ;;
 r)
-set_terminal
+clear
 continue
 ;;
 
@@ -305,6 +314,12 @@ enter_continue ; jump $enter_cont
 nano $HOME/.bitcoin/bitcoin.conf
 continue
 ;;
+k)
+if [[ -n $upgradetoknots ]] ; then
+upgrade_to_knots
+fi
+;;
+
 vbc|bcv)
 vim_warning
 vim $HOME/.bitcoin/bitcoin.conf
@@ -464,4 +479,47 @@ return 0
 ;;
 esac
 
+}
+
+
+function upgrade_to_knots {
+#confirmation
+yesorno "
+    Bitcoin Knots is basically the contributions of all Bitcoin Core developers,
+    except, instead of the 5 seemingly compromised people that have final say 
+    with Bitcoin Core's GitHub repository keys, it is Luke Dashjr who has the 
+    final'veto', and he probably should be Bitcoin Core's lead developer anyway.
+
+    If you proceed, the current Bitcoin binary files will be swapped with the
+    latest Knots binaries. The blockchain and bitcoin.conf file will not be
+    modified.
+
+    Bitcoin will work just like before, but your node will not rely spam
+    from mempool to mempool, and if you are running on clearnet (options
+    1 or 4 from the bitcoin tor menu), then your node will be counted and
+    you'll contribute to sending a message.
+
+    To read a collection of Parman's war Tweets, please visit this link
+    which is the beginning of a chain of Tweets I put in my Twitter Highlights
+    section for easy access:
+$cyan
+    https://x.com/parman_the/status/1966463279418769900
+$orange
+    Proceed?" || return 1
+
+stop_bitcoin
+#download binaries, exract to directory, swap old with new.
+export clientchoice="knots" 
+export knotsversion="28.1"
+export knotsdate="20250305"
+export knotsmajor="28.x"
+export knotstag="v${knotsversion}.knots${knotsdate}"
+cd $HOME/parmanode/bitcoin
+download_bitcoin_getfiles || { enter_continue "Something went wrong." ; return 1 ; }
+verify_bitcoin || return 1
+sudo mkdir -p /usr/local/bin/bitcoin_old
+sudo mv /usr/local/bin/*bitcoin* /usr/local/bin/bitcoin_old/
+unpack_bitcoin || return 1
+start_bitcoin
+Success "Bitcoin has been upgraded to Knots."
 }
