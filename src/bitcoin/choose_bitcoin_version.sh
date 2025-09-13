@@ -8,6 +8,7 @@ export bitcoin_compile="false"
 return 0
 fi
 
+echo test
 
 while true ; do
 set_terminal 32 120 ; echo -e "$orange
@@ -95,9 +96,11 @@ set_terminal 40 120 ; echo -e "
     More questions, sorry...
 
 $cyan
-     1)$orange     Pre-compiled Bitcoin KNOTS, v$knotsversion, verified with gpg $blinkon(recommended)$blinkoff
+     1)$orange     Pre-compiled Bitcoin KNOTS, v$knotsversion $blinkon(recommended)$blinkoff
 $cyan
      2)$orange     Guided compile Bitcoin KNOTS, v$knotsversion
+$cyan
+     3)$orange     Pre-compile Bitcoin Knots, v28.1 (March 5, 2025)
 
 
 ########################################################################################################################
@@ -115,7 +118,19 @@ export knotsbitcoin="true" ; version="$knotsmajor-knots" ; return 0 ;;
 2)
 parmanode_conf_add "bitcoin_choice=knots"
 export bitcoin_compile="true"
-export knotsbitcoin="true" ; export version="28.1-knots" ; return 0 ;;
+export knotsbitcoin="true" ; export version="29.1-knots" ; return 0 ;;
+3)
+export knotsversion="28.1"
+export knotsdate="20250305"
+export knotsmajor="28.x"
+#probably redundant
+export knotstag="v${knotsversion}.knots${knotsdate}"
+
+parmanode_conf_add "bitcoin_choice=knots"
+export bitcoin_compile="false" 
+export knotsbitcoin="true" ; version="$knotsmajor-knots" ; return 0 
+;;
+
 *)
 invalid ;;
 esac
