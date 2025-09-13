@@ -509,9 +509,8 @@ $orange
     Proceed?" || return 1
 clear
 stop_bitcoin
-sudo rm -f $hp/bitcoin
+sudo rm -rf $hp/bitcoin
 mkdir -p $hp/bitcoin
-enter_continue "debug pause"
 #download binaries, exract to directory, swap old with new.
 export clientchoice="knots" 
 export knotsversion="28.1"
