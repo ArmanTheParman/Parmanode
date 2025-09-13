@@ -511,7 +511,7 @@ clear
 stop_bitcoin
 sudo rm -f $hp/bitcoin
 mkdir -p $hp/bitcoin
-enter_contine "debug pause"
+enter_continue "debug pause"
 #download binaries, exract to directory, swap old with new.
 export clientchoice="knots" 
 export knotsversion="28.1"
