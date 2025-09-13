@@ -51,9 +51,9 @@ export bitcoin_compile="true" ; deis="true" ; return 0
 ;;
 c)
 yesorno "Are you sure you want to run Core? The 5 developers in charge are pushing through 
-    widely unpopular changes that make the defaults easier for spam to be relayed through 
-    your node, and they have marked for deprecation your ability to undo those default 
-    settings.
+    widely unpopular changes that make the defaults easier for spam to be relayed 
+    through your node, and they have marked for deprecation your ability to undo 
+    those default settings.
 
     There is a war going on right now, we need to send a signal to them to stop this
     madness. To read my public fights about this and get some background, 
