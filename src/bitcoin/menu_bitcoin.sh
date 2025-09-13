@@ -100,8 +100,8 @@ if grep -q "disable_bitcoin=true" $pc ; then
 fi
 
 if ! bitcoin-cli --version |& grep -q "knots" ; then
-upgradetoknots="${red}${blinkon}\n\n    We are in a war with Core Developers making unwanted changes.
-    Please run Knots instead to send them a message to get their head out of their arses.$blinkoff$orange"
+upgradetoknots="${red}\n\n    We are in a war with Core Developers making unwanted changes.
+    Please run Knots instead to send them a message to get their head out of their arses.$orange"
 fi
 
 
@@ -126,7 +126,7 @@ $green
                    stop)$orange         Stop Bitcoin $cyan"
 
     if [[ -n $upgradetoknots ]] ; then
-        echo -e "$green$blinkon                   k)          Upgrade to Knots$blinkoff$cyan" 
+        echo -e "$green$blinkon                   k)            Upgrade to Knots$blinkoff$cyan" 
     fi
     if [[ $bitcoinrunning == "true" ]] ; then
         echo -e "$green                   restart)$orange      Restart Bitcoin"
