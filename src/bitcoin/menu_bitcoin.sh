@@ -101,7 +101,7 @@ fi
 
 if ! bitcoin-cli --version |& grep -q "knots" ; then
 upgradetoknots="${red}${blinkon}\n\n    We are in a war with Core Developers making unwanted changes.
-\n    Please run Knots instead to send them a message to get their head out of their arses.$blinkoff$orange"
+    Please run Knots instead to send them a message to get their head out of their arses.$blinkoff$orange"
 fi
 
 
