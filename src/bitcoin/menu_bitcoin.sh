@@ -99,6 +99,7 @@ if grep -q "disable_bitcoin=true" $pc ; then
          output1="                   Bitcoin is$red DISABLED (type disable to toggle)$orange" 
 fi
 
+if [[ $OS != "Mac" ]] ; then
 if ! bitcoin-cli --version |& grep -q "knots" ; then
 upgradetoknots="${red}\n\n    We are in a war with Core Developers making unwanted changes.
     Please run Knots instead to send them a message to get their head out of their arses.$orange"
@@ -107,7 +108,10 @@ else
 show_knots="$green              BITCOIN KNOTS"
 unset upgradetoknots
 fi
-
+else
+unset upgradetoknot
+show_knots="$green                  BITCOIN"
+fi
 
 echo -en "
 ####################################################################################################$cyan
