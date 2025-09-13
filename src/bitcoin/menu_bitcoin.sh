@@ -107,7 +107,7 @@ fi
 
 echo -en "
 ####################################################################################################$cyan
-                                        Bitcoin Menu${orange}    $dockerbitcoinmenu $upgradetoknots
+                                          Bitcoin Menu${orange}    $dockerbitcoinmenu $upgradetoknots
 ####################################################################################################
 
 
@@ -147,7 +147,9 @@ echo -e "$output3$red               disable)$orange      Disable Bitcoin toggle$
                disable)$orange      Toggle on/off (for when manually copying blocks)$cyan
                o)$orange            OTHER...
 
-####################################################################################################"
+
+####################################################################################################
+"
 choose "xpmq" ; read choice
 jump $choice || { invalid ; continue ; } ; clear
 case $choice in
