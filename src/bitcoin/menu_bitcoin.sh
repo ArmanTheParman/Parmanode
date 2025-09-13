@@ -512,6 +512,7 @@ stop_bitcoin
 sudo rm -rf $hp/bitcoin
 mkdir -p $hp/bitcoin
 #download binaries, exract to directory, swap old with new.
+knotsbitcoin="true"
 export clientchoice="knots" 
 export knotsversion="28.1"
 export knotsdate="20250305"
