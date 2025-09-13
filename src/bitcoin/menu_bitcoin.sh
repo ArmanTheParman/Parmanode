@@ -111,9 +111,9 @@ fi
 
 echo -en "
 ####################################################################################################$cyan
-                                $show_knots Menu${orange}    $dockerbitcoinmenu $upgradetoknots
+                                $show_knots Menu${orange}    $dockerbitcoinmenu
 ####################################################################################################
-
+ $upgradetoknots
 
 
 "
