@@ -102,9 +102,10 @@ fi
 if ! bitcoin-cli --version |& grep -q "knots" ; then
 upgradetoknots="${red}\n\n    We are in a war with Core Developers making unwanted changes.
     Please run Knots instead to send them a message to get their head out of their arses.$orange"
-show_knots="$green KNOTS$orange"
+unset show_knots
 else
-unset upgradetoknots show_knots
+show_knots="$green KNOTS$orange"
+unset upgradetoknots
 fi
 
 
