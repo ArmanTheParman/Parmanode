@@ -78,6 +78,7 @@ if [[ $2 == "onlyout" ]] ; then
     sudo gsed -i "/onlynet/d" $bc
     sudo gsed -i "/listenonion=1/d" $bc
     echo "listen=0" | sudo tee -a $bc >$dn 2>&1
+    sudo gsed -i -E '/^bind=/d' $bc
     gsed -i "/externalip/d" $bc >$dn 2>&1
     grep -q "discover=0" $bc || echo "discover=0" | sudo tee -a $bc >$dn 2>&1
     parmanode_conf_remove "bitcoin_tor_status"
