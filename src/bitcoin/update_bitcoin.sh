@@ -8,7 +8,7 @@ elif [[ $OS == Mac ]] ; then
 local version="${green}Bitcoin for Mac OS, please see GUI for version$orange"
 fi
 
-set_terminal ; echo -e "
+set_terminal 44 88 ; echo -e "
 ########################################################################################
 
     So, you want to update Bitcoin, huh? Okie dokie.
