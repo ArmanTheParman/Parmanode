@@ -514,10 +514,12 @@ mkdir -p $hp/bitcoin
 #download binaries, exract to directory, swap old with new.
 knotsbitcoin="true"
 export clientchoice="knots" 
-export knotsversion="28.1"
-export knotsdate="20250305"
-export knotsmajor="28.x"
+export knotsversion="29.1"
+export deisversion="28.1"
+export knotsdate="20250903"
 export knotstag="v${knotsversion}.knots${knotsdate}"
+export knotsmajor="29.x"
+export knotsextension="tar.gz"
 cd $hp/bitcoin
 download_bitcoin_getfiles || { enter_continue "Something went wrong." ; return 1 ; }
 verify_bitcoin || return 1
