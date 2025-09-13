@@ -75,11 +75,11 @@ fi
 
 
 if [[ $OS == Linux && $bitcoinrunning == "false" ]] && which bitcoin-qt >$dn 2>&1 ; then
-output3="$green               qtstart)$orange      Start Bitcoin Qt \n"
+output3="$green                   qtstart)$orange      Start Bitcoin Qt \n"
 fi
 
 if [[ $OS == Linux && $bitcoinrunning == "true" ]] && pgrep bitcoin-qt >$dn 2>&1 ; then
-output3="$red               qtstop)$orange       Stop Bitcoin Qt \n"
+output3="$red                   qtstop)$orange       Stop Bitcoin Qt \n"
 fi
 
 output4="                   Bitcoin Data Usage: $red$(du -shL $HOME/.bitcoin | cut -f1)"$orange
