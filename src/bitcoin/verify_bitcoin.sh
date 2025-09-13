@@ -5,7 +5,7 @@ if [[ $SKIPVERIFY == "true" ]] ; then return 0 ; fi
 
 cd $HOME/parmanode/bitcoin
 set_terminal 46 120
-if grep -q "$bitcoin_choice=knots" $pc ; then
+if grep -q "bitcoin_choice=knots" $pc ; then
              
     curl -LO https://bitcoinknots.org/files/$knotsmajor/$knotsversion.knots$knotsdate/SHA256SUMS 
     curl -LO https://bitcoinknots.org/files/$knotsmajor/$knotsversion.knots$knotsdate/SHA256SUMS.asc

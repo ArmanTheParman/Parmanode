@@ -522,6 +522,8 @@ export knotsmajor="29.x"
 export knotsextension="tar.gz"
 cd $hp/bitcoin
 download_bitcoin_getfiles || { enter_continue "Something went wrong." ; return 1 ; }
+parmanode_conf_remove "bitcoin_choice"
+parmanode_conf_add "bitcoin_choice=knots"
 verify_bitcoin || return 1
 sudo mkdir -p /usr/local/bin/bitcoin_old
 sudo mv /usr/local/bin/*bitcoin* /usr/local/bin/bitcoin_old/
