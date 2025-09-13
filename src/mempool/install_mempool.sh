@@ -108,14 +108,13 @@ set_terminal ; echo -e "
 ########################################################################################
 
     Which version of Mempool would you like?
+
 $cyan
-            1)$orange     v2.5
+            1)$orange     v3.0
 $cyan
-            2)$orange     v3.0
+            2)$orange     v3.2.1
 $cyan
-            3)$orange     v3.2.1
-$cyan
-            4)$orange     Latest (pre-release, can be buggy, but cutting edge)
+            3)$orange     Latest (pre-release, can be buggy, but cutting edge)
 
 ########################################################################################
 "
@@ -124,15 +123,12 @@ jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 1)
-export memversion="--branch v2.5 --single-branch"
-break ;;
-2)
 export memversion="--branch v3.0 --single-branch"
 break ;;
-3)
+2)
 export memversion="--branch v3.2.1 --single-branch"
 break ;;
-4)
+3)
 export memversion="--depth 1"
 break ;;
 *)

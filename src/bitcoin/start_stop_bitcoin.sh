@@ -45,6 +45,7 @@ if [[ $(uname) == "Darwin" ]] ; then
         sleep 0.5
         return 0
 fi
+debug "end start bitcoin"
 }
 
 
