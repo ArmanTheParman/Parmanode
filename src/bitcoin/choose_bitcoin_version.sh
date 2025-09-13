@@ -50,7 +50,7 @@ parmanode_conf_add "bitcoin_choice=deis"
 export bitcoin_compile="true" ; deis="true" ; return 0
 ;;
 c)
-yesorno "Are you sure you want to run Core? The 5 developers in charge are pushing through 
+yesorno "Are you sure you want to run Core?$red The 5 developers in charge$orange are pushing through 
     widely unpopular changes that make the defaults easier for spam to be relayed 
     through your node, and they have marked for deprecation your ability to undo 
     those default settings.
