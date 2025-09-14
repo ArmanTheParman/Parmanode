@@ -1,16 +1,16 @@
 function choose_and_prepare_drive {
-if [[ $version == self ]] ; then return 0 ; fi
+if [[ $version == "self" ]] ; then return 0 ; fi
 # Expect argument, either Bitcoin or Fulcrum or Electrs or Electrumx or nostr for $1
 # chooses between internal and external drive
 # Should have called the function "choose_and_prepare_drive, without "parmanode" - fix later"
 
-local text="$bright_blue                (ext)   IMPORT an external drive
+local text="$bright_blue                ext)   IMPORT an external drive
                                  (Parmanode, Umbrel, RaspiBlitz or MyNode) $orange
 " 
 
-local text_bitcoin_byo="$yellow                (byo)   BYO blockchain data from any drive (manual instructions only)$orange
+local text_bitcoin_byo="$yellow                byo)   BYO blockchain data from any drive (manual instructions only)$orange
 " 
-local text_nostr="$yellow                (np)    add a non-Parmanode external drive$orange
+local text_nostr="$yellow                np)    add a non-Parmanode external drive$orange
 " 
 
 while true ; do
@@ -24,16 +24,16 @@ echo -e "
 
     Please choose an option:
 $green
-                (e)     Use an EXTERNAL drive (choice to format) 
+                e)     Use an EXTERNAL drive (with a choice to format) 
 $red
-                (i)     Use an INTERNAL drive $orange
+                i)     Use an INTERNAL drive $orange
 "
-if [[ $1 == Bitcoin ]] ; then
+if [[ $1 == "Bitcoin" ]] ; then
     echo -e "$text" 
     echo -e "$text_bitcoin_byo" 
 fi 
 
-if [[ $1 == nostr ]] ; then
+if [[ $1 == "nostr" ]] ; then
     menu_nostr_add="true"
     echo -e "$text_nostr" 
 fi
@@ -52,7 +52,7 @@ fi
 case $choice in
 
 ext)
-if [[ $1 == Bitcoin ]] ; then
+if [[ $1 == "Bitcoin" ]] ; then
     log "importdrive" "$1 install, choice to import drive"
     import_drive_options || return 1
     export drive="external" ; parmanode_conf_add "drive=external"
@@ -65,7 +65,7 @@ fi
 ;;
 
 np)
-if [[ $1 == nostr ]] ; then
+if [[ $1 == "nostr" ]] ; then
     export drive_nostr=custom
     parmanode_conf_add "drive_nostr=custom"
     return 0
@@ -76,7 +76,15 @@ fi
    
 #External drive setup
 e|E) 
-if [[ $1 == "Bitcoin" ]] ; then export drive="external"; parmanode_conf_add "drive=external" ; installed_conf_add "bitcoin-start" ; return 0 ; fi
+if [[ $1 == "Bitcoin" ]] ; then 
+                      export drive="external"
+                      parmanode_conf_add "drive=external" 
+                      installed_conf_add "bitcoin-start" 
+                      if test -d $pd/.bitcoin ; then export skip_formatting="true" ; fi #no need to scare the user with formatting choice
+                                                                                        #if they already have a bitcoin directory detectable on the 
+                                                                                        #external drive.
+                      return 0 
+                      fi
 
 if [[ $1 == "Fulcrum" ]] ; then export drive_fulcrum="external"
         debug " in Fulcrum .. e"

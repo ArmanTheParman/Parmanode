@@ -78,6 +78,7 @@ unset importdrive
 choose_and_prepare_drive "Bitcoin" || return 1 # the argument "Bitcoin" is added as this function is also
                                              # called by a fulcrum installation, and electrs.
                                              # drive=internal or drive=external exported and added to parmanode.conf
+
 format_ext_drive "Bitcoin" || return 1 #drive variable (internal vs external exported before)
 
 debug "after format_ext_drive"
