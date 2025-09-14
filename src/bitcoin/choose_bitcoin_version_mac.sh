@@ -29,9 +29,11 @@ export bitcoin_compile="false"
 break
 ;;
 old|k|"")
-if [[ $choice == "old" ]] ; then #cose old knots...
-    [[ $OS == "Mac" ]] && export knotsversion=29.1 && export knotsdate=20250903 && knotsmajor=29.x && knotsextension="zip" && coreexternsion="tar.gz"
-else #chose new knots...
+if [[ $choice == "old" ]] ; then #choose old knots...
+    export knotsversion=28.1 && export knotsdate=20250305 && knotsmajor=28.x && knotsextension="zip" && coreexternsion="tar.gz"
+    export btcdockerchoice=no
+    export bitcoin_compile="false"
+else #choose new knots...
     [[ $MacOSVersion_major -gt "12" ]] || { yesorno "You need Mac Version 13 or greater to run this newer version of Knots. 
         Your system is:
 $blue
