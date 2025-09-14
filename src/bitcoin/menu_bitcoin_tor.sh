@@ -55,7 +55,7 @@ else tortext="
 ########################################################################################
 "
 fi
-set_terminal 40 88 ; echo -e "
+set_terminal 43 88 ; echo -e "
 ########################################################################################
 
 $cyan                        Tor/I2P options for Bitcoin (Linux only)   $orange
@@ -127,7 +127,7 @@ m|M) back2main ;; Q|q|quit|QUIT|Quit) exit 0 ;; p|P) return 1 ;;
     if [[ $install == "bitcoin" ]] ; then return 0 ; fi
     continue ;;
 "5")
-    [[ $OS == "Mac" ]] && no_mac && continue
+    [[ $OS == "Mac" ]] && { no_mac ; continue ; }
     bitcoin_tor "toronly"
     remove_bitcoin_i2p
 #    check_bitcoin_tor_status
@@ -137,7 +137,7 @@ m|M) back2main ;; Q|q|quit|QUIT|Quit) exit 0 ;; p|P) return 1 ;;
     if [[ $install == "bitcoin" ]] ; then return 0 ; fi
     continue ;;
 "6") 
-    [[ $OS == "Mac" ]] && no_mac && continue
+    [[ $OS == "Mac" ]] && { no_mac ; continue ; }
     if ! grep -q "i2p-end" $ic ; then install_i2p || { sww ; continue ; } ; fi
     bitcoin_tor_remove
     remove_bitcoin_i2p # to avoid duplications
@@ -149,7 +149,7 @@ m|M) back2main ;; Q|q|quit|QUIT|Quit) exit 0 ;; p|P) return 1 ;;
     if [[ $install == "bitcoin" ]] ; then return 0 ; fi
     continue ;;
 "7") 
-    [[ $OS == "Mac" ]] && no_mac && continue
+    [[ $OS == "Mac" ]] && { no_mac ; continue ; }
     if ! grep -q "i2p-end" $ic ; then install_i2p || { sww ; continue ; } ; fi
     bitcoin_tor_remove
     remove_bitcoin_i2p # to avoid duplications
