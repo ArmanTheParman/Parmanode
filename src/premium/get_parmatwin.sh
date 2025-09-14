@@ -20,7 +20,7 @@ announce_blue "ParmaSync/ParmaTwin software is available for PARMADRIVE machines
 
     To purchase a ParmaDrive, see this page for choices...
     $cyan
-        https://parmanode.com/parmadrive$blue
+        https://parman.org/parmadrive$blue
       " && return 1
 
 

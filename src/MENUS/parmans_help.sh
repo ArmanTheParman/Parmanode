@@ -418,7 +418,7 @@ $orange
 $blue
     More info and purchase options...
 
-    https://parmanode.com/parmadrive
+    https://parman.org/parmadrive
 $orange
 ########################################################################################
 " ; enter_continue ; jump $enter_cont 

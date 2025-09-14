@@ -1,7 +1,7 @@
-# This file is to be kept at parmanode.com
+# This file is to be kept at parman.org
 # User to type: 
 
-#        curl https://parmanode.com/get_parmanodl_installer | sh
+#        curl https://parman.org/get_parmanodl_installer | sh
 return 0
 ########################################################################################
 

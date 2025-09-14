@@ -7,7 +7,7 @@ set_terminal 38 110 ; echo -e "
             
             Version:                $version          
 
-            Websites:               www.parmanode.com 
+            Websites:               www.parman.org
                                     github.com/armantheparman/parmanode
 
             Developer:              Arman The Parman

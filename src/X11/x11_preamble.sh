@@ -25,7 +25,7 @@ set_terminal_high ; echo -e "
 
     To install XQuartz on a Mac, run this command in a Terminal window...
 $cyan
-        curl https://parmanode.com/install_xquartz.sh | sh $orange
+        curl https://parman.org/install_xquartz.sh | sh $orange
 
     When doing SSH, on the client machine, you just need to add a$pink -X$orange when you log 
     in for it to work. For example... $green

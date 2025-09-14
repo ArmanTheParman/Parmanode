@@ -1,15 +1,15 @@
 return 0
 ########################################################################################
-# This is kept at parmanode.com
+# This is kept at parman.org
 # Install anydesk with Mac or Linux with the command:
-# curl https://parmanode.com/anydesk.sh | sh
+# curl https://parman.org/anydesk.sh | sh
 ########################################################################################
 
 #!/bin/bash
 
 if [[ $(uname) == Darwin ]] ; then
 cd ~/Desktop
-curl -LO https://parmanode.com/anydesk.dmg	
+curl -LO https://parman.org/anydesk.dmg	
 hdiutil attach anydesk.dmg
 sudo mv /Volumes/AnyDesk/AnyDesk.app /Applications
 hdiutil detach /Volumes/AnyDesk

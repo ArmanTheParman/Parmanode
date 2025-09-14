@@ -11,7 +11,7 @@ function get_parmasql {
 
     Contact Parman for more info, or see...
 $green
-    https://parmanode.com/parmanodl$blue"
+    https://parman.org/parmanodl$blue"
 
     return 1
 }

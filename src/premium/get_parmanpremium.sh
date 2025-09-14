@@ -7,7 +7,7 @@ if [[ $1 == "plex" ]] ; then
     Plex with Parmanode is only available on purchased ParmaDrive/ParmanodL machines.
     See $cyan
     
-    https://parmanode.com/parmadrive$blue
+    https://parman.org/parmadrive$blue
     "
 return 1
 }
@@ -21,7 +21,7 @@ fi
     ParmanPremium is only available on purchased ParmaDrive machines.
     See $cyan
     
-    https://parmanode.com/parmadrive$blue
+    https://parman.org/parmadrive$blue
     "
     return 1
 }
