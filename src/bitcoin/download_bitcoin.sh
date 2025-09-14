@@ -15,9 +15,9 @@ set_terminal
 echo -e "
 ########################################################################################
 
-   $cyan 
-    The current version of Bitcoin that will be installed is$orange $printversion 
-$orange
+
+    The current version of Bitcoin that will be installed is $printversion 
+
     Parmanode will verify by hashing the file for you (and gpg verification), but 
     you may wish to learn how to do this yourself.
 
