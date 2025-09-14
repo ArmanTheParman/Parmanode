@@ -1,5 +1,6 @@
 Version 3.66.0
      -Bitcoin war cry - run knots, not Core
+     -Removed i2p option in Bitcoin Tor menu for Mac users (Parmanode doesn't install i2p for Mac)
 Version 3.65.1
      -removed old v2.5 for mempool
      -fixed bitcoin bug for tor only out option
