@@ -23,11 +23,11 @@ announce_blue "$cyan$(cat $HOME/.ssh/extra_keys/datum-key.pub)$blue"
 announce_blue "
     For pre-configurd Bitcoin Knots, ParMiner and Datum, please see...
 $orange
-        https://parmanode.com/parmanodl 
+        https://parman.org/parmanodl 
 $blue
         or 
 $orange
-        https://parmanode.com/parmadrive $blue "
+        https://parman.org/parmadrive $blue "
 
 return 1
 }

@@ -345,7 +345,7 @@ set_terminal ; echo -e "
       and import transactions to sign via QR codes.
 $bright_blue
     Go to: 
-        https://parmanode.com/parmairgap/ 
+        https://parman.org/parmairgap 
     for more info and purchase options.
 $orange
 
@@ -367,7 +367,7 @@ set_terminal ; echo -e "
     ParmAirGap but much less powerful, slower, and cheaper.
 $bright_blue
     More info and purchase options...
-    https://parmanode.com/pagz
+    https://parman.org/parmairgap
 $orange
 ########################################################################################
 "
