@@ -195,6 +195,7 @@ parmanode_conf_add "bitcoin_choice=compiled"
 export bitcoin_compile="true" ; return 0 ;;
 rekt)
 parmanode_conf_add "bitcoin_choice=compiled"
+parmanode_conf_add "bitcoin_ordinalspatch=true"
 export bitcoin_compile="true" ; export ordinals_patch="true" ; return 0 ;;
 builder)
 parmanode_conf_add "bitcoin_choice=compiled"
