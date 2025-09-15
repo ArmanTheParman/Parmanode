@@ -98,6 +98,8 @@ parmanode_conf_remove "UUID"
 parmanode_conf_remove "bitcoin_choice"
 parmanode_conf_remove "BTCIP"
 parmanode_conf_remove "disable_bitcoin"
+parmanode_conf_remove "bitcoin_ordinalspatch"
+
 unset drive prune_value bitcoin_choice UUID BTCIP rpcuser rpcpassword btc_authentication format_choice skip_formatting justFormat driveproblem
 print_bitcoin_variables "after unset"
 #Remove service file for Linux only
