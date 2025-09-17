@@ -10,6 +10,12 @@ menu_bitcoin
 invalid_flag=set
 ;;
 
+ers)
+clear
+menu_electrs
+invalid_flag=set
+;;
+
 ualby)
 clear
 menu_alby
