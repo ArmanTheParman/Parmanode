@@ -4,8 +4,7 @@ if [[ $disable_electrs == "true" ]] ; then clear ; echo "electrs disabled" ; sle
 
 please_wait
 if [[ $OS == "Linux" ]] ; then 
-    sudo systemctl start electrs.service 
-    sleep 0.5 #!# for debug
+    sudo systemctl start electrs.service || sleep 2 #!# for debug
 fi
 
 if [[ $OS == "Mac" ]] ; then
