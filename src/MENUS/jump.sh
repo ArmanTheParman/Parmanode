@@ -16,6 +16,12 @@ menu_electrs
 invalid_flag=set
 ;;
 
+mem)
+clear
+menu_mempool
+invalid_flag=set
+;;
+
 ualby)
 clear
 menu_alby
