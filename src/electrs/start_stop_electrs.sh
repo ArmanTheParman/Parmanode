@@ -1,6 +1,6 @@
 function start_electrs { #non-docker function
 source $pc
-if [[ $disable_electrs == "true" ]] ; then ; clear ; echo "electrs disabled" ; sleep 1 ; return 1 ; fi
+if [[ $disable_electrs == "true" ]] ; then clear ; echo "electrs disabled" ; sleep 1 ; return 1 ; fi
 
 please_wait
 if [[ $OS == "Linux" ]] ; then 
