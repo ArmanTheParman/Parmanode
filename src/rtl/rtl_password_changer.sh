@@ -7,7 +7,7 @@ set_terminal ; echo -e "
 $cyan
                                 RTL password set/change
 $orange
-    Please type a in a password for RTL. (Do not use the characters: # \" or '
+    Please type a in a password for RTL. (Do not use the characters: #, \", ^, \$, or '
     otherwise problems may arise. Keystrokes won't be shown.)
     
     To go back instead, type$cyan p$orange then$cyan <enter>$orange.
@@ -16,14 +16,14 @@ $orange
 "
 read -s rtl_pass
 
-    if [[ $rtl_pass == "p" ]] ; then return 1 ; fi
+    if [[ "$rtl_pass" == "p" ]] ; then return 1 ; fi
     set_terminal
     echo ""
     echo "Please repeat the password:
         "
-    read -s rtl_pass2 
+    read -s rtl_pass2
     set_terminal
-    if [[ $rtl_pass != $rtl_pass2 ]] ; then
+    if [[ "$rtl_pass" != "$rtl_pass2" ]] ; then
             echo "Passwords do not match. Try again.
             "
             enter_continue ; continue 
@@ -39,7 +39,6 @@ return 0
 }
 
 function set_rtl_password {
-nogsedtest
 new_password="$1"
 sudo gsed -i "/multiPass/c\\\"multiPass\": \"$new_password\"," "$HOME/parmanode/rtl/RTL-Config.json"
 }
