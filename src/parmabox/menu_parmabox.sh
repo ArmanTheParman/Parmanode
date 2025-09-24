@@ -36,7 +36,7 @@ $cyan
 $cyan
             rs)$orange        Restart the container
 $cyan
-            u)$orange         Run an update of Parmanode and the OS inside the container
+            up)$orange         Run an update of Parmanode and the OS inside the container
 $cyan
             rf)$orange        Refresh ParmaBox (starts over and includes new updates)
 
@@ -56,7 +56,7 @@ s)
 stop_parmabox ;;
 rs) 
 start_parmabox ;;
-u) 
+up) 
 docker exec -it -u root parmabox bash -c "apt update -y && apt -y upgrade" 
 echo "Update Parmanode..."
 docker exec -it -u parman parmabox bash -c "cd /home/parman/parman_programs/parmanode ; git pull"

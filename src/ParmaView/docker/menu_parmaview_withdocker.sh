@@ -40,7 +40,7 @@ $cyan
 $red
       ----------------------------------------------------------------------------------------
       EXPERT OPTIONS... $cyan
-              u)$orange       Run an update of Parmanode and the OS inside the container$cyan
+              up)$orange      Run an update of Parmanode and the OS inside the container$cyan
               r) $orange      Log into the container as root $blue   The password is 'parmanode'$cyan
               pm)$orange      Log into the container as parman $blue The password is 'parmanode'$red
       ----------------------------------------------------------------------------------------
@@ -72,7 +72,7 @@ s)
 stop_parmaview ;;
 rs) 
 start_parmaview ;;
-u) 
+up) 
 docker exec -it -u root parmaview bash -c "apt update -y && apt -y upgrade" 
 echo "Update Parmanode..."
 docker exec -it -u parman parmaview bash -c "cd /home/parman/parman_programs/parmanode ; git pull"

@@ -8,7 +8,7 @@ set_terminal ; echo -e "
 $cyan
                       pp)$orange  Pre-existing Parmanode drive 
 $cyan
-                      u)$orange   Umbrel drive
+                      ub)$orange   Umbrel drive
 $cyan
                       rb)$orange  RaspiBlitz drive
 $cyan
@@ -42,7 +42,7 @@ if [[ $OS == "Linux" ]] ; then
 fi
 return 0
 ;;
-u|U)
+ub)
 export importdrive="true"
 export skip_formatting="true"
 log "importdrive" "umbrel import"

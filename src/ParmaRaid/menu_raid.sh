@@ -13,7 +13,7 @@ $issuedetected$orange
                       lc)$blue         List physically connected RAID drives
 $orange
                       mm)$blue         Mount RAID$orange
-                       u)$blue         Unmount (option to select which) 
+                      um)$blue         Unmount (option to select which) 
 $orange
                       aa)$green         Assemble RAIDs $orange
                     stop)$red         Stop Raid
@@ -65,7 +65,7 @@ i)
 raid_info
 ;;
 
-u)
+um)
 unmount_raids
 continue
 ;;
