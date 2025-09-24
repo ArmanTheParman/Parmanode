@@ -16,7 +16,7 @@ menu_electrs
 invalid_flag=set
 ;;
 
-mem)
+mmem)
 clear
 menu_mempool
 invalid_flag=set
