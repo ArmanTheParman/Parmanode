@@ -10,7 +10,7 @@ menu_bitcoin
 invalid_flag=set
 ;;
 
-ers)
+mers)
 clear
 menu_electrs
 invalid_flag=set
