@@ -16,8 +16,8 @@ if [[ $OS == "Linux" && $drive == "external" ]] ; then
     if test -e $HOME/.bitcoin && ! test -L $HOME/.bittcoin ; then
         btemp="$HOME/.bitcoin_$(shasum -a 256 <<<$(date) | cut -c1-8)" 
         mv $HOME/.bitcoin $btemp >$dn 2>&1
-        announce "An bitcoin directory already exists in the internal file system. It has been
-        -r    moved to $btemp"
+        announce "A bitcoin directory already exists in the internal file system. It has been
+        \r    moved to$cyan $btemp$orange"
     fi 
 
     cd $HOME && ln -s /media/$(whoami)/parmanode/.bitcoin/ .bitcoin  

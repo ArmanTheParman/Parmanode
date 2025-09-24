@@ -432,6 +432,9 @@ fi
 if tail -n1 $HOME/.bitcoin/debug.log | grep -qEo "Synchoronizing blockheaders" ; then
 export running_text="Synchronizing blockheaders"
 return 0
+
+if [[ $running_test =~ ^AddLocal.* ]] ; then 
+   export running_text="(refresh for status)" 
 fi
 }
 
