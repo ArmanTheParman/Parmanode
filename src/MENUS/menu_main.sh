@@ -43,7 +43,7 @@ fi
 if ! grep -q "hide_desktop_icon=1" $hm && [[ ! -e $desktopfile ]] && ! lsb_release -a 2>/dev/null | grep -q Ubuntu ; then
 
 if ! grep -q "hide_desktop_icon=1" $hm ; then
-icon="\n#$cyan    (icon)$orange               ${pink}Add Desktop Shortcut     (dx to hide) $orange                       #
+icon="\n#$cyan     icon)$orange               ${pink}Add Desktop Shortcut     (dx to hide) $orange                       #
 #                                                                                      #"
 fi
 
