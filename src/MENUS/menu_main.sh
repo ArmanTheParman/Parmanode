@@ -67,28 +67,28 @@ echo -e "$debugstatus
 ########################################################################################
 #    $partial_install \033[88G#
 #                                                                                      #
-#$green    (add)    $orange            Add more Programs                                            #
+#$green     add)    $orange            Add more Programs                                            #
 #                                                                                      #
-#$cyan    (u)            $orange      Use Installed Programs                                       #
+#$cyan     u)            $orange      Use Installed Programs                                       #
 #                                                                                      #
-#$red    (remove)     $orange        Remove/Uninstall Programs                                    #
+#$red     remove)     $orange        Remove/Uninstall Programs                                    #
 #                                                                                      #
-#$cyan    (ns)$orange                 ${yellow}Navigation shortcuts      $orange                                   #
+#$cyan     ns)$orange                 ${yellow}Navigation shortcuts      $orange                                   #
 #                                                                                      #
-#$cyan    (dm)$orange                 ${yellow}Parmanode drive menu      $orange                                   #
+#$cyan     dm)$orange                 ${yellow}Parmanode drive menu      $orange                                   #
 #                                                                                      #$icon
 #--------------------------------------------------------------------------------------#
 #                                                                                      #
-#$cyan                (h)$orange               Parman's Services/Products/${bright_blue}Help$orange                     #
-#$cyan                (t)$orange               Tools                                               #
-#$cyan                (s)$orange               Settings/Colours                                    #
-#$cyan                (e)$orange               Education                                           #
-#$cyan                (d)$orange               Donate                                              #
-#$cyan                (log)$orange             See logs and files                                  #
-#$cyan                (update)$orange          Update Parmanode                                    #
-#$cyan                (uc)$orange              Update Computer                                     #
-#$red                (uninstall)$orange       Uninstall Parmanode                                 #
-#$cyan                (ap)$orange              About Parmanode                                     #
+#$cyan                 h)$orange               Parman's Services/Products/${bright_blue}Help$orange                     #
+#$cyan                 t)$orange               Tools                                               #
+#$cyan                 s)$orange               Settings/Colours                                    #
+#$cyan                 e)$orange               Education                                           #
+#$cyan                 d)$orange               Donate                                              #
+#$cyan                 log)$orange             See logs and files                                  #
+#$cyan                 update)$orange          Update Parmanode                                    #
+#$cyan                 uc)$orange              Update Computer                                     #
+#$red                 uninstall)$orange       Uninstall Parmanode                                 #
+#$cyan                 ap)$orange              About Parmanode                                     #
 #                                                                                      #
 ########################################################################################
 
