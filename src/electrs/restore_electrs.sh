@@ -21,7 +21,7 @@ $red
     to compile again now, of course. 
 
 $green
-                      u)$orange             Use backup of compiled software
+                      bk)$orange             Use backup of compiled software
 $red
                       compile)$orange       Compile again
 $cyan
@@ -33,7 +33,7 @@ choose "xpmq" ; read choice
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
-u|U|use|Use) 
+bk)
 export electrs_compile="false" && return 0 ;;
 compile) 
 export electrs_compile="true" && return 0 ;;
