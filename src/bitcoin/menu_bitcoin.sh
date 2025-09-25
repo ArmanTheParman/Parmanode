@@ -1,13 +1,14 @@
 function menu_bitcoin {
 
 if ! grep -qE "bitcoin-end" $ic ; then return 0 ; fi
+
 export debuglogfile="$HOME/.bitcoin/debug.log" 
 
 if grep -q "btccombo" $ic >$dn 2>&1 ; then
-dockerbitcoinmenu="\n $pink                Bitcoin in Docker Container with BTCPay Server $orange\n"
-btcman="\n\r          $cyan     man)$orange          Explore Bitcoin/BTCPay container (manr for root)\n"
+    dockerbitcoinmenu="\n $pink                Bitcoin in Docker Container with BTCPay Server $orange\n"
+    btcman="\n\r          $cyan     man)$orange          Explore Bitcoin/BTCPay container (manr for root)\n"
 else
-unset btcman dockerbitcoinmenu
+    unset btcman dockerbitcoinmenu
 fi
 
 #for multiselection menus, need to exit if not installed
@@ -100,17 +101,17 @@ if grep -q "disable_bitcoin=true" $pc ; then
 fi
 
 if [[ $OS != "Mac" ]] ; then
-if ! bitcoin-cli --version |& grep -Eiq "knots|deis" && ! grep bitcoin_ordinalspatch $pc && ! grep -q "disable_bitcoin=true" $pc ; then
-upgradetoknots="${red}\n\n    We are in a war with Core Developers making unwanted changes.
-    Please run Knots instead to send them a message to get their head out of their arses.$orange"
-show_knots="$red BITCOIN CORE $yellow(Node, and JPEG relay client)$red"
+    if ! bitcoin-cli --version |& grep -Eiq "knots|deis" && ! grep bitcoin_ordinalspatch $pc && ! grep -q "disable_bitcoin=true" $pc ; then
+        upgradetoknots="${red}\n\n    We are in a war with Core Developers making unwanted changes.
+        \r    Please run Knots instead to send them a message to get their head out of their arses.$orange"
+    show_knots="$red BITCOIN CORE $yellow(Node, and JPEG relay client)$red"
+    else
+        show_knots="$green              BITCOIN KNOTS"
+        unset upgradetoknots
+    fi
 else
-show_knots="$green              BITCOIN KNOTS"
-unset upgradetoknots
-fi
-else
-unset upgradetoknot
-show_knots="$green                  BITCOIN"
+    unset upgradetoknot
+    show_knots="$green                  BITCOIN"
 fi
 
 echo -en "
@@ -211,16 +212,19 @@ announce "OP_RETURN is a section in a transaction where arbitrary data can be ad
     Enter a number, or just hit <enter> to go back."
 
     case $enter_cont in
-    "") continue ;;
-    0) gsed -i -E '/^datacarrier(size)?=/d' $bc >$dn 2>&1 ; echo "datacarrier=0" | tee -a $bc >$dn 2>&1 ; enter_continue "Done" ;;
+    "") 
+        continue ;;
+    0) 
+        gsed -i -E '/^datacarrier(size)?=/d' $bc >$dn 2>&1 ; echo "datacarrier=0" | tee -a $bc >$dn 2>&1 ; enter_continue "Done" ;;
     *)
-    [[ $enter_cont =~ ^[0-9]+$ ]] || { invalid && continue ; }
-    [[ $enter_cont -le 10000 ]] || { invalid && continue ; }
-    gsed -i -E '/^datacarrier(size)?=/d' $bc >$dn 2>&1 ; echo "datacarrier=1" | tee -a $bc >$dn 2>&1 
-    echo "datacarriersize=$enter_cont" | tee -a $bc >$dn 2>&1 
-;;
+        [[ $enter_cont =~ ^[0-9]+$ ]] || { invalid && continue ; }
+        [[ $enter_cont -le 10000 ]] || { invalid && continue ; }
+        gsed -i -E '/^datacarrier(size)?=/d' $bc >$dn 2>&1 ; echo "datacarrier=1" | tee -a $bc >$dn 2>&1 
+        echo "datacarriersize=$enter_cont" | tee -a $bc >$dn 2>&1 
+        ;;
     esac
 ;;
+
 n|N)
 if ! grep -q "btccombo" $ic && [[ $OS == Mac ]] ; then no_mac ; continue ; fi
 
@@ -432,6 +436,7 @@ fi
 if tail -n1 $HOME/.bitcoin/debug.log | grep -qEo "Synchoronizing blockheaders" ; then
 export running_text="Synchronizing blockheaders"
 return 0
+fi
 
 if [[ $running_text =~ ^AddLocal.* ]] ; then 
    export running_text="(refresh for status)" 
