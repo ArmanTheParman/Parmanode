@@ -1,4 +1,5 @@
 function get_datum {
+if [[ $OS == "Mac" ]] ; then no_mac ; return 1 ; fi
 
 if [[ $preconfigure_parmadrive == "true" ]] ; then
    if grep -q "datum-end" $ic ; then return 0 ; fi
