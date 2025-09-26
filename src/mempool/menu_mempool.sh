@@ -223,6 +223,7 @@ else
 fi
 if [[ $restart_mempool == "true" ]] ; then
 restart_mempool
+sleep 3
 unset restart_mempool
 fi
 
