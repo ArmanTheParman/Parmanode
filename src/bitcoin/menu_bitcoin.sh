@@ -305,8 +305,8 @@ max)
 bcr|BCR|Bcr)
 yesorno  "Are you sure you want to refresh bitcoin.conf? 
     
-    Maybe back it up first. Also, you will lose your Tor/i2P settings, make sure to re-select 
-    them from the bitcoin-tor menu." || continue
+    Maybe back it up first. Also, you will lose your Tor/i2P settings, make sure 
+    to re-select them from the bitcoin-tor menu." || continue
 
 make_bitcoin_conf refresh && gsed -i '/bitcoiin_tor_status/d' $pc >$dn 2>&1 && success "bitcoin.conf refreshed to Parmanode default"
 continue
