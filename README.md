@@ -1,1 +1,1 @@
-## Parmanode documentation moved to https://parmanode.com/parmanode
+## Parmanode documentation moved to https://parman.org/diy
