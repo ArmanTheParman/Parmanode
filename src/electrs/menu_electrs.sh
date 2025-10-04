@@ -169,6 +169,7 @@ docker_stop_electrs
 else
 stop_electrs
 fi
+
 disable_electrs
 ;;
 
@@ -378,6 +379,7 @@ debug "electrs is not disabled, disabling it now..."
         docker rename electrs electrs_disabled
         echo "disable_electrs=true" | tee -a $pc >$dn 2>&1 #add line
     fi
+unset disable_electrs
 source $pc
 fi
 }
