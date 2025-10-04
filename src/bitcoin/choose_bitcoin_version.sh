@@ -155,19 +155,14 @@ while true ; do
 set_terminal 40 120 ; echo -e "
 ########################################################################################################################
     More questions, sorry...
+
 $cyan
-          core)       ${orange}Pre-compiled Bitcoin CORE v$version, verified with gpg
+          nospam)       ${orange}Guided compile Bitcoin CORE, v$version, (with FILTER-ORDINALS patch by Luke Dashjr)
 $cyan
-          hfsp)       ${orange}Guided compile Bitcoin CORE v$version
+             pre)       ${orange}Pre-compiled Bitcoin CORE v$version, verified with gpg (with extra spam, don't do it)
 $cyan
-          rekt)       ${orange}Guided compile Bitcoin CORE, v$version, (with FILTER-ORDINALS patch by Luke Dashjr)
-$cyan
-           few)       ${orange}Custom Bitcoin Core version (you choose) - Download and verify 'trusted' releases
-$cyan
-          yolo)       ${orange}Guided compile custom Bitcoin Core version (you choose) 
-$cyan
-       builder)       ${orange}Guided compile of most recent Bitcoin Core Github update, i.e. pre-release
-                      (for testing only)
+            hfsp)       ${orange}Guided compile Bitcoin CORE v$version (with extra spam, don't do it)
+
 $orange
 ########################################################################################################################
 "
@@ -179,59 +174,36 @@ jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit 0 ;; p|P) return 1 ;; m|M) back2main ;;
 
-0|27|c|core)
+pre)
 parmanode_conf_add "bitcoin_choice=precompiled"
-export core="true" ; export bitcoin_compile="false" ; return 0 ;;
-few|custom) 
-parmanode_conf_add "bitcoin_choice=precompiled"
-select_custom_version || return 1
-export core="true" ; export bitcoin_compile="false" ; return 0 ;;
-yolo) 
-parmanode_conf_add "bitcoin_choice=compiled"
-select_custom_version || return 1
-export bitcoin_compile="true" ; return 0 ;;
+export core="true" ; export bitcoin_compile="false" ; return 0 
+;;
+
 hfsp) 
 parmanode_conf_add "bitcoin_choice=compiled"
-export bitcoin_compile="true" ; return 0 ;;
-rekt)
+export bitcoin_compile="true" ; return 0 
+;;
+
+nospam)
 parmanode_conf_add "bitcoin_choice=compiled"
 parmanode_conf_add "bitcoin_ordinalspatch=true"
-export bitcoin_compile="true" ; export ordinals_patch="true" ; return 0 ;;
-builder)
-parmanode_conf_add "bitcoin_choice=compiled"
-export bitcoin_compile="true" ; export version="master" ; return 0 ;;
+export bitcoin_compile="true" ; export ordinals_patch="true" ; return 0 
+;;
+
 esac
 done
-
-
-while true ; do
-#default version set at the beginning of instll_bitcoin()
-set_terminal 40 120 ; echo -e "
-########################################################################################################################
-$cyan
-$orange
-########################################################################################################################
-
-
-
-
-########################################################################################################################
-"
-choose "xpmq" 
-read choice
-jump $choice || { invalid ; continue ; } ; set_terminal
-
-case $choice in
-q|Q) exit 0 ;; p|P) return 1 ;; m|M) back2main ;;
-
-
-
-
-
-*) 
-invalid ;;
-esac
-done
+# few|custom) 
+# parmanode_conf_add "bitcoin_choice=precompiled"
+# select_custom_version || return 1
+# export core="true" ; export bitcoin_compile="false" ; return 0 ;;
+# yolo) 
+# parmanode_conf_add "bitcoin_choice=compiled"
+# select_custom_version || return 1
+# export bitcoin_compile="true" ; return 0 ;;
+# builder)
+# parmanode_conf_add "bitcoin_choice=compiled"
+# export bitcoin_compile="true" ; export version="master" ; return 0 
+# ;;
 
 }
 
