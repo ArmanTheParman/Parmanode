@@ -353,6 +353,8 @@ fi
 }
 
 function disable_electrs {
+unset disable_electrs
+source $pc
 clear
 
 if grep -q "disable_electrs=true" $pc ; then #electrs is disabled, enable it...
@@ -376,6 +378,6 @@ debug "electrs is not disabled, disabling it now..."
         docker rename electrs electrs_disabled
         echo "disable_electrs=true" | tee -a $pc >$dn 2>&1 #add line
     fi
-
+source $pc
 fi
 }
