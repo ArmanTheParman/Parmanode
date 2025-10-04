@@ -329,6 +329,9 @@ sudo rm -rf $pn
 ;;
 esac
 
+#remove share directory
+sudo rm -rf /usr/share/parmanode 2>$dn
+
 set_terminal
 echo -e "
 ########################################################################################
