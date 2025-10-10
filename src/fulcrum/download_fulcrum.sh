@@ -1,5 +1,5 @@
 function download_fulcrum {
-local version="1.9.8"
+local version="2.0.0"
 if [[ ! -d $hp/fulcrum ]] ; then mkdir -p $hp/fulcrum ; fi
 cd $hp/fulcrum
 
