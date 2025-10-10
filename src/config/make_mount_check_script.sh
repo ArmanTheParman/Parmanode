@@ -7,7 +7,8 @@
 # drive isn't mounted - otherwise it may start syncing to the internal drive.
 
 function make_mount_check_script {
-
+file=$dp/scripts/mount_check.sh
+rm $file 
 echo "#!/bin/bash
 
 source \$HOME/.parmanode/parmanode.conf
@@ -39,10 +40,10 @@ else
     echo \"Error, no drive selection in parmanode.conf found.\"
     sleep 3
     exit 1
-fi" > $HOME/.parmanode/scripts/mount_check.sh 2>$dn
+fi" > $file 2>$dn
 
 # Sets permission of the new file, mount_check.sh
-sudo chown $(whoami):$(whoami) $HOME/.parmanode/scripts/mount_check.sh 
+sudo chown $(whoami):$(whoami) $file 
 # Makes file executable
-sudo chmod +x $HOME/.parmanode/scripts/mount_check.sh 
+sudo chmod +x $file
 }
