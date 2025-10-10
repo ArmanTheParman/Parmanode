@@ -84,7 +84,7 @@ else
     extract_fulcrum || { enter_continue "exiting... 8#" ; return 1 ; }
     fulcrum_install_files || { enter_continue "exiting... 9#" ; return 1 ; }
     make_fulcrum_service_file
-    start_fulcrum_linux
+    start_fulcrum
     installed_config_add "fulcrum-end"
 fi
 
