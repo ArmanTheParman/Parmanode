@@ -25,11 +25,10 @@ if ! grep "bitcoin-end" $ic >$dn ; then
     fi
 fi
 
-if [[ -z $configure_bitcoin_self ]] ; then
-    if ! grep -q "rpcuser" $bc ; then
-        announce "Please set a username and password in Bitcoin conf. You can do that from the
-        \r    Parmanode-Bitcoin menu. Aborting. " ; return 1 
-    fi
+if [[ $debug != 1 && -z $configure_bitcoin_self ]] && ! grep -q "rpcuser" $bc ; then
+    announce "Please set a username and password in Bitcoin conf. You can do that from the
+    \r    Parmanode-Bitcoin menu. Aborting. " 
+    return 1 
 fi
 
 [[ -z $configure_bitcoin_self ]] && { check_bitcoin_not_pruned || return 1 ; }
