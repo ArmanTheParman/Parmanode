@@ -14,5 +14,5 @@ sudo apt install nym-vpn -y || sww
 if [[ $swwflag == "true" ]] ; then unset swwflag ; return 1 ; fi
 installed_config_add "nym-end"
 installed_config_remove "nym-start"
-success "Nym VPN installed"
+if ! [[ $* =~ silent ]] ; then success "Nym VPN installed" ; fi
 }

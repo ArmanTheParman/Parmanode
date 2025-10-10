@@ -1,6 +1,7 @@
 function menu_tools2 {
 
 while true ; do
+if [[ -z $1 ]] ; then
 set_terminal_high
 echo -en "
 ########################################################################################$cyan
@@ -37,6 +38,9 @@ $orange
 "
 choose "xpmq" ; read choice 
 jump $choice || { invalid ; continue ; } ; set_terminal
+else
+choice="$1"
+fi
 case $choice in
 q|Q) exit ;;  m|M) back2main ;; p|P) return 0 ;;
 
@@ -84,7 +88,7 @@ echo 'deb http://deb.debian.org/debian bookworm-backports main' | sudo tee -a /e
 apt_get_update
 sudo apt install -t bookworm-backports linux-image-amd64 linux-headers-amd64 -y
 sudo apt-get install firmware-iwlwifi firmware-linux firmware-linux-nonfree -y
-enter_continue "done"
+if ! [[ $* =~ silent ]] ; then success "Packages installed" ; fi
 ;;
 
 pass)

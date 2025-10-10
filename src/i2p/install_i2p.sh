@@ -16,7 +16,7 @@ java -jar i2pinstall_2.8.2.jar
 make_i2p_service
 
 installed_config_add "i2p-end"
-success "I2P installed"
+if ! [[ $* =~ silent ]] ; then success "I2P installed" ; fi 
 }
 
 
