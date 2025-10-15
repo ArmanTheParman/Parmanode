@@ -111,7 +111,7 @@ set_terminal 40 120 ; echo -e "
     More questions, sorry...
 
 $cyan
-     1)$orange     Pre-compiled Bitcoin KNOTS, v$knotsversion $blinkon(recommended)$blinkoff
+     1)$orange     Pre-compiled Bitcoin KNOTS, v$knotsversion (recommended)
 $cyan
      2)$orange     Guided compile Bitcoin KNOTS, v$knotsversion
 $cyan
