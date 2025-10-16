@@ -1,4 +1,7 @@
 function install_nodejs {
+announce "Parmanode has disabled Node JS becuase of security 
+    concerns raised around NPM."
+return 1
 
 if [[ $OS == "Mac" ]] ; then 
     if ! which node >$dn 2>&1 ; then 

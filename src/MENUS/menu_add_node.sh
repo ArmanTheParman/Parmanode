@@ -145,12 +145,12 @@ q|Q) exit ;; p|P) menu_add ;; m|M) back2main ;;
        ;;
     
    bre|BRE|Bre)
-       if [[ $computer_type == Pi ]] ; then
+       if [[ $computer_type == "Pi" ]] ; then
           bre_docker_install
           menu_main
        fi
 
-       if [[ -n $btcrpcexplorer_n && $OS == Linux ]] ; then
+       if [[ -n $btcrpcexplorer_n && $OS == "Linux" ]] ; then
             install_btcrpcexplorer 
             menu_main
        fi 

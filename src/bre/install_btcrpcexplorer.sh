@@ -1,5 +1,9 @@
 function install_btcrpcexplorer {
 set_terminal
+announce "Parmanode has disabled BTC RPC Explorer becuase of security 
+    concerns raised around NPM (package manager required for install)."
+return 1
+
 if [[ $OS == "Mac" ]] ; then no_mac ; return 1 ; fi 
 sned_sats
 if [[ $chip != "x86_64" ]] ; then 
