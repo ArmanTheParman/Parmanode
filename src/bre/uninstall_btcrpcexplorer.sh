@@ -16,12 +16,16 @@ q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;; y) break ;; n) return 1 ;; *) in
 esac
 done
 sudo rm -rf $HOME/parmanode/btc-rpc*
-
 sudo systemctl stop btcrpcexplorer.service >$dn
 sudo systemctl disable btcrpcexplorer.service >$dn
 sudo rm /etc/systemd/system/btcrpcexplorer.service >$dn
 sudo rm /etc/nginx/conf.d/btcrpcexplorer.conf 2>$dn
 sudo rm /usr/local/etc/nginx/conf.d/btcrpcexplorer.conf 2>$dn
+
+yesorno "Uninstall NodeJS and NPM as well? This is recommended, because
+    of NPM security breaches, but note it can stop other programs from
+    working that depend on it. Safety first." && sudo apt purge nodejs npm -y
+
 installed_conf_remove "btcrpcexplorer"
 
 success "BTC RPC Explorer" "being uinstalled."

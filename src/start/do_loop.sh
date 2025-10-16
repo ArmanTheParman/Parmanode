@@ -107,7 +107,7 @@ custom_startup $@
 if [[ $btcpayinstallsbitcoin == "true" ]] ; then install_bitcoin ; exit ; fi
 
 #message of the day
-[[ $premium == 1 ]] || if [[ $1 != menu ]] && [[ ! $debug == 1 ]] ; then
+[[ $premium == 1 ]] || if [[ $1 != "menu" ]] && [[ ! $debug == 1 ]] ; then
 #rossisfree 
 #vncishere
 ########################################################################################
@@ -123,10 +123,10 @@ jump $1
 #
 make_parmanode_ssh_keys
 
+recommend_bre_uninstall
+
 # This is the main program, which is a menu that loops.
 #Parminer borrows do_loop function, but don't go to parmanode menu
-
-
 [[ $premium == 1 ]] || menu_main
 }
 
