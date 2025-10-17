@@ -8,7 +8,6 @@ cd $HOME/parman_programs >/dev/null
 echo -e "\nDeleting current parmanode script directory...\n"
 rm -rf $HOME/parman_programs/parmanode
 git clone https://github.com/armantheparman/parmanode.git 
-cd
-cd $HOME/parman_programs/parmanode
-echo -e "\n\nA new Parmanode directory has been cloned. Hit <enter>"
-read
+echo -e "\n\nA new Parmanode directory has been cloned.
+You must exit this directory and re-enter it to refresh it's contents."
+
