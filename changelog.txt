@@ -2,6 +2,7 @@ Version 3.67.2
      -smol bug fix & light housekeeping
      -default colour scheme adjustment for Macs
      -force minimum bash version 5
+     -enable SSH server on Macs
 Version 3.67.1
      -Sparrow v2.3.0
      -Removed BRE because of NPM security issues
