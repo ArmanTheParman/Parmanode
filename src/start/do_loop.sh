@@ -31,6 +31,11 @@ if [[ $parminer == 1 ]] ; then premium=1 ; fi
 
 set_colours #just exports variables with colour settings to make it easier to code with colours
             #parmanode.conf later may override theme
+
+if [[ $OS == "Mac" ]] && ! grep -q "colourscheme=" $pc ; then
+   change_colours inverted 
+fi
+
 debug "printed colours" "silent"
 #if [[ $debug == 1 ]] ; then echo -e "${orange}printed colours, hit <enter>" ; read ; fi
 

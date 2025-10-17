@@ -48,7 +48,9 @@ parmanode_conf_add "colourscheme=inverted"
 continue ;;
 *) invalid ;;
 esac
-announce "Please restart Parmanode to see the changes - quit, then 'rp' <enter> at
+[[ -z $1 ]] && announce "Please restart Parmanode to see the changes - quit, then 'rp' <enter> at
     the prompt."
+
+break
 done
 }
