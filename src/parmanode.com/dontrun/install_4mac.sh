@@ -72,7 +72,6 @@ echo "
 
 ########################################################################################
 "
-sudo sleep 0.1
 
 mkdir -p $HOME/parman_programs >$dn 2>&1 
 cd $HOME/parman_programs

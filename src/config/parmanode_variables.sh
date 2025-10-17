@@ -37,7 +37,8 @@ if [[ $(uname) == "Linux" ]] ; then
     export varlibtor="/var/lib/tor"
 elif [[ $(uname) == "Darwin" ]] ; then
     export OS="Mac"
-    export macprefix="$(brew --prefix 2>/dev/null)" ; if [[ -z $macprefix ]] ; then export macprefix="/usr/local" ; fi
+    export macprefix="$(brew --prefix 2>/dev/null)" 
+      if [[ -z $macprefix ]] ; then export macprefix="/usr/local" ; fi
     export parmanode_drive="/Volumes/parmanode"
     export bashrc="$HOME/.zshrc"
     export torrc="$macprefix/etc/tor/torrc"

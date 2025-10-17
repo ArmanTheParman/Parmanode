@@ -103,7 +103,7 @@ echo "
 "
 xcode-select --install
 
-sudo sleep 0.1break
+break
 done #ends loop 1
 
 ########################################################################################
