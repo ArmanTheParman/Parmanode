@@ -134,8 +134,14 @@ function check_installed_programs {
 if [[ ! -f $ic ]] ; then return 0 ; fi
 
 if [[ $OS == "Linux" ]] ; then
-which gsed >/dev/null 2>&1 || announce "Parmanode cannot detect gsed which is necessary for proper
+    which gsed >/dev/null 2>&1 || announce "Parmanode cannot detect gsed which is necessary for proper
     functioning. Things aint gonna work right. Be warned."
+elif [[ $OS == "Mac" ]] ; then
+    which gsed >/dev/null 2>&1 || 
+    yesorno "Parmanode cannot detect gsed which is necessary for proper
+    functioning. Install now via 'brew install gnu-sed' ?" && brew install gnu-sed
+    sleep 1
+    if ! which gsed >$dn ; then announce "Failed to detect gsed. Aborting." ; exit 1 ; fi
 fi
 
 if ! sudo which nginx >$dn 2>&1 ; then

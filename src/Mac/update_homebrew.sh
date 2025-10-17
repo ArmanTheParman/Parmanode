@@ -16,5 +16,6 @@ function install_homebrew_packages {
     $macprefix/bin/brew install tmux
     $macprefix/bin/brew install tor
     $macprefix/bin/brew install gnu-sed
-    $macprefix/bin/brew install gsed
+    #gnu-sed should work, but this is a fallback
+    $macprefix/bin/brew install gsed 2>/dev/null
 }
