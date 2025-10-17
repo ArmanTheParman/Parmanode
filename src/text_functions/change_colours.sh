@@ -4,10 +4,10 @@ while true ; do
 
 #For displaying status in the menu
 if grep -q "colourscheme=inverted" $pc ; then
-current_inverted="$red Current Selection"
+current_inverted="$red Current Selection$orange"
 unset current_normal
 elif grep -q "colourscheme=normal" $pc ; then
-current_normal="$red Current Selection"
+current_normal="$red Current Selection$orange"
 unset current_inverted
 fi
 
@@ -20,7 +20,7 @@ echo -e "
    depending on the colour you have set on your Terminal application.
 $cyan
             (n)$orange      Normal colours $current_normal
-
+$cyan
             (i)$orange      Inverted colours $current_inverted
 
 ########################################################################################
