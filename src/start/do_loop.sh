@@ -1,13 +1,13 @@
 function do_loop {
-clear
-#sudo will be needed. Running it early here, getting it out of the way, 
-#and it stays in the cache for a while.
 
 #deactivate virtual environments that may have been left active from an non-graceful shutdown
 deactivate >/dev/null 2>&1
-#check script is being run from parmanode directory so relative paths work
-#-f checks if a file exists in the working directory. If it doesn't, it 
-#means the run_parmanode.sh file is not in the correct location.
+
+#test bash version here, otherwise source will fail if an old bash is used. Exits if < version 5
+[[ -e $HOME/.parmanode/.new_install ]] || { 
+    source $HOME/parman_programs/parmanode/src/start/bash_version_test.sh 
+    bash_version_test 
+}
 
 # source all the modules. Exclude executable scripts which aren't modules. Modules
 # are bits of codes saved elseshere. They are "sourced" to load the code into memory.
@@ -32,6 +32,8 @@ if [[ $parminer == 1 ]] ; then premium=1 ; fi
 set_colours #just exports variables with colour settings to make it easier to code with colours
             #parmanode.conf later may override theme
 
+#New installs on Mac are likely to have a white background terminal, so invert colours 
+#otherwise it looks bad. Those who use dark mode will still find this aceptable.
 if [[ $OS == "Mac" ]] && ! grep -q "colourscheme=" $pc ; then
    change_colours inverted 
 fi
@@ -66,21 +68,24 @@ fi
 [[ $OS == "Linux" ]] && parmanode_dependencies 
 
 if [[ $btcpayinstallsbitcoin != "true" ]] ; then
-if [[ -e "$HOME/.parmanode/.new_install" ]] ; then
-	# If Parmanode has never run before, make sure to get latest version of Parmanode
-	cd $HOME/parman_programs/parmanode && git config pull.rebase false >$dn 2>&1 
-	git pull >$dn 2>&1 && needs_restart="true" >$dn 2>&1
-	update_computer new_install 
-	rm $HOME/.parmanode/.new_install
-else
-    [[ $premium == 1 ]] || autoupdate
-fi
-if [[ $needs_restart == "true" ]] ; then
-clear
-printf "An update to Parmanode was made to the latest version. Please restart Parmanode
-    by typing 'rp' and <enter> at the prompt.\n"
-exit
-fi
+
+    if [[ -e "$HOME/.parmanode/.new_install" ]] ; then
+        # If Parmanode has never run before, make sure to get latest version of Parmanode
+        cd $HOME/parman_programs/parmanode && git config pull.rebase false >$dn 2>&1 
+        git pull >$dn 2>&1 && needs_restart="true" >$dn 2>&1
+        update_computer new_install 
+        rm $HOME/.parmanode/.new_install
+    else
+        [[ $premium == 1 ]] || autoupdate
+    fi
+
+    if [[ $needs_restart == "true" ]] ; then
+    clear
+    printf "An update to Parmanode was made to the latest version. Please restart Parmanode
+        by typing 'rp' and <enter> at the prompt.\n"
+    exit
+    fi
+
 fi #end btcpayinstallsbitcoin
 
 #Health check
