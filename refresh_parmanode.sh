@@ -9,5 +9,5 @@ echo -e "\nDeleting current parmanode script directory...\n"
 rm -rf $HOME/parman_programs/parmanode
 git clone https://github.com/armantheparman/parmanode.git 
 echo -e "\n\nA new Parmanode directory has been cloned.
-You must exit this directory and re-enter it to refresh it's contents."
+You must exit this directory and re-enter it to refresh its contents.\n"
 
