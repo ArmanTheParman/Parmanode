@@ -3,8 +3,9 @@ function do_loop {
 #deactivate virtual environments that may have been left active from an non-graceful shutdown
 deactivate >/dev/null 2>&1
 
-#test bash version here, otherwise source will fail if an old bash is used. Exits if < version 5
-[[ -e $HOME/.parmanode/.new_install ]] || { 
+#test bash version here, excluding first run on a new install, 
+#otherwise source will fail if an old bash is used. Exits if < version 5
+[[ -e "$HOME/.parmanode/.new_install" ]] || { 
     source $HOME/parman_programs/parmanode/src/start/bash_version_test.sh 
     bash_version_test 
 }
@@ -15,9 +16,15 @@ deactivate >/dev/null 2>&1
 	for file in $HOME/parman_programs/parmanode/src/*/*.sh ; do #for every file that ends in .sh, up to a directory
 	#length of 1, attach its name to the variable "file" then run the code below, 
 	#looping so each file gets sourced.
-	    source $file #"source" or also represented by "." means to run the code in the file.
-		#They doesn't need #!/bin/bash (or variations) statements inside, because it is being called by 
-		# this program.  
+        if [[ -e "$HOME/.parmanode/.new_install" ]] ; then
+            #suppress errors on new install, because some machines may not have all dependencies yet, and errors will 
+            #be meaningless and distracting
+            source $file 2>/dev/null
+        else
+            source $file #"source" or also represented by "." means to run the code in the file.
+            #They doesn't need #!/bin/bash (or variations) statements inside, because it is being called by 
+            # this program.  
+        fi
 	done #ends the loop
 
 
