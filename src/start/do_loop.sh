@@ -117,7 +117,7 @@ fi
 #Commands that refresh data
 pn_tmux "$dp/scripts/update_external_IP2.sh" "checking_external_IP"
 test_8333_reachable
-
+debug 0
 jump $1
 
 #
@@ -132,16 +132,19 @@ recommend_bre_uninstall
 
 function check_installed_programs {
 if [[ ! -f $ic ]] ; then return 0 ; fi
-
+debug test
 if [[ $OS == "Linux" ]] ; then
     which gsed >/dev/null 2>&1 || announce "Parmanode cannot detect gsed which is necessary for proper
     functioning. Things aint gonna work right. Be warned."
 elif [[ $OS == "Mac" ]] ; then
-    which gsed >/dev/null 2>&1 || 
+debug 2
+    which gsed >/dev/null 2>&1 || { 
     yesorno "Parmanode cannot detect gsed which is necessary for proper
     functioning. Install now via 'brew install gnu-sed' ?" && brew install gnu-sed
     sleep 1
     if ! which gsed >$dn ; then announce "Failed to detect gsed. Aborting." ; exit 1 ; fi
+    debug 3
+    }
 fi
 
 if ! sudo which nginx >$dn 2>&1 ; then
