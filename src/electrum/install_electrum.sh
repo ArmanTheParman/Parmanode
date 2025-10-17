@@ -45,7 +45,7 @@ download_electrum #Mac users choose if python install here , but disabled after 
                   #to recognise libsecp256k1 on Mac, even after installing and adding to PATH.
 
 if [[ $python_install == "true" ]] ; then
-    check_for_python || { announce "Your system doesn't have python3, aborting installation." ; return 1 ; } 
+    which python3 >$dn 2>&1 || { announce "Your system doesn't have python3, aborting installation." ; return 1 ; } 
     electrum_dependencies ||  { announce "Something went wrong. Aborting Electrum installation." ; return 1 ; } 
     extract_electrum  || { announce "Something went wrong. Aborting Electrum installation." ; return 1 ; } 
     parmanode_conf_add "electrum_python=true" # for when running electrum

@@ -6,7 +6,7 @@ deactivate >/dev/null 2>&1
 #test bash version here, excluding first run on a new install, 
 #otherwise source will fail if an old bash is used. Exits if < version 5
 [[ -e "$HOME/.parmanode/.new_install" ]] || { 
-    source $HOME/parman_programs/parmanode/src/start/bash_version_test.sh 
+    source "$(find "$HOME/parman_programs/parmanode/src/" -name "*bash_version_test.sh")"
     bash_version_test 
 }
 
@@ -28,7 +28,8 @@ deactivate >/dev/null 2>&1
 	done #ends the loop
 
 
-gsed_symlink 
+gsed_symlink #linux only
+
 parmanode_variables $@ #CANNOT USE CUSTOM DEBUG FUNCTION BEFORE THIS"
 test -f $hm || touch $hm
 
@@ -149,18 +150,15 @@ recommend_bre_uninstall
 
 function check_installed_programs {
 if [[ ! -f $ic ]] ; then return 0 ; fi
-debug test
 if [[ $OS == "Linux" ]] ; then
     which gsed >/dev/null 2>&1 || announce "Parmanode cannot detect gsed which is necessary for proper
     functioning. Things aint gonna work right. Be warned."
 elif [[ $OS == "Mac" ]] ; then
-debug 2
     which gsed >/dev/null 2>&1 || { 
     yesorno "Parmanode cannot detect gsed which is necessary for proper
     functioning. Install now via 'brew install gnu-sed' ?" && brew install gnu-sed
     sleep 1
     if ! which gsed >$dn ; then announce "Failed to detect gsed. Aborting." ; exit 1 ; fi
-    debug 3
     }
 fi
 
