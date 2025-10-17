@@ -65,11 +65,11 @@ export MacOSVersion_patch=$(sw_vers | grep ProductVersion | cut -d \. -f 3)
 if [[ ($MacOSVersion_major -lt 10) || ($MacOSVersion_major == 10 && $MacOSVersion_major -lt 9) ]] ; then
 clear
 echo "
-########################################################################################
+###################################################################################
 
     Sorry, you need MacOS version 10.9 or later to use Parmanode.
 
-########################################################################################
+###################################################################################
     Hit <enter> to continue.
 "
 read
@@ -83,23 +83,23 @@ if xcode-select -p >$dn 2>&1 ; then break ; fi
 clear
 sudo -k
 echo "
-########################################################################################
+###################################################################################
    
    Command Line Developer Tools is needed.
 
-   There will be a pop up question which you'll need to respond to (It may actually
-   be minimised, so look at the task bar below if you don't see it). The install
-   estimate will initially say some HOURS, but ignore that, it's wrong.
+   There will be a pop up question which you'll need to respond to (It may 
+   actually be minimised, so look at the task bar below if you don't see it). The 
+   install estimate will initially say some HOURS, but ignore that, it's wrong.
 
-   Once Command Line Tools have successfully installed, enter your computer password,
-   then <enter> to continue.
+   Once Command Line Tools have successfully installed, enter your computer 
+   password, then <enter> to continue.
 
-   Hit <enter> ONLY after the pop up has finished installeding, and not before, or 
-   your computer will melt.
+   Hit <enter> ONLY after the pop up has finished installing, and not before, 
+   or your computer will melt.
  
    If you want to abandon, you can hit <control> c now.
 
-####################################################################################### 
+################################################################################## 
 "
 xcode-select --install
 
@@ -147,11 +147,11 @@ echo 'function rp { cd $HOME/parman_programs/parmanode ; ./run_parmanode.sh $@ ;
 fi
 
 echo "
-########################################################################################
+###################################################################################
 
-    There should be an icon on the desktop for you, \"run_parmanode.txt\" which is
-    a text document reminding you about the following instructions on how to run 
-    Parmanode:
+    There should be an icon on the desktop for you, \"run_parmanode.txt\" which 
+    is a text document reminding you about the following instructions on how to 
+    run Parmanode:
 
     Simply open a new Terminal window (close this one first) and type:
 
@@ -160,6 +160,6 @@ echo "
 
     Enjoy.
 
-########################################################################################
+###################################################################################
 "
 exit
