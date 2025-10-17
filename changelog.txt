@@ -1,5 +1,5 @@
 Version 3.67.2
-     -smol bug fix
+     -smol bug fix & light housekeeping
      -default colour scheme adjustment for Macs
      -force minimum bash version 5
 Version 3.67.1
