@@ -6,6 +6,7 @@ cat << 'EOS' >> ~/ParmanodL/chroot_function.sh
 #!/bin/bash
 chroot /tmp/mnt/raspi /bin/bash -c 'apt-get update -y ; apt-get upgrade -y' 
 chroot /tmp/mnt/raspi /bin/bash -c "apt-get install vim git ssh jq netcat-traditional net-tools unzip tmux tor ufw mdadm e2fsprogs fuse3 libfuse3-3 libfuse2 -y" 
+chroot /tmp/mnt/raspi /bin/bash -c "libfuse3-3 -y" 
 
 chroot /tmp/mnt/raspi /bin/bash -c "groupadd -r parman ; useradd -m -g parman parman ; usermod -aG sudo parman"
 chroot /tmp/mnt/raspi /bin/bash -c 'echo "parman:parmanodl" | chpasswd ; systemctl enable ssh'

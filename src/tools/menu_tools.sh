@@ -135,7 +135,7 @@ $cyan              pass)$orange      Change computer login/sudo password
 $cyan              qr)$orange        QRencode command line tool (Linux and Mac)
 $cyan              uo)$orange        UTXOracle                                                    
 $cyan              lnf)$orange       Install Linux non-free packages and backports
-$cyan              ipt)$orange       IPTables menu $green$blinkon(NEW)$blinkoff 
+$cyan              ipt)$orange       IPTables menu 
 $cyan              grub)$orange      Install (or reinstall) GRUB bootloader 
 $cyan              ssh)$orange       Enable SSH server on Macs...
 
