@@ -34,6 +34,7 @@ choose "qc" ; read choice ; case $choice in q|Q|Quit|QUIT|quit) return 1 ;; esac
 
 sudo rm -rf /var/lib/docker
 sudo rm -rf /var/lib/containerd
+sudo rm -rf /var/cache/apt/archives/docker*
 
 log "docker" "uninstall; function finished"
 installed_config_remove "docker"
