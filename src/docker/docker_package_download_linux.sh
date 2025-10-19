@@ -47,6 +47,12 @@ installed_config_add "docker-start"
 counter=0 ; while [[ $counter -le 1 ]] ; do
 sudo apt-get install containerd.io docker-ce docker-ce-cli docker-buildx-plugin docker-compose-plugin docker-compose -y 
 exit_status=$?
+
+while true ; do
+    enter_continue "enter c to continue, or x to exit"
+    case $choice in c) break ;; x) exit 1 ;; *) continue ;; esac
+done
+
 if [ $exit_status != 0 ] ; then
 echo -e "\n\nAn error at this stage is sometimes fixed by repeating the command. 
 Repeating in 10 seconds ...\n" 
@@ -57,7 +63,6 @@ fi
 break
 done
 
-log "docker" "exit status of apt-get install is $exit_status"
 if [ $exit_status != 0 ] ; then 
            echo -e "\n\n    That didn't seem to work properly. Would you like to wait 30 seconds,
            \r    who knows it might work (y) (n)?"
@@ -86,6 +91,6 @@ return 1
                 fi
 fi
 
-sudo usermod -aG docker $USER && log "docker" "exit status of usermod is $?"
+sudo usermod -aG docker $USER 
 
 }
