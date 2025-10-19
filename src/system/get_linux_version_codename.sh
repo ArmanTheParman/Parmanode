@@ -21,6 +21,7 @@ elif [[ $VC == "virginia" ]] ; then VCequivalent="jammy" ; parmanode_conf_add "V
 elif [[ $VC == "faye" ]] ; then VCequivalent="bullseye" ; parmanode_conf_add "VCequivalent=$VCequivalent"
 #with these two lines, all the others should become redundant, but I have to check it before deleting the above.
 elif [[ -n $UBUNTU_CODENAME ]] ; then VCequivalent="$UBUNTU_CODENAME" ; parmanode_conf_add "VCequivalent=$VCequivalent"
+elif [[ $DEBIAN_CODENAME == "trixie" ]] ; then VCequivalent="bookworm" ; parmanode_conf_add "VCequivalent=$VCequivalent"
 elif [[ -n $DEBIAN_CODENAME ]] ; then VCequivalent="$DEBIAN_CODENAME" ; parmanode_conf_add "VCequivalent=$VCequivalent"
 
 else VCequivalent=$VC
