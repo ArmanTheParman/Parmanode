@@ -4,7 +4,9 @@ sudo apt-get update -y
 sudo apt-get install ca-certificates curl gnupg -y
 
 sudo install -m 0755 -d /etc/apt/keyrings
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --yes --dearmor -o /etc/apt/keyrings/docker.gpg
+. /etc/os-release #get ID
+curl -fsSL https://download.docker.com/linux/$ID/gpg | sudo gpg --yes --dearmor -o /etc/apt/keyrings/docker.gpg
+
 sudo chmod a+r /etc/apt/keyrings/docker.gpg
 sudo apt-get update -y && export APT_UPDATE="true"
 
@@ -15,10 +17,10 @@ get_linux_version_codename
 source /etc/os-release && debug "&& debug, ID is $ID after source os-release"
 
   #url ID value tweaking...
-  if [[ $NAME == LMDE ]] ; then
+  if [[ $NAME == "LMDE" ]] ; then
       ID=debian #for docker url
       parmanode_conf_add "ID=debian"
-  elif [[ $ID == linuxmint ]] ; then 
+  elif [[ $ID == "linuxmint" ]] ; then 
       debug "ID, 1.5, in linux mint. ID=$ID"
       ID=ubuntu
       parmanode_conf_add "ID=ubuntu"
