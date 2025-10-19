@@ -45,14 +45,14 @@ sudo apt-get update -y && export APT_UPDATE="true"
 
 installed_config_add "docker-start" 
 counter=0 ; while [[ $counter -le 1 ]] ; do
+
+if [[ $VCequivalent == "trixie" ]] ; then
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y
+else
 sudo apt-get install containerd.io docker-ce docker-ce-cli docker-buildx-plugin docker-compose-plugin docker-compose -y 
+fi
+
 exit_status=$?
-
-while true ; do
-    enter_continue "enter c to continue, or x to exit"
-    case $choice in c) break ;; x) exit 1 ;; *) continue ;; esac
-done
-
 if [ $exit_status != 0 ] ; then
 echo -e "\n\nAn error at this stage is sometimes fixed by repeating the command. 
 Repeating in 10 seconds ...\n" 
