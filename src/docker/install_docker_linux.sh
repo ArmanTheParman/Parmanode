@@ -37,7 +37,6 @@ done
     installed_conf_remove "docker"
 
 # download_docker_linux
-log "docker" "docker auto install linux ..." 
 docker_package_download_linux || return 1
 
 #-- removed and added to run_parmanode, as a reboot
@@ -45,7 +44,6 @@ docker_package_download_linux || return 1
 
     #installed_config_add "docker-end" 
 
-log "docker" "Install success. Reboot needed." 
 success "Docker" "installing."
 if ! id | grep docker ; then
 while true ; do
