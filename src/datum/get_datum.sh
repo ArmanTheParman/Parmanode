@@ -14,11 +14,8 @@ announce_blue "
 
 $cyan    https://armantheparman.com/donations $blue
 
-    Then send lightning invoice to Parman by email$cyan armantheparman@protonmail.com$blue, and 
-    send the following custom ssh key... $red(Hit <enter> first)$blue
+    Then inform Parman by email$cyan armantheparman@protonmail.com$blue
    "
-
-announce_blue "$cyan$(cat $HOME/.ssh/extra_keys/datum-key.pub)$blue"
 
 announce_blue "
     For pre-configurd Bitcoin Knots, ParMiner and Datum, please see...
