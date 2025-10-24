@@ -46,19 +46,6 @@ sudo apt-get update -y && export APT_UPDATE="true"
 installed_config_add "docker-start" 
 counter=0 ; while [[ $counter -le 1 ]] ; do
 enter_continue "VCE is $VCequivalent"
-if [[ $VCequivalent == "trixie" ]] ; then
-sudo apt-get install -y docker-ce 
-read
-sudo apt-get install -y docker-ce-cli 
-read
-sudo apt-get install -y containerd.io 
-read
-sudo apt-get install -y docker-buildx-plugin 
-read
-sudo apt-get install -y docker-compose-plugin 
-else
-sudo apt-get install containerd.io docker-ce docker-ce-cli docker-buildx-plugin docker-compose-plugin docker-compose -y 
-fi
 
 exit_status=$?
 if [ $exit_status != 0 ] ; then
