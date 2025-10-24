@@ -225,6 +225,7 @@ continue ;;
 invalid 
 ;;
 esac
+if [[ $@ =~ silent ]] ; then break ; fi
 done
 return 0
 }
