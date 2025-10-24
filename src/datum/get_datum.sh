@@ -34,7 +34,7 @@ return 1
 }
 
 git clone git@github-datum:armantheparman/datum_parmanode.git $pp/datum 2>$dn || {
-cd $pp/datum && git pull >$dn 2>&1 ; } || \
+cd $pp/datum 2>/dev/null && git pull >$dn 2>&1 ; } || \
 { enter_continue "Please contact Parman to enable Datum on your machine.\n$orange" ; return 1 ; } #requires SSH key authority
 
 for file in $pp/datum/src/*.sh ; do
