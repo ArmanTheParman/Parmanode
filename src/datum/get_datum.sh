@@ -8,7 +8,6 @@ fi
 #if [[ $(uname -m) != "x86_64" ]] ; then  { announce_blue "Datum is only supported on x86_64 machines at this stage." ; continue ; } ; fi
 [[ -e $dp/.datum_enabled ]]  || {
 please_wait
-make_datum_ssh_keys
 announce_blue "
     To install Datum with Parmanode, please send$green 42 sats$blue over lightning via 
     NOSTR zap, or the donations page:
