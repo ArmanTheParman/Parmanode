@@ -1,13 +1,15 @@
 function get_datum {
+        debug 1
 if [[ $OS == "Mac" ]] ; then no_mac ; return 1 ; fi
-
+debug 2
 if [[ $preconfigure_parmadrive == "true" ]] ; then
    if grep -q "datum-end" $ic ; then return 0 ; fi
 fi
-
+debug 3
 #if [[ $(uname -m) != "x86_64" ]] ; then  { announce_blue "Datum is only supported on x86_64 machines at this stage." ; continue ; } ; fi
 [[ -e $dp/.datum_enabled ]]  || {
 please_wait
+debug 4
 announce_blue "
     To install Datum with Parmanode, please send$green 42 sats$blue over lightning via 
     NOSTR zap, or the donations page:
@@ -16,7 +18,7 @@ $cyan    https://armantheparman.com/donations $blue
 
     Then inform Parman by email$cyan armantheparman@protonmail.com$blue
    "
-
+debug 5
 announce_blue "
     For pre-configurd Bitcoin Knots, ParMiner and Datum, please see...
 $orange
@@ -37,6 +39,7 @@ for file in $pp/datum/src/*.sh ; do
 source $file
 done
 if [[ $preconfigure_parmadrive == "true" ]] ; then return 0 ; fi
+debug 6
 menu_datum
 return 0
 }
