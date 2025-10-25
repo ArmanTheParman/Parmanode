@@ -151,7 +151,7 @@ stop_electrumx
 
 disable)
 stop_electrumx
-disable_electrumx
+toggle_disable_electrumx
 ;;
 logdel)
 please_wait
@@ -328,7 +328,7 @@ fi
 }
 
 
-function disable_electrumx {
+function toggle_disable_electrumx {
 clear
 
 if grep -q "disable_electrumx=true" $pc ; then #electrumx is disabled, enable it...

@@ -167,15 +167,12 @@ fi
 ;;
 
 disable)
-debug 170
 if [[ $electrsis == "docker" ]] ; then 
 docker_stop_electrs
 else
 stop_electrs
 fi
-debug 176
-disable_electrs
-debug 178
+toggle_disable_electrs
 ;;
 
 logdel)
@@ -358,13 +355,12 @@ elif [[ $bsync == "false" ]] ; then
 fi
 }
 
-function disable_electrs {
+function toggle_disable_electrs {
 unset disable_electrs
 source $pc
 clear
 
 if grep -q "disable_electrs=true" $pc ; then #electrs is disabled, enable it...
-debug "electrs is disabled, enabling it now..."
 sudo gsed -i "/disable_electrs=true/d" $pc #delete line
     if grep -q electrs-end $ic ; then
         sudo systemctl enable electrs.service
@@ -372,7 +368,6 @@ sudo gsed -i "/disable_electrs=true/d" $pc #delete line
         docker rename electrs_disabled electrs
     fi
 else #electrs is not disabled, disable it...
-debug "electrs is not disabled, disabling it now..."
 echo "disable_electrs=true" | tee -a $pc >$dn 2>&1 #add line
     if grep -q electrs-end $ic ; then
         sudo systemctl disable --now electrs.service
@@ -380,7 +375,6 @@ echo "disable_electrs=true" | tee -a $pc >$dn 2>&1 #add line
         docker ps | grep -q electrs && return 1 #already running, don't rename it, potentially dangerous
         docker rename electrs electrs_disabled
     fi
-debug disable_electrs_done
 unset disable_electrs
 source $pc
 fi

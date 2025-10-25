@@ -121,7 +121,7 @@ set_terminal
 
 disable)
 stop_fulcrum
-disable_fulcrum
+toggle_disable_fulcrum
 ;;
 
 restart|Rrestart) 
@@ -276,7 +276,7 @@ return 1
 fi
 }
 
-function disable_fulcrum {
+function toggle_disable_fulcrum {
 clear
 
 if grep -q "disable_fulcrum=true" $pc ; then #fulcrum is disabled, enable it...

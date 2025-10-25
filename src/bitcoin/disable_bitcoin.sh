@@ -1,4 +1,4 @@
-function disable_bitcoin {
+function toggle_disable_bitcoin {
 
 
 if grep -q "disable_bitcoin=true" $pc ; then

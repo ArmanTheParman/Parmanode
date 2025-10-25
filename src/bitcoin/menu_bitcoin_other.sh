@@ -129,7 +129,7 @@ hack_tips
 ;;
 
 disable)
-disable_bitcoin
+toggle_disable_bitcoin
 ;;
 "")
 continue ;;
