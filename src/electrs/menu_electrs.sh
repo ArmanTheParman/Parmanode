@@ -378,6 +378,7 @@ echo "disable_electrs=true" | tee -a $pc >$dn 2>&1 #add line
         docker ps | grep -q electrs && return 1 #already running, don't rename it, potentially dangerous
         docker rename electrs electrs_disabled
     fi
+debug disable_electrs_done
 unset disable_electrs
 source $pc
 fi
