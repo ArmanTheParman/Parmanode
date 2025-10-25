@@ -167,13 +167,15 @@ fi
 ;;
 
 disable)
+debug 170
 if [[ $electrsis == "docker" ]] ; then 
 docker_stop_electrs
 else
 stop_electrs
 fi
-
+debug 176
 disable_electrs
+debug 178
 ;;
 
 logdel)
