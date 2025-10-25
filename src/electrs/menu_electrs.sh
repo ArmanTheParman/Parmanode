@@ -363,24 +363,20 @@ clear
 
 if grep -q "disable_electrs=true" $pc ; then #electrs is disabled, enable it...
 debug "electrs is disabled, enabling it now..."
+sudo gsed -i "/disable_electrs=true/d" $pc #delete line
     if grep -q electrs-end $ic ; then
         sudo systemctl enable electrs.service
-        debug "enabled electrs.service"
-        sudo gsed -i "/disable_electrs=true/d" $pc #delete line
     elif grep -q electrsdkr-end $ic ; then
         docker rename electrs_disabled electrs
-        sudo gsed -i "/disable_electrs=true/d" $pc #delete line
     fi
-
 else #electrs is not disabled, disable it...
 debug "electrs is not disabled, disabling it now..."
+echo "disable_electrs=true" | tee -a $pc >$dn 2>&1 #add line
     if grep -q electrs-end $ic ; then
         sudo systemctl disable --now electrs.service
-        echo "disable_electrs=true" | tee -a $pc >$dn 2>&1 #add line
     elif grep -q electrsdkr-end $ic ; then
         docker ps | grep -q electrs && return 1 #already running, don't rename it, potentially dangerous
         docker rename electrs electrs_disabled
-        echo "disable_electrs=true" | tee -a $pc >$dn 2>&1 #add line
     fi
 unset disable_electrs
 source $pc
