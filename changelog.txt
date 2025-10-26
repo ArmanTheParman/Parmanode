@@ -1,5 +1,6 @@
 Version 3.67.3 
      -fixed toggle disable bitcoin/electrs/fulcrum/electrumx bug
+     -added 'badblocks' test for drives in drive menu
 Version 3.67.2
      -smol bug fix & light housekeeping
      -default colour scheme adjustment for Macs
