@@ -12,7 +12,9 @@ printf "\n"
 echo -e "$reset$orange
     Please enter the drive ID you want to check for bad blocks.
 
-    Note: this is read-only - it is not a destructive test.
+    Note: this is read-only - it is not a destructive test. It is also very SLOW.
+    You can leave it running, and open a new terminal window to continue using
+    Parmanode while you wait for it to finish.
 $cyan    
     Eg: /dev/sda or /dev/nvme0n1
 $orange
