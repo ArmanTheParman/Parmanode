@@ -24,7 +24,8 @@ $orange
 
     You can leave the TMUX window open, but to exit it and leave the process running 
     in the background,$cyan type <control> b then d$orange. Go back in anytime with the 
-    earlier command."
+    earlier command.
+    "
 printf "\e[41m$(printf ' %.0s' {1..88})"
 printf "\n"
 
