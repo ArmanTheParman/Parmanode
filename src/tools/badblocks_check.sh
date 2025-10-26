@@ -9,9 +9,7 @@ lsblk
 printf "\n"
 printf "\e[41m$(printf ' %.0s' {1..88})"
 printf "\n"
-echo -e "$reset$orange\n
-########################################################################################
-
+echo -e "$reset$orange
     Please enter the drive ID you want to check for bad blocks.
 
     Note: this is read-only - it is not a destructive test.
@@ -26,10 +24,10 @@ $orange
 
     You can leave the TMUX window open, but to exit it and leave the process running 
     in the background,$cyan type <control> b then d$orange. Go back in anytime with the 
-    earlier command.
+    earlier command."
+printf "\e[41m$(printf ' %.0s' {1..88})"
+printf "\n"
 
-########################################################################################
-"
 read driveid </dev/tty
 
 if ! [[ $driveid =~ ^/dev/ ]] ; then sww "Doesn't look like a valid drive ID. Must start with /dev/" ; return 1 ; fi
