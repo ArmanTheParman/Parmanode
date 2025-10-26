@@ -1,14 +1,12 @@
 function badblocks_check {
 if [[ $OS == "Mac" ]] ; then no_mac ; return 1 ; fi
 
-set_terminal 49 88
-printf "\e41m"
-printf ' %.88s' {1..88}
+set_terminal 4 88
+printf "\e41m$(printf ' %.88s' {1..88})"
 printf "\n"
 echo -e $reset$orange
 lsblk
-printf "\e41m"
-printf ' %.88s' {1..88}
+printf "\e41m$(printf ' %.88s' {1..88})"
 printf "\n"
 echo -e "$reset$orange\n
 ########################################################################################
