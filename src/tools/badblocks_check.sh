@@ -4,7 +4,7 @@ if [[ $OS == "Mac" ]] ; then no_mac ; return 1 ; fi
 set_terminal 44 88
 printf "\e[41m$(printf ' %.0s' {1..88})"
 printf "\n"
-echo -e $reset$orange
+echo -e $reset
 lsblk -p #-p adds the /dev/ prefix
 printf "\n"
 printf "\e[41m$(printf ' %.0s' {1..88})"
