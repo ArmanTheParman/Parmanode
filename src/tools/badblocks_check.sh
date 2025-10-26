@@ -6,6 +6,7 @@ printf "\e[41m$(printf ' %.0s' {1..88})"
 printf "\n"
 echo -e $reset$orange
 lsblk
+printf "\n"
 printf "\e[41m$(printf ' %.0s' {1..88})"
 printf "\n"
 echo -e "$reset$orange\n
