@@ -28,6 +28,7 @@ if ! [[ $driveid =~ ^/dev/ ]] ; then sww "Doesn't look like a valid drive ID. Mu
 yesorno "Use $driveid?" || return 1
 
 sudo badblocks -sv $driveid || sww
+enter_continue
 
 return 0
 }
