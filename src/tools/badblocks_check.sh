@@ -5,7 +5,7 @@ set_terminal 44 88
 printf "\e[41m$(printf ' %.0s' {1..88})"
 printf "\n"
 echo -e $reset$orange
-lsblk
+lsblk -p
 printf "\n"
 printf "\e[41m$(printf ' %.0s' {1..88})"
 printf "\n"
@@ -27,7 +27,7 @@ $orange
     earlier command.
     "
 printf "\e[41m$(printf ' %.0s' {1..88})"
-printf "\n\n"
+printf "\n"
 
 read driveid </dev/tty
 
