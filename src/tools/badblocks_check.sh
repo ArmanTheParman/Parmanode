@@ -27,7 +27,7 @@ $orange
     earlier command.
     "
 printf "\e[41m$(printf ' %.0s' {1..88})"
-printf "\n"
+printf "\n\n"
 
 read driveid </dev/tty
 
