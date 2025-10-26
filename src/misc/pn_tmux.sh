@@ -11,6 +11,7 @@ install_tmux #exits if installed
 
 TMUX2=$TMUX ; unset TMUX ; clear
 
+if echo "$(tmux ls)" | grep -q $tmuxname ; then sww "TMUX session $tmuxname already exists. Exiting." ; return 1 ; fi
 
     if [[ $NODAEMON == "true" ]] ; then
         tmux new -s $tmuxname "$command"
@@ -21,7 +22,6 @@ TMUX2=$TMUX ; unset TMUX ; clear
             sudo bash -c "exec tmux new -s '$tmuxname' -d '$command' >/dev/null 2>&1" >/dev/null 2>&1
         fi
     fi
-
 
 TMUX=$TMUX2
 return 0

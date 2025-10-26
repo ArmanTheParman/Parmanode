@@ -47,22 +47,15 @@ $orange
 
 ________________________________________________________________________________________                    
 $cyan
-                fs)$orange           Free up some space (internal drive)
-$cyan
-               vol)$orange           Toggle journal logs volatile (push to RAM)...
-$cyan
-              info)$orange           Reserved space info
-$cyan
-                um)$orange           Unmount Parmanode external drive 
-$cyan
-             mount)$orange           Mount Parmanode externl drive
-$cyan
-              dfat)$orange           Drive format assist tool
-$cyan 
-                md)$orange           Import/Migrate/Revert an external drive
-$cyan
-                de)$orange           Drive encryption - info
-$cyan
+                fs)$orange           Free up some space (internal drive) $cyan
+               bad)$orange           Disk bad sectors check $cyan (Linux only)
+               vol)$orange           Toggle journal logs volatile (push to RAM)...  $cyan
+              info)$orange           Reserved space info $cyan
+                um)$orange           Unmount Parmanode external drive $cyan
+             mount)$orange           Mount Parmanode externl drive $cyan
+              dfat)$orange           Drive format assist tool $cyan 
+                md)$orange           Import/Migrate/Revert an external drive $cyan
+                de)$orange           Drive encryption - info $cyan
                 ps)$orange           Adjust SSD power saving
 
 ########################################################################################
@@ -122,6 +115,9 @@ de)
 fs)
     free_up_space
 ;;
+bad)
+    badblocks_check
+;;
 ps)
     adjust_ssd_power_saving
 ;;
@@ -173,3 +169,4 @@ dfat|DFAT)
 esac
 done
 }
+

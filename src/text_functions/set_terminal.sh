@@ -7,7 +7,7 @@ printf "\033[8;%s;%st" $1 $2
 break
 }
 
-[[ -n $1 && -z $2 ]] && { #then only 1 i set
+[[ -n $1 && -z $2 ]] && { #then only 1 is set
 printf "\033[8;%s;88t" "$1" 
 break
 }
