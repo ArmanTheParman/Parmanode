@@ -1,8 +1,0 @@
-    <button onclick="getVersion()" style="cursor: pointer; font-size: 6em;">Get Version</button>
-
-    let socket = new WebSocket("ws://" + location.host + "/ws/");
-    socket.onmessage = function(event) {
-    const title = document.getElementById("title");
-    const original = title.textContent;
-    title.textContent = event.data;
-};
