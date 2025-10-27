@@ -145,7 +145,7 @@ echo -e "$output3$red                   disable)$orange      Disable Bitcoin tog
                    n)$orange            Access Bitcoin node information $cyan
                    log)$orange          Bitcoin debug.log $cyan
                    bc)$orange           Inspect edit bitcoin.conf file (bcv for vim) $bright_blue
-                   dc)$orange           OP_RETURN and datacarrier tweaks...
+                   dc)$orange           OP_RETURN and datacarrier tweaks...$cyan
                    bcr)$orange          Refresh bitcoin.conf file to Parmanode default $cyan
                    max)$orange          Set max upload target (default 25GB shared per day)$cyan
                    tor)$orange          Tor/I2P menu options for Bitcoin...  $cyan
