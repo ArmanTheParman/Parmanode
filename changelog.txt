@@ -1,5 +1,6 @@
 Version 3.67.4
      -added 'badblocks' test for drives in drive menu
+     -corrupt gpg install fix for Macs
 Version 3.67.3 
      -fixed toggle disable bitcoin/electrs/fulcrum/electrumx bug
 Version 3.67.2

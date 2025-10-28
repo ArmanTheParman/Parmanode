@@ -147,34 +147,3 @@ recommend_bre_uninstall
 #Parminer borrows do_loop function, but don't go to parmanode menu
 [[ $premium == 1 ]] || menu_main
 }
-
-function check_installed_programs {
-if [[ ! -f $ic ]] ; then return 0 ; fi
-if [[ $OS == "Linux" ]] ; then
-    which gsed >/dev/null 2>&1 || announce "Parmanode cannot detect gsed which is necessary for proper
-    functioning. Things aint gonna work right. Be warned."
-elif [[ $OS == "Mac" ]] ; then
-    which gsed >/dev/null 2>&1 || { 
-    yesorno "Parmanode cannot detect gsed which is necessary for proper
-    functioning. Install now via 'brew install gnu-sed' ?" && brew install gnu-sed
-    sleep 1
-    if ! which gsed >$dn ; then announce "Failed to detect gsed. Aborting." ; exit 1 ; fi
-    }
-fi
-
-if ! sudo which nginx >$dn 2>&1 ; then
-installed_config_remove "nginx-"
-gsed -i '/nginx-/d' $ic
-else
-installed_config_add "nginx-end"
-fi
-
-if { [[ $(uname) == "Darwin" ]] && which docker >$dn       ; } ||
-   { [[ $(uname) == "Linux"  ]] && which docker >$dn && id | grep -q docker ; } ; then
-       if ! grep -q docker-end $ic ; then
-          installed_config_add "docker-end" 
-       fi
-else 
-          installed_config_remove "docker"
-fi
-}
