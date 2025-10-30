@@ -115,6 +115,7 @@ if [[ $OS == "Linux" ]] ; then
 else
     if ! diskutil list | grep -q parmanode ; then
     drivecheck=failed
+    fi
 fi
 
 if [[ $drivecheck == "failed" ]] ; then
