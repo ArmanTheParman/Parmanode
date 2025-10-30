@@ -109,7 +109,7 @@ sleep 2.5
 
 if [[ $OS == "Linux" ]] ; then
     unset drivecheck
-    if && [[ $check_if_parmanode_drive == "true" ]] && ! lsblk -o LABEL | grep -q parmanode ; then
+    if [[ $check_if_parmanode_drive == "true" ]] && ! lsblk -o LABEL | grep -q parmanode ; then
     drivecheck=failed
     fi
 else
