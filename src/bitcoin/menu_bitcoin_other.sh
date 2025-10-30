@@ -40,19 +40,13 @@ echo -e "$output2"
 echo ""
 echo -e "
 $cyan
-            cd)$orange       Change syncing drive internal vs external
-$cyan
-            mp)$orange       Modify Pruning
-$cyan
-            c)$orange        How to connect your wallet...........(Otherwise no point to this)
-$cyan
-            dd)$orange       Backup/Restore data directory.................(Instructions only)
-$cyan   
-            r)$orange        Errors? Try --reindex blockchain...
-$cyan
-            h)$orange        Hack Parmanode; tips for troubleshooting.
-$cyan
-      disable)$orange        Toggle disable/enable Bitcoin on the system.
+            cd)$orange       Change syncing drive internal vs external $cyan
+            mp)$orange       Modify Pruning $cyan
+            c)$orange        How to connect your wallet...........(Otherwise no point to this) $cyan
+            dd)$orange       Backup/Restore data directory.................(Instructions only) $cyan   
+            r)$orange        Errors? Try --reindex blockchain...  $cyan
+            h)$orange        Hack Parmanode; tips for troubleshooting.  $cyan
+            ib)$orange       Invalidte Block (emergency/experimantal use only)
 
 
 ########################################################################################
@@ -127,10 +121,10 @@ return 0
 h)
 hack_tips
 ;;
-
-disable)
-toggle_disable_bitcoin
+ib)
+invalidate_block
 ;;
+
 "")
 continue ;;
 *)

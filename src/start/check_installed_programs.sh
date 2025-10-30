@@ -58,26 +58,15 @@ if [[ $OS == "Mac" ]] && gpg --version |& grep -qi "killed" ; then
         esac
     done
 fi
-}
 
-function fix_gpg {
-#mac only
-which brew >$dn 2>&1 || install_homebrew
-
-if gpg --version |& grep -qi "killed" ; then
-    count=0
-    while [[ $count -lt 4 ]] ; do
-        which gpg >$dn 2>&1 || break
-        sudo rm -rf $(which gpg) >$dn 2>&1
-        count=$((count + 1))
-    done
-    brew uninstall gnupg --ignore-dependencies --force >$dn 2>&1
-else 
-    return 0
+#podman - if this is installed, it hijacks docker commands and they fail.
+if which podman >$dn 2>&1 && ! grep -q "podman-ignore=1" $hm ; then
+    announce "${red}Podman detected. This program interferes with docker commands and must be uninstalled
+    \r    for Parmanode to work properly. Please uninstall Podman yourself. If you decline to do this,
+    \r    it is recommeneded you don't use apps that rely on docker, eg Mempool, Vaultwarden and others.
+    
+    \r    To dismiss this message forever, type$cyan endthefed$orange and hit <enter>."
+    case $enter_cont in endthefed) echo "podman-ignore=1" >> $hm ;; esac
 fi
 
-brew install gnupg
-echo ; echo ; echo ; enter_continue
-gpg --version |& grep -qi "killed" && sww "${red}Failed to fix gpg. Try to fix it yourself or contact Parman." && return 1
-return 0
 }
