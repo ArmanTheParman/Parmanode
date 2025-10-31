@@ -1,5 +1,4 @@
 Version 3.67.5
-     -LND v0.13.3-beta
      -Newest version of BitBox App
      -Newest version of Trezor Suite
      -Untested BTCPay v2.2.1 available (not standard)
