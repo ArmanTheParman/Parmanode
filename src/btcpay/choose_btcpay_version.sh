@@ -59,7 +59,7 @@ rekt)
 set_terminal ; echo -e "
 ########################################################################################
 
-    Please type the version you want in the format$cyan v.x.xx.x $orange
+    Please type the version you want in the format$cyan vx.xx.x $orange
 
     Parmanode is not going to check the validy or for typos so type carefully.
 
