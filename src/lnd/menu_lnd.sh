@@ -144,10 +144,10 @@ To set it up, forward port $lnd_port to IP: $IP
 $orange"
 fi
 
-if [[ $lndtor == Enabled ]] ; then
+if [[ $lndtor == "Enabled" ]] ; then
 colour1="$green" ; else colour1="$red" ; fi
 
-if [[ $torhybrid == Enabled ]] ; then
+if [[ $torhybrid == "Enabled" ]] ; then
 colour2="$green" ; else colour2="$red" ; fi
 
 if [[ $lnddockermenu == "false" ]] ; then
@@ -192,7 +192,7 @@ $menuDockerIP
 
 $cyan
       i)$orange              Important info $green
-      start)$orange              Start $LND $orange$inside_docker $red
+      start)$orange          Start $LND $orange$inside_docker $red
       stop)$orange           Stop $LND $orange$inside_docker $red
       disable)$orange        Toggle on/off (for when manually copying data)$cyan
       rs)$orange             Restart $LND $inside_docker $cyan
