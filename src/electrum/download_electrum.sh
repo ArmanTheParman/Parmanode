@@ -35,7 +35,7 @@ clear ; echo -e "
 $cyan
                                     1)$orange       4.4.4
 $cyan
-                                    2)$orange       4.5.8 
+                                    2)$orange       4.6.2
 
                                     3)$orange       custom
 

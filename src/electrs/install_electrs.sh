@@ -5,7 +5,7 @@ if  grep -q electrs-start $ic ; then announce "Electrs partially installed" ; ju
 
 export skipformatting="true"
 export install_electrs_docker_variable="false"
-export electrsversion="v0.10.9"
+export electrsversion="v0.10.10"
 
 source $pc $ic >$dn 2>&1
 

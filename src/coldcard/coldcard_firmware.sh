@@ -67,7 +67,7 @@ debug "downloaded sigs"
 if [[ $ccversion == 3 ]] ; then
 curl -LO https://coldcard.com/downloads/2023-06-26T1241-v4.1.9-coldcard.dfu
 elif [[ $ccversion == 4 ]] ; then
-curl -LO https://coldcard.com/downloads/2024-09-12T1734-v5.4.0-mk4-coldcard.dfu 
+curl -LO https://coldcard.com/downloads/2024-09-12T1734-v5.4.4-mk4-coldcard.dfu 
 elif [[ $ccversion == man ]] ; then
 curl -LO $choice_file
 fi
