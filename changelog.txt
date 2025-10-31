@@ -1,3 +1,6 @@
+Version 3.67.5
+     -Newest version of BitBox App
+     -Newest version of Trezor Suite
 Version 3.67.4
      -added 'badblocks' test for drives in drive menu
      -corrupt gpg install fix for Macs
