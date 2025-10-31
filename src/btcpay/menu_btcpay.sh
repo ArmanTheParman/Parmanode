@@ -144,9 +144,6 @@ connect_btcpay_to_lnd
 start)
 start_btcpay
 ;;
-httpsstart)
-start_btcpay https
-;;
 stop)
 stop_btcpay
 ;;
