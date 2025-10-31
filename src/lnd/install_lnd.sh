@@ -5,7 +5,9 @@ sned_sats
 unset remote_user remote_pass ipcore
 if grep -q "litd" $ic ; then announce "Can't install LND if you have LITD" ; return 1 ; fi
 
-while true ; do 
+#new version of lnd not ready, it's buggy so far.
+export lndversion="v0.18.5-beta" 
+while false ; do 
 announce "which version of LND do you want?
 
                              1)           v0.18.5
