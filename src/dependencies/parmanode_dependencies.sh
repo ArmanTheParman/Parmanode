@@ -1,4 +1,5 @@
 function parmanode_dependencies {
+[[ $OS == "Mac" ]] && return 1
 grep -q "dependency_check1=passed" $pc && return 0
 export ask=false #if no block switches this on to true, then next time, the entire function can be skipped
 
@@ -20,7 +21,42 @@ export ask=false #if no block switches this on to true, then next time, the enti
             nooo) echo "dont_install_jq" | tee -a $dp/.dont_install >$dn 2>&1 ;;
             esac
     }
+    which tmux >$dn || sudo grep -q "dont_install_tmux" $dp/.dont_install || {
+    export ask=true
 
+        announce "Parmanode needs to install Tmux to continue. 
+        $green 
+        \r$green            y)$orange          OK, do it
+
+        \r$red            n)$orange          Nah, ask me later
+
+        \r$red            nooo)$orange       Nah, never ask again
+    "
+        case $enter_cont in
+            y) [[ $APT_UPDATE == "true" ]] || { sudo apt-get update -y && export APT_UPDATE="true" ; }
+                sudo apt-get install tmux -y
+                ;;
+            nooo) echo "dont_install_tmux" | tee -a $dp/.dont_install >$dn 2>&1 ;;
+            esac
+    }
+    which gpg >$dn || sudo grep -q "dont_install_gpg" $dp/.dont_install || {
+    export ask=true
+
+        announce "Parmanode needs to install gpg to continue. 
+        $green 
+        \r$green            y)$orange          OK, do it
+
+        \r$red            n)$orange          Nah, ask me later
+
+        \r$red            nooo)$orange       Nah, never ask again
+    "
+        case $enter_cont in
+            y) [[ $APT_UPDATE == "true" ]] || { sudo apt-get update -y && export APT_UPDATE="true" ; }
+                sudo apt-get install gpg -y
+                ;;
+            nooo) echo "dont_install_gpg" | tee -a $dp/.dont_install >$dn 2>&1 ;;
+            esac
+    }
     which vim >$dn || sudo grep -q "dont_install_vim" $dp/.dont_install || {
     export ask=true
 
