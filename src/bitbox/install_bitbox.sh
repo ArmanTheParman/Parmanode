@@ -5,7 +5,7 @@ mkdir $bitboxDir && cd $bitboxDir
 [[ $OS == "Mac" ]] && if [[ $MacOSVersion_major -lt 12 ]] ; then { announce "You need MacOS version 12.0 or higher. Aborting." ; return 1 ; } ; fi
 
 installed_conf_add "bitbox-start"
-version="4.48.0" #careful, some patches don't have Mac versions, and some are zips with .pp not dmgs.
+version="4.48.8" #careful, some patches don't have Mac versions, and some are zips with .pp not dmgs.
 
 if [[ $OS == "Mac" ]] ; then #it's for x86_64, but M1/M2 macs will run it but not so efficiently
     please_wait
