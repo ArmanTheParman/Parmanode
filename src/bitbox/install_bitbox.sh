@@ -21,11 +21,11 @@ if [[ $OS == "Mac" ]] ; then #it's for x86_64, but M1/M2 macs will run it but no
 
     hdiutil attach *.dmg
     sudo mv  /Volumes/BitBox*/*.app /Applications
-
+    hdiutil detach /Volumes/"BitBox"* 
 fi
 
 
-if [[ $chip == x86_64 && $OS == Linux ]] ; then
+if [[ $chip == "x86_64" && $OS == "Linux" ]] ; then
 rm *AppImage >$dn 2>&1
 curl -LO https://github.com/BitBoxSwiss/bitbox-wallet-app/releases/download/v$version/BitBox-$version-x86_64.AppImage
 curl -LO https://github.com/BitBoxSwiss/bitbox-wallet-app/releases/download/v$version/BitBox-$version-x86_64.AppImage.asc
