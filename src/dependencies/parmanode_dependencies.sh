@@ -283,6 +283,27 @@ fi
  
     esac
 fi 
+    sudo which autossh >$dn || if ! sudo grep -q "dont_install_autossh" $dp/.dont_install ; then
+    export ask=true
+
+    announce "Parmanode wants to install autossh to continue. This is very options, but useful
+    for setting up reverse proxies.
+        $green 
+        \r$green            y)$orange          OK, do it
+
+        \r$red            n)$orange          Nah, ask me later
+
+        \r$red            nooo)$orange       Nah, never ask again 
+    "
+    case $enter_cont in
+            y) [[ $APT_UPDATE == "true" ]] || { sudo apt-get update -y && export APT_UPDATE="true" ; }
+                sudo apt-get install e2fsprogs -y
+                ;;
+            nooo) echo "dont_install_autossh" | tee -a $dp/.dont_install >$dn 2>&1 ;;
+ 
+    esac
+fi 
+
 sudo systemctl status ssh >$dn 2>&1 || sudo systemctl start ssh >$dn 2>&1
 if ! dpkg -l | grep -q libfuse && ! sudo grep -q "dont_install_libfuse" $dp/.dont_install ; then
 [[ $APT_UPDATE == "true" ]] || { sudo apt-get update -y && export APT_UPDATE="true" ; }
