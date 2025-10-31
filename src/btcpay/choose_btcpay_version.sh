@@ -1,5 +1,7 @@
 function choose_btcpay_version {
 unset btcpay_version_choice
+standard_version=2.0.3
+newer_version=2.2.1
 while true ; do
 if [[ $btcpayinstallsbitcoin != "true" ]] ; then
 set_terminal ; echo -e "
@@ -13,16 +15,14 @@ set_terminal ; echo -e "
     From time to time, I will thoroughly test BTCPay newer versions and update what
     is offered here.
 
-    For the time being, the latest I have tested is$green v1.12.5$orange
-
     If you want the latest version available, untested by me, and just see what 
-    happens, you are welcome to do that.
+    happens, you are welcome to do that...
 $green
 
-                few)$orange     Standard installation, v2.0.3
+                few)$orange     Standard installation, v$standard_version (tested for a while)
 
 $red
-                hfsp)$orange    Newer release v2.1.6  $yellow(Stable, but limited 
+                hfsp)$orange    Newer release v$newer_version  $yellow(Stable, but limited 
                                                testing with Parmanode)
 $red
                 yolo)$orange    Latest version on the BTCPay GitHub master branch
@@ -41,12 +41,12 @@ fi
 case $choice in
 q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 few)
-export btcpay_version_choice="v2.0.3"
+export btcpay_version_choice="v$standard_version"
 parmanode_conf_add "btcpay_version=$btcpay_version_choice"
 break
 ;;
 hfsp)
-export btcpay_version_choice="v2.1.6"
+export btcpay_version_choice="v$newer_version"
 parmanode_conf_add "btcpay_version=$btcpay_version_choice"
 break
 ;;
