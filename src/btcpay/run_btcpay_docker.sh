@@ -1,8 +1,11 @@
 function run_btcpay_docker {
+
+if [[ $1 == "https" ]] ; then httpsenabled="-e BTCPAY_PROTOCOL=https" ; fi
+
 if [[ $OS == "Linux" ]] ; then
 docker run -d -u parman \
            --name btcpay \
-           --restart unless-stopped \
+           --restart unless-stopped $httpsenabled \
            -v $HOME/.btcpayserver:/home/parman/.btcpayserver \
            -v $HOME/.nbxplorer:/home/parman/.nbxplorer \
            --network="host" \
