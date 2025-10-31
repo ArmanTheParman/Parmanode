@@ -21,6 +21,7 @@ export lndversion="v0.13.3-beta" ; break ;;
 *)
 invalid ;;
 esac
+done
 
 bitcoin_choice_with_lnd || return 1
 
