@@ -1,7 +1,7 @@
 function install_trezor {  
 
 while true ; do
-    export version="25.4.2"
+    export version="25.10.2"
     Announce "Parmanode will install Trezor Suite version $version.
         If you accept this version, hit$cyan <enter>$orange, otherwise, type
         in the version number and hit $cyan<enter>$orange; it'll probably work,
@@ -11,9 +11,9 @@ while true ; do
 done
 set_terminal
 
-if [[ $OS == Linux ]] ; then
+if [[ $OS == "Linux" ]] ; then
 export configdir="$HOME/.config/@trezor/suite-desktop"
-elif [[ $OS == Mac ]] ; then
+elif [[ $OS == "Mac" ]] ; then
 export configdir="$HOME/Library/Application Support/@trezor/suite-desktop"
 fi
 
@@ -61,7 +61,7 @@ sudo chmod +x ./*AppImage
     fi
 fi
 
-if [[ $computer_type == Pi && $chip == aarch64 ]] ; then
+if [[ $computer_type == "Pi" && $chip == "aarch64" ]] ; then
 rm *AppImage 2>$dn
 curl -LO https://github.com/trezor/trezor-suite/releases/download/v$version/Trezor-Suite-$version-linux-arm64.AppImage 
 curl -LO https://github.com/trezor/trezor-suite/releases/download/v$version/Trezor-Suite-$version-linux-arm64.AppImage.asc
