@@ -6,7 +6,6 @@ Version 3.67.5
      -Coldcard firmware update
      -Update electrs v0.10.10
      -Electrum 4.6.2
-     -Specter 2.0.5
 Version 3.67.4
      -added 'badblocks' test for drives in drive menu
      -corrupt gpg install fix for Macs

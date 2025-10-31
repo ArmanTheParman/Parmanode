@@ -117,7 +117,7 @@ echo -e "#$cyan                            \033[27G tws)$orange              Tor
 if grep -q "specter-end" $HOME/.parmanode/installed.conf ; then spectermenu=1
 echo -e "#$cyan                            \033[27G specter)$orange          Specter Wallet                         \033[88G#"
 elif grep -q "specter-start" $HOME/.parmanode/installed.conf ; then spectermenu=1
-echo -e "                                  \033[27G specter)                 Specter Wallet $red$blinkon(partial)$blinkoff$orange                \033[88G#" ; fi
+echo -e "#$cyan                            \033[27G specter)                 Specter Wallet $red$blinkon(partial)$blinkoff$orange                \033[88G#" ; fi
 if grep -q "btcrpcexplorer-end" $HOME/.parmanode/installed.conf ; then btcrpcexplorermenu=1
 echo -e "#$cyan                            \033[27G bre)$orange              BTC RPC Explorer                       \033[88G#"
 elif grep -q "btcrpcexplorer-start" $HOME/.parmanode/installed.conf ; then btcrpcexplorermenu=1
