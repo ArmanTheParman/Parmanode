@@ -7,7 +7,6 @@ source $pc
 unset rpcuser rpcpassword
 source $HOME/.bitcoin/bitcoin.conf >$dn 2>&1
 
-nogsedtest
 sudo gsed -i "/rpcuser/d" $fc
 sudo gsed -i "/rpcpassword/d" $fc
 

@@ -1,5 +1,4 @@
 function toggle_X11 {
-nogsedtest
 #use $1 to turn on or off
 if [[ $1 == on ]] ; then
 

@@ -100,7 +100,6 @@ fi
 ########################################################################################################################
 function enable_electrum_string_swaps {
 #swap the whole line
-nogsedtest
 sudo gsed -i "/\"server/c\\    \"server\": \"${o_add}:$torport:$TCP_or_SSL\"," $HOME/.electrum/config 
 #delete the line
 sudo gsed -i "/proxy/d" $HOME/.electrum/config 

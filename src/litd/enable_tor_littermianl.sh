@@ -18,7 +18,6 @@ function disable_tor_litterminal {
 if [[ $OS == "Mac" ]] ; then return 1 ; fi
 clear
 
-nogsedtest
 sudo gsed -i "/litterminal-service/d" $torrc
 sudo gsed -i "/7007 127/d" $torrc
 restart_tor

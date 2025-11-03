@@ -1,6 +1,5 @@
 function change_lnd_port {
 
-nogsedtest
 if grep -r "lnddocker-" $ic ; then
 announce "It is not possible to change the LND port if running inside
     a Docker container, as the ports are already 'bound' when running

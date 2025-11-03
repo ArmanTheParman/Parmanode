@@ -1,5 +1,4 @@
 function menu_lnd_more {
-nogsedtest
 if ! grep -q "lnd.*end" $ic && ! grep -q "litd-end" $ic ; then return 0 ; fi
 store_LND_container_IP
 debug "store LND container IP"

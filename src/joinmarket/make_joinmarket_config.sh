@@ -1,7 +1,6 @@
 
 function make_joinmarket_config {
     jmfile="$HOME/.joinmarket/joinmarket.cfg"
-    nogsedtest
     source $bc
 
     gsed -i '/rpc_port=/c\rpc_port = 8332' $jmfile
@@ -22,7 +21,6 @@ function make_joinmarket_config {
 
 function add_directory_nodes {
 
-nogsedtest
 if grep -q "3kxw6lf5vf6y26emzwgibzhrzhmhqiw6ekrek3nqfjjmhwznb2moonad.onion:5222" $jmfile ; then
 gsed -i 's/3kxw6lf5vf6y26emzwgibzhrzhmhqiw6ekrek3nqfjjmhwznb2moonad\.onion:5222, //' $jmfile 2>$dn
 gsed -i 's/3kxw6lf5vf6y26emzwgibzhrzhmhqiw6ekrek3nqfjjmhwznb2moonad\.onion:5222//' $jmfile 2>$dn

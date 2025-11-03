@@ -17,7 +17,6 @@ restart_tor
 }
 
 function disable_tor_rtl {
-nogsedtest
 sudo gsed -i "/rtl-service/d" $torrc
 sudo gsed -i "/7005 127/d" $torrc
 parmanode_conf_remove "rtl_tor"

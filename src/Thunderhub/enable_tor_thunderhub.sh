@@ -24,7 +24,6 @@ enter_continue ; jump $enter_cont
 }
 
 function disable_tor_thunderhub {
-nogsedtest
 sudo gsed -i "/thunderhub/d" $torrc
 sudo gsed -i "/127.0.0.1:2050/d" $torrc
 restart_tor

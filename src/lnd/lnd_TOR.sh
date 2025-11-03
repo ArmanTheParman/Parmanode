@@ -1,5 +1,4 @@
 function lnd_tor {
-nogsedtest
 # arguments: only, both, off
 local file=$HOME/.lnd/lnd.conf
 debug "in lnd_tor"

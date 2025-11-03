@@ -232,7 +232,6 @@ jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit 0 ;; p|P) return 0 ;; n|N) break ;;
 y|yes)
-nogsedtest
 sudo gsed -i "/SystemMaxUse/c\SystemMaxUse=500M" /etc/systemd/journald.conf
 sudo gsed -i "/MaxRetentionSec/c\MaxRetentionSec=30days" /etc/systemd/journald.conf
 sudo systemctl restart systemd-journald

@@ -22,7 +22,6 @@ done
 #uninstall....
 please_wait
 
-nogsedtest
 if grep -q "fulcrumdkr" $ic || [[ $OS == Mac ]] ; then
 [[ $debug == 1 ]] || if ! docker ps >$dn 2>&1 ; then announce "Please make sure Docker is running. Aborting." ; return 1 ; fi
 docker stop fulcrum >$dn 2>&1 

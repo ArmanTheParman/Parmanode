@@ -1,6 +1,5 @@
 function electrs_tor_remove {
 
-nogsedtest
 please_wait
 
 sudo gsed -i "/electrs-service/d" $macprefix/etc/tor/torrc

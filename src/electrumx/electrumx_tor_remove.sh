@@ -2,7 +2,6 @@ function electrumx_tor_remove {
 
 if [[ $OS == "Mac" ]] ; then no_mac ; return 1 ; fi
 
-nogsedtest
 please_wait
 
 sudo gsed -i "/electrumx-service/d" $macprefix/etc/tor/torrc

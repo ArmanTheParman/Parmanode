@@ -97,7 +97,6 @@ xxxhide)
 if ! grep -q "hide_censorship=1" $hm  ; then
     echo "hide_censorship=1" >> $hm
 else
-nogsedtest
     gsed -i '/hide_censorship/d' $hm >$dn 2>&1
 fi
 

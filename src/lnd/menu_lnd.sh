@@ -370,7 +370,6 @@ function fully_tor_only {
 # comment out tlsextrip
 # comment out tlsextradomain
 # comment out externalip 
-nogsedtest
 export file=$HOME/.lnd/lnd.conf
 
 lnd_tor only skipsuccess norestartlnd

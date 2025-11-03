@@ -47,7 +47,6 @@ q|Q) exit ;; p|P|a|A|5) return 1 ;;
 esac
 done
 fi
-nogsedtest
 sudo gsed -i "/ENV chip_4lnd=/c\ENV chip_4lnd=$chip_4lnd" $file
 
 }

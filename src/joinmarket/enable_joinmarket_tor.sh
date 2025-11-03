@@ -21,7 +21,6 @@ function disable_tor_joinmarket {
 clear
 file="$macprefix/etc/tor/torrc"
 
-nogsedtest
 sudo gsed -i "/joinmarket-service/d" $file 
 sudo gsed -i "/5222 127/d" $file 
 restart_tor

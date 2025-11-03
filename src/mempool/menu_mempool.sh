@@ -6,7 +6,6 @@ if ! grep -q "mempool-end" $ic ; then return 0 ; fi
 grep -q "rpcbind=0.0.0.0" $bc || echo "rpcbind=0.0.0.0" | sudo tee -a $bc >$dn 2>&1
 
 export mempoolconf="$hp/mempool/docker/docker-compose.yml"
-nogsedtest
 #gsed on Macs creates a backup with an E at the end.
 #I can use -i "" to eliminate this, but it complicates the code. I need 
 #exactly the same code to work on Linux and Mac.

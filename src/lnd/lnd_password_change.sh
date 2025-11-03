@@ -1,5 +1,4 @@
 function lnd_password_change {
-nogsedtest 
 while true ; do
 set_terminal ; echo -e "
 ########################################################################################
