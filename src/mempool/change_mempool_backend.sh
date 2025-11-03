@@ -7,7 +7,7 @@ echo -e "
 ########################################################################################
 
 
-$green                 b) $orange       Bitcoin (simplest)
+$green                 bb) $orange      Bitcoin (simplest)
 
      $green            e) $orange       electrs (You must make sure its running)
 
@@ -23,7 +23,7 @@ jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in 
 q|Q) exit ;; p|P) return 0 ;; m|M) back2main ;;
 
-b|B|Bitcoin|bitcoin)
+bb|BB|Bitcoin|bitcoin)
 choose_bitcoin_for_mempool
 [[ $install != "mempool" ]] && restart_mempool
 break
