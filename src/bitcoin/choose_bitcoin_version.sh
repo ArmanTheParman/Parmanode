@@ -208,7 +208,6 @@ done
 }
 
 function select_custom_version {
-nogsedtest
 while true ; do 
 set_terminal ; echo -e "
 ########################################################################################

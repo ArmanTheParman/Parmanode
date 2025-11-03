@@ -41,6 +41,6 @@ choose "x" ; read choice
 
 case $choice in y|Y) rm -rf $HOME/.electrum ; break ;; n|N|NO|no) break ;; *) invalid ;; esac ; done
 
-success "Electrum" "being uninstalled."
+success "Electrum has been uninstalled"
 
 }

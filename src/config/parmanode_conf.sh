@@ -18,7 +18,6 @@ echo "${1}" | tee -a $pc >/dev/null 2>&1
 ########################################################################################
 
 function parmanode_conf_remove {
-nogsedtest
 gsed -i "/$1/d" $pc >/dev/null 2>&1
 }
 

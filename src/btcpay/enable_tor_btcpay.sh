@@ -15,7 +15,6 @@ restart_tor
 
 function disable_tor_btcpay {
 clear
-nogsedtest
 sudo gsed -i "/btcpay-service/d" $torrc
 sudo gsed -i "/7003 127/d" $torrc
 restart_tor

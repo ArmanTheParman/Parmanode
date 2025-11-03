@@ -1,7 +1,5 @@
 function bitcoin_tor_remove {
 
-nogsedtest
-
 stop_bitcoin
 #delete...
 sudo gsed -i  "/# Additions by Parmanode/d" $macprefix/etc/tor/torrc

@@ -12,7 +12,6 @@ return 0
 
 function installed_config_remove {
 if [ ! -e $ic ] ; then return 0 ; fi
-nogsedtest
 gsed -i "/$1/d" $ic
 }
 

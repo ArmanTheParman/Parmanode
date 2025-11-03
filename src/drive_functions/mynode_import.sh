@@ -1,6 +1,5 @@
 function mynode_import {
 debug "in mynode_import"
-nogsedtest
 if [[ $OS == Mac ]] ; then no_mac ; return 1 ; fi
 cd
 set_terminal ; echo -e "

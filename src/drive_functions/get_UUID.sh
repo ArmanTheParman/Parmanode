@@ -29,6 +29,5 @@ fi
 }
 
 function remove_parmanode_fstab {
-nogsedtest
 sudo gsed -i "/parmanode/d" /etc/fstab
 }
