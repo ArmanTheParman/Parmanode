@@ -21,6 +21,8 @@ echo -e "$orange
 $red$blinkon
             3) Users must not hold ANY shitcoins! (Honesty system)
 $blinkoff$orange
+            4) Parmanode can work on a VPS but it is not tested, and network security
+               is not optimised - you have to tweak that yourself.
 $bright_blue
     To report bugs:
                    - armantheparman@protonmail.com

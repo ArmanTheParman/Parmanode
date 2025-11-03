@@ -9,7 +9,6 @@ grep -q docker-end $HOME/.parmanode/installed.conf || { announce "Must install D
 "Use menu: Add --> Other --> Docker). Aborting." && return 1 ; }
 
 sned_sats
-
 btcpay_install_restore_choice || return 1
 
 choose_btcpay_version || { parmanode_conf_remove "btcpay_choice=" ; return 1 ; }
