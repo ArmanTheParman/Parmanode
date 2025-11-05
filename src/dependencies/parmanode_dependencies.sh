@@ -283,7 +283,7 @@ fi
  
     esac
 fi 
-    sudo which autossh >$dn || if ! sudo grep -q "dont_install_autossh" $dp/.dont_install ; then
+    sudo which autossh >$dn || if ! sudo grep -q "dont_install_autossh_v2" $dp/.dont_install ; then
     export ask=true
 
     announce "Parmanode wants to install autossh to continue. This is very options, but useful
@@ -299,7 +299,7 @@ fi
             y) [[ $APT_UPDATE == "true" ]] || { sudo apt-get update -y && export APT_UPDATE="true" ; }
                 sudo apt-get install autossh -y
                 ;;
-            nooo) echo "dont_install_autossh" | tee -a $dp/.dont_install >$dn 2>&1 ;;
+            nooo) echo "dont_install_autossh_v2" | tee -a $dp/.dont_install >$dn 2>&1 ;;
  
     esac
 fi 
