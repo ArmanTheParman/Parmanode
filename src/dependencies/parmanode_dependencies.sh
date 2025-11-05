@@ -199,7 +199,7 @@ fi
     declare -a install_array
     sudo which ufw >$dn || install_array+=(ufw)
     dpkg -l | grep -q mdadm >$dn 2>&1 || install_array+=(mdadm)
-    sudo which gparted >$dn 2>&1 || install_array+=(gparged)
+    sudo which gparted >$dn 2>&1 || install_array+=(gparted)
     sudo which notify-send >$dn 2>&1 || install_array+=(notify-send)
     sudo which autossh >$dn 2>&1 || install_array+=(autossh)
     sudo which vim >$dn 2>&1 || install_array+=(vim)
@@ -211,7 +211,8 @@ clear ; echo -e "
 
     Parmanode detected the following$green OPTIONAL$orange programs are note installed.
 
-    "$(for x in ${install_array[@]} ; do echo -e "$cyan       $x" ; done)""
+    "
+for x in ${install_array[@]} ; do echo -e "$cyan       $x" ; done
 echo -e "
 
     You have options...
