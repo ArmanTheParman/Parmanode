@@ -224,8 +224,10 @@ $cyan              nn)$orange      Install none and don't ask about these again
 
 ########################################################################################
 "
+choose xq
 read choice ; clear
 case $choice in
+q) exit 1 ;; 
 s) break ;;
 n) return 0 ;;
 nn) echo "optional_install_none=1" | tee -a $hm ;;
