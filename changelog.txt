@@ -1,3 +1,5 @@
+Version 3.67.6
+     -Tidy up of optional dependency install menu
 Version 3.67.5
      -Newest version of BitBox App
      -Newest version of Trezor Suite
