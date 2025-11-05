@@ -212,15 +212,15 @@ clear ; echo -e "
     Parmanode detected the following$green OPTIONAL$orange programs are note installed.
 
     "
-for x in ${install_array[@]} ; do echo -e "$cyan       $x" ; done
-echo -e "
-
+for x in ${install_array[@]} ; do echo -e "$cyan       $x\n" ; done
+echo -e "$orange
     You have options...
 
 $cyan              a)$orange       Install all
 $cyan              s)$orange       Selectively install some (next window) 
 $cyan              n)$orange       Install none for now
 $cyan              nn)$orange      Install none and don't ask about these again
+
 
 ########################################################################################
 "
