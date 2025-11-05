@@ -228,9 +228,10 @@ choose xq
 read choice ; clear
 case $choice in
 q) exit 1 ;; 
+a) all="true" ; break ;;
 s) break ;;
 n) return 0 ;;
-nn) echo "optional_install_none=1" | tee -a $hm ;;
+nn) echo "optional_install_none=1" | tee -a $hm ; return 0 ;;
 *) invalid ;;
 esac
 done
@@ -240,8 +241,7 @@ fi
 
     sudo which ufw >$dn || sudo grep -q "dont_install_ufw" $dp/.dont_install || {
     export ask=true
-
-        announce "Parmanode wants to install ufw to continue. 
+    [[ $all == "true" ]] || announce "Parmanode wants to install ufw to continue. 
         $green 
         \r$green            y)$orange          OK, do it
 
@@ -249,6 +249,7 @@ fi
 
         \r$red            nooo)$orange       Nah, never ask again
     "
+        [[ $all == "true" ]] && enter_cont=y
         case $enter_cont in
             y) [[ $APT_UPDATE == "true" ]] || { sudo apt-get update -y && export APT_UPDATE="true" ; }
                 sudo apt-get install ufw -y
@@ -259,7 +260,7 @@ fi
     dpkg -l | grep -q mdadm >$dn 2>&1 || sudo grep -q "dont_install_mdadm" $dp/.dont_install || {
     export ask=true
 
-        announce "Parmanode wants to install mdadm to continue. 
+ [[ $all == "true" ]]  ||   announce "Parmanode wants to install mdadm to continue. 
         $green 
         \r$green            y)$orange          OK, do it
 
@@ -267,6 +268,7 @@ fi
 
         \r$red            nooo)$orange       Nah, never ask again
     "
+        [[ $all == "true" ]] && enter_cont=y
         case $enter_cont in
             y) [[ $APT_UPDATE == "true" ]] || { sudo apt-get update -y && export APT_UPDATE="true" ; }
                 sudo apt-get install mdadm -y
@@ -277,7 +279,7 @@ fi
     sudo which gparted >$dn || sudo grep -q "dont_install_gparted" $dp/.dont_install || {
     export ask=true
 
-        announce "Parmanode wants to install gparted to continue. 
+ [[ $all == "true" ]]   ||    announce "Parmanode wants to install gparted to continue. 
         $green 
         \r$green            y)$orange          OK, do it
 
@@ -285,6 +287,7 @@ fi
 
         \r$red            nooo)$orange       Nah, never ask again
     "
+        [[ $all == "true" ]] && enter_cont=y
         case $enter_cont in
             y) [[ $APT_UPDATE == "true" ]] || { sudo apt-get update -y && export APT_UPDATE="true" ; }
                 sudo apt-get install gparted -y
@@ -296,7 +299,7 @@ fi
     which notify-send >$dn || if ! sudo grep -q "dont_install_notify-send" $dp/.dont_install ; then
     export ask=true
 
-    announce "Parmanode wants to install notify-send to continue.
+ [[ $all == "true" ]]   || announce "Parmanode wants to install notify-send to continue.
         $green 
         \r$green            y)$orange          OK, do it
 
@@ -304,6 +307,7 @@ fi
 
         \r$red            nooo)$orange       Nah, never ask again (not needed as a server only) 
     "
+        [[ $all == "true" ]] && enter_cont=y
     case $enter_cont in
             y) [[ $APT_UPDATE == "true" ]] || { sudo apt-get update -y && export APT_UPDATE="true" ; }
                 sudo apt-get install libnotify-bin -y
@@ -316,7 +320,7 @@ fi
     sudo which autossh >$dn || if ! sudo grep -q "dont_install_autossh_v2" $dp/.dont_install ; then
     export ask=true
 
-    announce "Parmanode wants to install autossh to continue. This is very options, but useful
+ [[ $all == "true" ]] ||  announce "Parmanode wants to install autossh to continue. This is very options, but useful
     for setting up reverse proxies.
         $green 
         \r$green            y)$orange          OK, do it
@@ -325,6 +329,7 @@ fi
 
         \r$red            nooo)$orange       Nah, never ask again 
     "
+        [[ $all == "true" ]] && enter_cont=y
     case $enter_cont in
             y) [[ $APT_UPDATE == "true" ]] || { sudo apt-get update -y && export APT_UPDATE="true" ; }
                 sudo apt-get install autossh -y
@@ -337,7 +342,7 @@ fi
     which vim >$dn || sudo grep -q "dont_install_vim" $dp/.dont_install || {
     export ask=true
 
-        announce "Parmanode wants to install vim to continue. 
+ [[ $all == "true" ]]   ||    announce "Parmanode wants to install vim to continue. 
         $green 
         \r$green            y)$orange          OK, do it
 
@@ -345,6 +350,7 @@ fi
 
         \r$red            nooo)$orange       Nah, never ask again
     "
+        [[ $all == "true" ]] && enter_cont=y
         case $enter_cont in
             y) [[ $APT_UPDATE == "true" ]] || { sudo apt-get update -y && export APT_UPDATE="true" ; }
                 sudo apt-get install vim -y
