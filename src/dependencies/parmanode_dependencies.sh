@@ -297,7 +297,7 @@ fi
     "
     case $enter_cont in
             y) [[ $APT_UPDATE == "true" ]] || { sudo apt-get update -y && export APT_UPDATE="true" ; }
-                sudo apt-get install e2fsprogs -y
+                sudo apt-get install autossh -y
                 ;;
             nooo) echo "dont_install_autossh" | tee -a $dp/.dont_install >$dn 2>&1 ;;
  
