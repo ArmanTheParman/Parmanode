@@ -1,6 +1,6 @@
 function gpg_check {
 
-which gpg >$dn 2>$1 && return 0
+which gpg >$dn 2>&1 && return 0
 
 while true ; do 
 set_terminal #don't use echo -e
