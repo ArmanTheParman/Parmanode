@@ -77,7 +77,7 @@ sudo rm -rf $HOME/parmanode/electrs && sudo rm -rf $HOME/.electrs >$dn 2>&1
 sudo systemctl stop socat.service >$dn 2>&1
 sudo systemctl disable socat.service >$dn 2>&1
 sudo rm -rf /etc/systemd/system/socat.service >$dn 2>&1
-parmanode_conf_remove "drive_electrs"
+parmanode_conf_remove "electrs"
 installed_config_remove "electrs-" 
 success "electrs" "being uninstalled."
 }
