@@ -1,3 +1,5 @@
+Version 3.67.7
+     -Knots upgrade 27.2
 Version 3.67.6
      -Tidy up of optional dependency install menu
 Version 3.67.5
