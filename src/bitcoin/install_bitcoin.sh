@@ -18,7 +18,7 @@ export knotstag="v${knotsversion}.knots${knotsdate}"
 export knotsmajor="29.x"
 export knotsextension="tar.gz"
 export coreexternsion="tar.gz"
-[[ $OS == "Mac" ]] && export knotsversion="29.1" && export knotsdate="20251010" && knotsmajor="29.x" && knotsextension="zip" && coreexternsion="tar.gz"
+[[ $OS == "Mac" ]] && export knotsversion="29.2" && export knotsdate="20251010" && knotsmajor="29.x" && knotsextension="zip" && coreexternsion="tar.gz"
 ########################################################################################
 
 if [[ $version != "self" ]] ; then
