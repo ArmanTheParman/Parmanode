@@ -7,6 +7,7 @@ function sign_parmanode_cert {
         -CA "$filepath/ca/ca.crt" \
         -CAkey "$filepath/ca/ca.key" \
         -CAcreateserial \
+        -extfile /etc/ssl/parmanode/parmanode.ext \
         -out "$filepath/parmanode.local.crt" \
         -days 36500 -sha256 \
         2>>"$dp/error.log" || return 1
