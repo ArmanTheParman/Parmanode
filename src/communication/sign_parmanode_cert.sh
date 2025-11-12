@@ -1,9 +1,10 @@
 function sign_parmanode_cert {
 #This function is a blueprint, but a private key is needed.
+#The private key signs the parmanode certificate and the signature is embedded inside
+#the parmanode.local.crt file
 
 return 0
     local filepath="$parmanode_cert_dir"
-
 
     CA_private_key="$RESTRICTED"
 
