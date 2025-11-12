@@ -6,25 +6,13 @@ if ! sudo which nginx >$dn 2>&1 ; then return 0 ; fi
 service="$1" #expecting electrs or public_pool
 instruction="$2" #expecting install or remove
 
-
-if [[ $OS == Mac ]] ; then
-nginx_conf="/usr/local/etc/nginx/nginx.conf"
-#ssl_cert="$hp/$service/cert.pem" 
-#ssl_key="$hp/$service/key.pem"
-streamfile="/usr/local/etc/nginx/stream.conf"
-
-elif [[ $OS == Linux ]] ; then
-nginx_conf="/etc/nginx/nginx.conf"
-#ssl_cert="$hp/$service/cert.pem" 
-#ssl_key="$hp/$service/key.pem"
-streamfile="/etc/nginx/stream.conf"
-fi
+streamfile=$macprefix/etc/nginx/stream.conf
 
 if [[ $2 != remove ]] ; then
 sudo nginx -t >$dn 2>&1 || faulty_nginx_conf="true"
 fi
 #create a back up in case it breaks
-[[ -e $nginx_conf ]] && sudo cp $nginx_conf ${nginx_conf}_backup >$dn 2>&1
+[[ -e $nginxconf ]] && sudo cp $nginxconf ${nginxconf}_backup >$dn 2>&1
 
 #test what is installed... 
 #This search string will include installs that have begun and v1 and v2 of electrs/dkr)
@@ -67,12 +55,12 @@ $server_public_pool
 ``
 #if no services installed, remove any include directive from nginx.conf
 if [[ -z $upstream_electrs && -z $upstream_public_pool ]] ; then
-   [[ -e $ngxinx_conf ]] && sudo gsed -i "/stream.conf/d" $nginx_conf 
+    sudo test -e $ngxinxconf && sudo gsed -i "/stream.conf/d" $nginxconf 
 else
 #include stream file in nginx.conf
 #this is added at the end of the file, not in any particular block
-   [[ -e $nginx_conf ]] && { if ! grep -q "include stream.conf;" $nginx_conf ; then 
-   echo "include stream.conf;" | sudo tee -a $nginx_conf
+   sudo test -e $nginxconf && { if ! sudo grep -q "include stream.conf;" $nginxconf ; then 
+   echo "include stream.conf;" | sudo tee -a $nginxconf
    fi
    }
 fi
@@ -87,10 +75,10 @@ if [[ ! $faulty_nginx_conf == "true" ]] ; then
 
     Continuing, but Nginx configuration not optimal.
     " 
-    [[ -e $ngxin_conf ]] && {
-    sudo cp ${nginx_conf} $tmp/nginx.conf_error 
-    sudo mv ${nginx_conf}_backup $nginx_conf >$dn 2>&1 ; }
-    [[ -e $streamfile ]] && {
+    sudo test -e $ngxinconf && {
+    sudo cp ${nginxconf} $tmp/nginx.conf_error 
+    sudo mv ${nginxconf}_backup $nginxconf >$dn 2>&1 ; }
+    sudo test -e $streamfile && {
     sudo mv ${streamfile}_backup $streamfile >$dn 2>&1 ; }
     }
 fi

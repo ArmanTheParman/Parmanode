@@ -6,7 +6,7 @@ while true ; do
 echo -e "
 ########################################################################################
 $red
-                                Uninstall Parmanode??
+                                Uninstall Parmanode ??
 $orange
     This will first give you the option to remove programs installed with Parmanode 
     before removing the Parmanode installation files and configuration files. 
@@ -109,7 +109,7 @@ uninstall_X11
 set_terminal
 fi
 
-if [[ -e $hp/parman_books ]] ; then
+if [[ -e "$hp/parman_books" ]] ; then
 yesorno "Remove Parman_Books?" && rm -rf $hp/parman_books
 set_terminal
 fi
@@ -292,6 +292,9 @@ if [[ $OS == "Linux" ]] ; then
         disktultil unmount "parmanode"
 
         fi
+
+#remove certificates
+sudo rm -rf $parmanode_cert_dir
 
 #remove bind mount
 sudo unmount $wwwparmaviewdir

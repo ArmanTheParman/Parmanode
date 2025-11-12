@@ -13,7 +13,7 @@ another="${red}    Hint: type 'motd' for another.
 
 
 
-                     #CENCORSHIP OPTIONS...
+                     #CENSORSHIP OPTIONS...
                     $cyan forkids) $orange for kid friendly language.
                     $cyan ff)      $orange to censor the 'f' word only.
                     $cyan uncensor)$orange to clear censorship
