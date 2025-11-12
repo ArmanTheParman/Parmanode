@@ -297,7 +297,7 @@ if [[ $OS == "Linux" ]] ; then
 sudo rm -rf $parmanode_cert_dir
 
 #remove bind mount
-sudo unmount $wwwparmaviewdir
+sudo unmount $parmaviewdir
 
 #uninstall parmanode directories and config files contained within.
 sudo rm -rf $HOME/.parmanode >$dn 2>&1
