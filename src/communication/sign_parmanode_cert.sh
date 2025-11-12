@@ -15,3 +15,5 @@ function sign_parmanode_cert {
     sudo chmod 640 "$filepath/parmanode.local.crt"
     return 0
 }
+
+
