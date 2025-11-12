@@ -65,7 +65,7 @@ export dn="/dev/null"
 export ndebug="$dp/.new_debug.log"
 export nginxconf="$macprefix/etc/nginx/nginx.conf"
 export parmaviewnginx="$macprefix/etc/nginx/conf.d/parmaview.conf"
-export wwwparmaviewdir="$macprefix/var/www/parmaview"
+export parmaviewdir="$macprefix/var/www/parmaview"
 export parmanode_cert_dir="$macprefix/etc/ssl/parmanode"
 if [[ -z $dn ]] ; then echo "some problem with dn variable" ; read ; fi ##debug
 
