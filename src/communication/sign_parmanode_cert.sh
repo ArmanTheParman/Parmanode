@@ -1,6 +1,10 @@
 function sign_parmanode_cert {
+#This function is a blueprint, but a private key is needed.
 
+return 0
     local filepath="$parmanode_cert_dir"
+
+    CA_private_key="$RESTRICTED/ca.key"
 
     sudo openssl x509 -req \
         -in "$filepath/parmanode.local.csr" \
