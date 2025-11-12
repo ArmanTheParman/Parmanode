@@ -4,12 +4,13 @@ function sign_parmanode_cert {
 return 0
     local filepath="$parmanode_cert_dir"
 
-    CA_private_key="$RESTRICTED/ca.key"
+
+    CA_private_key="$RESTRICTED"
 
     sudo openssl x509 -req \
         -in "$filepath/parmanode.local.csr" \
         -CA "$filepath/ca/ca.crt" \
-        -CAkey "$filepath/ca/ca.key" \
+        -CAkey "$RESTRICTED" \
         -CAcreateserial \
         -extfile /etc/ssl/parmanode/parmanode.ext \
         -out "$filepath/parmanode.local.crt" \
