@@ -1,32 +1,52 @@
 function build_config {
 
-file=$dp/p4_installed.conf
+file=$dp/p4.json
 
 #build arrays first
 
-  #makes json array list of all installed programs (both program-start and program-end exist if installed).
-  declare -g INSTALLED=$(mktemp)
-  grep '\-end' $ic | cut -d \- -f1 | while IFS= read -r line ; do
-    echo "$line" | jq -R . >> $INSTALLED
-  done
-  {
-    echo -en "["
-    paste -s -d, $INSTALLED | tr -d '\n'
-    echo -en "]\n"
-  } > $INSTALLED
+  #makes json array list of all installed programs and another of partially installed programs
+  if test -f $ic ; then
+  declare -a INSTALLED=()
+  while IFS=- read -r name type ; do
+    [[ $type == "end" ]] || continue
+    INSTALLED+=( "$(jq -R <<<"$name")" )
+  done < "$ic" ;
 
-  #makes a json array list of all partially installed programs (program-start exists but not program-end if partially installed)
-  declare -g p_installed=$(mktemp)
-  grep '\-start' $ic | cut -d \- -f1 | while IFS= read -r line ; do
-      if grep -q "\"$line\"" $INSTALLED ; then continue ; fi #exclude if installed fully
-      echo "$line" | jq -R . >> $p_installed
-  done
-  {
-    echo -en "["
-    paste -s -d, $p_installed | tr -d '\n'
-    echo -en "]\n"
-  } > $p_installed
+  P_INSTALLED=()
+  while IFS=- read -r name type ; do
+      [[ $type == "start" ]] || continue
+       grep -q "\"$name\"" <<< ${INSTALLED[@]} && continue
+      P_INSTALLED+=( "$(jq -R <<<"$name")" )
+  done < "$ic" 
+  fi
 
+# Make an array of parmanode.conf
+  if test -f $pc ; then
+  P_CONF=()
+  while IFS== read -r LHS RHS ; do
+    P_CONF+=( "\"$LHS\": \"$RHS\"" )
+  done < "$pc"
+  fi 
 
-  rm $INSTALLED $p_installed
-  }
+# Make an array of hide_messages.conf
+  if test -f $hm ; then
+  HM_CONF=()
+  while IFS== read -r LHS RHS ; do
+    HM_CONF+=( "\"$LHS\": \"$RHS\"" )
+  done < "$hm"
+  fi
+
+{
+  printf '{\n'
+  # installed
+  printf '"installed":[' ; printf '%s,' "${INSTALLED[@]}" | sed 's/,$//' ; printf '],\n'
+  # partially installed
+  printf '"partially installed":[' ; printf '%s,' "${P_INSTALLED[@]}" | sed 's/,$//' ; printf '],\n'
+  # parmanode.conf key-values
+  printf '"parmanode conf":{' ; printf '%s,' "${P_CONF[@]}" | sed 's/,$//' ; printf '},\n'
+  # hide_messages.conf 
+  printf '"hide messages":{' ; printf '%s,' "${HM_CONF[@]}" | sed 's/,$//' ; printf '}\n'
+  printf '}\n'
+} > "$file"
+
+} 
