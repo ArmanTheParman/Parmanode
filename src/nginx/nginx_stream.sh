@@ -84,8 +84,3 @@ if [[ ! $faulty_nginx_conf == "true" ]] ; then
 fi
 
 }
-# now redundant...
-# function remove_old_electrs_stream_from_nginxconf {
-# if [[ -e $nginx_conf && $OS == Linux ]] ; then sudo sed -i "/electrs-START/,/electrs-END/d" $nginx_conf >$dn ; fi
-# if [[ -e $nginx_conf && $OS == Mac ]] ; then sudo sed -i '' "/electrs-START/,/electrs-END/d" $nginx_conf >$dn ; fi
-# }

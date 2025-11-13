@@ -168,7 +168,7 @@ if [[ $1 == overview ]] ; then return 0 ; fi
 menu_use
 ;;
 endthefed)
-grep -q "hide_port_8333" $hm && { sed -i '/hide_port_8333_message=1/d' $hm >$dn ; continue ; }
+grep -q "hide_port_8333" $hm && { gsed -i '/hide_port_8333_message=1/d' $hm >$dn ; continue ; }
 echo "hide_port_8333_message=1" >> $hm
 ;;
 1)

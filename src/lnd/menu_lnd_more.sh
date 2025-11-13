@@ -74,13 +74,8 @@ local file="$HOME/.lnd/lnd.conf"
 set_terminal
 rm $file
 make_lnd_conf
-if [[ $OS == Mac ]] ; then
 sudo gsed -i '/^; wallet-unlock-password-file/s/^..//' $HOME/.lnd/lnd.conf
 sudo gsed -i '/^; wallet-unlock-allow-create/s/^..//' $HOME/.lnd/lnd.conf
-else
-sudo sed -i '/^; wallet-unlock-password-file/s/^..//' $HOME/.lnd/lnd.conf
-sudo sed -i '/^; wallet-unlock-allow-create/s/^..//' $HOME/.lnd/lnd.conf
-fi
 
 restart_lnd
 }

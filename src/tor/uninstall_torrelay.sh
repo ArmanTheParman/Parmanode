@@ -19,7 +19,7 @@ done
 
 local file="/etc/tor/torrc"
 
-sudo sed -i '/#Tor Relay Installation.../,/#End Tor Relay Installation./d' $file
+sudo gsed -i '/#Tor Relay Installation.../,/#End Tor Relay Installation./d' $file
 sudo apt-get purge nyx -y
 
 install_config_remove "torrelay"
