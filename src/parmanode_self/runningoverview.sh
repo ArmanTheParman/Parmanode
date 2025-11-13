@@ -1,18 +1,3 @@
-function ispublicpoolrunning {
-while true ; do
-
-if ! docker ps >$dn 2>&1 ; then
-export publicpoolrunning="false"
-break
-fi
-
-if docker ps | grep -q 'public_pool' ; then
-export publicpoolrunning="true" 
-fi
-break
-done
-}
-
 
 function isbitcoinrunning {
 unset bitcoinrunning
@@ -26,7 +11,7 @@ if grep -q "btccombo" $ic ; then
 return 0
 fi
 
-if [[ $OS == Mac ]] ; then #if docker container, then previous btccombo check takes care of it
+if [[ $OS == "Mac" ]] ; then #if docker container, then previous btccombo check takes care of it
     if pgrep Bitcoin-Q >$dn ; then 
     export bitcoinrunning="true"
     else 
@@ -35,7 +20,7 @@ if [[ $OS == Mac ]] ; then #if docker container, then previous btccombo check ta
     return 0
 fi
 
-if [[ $OS == Linux ]] ; then
+if [[ $OS == "Linux" ]] ; then
 
     if ! ps -x | grep bitcoin | grep -q "bitcoin.conf" >$dn 2>&1 ; then 
     export bitcoinrunning="false"
@@ -135,7 +120,7 @@ fi
 
 function isbrerunning {
 
-if [[ $computer_type == LinuxPC ]] ; then
+if [[ $computer_type == "LinuxPC" ]] ; then
     if sudo systemctl status btcrpcexplorer 2>&1 | grep -q "active (running)" >$dn 2>&1 ; then 
 
     export brerunning="true" 
@@ -144,7 +129,7 @@ if [[ $computer_type == LinuxPC ]] ; then
     fi
 fi
 
-if [[ $OS == Mac || $computer_type == Pi ]] ; then
+if [[ $OS == "Mac" || $computer_type == Pi ]] ; then
     if  docker ps 2>$dn | grep -q bre ; then 
         if docker exec -itu root bre /bin/bash -c 'ps -xa | grep "btc-rpc"' | grep -v grep >$dn 2>&1 ; then
         export brerunning="true"
@@ -186,10 +171,8 @@ else
 export mempoolrunning="false"
 fi
 }
-
-
-
 }
+
 function isthunderhubrunning {
 if docker ps 2>$dn | grep -q thunderhub ; then
 export thunderhubrunning="true"
