@@ -81,7 +81,7 @@ clear
         -CAkey "$RESTRICTED" \
         -CAcreateserial \
         -extfile /etc/ssl/parmanode/parmanode.ext \
-        -out "$key/.crt" \
+        -out "$key.crt" \
         -days 36500 -sha256 \
         2>>"$dp/error.log" || { sww && return 1 ; }
 
