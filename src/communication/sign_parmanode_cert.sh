@@ -44,15 +44,15 @@ clear ; echo -e "
     This is the command that will be run. Make a note of where the new files are 
     going.
 $green
-    sudo openssl x509 -req \
-        -in "$key.csr" \
-        -CA "$CA_PUBKEY" \
-        -CAkey "$RESTRICTED" \
-        -CAcreateserial \
-        -extfile /etc/ssl/parmanode/parmanode.ext \
-        -out "$key/.crt" \
-        -days 36500 -sha256 \
-        2>>"$dp/error.log" 
+    sudo openssl x509 -req 
+        -in $key.csr
+        -CA $CA_PUBKEY
+        -CAkey $RESTRICTED
+        -CAcreateserial 
+        -extfile /etc/ssl/parmanode/parmanode.ext
+        -out $key/.crt 
+        -days 36500 -sha256 
+        2>>$dp/error.log 
 $orange
    Go ahead?
    $green 
@@ -80,7 +80,7 @@ clear
         -CA "$CA_PUBKEY" \
         -CAkey "$RESTRICTED" \
         -CAcreateserial \
-        -extfile /etc/ssl/parmanode/parmanode.ext \
+        -extfile "/etc/ssl/parmanode/parmanode.ext" \
         -out "$key.crt" \
         -days 36500 -sha256 \
         2>>"$dp/error.log" || { sww && return 1 ; }
