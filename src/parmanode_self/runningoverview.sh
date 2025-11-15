@@ -179,5 +179,37 @@ export thunderhubrunning="true"
 else
 export thunderhubrunning="false"
 fi
+}
 
+function isnostrrunning {
+if docker ps | grep -q nostrrelay ; then 
+export nostrrunning="true"
+else
+export nostrrunning="false"
+fi
+}
+
+
+function isalbyrunning {
+if docker ps 2>$dn | grep -q "albyhub" ; then
+export albyrunning="true"
+else
+export albyrunning="false"
+fi
+}
+
+function isvaultwardenrunning {
+if docker ps 2>$dn | grep -q "vaultwarden" ; then
+export vaultwardenrunning="true"
+else
+export vaultwardenrunning="false"
+fi
+}
+
+function isdockerrunning {
+if docker ps 2>$dn ; then
+export dockerrunning="true"
+else
+export dockerrunning="false"
+fi
 }
