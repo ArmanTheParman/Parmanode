@@ -160,6 +160,7 @@ export rtlrunning="true"
 else 
 export rtlrunning="false"
 fi
+}
 
 function ismempoolrunning {
 if docker ps 2>$dn | grep -q mempool_web \
@@ -170,7 +171,7 @@ export mempoolrunning="true"
 else
 export mempoolrunning="false"
 fi
-}
+
 }
 
 function isthunderhubrunning {
