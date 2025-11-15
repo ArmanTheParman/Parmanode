@@ -38,13 +38,13 @@ tmp=$(mktemp)
 {
   printf '{\n'
   # installed
-  printf '"installed":[' ; printf '%s,' "${INSTALLED[*]}" | sed 's/,$//' ; printf '],\n'
+  printf '"installed":[' ; printf '%s,' "${INSTALLED[@]}" | sed 's/,$//' ; printf '],\n'
   # partially installed
-  printf '"partially_installed":[' ; printf '%s,' "${P_INSTALLED[*]}" | sed 's/,$//' ; printf '],\n'
+  printf '"partially_installed":[' ; printf '%s,' "${P_INSTALLED[@]}" | sed 's/,$//' ; printf '],\n'
   # parmanode.conf key-values
-  printf '"parmanode.conf":{' ; printf '%s,' "${P_CONF[*]}" | sed 's/,$//' ; printf '},\n'
+  printf '"parmanode.conf":{' ; printf '%s,' "${P_CONF[@]}" | sed 's/,$//' ; printf '},\n'
   # hide_messages.conf 
-  printf '"hide_messages":{' ; printf '%s,' "${HM_CONF[*]}" | sed 's/,$//' ; printf '}\n'
+  printf '"hide_messages":{' ; printf '%s,' "${HM_CONF[@]}" | sed 's/,$//' ; printf '}\n'
   printf '}\n'
 } > "$p4"
 
