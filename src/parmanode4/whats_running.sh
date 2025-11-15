@@ -1,4 +1,4 @@
-function whats_running.sh {
+function whats_running {
 
 ! test -f $p4 && build_config
 
