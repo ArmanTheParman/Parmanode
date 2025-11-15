@@ -1,8 +1,7 @@
 function build_config {
 
-file=$dp/p4.json
-
 #build arrays first
+tmp=$(mktemp)
 
   #makes json array list of all installed programs and another of partially installed programs
   if test -f $ic ; then
@@ -15,7 +14,7 @@ file=$dp/p4.json
   P_INSTALLED=()
   while IFS=- read -r name type ; do
       [[ $type == "start" ]] || continue
-       grep -q "\"$name\"" <<< ${INSTALLED[@]} && continue
+       grep -q "\"$name\"" <<< "${INSTALLED[*]}" && continue
       P_INSTALLED+=( "$(jq -R <<<"$name")" )
   done < "$ic" 
   fi
@@ -39,14 +38,15 @@ file=$dp/p4.json
 {
   printf '{\n'
   # installed
-  printf '"installed":[' ; printf '%s,' "${INSTALLED[@]}" | sed 's/,$//' ; printf '],\n'
+  printf '"installed":[' ; printf '%s,' "${INSTALLED[*]}" | sed 's/,$//' ; printf '],\n'
   # partially installed
-  printf '"partially installed":[' ; printf '%s,' "${P_INSTALLED[@]}" | sed 's/,$//' ; printf '],\n'
+  printf '"partially_installed":[' ; printf '%s,' "${P_INSTALLED[*]}" | sed 's/,$//' ; printf '],\n'
   # parmanode.conf key-values
-  printf '"parmanode conf":{' ; printf '%s,' "${P_CONF[@]}" | sed 's/,$//' ; printf '},\n'
+  printf '"parmanode.conf":{' ; printf '%s,' "${P_CONF[*]}" | sed 's/,$//' ; printf '},\n'
   # hide_messages.conf 
-  printf '"hide messages":{' ; printf '%s,' "${HM_CONF[@]}" | sed 's/,$//' ; printf '}\n'
+  printf '"hide_messages":{' ; printf '%s,' "${HM_CONF[*]}" | sed 's/,$//' ; printf '}\n'
   printf '}\n'
-} > "$file"
+} > "$p4"
 
+jq '. + { "running": [] }' "$p4" > $tmp && mv $tmp $p4
 } 
