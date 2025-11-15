@@ -1,4 +1,5 @@
 function whats_running {
+local tmp=$(mktemp)
 
 ! test -f $p4 && build_config
 
