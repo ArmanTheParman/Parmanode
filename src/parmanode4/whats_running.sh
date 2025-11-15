@@ -34,8 +34,4 @@ if [[ $dockerrunning == "true" ]] ; then isrunning+=("docker") ; fi
 arr_json=$(printf '%s\n' "${isrunning[@]}" | jq -R . | jq -s .)
 
 jq --argjson arr "$arr_json" '. + { running: $arr }' "$p4" > "$tmp" && mv "$tmp" "$p4"
-jq . $p4
-
-
-
 }
