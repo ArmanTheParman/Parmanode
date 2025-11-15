@@ -191,7 +191,7 @@ fi
 
 
 function isalbyrunning {
-if docker ps 2>$dn | grep -q "albyhub" ; then
+if docker ps >$dn 2>&1 | grep -q "albyhub" ; then
 export albyrunning="true"
 else
 export albyrunning="false"
@@ -199,7 +199,7 @@ fi
 }
 
 function isvaultwardenrunning {
-if docker ps 2>$dn | grep -q "vaultwarden" ; then
+if docker ps >$dn 2>&1 | grep -q "vaultwarden" ; then
 export vaultwardenrunning="true"
 else
 export vaultwardenrunning="false"
@@ -207,7 +207,7 @@ fi
 }
 
 function isdockerrunning {
-if docker ps 2>$dn ; then
+if docker ps >$dn 2>&1 ; then
 export dockerrunning="true"
 else
 export dockerrunning="false"
