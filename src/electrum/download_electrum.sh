@@ -18,7 +18,7 @@ if [[ $computer_type == "Pi" ]] ; then
     return 0
     fi
 
-if [[ $OS == Mac ]] ; then
+if [[ $OS == "Mac" ]] ; then
     curl -LO https://download.electrum.org/${electrum_version}/electrum-${electrum_version}.dmg && \
     curl -LO https://download.electrum.org/${electrum_version}/electrum-${electrum_version}.dmg.asc && \
     curl -LO https://raw.githubusercontent.com/spesmilo/electrum/master/pubkeys/ThomasV.asc 
