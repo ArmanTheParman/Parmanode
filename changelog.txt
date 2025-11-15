@@ -1,5 +1,6 @@
 Version 3.67.8
      -"cp -r" changed to "cp -R" for macs, preserves metadata and reduces risk of corruption misinterprettion
+     -install rosetta on ARM macs to make intel work
 Version 3.67.7
      -Knots upgrade 27.2
 Version 3.67.6

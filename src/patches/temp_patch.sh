@@ -167,6 +167,12 @@ if cat $ic 2>$dn | grep -q "fulcrumdkr" && docker ps 2>$dn | grep -q "fulcrum" >
     start_fulcrum
 fi
 
+#install rosetta on arm macs to make intel work
+if [[ $OS == "Mac" ]] && [[ $(arch) == "arm64" ]] ; then
+softwareupdate --install-rosetta --agree-to-license || true
+fi
+
+
 }
 
 function remove_tor_log_patch {
