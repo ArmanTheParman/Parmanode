@@ -1,7 +1,7 @@
 function unpack_specter {
 
 if [[ $OS == "Mac" ]] ; then hdiutil attach $HOME/parmanode/specter/Specter*.dmg
-    cp -r /Volumes/Specter/Specter.app /Applications || { log "specter" "move to Applications failed" && return 1 ; }
+    cp -R /Volumes/Specter/Specter.app /Applications || { log "specter" "move to Applications failed" && return 1 ; }
     diskutil unmountDisk /Volumes/Specter
     fi
 

@@ -35,7 +35,7 @@ fi
 if [[ -f $HOME/parmanode/docker/Docker.dmg ]] ; then 
     hdiutil attach $HOME/parmanode/docker/Docker.dmg
     sleep 3
-    sudo cp -r /Volumes/Docker/Docker.app /Applications 
+    sudo cp -R /Volumes/Docker/Docker.app /Applications 
     diskutil unmount /Volumes/Docker
     installed_config_add "docker-end"
 else

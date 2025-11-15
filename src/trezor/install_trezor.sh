@@ -33,7 +33,7 @@ if [[ $chip == "arm64" && $OS == "Mac" ]] ; then
 curl -LO    https://github.com/trezor/trezor-suite/releases/download/v$version/Trezor-Suite-$version-mac-arm64.dmg
 curl -LO    https://github.com/trezor/trezor-suite/releases/download/v$version/Trezor-Suite-$version-mac-arm64.dmg.asc
 verify_trezor || return 1
-hdiutil attach *.dmg ; cd /Volumes/Trezor* ; sudo rm -rf /Applications/"Trezor Suite" ; cp -r *app /Applications
+hdiutil attach *.dmg ; cd /Volumes/Trezor* ; sudo rm -rf /Applications/"Trezor Suite" ; cp -R *app /Applications
 cd $trezorDir
 hdiutil detach /Volumes/"Trezor"* 
 sudo rm -rf *.dmg
@@ -43,7 +43,7 @@ if [[ $chip == "x86_64" && $OS == "Mac" ]] ; then
 curl -LO https://github.com/trezor/trezor-suite/releases/download/v$version/Trezor-Suite-$version-mac-x64.dmg
 curl -LO https://github.com/trezor/trezor-suite/releases/download/v$version/Trezor-Suite-$version-mac-x64.dmg.asc
 verify_trezor || return 1
-hdiutil attach *.dmg ; cd /Volumes/Trezor* ; sudo rm -rf /Applications/"Trezor Suite" ; cp -r *app /Applications
+hdiutil attach *.dmg ; cd /Volumes/Trezor* ; sudo rm -rf /Applications/"Trezor Suite" ; cp -R *app /Applications
 cd $trezorDir
 hdiutil detach /Volumes/"Trezor"* 
 sudo rm -rf *.dmg

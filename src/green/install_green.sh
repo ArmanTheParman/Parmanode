@@ -20,7 +20,7 @@ verify_green | return 1
 if [[ $OS == Mac ]] ; then
 announce "There may be a graphical pop up - ignore it, and wait, it will go away."
 hdiutil attach BlockstreamGreen*.dmg >$dn 2>&1
-sudo cp -r /Volumes/Blockstream*/B*app /Applications
+sudo cp -R /Volumes/Blockstream*/B*app /Applications
 hdiutil detach /Volumes/Blockstream*
 elif [[ $OS == Linux ]] ; then
 sudo chmod +x Bloackstream*.AppImage >$dn 2>&1

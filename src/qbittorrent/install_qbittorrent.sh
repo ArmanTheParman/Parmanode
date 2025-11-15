@@ -36,7 +36,7 @@ installed_conf_add "qbittorrent-start"
 
 if [[ $OS == Mac ]] ; then
 hdiutil attach qbittorren*.dmg
-sudo cp -r /Volumes/qBit*/qbit*.app /Applications
+sudo cp -R /Volumes/qBit*/qbit*.app /Applications
 hdituil detach /Volumes/qBit*
 elif [[ $OS == Linux ]] ; then
 sudo chmod +x qbittorrent*.AppImage

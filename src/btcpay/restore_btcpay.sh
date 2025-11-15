@@ -91,7 +91,7 @@ cp $HOME/.btcpayserver/Main/settings.config $HOME/.btcpayserver/settings.config_
 docker exec -itu root btcpay rm -rf /home/parman/.btcpayserver/Main 2>$dn
 docker exec -itu root btcpay rm -rf /home/parman/.btcpayserver/Plugins 2>$dn
 
-if ! docker exec -itu parman btcpay cp -r $containerdir/Main /home/parman/.btcpayserver/Main ; then
+if ! docker exec -itu parman btcpay cp -R $containerdir/Main /home/parman/.btcpayserver/Main ; then
     announce "Something went wrong - couldn't copy Main directory. Aborting."
     return 1
 fi

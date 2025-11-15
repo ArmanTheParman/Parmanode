@@ -47,7 +47,7 @@ if [[ $OS == "Linux" ]] ; then
     fi
 elif [[ $OS == "Mac" ]] ; then 
     hdiutil attach $HOME/parmanode/Sparrow*
-    sudo cp -r /Volumes/Sparrow/Sparrow.app /Applications
+    sudo cp -R /Volumes/Sparrow/Sparrow.app /Applications
     diskutil unmountDisk /Volumes/Sparrow
 fi
 
