@@ -61,6 +61,7 @@ if [[ $fulcrumrunning == "true" ]] ; then echo -en "
 
       CONNECT  $cyan    127.0.0.1:50001:t    $yellow (From this computer only)$orange
                $cyan    127.0.0.1:50002:s    $yellow (From this computer only)$orange 
+               $cyan    $IP:50001:t          $yellow \e[G\e[42G(From any home network computer)$orange
                $cyan    $IP:50002:s          $yellow \e[G\e[42G(From any home network computer)$orange
                   "
    else
