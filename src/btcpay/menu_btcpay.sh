@@ -384,8 +384,8 @@ if [[ -f $target ]] ; then
 fi
 
 #backup directories
-cp -r $HOME/.btcpayserver/Plugins   $tempdir/Plugins
-cp -r $HOME/.btcpayserver/Main      $tempdir/Main
+cp -R $HOME/.btcpayserver/Plugins   $tempdir/Plugins
+cp -R $HOME/.btcpayserver/Main      $tempdir/Main
 
 #backup databases
 if ! docker exec -itu postgres btcpay bash -c "pg_dumpall -U postgres" > $tempdir/btcpayserver.sql 2>&1 ; then 

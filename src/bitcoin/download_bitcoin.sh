@@ -111,10 +111,10 @@ if [[ $OS == "Mac" ]] ; then
 
     if find $hp/bitcoin/ -type f -name "*.dmg" 2>$dn | grep -q . ; then
         hdiutil attach *.dmg
-        sudo cp -r /Volumes/Bitcoin*/Bitcoin* /Applications
+        sudo cp -R /Volumes/Bitcoin*/Bitcoin* /Applications
         hdiutil detach /Volumes/Bitcoin*
     else
-        sudo cp -r $hp/bitcoin/Bitcoin*app /Applications
+        sudo cp -R $hp/bitcoin/Bitcoin*app /Applications
     fi
 fi
 
