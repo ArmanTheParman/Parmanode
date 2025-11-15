@@ -22,7 +22,7 @@ fi
 
 if [[ $OS == "Linux" ]] ; then
 
-    if ! ps -x | grep bitcoin | grep -q "bitcoin.conf" >$dn 2>&1 ; then 
+    if ! ps -x | grep bitcoin | grep -q "bitcoin.conf" 2>$dn ; then 
     export bitcoinrunning="false"
     return 0
     fi
@@ -48,8 +48,8 @@ fi
 
 function islndrunning {
 unset lndrunning
-if ps -x | grep lnd | grep bin >$dn 2>&1 || \
-   ps -x | grep litd | grep bin >$dn 2>&1 || \
+if ps -x | grep lnd | grep -q bin 2>$dn || \
+   ps -x | grep litd | grep -q bin 2>$dn || \
    docker exec lnd pgrep lnd >$dn 2>&1 ; then
 export lndrunning="true"
 else
@@ -75,7 +75,7 @@ fi
 
 function isfulcrumrunning {
 if grep -q "fulcrum-" $ic ; then
-    if ps -x | grep fulcrum | grep conf >$dn 2>&1 ; then 
+    if ps -x | grep fulcrum | grep -q conf 2>$dn ; then 
     export fulcrumrunning="true"
     else
     export fulcrumrunning="false"
@@ -93,8 +93,8 @@ fi
 }
 
 function iselectrsrunning {
-if grep -q electrs- $ic >$dn 2>&1 ; then
-    if ps -x | grep electrs | grep -q conf >$dn 2>&1 ; then 
+if grep -q electrs- $ic 2>$dn ; then
+    if ps -x | grep electrs | grep -q conf 2>$dn ; then 
     export electrsrunning="true"
     else
     export electrsrunning="false"
@@ -121,7 +121,7 @@ fi
 function isbrerunning {
 
 if [[ $computer_type == "LinuxPC" ]] ; then
-    if sudo systemctl status btcrpcexplorer 2>&1 | grep -q "active (running)" >$dn 2>&1 ; then 
+    if sudo systemctl status btcrpcexplorer 2>&1 | grep -q "active (running)" 2>$dn ; then 
 
     export brerunning="true" 
     else
@@ -131,7 +131,7 @@ fi
 
 if [[ $OS == "Mac" || $computer_type == Pi ]] ; then
     if  docker ps 2>$dn | grep -q bre ; then 
-        if docker exec -itu root bre /bin/bash -c 'ps -xa | grep "btc-rpc"' | grep -v grep >$dn 2>&1 ; then
+        if docker exec -itu root bre /bin/bash -c 'ps -xa | grep "btc-rpc"' | grep -vq grep 2>$dn ; then
         export brerunning="true"
         else
         export brerunning="false"
@@ -144,7 +144,7 @@ fi
 }
 
 function isbtcpayrunning {
-if docker ps 2>$dn | grep -q btcp >$dn 2>&1 \
+if docker ps 2>$dn | grep -q btcp 2>$dn \
 && docker exec -it btcpay bash -c "ps aux | grep csproj | grep btcpay.log | grep -vq grep" \
 && docker exec -it btcpay bash -c "ps aux | grep csproj | grep NBX | grep -vq grep" ; then
 export btcpayrunning="true"
@@ -183,7 +183,7 @@ fi
 }
 
 function isnostrrunning {
-if docker ps | grep -q nostrrelay ; then 
+if docker ps 2>$dn | grep -q nostrrelay ; then 
 export nostrrunning="true"
 else
 export nostrrunning="false"
@@ -192,7 +192,7 @@ fi
 
 
 function isalbyrunning {
-if docker ps >$dn 2>&1 | grep -q "albyhub" ; then
+if docker ps 2>$dn | grep -q "albyhub" ; then
 export albyrunning="true"
 else
 export albyrunning="false"
@@ -200,7 +200,7 @@ fi
 }
 
 function isvaultwardenrunning {
-if docker ps >$dn 2>&1 | grep -q "vaultwarden" ; then
+if docker ps 2>$dn | grep -q "vaultwarden" ; then
 export vaultwardenrunning="true"
 else
 export vaultwardenrunning="false"
@@ -208,7 +208,7 @@ fi
 }
 
 function isdockerrunning {
-if docker ps >$dn 2>&1 ; then
+if docker ps 2>$dn ; then
 export dockerrunning="true"
 else
 export dockerrunning="false"
