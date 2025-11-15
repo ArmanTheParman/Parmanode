@@ -29,7 +29,7 @@ success "Alby installed"
 function menu_alby {
 while true ; do
 get_onion_address_variable "alby"
-if docker ps |& grep -q "albyhub" ; then
+if docker ps 2>$dn | grep -q "albyhub" ; then
 runningalbymenu="Alby is ${green}RUNNING"
 else
 runningalbymenu="Alby is ${red}NOT RUNNING"
