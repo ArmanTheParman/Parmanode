@@ -7,25 +7,25 @@ function whats_running {
 #                    green:{}, docker:{}, lnbits:{} };
 
 isbitcoinrunning
-if [[ $bitcoinrunning == "true" ]] ; then echo "bitcoin is running" ; else echo "bitcoin is NOT running"
+if [[ $bitcoinrunning == "true" ]] ; then echo "bitcoin is running" ; else echo "bitcoin is NOT running" ; fi
 iselectrsrunning
-if [[ $electrsrunning == "true" ]] ; then echo "electrs is running" ; else echo "electrs is NOT running"
+if [[ $electrsrunning == "true" ]] ; then echo "electrs is running" ; else echo "electrs is NOT running" ; fi
 ismempoolrunning
-if [[ $mempoolrunning == "true" ]] ; then echo "mempool is running" ; else echo "mempool is NOT running"
+if [[ $mempoolrunning == "true" ]] ; then echo "mempool is running" ; else echo "mempool is NOT running" ; fi
 islndrunning
-if [[ $lndrunning == "true" ]] ; then echo "lnd is running" ; else echo "lnd is NOT running"
+if [[ $lndrunning == "true" ]] ; then echo "lnd is running" ; else echo "lnd is NOT running" ; fi
 isbtcpayrunning
-if [[ $btcpayrunning == "true" ]] ; then echo "btcpay is running" ; else echo "btcpay is NOT running"
+if [[ $btcpayrunning == "true" ]] ; then echo "btcpay is running" ; else echo "btcpay is NOT running" ; fi
 isnostrrunning
-if [[ $nostrrunning == "true" ]] ; then echo "nostr is running" ; else echo "nostr is NOT running"
+if [[ $nostrrunning == "true" ]] ; then echo "nostr is running" ; else echo "nostr is NOT running" ; fi
 isrtlrunning
-if [[ $rtlrunning == "true" ]] ; then echo "rtl is running" ; else echo "rtl is NOT running"
+if [[ $rtlrunning == "true" ]] ; then echo "rtl is running" ; else echo "rtl is NOT running" ; fi
 isthunderhubrunning
-if [[ $thunderhubrunning == "true" ]] ; then echo "thunderhub is running" ; else echo "thunderhub is NOT running"
+if [[ $thunderhubrunning == "true" ]] ; then echo "thunderhub is running" ; else echo "thunderhub is NOT running" ; fi
 isalbyrunning
-if [[ $albyrunning == "true" ]] ; then echo "alby is running" ; else echo "alby is NOT running"
+if [[ $albyrunning == "true" ]] ; then echo "alby is running" ; else echo "alby is NOT running" ; fi
 isvaultwardenrunning
-if [[ $vaultwardenrunning == "true" ]] ; then echo "vaultwarden is running" ; else echo "vaultwarden is NOT running"
+if [[ $vaultwardenrunning == "true" ]] ; then echo "vaultwarden is running" ; else echo "vaultwarden is NOT running" ; fi
 isdockerrunning
-if [[ $dockerrunning == "true" ]] ; then echo "docker is running" ; else echo "docker is NOT running"
+if [[ $dockerrunning == "true" ]] ; then echo "docker is running" ; else echo "docker is NOT running" ; fi
 }
