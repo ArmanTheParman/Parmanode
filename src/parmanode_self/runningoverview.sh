@@ -208,7 +208,7 @@ fi
 }
 
 function isdockerrunning {
-if docker ps 2>$dn ; then
+if docker ps >$dn 2>&1 ; then
 export dockerrunning="true"
 else
 export dockerrunning="false"
