@@ -17,7 +17,7 @@ if [[ $mempoolrunning == "true" ]] ; then isrunning+=("mempool") ; fi
 islndrunning
 if [[ $lndrunning == "true" ]] ; then isrunning+=("lnd") ; fi
 isbtcpayrunning
-if [[ $btcpayrunning == "true" ]] ; then isrunning+=("btcpay") ; fi
+if [[ $btcpayrunning == "true" ]] ; then isrunning+=("btcpay") ; else echo btcpayrunning ... $btcpayrunning | tee -a $dp/error.log ; fi
 isnostrrunning
 if [[ $nostrrunning == "true" ]] ; then isrunning+=("nostr") ; fi
 isrtlrunning
