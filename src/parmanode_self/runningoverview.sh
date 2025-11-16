@@ -83,7 +83,7 @@ if grep -q "fulcrum-" $ic ; then
 fi 
 
 if grep -q "fulcrumdkr-" $ic ; then
-    if docker ps 2>$dn | grep -q fulcrum && docker exec -it fulcrum bash -c "pgrep Fulcrum" >$dn 2>&1 ; then
+    if docker ps 2>$dn | grep -q fulcrum && docker exec fulcrum bash -c "pgrep Fulcrum" >$dn 2>&1 ; then
     export fulcrumrunning="true"
     else
     export fulcrumrunning="false"
@@ -109,7 +109,7 @@ if grep -q electrsdkr $ic ; then
     return 1
     fi
 
-    if docker exec -it electrs /home/parman/parmanode/electrs/target/release/electrs --version >$dn 2>&1 ; then
+    if docker exec electrs /home/parman/parmanode/electrs/target/release/electrs --version >$dn 2>&1 ; then
     export electrsrunning="true"
     else
     export electrsrunning="false"
@@ -131,7 +131,7 @@ fi
 
 if [[ $OS == "Mac" || $computer_type == Pi ]] ; then
     if  docker ps 2>$dn | grep -q bre ; then 
-        if docker exec -itu root bre /bin/bash -c 'ps -xa | grep "btc-rpc"' | grep -vq grep 2>$dn ; then
+        if docker exec -u root bre /bin/bash -c 'ps -xa | grep "btc-rpc"' | grep -vq grep 2>$dn ; then
         export brerunning="true"
         else
         export brerunning="false"
@@ -145,8 +145,8 @@ fi
 
 function isbtcpayrunning {
 if docker ps 2>$dn | grep -q btcp 2>$dn && 
-   docker exec -it btcpay bash -c "ps aux | grep csproj | grep btcpay.log | grep -vq grep" && 
-   docker exec -it btcpay bash -c "ps aux | grep csproj | grep NBX | grep -vq grep" ; then
+   docker exec btcpay bash -c "ps aux | grep csproj | grep btcpay.log | grep -vq grep" && 
+   docker exec btcpay bash -c "ps aux | grep csproj | grep NBX | grep -vq grep" ; then
 export btcpayrunning="true"
 else
 export btcpayrunning="false"
