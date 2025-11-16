@@ -145,8 +145,8 @@ fi
 
 function isbtcpayrunning {
 if docker ps 2>$dn | grep -q btcp 2>$dn \
-&& docker exec -it btcpay bash -c "ps aux | grep csproj | grep btcpay.log | grep -vq grep" \
-&& docker exec -it btcpay bash -c "ps aux | grep csproj | grep NBX | grep -vq grep" ; then
+&& docker exec -it btcpay bash -c "ps aux | grep csproj | grep btcpay.log | grep -vq grep" && 
+   docker exec -it btcpay bash -c "ps aux | grep csproj | grep NBX | grep -vq grep" ; then
 export btcpayrunning="true"
 else
 export btcpayrunning="false"
