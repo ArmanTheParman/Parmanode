@@ -1,6 +1,6 @@
 This document if for Parman, safu to ignoru.
 
-CHECK FOR COMMON TYPOS...
+REGULARLY CHECK FOR COMMON TYPOS...
 bitocin
 doecker
 dirve (drive)
@@ -8,12 +8,11 @@ untinstall
 >dev/null (should be >/dev/null)
 
 OTHERS...
-Add session names for all tmux sessions and do a cleanup script.
 Keep temp_patch file compact
 
 POTENTIAL ADDITIONS...
 Satsale?
-More custom version choices
+USB quirks function for Pi's needs testing
 
 ########################################################################################
 For Version 4 (won't be backwards compatible)
@@ -21,4 +20,4 @@ For Version 4 (won't be backwards compatible)
 take advantage of jq more
 Sync Linux bitcoin drive using mac - seems insurmountable.
 Auto-clear failed installs - will have to consider if beneficial
-
+Parmanode web UI
