@@ -1,6 +1,7 @@
 function d1 {
 
-uninstall_parmaview silent
+export success=silent
+uninstall_parmaview
 install_parmaview
 
 }
