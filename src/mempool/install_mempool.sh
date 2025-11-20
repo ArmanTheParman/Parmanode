@@ -113,8 +113,8 @@ $cyan
             1)$orange     v3.0
 $cyan
             2)$orange     v3.2.1
-$cyan
-            3)$orange     Latest (pre-release, can be buggy, but cutting edge)
+$red
+            3)$red     Pre-release (can be buggy, but cutting edge, not recommended)
 
 ########################################################################################
 "
