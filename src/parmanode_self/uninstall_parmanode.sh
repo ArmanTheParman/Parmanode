@@ -24,7 +24,7 @@ $orange
 choose "epmq" ; read choice
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
-q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
+q|Q) exit ;; p|P) return 1 ;; n|N|m|M) back2main ;;
 y|yes|YES|Y) break ;;
 *) invalid ;;
 esac
