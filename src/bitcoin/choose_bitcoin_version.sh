@@ -133,7 +133,7 @@ export knotsbitcoin="true" ; version="$knotsmajor-knots" ; return 0 ;;
 2)
 parmanode_conf_add "bitcoin_choice=knots"
 export bitcoin_compile="true"
-export knotsbitcoin="true" ; export version="29.1-knots" ; return 0 ;;
+export knotsbitcoin="true" ; export version="$knotsmajor-knots" ; return 0 ;;
 3)
 export knotsversion="28.1"
 export knotsdate="20250305"
