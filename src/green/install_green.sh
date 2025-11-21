@@ -3,7 +3,7 @@ set_terminal
 greenDir=$HOME/parmanode/green
 mkdir $greenDir && cd $greenDir
 installed_conf_add "green-start"
-green_version="2.0.12"
+
 
 if [[ $computer_type == Pi ]] ; then announce "Not Available for Pi" ; return 1 ; fi
 

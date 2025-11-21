@@ -1,3 +1,9 @@
+Version 3.67.9
+     -core_lightning_version="25.09.3"
+     -electrsversion="v0.11.0"
+     -lndversion="v0.20.0-beta"
+     -thunderhub=0.14.6
+     -trezor_version="25.11.1"
 Version 3.67.8
      -"cp -r" changed to "cp -R" for macs, preserves metadata and reduces risk of corruption misinterprettion
      -install rosetta on ARM macs to make intel work

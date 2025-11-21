@@ -1,7 +1,8 @@
 function choose_btcpay_version {
 unset btcpay_version_choice
-standard_version=2.0.3
-newer_version=2.2.1
+standard_version="$btcpay_standard_version"
+newer_version="$btcpay_newer_version"
+
 while true ; do
 if [[ $btcpayinstallsbitcoin != "true" ]] ; then
 set_terminal ; echo -e "

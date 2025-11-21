@@ -5,7 +5,6 @@ if  grep -q electrs-start $ic ; then announce "Electrs partially installed" ; ju
 
 export skipformatting="true"
 export install_electrs_docker_variable="false"
-export electrsversion="v0.10.10"
 
 source $pc $ic >$dn 2>&1
 
@@ -84,7 +83,7 @@ done
 fi #and if bitcoin running
 
 
-if [[ $OS == Mac ]] ; then 
+if [[ $OS == "Mac" ]] ; then 
 minV=11 && if [[ $MacOSVersion_major -lt $minV ]] ; then
 announce "electrs has been tested successfully on newer versions of MacOS.
     It fails with older versions. 

@@ -32,11 +32,11 @@ if [[ $drive_nostr == external ]] && grep "=external" $pc | grep -vq "nostr" ; t
     # Get user to connect drive.
       pls_connect_drive || return 1 
 
-elif [[ $drive_nostr == external ]] ; then
+elif [[ $drive_nostr == "external" ]] ; then
 
       format_ext_drive "nostr" || return  1
 
-elif [[ $drive_nostr == custom ]] ; then
+elif [[ $drive_nostr == "custom" ]] ; then
 
       add_custom_drive || return 1
 fi

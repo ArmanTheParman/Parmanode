@@ -1,6 +1,6 @@
 function install_fulcrum {
 unset configure_bitcoin_self
-debug "${FUNCNAME[0]}"
+
 #when I make fulcrum for mac without docker, make sure to edit patch7
 sned_sats
 set_terminal

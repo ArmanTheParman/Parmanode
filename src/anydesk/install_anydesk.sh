@@ -6,7 +6,7 @@ anydeskDir=$HOME/parmanode/anydesk
 mkdir $anydeskDir && cd $anydeskDir
 installed_conf_add "anydesk-start"
 
-if [[ $(uname) == Darwin ]] ; then
+if [[ $(uname) == "Darwin" ]] ; then
 curl -LO https://parman.org/anydesk.dmg	
 hdiutil attach anydesk.dmg
 sudo mv /Volumes/AnyDesk/AnyDesk.app /Applications

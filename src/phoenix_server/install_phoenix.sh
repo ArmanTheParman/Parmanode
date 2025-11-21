@@ -38,8 +38,8 @@ success "Phoenix Server has been installed"
 }
 
 function download_phoenix {
-curl -LO https://github.com/ACINQ/phoenixd/releases/download/v0.4.2/SHA256SUMS.asc
-curl -LO https://github.com/ACINQ/phoenixd/releases/download/v0.4.2/phoenix-0.4.2-linux-x64.zip
+curl -LO https://github.com/ACINQ/phoenixd/releases/download/v$phoenix_version/SHA256SUMS.asc
+curl -LO https://github.com/ACINQ/phoenixd/releases/download/v$phoenix_version/phoenix-$phoenix_version-linux-x64.zip
 }
 
 function unzip_phoenix {

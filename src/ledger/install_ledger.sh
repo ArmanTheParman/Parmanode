@@ -5,7 +5,6 @@ sned_sats
 ledgerDir=$HOME/parmanode/ledger
 mkdir $ledgerDir >$dn 2>&1 && cd $ledgerDir
 installed_conf_add "ledger-start"
-export ledger_version=2.89.1
 #Notes: grep -i does case insensitive search
 
 #for newer version...

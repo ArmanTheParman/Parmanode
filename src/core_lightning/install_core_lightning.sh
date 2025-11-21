@@ -1,5 +1,6 @@
 
 function install_core_lightning {
+version="$core_lightning_vesion"
 
 if [[ $OS == "Darwin" ]] ; then no_mac ; return 1 ; fi
 
@@ -123,9 +124,9 @@ function core_lightning_binaries {
 
 mkdir $hp/core_lightning || enter_continue
 cd $hp/core_lightning || enter_continue
-curl -LO https://github.com/ElementsProject/lightning/releases/download/v24.11.1/clightning-v24.11.1-Ubuntu-22.04-amd64.tar.xz
-curl -LO https://github.com/ElementsProject/lightning/releases/download/v24.11.1/SHA256SUMS
-curl -LO https://github.com/ElementsProject/lightning/releases/download/v24.11.1/SHA256SUMS.asc
+curl -LO https://github.com/ElementsProject/lightning/releases/download/v$version/clightning-v24.11.1-Ubuntu-22.04-amd64.tar.xz
+curl -LO https://github.com/ElementsProject/lightning/releases/download/v$version/SHA256SUMS
+curl -LO https://github.com/ElementsProject/lightning/releases/download/v$version/SHA256SUMS.asc
 
 import_core_lightning_gpg || { announce "gpg check failed. Aborting" ; exit ; }
 sha256sum --check SHA256SUMS --ignore-missing || { announce "shasum check failed. Aborting" ; exit ; }

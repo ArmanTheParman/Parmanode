@@ -1,7 +1,7 @@
 function install_trezor {  
 
 while true ; do
-    export version="25.10.2"
+    export version="$trezor_version"
     Announce "Parmanode will install Trezor Suite version $version.
         If you accept this version, hit$cyan <enter>$orange, otherwise, type
         in the version number and hit $cyan<enter>$orange; it'll probably work,

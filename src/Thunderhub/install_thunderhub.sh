@@ -12,7 +12,7 @@ sleep 1
 sudo apt-get update -y && export APT_UPDATE="true" && sudo apt-get install xxd -y 
 fi
 
-if [[ $OS == Mac ]] ; then announce "Mac needs xxd to be installed to continue. Please
+if [[ $OS == "Mac" ]] ; then announce "Mac needs xxd to be installed to continue. Please
     do that somehow. Usually installing command line tools is sufficient, and Parmanode
     would have attempted to do this when you first installed Parmanode. Contact the 
     internet or Parman for help to install xxd. Aborting."
@@ -23,7 +23,7 @@ fi #end if no xxd
 ##############################
 
 set_terminal
-export version="v0.13.30"
+export version="$thunderhub_version"
 # export file=$hp/thunderhub/.env 
 export file=$hp/thunderhub/.env.local #adding '.local' prevents overriding file when updating.
 sned_sats
