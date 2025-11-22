@@ -474,7 +474,7 @@ yesorno "This will expose your Bitcoin connection credentials to the screen via 
     Proceed?" || return 1
 source $bc
 
-if ! which qrencode >$dn 2>1 ; then install_qrencode || return 1 ; fi
+if ! which qrencode >$dn 2>&1 ; then install_qrencode || return 1 ; fi
 
 thestring="http://$rpcuser:$rpcpassword@$ONION_ADDR_BITCOINRPC:8332"
 theclearnetstring="http://$rpcuser:$rpcpassword@$IP:8332"
