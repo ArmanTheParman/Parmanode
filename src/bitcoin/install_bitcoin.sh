@@ -64,8 +64,6 @@ set_terminal
 #choose version
 choose_bitcoin_version || return 1 #no_compile variable set for macs here.
 
-debug "after choose_bitcoin_version"
-
 unset importdrive
 
 choose_and_prepare_drive "Bitcoin" || return 1 # the argument "Bitcoin" is added as this function is also
