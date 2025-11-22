@@ -1,3 +1,5 @@
+Version 3.67.10
+     -Added onion address for Bitcoin RPC, optional.
 Version 3.67.9
      -core_lightning_version="25.09.3"
      -electrsversion="v0.11.0"

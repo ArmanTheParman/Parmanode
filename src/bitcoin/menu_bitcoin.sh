@@ -75,11 +75,11 @@ output2="                   Will sync to the $drive drive"
 fi                         
 
 
-if [[ $OS == Linux && $bitcoinrunning == "false" ]] && which bitcoin-qt >$dn 2>&1 ; then
+if [[ $OS == "Linux" && $bitcoinrunning == "false" ]] && which bitcoin-qt >$dn 2>&1 ; then
 output3="$green                   qtstart)$orange      Start Bitcoin Qt \n"
 fi
 
-if [[ $OS == Linux && $bitcoinrunning == "true" ]] && pgrep bitcoin-qt >$dn 2>&1 ; then
+if [[ $OS == "Linux" && $bitcoinrunning == "true" ]] && pgrep bitcoin-qt >$dn 2>&1 ; then
 output3="$red                   qtstop)$orange       Stop Bitcoin Qt \n"
 fi
 
@@ -95,7 +95,7 @@ if [[ $bitcoinrunning == "true" ]] && tail -n15 $HOME/.bitcoin/debug.log | grep 
 fi
 
 debug "bitcoin menu..."
-set_terminal 43 100 
+set_terminal 45 100 
 if grep -q "disable_bitcoin=true" $pc ; then
          output1="                   Bitcoin is$red DISABLED (type disable to toggle)$orange" 
 fi
@@ -112,6 +112,11 @@ if [[ $OS != "Mac" ]] ; then
 else
     unset upgradetoknot
     show_knots="$green                  BITCOIN"
+fi
+
+get_onion_address_variable bitcoinRPC
+if sudo test -f $torrc && [[ -n $ONION_ADDR_BITCOINRPC ]] && sudo grep -q "8332 127" $torrc ; then
+onionRPC="/n$blue    Bitcoin RPC onion address: \n\n    $ONION_ADDR_BITCOINRPC:8332 $orange"
 fi
 
 echo -en "
@@ -148,7 +153,8 @@ echo -e "$output3$red                   disable)$orange      Disable Bitcoin tog
                    dc)$orange           OP_RETURN and datacarrier tweaks...$cyan
                    bcr)$orange          Refresh bitcoin.conf file to Parmanode default $cyan
                    max)$orange          Set max upload target (default 25GB shared per day)$cyan
-                   tor)$orange          Tor/I2P menu options for Bitcoin...  $cyan
+                   tor)$orange          p2p Tor/I2P menu options for Bitcoin (port 8333)...  $cyan
+                   torrpc)$orange       toggle Tor RPC (port 8332) $cyan
                    mm)$orange           Migrate/Revert an external drive...  $cyan
                    delete)$orange       Delete blockchain data and start over $cyan
                    upd)$orange          Update Bitcoin wizard $cyan
@@ -156,6 +162,7 @@ echo -e "$output3$red                   disable)$orange      Disable Bitcoin tog
                    disable)$orange      Toggle on/off (for when manually copying blocks)$cyan
                    o)$orange            OTHER...
 
+$onionRPC
 
 ####################################################################################################
 "
@@ -341,6 +348,10 @@ vim $HOME/.bitcoin/bitcoin.conf
 tor|TOR|Tor)
 menu_bitcoin_tor
 continue
+;;
+
+torrpc|rpctor)
+toggle_bitcoin_rpc_tor
 ;;
 
 mm|MM|Mm|migrate|Migrate)

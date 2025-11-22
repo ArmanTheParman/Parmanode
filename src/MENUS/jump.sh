@@ -52,6 +52,11 @@ menu_premium
 invalid_flag=set
 ;;
 
+debug)
+[[ -z $debug ]] && export debug=1 && invalid_flag=set && return 0
+[[ -n $debug ]] && unset debug && invalid_flag=set && return 0
+;;
+
 debugon)
 export debug=1
 invalid_flag=set

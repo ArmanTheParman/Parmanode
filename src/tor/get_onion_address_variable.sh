@@ -3,6 +3,10 @@ if [[ $1 == "bitcoin" ]] || [[ -z $1 ]] ; then
 export ONION_ADDR="$(sudo cat $varlibtor/bitcoin-service/hostname 2>$dn)"
 fi
 
+if [[ $1 == "bitcoinRPC" ]] || [[ -z $1 ]] ; then
+export ONION_ADDR_BITCOINRPC="$(sudo cat $varlibtor/bitcoinRPC-service/hostname 2>$dn)"
+fi
+
 if [[ $1 == "fulcrum" ]] ; then
 export ONION_ADDR_FULCRUM="$(sudo cat $varlibtor/fulcrum-service/hostname 2>$dn)"
 fi
