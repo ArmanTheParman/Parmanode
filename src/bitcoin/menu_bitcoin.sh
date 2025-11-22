@@ -116,7 +116,7 @@ fi
 
 get_onion_address_variable bitcoinRPC
 if sudo test -f $torrc && [[ -n $ONION_ADDR_BITCOINRPC ]] && sudo grep -q "8332 127" $torrc ; then
-onionRPC="/n$blue    Bitcoin RPC onion address: \n\n    $ONION_ADDR_BITCOINRPC:8332 $orange"
+onionRPC="\n$blue    Bitcoin RPC onion address: \n\n    $ONION_ADDR_BITCOINRPC:8332 $orange"
 fi
 
 echo -en "
@@ -155,6 +155,7 @@ echo -e "$output3$red                   disable)$orange      Disable Bitcoin tog
                    max)$orange          Set max upload target (default 25GB shared per day)$cyan
                    tor)$orange          p2p Tor/I2P menu options for Bitcoin (port 8333)...  $cyan
                    torrpc)$orange       toggle Tor RPC (port 8332) $cyan
+                   rpcconnect)$orange   QR scan RPC connection...$cyan
                    mm)$orange           Migrate/Revert an external drive...  $cyan
                    delete)$orange       Delete blockchain data and start over $cyan
                    upd)$orange          Update Bitcoin wizard $cyan
@@ -352,6 +353,10 @@ continue
 
 torrpc|rpctor)
 toggle_bitcoin_rpc_tor
+;;
+
+rpcconnect)
+bitcoin_rpcconnect
 ;;
 
 mm|MM|Mm|migrate|Migrate)
@@ -557,4 +562,41 @@ sudo mv /usr/local/bin/*bitcoin* /usr/local/bin/bitcoin_old/
 unpack_bitcoin || return 1
 start_bitcoin
 Success "Bitcoin has been upgraded to Knots."
+}
+
+function bitcoin_rpcconnect {
+
+yesorno "This will expose your Bitcoin connection credentials to the screen via QR and text. 
+    
+    Proceed?" || return 1
+source $bc
+
+if ! which qrencode >$dn 2>1 ; then install_qrencode || return 1 ; fi
+
+thestring="http://$rpcuser:$rpcpassword@$ONION_ADDR_BITCOINRPC:8332"
+theclearnetstring="http://$rpcuser:$rpcpassword@$IP:8332"
+
+announce "
+
+The tor connection...
+$cyan
+$thestring
+
+$(qrencode -t ansiutf8 $thestring)
+
+$orange
+The next screen will show clearnet
+"
+
+announce "
+
+The clearnet connection...
+$cyan
+    $theclearnetstring
+
+$(qrencode -t ansiutf8 $theclearnetstring)
+$orange
+"
+
+
 }
