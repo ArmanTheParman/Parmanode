@@ -117,6 +117,8 @@ fi
 get_onion_address_variable bitcoinRPC
 if sudo test -f $torrc && [[ -n $ONION_ADDR_BITCOINRPC ]] && sudo grep -q "8332 127" $torrc ; then
 onionRPC="\n$blue    Bitcoin RPC onion address: \n\n    $ONION_ADDR_BITCOINRPC:8332 $orange"
+else
+unset onionRPC ONION_ADDR_BITCOINRPC
 fi
 
 echo -en "
@@ -462,109 +464,10 @@ fi
 
 
 
-function bitcoin_tips {
-set_terminal_high ; echo -e "
-########################################################################################$cyan
-                          Parmanode Bitcoin Usage Tips$orange
-########################################################################################
 
-
-    It's nice to see what Bitcoin is up to in real time. Check out the log from the
-    menu. If the log menu is playing up, you can look at it manually with $cyan
-    nano $HOME/.bitcoin/debug.log$orange
-
-    The information like the block height is captured from the debug.log file. It can
-    glitch, no big deal, you can just look at the log and read the progress. The
-    file populates with the newest additions at the bottom. When you see$cyan
-    progress=1.00000000$orange, you know it's fully synced.
-
-    If you have data corruption, Bitcoin will fail to start. Read the log file and 
-    see if it indicates data corruption - you'll have to delete and resync. Parmanode
-    Bitcoin menu has a tool for that.
-
-    If you are having trouble starting/stopping bitcoin, you can try doing it manually.
-    In Mac, use the GUI - click the icon in the Applications menu. In Linux, do$cyan 
-    sudo systemctl COMMAND bitcoind$orange. Replace COMMAND with start, stop, restart, 
-    or status.
-    
-    In you're using the BTCPay combo docker container, restarting the container 
-    manually will be problematic, because the numerous programs do not automatically 
-    load up if the container is simply restarted. Instead, you can manually enter the 
-    container, do$cyan pkill -15 bitcoind$orange, and restart it with
-    
-        $cyan bitcoind -conf=/home/parman/.bitcoin/bitcoin.conf$orange
-
-    If you want to move the data directory somewhere else, first have a look at the
-    ${cyan}dfat$orange menu option in Parmanode-->Tools, and glean from there how the symlinks
-    work. To move or copy the data directory, make sure Bitcoin has been stopped. Then
-    use the$cyan rysync$orange tool from the Parmanode-->Tools menu. It will help you 
-    construct the correct command.
-
-
-########################################################################################
-"
-choose xpmq ; read choice
-jump $choice || { invalid ; continue ; }
-case $choice in
-q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
-*)
-return 0 
-;;
-esac
-
-}
-
-
-function upgrade_to_knots {
-#confirmation
-yesorno "
-    Bitcoin Knots is basically the contributions of all Bitcoin Core developers,
-    except, instead of the 5 seemingly compromised people that have final say 
-    with Bitcoin Core's GitHub repository keys, it is Luke Dashjr who has the 
-    final'veto', and he probably should be Bitcoin Core's lead developer anyway.
-
-    If you proceed, the current Bitcoin binary files will be swapped with the
-    latest Knots binaries. The blockchain and bitcoin.conf file will not be
-    modified.
-
-    Bitcoin will work just like before, but your node will not rely spam
-    from mempool to mempool, and if you are running on clearnet (options
-    1 or 4 from the bitcoin tor menu), then your node will be counted and
-    you'll contribute to sending a message.
-
-    To read a collection of Parman's war Tweets, please visit this link
-    which is the beginning of a chain of Tweets I put in my Twitter Highlights
-    section for easy access:
-$cyan
-    https://x.com/parman_the/status/1966540916530745816
-$orange
-    Proceed?" || return 1
-clear
-stop_bitcoin
-sudo rm -rf $hp/bitcoin
-mkdir -p $hp/bitcoin
-#download binaries, exract to directory, swap old with new.
-knotsbitcoin="true"
-export clientchoice="knots" 
-export knotsversion="29.1"
-export deisversion="28.1"
-export knotsdate="20250903"
-export knotstag="v${knotsversion}.knots${knotsdate}"
-export knotsmajor="29.x"
-export knotsextension="tar.gz"
-cd $hp/bitcoin
-download_bitcoin_getfiles || { enter_continue "Something went wrong." ; return 1 ; }
-parmanode_conf_remove "bitcoin_choice"
-parmanode_conf_add "bitcoin_choice=knots"
-verify_bitcoin || return 1
-sudo mkdir -p /usr/local/bin/bitcoin_old
-sudo mv /usr/local/bin/*bitcoin* /usr/local/bin/bitcoin_old/
-unpack_bitcoin || return 1
-start_bitcoin
-Success "Bitcoin has been upgraded to Knots."
-}
 
 function bitcoin_rpcconnect {
+
 
 yesorno "This will expose your Bitcoin connection credentials to the screen via QR and text. 
     
@@ -576,6 +479,8 @@ if ! which qrencode >$dn 2>1 ; then install_qrencode || return 1 ; fi
 thestring="http://$rpcuser:$rpcpassword@$ONION_ADDR_BITCOINRPC:8332"
 theclearnetstring="http://$rpcuser:$rpcpassword@$IP:8332"
 
+get_onion_address_variable bitcoinRPC
+if sudo test -f $torrc && [[ -n $ONION_ADDR_BITCOINRPC ]] && sudo grep -q "8332 127" $torrc ; then
 announce "
 
 The tor connection...
@@ -587,6 +492,7 @@ $(qrencode -t ansiutf8 $thestring)
 $orange
 The next screen will show clearnet
 "
+fi
 
 announce "
 
