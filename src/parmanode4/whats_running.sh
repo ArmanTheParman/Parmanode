@@ -3,10 +3,7 @@ local tmp=$(mktemp)
 
 ! test -f $p4 && build_config
 
-#    window.apps = { bitcoin:{}, electrs:{}, mempool:{}, lightning:{}, btcpay:{}, nostr:{}, litd:{}, sparrow:{},
-#                    electrum:{}, specter:{}, rtl:{}, thunderhub:{}, alby:{}, bitbox:{}, vaultwarden:{}, 
-#                    green:{}, docker:{}, lnbits:{} };
-isrunning=();
+isrunning=()
 
 isbitcoinrunning
 if [[ $bitcoinrunning == "true" ]] ; then isrunning+=("bitcoin") ; fi

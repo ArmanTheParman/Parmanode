@@ -49,4 +49,10 @@ tmp=$(mktemp)
 } > "$p4"
 
 jq '. + { "running": [] }' "$p4" > $tmp && mv $tmp $p4
+
+app_versions build
+
+tmp=$(mktemp)
+jq --slurpfile v "$dp/versions.json" '.app_versions = $v[0]' "$p4" > $tmp && mv $tmp $p4
+
 } 
