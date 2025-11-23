@@ -57,16 +57,32 @@ jq --slurpfile v "$dp/versions.json" '.app_versions = $v[0]' "$p4" > $tmp2 && mv
 
 whats_running
 connected_drives
+detect_internal_drive
 
 }
 
 function connected_drives {
 #adds fresh state of connected drives to $p4
-
 tmp3=$(mktemp)
 tmp4=$(mktemp)
 # connected drives object
 jq 'del(.blockdevices)' $p4 > $tmp3
 lsblk --nodeps -p --json -o NAME,SIZE,TYPE,MODEL,MOUNTPOINT,TRAN | jq --argfile tmp $tmp3 '$tmp + .' > $tmp4 && mv $tmp4 $p4
+}
 
+function detect_internal_drive {
+
+[[ $OS == "Mac" ]] && return 1 
+
+tmp5=$(mktemp)
+mapfile -t x < <(lsblk --nodeps -p -n -o name)
+for i in ${x[*]} ; do 
+  lsblk -n -o mountpoint $i | while IFS= read -r j ; do if [[ $j == "/" ]] ; then 
+  echo $i > $tmp5
+  fi 
+done
+done
+tmp6=$(mktemp)
+jq 'del(.internaldrive)' $p4 > $tmp6
+printf "{ \"internaldrive\": \"%s\" }", $(cat $tmp5) | jq . | jq --argfile tmp $tmp6 '$tmp + .' > $tmp5 && mv $tmp5 $p4
 }
