@@ -1,17 +1,22 @@
 function build_config {
 
-#build arrays first
-tmp=$(mktemp)
+#starts building $p4 (p4.json) fresh every time.
+
+tmp1=$(mktemp)
+tmp2=$(mktemp)
+tmp3=$(mktemp)
+declare -a INSTALLED=()
+declare -a P_INSTALLED=()
+declare -a P_CONF=()
+declare -a HM_CONF=()
 
   #makes json array list of all installed programs and another of partially installed programs
   if test -f $ic ; then
-  declare -a INSTALLED=()
   while IFS=- read -r name type ; do
     [[ $type == "end" ]] || continue
     INSTALLED+=( "$(jq -R <<<"$name")" )
   done < "$ic" ;
 
-  P_INSTALLED=()
   while IFS=- read -r name type ; do
       [[ $type == "start" ]] || continue
        grep -q "\"$name\"" <<< "${INSTALLED[*]}" && continue
@@ -21,7 +26,6 @@ tmp=$(mktemp)
 
 # Make an array of parmanode.conf
   if test -f $pc ; then
-  P_CONF=()
   while IFS== read -r LHS RHS ; do
     P_CONF+=( "\"$LHS\": \"$RHS\"" )
   done < "$pc"
@@ -29,7 +33,6 @@ tmp=$(mktemp)
 
 # Make an array of hide_messages.conf
   if test -f $hm ; then
-  HM_CONF=()
   while IFS== read -r LHS RHS ; do
     HM_CONF+=( "\"$LHS\": \"$RHS\"" )
   done < "$hm"
@@ -46,13 +49,14 @@ tmp=$(mktemp)
   # hide_messages.conf 
   printf '"hide_messages":{' ; printf '%s,' "${HM_CONF[@]}" | sed 's/,$//' ; printf '}\n'
   printf '}\n'
-} > "$p4"
+} > "$tmp1" && mv $tmp1 $p4
 
-jq '. + { "running": [] }' "$p4" > $tmp && mv $tmp $p4
+# app versions object
+app_versions build #first make versions.json
+jq --slurpfile v "$dp/versions.json" '.app_versions = $v[0]' "$p4" > $tmp2 && mv $tmp2 $p4
 
-app_versions build
+# connected drives object
+lsblk --nodeps -p --json -o NAME,SIZE,TYPE,MODEL,MOUNTPOINT,TRAN | jq --argfile p4 $p4 '$p4 + .' > $tmp3 && mv $tmp3 $p4
 
-tmp=$(mktemp)
-jq --slurpfile v "$dp/versions.json" '.app_versions = $v[0]' "$p4" > $tmp && mv $tmp $p4
 
-} 
+}

@@ -1,1 +1,2 @@
+#show nothing during vim search until you hit enter, keeping the page from jumping around
 :set noincsearch - for vsc
