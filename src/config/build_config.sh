@@ -1,6 +1,7 @@
 function build_config {
 
-#starts building $p4 (p4.json) fresh every time.
+#starts building $p4 (p4.json) fresh every time, so do not try to merge objects to it they will get wiped.
+#whats_running and connected_drives called within this function at the end
 
 tmp1=$(mktemp)
 tmp2=$(mktemp)
@@ -54,7 +55,8 @@ declare -a HM_CONF=()
 app_versions build #first make versions.json
 jq --slurpfile v "$dp/versions.json" '.app_versions = $v[0]' "$p4" > $tmp2 && mv $tmp2 $p4
 
-
+whats_running
+connected_drives
 
 }
 
