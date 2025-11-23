@@ -84,5 +84,5 @@ done
 done
 tmp6=$(mktemp)
 jq 'del(.internaldrive)' $p4 > $tmp6
-printf "{ \"internaldrive\": \"%s\" }", $(cat $tmp5) | jq . | jq --argfile tmp $tmp6 '$tmp + .' > $tmp5 && mv $tmp5 $p4
+printf "{ \"internaldrive\": \"%s\" }" $(cat $tmp5) | jq . | jq --argfile tmp $tmp6 '$tmp + .' > $tmp5 && mv $tmp5 $p4
 }
