@@ -4,7 +4,6 @@ function build_config {
 
 tmp1=$(mktemp)
 tmp2=$(mktemp)
-tmp3=$(mktemp)
 declare -a INSTALLED=()
 declare -a P_INSTALLED=()
 declare -a P_CONF=()
@@ -55,8 +54,17 @@ declare -a HM_CONF=()
 app_versions build #first make versions.json
 jq --slurpfile v "$dp/versions.json" '.app_versions = $v[0]' "$p4" > $tmp2 && mv $tmp2 $p4
 
-# connected drives object
-lsblk --nodeps -p --json -o NAME,SIZE,TYPE,MODEL,MOUNTPOINT,TRAN | jq --argfile p4 $p4 '$p4 + .' > $tmp3 && mv $tmp3 $p4
 
+
+}
+
+function connected_drives {
+#adds fresh state of connected drives to $p4
+
+tmp3=$(mktemp)
+tmp4=$(mktemp)
+# connected drives object
+jq 'del(.blockdevices)' $p4 > $tmp3
+lsblk --nodeps -p --json -o NAME,SIZE,TYPE,MODEL,MOUNTPOINT,TRAN | jq --argfile tmp $tmp3 '$tmp + .' > $tmp4 && mv $tmp $p4
 
 }
