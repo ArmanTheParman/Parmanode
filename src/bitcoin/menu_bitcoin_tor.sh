@@ -100,21 +100,21 @@ m|M) back2main ;; Q|q|quit|QUIT|Quit) exit 0 ;; p|P) return 1 ;;
 #    check_bitcoin_tor_status #sets status in parmanode.conf #delete this function later
     remove_bitcoin_i2p
     if [[ $install == "bitcoin" ]] ; then return 0 ; fi
-    continue ;;
+    return 0 ;;
 
 "2")
     bitcoin_tor "toronly" 
 #    check_bitcoin_tor_status
     remove_bitcoin_i2p
     if [[ $install == "bitcoin" ]] ; then return 0 ; fi
-    continue ;;
+    return 0 ;;
 
 "3")
     bitcoin_tor "toronly" "onlyout" #both $1 and $2 needed
 #    check_bitcoin_tor_status
     remove_bitcoin_i2p
     if [[ $install == "bitcoin" ]] ; then return 0 ; fi
-    continue ;;
+    return 0 ;;
 
 "4"|"8")
     bitcoin_tor_remove 
@@ -125,7 +125,7 @@ m|M) back2main ;; Q|q|quit|QUIT|Quit) exit 0 ;; p|P) return 1 ;;
     remove_bitcoin_i2p
     case $choice in "8") sudo echo "listen=0" | sudo tee -a $bc >$dn 2>&1 ; sudo echo "discover=0" | sudo tee -a $bc >$dn 2>&1 ; esac
     if [[ $install == "bitcoin" ]] ; then return 0 ; fi
-    continue ;;
+    return 0 ;;
 "5")
     [[ $OS == "Mac" ]] && { no_mac ; continue ; }
     bitcoin_tor "toronly"
@@ -135,7 +135,7 @@ m|M) back2main ;; Q|q|quit|QUIT|Quit) exit 0 ;; p|P) return 1 ;;
     parmanode_conf_remove "bitcoin_tor_status"
     parmanode_conf_add "bitcoin_tor_status=tori2p"
     if [[ $install == "bitcoin" ]] ; then return 0 ; fi
-    continue ;;
+    return 0 ;;
 "6") 
     [[ $OS == "Mac" ]] && { no_mac ; continue ; }
     if ! grep -q "i2p-end" $ic ; then install_i2p || { sww ; continue ; } ; fi
@@ -147,7 +147,7 @@ m|M) back2main ;; Q|q|quit|QUIT|Quit) exit 0 ;; p|P) return 1 ;;
     parmanode_conf_remove "bitcoin_tor_status"
     parmanode_conf_add "bitcoin_tor_status=i2p"
     if [[ $install == "bitcoin" ]] ; then return 0 ; fi
-    continue ;;
+    return 0 ;;
 "7") 
     [[ $OS == "Mac" ]] && { no_mac ; continue ; }
     if ! grep -q "i2p-end" $ic ; then install_i2p || { sww ; continue ; } ; fi
@@ -165,7 +165,7 @@ m|M) back2main ;; Q|q|quit|QUIT|Quit) exit 0 ;; p|P) return 1 ;;
     parmanode_conf_remove "bitcoin_tor_status"
     parmanode_conf_add "bitcoin_tor_status=i2ponlyout"
     if [[ $install == "bitcoin" ]] ; then return 0 ; fi
-    continue ;;
+    return 0 ;;
 
 "")
 break ;;
