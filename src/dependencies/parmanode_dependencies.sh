@@ -2,7 +2,7 @@ function parmanode_dependencies {
 [[ $OS == "Mac" ]] && return 1
 #If more programs are added here, version of the flag should increment
 
-[[ $btcpay_combo == "true" ]] && return 0
+[[ $btcpay_combo == "true" || $btcpayinstallsbitcoin="true" || $btcdockerchoice == "yes" ]] && return 0
 
 grep -q "dependency_check1=passed" $pc && return 0
 export ask=false #if no block switches this on to true, then next time, the entire function can be skipped
