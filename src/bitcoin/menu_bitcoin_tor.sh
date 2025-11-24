@@ -189,3 +189,11 @@ function remove_bitcoin_i2p {
     sudo gsed -i "/i2pacceptincoming=/d" $bc > $dn 2>&1
     sudo gsed -i "/proxy=127/d" $bc > $dn 2>&1
 }
+
+
+
+# When in the Docker version
+# bind=0.0.0.0
+# rpcbind=0.0.0.0
+# proxy=host.docker.internal:9050
+# onion=host.docker.internal:9050

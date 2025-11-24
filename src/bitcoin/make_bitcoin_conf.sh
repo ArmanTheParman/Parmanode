@@ -8,7 +8,7 @@ if [[ $1 == prune ]] ; then export prune=$2 ; fi #assumes arguments are "prune" 
 set_terminal
 
 #onlynet=ipv4 is for clearnet, =i2p and =onion also possilbe. Can have more than one. Omitting onlynet allows all.
-#proxy=127.0.0.1:9050 is need for i2p even though it doesn't use it.
+#proxy=127.0.0.1:9050 is needed for i2p even though it doesn't use it.
 #listenonion=1 is default, needs to be off to disable tor
 
 cat << EOF > $tmp/bitcoin.conf

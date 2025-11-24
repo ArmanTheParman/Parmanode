@@ -46,7 +46,8 @@ $cyan
             dd)$orange       Backup/Restore data directory.................(Instructions only) $cyan   
             r)$orange        Errors? Try --reindex blockchain...  $cyan
             h)$orange        Hack Parmanode; tips for troubleshooting.  $cyan
-            ib)$orange       Invalidte Block (emergency/experimantal use only)
+            ib)$orange       Invalidte Block (emergency/experimantal use only)$cyan
+            w)$orange        Wipe clear the debug.log file
 
 
 ########################################################################################
@@ -123,6 +124,10 @@ hack_tips
 ;;
 ib)
 invalidate_block
+;;
+
+w)
+truncate -s 0 $db/debug.log
 ;;
 
 "")
