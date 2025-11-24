@@ -13,7 +13,7 @@ set_terminal  ; echo -e "
 
             $cyan  bqt)$orange    Bitcoin Core QT version $version  
 
-            $cyan   bd)$orange    Bitcoin Core in Docker (bundled with BTCPay)
+            $cyan   bd)$orange    Bitcoin Knots (or Core) in Docker (bundled with BTCPay)
             
 $orange
 ########################################################################################

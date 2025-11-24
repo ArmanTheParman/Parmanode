@@ -21,6 +21,7 @@ fi
 if [[ $btcpay_combo == "true" ]] ; then
 export btcdockerchoice="yes"
 else
+    #check if this is NOT the docker inception install or not (ie the second call to this function from choose_bitcoin_version_mac)
     if [[ $OS == "Mac" && $btcpayinstallsbitcoin != "true" ]] ; then choose_bitcoin_version_mac || return 1 ; fi #get btcdockerchoice=yes or no
 fi
 
@@ -44,11 +45,15 @@ fi #end btcdockerchoice
 export install="bitcoin"
 export install_bitcoin_variable="true" #don't use same name as function!
 
+# only produce this warning for people who try to put bitcoin in docker themselves, rather than automated with parmanode.
 if [[ -e /.dockerenv && $btcpayinstallsbitcoin != "true" ]] ; then announce "Bitcoin can be installed inside a Docker container, but may not
     run as expected with default Parmanode settings - you'll have to tweak."
 fi
 
+# enter block if not btc_pay combo, ie regular install
 if ! [[ $btcpayinstallsbitcoin == "true" || $btcdockerchoice == "yes" ]] ; then
+
+debugfile "install bitcoin line 55 does run, and probably shouldn't"
 
 announce "So you want to install Bitcoin - nice one. May I take to this opportunity 
     to direct you to an essay I wrote about why it's important to run a node? 

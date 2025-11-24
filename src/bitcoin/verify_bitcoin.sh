@@ -14,7 +14,7 @@ else
     curl -fsLO https://bitcoincore.org/bin/bitcoin-core-$version/SHA256SUMS.asc 
 fi
 
-if ! which gpg >$dn  && [[ $OS == Mac ]] ; then install_gpg4mac ; fi
+if ! which gpg >$dn  && [[ $OS == "Mac" ]] ; then install_gpg4mac ; fi
 
 #ignore-missing option not available on shasum
 if which sha256sum >$dn ; then
@@ -31,7 +31,7 @@ $(ls -lah $hp/bitcoin/ | gsed -n '4,$p' | awk '{print "    "$9" .........."$5}')
         -- GPG will be checked next anyway.
         -- The SHA256SUMS file and corresponding signature will be left in
 $cyan        $hp/bitcoin $orange
-      \r    for you to manually check." "For debug, bitcoin_choice $bitcoin_choice, btcpay_combo $btcpay_combo" ; case $enter_cont in yolo) true ;; *) return 1 ;; esac ; fi
+      \r    for you to manually check." "bitcoin_choice: $bitcoin_choice, btcpay_combo: $btcpay_combo" ; case $enter_cont in yolo) true ;; *) return 1 ;; esac ; fi
 else
     if ! shasum -a 256 --check SHA256SUMS 2>$dn | grep -q ": OK" ; then
     sww "${orange}Checksum failed. Aborting. Sometimes this happens for unexplainable reasons. 
