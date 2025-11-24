@@ -70,7 +70,7 @@ return 0
 fi
 
 if [[ $OS == "Linux" ]] ; then 
-sudo systemctl stop bitcoind.service 
+sudo systemctl stop bitcoind.service  >/dev/null
 sleep 0.5
 return 0
 fi
