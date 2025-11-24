@@ -42,8 +42,8 @@ echo -e "
 $cyan
             cd)$orange       Change syncing drive internal vs external $cyan
             mp)$orange       Modify Pruning $cyan
-            c)$orange        How to connect your wallet...........(Otherwise no point to this) $cyan
-            dd)$orange       Backup/Restore data directory.................(Instructions only) $cyan   
+            c)$orange        How to connect your wallet....(Otherwise no point to this) $cyan
+            dd)$orange       Backup/Restore data directory...........(Instructions only) $cyan   
             r)$orange        Errors? Try --reindex blockchain...  $cyan
             h)$orange        Hack Parmanode; tips for troubleshooting.  $cyan
             ib)$orange       Invalidte Block (emergency/experimantal use only)$cyan
@@ -128,6 +128,7 @@ invalidate_block
 
 w)
 truncate -s 0 $db/debug.log
+success "$db/debug.log cleared"
 ;;
 
 "")
