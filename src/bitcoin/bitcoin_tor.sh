@@ -58,20 +58,23 @@ if [[ $1 == "torandclearnet" ]] ; then
 
 if [[ $1 == "toronly" ]] ; then
     sudo gsed -i "/onion=/d" $bc
+    grep -q "discover=0" $bc || echo "discover=0" | sudo tee -a $bc >$dn 2>&1
+    echo "listenonion=1" | sudo tee -a $bc >$dn 2>&1
+    echo "onlynet=onion" | sudo tee -a $bc >$dn 2>&1 #new, disallows outward clearnet connections
+
     if grep -q btcpaycombo-end $ic ; then
         echo "onion=host.docker.internal:9050" | sudo tee -a $bc >$dn 2>&1
     else
         echo "onion=127.0.0.1:9050" | sudo tee -a $bc >$dn 2>&1
     fi
-    grep -q "discover=0" $bc || echo "discover=0" | sudo tee -a $bc >$dn 2>&1
-    echo "listenonion=1" | sudo tee -a $bc >$dn 2>&1
-    echo "onlynet=onion" | sudo tee -a $bc >$dn 2>&1 #new, disallows outward clearnet connections
-        while [[ -z $ONION_ADDR ]] && [[ $count -lt 4 ]] ; do
+
+        while [[ $btcpayinstallsbitcoin != "yes" && -z $ONION_ADDR && $count -lt 4 ]] ; do
         restart_tor
         sleep 3
         get_onion_address_variable "bitcoin"
         count=$((count + 1))
         done 
+
     get_onion_address_variable "bitcoin"
 
     [[ -z $ONION_ADDR ]] && sww "Some issue with getting onion address. Try later or switch to no Tor." && return 1
