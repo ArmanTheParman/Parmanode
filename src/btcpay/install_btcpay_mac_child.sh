@@ -9,7 +9,8 @@ sned_sats
 
 btcpay_install_restore_choice || { sww ; menu_main ; }
 
-choose_btcpay_version || { parmanode_conf_remove "btcpay_version=" ; sww ; menu_main ; }
+#removed when testing install bitcoin with btcpay combo...
+#choose_btcpay_version || { parmanode_conf_remove "btcpay_version=" ; sww ; menu_main ; }
 
 make_btcpay_directories  || { announce "Something went wrong. Aborting." ; sww ; menu_main ; }
     # installed config modifications done

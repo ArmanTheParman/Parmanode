@@ -1,5 +1,5 @@
 function install_bitcoin {
-debugfile "Entering install bitcoin. \nbitcoin_choice=$bitcoin_choice bitcoin_compile=$bitcoin_compile btcpayinstallsbitcoin=$btcpayinstallsbitcoin\nenv...\n  $(env)"
+debugfile "Entering install bitcoin. \nbitcoin_choice=$bitcoin_choice bitcoin_compile=$bitcoin_compile btcpayinstallsbitcoin=$btcpayinstallsbitcoin\nenv...\n"
 
 if grep -q bitcoin-end $ic ; then announce "Bitcoin already installed" ; jump $enter_cont ; return 0 ; fi
 if grep -q bitcoin-start $ic ; then announce "Bitcoin partially installed" ; jump $enter_cont ; uninstall_bitcoin ; return 0 ; fi
