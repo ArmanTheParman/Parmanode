@@ -1,4 +1,6 @@
 function sned_sats {
+[[ $btcpay_combo == "true" ]] && return 0
+
 set_terminal
 echo -ne "
 ########################################################################################

@@ -5,8 +5,8 @@ if ! grep -qE "bitcoin-end" $ic ; then return 0 ; fi
 export debuglogfile="$HOME/.bitcoin/debug.log" 
 
 if grep -q "btccombo" $ic >$dn 2>&1 ; then
-    dockerbitcoinmenu="\n $pink                Bitcoin in Docker Container with BTCPay Server $orange\n"
-    btcman="\n\r          $cyan     man)$orange          Explore Bitcoin/BTCPay container (manr for root)\n"
+    dockerbitcoinmenu="\n $pink                          Bitcoin in Docker Container with BTCPay Server $orange"
+    btcman="\n\r          $cyan         man)$orange          Explore Bitcoin/BTCPay container (manr for root)"
 else
     unset btcman dockerbitcoinmenu
 fi
@@ -95,7 +95,7 @@ if [[ $bitcoinrunning == "true" ]] && tail -n15 $HOME/.bitcoin/debug.log | grep 
 fi
 
 debug "bitcoin menu..."
-set_terminal 45 100 
+set_terminal 46 100 
 if grep -q "disable_bitcoin=true" $pc ; then
          output1="                   Bitcoin is$red DISABLED (type disable to toggle)$orange" 
 fi

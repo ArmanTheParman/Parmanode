@@ -7,11 +7,11 @@ cd $HOME/parmanode/bitcoin
 set_terminal 46 120
 if grep -q "bitcoin_choice=knots" $pc ; then
              
-    curl -LO https://bitcoinknots.org/files/$knotsmajor/$knotsversion.knots$knotsdate/SHA256SUMS 
-    curl -LO https://bitcoinknots.org/files/$knotsmajor/$knotsversion.knots$knotsdate/SHA256SUMS.asc
+    curl -fsLO https://bitcoinknots.org/files/$knotsmajor/$knotsversion.knots$knotsdate/SHA256SUMS 
+    curl -fsLO https://bitcoinknots.org/files/$knotsmajor/$knotsversion.knots$knotsdate/SHA256SUMS.asc
 else
-    curl -LO https://bitcoincore.org/bin/bitcoin-core-$version/SHA256SUMS 
-    curl -LO https://bitcoincore.org/bin/bitcoin-core-$version/SHA256SUMS.asc 
+    curl -fsLO https://bitcoincore.org/bin/bitcoin-core-$version/SHA256SUMS 
+    curl -fsLO https://bitcoincore.org/bin/bitcoin-core-$version/SHA256SUMS.asc 
 fi
 
 if ! which gpg >$dn  && [[ $OS == Mac ]] ; then install_gpg4mac ; fi

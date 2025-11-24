@@ -26,6 +26,9 @@ if [[ $OS == "Linux" ]] ; then
 
     export knotsextension="tar.gz"
     export coreexternsion="tar.gz"
+    export knotsextension_alt="zip"
+    export coreexternsion_alt="zip"
+
 
 else 
     export knotsversion="29.2"
@@ -39,6 +42,8 @@ else
 
     export knotsextension="zip"
     export coreexternsion="tar.gz"
+    export knotsextension_alt="tar.gz"
+    export coreexternsion_alt="zip"
 
 fi
 
