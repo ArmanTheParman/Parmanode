@@ -47,12 +47,13 @@ parmanode_conf_add "btcpay_version=$btcpay_version_choice"
 break
 ;;
 hfsp)
+debug "in hfsp option"
 export btcpay_version_choice="v$newer_version"
 parmanode_conf_add "btcpay_version=$btcpay_version_choice"
 break
 ;;
 yolo)
-export btcpay_version_choice=master
+export btcpay_version_choice="master"
 parmanode_conf_add "btcpay_version=latest"
 break
 ;;

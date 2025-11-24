@@ -3,7 +3,7 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0
 ENV DEBIAN_FRONTEND=noninteractive
 ENV TZ=America/New_York
 ARG parmanID=1000
-ARG btcpay_version="v1.12.5"
+ARG btcpay_version="v2.0.3"
 
 RUN apt-get update -y
 RUN apt-get install -y wget gnupg sudo procps vim nano systemd curl git expect iproute2
@@ -38,7 +38,11 @@ RUN cd ~/parmanode/NBXplorer && git checkout v2.5.0 && chown -R parman ./* ; ./b
 RUN mkdir -p ~/.nbxplorer/Main
 
 #install BTCpayserver
-RUN cd ~/parmanode && git clone https://github.com/btcpayserver/btcpayserver.git && cd btcpayserver && git checkout $btcpay_version && ./build.sh
+RUN cd ~/parmanode 
+RUN git clone https://github.com/btcpayserver/btcpayserver.git 
+RUN cd btcpayserver 
+RUN git checkout $btcpay_version 
+RUN ./build.sh
 RUN mkdir -p ~/.btcpayserver/Main 
 
-CMD tail -f /dev/null
+CMD [ "tail", "-f", "/dev/null" ]

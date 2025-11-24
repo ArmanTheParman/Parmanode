@@ -1,36 +1,37 @@
 function install_btcpay_mac_child {
 #called from install_bitcoin.
 #docker should be running and checked
+debug "in install_btcpay_mac_child"
 
 export btcpayinstallsbitcoin="true"
 set_terminal
 sned_sats
 
-btcpay_install_restore_choice || return 1
+btcpay_install_restore_choice || { sww ; menu_main ; }
 
-choose_btcpay_version || { parmanode_conf_remove "btcpay_version=" ; return 1 ; }
+choose_btcpay_version || { parmanode_conf_remove "btcpay_version=" ; sww ; menu_main ; }
 
-make_btcpay_directories  || { announce "Something went wrong. Aborting." ; return 1 ; }
+make_btcpay_directories  || { announce "Something went wrong. Aborting." ; sww ; menu_main ; }
     # installed config modifications done
     # .btcpayserver and .nbxplorer
 
-btcpay_config || return 1
+btcpay_config || { sww ; menu_main ; }
 
-nbxplorer_config || return 1
+nbxplorer_config || { sww ; menu_main ; }
 
-build_btcpay || return 1
+build_btcpay || { sww ; menu_main ; }
 
-run_btcpay_docker || return 1
+run_btcpay_docker || { sww ; menu_main ; }
 
-install_bitcoin_inside_docker|| announce "Error in installing Bitcoin inside Docker container. Continuing with warning."
+install_bitcoin_inside_docker|| sww "Error in installing Bitcoin inside Docker container. Continuing with warning."
 
-initialise_postgres_btcpay || return 1 
-
-sleep 4
-start_nbxplorer_indocker || return 1
+initialise_postgres_btcpay || { sww ; menu_main ; }
 
 sleep 4
-start_btcpay_indocker || return 1 
+start_nbxplorer_indocker || { sww ; menu_main; }
+
+sleep 4
+start_btcpay_indocker || { sww ; menu_main ; }
 
 docker exec -itu root btcpay bash -c "apt-get install tor -y"
 
@@ -73,8 +74,9 @@ cd $pn >$dn ; onbranch=$(git status | grep "On branch" | sed 's/On branch/ /g' |
 docker exec -itu parman btcpay bash -c "cd /home/parman/parman_programs/parmanode && git checkout $onbranch"
 docker exec -itu parman btcpay bash -c "cd /home/parman/parman_programs/parmanode && git pull"
 docker exec -itu root btcpay bash -c "ln -s /usr/bin/sed /usr/bin/gsed"
+debug "btcpayinstallsbitcoin, $btcpayinstallsbitcoin, btcpay_version_choice $btcpay_version_chioce"
 docker exec -itu parman btcpay bash -l -c "echo 'parmanode' | sudo -S true ; export dn=/dev/null ; cd /home/parman/parman_programs/parmanode && btcpayinstallsbitcoin=\"true\" ./run_parmanode.sh" || return 1
-if [[ $onbranch != master ]] ; then
+if [[ $onbranch != "master" ]] ; then
     if yesorno "Revert container's Parmanode install back to master branch?" ; then 
         docker exec -itu parman btcpay bash -c "cd /home/parman/parmandd_programs/parmanode && git checkout master"
     fi

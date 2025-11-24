@@ -1,3 +1,5 @@
+Version 3.67.11
+     -Fixed version config bug
 Version 3.67.10
      -Added onion address for Bitcoin RPC, optional.
      -Added QR screen for Bitcoin RPC connect.

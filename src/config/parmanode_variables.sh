@@ -113,4 +113,7 @@ fi
 export PTWINCONF=$hp/parmatwin/parmatwin.conf
 export PSCONFIG=$hp/parmasync/parmasync.conf
 export PTWINDATAUSAGE=$hp/parmatwin/.data_usage_total.txt
+
+
+app_versions
 }
