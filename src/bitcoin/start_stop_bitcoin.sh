@@ -57,6 +57,7 @@ function stop_bitcoin {
 if [[ -e /.dockerenv ]] ; then
 pn_tmux "pkill bitcoind >/dev/null" "stopping_bitcoin"
 sleep 0.5
+debug "stop_bitcoin 60"
 return 0
 fi
 
@@ -66,18 +67,21 @@ pn_tmux "
 docker exec -it btcpay pkill bitcoind >/dev/null
 " "stopping_bitcoin"
 sleep 0.5
+debug "stop_bitcoin 70"
 return 0
 fi
 
 if [[ $OS == "Linux" ]] ; then 
 sudo systemctl stop bitcoind.service  >/dev/null
 sleep 0.5
+debug "stop_bitcoin 77"
 return 0
 fi
 
 if [[ $OS == "Mac" ]] ; then
 stop_bitcoinqt
 sleep 0.5
+debug "stop_bitcoin 84"
 return 0
 fi
 }
@@ -94,6 +98,7 @@ pn_tmux "
 docker exec -itu parman btcpay bitcoin-cli stop
 " "stopping_bitcoin"
 sleep 0.5
+debug "stop_bitcoin_docker 101"
 return 0
 }
 
