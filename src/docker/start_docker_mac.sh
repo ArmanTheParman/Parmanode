@@ -7,9 +7,9 @@ while true ; do
 if docker ps >$dn 2>&1  ; then return 0 ; fi
 set_terminal ; echo -e "
 ######################################################################################## $cyan
-                         DOCKER is starting, please wait...
+                         DOCKER is starting, please wait...$orange                       
 ########################################################################################
-$orange                       
+
     Docker should be loading; it sometimes could take a minute or so. There may be a
     graphical pop-up - make sure to accept the terms and conditions if that appears,
     otherwise Parmanode (& Docker) will not work. 
