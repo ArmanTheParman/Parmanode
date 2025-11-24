@@ -2,7 +2,6 @@ function pn_tmux {
 command="$1"
 tmuxname="$2"
 tmuxname=${tmuxname:-$(mktemp -u session-XXXXXX)}
-
 if ! which tmux >$dn 2>&1 ; then 
 yesorno "Need tmux for this to work. OK to install?" || return 1
 fi
@@ -11,7 +10,7 @@ install_tmux #exits if installed
 
 TMUX2=$TMUX ; unset TMUX ; clear
 
-if echo "$(tmux ls)" | grep -q $tmuxname ; then sww "TMUX session $tmuxname already exists. Exiting." ; return 1 ; fi
+if echo "$(tmux ls 2>/dev/null)" | grep -q $tmuxname ; then sww "TMUX session $tmuxname already exists. Exiting." ; return 1 ; fi
 
     if [[ $NODAEMON == "true" ]] ; then
         tmux new -s $tmuxname "$command"

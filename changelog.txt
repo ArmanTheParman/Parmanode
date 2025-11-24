@@ -2,6 +2,7 @@ Version 3.67.11
      -Fixed version config bug
      -Added truncate debug.log option for bitcoin
      -Made Bitcoin docker install better with more version options
+     -Found and fixed annoying tmux error output on starting/stopping
 Version 3.67.10
      -Added onion address for Bitcoin RPC, optional.
      -Added QR screen for Bitcoin RPC connect.
