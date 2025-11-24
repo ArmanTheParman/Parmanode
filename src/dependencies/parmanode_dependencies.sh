@@ -1,6 +1,9 @@
 function parmanode_dependencies {
 [[ $OS == "Mac" ]] && return 1
 #If more programs are added here, version of the flag should increment
+
+[[ $btcpay_combo == "true" ]] && return 0
+
 grep -q "dependency_check1=passed" $pc && return 0
 export ask=false #if no block switches this on to true, then next time, the entire function can be skipped
 
@@ -194,6 +197,7 @@ if ! dpkg -l | grep -q libfuse && ! sudo grep -q "dont_install_libfuse" $dp/.don
       
     esac
 fi   
+
 ### optional ... 
     unset install_array
     declare -a install_array

@@ -1,5 +1,8 @@
 function curl_check {
-if ! which curl >$dn 2>&1 ; then
+if ! which curl >$dn 2>&1 ; then 
+
+    if [[ $btcpay_combo == "true" ]] ; then sudo apt-get install curl -y ; return 0 ; fi
+
 while true ; do
 #don't use echo -e
 set_terminal ; echo "

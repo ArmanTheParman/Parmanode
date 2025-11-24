@@ -2,6 +2,8 @@ function gpg_check {
 
 which gpg >$dn 2>&1 && return 0
 
+    if [[ $btcpay_combo == "true" ]] ; then sudo apt-get install gpg -y ; return 0 ; fi
+
 while true ; do 
 set_terminal #don't use echo -e
 echo "

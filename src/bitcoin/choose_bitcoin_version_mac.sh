@@ -48,7 +48,7 @@ export btcdockerchoice=no
 break
 ;;
 bd)
-export btcdockerchoice=yes
+export btcdockerchoice="yes"
 export bitcoin_compile="false"
 break
 ;;
