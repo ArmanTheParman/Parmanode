@@ -46,7 +46,8 @@ if [[ $OS == "Mac" ]] && ! grep -q "colourscheme=" $pc ; then
    change_colours inverted 
 fi
 
-debug "printed colours" "silent"
+debug "printed colours" 
+debugfile "test debugfile: ON"
 #if [[ $debug == 1 ]] ; then echo -e "${orange}printed colours, hit <enter>" ; read ; fi
 
 test_standard_install
@@ -119,7 +120,7 @@ if [[ $exit_loop == "false" ]] ; then return 0 ; fi
 # when they exit.
 clean_exit 
 
-if [[ $enter_cont == d ]] ; then unset debug ; fi
+if [[ $enter_cont == "d" ]] ; then unset debug ; fi
 # before the screen is cleared.
 custom_startup $@
 if [[ $btcpayinstallsbitcoin == "true" ]] ; then install_bitcoin ; exit ; fi
@@ -135,7 +136,6 @@ fi
 #Commands that refresh data
 pn_tmux "$dp/scripts/update_external_IP2.sh" "checking_external_IP"
 test_8333_reachable
-debug 0
 jump $1
 
 #
