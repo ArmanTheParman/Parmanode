@@ -20,6 +20,7 @@ docker run -d -u parman \
            -p 8333:8333 \
            -p 8332:8332 \
            -p 49393:49392 \
+           -p 7656:7656 \
            -p 23001:23001 \
            btcpay >$dn
 #           -p 24444:24444 \
@@ -31,5 +32,6 @@ fi
 
 # Notes:
 # 49392 is for REST API
+# 7656 is for i2p
    
 

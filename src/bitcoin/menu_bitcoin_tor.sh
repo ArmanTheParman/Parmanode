@@ -177,10 +177,22 @@ done
 }
 
 function bitcoin_i2p {
+
     echo "onlynet=i2p" | sudo tee -a $bc >$dn 2>&1
-    echo "i2psam=127.0.0.1:7656" | sudo tee -a $bc >$dn 2>&1
+    if grep -q btcpaycombo-end $ic ; then
+
+        docker ps | grep btcpay | grep -q 7656 || { sww "Looks like you installed BTCPay/Bitcoin combo in an earlier version
+        \r when i2p wasn't available. To make this work with i2p, you need to reinstall 
+        \r the BTCP/Bitcoin so that the correct i2p ports are available. You should select something
+        \r else from the Tor menu to refresh partial changes, or things might not work." && return 1 ; }
+
+        echo "i2psam=host.docker.internal:7656" | sudo tee -a $bc >$dn 2>&1
+        echo "proxy=host.docker.internal:9050" | sudo tee -a $bc >$dn 2>&1 #always need it, settings don't need it, so always remove when removing i2p
+    else
+        echo "i2psam=127.0.0.1:7656" | sudo tee -a $bc >$dn 2>&1
+        echo "proxy=127.0.0.1:9050" | sudo tee -a $bc >$dn 2>&1 #always need it, settings don't need it, so always remove when removing i2p
+    fi
     echo "i2pacceptincoming=1" | sudo tee -a $bc >$dn 2>&1
-    echo "proxy=127.0.0.1:9050" | sudo tee -a $bc >$dn 2>&1 #always need it, settings don't need it, so always remove when removing i2p
 }
 
 function remove_bitcoin_i2p {
@@ -188,12 +200,6 @@ function remove_bitcoin_i2p {
     sudo gsed -i "/i2psam=/d" $bc  > $dn 2>&1
     sudo gsed -i "/i2pacceptincoming=/d" $bc > $dn 2>&1
     sudo gsed -i "/proxy=127/d" $bc > $dn 2>&1
+    sudo gsed -i "/proxy=host.docker.internal/d" $bc > $dn 2>&1
 }
 
-
-
-# When in the Docker version
-# bind=0.0.0.0
-# rpcbind=0.0.0.0
-# proxy=host.docker.internal:9050
-# onion=host.docker.internal:9050
