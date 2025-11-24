@@ -55,7 +55,7 @@ function stop_bitcoin {
 
 #for docker (no systemctl, use tmux)
 if [[ -e /.dockerenv ]] ; then
-pn_tmux "pkill bitcoind" "stopping_bitcoin"
+pn_tmux "pkill bitcoind >/dev/null" "stopping_bitcoin"
 sleep 0.5
 return 0
 fi
@@ -63,7 +63,7 @@ fi
 #needs to be first...
 if grep -q btccombo $ic ; then
 pn_tmux "
-docker exec -it btcpay pkill bitcoind
+docker exec -it btcpay pkill bitcoind >/dev/null
 " "stopping_bitcoin"
 sleep 0.5
 return 0
@@ -98,16 +98,16 @@ return 0
 }
 
 function stop_bitcoinqt {
-if [[ $OS == Mac ]] ; then
+if [[ $OS == "Mac" ]] ; then
 
-    if [[ $1 == force ]] ; then pn_tmux "killall Bitcoin-Qt" "stopping_bitcoin" ; fi
+    if [[ $1 == "force" ]] ; then pn_tmux "killall Bitcoin-Qt" "stopping_bitcoin" ; fi
 
     pn_tmux "pkill -15 Bitcoin-Qt" "stopping_bitcoin"
 #    while pgrep "Bitcoin-Qt" >$dn; do
 #    sleep 1
 #    done
 
-elif [[ $OS == Linux ]] ; then
+elif [[ $OS == "Linux" ]] ; then
     pn_tmux "pkill -15 bitcoin-qt" "stopping_bitcoin"
 #    while pgrep bitcoin-qt >$dn ; do
 #    sleep 0.5
@@ -116,11 +116,11 @@ fi
 
 }
 function start_bitcoinqt {
-if [[ $OS == Mac ]] ; then
+if [[ $OS == "Mac" ]] ; then
     pn_tmux "open /Applications/Bitcoin-Qt.app" "starting_bitcoin"
     sleep 0.5
     return 0
-elif [[ $OS == Linux ]] ; then
+elif [[ $OS == "Linux" ]] ; then
     if pgrep bitcoin >$dn 2>&1 ; then return 1 ; fi
     nohup bitcoin-qt >$dn 2>&1 &
     sleep 1
