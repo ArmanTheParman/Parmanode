@@ -5,6 +5,7 @@ if [[ $SKIPVERIFY == "true" ]] ; then return 0 ; fi
 
 cd $HOME/parmanode/bitcoin
 set_terminal 46 120
+debug "bitcoin_choice, $bitcoin_choice; bitcoin_combo, $bitcoin_combo"
 if grep -q "bitcoin_choice=knots" $pc || [[ $bitcoin_choice == "knots" ]] ; then
     curl -fsLO https://bitcoinknots.org/files/$knotsmajor/$knotsversion.knots$knotsdate/SHA256SUMS 
     curl -fsLO https://bitcoinknots.org/files/$knotsmajor/$knotsversion.knots$knotsdate/SHA256SUMS.asc
@@ -30,7 +31,7 @@ $(ls -lah $hp/bitcoin/ | gsed -n '4,$p' | awk '{print "    "$9" .........."$5}')
         -- GPG will be checked next anyway.
         -- The SHA256SUMS file and corresponding signature will be left in
 $cyan        $hp/bitcoin $orange
-      \r    for you to manually check." ; case $enter_cont in yolo) true ;; *) return 1 ;; esac ; fi
+      \r    for you to manually check." "For debug, bitcoin_choice $bitcoin_choice, btcpay_combo $btcpay_combo" ; case $enter_cont in yolo) true ;; *) return 1 ;; esac ; fi
 else
     if ! shasum -a 256 --check SHA256SUMS 2>$dn | grep -q ": OK" ; then
     sww "${orange}Checksum failed. Aborting. Sometimes this happens for unexplainable reasons. 
