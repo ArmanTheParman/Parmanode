@@ -74,7 +74,6 @@ cd $pn >$dn ; onbranch=$(git status | grep "On branch" | sed 's/On branch/ /g' |
 docker exec -itu parman btcpay bash -c "cd /home/parman/parman_programs/parmanode && git checkout $onbranch"
 docker exec -itu parman btcpay bash -c "cd /home/parman/parman_programs/parmanode && git pull"
 docker exec -itu root btcpay bash -c "ln -s /usr/bin/sed /usr/bin/gsed"
-debug "btcpayinstallsbitcoin, $btcpayinstallsbitcoin, btcpay_version_choice $btcpay_version_chioce"
 docker exec -itu parman btcpay bash -l -c "echo 'parmanode' | sudo -S true ; export dn=/dev/null ; cd /home/parman/parman_programs/parmanode && btcpayinstallsbitcoin=\"true\" ./run_parmanode.sh" || return 1
 if [[ $onbranch != "master" ]] ; then
     if yesorno "Revert container's Parmanode install back to master branch?" ; then 

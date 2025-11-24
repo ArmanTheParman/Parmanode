@@ -128,10 +128,12 @@ case $choice in
 q|Q) exit 0 ;; p|P) return 1 ;; m|M) back2main ;;
 1|"")
 parmanode_conf_add "bitcoin_choice=knots"
+export bitcoin_choice="knots"
 export bitcoin_compile="false" 
 export knotsbitcoin="true" ; version="$knotsmajor-knots" ; return 0 ;;
 2)
 parmanode_conf_add "bitcoin_choice=knots"
+export bitcoin_choice="knots"
 export bitcoin_compile="true"
 export knotsbitcoin="true" ; export version="$knotsmajor-knots" ; return 0 ;;
 3)
@@ -140,8 +142,10 @@ export knotsdate="20250305"
 export knotsmajor="28.x"
 #probably redundant
 export knotstag="v${knotsversion}.knots${knotsdate}"
+export bitcoin_choice="knots"
 
 parmanode_conf_add "bitcoin_choice=knots"
+export bitcoin_choice="knots"
 export bitcoin_compile="false" 
 export knotsbitcoin="true" ; version="$knotsmajor-knots" ; return 0 
 ;;
