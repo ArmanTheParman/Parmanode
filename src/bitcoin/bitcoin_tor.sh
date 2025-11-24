@@ -68,7 +68,7 @@ if [[ $1 == "toronly" ]] ; then
         echo "onion=127.0.0.1:9050" | sudo tee -a $bc >$dn 2>&1
     fi
 
-        while [[ $btcpayinstallsbitcoin != "yes" && -z $ONION_ADDR && $count -lt 4 ]] ; do
+        while [[ $btcpayinstallsbitcoin != "true" && -z $ONION_ADDR && $count -lt 4 ]] ; do
         restart_tor
         sleep 3
         get_onion_address_variable "bitcoin"
