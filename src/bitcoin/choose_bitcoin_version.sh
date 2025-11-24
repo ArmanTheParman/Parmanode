@@ -1,12 +1,14 @@
 function choose_bitcoin_version {
 if [[ $version == "self" ]] ; then return 0 ; fi
-if [[ $OS == "Mac" ]] ; then return 0 ; fi
 
-if [[ $btcpayinstallsbitcoin == "true" || $btcdockerchoice == "yes" ]] ; then
-parmanode_conf_add "bitcoin_choice=precompiled"
-export bitcoin_compile="false"
-return 0
-fi
+#allow Macs to proceed if installing with docker (linux container)
+if [[ $OS == "Mac" && ! $btcdockerchoice == "yes" ]] ; then return 0 ; fi
+
+#if [[ $btcpayinstallsbitcoin == "true" || $btcdockerchoice == "yes" ]] ; then
+#parmanode_conf_add "bitcoin_choice=precompiled"
+#export bitcoin_compile="false"
+#return 0
+#fi
 
 while true ; do
 set_terminal 32 120 ; echo -e "$orange
