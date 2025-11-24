@@ -58,7 +58,7 @@ function debugfile {
 if test -f $tmp/debugon ; then
 
 echo -e "${FUNCNAME[1]} <-- ${FUNCNAME[2]}" 
-echo -e "Debug point. Message:
+echo -e "DEBUGFILE enabled: Message:
 
 $@
 "
