@@ -7,6 +7,9 @@ RUN apt-get update -y && apt-get install -y --no-install-recommends \
     socat \
     procps \
     clang \
+    llvm \
+    clang \
+    libclang-dev \
     && rm -rf /var/lib/apt/lists/*
 #Make users and groups and directories
 RUN groupadd -r parman && useradd -m -g parman -u 1000 parman 
