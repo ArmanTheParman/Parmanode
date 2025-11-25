@@ -1,3 +1,5 @@
+Version 3.67.13
+     -electrs docker compile error fixed
 Version 3.67.12
      -electrs compile fix for new macs
 Version 3.67.11
