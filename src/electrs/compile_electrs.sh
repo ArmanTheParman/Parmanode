@@ -1,6 +1,7 @@
 function compile_electrs {
 set_terminal ; echo "   Compiling electrs..."
 please_wait ; echo ""
+[[ $OS == "Mac" ]] && export LIBCLANG_PATH=$(brew --prefix llvm)/lib 
 cd $HOME/parmanode/electrs && cargo build --locked --release > $tmp/cargo_build.log
 if [[  ! -e $HOME/parmanode/electrs/target/release/electrs ]] ; then
     if grep -q "perhaps you ran out of disk space" $tmp/cargo_build.log ; then 

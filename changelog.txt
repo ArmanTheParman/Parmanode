@@ -1,3 +1,5 @@
+Version 3.67.12
+     -electrs compile fix for new macs
 Version 3.67.11
      -Fixed version config bug
      -Added truncate debug.log option for bitcoin
