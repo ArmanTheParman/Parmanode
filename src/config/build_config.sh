@@ -52,8 +52,9 @@ declare -a HM_CONF=()
 } > "$tmp1" && mv $tmp1 $p4
 
 # app versions object
-app_versions build #first make versions.json
-jq --slurpfile v "$dp/versions.json" '.app_versions = $v[0]' "$p4" > $tmp2 && mv $tmp2 $p4
+  app_versions build #first make versions.json
+  # add new app_versions to p4
+  jq --slurpfile v "$dp/versions.json" '.app_versions = $v[0]' "$p4" > $tmp2 && mv $tmp2 $p4
 
 whats_running
 connected_drives
@@ -63,12 +64,10 @@ detect_internal_drive
 
 function connected_drives {
 #adds fresh state of connected drives to $p4
-tmp3=$(mktemp)
-tmp4=$(mktemp)
 # connected drives object
-jq 'del(.blockdevices)' $p4 > $tmp3
-lsblk --nodeps -p --json -o NAME,SIZE,TYPE,MODEL,MOUNTPOINT,TRAN | jq --argfile tmp $tmp3 '$tmp + .' > $tmp4 && mv $tmp4 $p4
-rm $tmp3 >/dev/null
+# not needed... jq 'del(.blockdevices)' $p4 > $tmp3
+tmp4=$(mktemp)
+lsblk --nodeps -p --json -o NAME,SIZE,TYPE,MODEL,MOUNTPOINT,TRAN | jq --argfile p4 "$p4" '$p4 + .' > $tmp4 && mv $tmp4 $p4
 }
 
 function detect_internal_drive {
@@ -84,10 +83,7 @@ for i in ${x[*]} ; do
   done < <( lsblk -n -o mountpoint $i)
 done 
 
-tmp6=$(mktemp)
 tmp7=$(mktemp)
-
-jq 'del(.internaldrive)' $p4 > $tmp6
-
-printf "{ \"internaldrive\": \"%s\" }" $target | jq . | jq --argfile tmp $tmp6 '$tmp + .' > $tmp7 && mv $tmp7 $p4 && rm $tmp6 >$dn
+#jq 'del(.internaldrive)' $p4 > $tmp6
+printf "{ \"internaldrive\": \"%s\" }" $target | jq --argfile p4 "$p4" '$p4 + .' > $tmp7 && mv $tmp7 $p4
 }

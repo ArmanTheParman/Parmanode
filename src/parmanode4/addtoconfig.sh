@@ -1,13 +1,13 @@
+#commad separated list of arguments, key1=val1,key2=val2 etc...
+
 function addToConfig {
+echo "$@" > /tmp/addtoconfig
 
-{
-echo "All args..."
-echo "$@"
-echo ""
-echo "Arg 1"
-echo "$1"
-echo "Arg 2"
-echo "$2"
-} > /tmp/addtoconfig
+IFS=, read -r -a items <<<"$@"
 
-}
+for item in ${items[@} ; do
+    key=${item%=*}
+    val=${item#*=}
+done
+
+
