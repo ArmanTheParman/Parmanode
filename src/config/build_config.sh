@@ -68,6 +68,7 @@ tmp4=$(mktemp)
 # connected drives object
 jq 'del(.blockdevices)' $p4 > $tmp3
 lsblk --nodeps -p --json -o NAME,SIZE,TYPE,MODEL,MOUNTPOINT,TRAN | jq --argfile tmp $tmp3 '$tmp + .' > $tmp4 && mv $tmp4 $p4
+rm $tmp3 >/dev/null
 }
 
 function detect_internal_drive {
