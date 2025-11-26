@@ -51,8 +51,7 @@ declare -a HM_CONF=()
   printf '}\n'
 } > "$tmp1" 
 tmp1b=$(mktemp)
-jq --argfile tmp1 $tmp1 '. + $tmp1' $p4 > $tmp1b
-&& mv $tmp1b $p4
+jq --argfile tmp1 $tmp1 '. + $tmp1' $p4 > $tmp1b && mv $tmp1b $p4
 
 # app versions object
   app_versions build #first make versions.json
