@@ -4,10 +4,13 @@ function addToConfig {
 echo "$@" > /tmp/addtoconfig
 
 IFS=, read -r -a items <<<"$@"
-
-for item in ${items[@} ; do
+tmp1=$(mktemp)
+for item in ${items[@]} ; do
     key=${item%=*}
     val=${item#*=}
+    jq --arg key "$key" --arg val "$val" '.[$key] = $val' $p4 > $tmp1 && cp $tmp1 $p4
 done
+rm $tmp1
+}
 
 
