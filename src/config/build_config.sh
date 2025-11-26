@@ -1,6 +1,6 @@
 function build_config {
 
-#starts building $p4 (p4.json) fresh every time, so do not try to merge objects to it they will get wiped.
+#starts building $p4 (p4.json) 
 #whats_running and connected_drives called within this function at the end
 
 tmp1=$(mktemp)
@@ -49,7 +49,10 @@ declare -a HM_CONF=()
   # hide_messages.conf 
   printf '"hide_messages":{' ; printf '%s,' "${HM_CONF[@]}" | sed 's/,$//' ; printf '}\n'
   printf '}\n'
-} > "$tmp1" && mv $tmp1 $p4
+} > "$tmp1" 
+tmp1b=$(mktemp)
+jq --argfile tmp1 $tmp1 '. + $tmp1' $p4 > $tmp1b
+&& mv $tmp1b $p4
 
 # app versions object
   app_versions build #first make versions.json
