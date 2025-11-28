@@ -4,8 +4,8 @@
 function addtoconfig {
 
 #exit if malformed function call
-grep -q "=" <<<"$*" | return 1 
-[[ -z $1 ]] || return 1
+grep -q "=" <<<"$*" || return 1 
+[[ -z $1 ]] && return 1
 
 IFS=, read -r -a items <<<"$*"
 
