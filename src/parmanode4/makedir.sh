@@ -1,5 +1,6 @@
 function makedir {
 echo $(whoami) >> /tmp/whoamitest
+echo "ARG=[$1]" >> /tmp/makedir_debug.txt
 test -d "$1" && return 0
 
 mkdir -p "$1"
