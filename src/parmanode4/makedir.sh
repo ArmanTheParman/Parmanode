@@ -1,5 +1,5 @@
 function makedir {
-
+echo $(whoami) >> /tmp/whoamitest
 test -d "$1" && return 0
 
 mkdir -p "$1"
