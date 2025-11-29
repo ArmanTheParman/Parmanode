@@ -167,7 +167,7 @@ if [[ $OS == "Linux" ]] ; then
         return 1 
     fi
 
-    if [[ -e $hp/bitcoin_github ]] ; then echo -e "
+    if [[ -e "hp/bitcoin_github" ]] ; then echo -e "
 ########################################################################################
     Delete$cyan $hp/bitcoin_github$orange directory (it can get big), 
     you can save space.
