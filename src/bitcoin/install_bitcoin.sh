@@ -109,8 +109,8 @@ download_bitcoin || return 1
 fi
 
 #setup bitcoin.conf
-make_bitcoin_conf || { sww & return 1 ; }
-[[ $btcdockerchoice == "yes" ]] || { menu_bitcoin_tor || { sww & return 1 ; } ; }
+make_bitcoin_conf || { sww && return 1 ; }
+[[ $btcdockerchoice == "yes" ]] || { menu_bitcoin_tor || { sww && return 1 ; } ; }
 #make a script that service file will use
 if [[ $OS == "Linux" && $btcpayinstallsbitcoin != "true" && $btcdockerchoice != "yes" ]] ; then
     make_mount_check_script 
