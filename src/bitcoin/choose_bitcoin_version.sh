@@ -1,4 +1,5 @@
 function choose_bitcoin_version {
+#also accessed by parmaview
 if [[ $version == "self" ]] ; then return 0 ; fi
 
 #allow Macs to proceed if installing with docker (linux container)
@@ -35,7 +36,7 @@ $cyan
 
 ########################################################################################################################
 "
-choose "xpmq" && read choice #parmaview won't be blocked because choose returns 1
+choose "xpmq" && read choice #parmaview won't be blocked because choose() returns 1
 jump $choice || { invalid ; continue ; } ; set_terminal
 [[ $parmaview == 1 ]] && choice="parmaview"
 case $choice in
@@ -125,48 +126,54 @@ $cyan
 $cyan
      2)$orange     Guided compile Bitcoin KNOTS, v$knotsversion
 $cyan
-     3)$orange     Pre-compile Bitcoin Knots, v28.1 (March 5, 2025)
+     3)$orange     Pre-compile Bitcoin KNOTS, v28.1 (March 5, 2025)
+$cyan
+     4)$orange     Guided compile Bitcoin KNOTS, v28.1 (March 5, 2025)
 
 
 ########################################################################################################################
 "
 choose "xpmq" && read choice
 jump $choice || { invalid ; continue ; } ; set_terminal
-[[ $parmaview == 1 ]] && choice="1"
+
+parmanode_conf_add "bitcoin_choice=knots"
+export bitcoin_choice="knots"
+export knotsbitcoin="true"
+
+[[ $parmaview == 1 ]] && {
+    [[ "$(jq -r .bitcoin.bitcoin_compile $p4)" == "false" ]] && [[ "$(jq -r .bitcoin.version $p4)" == "$knotsversion" ]] && choice=1
+    [[ "$(jq -r .bitcoin.bitcoin_compile $p4)" == "true" ]] && [[ "$(jq -r .bitcoin.version $p4)" == "$knotsversion" ]] && choice=2
+    [[ "$(jq -r .bitcoin.bitcoin_compile $p4)" == "true" ]] && [[ "$(jq -r .bitcoin.version $p4)" == "28.1" ]] && choice=3
+    [[ "$(jq -r .bitcoin.bitcoin_compile $p4)" == "false" ]] && [[ "$(jq -r .bitcoin.version $p4)" == "28.1" ]] && choice=4
+}
 
 case $choice in
 q|Q) exit 0 ;; p|P) return 1 ;; m|M) back2main ;;
 1|"")
-parmanode_conf_add "bitcoin_choice=knots"
-export bitcoin_choice="knots"
 export bitcoin_compile="false" 
-export knotsbitcoin="true" ; version="$knotsmajor-knots" ; return 0 ;;
+version="$knotsmajor-knots" ; return 0 ;;
 2)
-parmanode_conf_add "bitcoin_choice=knots"
-export bitcoin_choice="knots"
 export bitcoin_compile="true"
-export knotsbitcoin="true" ; export version="$knotsmajor-knots" ; return 0 ;;
+export version="$knotsmajor-knots" ; return 0 ;;
 3)
 export knotsversion="28.1"
 export knotsdate="20250305"
 export knotsmajor="28.x"
 #probably redundant
 export knotstag="v${knotsversion}.knots${knotsdate}"
-export bitcoin_choice="knots"
-
-parmanode_conf_add "bitcoin_choice=knots"
-export bitcoin_choice="knots"
 export bitcoin_compile="false" 
-export knotsbitcoin="true" ; version="$knotsmajor-knots" ; return 0 
-;;
-
+export version="$knotsmajor-knots" ; return 0 ;;
+5)
+export bitcoin_compile="true"
+export version="28.x-knots" ; return 0 ;;
 *)
 invalid ;;
 esac
 done
 
 
-# if knots, function has already exited. For Core...
+# if Knots and Deis, function has already exited. For Core...
+
 while true ; do
 set_terminal 40 120 ; echo -e "
 ########################################################################################################################
@@ -186,14 +193,24 @@ choose "xpmq" && read choice
 unset ordinals_patch bitcoin_compile
 jump $choice || { invalid ; continue ; } ; set_terminal
 
-[[ $parmaview == 1 ]] && { if [[ $(jq -r .bitcoin.ordinal_patch $p4) == "true" ]] ; then choice=nospam ; else choice=pre ; fi ; }
+[[ $parmaview == 1 ]] && { 
+    if [[ $(jq -r .bitcoin.ordinal_patch $p4) == "true" ]] ; then 
+        export choice=nospam 
+    else 
+        if [[ $(jq -r .bitcoin.bitcoi_compile $p4) == "true" ]] ; then export choice=pre 
+        else  export choice=hfsp
+        fi
+    fi 
+}
+
+export core="true"
 
 case $choice in
 q|Q) exit 0 ;; p|P) return 1 ;; m|M) back2main ;;
 
 pre)
 parmanode_conf_add "bitcoin_choice=precompiled"
-export core="true" ; export bitcoin_compile="false" ; return 0 
+export bitcoin_compile="false" ; return 0 
 ;;
 
 hfsp) 
