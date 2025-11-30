@@ -15,6 +15,10 @@ export bitcoin_compile="false"
 
 ########################################################################################
 
+if [[ $version != "self" ]] ; then
+    export version="28.1" #applies only to Core choice, Mac or Linux
+fi
+
 if [[ $btcpay_combo == "true" ]] ; then
 export btcdockerchoice="yes"
 
