@@ -1,6 +1,6 @@
 function enter_continue {
 
-if [[ $parmaview = 1 ]] ; then enter_cont="" ; return 0 ; fi
+if [[ $parmaview = 1 ]] ; then enter_cont="" ; echo "enter_continue skipped: $1" | tee -a $pvlog ; return 0 ; fi
 
 if [[ $1 -gt 0 ]] 2>$dn ; then 
     echo -e "${yellow}Hit ${cyan}<enter>${yellow} to continue.$orange\n"  
@@ -8,9 +8,9 @@ if [[ $1 -gt 0 ]] 2>$dn ; then
 else
 echo -en "$1\n"
 unset enter_cont
-if [[ $installer == parmanodl ]] ; then return 0 ; fi
+if [[ $installer == "parmanodl" ]] ; then return 0 ; fi
 
-[[ $2 != silent ]] && echo -e "${yellow}Hit ${cyan}<enter>${yellow} to continue.$orange\n"  
+[[ $2 != "silent" ]] && echo -e "${yellow}Hit ${cyan}<enter>${yellow} to continue.$orange\n"  
 
 if [[ $silentecho == "true" ]] ; then
 read -r -s enter_cont
