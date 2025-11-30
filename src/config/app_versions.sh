@@ -10,6 +10,9 @@ versions["bitbox_version"]="$bitbox_version"
 export deisversion="28.1"
 versions["deisversion"]="$deisversion"
 
+export coreversion="29.2"
+versions["coreversion"]="$coreversion"
+
 if [[ $OS == "Linux" ]] ; then
 
     export knotsversion="29.2"
