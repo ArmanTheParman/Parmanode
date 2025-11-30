@@ -52,6 +52,8 @@ function enter_return { enter_continue "$@" ; }
 
 function choose {
 
+[[ $parmaview == 1 ]] && { export enter_cont="" ; export choice="" ; return 1 ; }
+
 if [[ $1 == "xmq" ]]
 then
 echo -e " ${yellow}Type your$cyan choice$yellow from above options, or:$red (m)$yellow for main,$green (q)$yellow to quit. 
@@ -170,6 +172,9 @@ return 0
 }
 
 function announce {
+
+[[ $parmaview == 1 ]] && { echo "$@" >> $pvlog ; } && { export enter_cont="" ; return 0 ; }
+
 set_terminal 42 ; echo -e "
 ########################################################################################
 

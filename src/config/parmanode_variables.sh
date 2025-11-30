@@ -68,6 +68,8 @@ export parmaviewnginx="$macprefix/etc/nginx/conf.d/parmaview.conf"
 export parmaviewdir="$macprefix/var/www/parmaview"
 export parmanode_cert_dir="$macprefix/etc/ssl/parmanode"
 export p4="$dp/p4.json"
+export pvlog="$dp/parmaview/parmaview.log"
+
 if [[ -z $dn ]] ; then echo "some problem with dn variable" ; read ; fi ##debug
 
 if [[ -z $lnd_port ]] ; then export lnd_port=9735 ; fi 

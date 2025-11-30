@@ -1,0 +1,21 @@
+########################################################################################
+#List of things in parmanode, modified for parmaview to help debugging later
+########################################################################################
+
+temp_patch()
+    test -f $dp/.parmaview_enabled && {
+        ! test -d $dp/parmaview >$dn 2>&1 && mkdir -p $dp/parmaview >$dn 2>&1
+        }
+
+parmanode_variables()
+    export pvlog="$dp/parmaview/parmaview.log"
+
+announce()
+    [[ $parmaview == 1 ]] && { echo "$@" >> $pvlog ; } && { export enter_cont="" ; return 0 ; }
+
+set_terminal()
+    [[ $parmaview == 1 ]] && return 0 ;
+
+choose() #This will allow choose xpmq && read choice , to skip the blocking read function
+    [[ $parmaview == 1 ]] && { export enter_cont="" ; export choice="" ; return 1 ; }
+    

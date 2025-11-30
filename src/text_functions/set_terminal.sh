@@ -1,4 +1,7 @@
 function set_terminal {
+
+[[ $parmaview == 1 ]] && return 0 ;
+
 # sets terminal size
 while true ; do
 

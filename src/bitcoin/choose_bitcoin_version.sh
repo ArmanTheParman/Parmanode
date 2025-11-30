@@ -35,8 +35,9 @@ $cyan
 
 ########################################################################################################################
 "
-choose "xpmq" ; read choice
+choose "xpmq" && read choice #parmaview won't be blocked because choose returns 1
 jump $choice || { invalid ; continue ; } ; set_terminal
+[[ $parmaview == 1 ]] && choice="parmaview"
 case $choice in
 q|Q) exit 0 ;; p|P) return 1 ;; m|M) back2main ;;
 k|"")
@@ -95,6 +96,17 @@ else
 return 0
 fi
 ;;
+parmaview)
+
+export clientchoice="$(jq -r .bitcoin.clientchoice $p4)"
+
+if [[ $clienchoice == "deis" ]] ; then
+    parmanode_conf_add "bitcoin_choice=deis"
+    export bitcoin_compile="true" 
+    deis="true" 
+    return 0
+fi
+;;
 
 *)
 invalid ;;
@@ -118,9 +130,9 @@ $cyan
 
 ########################################################################################################################
 "
-choose "xpmq" 
-read choice
+choose "xpmq" && read choice
 jump $choice || { invalid ; continue ; } ; set_terminal
+[[ $parmaview == 1 ]] && choice="1"
 
 case $choice in
 q|Q) exit 0 ;; p|P) return 1 ;; m|M) back2main ;;
@@ -153,6 +165,8 @@ invalid ;;
 esac
 done
 
+
+# if knots, function has already exited. For Core...
 while true ; do
 set_terminal 40 120 ; echo -e "
 ########################################################################################################################
@@ -168,10 +182,11 @@ $cyan
 $orange
 ########################################################################################################################
 "
-choose "xpmq" 
+choose "xpmq" && read choice
 unset ordinals_patch bitcoin_compile
-read choice
 jump $choice || { invalid ; continue ; } ; set_terminal
+
+[[ $parmaview == 1 ]] && { if [[ $(jq -r .bitcoin.ordinal_patch $p4) == "true" ]] ; then choice=nospam ; else choice=pre ; fi ; }
 
 case $choice in
 q|Q) exit 0 ;; p|P) return 1 ;; m|M) back2main ;;

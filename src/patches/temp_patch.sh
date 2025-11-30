@@ -172,6 +172,10 @@ if [[ $OS == "Mac" ]] && [[ $(arch) == "arm64" ]] ; then
 softwareupdate --install-rosetta --agree-to-license || true
 fi
 
+#prepare for parmaview
+test -f $dp/.parmaview_enabled && {
+    ! test -d $dp/parmaview >$dn 2>&1 && mkdir -p $dp/parmaview >$dn 2>&1
+    }
 
 }
 
