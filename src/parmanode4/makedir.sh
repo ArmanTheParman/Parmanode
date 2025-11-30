@@ -1,4 +1,5 @@
 function makedir {
+echo "$1" >> $tmp/makedir.log
 test -d "$1" && return 0
 
 mkdir -p "$1"
