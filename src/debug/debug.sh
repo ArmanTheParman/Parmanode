@@ -54,7 +54,7 @@ fi
 }
 
 function debugfile {
-
+# turns on debug if file exists, but only debugfile function will work, not debug()
 if test -f $tmp/debugon ; then
 
 echo -e "${FUNCNAME[1]} <-- ${FUNCNAME[2]}" 

@@ -1,0 +1,50 @@
+" Make Vim use system clipboard (if supported)
+set clipboard=unnamedplus
+
+" Show line numbers
+set number
+
+" Highlight search results, incremental search
+set hlsearch
+set incsearch
+
+" Show matching brackets
+set showmatch
+
+" Use spaces instead of tabs, and set tab width to 4
+set expandtab
+set tabstop=4
+set shiftwidth=4
+set smarttab
+set smartindent
+
+" Enable mouse in all modes
+set mouse=a
+
+" Keep some context above/below cursor
+set scrolloff=5
+
+" Show partial command in status line
+set showcmd
+
+" Show line and column in status line
+set ruler
+
+" Highlight current line
+"set cursorline
+
+" Persistent undo
+set undofile
+
+" Enable syntax highlighting
+syntax on
+
+" Use a sensible dark background
+set background=dark
+colorscheme desert   " Or pick another built-in, e.g. elflord, murphy, ron
+
+" Make backspace behave in a modern way
+set backspace=indent,eol,start
+
+" Fast saving with <leader>w
+nnoremap <leader>w :w<CR>

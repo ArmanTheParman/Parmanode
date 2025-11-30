@@ -1,4 +1,7 @@
 function enter_continue {
+
+if [[ $parmaview = 1 ]] ; then enter_cont="" ; return 0 ; fi
+
 if [[ $1 -gt 0 ]] 2>$dn ; then 
     echo -e "${yellow}Hit ${cyan}<enter>${yellow} to continue.$orange\n"  
     read -r -t $1 enter_cont || enter_cont="" 
