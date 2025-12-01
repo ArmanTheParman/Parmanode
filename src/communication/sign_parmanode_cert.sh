@@ -1,7 +1,5 @@
 function sign_parmanode_cert {
 
-local filepath="$parmanode_cert_dir"
-
 while true ; do
     announce "If you have a certificate authority private key and wish to sign 
     \r    a certificate for your server, type in the full path and hit <enter>.
@@ -25,7 +23,7 @@ done
 if yesorno "Sign the parmanode.local key made with parmanode? Even if your computer's
     hostname is not 'parmanode' it should be fine, and parmanode uses the native 
     hostname of the system embedded in the parmanode.local key." ; then
-    local key="$filepath/parmanode.local"
+    local key="$parmanode_cert_dir/parmanode.local"
 else
     while true ; do
          announce "OK, go ahead and type in the full path to your key to sign. x to abort."
@@ -85,7 +83,7 @@ clear
         -days 36500 -sha256 \
         2>>"$dp/error.log" || { sww && return 1 ; }
 
-sudo chmod 640 "$filepath/parmanode.local.crt"
+sudo chmod 640 "$parmanode_cert_dir/parmanode.local.crt"
 success "The key has been signed."
 }
 
