@@ -4,16 +4,18 @@ while true ; do
     announce "If you have a certificate authority private key and wish to sign 
     \r    a certificate for your server, type in the full path and hit <enter>.
 
-    \r    Otherwise hit <enter> alone to abort."
-    case $enter_cont in "") return 1 ;; esac
-    yesorno "You typed $enter_cont. Continue?" || continue
+    \r    Otherwise hit <enter> alone to use /etc/ssl/parmanode/ca/ca.key
+    \r    or x and <enter> to abort" 
+    case $enter_cont in "") enter_cont="/etc/ssl/parmanode/ca/ca.key" ;; x) return 1 ;; esac
+    yesorno "You chose $enter_cont. Continue?" || continue
     local RESTRICTED="$enter_cont"
 
     announce "Now type in the full path of the public key, typically called, ca.crt
     \r    and hit <enter>.
         
-    \r    Otherwise hit <enter> alone to abort."
-    case $enter_cont in "") return 1 ;; esac
+    \r    Otherwise hit <enter> alone to use /etc/ssl/parmanode/ca/ca.crt
+    \r    or x and <enter> to abort."
+    case $enter_cont in "") enter_cont="/etc/ssl/parmanode/ca/ca.crt" ;; x) return 1 ;; esac
     yesorno "You typed $enter_cont. Continue?" || continue
     local CA_PUBKEY="$enter_cont"
     break
