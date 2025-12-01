@@ -53,10 +53,10 @@ if [[ -e $HOME/.lnd/lnd.conf ]] && ! grep -q "version 3.47.4" $HOME/.lnd/lnd.con
 fi
 
 #can remove in 2026
-[[ -e $hp/mempool/docker/docker-compose.yml ]] && 
+[[ -e "$hp/mempool/docker/docker-compose.yml" ]] && 
     gsed -i 's/on-failure/unless-stopped/g' $hp/mempool/docker/docker-compose.yml >/dev/null 2>&1
         
-if [[ $OS == Linux ]] && [[ -e /etc/systemd/system/socat.service  ]] ; then
+if [[ $OS == "Linux" ]] && [[ -e "/etc/systemd/system/socat.service"  ]] ; then
     if grep -q '}' /etc/systemd/system/socat.service ; then
         sudo gsed -i '/}/d' /etc/systemd/system/socat.service >/dev/null 2>&1
         sudoo systemctl daemon-reload >/dev/null 2>&1

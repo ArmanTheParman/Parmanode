@@ -38,6 +38,8 @@ declare -a HM_CONF=()
   done < "$hm"
   fi
 
+test -f $p4 >$dn 2>&1 || echo -e "{\n}\n" > $p4 2>$dn
+
 {
   printf '{\n'
   # installed
