@@ -16,6 +16,7 @@ export swwflag="true"
 
 
 enter_continue
+if [[ $enter_cont == "yolo" ]] ; then return 1 ; fi
 jump $enter_cont
 case $enter_cont in tmux) tmux ;; esac
 }
