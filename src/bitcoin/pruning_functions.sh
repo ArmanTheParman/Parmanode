@@ -36,11 +36,18 @@ $green                              n)         No pruning (default)
 $orange
 ########################################################################################
 "
-choose "xpmq" ; read choice
+choose "xpmq" && read choice
 jump $choice || { invalid ; continue ; } ; set_terminal
 else
 choice=no
 fi
+
+[[ $parmanview == 1 ]] && {
+
+    export pvprunechoice="$(jq .bitcoin.prune $p4)"
+    if [[ $pvprunechoice == "0" ]] ; then choice=n ; else choice="prune" ; fi
+
+}
 
 set_terminal
 
@@ -97,7 +104,12 @@ echo -e "
 
 ########################################################################################
 "
-read prune_value                    #Prune Value is set here.
+if [[ $parmaview == 1 ]] ; then 
+    prune_value=$pvprunechoice  
+else
+    read prune_value                    #Prune Value is set here.
+fi
+
 set_terminal
 
                                     # Using regular expression to ensure only a positive 
