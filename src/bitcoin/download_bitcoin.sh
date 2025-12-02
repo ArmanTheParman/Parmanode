@@ -81,10 +81,10 @@ while true ; do
          fi
 
  	     if [[ $chip == "x86_64" && $OS == "Linux" ]] ; then 
+                debug "x86"
                 [[ $knotsbitcoin == "true" ]] && { curl -fsLO https://bitcoinknots.org/files/$knotsmajor/$knotsversion.knots$knotsdate/bitcoin-$knotsversion.knots$knotsdate-x86_64-linux-gnu.$knotsextension && break ; } ||
                 { curl -fsLO https://bitcoinknots.org/files/$knotsmajor/$knotsversion.knots$knotsdate/bitcoin-$knotsversion.knots$knotsdate-x86_64-linux-gnu.$knotsextension && break ; }
 		        curl -fsLO https://bitcoincore.org/bin/bitcoin-core-$version/bitcoin-$version-x86_64-linux-gnu.tar.gz  ; break
-                debug "x86"
          fi
 
          if [[ ($chip == "arm64" && $OS == "Mac") || ( $chip == "aarch64" && $OS == "Mac") ]] ; then

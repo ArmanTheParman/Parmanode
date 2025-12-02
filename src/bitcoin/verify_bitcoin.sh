@@ -7,9 +7,11 @@ cd $HOME/parmanode/bitcoin
 set_terminal 46 120
 debug "bitcoin_choice, $bitcoin_choice; bitcoin_combo, $bitcoin_combo"
 if grep -q "bitcoin_choice=knots" $pc || [[ $bitcoin_choice == "knots" ]] ; then
+    debug
     curl -fsLO https://bitcoinknots.org/files/$knotsmajor/$knotsversion.knots$knotsdate/SHA256SUMS 
     curl -fsLO https://bitcoinknots.org/files/$knotsmajor/$knotsversion.knots$knotsdate/SHA256SUMS.asc
 else
+    debug
     curl -fsLO https://bitcoincore.org/bin/bitcoin-core-$version/SHA256SUMS 
     curl -fsLO https://bitcoincore.org/bin/bitcoin-core-$version/SHA256SUMS.asc 
 fi
@@ -48,8 +50,7 @@ $cyan        $hp/bitcoin $orange
        \r    for you to manually check." ; case $enter_cont in yolo) true ;; *) return 1 ;; esac ; fi
 fi
 
-sleep 3
-echo -e "\nPlease wait a moment for gpg verification..."
+[[ $parmaview != 1 ]] && sleep 3 && echo -e "\nPlease wait a moment for gpg verification..."
 
 #keys from : https://github.com/bitcoin-core/guix.sigs/tree/main/builder-keys
 gpg --keyserver hkps://keyserver.ubuntu.com --recv-keys 658E64021E5793C6C4E15E45C2E581F5B998F30E >$dn 2>&1
@@ -60,9 +61,11 @@ curl https://raw.githubusercontent.com/bitcoin-core/guix.sigs/main/builder-keys/
 
     if gpg --verify --status-fd 1 SHA256SUMS.asc 2>&1 | grep -iq GOOD
     then
+        debug
         echo -e "\nGPG verification of the SHA256SUMS file$green passed$orange.\n"
         [[ $btcpayinstallsbitcoin == "true" ]] || enter_continue 5
     else 
+        debug 
         sww "GPG verification$red failed$orange. Aborting.\n
         \r    Type yolo to ignore and continue. If you do that, The SHA256SUMS file and corresponding 
         \r    signature will be left in$cyan $hp/bitcoin $orange
