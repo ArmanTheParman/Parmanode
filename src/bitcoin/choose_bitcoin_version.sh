@@ -102,7 +102,7 @@ parmaview)
 export clientchoice="$(jq -r .bitcoin.clientchoice $p4)"
 [[ -z $clientchoice ]] && return 1
 
-parmanode_conf_add "bitcoin_choice=$clientchoie"
+parmanode_conf_add "bitcoin_choice=$clientchoice"
 
 if [[ $clientchoice == "deis" ]] ; then
     export bitcoin_compile="true" 
