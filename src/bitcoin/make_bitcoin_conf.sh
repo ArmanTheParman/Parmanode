@@ -31,8 +31,6 @@ rpcallowip=172.16.0.0/12
 maxuploadtarget=25000
 rpcservertimeout=120
 assumevalid=00000000000000000000e006a8cf9a32a944681c909663b6007b66f7b9384cfd #hash for block 911,000
-
-
 EOF
 
 # Makes sure the internal IP is allowed to connect to the RPC server
@@ -44,7 +42,7 @@ echo rpcallowip="${IP1and2}0.0/16" | tee -a $tmp/bitcoin.conf >$dn 2>&1
 fi
 
 #bitcoin conf path to be modified can vary depending on the calling function, normal call or umbrel
-if [[ $1 == umbrel ]] ; then 
+if [[ $1 == "umbrel" ]] ; then 
     export prune=0 
     loop="break" 
     file="$mount_point/.bitcoin/bitcoin.conf" 
@@ -57,7 +55,7 @@ fi
 # umbrel has loop-break, so will exit early anyway
 if [[ -e $HOME/.bitcoin/bitcoin.conf ]] ; then while true ; do
 
-    if [[ $installer == parmanodl || $loop == "break" ]] ; then export prune=0 ; break ; fi #overwrites any existing conf file 
+    if [[ $installer == "parmanodl" || $loop == "break" ]] ; then export prune=0 ; break ; fi #overwrites any existing conf file 
     
     if [[ $btcpayinstallsbitcoin != "true" && $btcdockerchoice != "yes" ]] || [[ $btcpay_combo == "true" ]] ; then
 
@@ -86,11 +84,18 @@ $red
 $orange
 ########################################################################################
 "
-choose "xpmq" ; read choice
+choose "xpmq" && read choice
 else
 choice=o
 fi
 jump $choice 
+
+[[ $parmaview == 1 ]] && {
+
+    cp -rf $HOME/.bitcoin/bitcoin.conf  $HOME/.bitcoin/bitcoin.conf_PN4_backup 
+    choice=o 
+}
+
 case $choice in 
 m|M) back2main ;;
     q|Q|QUIT|Quit|quit) exit 0 ;; 
