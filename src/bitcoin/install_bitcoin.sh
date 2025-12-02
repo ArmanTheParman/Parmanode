@@ -165,7 +165,7 @@ if [[ $OS == "Linux" ]] ; then
         return 1 
     fi
 
-    if [[ -e "hp/bitcoin_github" ]] ; then echo -e "
+    if [[ $parmaview != 1 ]] && [[ -e "hp/bitcoin_github" ]] ; then echo -e "
 ########################################################################################
     Delete$cyan $hp/bitcoin_github$orange directory (it can get big), 
     you can save space.
@@ -177,33 +177,27 @@ if [[ $OS == "Linux" ]] ; then
     read choice ; case $choice in y) sudo rm -rf $hp/bitcoin_github ;; esac
     fi
 
-set_terminal ; echo -e "
-########################################################################################
-   $cyan 
-                                    SUCCESS !!!
-$orange
-    Bitcoin should have started syncing. Note, it should also continue to sync 
+set_terminal 
+success "Bitcoin should have started syncing. Note, it should also continue to sync 
     after a reboot, or you can start Bitcoin from the Parmanode Bitcoin menu at
     any time.
 
     You can also access Bitcoin functions from the Parmanode menu.
 
-$green
+    $green
     TIP:
 
     Make sure you turn off power saving features, particularly features that put
-    the drive to sleep; Power saving is usually on by default for laptops.
-$orange
+    the drive to sleep; Power saving is usually on by default for laptops.$orange" 
 
-########################################################################################
-" && installed_conf_add "bitcoin-end"
+installed_conf_add "bitcoin-end"
 
     #Just in case - what? again? Anyway, I'll leave it.
     sudo chown -R $USER:$USER $parmanode_drive>$dn 2>&1
 
     enter_continue
+    return 0
 fi
-
 
 if [[ $OS == "Mac" ]] ; then
 set_terminal
