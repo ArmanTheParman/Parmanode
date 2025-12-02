@@ -40,17 +40,28 @@ fi
 
 echo "########################################################################################
 "
-choose "xpmq" #echo statment about above options, previous menu, or quit.
-
-read choice #user's choice stored in variable, choice
+#echo statment about above options, previous menu, or quit.
+choose "xpmq" && read choice #user's choice stored in variable, choice
 jump $choice || { invalid ; continue ; } ; set_terminal
+
+[[ $parmaview == 1 ]] && {
+    pvchoice="$(jq -r .bitcoin.drive $p4)"
+    if [[ $pvchoice == "internal" ]] ; then choice=i ; fi
+    if [[ $pvchoice == "external" ]] ; then choice=e ; fi
+    if [[ $pvchoice == "null" ]] ; then choice=pvcustom ; fi #customPath= chosen
+}
 
 else
 choice=i #btcpayinstallsbitcoin internal drive
 fi
 
 case $choice in
-
+pvcustom)
+    installed_conf_add "bitcoin-start"
+    export drive="custom" ; parmanode_conf_add "drive=custom"
+    export bitcoin_drive_import="true" #used later to avoid format prompt.
+    return 0
+;;
 ext)
 if [[ $1 == "Bitcoin" ]] ; then
     log "importdrive" "$1 install, choice to import drive"
