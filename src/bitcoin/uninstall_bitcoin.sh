@@ -110,7 +110,7 @@ sudo systemctl daemon-reload >$dn 2>&1
 
 set_terminal
 if [[ $combo != "true" && $combo != "btcpay_first" ]] ; then
-success "Bitcoin" "being uninstalled"
+[[ $1 != "silent" ]] && success "Bitcoin" "being uninstalled"
 return 0
 fi
 
