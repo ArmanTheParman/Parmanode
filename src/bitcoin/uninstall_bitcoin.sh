@@ -5,7 +5,7 @@
 #delete bitcoin from install.conf
 #remove prune choice from parmanode.conf
 function uninstall_bitcoin { debugf
-if [[ $1 != btcpay_first ]]; then 
+if [[ $1 != "btcpay_first" ]]; then 
 if grep -q "btccombo-end" $ic ; then export combo="true" ; fi 
 else
 combo=btcpay_first
@@ -17,7 +17,7 @@ if [[ $combo != "true" && $combo != "btcpay_first" ]] ; then
 while true
 do
 set_terminal
-echo -e "
+echo -e "$orange
 ########################################################################################
 $cyan
                          Bitcoin will be uninstalled
