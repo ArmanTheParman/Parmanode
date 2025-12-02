@@ -126,7 +126,8 @@ m|M) back2main ;; Q|q|quit|QUIT|Quit) exit 0 ;; p|P) return 1 ;;
     case $choice in "8") sudo echo "listen=0" | sudo tee -a $bc >$dn 2>&1 ; sudo echo "discover=0" | sudo tee -a $bc >$dn 2>&1 ; esac
     if [[ $install == "bitcoin" ]] ; then return 0 ; fi
     return 0 ;;
-"5")
+"5") 
+    #parmaview switches 5&6
     [[ $OS == "Mac" ]] && { no_mac ; continue ; }
     bitcoin_tor "toronly"
     remove_bitcoin_i2p
@@ -137,6 +138,7 @@ m|M) back2main ;; Q|q|quit|QUIT|Quit) exit 0 ;; p|P) return 1 ;;
     if [[ $install == "bitcoin" ]] ; then return 0 ; fi
     return 0 ;;
 "6") 
+    #parmaview switches 5&6
     [[ $OS == "Mac" ]] && { no_mac ; continue ; }
     if ! grep -q "i2p-end" $ic ; then install_i2p || { sww ; continue ; } ; fi
     bitcoin_tor_remove
