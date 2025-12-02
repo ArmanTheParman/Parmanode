@@ -132,6 +132,12 @@ fi
 # would be good to have a run once function, I might make that later and add this in:
 test -f $hc || touch $dp/hide_commands.conf
 
+#prepare for parmaview
+test -f $dp/.parmaview_enabled && {
+    ! test -d $dp/parmaview >$dn 2>&1 && mkdir -p $dp/parmaview >$dn 2>&1
+    ! test -f $pvlog >$dn 2>&1 && touch $pvlog
+    }
+
 debug temppatchend
 }
 
@@ -172,11 +178,7 @@ if [[ $OS == "Mac" ]] && [[ $(arch) == "arm64" ]] ; then
 softwareupdate --install-rosetta --agree-to-license || true
 fi
 
-#prepare for parmaview
-test -f $dp/.parmaview_enabled && {
-    ! test -d $dp/parmaview >$dn 2>&1 && mkdir -p $dp/parmaview >$dn 2>&1
-    ! test -f $pvlog >$dn 2>&1 && touch $pvlog
-    }
+
 
 }
 
