@@ -38,7 +38,6 @@ $orange
 "
 enter_continue
 jump $enter_cont
-jump_xmq $enter_cont
 fi
 
 set_terminal ; echo "Downloading Bitcoin files to $HOME/parmanode/bitcoin ..."
