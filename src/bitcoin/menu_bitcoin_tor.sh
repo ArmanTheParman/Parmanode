@@ -91,32 +91,37 @@ $cyan
 $bright_magenta    Current Status: $status_print$orange
 $tortext"
 
-choose "xpmq" ; read choice
+choose "xpmq" && read choice
+
+[[ $parmaview == 1 ]] && {
+    choice=$(jq .bitcoin.bitcoin_tor_status $p4)
+}
+
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in 
 m|M) back2main ;; Q|q|quit|QUIT|Quit) exit 0 ;; p|P) return 1 ;;
-"1")
+"1"|torandclearnet)
     bitcoin_tor "torandclearnet" 
 #    check_bitcoin_tor_status #sets status in parmanode.conf #delete this function later
     remove_bitcoin_i2p
     if [[ $install == "bitcoin" ]] ; then return 0 ; fi
     return 0 ;;
 
-"2")
+"2"|toronly)
     bitcoin_tor "toronly" 
 #    check_bitcoin_tor_status
     remove_bitcoin_i2p
     if [[ $install == "bitcoin" ]] ; then return 0 ; fi
     return 0 ;;
 
-"3")
+"3"|onlyout)
     bitcoin_tor "toronly" "onlyout" #both $1 and $2 needed
 #    check_bitcoin_tor_status
     remove_bitcoin_i2p
     if [[ $install == "bitcoin" ]] ; then return 0 ; fi
     return 0 ;;
 
-"4"|"8")
+"4"|"8"|clearnet|confused)
     bitcoin_tor_remove 
     bitcoin_tor "clearnet"
     parmanode_conf_remove "bitcoin_tor_status"
@@ -126,8 +131,7 @@ m|M) back2main ;; Q|q|quit|QUIT|Quit) exit 0 ;; p|P) return 1 ;;
     case $choice in "8") sudo echo "listen=0" | sudo tee -a $bc >$dn 2>&1 ; sudo echo "discover=0" | sudo tee -a $bc >$dn 2>&1 ; esac
     if [[ $install == "bitcoin" ]] ; then return 0 ; fi
     return 0 ;;
-"5") 
-    #parmaview switches 5&6
+"5"|tori2p) 
     [[ $OS == "Mac" ]] && { no_mac ; continue ; }
     bitcoin_tor "toronly"
     remove_bitcoin_i2p
@@ -137,8 +141,7 @@ m|M) back2main ;; Q|q|quit|QUIT|Quit) exit 0 ;; p|P) return 1 ;;
     parmanode_conf_add "bitcoin_tor_status=tori2p"
     if [[ $install == "bitcoin" ]] ; then return 0 ; fi
     return 0 ;;
-"6") 
-    #parmaview switches 5&6
+"6"|i2p) 
     [[ $OS == "Mac" ]] && { no_mac ; continue ; }
     if ! grep -q "i2p-end" $ic ; then install_i2p || { sww ; continue ; } ; fi
     bitcoin_tor_remove
@@ -150,7 +153,7 @@ m|M) back2main ;; Q|q|quit|QUIT|Quit) exit 0 ;; p|P) return 1 ;;
     parmanode_conf_add "bitcoin_tor_status=i2p"
     if [[ $install == "bitcoin" ]] ; then return 0 ; fi
     return 0 ;;
-"7") 
+"7"|i2ponlyout) 
     [[ $OS == "Mac" ]] && { no_mac ; continue ; }
     if ! grep -q "i2p-end" $ic ; then install_i2p || { sww ; continue ; } ; fi
     bitcoin_tor_remove
