@@ -14,6 +14,7 @@ fi
 clear
 
 if [[ $combo != "true" && $combo != "btcpay_first" ]] ; then
+if [[ $1 != "silent" ]] ; then
 while true
 do
 set_terminal
@@ -37,6 +38,7 @@ case $choice in
 q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;; y) break ;; n) return 1 ;; *) invalid ;;
 esac
 done
+fi
 fi
 #Break point. Proceed to uninstall Bitcoin.
 
@@ -116,7 +118,7 @@ if [[ $combo == "true" ]] ; then
 uninstall_btcpay combo
 #then come back there to finish
 installed_config_remove "btccombo"
-success "Bitcoin and BTCPay have been uninstalled"
+[[ $1 != "silent" ]] && success "Bitcoin and BTCPay have been uninstalled"
 unset combo
 return 0
 fi
