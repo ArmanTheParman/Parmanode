@@ -52,18 +52,6 @@ if [[ -e $HOME/.lnd/lnd.conf ]] && ! grep -q "version 3.47.4" $HOME/.lnd/lnd.con
     sudo gsed -i 's/^; LND.*from version.*$/; LND conf configuration, message added by Parmanode, from version 3.47.4/' $HOME/.lnd/lnd.conf >$dn 2>&1
 fi
 
-#can remove in 2026
-[[ -e "$hp/mempool/docker/docker-compose.yml" ]] && 
-    gsed -i 's/on-failure/unless-stopped/g' $hp/mempool/docker/docker-compose.yml >/dev/null 2>&1
-        
-if [[ $OS == "Linux" ]] && [[ -e "/etc/systemd/system/socat.service"  ]] ; then
-    if grep -q '}' /etc/systemd/system/socat.service ; then
-        sudo gsed -i '/}/d' /etc/systemd/system/socat.service >/dev/null 2>&1
-        sudoo systemctl daemon-reload >/dev/null 2>&1
-        sudo systemctl restart socat.service >/dev/null 2>&1
-    fi
-fi
-
 #make part of installation later
 #having many keys in the .ssh directory causes issues with ssh-agent
 mkdir -p $HOME/.ssh/extra_keys >$dn 2>&1
@@ -72,9 +60,6 @@ sudo mv ~/.ssh/*-key* $HOME/.ssh/extra_keys/ >$dn 2>&1
 ! grep -q 'extra_keys' ~/.ssh/config && 
 sudo gsed -E -i 's|^IdentityFile ~/.ssh/(.*-key)$|IdentityFile ~/.ssh/extra_keys/\1|' ~/.ssh/config >$dn 2>&1
 
-#remove 2026
-    gsed -i 's/electrs2/electrs/'       $ic >$dn 2>&1
-    gsed -i 's/electrsdkr2/electrsdkr/' $ic >$dn 2>&1
 
 #introduce a scripts directory. Needs some refactoring --- add to patch function later
 test -d $dp/scripts || mkdir -p $dp/scripts >$dn 2>&1
@@ -107,27 +92,6 @@ if [[ $OS == "Linux" ]] && test -f $dp/mount_check.sh  ; then
     fi
 
 fi # end linux
-
-gsed -i 's/vnc-/parmadesk-/g' $ic >$dn 2>&1
-
-if { grep -q vnc- $ic || grep -q parmadesk- $ic ; } && ! test -f $dp/.vncfixed ; then
-announce "PARMADESK VNC had some bugs which have been fixed. Please reinstall ParmaDesk"
-touch $dp/.vncfixed
-fi
-
-#for older installations of parmadesk which didn't have this function #remove in Jan 2026
-if grep -q parmadesk-end $ic && ! test -f ~/.asoundrc ; then
-    for file in ~/.vnc/*log ; do
-    > $file
-    done
-    make_parmadesk_log_cleanup_service
-    sound_error_suppression 
-    sudo systemctl restart vnc.service noVNC.service >$dn 2>&1
-fi
-
-# if [[ $OS == "Linux" ]] && grep -q parmadesk-end $ic && ! sudo test -f /etc/systemd/system/parmadesk.sh ; then
-# make_parmadesk_service
-# fi
 
 # would be good to have a run once function, I might make that later and add this in:
 test -f $hc || touch $dp/hide_commands.conf
