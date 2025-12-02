@@ -108,6 +108,8 @@ if [[ $clientchoice == "deis" ]] ; then
     return 0
 fi
 [[ -z $clientchoice ]] && return 1
+
+return 0
 ;;
 
 *)
