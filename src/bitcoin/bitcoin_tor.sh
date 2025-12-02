@@ -29,6 +29,7 @@ fi
 
 if ! sudo grep "HiddenServicePort 8333 127.0.0.1:8333" $torrc | grep -v "^#" >$dn 2>&1 ; then 
     echo "HiddenServicePort 8333 127.0.0.1:8333" | sudo tee -a $torrc >$dn 2>&1
+    restart_tor #necessary as the service is new now
 fi
 
 # discover=0 (dont advertise clearnet IP) ; if not set, default is 1
