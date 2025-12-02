@@ -173,7 +173,7 @@ return 0
 
 function announce {
 
-[[ $parmaview == 1 ]] && { echo "$@" >> $pvlog ; } && { export enter_cont="" ; return 0 ; }
+[[ $parmaview == 1 ]] && { echo "$*" >> $pvlog ; } && { export enter_cont="" ; return 0 ; }
 
 set_terminal 42 ; echo -e "
 ########################################################################################
