@@ -1,12 +1,10 @@
-.DS_Store
-#Just in case the RTL config file that's used for real lands here (it happened once).
+.*
+!.gitignore
+!.gitattributes
+!.gitkeep
+#Just in case the RTL config file that's used for real lands here 
 ./src/rtl/RTL-Config.json
 test/
 __pycache__/
-*.swp
 .venv/
 *~      
-*.un~     
-*.swp     
-*.swo
-*.swx
