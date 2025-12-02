@@ -94,7 +94,8 @@ $tortext"
 choose "xpmq" && read choice
 
 [[ $parmaview == 1 ]] && {
-    choice=$(jq .bitcoin.bitcoin_tor_status $p4)
+    choice=$(jq -r .bitcoin.bitcoin_tor_status $p4)
+    debug "$choice"
 }
 
 jump $choice || { invalid ; continue ; } ; set_terminal

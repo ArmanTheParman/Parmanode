@@ -44,7 +44,7 @@ fi
 
 [[ $parmanview == 1 ]] && {
 
-    export pvprunechoice="$(jq .bitcoin.prune $p4)"
+    export pvprunechoice="$(jq -r .bitcoin.prune $p4)"
     if [[ $pvprunechoice == "0" ]] ; then choice=n ; else choice="prune" ; fi
 
 }
