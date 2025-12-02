@@ -1,4 +1,4 @@
-function install_bitcoin_docker {
+function install_bitcoin_docker { debugf
 if [[ $1 != silent ]] ; then
 set_terminal
 yesorno "You are about to install Bitcoin into a docker container of your

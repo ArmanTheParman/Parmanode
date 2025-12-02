@@ -1,4 +1,4 @@
-function bitcoin_tor {
+function bitcoin_tor { debugf
 
 #start fresh
 sudo gsed -i "/discover=/d" $bc >$dn 2>&1

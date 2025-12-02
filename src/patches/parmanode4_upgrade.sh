@@ -1,4 +1,4 @@
-function parmanode4_upgrade {
+function parmanode4_upgrade { debugf
 
 grep -q "parmanode4=true" $pc && return 0
 

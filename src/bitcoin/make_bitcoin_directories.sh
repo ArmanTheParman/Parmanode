@@ -1,4 +1,4 @@
-function make_bitcoin_directories {
+function make_bitcoin_directories { debugf
 
 if [[ $skip_make_bitcoin_directories == "true" ]] ; then return 0 ; fi
 

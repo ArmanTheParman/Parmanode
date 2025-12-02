@@ -1,5 +1,5 @@
-function make_parmanode_ssh_keys {
-debug start make_parmanode_ssh_keys
+function make_parmanode_ssh_keys { debugf
+
 #if a .pub key does not exist in $HOME/.ssh, make one
 if ! sudo test -f $HOME/.ssh/id_rsa.pub >$dn 2>&1 ; then
 mkdir -p $HOME/.ssh/extra_keys >$dn 2>&1
@@ -7,7 +7,7 @@ ssh-keygen -t rsa -b 4096 -f $HOME/.ssh/id_rsa -N "" -C "$USER parmanode"
 fi
 }
 
-function make_parminer_ssh_keys {
+function make_parminer_ssh_keys { debugf
 sudo test -f $HOME/.ssh/extra_keys/parminer-key.pub && return 1 # 1 is logically success here for the calling function
 mkdir -p ~/.ssh/extra_keys
 ssh-keygen -t rsa -b 4096 -f $HOME/.ssh/extra_keys/parminer-key -N "" -C "$USER parminer"
@@ -21,7 +21,7 @@ IdentityFile ~/.ssh/extra_keys/parminer-key
 IdentitiesOnly yes" | sudo tee -a ~/.ssh/config >$dn 
 }
 
-function make_parmaraid_ssh_keys {
+function make_parmaraid_ssh_keys { debugf
 debug start make_parmaraid_ssh_keys
 sudo test -f $HOME/.ssh/extra_keys/parmaraid-key.pub && return 1 # 1 is logically success here for the calling function
 mkdir -p ~/.ssh/extra_keys
@@ -37,7 +37,7 @@ IdentitiesOnly yes" | sudo tee -a ~/.ssh/config >$dn
 debug end make_parmaraid_ssh_keys
 }
 
-function make_parmacloud_ssh_keys {
+function make_parmacloud_ssh_keys { debugf
 debug start make_parmacloud_ssh_keys 
 #usage...
 #make_parmacloud_ssh_keys && { announce_blue "ParmaCloud SSH keys made. Please contact Parman to enable." ; continue ; }
@@ -57,7 +57,7 @@ debug end make_parmacloud_ssh_keys
 }
 
 
-function make_parmaweb_ssh_keys {
+function make_parmaweb_ssh_keys { debugf
 debug start make_parmaweb_ssh_keys
 sudo test -f ~/.ssh/extra_keys/parmaweb-key.pub && return 1 # 1 is logically success here for the calling function
 
@@ -75,7 +75,7 @@ debug end make_parmaweb_ssh_keys
 }
 
 
-function make_parmanas_ssh_keys {
+function make_parmanas_ssh_keys { debugf
 debug start make_parmanas_ssh_keys
 #usage...
 #make_parmanas_ssh_keys && { announce_blue "Parmanas SSH keys made. Please contact Parman to enable." ; continue ; }
@@ -95,7 +95,7 @@ IdentitiesOnly yes" | sudo tee -a ~/.ssh/config >$dn
 debug end make_parmanas_ssh_keys
 }
 
-function make_datum_ssh_keys {
+function make_datum_ssh_keys { debugf
 
 sudo test -f $HOME/.ssh/extra_keys/datum-key.pub && return 1 # 1 is logically success here for the calling function
 
@@ -111,7 +111,7 @@ IdentityFile ~/.ssh/extra_keys/datum-key
 IdentitiesOnly yes" | sudo tee -a ~/.ssh/config >$dn
 }
 
-function make_parmasync_ssh_keys {
+function make_parmasync_ssh_keys { debugf
 
 sudo test -f $HOME/.ssh/extra_keys/parmasync-key.pub && return 1 # 1 is logically success here for the calling function
 
@@ -127,7 +127,7 @@ IdentityFile ~/.ssh/extra_keys/parmasync-key
 IdentitiesOnly yes" | sudo tee -a ~/.ssh/config >$dn
 }
 
-function make_uddns_ssh_keys {
+function make_uddns_ssh_keys { debugf
 
 sudo test -f $HOME/.ssh/extra_keys/uddns-key.pub && return 1 # 1 is logically success here for the calling function
 
@@ -143,7 +143,7 @@ IdentityFile ~/.ssh/extra_keys/uddns-key
 IdentitiesOnly yes" | sudo tee -a ~/.ssh/config >$dn
 }
 
-function make_parmascale_ssh_keys {
+function make_parmascale_ssh_keys { debugf
 
 sudo test -f $HOME/.ssh/extra_keys/parmascale-key.pub && return 1 # 1 is logically success here for the calling function
 
@@ -159,7 +159,7 @@ IdentityFile ~/.ssh/extra_keys/parmascale-key
 IdentitiesOnly yes" | sudo tee -a ~/.ssh/config >$dn
 }
 
-function make_parmasql_ssh_keys {
+function make_parmasql_ssh_keys { debugf
 debug start make_parmasql_ssh_keys
 #usage...
 #make_parmasql_ssh_keys && { announce_blue "ParmaSQL SSH keys made. Please contact Parman to enable." ; continue ; }
@@ -178,7 +178,7 @@ IdentityFile ~/.ssh/extra_keys/parmasql-key
 IdentitiesOnly yes" | sudo tee -a ~/.ssh/config >$dn
 debug end make_parmasql_ssh_keys
 }
-function make_parmanpremium_ssh_keys {
+function make_parmanpremium_ssh_keys { debugf
 debug start make_parmanpremium_ssh_keys
 #usage...
 
@@ -196,26 +196,26 @@ IdentityFile ~/.ssh/extra_keys/parmanpremium-key
 IdentitiesOnly yes" | sudo tee -a ~/.ssh/config >$dn
 debug end make_parmanpremium_ssh_keys
 }
-function make_parmasyncborg_ssh_keys {
+function make_parmasyncborg_ssh_keys { debugf
 sudo test -f ~/.ssh/extra_keys/parmasyncborg-key && return 0
 ssh-keygen -t rsa -b 4096 -f ~/.ssh/extra_keys/parmasyncborg-key -N "" -C "$USER parmasyncborg"
 sudo cp ~/.ssh/extra_keys/parmasyncborg-key* /root/.ssh/extra_keys/
 sudo chown root:root /root/.ssh/extra_keys/parmasyncborg-key*
 }
-function make_parmasyncapi_ssh_keys {
+function make_parmasyncapi_ssh_keys { debugf
 sudo test -f ~/.ssh/extra_keys/parmasyncapi-key && return 0
 ssh-keygen -t rsa -b 4096 -f ~/.ssh/extra_keys/parmasyncapi-key -N "" -C "$USER parmasyncapi"
 sudo cp ~/.ssh/extra_keys/parmasyncapi-key* /root/.ssh/extra_keys/
 sudo chown root:root /root/.ssh/extra_keys/parmasyncapi-key*
 }
-function make_parmasyncsshfs_ssh_keys {
+function make_parmasyncsshfs_ssh_keys { debugf
 sudo test -f ~/.ssh/extra_keys/parmasyncsshfs-key && return 0
 ssh-keygen -t rsa -b 4096 -f ~/.ssh/extra_keys/parmasyncsshfs-key -N "" -C "$USER parmasyncsshfs"
 sudo cp ~/.ssh/extra_keys/parmasyncsshfs-key* /root/.ssh/extra_keys/
 sudo chown root:root /root/.ssh/extra_keys/parmasyncsshfs-key*
 }
 
-function make_all_ssh_keys {
+function make_all_ssh_keys { debugf
 #No longer used
 make_parmanode_ssh_keys
 make_parminer_ssh_keys
@@ -231,7 +231,7 @@ make_parmasql_ssh_keys
 make_parmanpremium_ssh_keys
 }
 
-function get_all_ssh_keys {
+function get_all_ssh_keys { debugf
 #No longer used
 make_all_ssh_keys
 

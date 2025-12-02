@@ -1,4 +1,4 @@
-function patch_8 {
+function patch_8 { debugf
 debug "starting patch 8"
 if [[ $OS == Linux ]] ; then
 

@@ -1,4 +1,4 @@
-function check_rpc_bitcoin {
+function check_rpc_bitcoin { debugf
 unset rpcuser
 
 source $pc

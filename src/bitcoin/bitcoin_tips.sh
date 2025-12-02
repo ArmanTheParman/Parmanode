@@ -1,6 +1,6 @@
 
 
-function bitcoin_tips {
+function bitcoin_tips { debugf
 set_terminal_high ; echo -e "
 ########################################################################################$cyan
                           Parmanode Bitcoin Usage Tips$orange

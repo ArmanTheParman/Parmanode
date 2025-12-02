@@ -1,4 +1,4 @@
-function make_backup_dot_bitcoin {
+function make_backup_dot_bitcoin { debugf
                                         # It is not known how many backups there are so a
                                         # loop is needed.
 prefix="$HOME/.bitcoin_backup_"

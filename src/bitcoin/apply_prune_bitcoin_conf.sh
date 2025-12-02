@@ -1,4 +1,4 @@
-function apply_prune_bitcoin_conf {
+function apply_prune_bitcoin_conf { debugf
 # The user will be prompted to choose a prune value if not already set, and will add this to
 # bitcoin.conf and also change dependent settings.
 

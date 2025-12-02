@@ -1,4 +1,4 @@
-function bitcoin_curl {
+function bitcoin_curl { debugf
 source $bc
 
 while true ; do

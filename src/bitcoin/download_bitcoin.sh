@@ -1,4 +1,4 @@
-function download_bitcoin {
+function download_bitcoin { debugf
 #not required for installation/setup of system outsite docker.
 
 if [[ $btcpay_combo == "true" ]] || [[ $btcdockerchoice == yes ]] ; then return 0 ; fi
@@ -56,7 +56,7 @@ return 0
 }
 
 
-function download_bitcoin_getfiles {
+function download_bitcoin_getfiles { debugf
 
 #arm64 (m3)
 # ARM Pi4 support. If not, checks for 64 bit x86.
@@ -106,7 +106,7 @@ return 0
 }
 
 
-function unpack_bitcoin {
+function unpack_bitcoin { debugf
 
 if find $hp/bitcoin/ -type f -name "*.zip" 2>$dn | grep -q . >$dn 2>&1 ; then #find returns true when found or not
 unzip bitcoin*.zip

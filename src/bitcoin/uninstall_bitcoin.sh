@@ -4,7 +4,7 @@
 #delete binary files in /usr/local/bin (rm *bitcoin*)
 #delete bitcoin from install.conf
 #remove prune choice from parmanode.conf
-function uninstall_bitcoin {
+function uninstall_bitcoin { debugf
 if [[ $1 != btcpay_first ]]; then 
 if grep -q "btccombo-end" $ic ; then export combo="true" ; fi 
 else

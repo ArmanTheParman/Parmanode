@@ -66,6 +66,8 @@ set_terminal
 #choose version
 choose_bitcoin_version || return 1 #no_compile variable set for macs here.
 
+debug "after version"
+
 unset importdrive
 
 choose_and_prepare_drive "Bitcoin" || return 1 # the argument "Bitcoin" is added as this function is also
@@ -85,7 +87,7 @@ if [[ $OS == "Linux" && $drive == "external" ]] ; then
     || log "bitcoin" "unable to execute chown in install_bitcoin function" 
 fi
 
-prune_choice || return 1 
+prune_choice || return 1  ; debug 
     # set $prune_value. Doing this now as it is related to 
     # the drive choice just made by the user. 
     # Use variable later for setting bitcoin.conf

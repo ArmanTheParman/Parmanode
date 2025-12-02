@@ -1,4 +1,4 @@
-function update_bitcoin {
+function update_bitcoin { debugf
 
 if grep -q "btccombo" $ic ; then
 local version="$(docker exec btcpay bitcoin-cli --version | head -n 1)"

@@ -1,4 +1,4 @@
-function offer_swap_to_external {
+function offer_swap_to_external { debugf
 while true ; do      
 source ${dp}/parmanode.conf >$dn 2>&1
 if [[ $drive == internal ]] ; then

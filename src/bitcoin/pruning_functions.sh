@@ -2,7 +2,7 @@
 # set_the_prune
 # confirm_set_the_prune
 
-function prune_choice {
+function prune_choice { debugf
 if [[ $importdrive == "true" || $bitcoin_drive_import == "true" || $skip_prune_choice == "true" ]] ; then return 0 ; fi
 while true ; do
 set_terminal
@@ -83,7 +83,7 @@ parmanode_conf_add "prune_value=$prune_value"
 
 ########################################################################################
 
-function set_the_prune {
+function set_the_prune { debugf
 
 while true
 do
@@ -134,7 +134,7 @@ return 0
 
 ########################################################################################
 
-function confirm_set_the_prune {
+function confirm_set_the_prune { debugf
     
 while true
 do

@@ -1,4 +1,4 @@
-function p4_install_bitcoin {
+function p4_install_bitcoin { debugf
 
 grep -q "bitcoin-end" $ic && { echo "Bitcoin detected installed in installed.conf" >> $dp/error.log && return 1 ; }
 jq .bitcoin $p4 | grep "clientchoice" | grep -qE "core|knots|deis" || { echo "clientchoice not set" >> $dp/error.log ; return 1 ; }

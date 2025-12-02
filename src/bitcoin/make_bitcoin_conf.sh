@@ -1,4 +1,4 @@
-function make_bitcoin_conf {
+function make_bitcoin_conf { debugf
 
 if [[ $1 == prune ]] ; then export prune=$2 ; fi #assumes arguments are "prune" "[0-9].*"
 

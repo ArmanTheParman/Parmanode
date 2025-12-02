@@ -1,4 +1,4 @@
-function bitcoin_tor_remove {
+function bitcoin_tor_remove { debugf
 
 stop_bitcoin
 #delete...

@@ -1,4 +1,4 @@
-function menu_bitcoin_tor {
+function menu_bitcoin_tor { debugf
 
 if ! which tor >$dn 2>&1 ; then 
     clear 
@@ -176,7 +176,7 @@ esac
 done
 }
 
-function bitcoin_i2p {
+function bitcoin_i2p { debugf
 
     echo "onlynet=i2p" | sudo tee -a $bc >$dn 2>&1
     if grep -q btcpaycombo-end $ic ; then
@@ -195,7 +195,7 @@ function bitcoin_i2p {
     echo "i2pacceptincoming=1" | sudo tee -a $bc >$dn 2>&1
 }
 
-function remove_bitcoin_i2p {
+function remove_bitcoin_i2p { debugf
     sudo gsed -i "/onlynet=i2p/d" $bc  > $dn 2>&1
     sudo gsed -i "/i2psam=/d" $bc  > $dn 2>&1
     sudo gsed -i "/i2pacceptincoming=/d" $bc > $dn 2>&1

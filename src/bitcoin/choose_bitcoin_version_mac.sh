@@ -1,4 +1,4 @@
-function choose_bitcoin_version_mac {
+function choose_bitcoin_version_mac { debugf
 while true ; do
 set_terminal  ; echo -e "
 ########################################################################################

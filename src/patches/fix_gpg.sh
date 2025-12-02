@@ -1,4 +1,4 @@
-function fix_gpg {
+function fix_gpg { debugf
 #mac only
 which brew >$dn 2>&1 || install_homebrew
 

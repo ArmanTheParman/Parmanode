@@ -1,4 +1,4 @@
-function patch_1 {
+function patch_1 { debugf
 
 turn_off_spotlight
 add_rp_function
@@ -6,7 +6,7 @@ parmanode_conf_add "patch=1"
 debug end patch 1
 }
 
-function patch_2 {
+function patch_2 { debugf
 
 sudo_check # needed for preparing drives etc.
 gpg_check  # needed to download programs from github
@@ -18,7 +18,7 @@ parmanode_conf_add "patch=2"
 debug end patch  2
 }
 
-function patch_3 {
+function patch_3 { debugf
 
 
 if [[ -e $ic ]] ; then

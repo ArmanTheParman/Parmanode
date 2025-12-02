@@ -1,4 +1,4 @@
-function getblockheight {
+function getblockheight { debugf
 source $HOME/.bitcoin/bitcoin.conf >$dn 2>&1
 
 if [[ $OS == Mac ]] ; then

@@ -1,4 +1,4 @@
-function make_bitcoin_symlinks {
+function make_bitcoin_symlinks { debugf
 set_terminal
 
 while true ; do

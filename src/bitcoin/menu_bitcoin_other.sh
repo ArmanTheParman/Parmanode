@@ -1,4 +1,4 @@
-function menu_bitcoin_other {
+function menu_bitcoin_other { debugf
 while true
 do
 set_terminal
@@ -144,7 +144,7 @@ done
 return 0
 }
 
-function hack_tips {
+function hack_tips { debugf
 
 set_terminal 55 88 ; echo -e "
 ########################################################################################

@@ -1,4 +1,4 @@
-function import_bitcoin_install {
+function import_bitcoin_install { debugf
 if [[ $OS == Mac ]] ; then no_mac ; return 1 ; fi
 
 while true ; do
@@ -204,9 +204,9 @@ done
 }
 
 
-function dir_not_found {
+function dir_not_found { debugf
 
-if [[ $drive == external ]] ; then ############### for tracking nested if... can't indent because echo statements
+if [[ $drive == "external" ]] ; then ############### for tracking nested if... can't indent because echo statements
 default="$parmanode_drive/.bitcoin"
 
 if ! grep -q "electrs" $dp/.temp ; then

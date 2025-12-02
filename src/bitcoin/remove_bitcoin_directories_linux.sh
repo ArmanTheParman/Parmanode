@@ -1,4 +1,4 @@
-function remove_bitcoin_directories_linux {
+function remove_bitcoin_directories_linux { debugf
 if [[ $bitcoin_drive_import == "true" ]] ; then return 0 ; fi
 
 #Remove Parmanode/bitcoin directory (installation files)

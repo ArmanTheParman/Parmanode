@@ -1,4 +1,4 @@
-function usb_quirk_patch {
+function usb_quirk_patch { debugf
 # This script is not to be trusted, it is kept her for reference and education.
 # Testing is needed and may be incorporated into Parmanode for Pi's later.
 return 0

@@ -1,4 +1,4 @@
-function openssh_patch {
+function openssh_patch { debugf
 
 if [[ $btcdockerchoice != "yes" ]] ; then return 0 ; fi
 

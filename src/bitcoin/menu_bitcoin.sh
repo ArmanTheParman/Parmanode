@@ -1,4 +1,4 @@
-function menu_bitcoin {
+function menu_bitcoin { debugf
 
 if ! grep -qE "bitcoin-end" $ic ; then return 0 ; fi
 
@@ -416,7 +416,7 @@ done
 return 0
 }
 
-function bitcoin_status {
+function bitcoin_status { debugf
 if [[ ! -e $HOME/.bitcoin/debug.log ]] ; then return 1 ; fi
 source ~/.parmanode/parmanode.conf >$dn 2>&1 #get drive variable
 unset running output1 output2 height running_text
@@ -466,7 +466,7 @@ fi
 
 
 
-function bitcoin_rpcconnect {
+function bitcoin_rpcconnect { debugf
 
 
 yesorno "This will expose your Bitcoin connection credentials to the screen via QR and text. 

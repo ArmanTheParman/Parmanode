@@ -1,4 +1,4 @@
-function toggle_disable_bitcoin {
+function toggle_disable_bitcoin { debugf
 
 
 if grep -q "disable_bitcoin=true" $pc ; then

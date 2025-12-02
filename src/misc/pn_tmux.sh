@@ -6,7 +6,7 @@ if ! which tmux >$dn 2>&1 ; then
 yesorno "Need tmux for this to work. OK to install?" || return 1
 fi
 
-install_tmux #exits if installed
+which tmux >$dn 2>&1 || install_tmux 
 
 TMUX2=$TMUX ; unset TMUX ; clear
 

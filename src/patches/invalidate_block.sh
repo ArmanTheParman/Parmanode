@@ -1,4 +1,4 @@
-function invalidate_block {
+function invalidate_block { debugf
 yesorno "This is an emergency function, and shouldn't be used lightly. It's fine for 
     experimentation, but it can possibly fork you from the network, or drop data
     necessitating a resync. Be warned.

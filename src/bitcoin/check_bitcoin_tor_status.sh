@@ -1,4 +1,4 @@
-function check_bitcoin_tor_status {
+function check_bitcoin_tor_status { debugf
 #Function destined for deletion
 
 

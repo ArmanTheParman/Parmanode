@@ -1,4 +1,4 @@
-function add_rp_function {
+function add_rp_function { debugf
 
 if [[ ! -e $bashrc ]] ; then sudo touch $bashrc ; fi
 

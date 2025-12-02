@@ -8,23 +8,32 @@
 export dn="/dev/null"
 
 function debug {
+file=$dp/debug.log
+filef=$dp/debugf.log
+[[ $parmaview == 1 ]] && file=$pvlog
 dn="/dev/null"
-echo $(date) | tee -a $dp/debug.log >$dn 2>&1
-echo "${FUNCNAME[1]} <-- ${FUNCNAME[2]}" | tee -a $dp/debug.log >$dn 2>&1
-echo "$1" | tee -a $dp/debug.log >$dn 2>&1
-echo "##############################" | tee -a $dp/debug.log >$dn 2>&1
-if [[ $debug == 1 ]] ; then
-echo -e "${FUNCNAME[1]} <-- ${FUNCNAME[2]}" 
-echo -e "Debug point. Message:
 
-$@
-"
-unset enter_cont ; enter_continue ; export enter_cont
-if [[ $enter_cont == "q" || $enter_cont == "exit" ]] ; then exit 0 ; fi
-if [[ $enter_cont == "d" ]] ; then unset debug ; fi
-if [[ $enter_cont == "env" ]] ; then check_variables ; fi
-return 0
+debugprint="$(date)\t${FUNCNAME[1]}--${BASH_LINENO[0]} <-- ${FUNCNAME[2]}--${BASH_LINENO[1]}\n$*\n##############################\n" 
+
+echo -e "$debugprint" | tee -a $file >$dn 2>&1
+echo -e "\tDEBUG HIT: $(date)\t${FUNCNAME[1]}::${BASH_LINENO[0]}" | tee -a $filef >$dn 2>&1
+
+if [[ $debug == 1 ]] ; then
+    echo -e "$debugprint"
+    unset enter_cont ; enter_continue ; export enter_cont
+
+    if [[ $enter_cont == "q" || $enter_cont == "exit" ]] ; then exit 0 ; fi
+    if [[ $enter_cont == "d" ]] ; then unset debug ; fi
+    if [[ $enter_cont == "env" ]] ; then check_variables ; fi
+    return 0
 fi
+}
+
+function debugf {
+file=$dp/debugf.log
+
+echo -e "$(date): ${FUNCNAME[1]}\t<-------------------${FUNCNAME[2]}" >> $file 2>&1
+
 }
 
 function debug2 {

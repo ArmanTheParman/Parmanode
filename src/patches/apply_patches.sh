@@ -1,9 +1,8 @@
-function apply_patches {
+function apply_patches { debugf
 #patches ; each patch adds variable to parmanode.conf, sourced higher up
 #patch=n
 #get $patch from parmanode.conf
 temp_patch
-openssh_patch
 suggest_tor
 make_parmanode_tor_service  #makes parmanode tor onion address ; put in next patch
 hello
@@ -12,7 +11,8 @@ truncatedebuglog
 if ! cat $bashrc 2>$dn | grep -q "parmashell_functions" ; then
 echo "function rp { cd $HOME/parman_programs/parmanode ; ./run_parmanode.sh \$@ ; }" | sudo tee -a $bashrc >$dn 2>&1
 fi
-debug "before patch sequence - patch value is $patch"
+
+#debug "before patch sequence - patch value is $patch"
 
 case $patch in #case 0 is lase "*"
 1) 
@@ -40,7 +40,6 @@ patch_8 ; patch_9 ;;
 patch_9 ;
 return 0 ;;
 9)
-debug "patch_9 already done defore"
 return 0;;
 *) 
 patch_1 ; patch_2 ; patch_3 ; patch_4 ; patch_5 ; patch_6 ; patch_7 ; patch_8 ; patch_9 ;;

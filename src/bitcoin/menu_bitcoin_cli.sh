@@ -1,4 +1,4 @@
-function menu_bitcoin_cli {
+function menu_bitcoin_cli { debugf
 source $bc
 
 if grep -q "btccombo" $ic ; then combomenu="true" ; else unset combomenu ; fi

@@ -1,4 +1,4 @@
-function compile_bitcoin {
+function compile_bitcoin { debugf
 [[ $version == "self" ]] && return 0 
 [[ $bitcoin_compile == "false" ]] && return 0 
 
@@ -275,7 +275,7 @@ sudo make install || enter_continue "something might have gone wrong here."
 
 }
 
-function bitcoin_compile_dependencies {
+function bitcoin_compile_dependencies { debugf
 [[ $parmaview == 1 ]] && enter_cont="i" #running with parmaview will ignore errors
 
 if [[ -z $1 ]] ; then 

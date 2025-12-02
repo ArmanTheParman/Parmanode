@@ -1,5 +1,5 @@
 
-function source_rpc_global {
+function source_rpc_global { debugf
 
 #Bitcoin
 if [[ -e $bc ]] ; then 

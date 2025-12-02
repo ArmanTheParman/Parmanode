@@ -1,5 +1,5 @@
 
-function upgrade_to_knots {
+function upgrade_to_knots { debugf
 #confirmation
 yesorno "
     Bitcoin Knots is basically the contributions of all Bitcoin Core developers,

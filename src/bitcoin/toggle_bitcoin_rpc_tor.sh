@@ -1,4 +1,4 @@
-function toggle_bitcoin_rpc_tor {
+function toggle_bitcoin_rpc_tor { debugf
 
 
 #tor for RPC is off

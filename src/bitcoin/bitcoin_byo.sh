@@ -1,4 +1,4 @@
-function bitcoin_byo {
+function bitcoin_byo { debugf
 set_terminal ; echo -e "
 ########################################################################################
 $cyan

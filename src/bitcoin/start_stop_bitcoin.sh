@@ -1,9 +1,12 @@
 # I have used the name bitcoind, but later introduced bitcoin-qt for macs, the name of the function
 # has been kept the same
 
-function restart_bitcoin { stop_bitcoin ; start_bitcoin ; }
+function restart_bitcoin { debugf 
+stop_bitcoin 
+start_bitcoin 
+}
 
-function start_bitcoin {
+function start_bitcoin { debugf
 #for docker (no systemctl, use tmux)
 if [[ -e /.dockerenv ]] && which bitcoind >$dn ; then
 please_wait
@@ -50,7 +53,7 @@ fi
 
 ########################################################################################################################
 
-function stop_bitcoin {
+function stop_bitcoin { debugf
 #for docker (no systemctl, use tmux)
 if [[ -e /.dockerenv ]] ; then
 pn_tmux "pkill bitcoind >/dev/null" "stopping_bitcoin"
@@ -80,14 +83,14 @@ return 0
 fi
 }
 
-function start_bitcoin_indocker {
+function start_bitcoin_indocker { debugf
 pn_tmux "
 docker exec -itu parman btcpay bitcoind
 " "starting_bitcoin"
 sleep 0.5
 }
 
-function stop_bitcoin_docker {
+function stop_bitcoin_docker { debugf
 pn_tmux "
 docker exec -itu parman btcpay bitcoin-cli stop
 " "stopping_bitcoin"
@@ -95,7 +98,7 @@ sleep 0.5
 return 0
 }
 
-function stop_bitcoinqt {
+function stop_bitcoinqt { debugf
 if [[ $OS == "Mac" ]] ; then
 
     if [[ $1 == "force" ]] ; then pn_tmux "killall Bitcoin-Qt" "stopping_bitcoin" ; fi
@@ -113,7 +116,7 @@ elif [[ $OS == "Linux" ]] ; then
 fi
 
 }
-function start_bitcoinqt {
+function start_bitcoinqt { debugf
 if [[ $OS == "Mac" ]] ; then
     pn_tmux "open /Applications/Bitcoin-Qt.app" "starting_bitcoin"
     sleep 0.5

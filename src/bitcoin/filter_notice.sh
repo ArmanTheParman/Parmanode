@@ -1,4 +1,4 @@
-function filter_notice {
+function filter_notice { debugf
 set_terminal ; echo -e "
 ########################################################################################
 

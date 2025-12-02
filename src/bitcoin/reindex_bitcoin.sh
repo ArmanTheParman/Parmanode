@@ -1,4 +1,4 @@
-function reindex_bitcoin {
+function reindex_bitcoin { debugf
 
 set_terminal ; echo -e "
 ########################################################################################

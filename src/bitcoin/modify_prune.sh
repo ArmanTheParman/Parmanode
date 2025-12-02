@@ -1,4 +1,4 @@
-function modify_prune {
+function modify_prune { debugf
 #called from bitcoin menu
 unset prune prune_value 
 

@@ -1,4 +1,4 @@
-function delete_blockchain {
+function delete_blockchain { debugf
 while true ; do
 set_terminal ; echo -e "
 ########################################################################################

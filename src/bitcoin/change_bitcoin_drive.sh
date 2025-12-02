@@ -1,4 +1,4 @@
-function change_bitcoin_drive {
+function change_bitcoin_drive { debugf
 source $HOME/.parmanode/parmanode.conf
 if [[ $drive == external ]] ; then otherdrive=internal ; fi
 if [[ $drive == internal ]] ; then otherdrive=external ; fi

@@ -1,4 +1,4 @@
-function password_changer {
+function password_changer { debugf
 
 while true ; do
 set_terminal ; echo -e "

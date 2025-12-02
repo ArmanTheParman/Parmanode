@@ -1,4 +1,4 @@
-function verify_bitcoin {
+function verify_bitcoin { debugf
 if [[ $verify == "skip" ]] ; then return 0 ; fi #skipverify argument set in parman_variables
 if [[ $bitcoin_compile = "true" ]] ; then return 0 ; fi
 if [[ $SKIPVERIFY == "true" ]] ; then return 0 ; fi

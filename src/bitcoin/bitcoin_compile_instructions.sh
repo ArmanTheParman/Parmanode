@@ -1,4 +1,4 @@
-function bitcoin_compile_instructions {
+function bitcoin_compile_instructions { debugf
 
 while true ; do
 set_terminal ; echo -e "

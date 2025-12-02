@@ -1,4 +1,4 @@
-function choose_bitcoin_version {
+function choose_bitcoin_version { debugf
 #also accessed by parmaview
 if [[ $version == "self" ]] ; then return 0 ; fi
 

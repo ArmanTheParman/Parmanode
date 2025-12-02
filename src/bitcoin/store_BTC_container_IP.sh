@@ -1,4 +1,4 @@
-function store_BTC_container_IP {
+function store_BTC_container_IP { debugf
 
 if grep -q "BTCIP" $pc >$dn 2>&1 ; then
 source $pc

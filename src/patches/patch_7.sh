@@ -1,4 +1,4 @@
-function patch_7 {
+function patch_7 { debugf
 debug "starting patch 7
 pc...
 

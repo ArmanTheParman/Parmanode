@@ -1,4 +1,4 @@
-function tmux_patch {
+function tmux_patch { debugf
 if [[ $btcpayinstallsbitcoin == "true" ]] ; then return 0 ; fi
 
 if which tmux >$dn 2>&1 ; then return 0 ; fi
@@ -39,7 +39,7 @@ esac
 done
 }
 
-function install_tmux {
+function install_tmux { debugf
 
 if which tmux >$dn 2>&1 ; then return 0 ; fi
 

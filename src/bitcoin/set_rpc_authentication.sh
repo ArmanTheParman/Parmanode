@@ -1,4 +1,4 @@
-function set_rpc_authentication {
+function set_rpc_authentication { debugf
 if [[ $bitcoin == "yolo" ]]
 	then export rpcuser=null ; export rpcpassword=null
 	return 0 
@@ -98,7 +98,7 @@ check_rpc_credentials_match
 return 0
 }
 
-function set_rpc_authentication_update_conf_edits {
+function set_rpc_authentication_update_conf_edits { debugf
 
 	sudo gsed -i "/rpcuser/d" $bc >$dn 2>&1
 	sudo gsed -i "/rpcpassword/d" $bc >$dn 2>&1
@@ -115,7 +115,7 @@ fi
 
 }
 
-function add_userpass_to_fulcrum {
+function add_userpass_to_fulcrum { debugf
 
 source $pc >$dn 2>&1
 

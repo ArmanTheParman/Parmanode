@@ -1,5 +1,5 @@
 #deprecated
-function rpcbind_adjust {
+function rpcbind_adjust { debugf
 
 yesorno "Because you're enabled strict privacy settings for Bitcoin with Tor, RPC 
     calles (ie wallet and other software trying to communicate with Bitcoin) will not

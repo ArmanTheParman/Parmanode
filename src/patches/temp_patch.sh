@@ -1,7 +1,9 @@
-function temp_patch {
+function temp_patch { debugf
 cleanup_parmanode_service
-truncatedebuglog
-truncatexsessions
+
+#these log files can get massive and freeze the system.
+rm ~/.xsessions-errors >$dn 2>&1 ; rm ~/.xsessions-errors.old >$dn 2>&1
+
 if [[ -e /.dockerenv ]] && ! netstat -tuln | grep -q 9050 ; then
 enable_tor_general
 fi
@@ -21,7 +23,7 @@ fi
 rm -rf $dp/temp >$dn 2>&1
 
 #keep checking in case user declines
-tmux_patch
+which tmux >$dn 2>&1 || tmux_patch
 
 #leave in temp patch because a single time patch may fail, as docker needs to be running
 
@@ -102,20 +104,12 @@ test -f $dp/.parmaview_enabled && {
     ! test -f $pvlog >$dn 2>&1 && touch $pvlog
     }
 
-debug temppatchend
-}
-
-########################################################################################################################
-
-function truncatexsessions {
-#these log files can get massive and freeze the system.
-rm ~/.xsessions-errors >$dn 2>&1
-rm ~/.xsessions-errors.old >$dn 2>&1
+#debug temppatchend
 }
 
 
 #changing becuase redirection to a log file directly is disfunctional with Fulcrum. Need to do it via script.
-function fulcrum_service_patch { 
+function fulcrum_service_patch { debugf 
 if [[ $OS == Mac ]] ; then return 0 ; fi
 
 local file="/etc/systemd/system/fulcrum.service"
@@ -126,7 +120,7 @@ elif sudo test -f $file >$dn 2>&1 ; then #fulcrum.log doesn't exist in file, the
 fi
 }
 
-function fulcrum_delete_old_log {
+function fulcrum_delete_old_log { debugf
 oldfile="/home/parman/parmanode/fulcrum/fulcrum.log"
 if cat $ic 2>$dn | grep -q "fulcrumdkr" && docker ps 2>$dn | grep -q "fulcrum" >$dn \
 && docker exec -it fulcrum test -e $oldfile ; then
@@ -146,7 +140,7 @@ fi
 
 }
 
-function remove_tor_log_patch {
+function remove_tor_log_patch { debugf
 
 if [[ -e $torrc ]] && grep -q "tornoticefile" $torrc ; then
 sudo gsed -i '/^.*tornoticefile\.log.*$/d' $torrc >$dn 2>&1

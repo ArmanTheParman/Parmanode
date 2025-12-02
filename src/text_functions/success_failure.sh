@@ -1,12 +1,12 @@
-function success_blue {
+function success_blue { debugf
 if [[ $preconfigure_parmadrive == "true" ]] ; then return 0 ; fi
 bluesuccesscolour="true"
 success "$@"
 }
 
 
-function success {
-debug "pre-success menu"
+function success { debugf
+debug
 if [[ $preconfigure_parmadrive == "true" ]] ; then return 0 ; fi
 if [[ $bluesuccesscolour == "true" ]] ; then temp=$orange ; orange=$blue ; fi
 

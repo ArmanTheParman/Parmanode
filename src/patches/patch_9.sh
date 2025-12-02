@@ -1,4 +1,4 @@
-function patch_9 {
+function patch_9 { debugf
 remove_tor_log_patch
 please_wait
 [[ -d /usr/local/bin ]] && sudo strip /usr/local/bin/* >/dev/null 2>&1 
