@@ -6,9 +6,9 @@ function parmanode_variables {
 #Can be enabled by adding "d" or "debug" as an argument to the run script.
 #If debug is 1, then a debuging function becomes active, which pauses the
 #program wherever it appears. "export" keeps variable in global memory.
-if [[ $1 == "debug" || $1 == d || $2 == d || $2 == "debug" ]] ; then export debug=1 
-elif [[ $1 == d2 ]] ; then export debug=2  
-elif [[ $1 == d3 ]] ; then export debug=3  #bre docker no-cache build
+if [[ $1 == "debug" || $1 == "d" || $2 == "d" || $2 == "debug" ]] ; then export debug=1 
+elif [[ $1 == "d2" ]] ; then export debug=2  
+elif [[ $1 == "d3" ]] ; then export debug=3  #bre docker no-cache build
 fi
 
 if [[ $1 == "deis" ]] ; then export deis="true" ; fi
@@ -18,7 +18,7 @@ if [[ $1 == "deis" ]] ; then export deis="true" ; fi
 if [[ $1 == "bash" ]] ; then export bash=1 ; fi
 
 #used for debugging
-if [[ $1 == skipverify || $2 == skipverify || $3 == skipverify ]] ; then export verify=skip ; fi
+if [[ $1 == "skipverify" || $2 == "skipverify" || $3 == "skipverify" ]] ; then export verify="skip" ; fi
 
 #Deprecated variable, but doesn't hurt to leave it just in case.
 #save position of working directory. 
