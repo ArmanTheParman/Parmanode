@@ -4,7 +4,7 @@ function toggle_disable_bitcoin { debugf
 if grep -q "disable_bitcoin=true" $pc ; then
 
     if grep -q btccombo $ic ; then
-        docker exec -u root btcpay bash -c "chmod +x /usr/local/bin/*bitcoin*" 
+        docker exec -u root btcpay bash -c "chmod +x /usr/local/bin/bitcoin*"  2>$dn
         gsed -i "/disable_bitcoin=true/d" $pc 
         success "Bitcoin Enabled" 
         return 0
@@ -18,7 +18,7 @@ if grep -q "disable_bitcoin=true" $pc ; then
     fi
 
     if [[ $OS == "Linux" ]] ; then 
-        $xsudo chmod +x /usr/local/bin/*bitcoin*
+        $xsudo chmod +x /usr/local/bin/bitcoin* 2>$dn
         gsed -i "/disable_bitcoin=true/d" $pc 
         success "Bitcoin Enabled" 
         return 0
@@ -40,7 +40,7 @@ else
     done
 
     if grep -q btccombo $ic ; then
-        docker exec -u root btcpay bash -c "chmod -x /usr/local/bin/*bitcoin*" 
+        docker exec -u root btcpay bash -c "chmod -x /usr/local/bin/bitcoin*"  2>$dn
         echo "disable_bitcoin=true" >> $pc
         success "Bitcoin Disabled" 
         return 0
@@ -54,7 +54,7 @@ else
     fi
 
     if [[ $OS == "Linux" ]] ; then 
-        $xsudo chmod -x /usr/local/bin/*bitcoin*
+        $xsudo chmod -x /usr/local/bin/bitcoin* 2>$dn
         echo "disable_bitcoin=true" >> $pc 
         success "Bitcoin Disabled" 
         return 0    
