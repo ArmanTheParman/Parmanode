@@ -6,6 +6,7 @@ function p4socket {
     sleep 0.2
     let count++
     done
+    printf "Unable to write to parmanode.sock...\n\n%s\n" "$@" 2>&1 | tee -a $pvlog >$dn 
 }
 
 function p4socketlines { #for tailing
