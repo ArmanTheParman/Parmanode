@@ -314,7 +314,7 @@ cmake -GNinja \
       -DBUILD_GUI=$gui \
       -DCMAKE_INSTALL_PREFIX=/usr/local \
       ..
-ninja
+ninja -j $(nproc)
 sudo ninja install
 
 fi
