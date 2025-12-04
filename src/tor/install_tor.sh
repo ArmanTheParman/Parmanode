@@ -2,7 +2,7 @@ function install_tor {
 
 if which tor >$dn 2>&1 ; then installed_config_add "tor-end" ; export tor_already_installed=true ; return 0 ; fi
 
-if [[ $1 != silent ]] ; then
+if [[ $1 != "silent" ]] ; then
 
 set_terminal ; echo -e "
 ########################################################################################
@@ -40,7 +40,7 @@ fi
 
 installed_config_add "tor-end"
 
-if [[ $1 != silent ]] ; then
+if [[ $1 != "silent" ]] ; then
     success "Tor" "being installed"
 fi
 return 0

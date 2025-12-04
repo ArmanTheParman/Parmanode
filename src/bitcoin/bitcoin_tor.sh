@@ -23,11 +23,11 @@ if [[ ! -e $torrc ]] ; then $xsudo touch $torrc >$dn 2>&1 ; fi
 enable_tor_general
 
 
-if ! $xsudo grep "HiddenServiceDir $varlibtor/bitcoin-service/" $torrc | grep -v "^#" >$dn 2>&1 ; then 
+if ! sudo grep "HiddenServiceDir $varlibtor/bitcoin-service/" $torrc | grep -v "^#" >$dn 2>&1 ; then 
     echo "HiddenServiceDir $varlibtor/bitcoin-service/" | $xsudo tee -a $torrc >$dn 2>&1
 fi
 
-if ! $xsudo grep "HiddenServicePort 8333 127.0.0.1:8333" $torrc | grep -v "^#" >$dn 2>&1 ; then 
+if ! sudo grep "HiddenServicePort 8333 127.0.0.1:8333" $torrc | grep -v "^#" >$dn 2>&1 ; then 
     echo "HiddenServicePort 8333 127.0.0.1:8333" | $xsudo tee -a $torrc >$dn 2>&1
     restart_tor #necessary as the service is new now
 fi
@@ -88,7 +88,7 @@ if [[ $2 == "onlyout" ]] ; then
     echo "listen=0" | $xsudo tee -a $bc >$dn 2>&1
     $xsudo gsed -i -E '/^bind=/d' $bc
     $xsudo gsed -i "/externalip/d" $bc >$dn 2>&1
-    $xsudo grep -q "discover=0" $bc || echo "discover=0" | $xsudo tee -a $bc >$dn 2>&1
+    sudo grep -q "discover=0" $bc || echo "discover=0" | $xsudo tee -a $bc >$dn 2>&1
     parmanode_conf_remove "bitcoin_tor_status"
     parmanode_conf_add "bitcoin_tor_status=onlyout"
     add_rpcbind 

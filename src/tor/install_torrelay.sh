@@ -1,5 +1,5 @@
 function install_torrelay {
-if [[ $(uname) == Darwin ]] ; then no_mac ; return 1 ; fi
+if [[ $(uname) == "Darwin" ]] ; then no_mac ; return 1 ; fi
 
 if ! which tor >$dn 2>&1 ; then announce "Please instal Tor first from the Parmanode add menu. Aborting." ; return 1 ; fi
 
