@@ -126,6 +126,7 @@ esac
 done
 ##############################################################################################################
 if [[ $newcompile == "false" ]] ; then 
+debug
     ./autogen.sh || { enter_continue "autogen.sh failed - this is normal if compiling versions greater than 28" ; }
 
 while true ; do
