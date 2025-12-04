@@ -11,14 +11,14 @@ if grep -q "disable_bitcoin=true" $pc ; then
     fi
 
     if [[ $OS == "Mac" ]] ; then 
-        sudo chmod +x /Applications/Bitcoin-Qt.app && \
+        $xsudo chmod +x /Applications/Bitcoin-Qt.app && \
         gsed -i "/disable_bitcoin=true/d" $pc && \
         success "Bitcoin Enabled" 
         return 0
     fi
 
     if [[ $OS == "Linux" ]] ; then 
-        sudo chmod +x /usr/local/bin/bitcoin* && \
+        $xsudo chmod +x /usr/local/bin/bitcoin* && \
         gsed -i "/disable_bitcoin=true/d" $pc && \
         success "Bitcoin Enabled" 
         return 0
@@ -47,14 +47,14 @@ else
     fi
 
     if [[ $OS == "Mac" ]] ; then 
-        sudo chmod -x /Applications/Bitcoin-Qt.app && \
+        $xsudo chmod -x /Applications/Bitcoin-Qt.app && \
         echo "disable_bitcoin=true" >> $pc && \
         success "Bitcoin Disabled" 
         return 0
     fi
 
     if [[ $OS == "Linux" ]] ; then 
-        sudo chmod -x /usr/local/bin/bitcoin* && \
+        $xsudo chmod -x /usr/local/bin/bitcoin* && \
         echo "disable_bitcoin=true" >> $pc && \
         success "Bitcoin Disabled" 
         return 0    

@@ -1,47 +1,47 @@
 function bitcoin_tor { debugf
 
 #start fresh
-sudo gsed -i "/discover=/d" $bc >$dn 2>&1
-sudo gsed -i "/onion/d" $bc
-sudo gsed -i -E "/^bind=/d" $bc
-sudo gsed -i "/onlynet/d" $bc
-sudo gsed -i "/listenonion=1/d" $bc
-sudo gsed -i "/listen=0/d" $bc
-sudo gsed -i "/externalip=/d" $bc >$dn 2>&1
-sudo gsed -i -E "/^\s*$/d" $bc >$dn 2>&1
+$xsudo gsed -i "/discover=/d" $bc >$dn 2>&1
+$xsudo gsed -i "/onion/d" $bc
+$xsudo gsed -i -E "/^bind=/d" $bc
+$xsudo gsed -i "/onlynet/d" $bc
+$xsudo gsed -i "/listenonion=1/d" $bc
+$xsudo gsed -i "/listen=0/d" $bc
+$xsudo gsed -i "/externalip=/d" $bc >$dn 2>&1
+$xsudo gsed -i -E "/^\s*$/d" $bc >$dn 2>&1
 
 if [[ $1 == "clearnet" ]] ; then
-    sudo gsed -i "/onion=/d" $bc
+    $xsudo gsed -i "/onion=/d" $bc
     local exit_early="true" #no need to get onion address
 fi
 
 install_tor
 
 if [[ ! -e $varlibtor ]] ; then mkdir -p $varlibtor >$dn 2>&1 ; fi
-if [[ ! -e $torrc ]] ; then sudo touch $torrc >$dn 2>&1 ; fi
+if [[ ! -e $torrc ]] ; then $xsudo touch $torrc >$dn 2>&1 ; fi
 
 enable_tor_general
 
 
-if ! sudo grep "HiddenServiceDir $varlibtor/bitcoin-service/" $torrc | grep -v "^#" >$dn 2>&1 ; then 
-    echo "HiddenServiceDir $varlibtor/bitcoin-service/" | sudo tee -a $torrc >$dn 2>&1
+if ! $xsudo grep "HiddenServiceDir $varlibtor/bitcoin-service/" $torrc | grep -v "^#" >$dn 2>&1 ; then 
+    echo "HiddenServiceDir $varlibtor/bitcoin-service/" | $xsudo tee -a $torrc >$dn 2>&1
 fi
 
-if ! sudo grep "HiddenServicePort 8333 127.0.0.1:8333" $torrc | grep -v "^#" >$dn 2>&1 ; then 
-    echo "HiddenServicePort 8333 127.0.0.1:8333" | sudo tee -a $torrc >$dn 2>&1
+if ! $xsudo grep "HiddenServicePort 8333 127.0.0.1:8333" $torrc | grep -v "^#" >$dn 2>&1 ; then 
+    echo "HiddenServicePort 8333 127.0.0.1:8333" | $xsudo tee -a $torrc >$dn 2>&1
     restart_tor #necessary as the service is new now
 fi
 
 # discover=0 (dont advertise clearnet IP) ; if not set, default is 1
 
 if [[ $1 == "torandclearnet" ]] ; then
-    sudo gsed -i "/onion=/d" $bc
+    $xsudo gsed -i "/onion=/d" $bc
     if grep -q btcpaycombo-end $ic ; then
-        echo "onion=host.docker.internal:9050" | sudo tee -a $bc >$dn 2>&1
+        echo "onion=host.docker.internal:9050" | $xsudo tee -a $bc >$dn 2>&1
     else
-        echo "onion=127.0.0.1:9050" | sudo tee -a $bc >$dn 2>&1
+        echo "onion=127.0.0.1:9050" | $xsudo tee -a $bc >$dn 2>&1
     fi
-    echo "listenonion=1" | sudo tee -a $bc >$dn 2>&1
+    echo "listenonion=1" | $xsudo tee -a $bc >$dn 2>&1
     get_onion_address_variable "bitcoin"
         count=0 ; while [[ $btcpayinstallsbitcoin != "true" && -z $ONION_ADDR && $count -lt 4 ]] ; do
         sleep 3
@@ -49,22 +49,22 @@ if [[ $1 == "torandclearnet" ]] ; then
         count=$((count + 1))
     done 
     [[ -z $ONION_ADDR ]] && sww "Some issue with getting onion address. Try later or switch to no Tor." && return 1
-    echo "externalip=$ONION_ADDR" | sudo tee -a $bc >$dn 2>&1
-    sudo gsed -i "/discover=/d" $bc
+    echo "externalip=$ONION_ADDR" | $xsudo tee -a $bc >$dn 2>&1
+    $xsudo gsed -i "/discover=/d" $bc
     parmanode_conf_remove "bitcoin_tor_status"
     parmanode_conf_add "bitcoin_tor_status=torandclearnet"
     fi
 
 if [[ $1 == "toronly" ]] ; then
-    sudo gsed -i "/onion=/d" $bc
-    grep -q "discover=0" $bc || echo "discover=0" | sudo tee -a $bc >$dn 2>&1
-    echo "listenonion=1" | sudo tee -a $bc >$dn 2>&1
-    echo "onlynet=onion" | sudo tee -a $bc >$dn 2>&1 #new, disallows outward clearnet connections
+    $xsudo gsed -i "/onion=/d" $bc
+    grep -q "discover=0" $bc || echo "discover=0" | $xsudo tee -a $bc >$dn 2>&1
+    echo "listenonion=1" | $xsudo tee -a $bc >$dn 2>&1
+    echo "onlynet=onion" | $xsudo tee -a $bc >$dn 2>&1 #new, disallows outward clearnet connections
 
     if grep -q btcpaycombo-end $ic ; then
-        echo "onion=host.docker.internal:9050" | sudo tee -a $bc >$dn 2>&1
+        echo "onion=host.docker.internal:9050" | $xsudo tee -a $bc >$dn 2>&1
     else
-        echo "onion=127.0.0.1:9050" | sudo tee -a $bc >$dn 2>&1
+        echo "onion=127.0.0.1:9050" | $xsudo tee -a $bc >$dn 2>&1
     fi
         count=0 ; while [[ $btcpayinstallsbitcoin != "true" && -z $ONION_ADDR && $count -lt 4 ]] ; do
         restart_tor
@@ -76,19 +76,19 @@ if [[ $1 == "toronly" ]] ; then
     get_onion_address_variable "bitcoin"
 
     [[ -z $ONION_ADDR ]] && sww "Some issue with getting onion address. Try later or switch to no Tor." && return 1
-    echo "externalip=$ONION_ADDR" | sudo tee -a $bc >$dn 2>&1
+    echo "externalip=$ONION_ADDR" | $xsudo tee -a $bc >$dn 2>&1
     parmanode_conf_remove "bitcoin_tor_status"
     parmanode_conf_add "bitcoin_tor_status=toronly"
     add_rpcbind 
     fi
 
 if [[ $2 == "onlyout" ]] ; then
-    sudo gsed -i "/onlynet/d" $bc
-    sudo gsed -i "/listenonion=1/d" $bc
-    echo "listen=0" | sudo tee -a $bc >$dn 2>&1
-    sudo gsed -i -E '/^bind=/d' $bc
-    gsed -i "/externalip/d" $bc >$dn 2>&1
-    grep -q "discover=0" $bc || echo "discover=0" | sudo tee -a $bc >$dn 2>&1
+    $xsudo gsed -i "/onlynet/d" $bc
+    $xsudo gsed -i "/listenonion=1/d" $bc
+    echo "listen=0" | $xsudo tee -a $bc >$dn 2>&1
+    $xsudo gsed -i -E '/^bind=/d' $bc
+    $xsudo gsed -i "/externalip/d" $bc >$dn 2>&1
+    $xsudo grep -q "discover=0" $bc || echo "discover=0" | $xsudo tee -a $bc >$dn 2>&1
     parmanode_conf_remove "bitcoin_tor_status"
     parmanode_conf_add "bitcoin_tor_status=onlyout"
     add_rpcbind 

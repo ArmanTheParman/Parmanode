@@ -81,11 +81,11 @@ fi
 
 if [[ $OS == "Mac" ]] ; then 
     remove_bitcoin_directories_mac uninstall
-    sudo rm -rf /Applications/Bitcoin-QT.app >$dn 2>&1
+    $xsudo rm -rf /Applications/Bitcoin-QT.app >$dn 2>&1
 fi
 
 # Remove binaries
-sudo rm /usr/local/bin/*bitcoin* 2>$dn
+$xsudo rm /usr/local/bin/*bitcoin* 2>$dn
 
 #Modify config file
 installed_config_remove "bitcoin"
@@ -105,8 +105,8 @@ parmanode_conf_remove "bitcoin_ordinalspatch"
 unset drive prune_value bitcoin_choice UUID BTCIP rpcuser rpcpassword btc_authentication format_choice skip_formatting justFormat driveproblem
 print_bitcoin_variables "after unset"
 #Remove service file for Linux only
-sudo rm /etc/systemd/system/bitcoind.service >$dn 2>&1
-sudo systemctl daemon-reload >$dn 2>&1
+$xsudo rm /etc/systemd/system/bitcoind.service >$dn 2>&1
+$xsudo systemctl daemon-reload >$dn 2>&1
 
 set_terminal
 if [[ $combo != "true" && $combo != "btcpay_first" ]] ; then

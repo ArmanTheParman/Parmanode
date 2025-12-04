@@ -117,10 +117,10 @@ if [[ $OS == "Mac" ]] ; then
 
     if find $hp/bitcoin/ -type f -name "*.dmg" 2>$dn | grep -q . ; then
         hdiutil attach *.dmg
-        sudo cp -R /Volumes/Bitcoin*/Bitcoin* /Applications
+        $xsudo cp -R /Volumes/Bitcoin*/Bitcoin* /Applications
         hdiutil detach /Volumes/Bitcoin*
     else
-        sudo cp -R $hp/bitcoin/Bitcoin*app /Applications
+        $xsudo cp -R $hp/bitcoin/Bitcoin*app /Applications
     fi
 fi
 
@@ -139,11 +139,11 @@ rm $hp/bitcoin/bitcoin.conf
 # "installs" bitcoin and sets to writing to only root for security. Read/execute for group and others. 
 # makes target directories if they don't exist
 # "install" is just a glorified copy command
-sudo install -m 0755 -o $USER -g $USER -t /usr/local/bin $hp/bitcoin/bin/* 2>$pvlog
+$xsudo install -m 0755 -o $USER -g $USER -t /usr/local/bin $hp/bitcoin/bin/* 2>$pvlog
 debug "$(whoami)"
-sudo rm -rf $hp/bitcoin/bin
+rm -rf $hp/bitcoin/bin
 debug
-sudo rm -rf $dp/temp >$dn 2>&1
+rm -rf $dp/temp >$dn 2>&1
 debug
 fi
 }

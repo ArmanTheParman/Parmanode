@@ -25,7 +25,7 @@ internal)
 are_you_sure "Delete internal drive blockchain data?" || return 1 
 if [[ ! -L $HOME/.bitcoin ]] ; then 
 please_wait && echo "The data will be deleted, and a customised bitcoin.conf will be made"
-sudo rm -rf $HOME/.bitcoin/*
+$xsudo rm -rf $HOME/.bitcoin/*
 sleep 2
 make_bitcoin_conf
 success "Bitcoin data" "being deleted" && return 0
@@ -38,7 +38,7 @@ external)
 are_you_sure  "Delete external drive blockchain data?" || return 1
 mount_drive || return 1
 please_wait && echo "The data will be deleted, and a customised bitcoin.conf will be made"
-sudo rm -rf $parmanode_drive/.bitcoin/* 
+$xsudo rm -rf $parmanode_drive/.bitcoin/* 
 sleep 2
 make_bitcoin_conf
 debug "check conf file"

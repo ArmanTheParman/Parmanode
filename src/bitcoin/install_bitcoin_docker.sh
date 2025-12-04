@@ -1,5 +1,5 @@
 function install_bitcoin_docker { debugf
-if [[ $1 != silent ]] ; then
+if [[ $1 != "silent" ]] ; then
 set_terminal
 yesorno "You are about to install Bitcoin into a docker container of your
     choice." || return 1
@@ -124,7 +124,7 @@ cd && rm -rf $tmp/bitcoin && mkdir -p $tmp/bitcoin && cd $tmp/bitcoin
 while true ; do
 clear
 
-        if [[ $1 != silent ]] ; then 
+        if [[ $1 != "silent" ]] ; then 
         echo -e "${green}Downloading Bitcoin..."
         fi
 
@@ -164,7 +164,7 @@ docker exec -itu $username $dockername /bin/bash -c "sudo install -m 0755 -o \$(
     }
 docker exec $dockername rm -rf /tmp/bitcoin
 rm -rf $tmp/bitcoin
-if [[ $1 != silent ]] ; then
+if [[ $1 != "silent" ]] ; then
 success "Bitcoin has been installed in the $dockername container.
 
     The username and password is$cyan 'parman'$orange and$cyan 'parman'.$orange You can

@@ -115,7 +115,7 @@ else
 fi
 
 get_onion_address_variable bitcoinRPC
-if sudo test -f $torrc && [[ -n $ONION_ADDR_BITCOINRPC ]] && sudo grep -q "8332 127" $torrc ; then
+if $xsudo test -f $torrc && [[ -n $ONION_ADDR_BITCOINRPC ]] && $xsudo grep -q "8332 127" $torrc ; then
 onionRPC="\n$blue    Bitcoin RPC onion address: \n\n    $ONION_ADDR_BITCOINRPC:8332 $orange"
 else
 unset onionRPC ONION_ADDR_BITCOINRPC
@@ -300,7 +300,7 @@ max)
     case $enter_cont in
     *)
     grep -q "maxuploadtarget=" $bc || {
-        echo "maxuploadtarget=$enter_cont" | sudo tee -a $bc >$dn 2>&1
+        echo "maxuploadtarget=$enter_cont" | $xsudo tee -a $bc >$dn 2>&1
         success "Maxuploadtarget set to $enter_cont MiB"
         continue
         
@@ -480,7 +480,7 @@ thestring="http://$rpcuser:$rpcpassword@$ONION_ADDR_BITCOINRPC:8332"
 theclearnetstring="http://$rpcuser:$rpcpassword@$IP:8332"
 
 get_onion_address_variable bitcoinRPC
-if sudo test -f $torrc && [[ -n $ONION_ADDR_BITCOINRPC ]] && sudo grep -q "8332 127" $torrc ; then
+if $xsudo test -f $torrc && [[ -n $ONION_ADDR_BITCOINRPC ]] && $xsudo grep -q "8332 127" $torrc ; then
 announce "
 
 The tor connection...

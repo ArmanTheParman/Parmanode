@@ -106,11 +106,11 @@ m|M) back2main ;;
 esac 
 done ; fi
 
-sudo cp $tmp/bitcoin.conf $file && log "bitcoin" "bitcoin conf made"  
+$xsudo cp $tmp/bitcoin.conf $file && log "bitcoin" "bitcoin conf made"  
 debug "Bitcoin conf copied from tmp
 $(cat $HOME/.bitcoin/bitcoin.conf)"
 
-sudo chown -R $USER:$(id -gn) $file
+$xsudo chown -R $USER:$(id -gn) $file
 
 # Here is where the prune choice is added to bitcoin.conf
 #currently only "umbre" is the supported argument
@@ -123,7 +123,7 @@ apply_prune_bitcoin_conf "$@"
 
 function add_rpcbind {
 [[ -e $bc ]] && if ! grep -q "rpcbind=0.0.0.0" $bc >$dn 2>&1 ; then 
-echo "rpcbind=0.0.0.0" | sudo tee -a $bc >$dn 2>&1
+echo "rpcbind=0.0.0.0" | $xsudo tee -a $bc >$dn 2>&1
 fi
 }
 
@@ -135,8 +135,8 @@ add_rpcbind
 
 #values below 172.16 are public internet reserved, and above are private networks
 [[ -e $bc ]] && if ! grep -q "rpcallowip=172.16" $bc ; then 
-    sudo gsed -i '/rpcallowip=172.*$/d' $bc
-    echo "rpcallowip=172.16.0.0/12"  | sudo tee -a $bc >$dn 2>&1
+    $xsudo gsed -i '/rpcallowip=172.*$/d' $bc
+    echo "rpcallowip=172.16.0.0/12"  | $xsudo tee -a $bc >$dn 2>&1
 fi
 
 }

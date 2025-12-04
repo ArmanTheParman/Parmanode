@@ -44,7 +44,7 @@ else
 fi
 
 
-if sudo cat $macprefix/var/lib/tor/bitcoin-service/hostname >$dn && [[ $showtor == "true" ]] ; then 
+if $xsudo cat $macprefix/var/lib/tor/bitcoin-service/hostname >$dn && [[ $showtor == "true" ]] ; then 
 get_onion_address_variable bitcoin 
 tortext="
 $bright_blue    Onion adress: $ONION_ADDR
@@ -129,7 +129,7 @@ m|M) back2main ;; Q|q|quit|QUIT|Quit) exit 0 ;; p|P) return 1 ;;
     parmanode_conf_add "bitcoin_tor_status=clearnet"
 #    check_bitcoin_tor_status    
     remove_bitcoin_i2p
-    case $choice in "8") sudo echo "listen=0" | sudo tee -a $bc >$dn 2>&1 ; sudo echo "discover=0" | sudo tee -a $bc >$dn 2>&1 ; esac
+    case $choice in "8") echo "listen=0" | $xsudo tee -a $bc >$dn 2>&1 ; echo "discover=0" | $xsudo tee -a $bc >$dn 2>&1 ; esac
     if [[ $install == "bitcoin" ]] ; then return 0 ; fi
     return 0 ;;
 "5"|tori2p) 
@@ -162,12 +162,12 @@ m|M) back2main ;; Q|q|quit|QUIT|Quit) exit 0 ;; p|P) return 1 ;;
     parmanode_conf_remove "bitcoin_tor_status"
 #    check_bitcoin_tor_status
     bitcoin_i2p 
-    sudo gsed -i "/discover=/d" $bc >$dn 2>&1
-    sudo gsed -i "/listenonion/d" $bc >$dn 2>&1
-    sudo gsed -i "/i2pacceptincoming/d" $bc >$dn 2>&1
-    sudo gsed -i "/listen=/d" $bc >$dn 2>&1
-    echo "listen=0" | sudo tee -a $bc >$dn 2>&1
-    echo "discover=0" | sudo tee -a $bc >$dn 2>&1
+    $xsudo gsed -i "/discover=/d" $bc >$dn 2>&1
+    $xsudo gsed -i "/listenonion/d" $bc >$dn 2>&1
+    $xsudo gsed -i "/i2pacceptincoming/d" $bc >$dn 2>&1
+    $xsudo gsed -i "/listen=/d" $bc >$dn 2>&1
+    echo "listen=0" | $xsudo tee -a $bc >$dn 2>&1
+    echo "discover=0" | $xsudo tee -a $bc >$dn 2>&1
     parmanode_conf_remove "bitcoin_tor_status"
     parmanode_conf_add "bitcoin_tor_status=i2ponlyout"
     if [[ $install == "bitcoin" ]] ; then return 0 ; fi
@@ -184,7 +184,7 @@ done
 
 function bitcoin_i2p { debugf
 
-    echo "onlynet=i2p" | sudo tee -a $bc >$dn 2>&1
+    echo "onlynet=i2p" | $xsudo tee -a $bc >$dn 2>&1
     if grep -q btcpaycombo-end $ic ; then
 
         docker ps | grep btcpay | grep -q 7656 || { sww "Looks like you installed BTCPay/Bitcoin combo in an earlier version
@@ -192,20 +192,20 @@ function bitcoin_i2p { debugf
         \r the BTCP/Bitcoin so that the correct i2p ports are available. You should select something
         \r else from the Tor menu to refresh partial changes, or things might not work." && return 1 ; }
 
-        echo "i2psam=host.docker.internal:7656" | sudo tee -a $bc >$dn 2>&1
-        echo "proxy=host.docker.internal:9050" | sudo tee -a $bc >$dn 2>&1 #always need it, settings don't need it, so always remove when removing i2p
+        echo "i2psam=host.docker.internal:7656" | $xsudo tee -a $bc >$dn 2>&1
+        echo "proxy=host.docker.internal:9050" | $xsudo tee -a $bc >$dn 2>&1 #always need it, settings don't need it, so always remove when removing i2p
     else
-        echo "i2psam=127.0.0.1:7656" | sudo tee -a $bc >$dn 2>&1
-        echo "proxy=127.0.0.1:9050" | sudo tee -a $bc >$dn 2>&1 #always need it, settings don't need it, so always remove when removing i2p
+        echo "i2psam=127.0.0.1:7656" | $xsudo tee -a $bc >$dn 2>&1
+        echo "proxy=127.0.0.1:9050" | $xsudo tee -a $bc >$dn 2>&1 #always need it, settings don't need it, so always remove when removing i2p
     fi
-    echo "i2pacceptincoming=1" | sudo tee -a $bc >$dn 2>&1
+    echo "i2pacceptincoming=1" | $xsudo tee -a $bc >$dn 2>&1
 }
 
 function remove_bitcoin_i2p { debugf
-    sudo gsed -i "/onlynet=i2p/d" $bc  > $dn 2>&1
-    sudo gsed -i "/i2psam=/d" $bc  > $dn 2>&1
-    sudo gsed -i "/i2pacceptincoming=/d" $bc > $dn 2>&1
-    sudo gsed -i "/proxy=127/d" $bc > $dn 2>&1
-    sudo gsed -i "/proxy=host.docker.internal/d" $bc > $dn 2>&1
+    $xsudo gsed -i "/onlynet=i2p/d" $bc  > $dn 2>&1
+    $xsudo gsed -i "/i2psam=/d" $bc  > $dn 2>&1
+    $xsudo gsed -i "/i2pacceptincoming=/d" $bc > $dn 2>&1
+    $xsudo gsed -i "/proxy=127/d" $bc > $dn 2>&1
+    $xsudo gsed -i "/proxy=host.docker.internal/d" $bc > $dn 2>&1
 }
 

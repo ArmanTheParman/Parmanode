@@ -10,7 +10,7 @@ set_terminal ; echo -e "
 ########################################################################################
 "
 read choice
-if [[ $choice == y ]] ; then
+if [[ $choice == "y" ]] ; then
 stop_bitcoin
 clear
 echo -e "
@@ -32,7 +32,7 @@ if grep -q "btccombo" $ic ; then
 docker exec btcpay bitcoind --reindex
 docker exec btcpay bitcoin-cli stop
 docker exec -d btcpay bitcoind 
-elif [[ $OS == Linux ]] ; then
+elif [[ $OS == "Linux" ]] ; then
 sudo bitcoind --reindex
 stop_bitcoin
 start_bitcoin

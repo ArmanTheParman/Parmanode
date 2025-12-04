@@ -120,4 +120,12 @@ export PTWINDATAUSAGE=$hp/parmatwin/.data_usage_total.txt
 
 
 app_versions
+sudo -k
+
+#variable usage of sudo
+if [[ $parmaview == 1 ]] ; then
+export xsudo=""
+else
+export xsudo=sudo
+fi
 }

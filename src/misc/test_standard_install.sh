@@ -1,7 +1,7 @@
 function test_standard_install {
 if grep -q "standard_install" $dp/hide_messages.conf >$dn 2>&1 ; then return 0 ; fi
 
-if [[ ! -e $pn/.git ]] ; then
+if [[ ! -e "$pn/.git" ]] ; then
 while true ; do
 set_terminal
 echo -e "
@@ -37,7 +37,7 @@ if file parmanode_temp >$dn 2>&1 ; then rm -rf parmanode_temp ; fi
 git clone https://github.com/armantheparman/parmanode.git parmanode_temp
 
 file ./parmanode_temp/version.conf 1>$dn 2>&1 || { echo "Some problem with the download. Aborting. You might want to try again later." ; enter_continue ; return 1 ; }
-sudo rm -rf $HOME/parman_programs/parmanode >$dn 2>&1
+$xsudo rm -rf $HOME/parman_programs/parmanode >$dn 2>&1
 mv $HOME/parmanode_temp/ $HOME/parman_programs/parmanode >$dn 2>&1
 cd $pn
 git config pull.rebase false >$dn 2>&1

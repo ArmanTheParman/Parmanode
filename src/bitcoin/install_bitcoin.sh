@@ -83,7 +83,7 @@ debug "after format_ext_drive"
 if [[ $version == "self" ]] ; then break ; fi
 
 if [[ $OS == "Linux" && $drive == "external" ]] ; then
-    sudo chown -R $USER /media/$USER/parmanode >$dn 2>&1 \
+    $xsudo chown -R $USER /media/$USER/parmanode >$dn 2>&1 \
     || log "bitcoin" "unable to execute chown in install_bitcoin function" 
 fi
 
@@ -123,7 +123,7 @@ if [[ $OS == "Linux" && $btcpayinstallsbitcoin != "true" ]] ; then
 fi
 
 if [[ $btcpayinstallsbitcoin != "true" ]] ; then
-sudo chown -R $USER: $HOME/.bitcoin/ 
+$xsudo chown -R $USER: $HOME/.bitcoin/ 
 debug
 fi
 
@@ -182,7 +182,7 @@ debug
 
 ########################################################################################
 "
-    read choice ; case $choice in y) sudo rm -rf $hp/bitcoin_github ;; esac
+    read choice ; case $choice in y) $xsudo rm -rf $hp/bitcoin_github ;; esac
     fi
 debug
 set_terminal 
@@ -201,7 +201,7 @@ success "Bitcoin should have started syncing. Note, it should also continue to s
 installed_conf_add "bitcoin-end"
 
     #Just in case - what? again? Anyway, I'll leave it.
-    sudo chown -R $USER:$USER $parmanode_drive>$dn 2>&1
+    $xsudo chown -R $USER:$USER $parmanode_drive>$dn 2>&1
 
     enter_continue
     return 0

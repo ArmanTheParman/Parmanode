@@ -23,7 +23,7 @@ $orange
     The line that will be added is...
    $cyan 
     rpcbind=127.0.0.1$orange" &&
-echo "rpcallowip=$IP" | sudo tee -a $bc >$dn 2>&1
+echo "rpcallowip=$IP" | $xsudo tee -a $bc >$dn 2>&1
 
 
 #question 2 - docker containers that are running
@@ -50,7 +50,7 @@ $orange
 case $enter_cont in
     "") break ;;
     *) if echo $enter_cont | grep -qE "^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$" ; then
-            echo "rpcallowip=$enter_cont" | sudo tee -a $bc >$dn 2>&1
+            echo "rpcallowip=$enter_cont" | $xsudo tee -a $bc >$dn 2>&1
             continue
         else
             announce "That doesn't look like an IP address. Try again."

@@ -1,7 +1,7 @@
 function change_bitcoin_drive { debugf
 source $HOME/.parmanode/parmanode.conf
-if [[ $drive == external ]] ; then otherdrive=internal ; fi
-if [[ $drive == internal ]] ; then otherdrive=external ; fi
+if [[ $drive == "external" ]] ; then otherdrive="internal" ; fi
+if [[ $drive == "internal" ]] ; then otherdrive="external" ; fi
 
 while true ; do
 if [[ -z $1 ]] ; then #zero argument, called by menu_bitcoin_other to swap drives
@@ -117,7 +117,7 @@ done # ends while no parmanode in fstab
     cd $HOME && ln -s /media/$(whoami)/parmanode/.bitcoin/ .bitcoin
     mkdir $parmanode_drive/.bitcoin >$dn 2>&1 && \
             log "bitcoin" ".bitcoin dir made on ext drive" 
-    sudo chown -R $USER:$(id -gn) $parmanode_drive/.bitcoin
+    $xsudo chown -R $USER:$(id -gn) $parmanode_drive/.bitcoin
     make_bitcoin_conf prune 0
     announce "Start Bitcoin manually to begin syncing."
     return 0

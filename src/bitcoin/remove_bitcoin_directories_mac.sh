@@ -1,7 +1,7 @@
 function remove_bitcoin_directories_mac { debugf
 
 #Remove Parmanode/bitcoin directory (installation files)
-sudo rm -rf $HOME/parmanode/bitcoin >$dn 2>&1 
+$xsudo rm -rf $HOME/parmanode/bitcoin >$dn 2>&1 
   
 #Remove symlink to drive
 if [[ -L "$HOME/.bitcoin" ]] 2>$dn ; then 

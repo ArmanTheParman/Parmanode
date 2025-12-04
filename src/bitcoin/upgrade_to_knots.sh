@@ -25,7 +25,7 @@ $orange
     Proceed?" || return 1
 clear
 stop_bitcoin
-sudo rm -rf $hp/bitcoin
+$xsudo rm -rf $hp/bitcoin
 mkdir -p $hp/bitcoin
 #download binaries, exract to directory, swap old with new.
 knotsbitcoin="true"
@@ -41,8 +41,8 @@ download_bitcoin_getfiles || { enter_continue "Something went wrong." ; return 1
 parmanode_conf_remove "bitcoin_choice"
 parmanode_conf_add "bitcoin_choice=knots"
 verify_bitcoin || return 1
-sudo mkdir -p /usr/local/bin/bitcoin_old
-sudo mv /usr/local/bin/*bitcoin* /usr/local/bin/bitcoin_old/
+$xsudo mkdir -p /usr/local/bin/bitcoin_old
+$xsudo mv /usr/local/bin/*bitcoin* /usr/local/bin/bitcoin_old/
 unpack_bitcoin || return 1
 start_bitcoin
 Success "Bitcoin has been upgraded to Knots."

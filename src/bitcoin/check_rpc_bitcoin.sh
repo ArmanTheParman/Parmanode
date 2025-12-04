@@ -3,8 +3,8 @@ unset rpcuser
 
 source $pc
 
-if [[ $bitcoin_choice_with_lnd == remote ]] ; then return 0 ; fi
-if [[ $bitcoin_choice_with_litd == remote ]] ; then return 0 ; fi
+if [[ $bitcoin_choice_with_lnd == "remote" ]] ; then return 0 ; fi
+if [[ $bitcoin_choice_with_litd == "remote" ]] ; then return 0 ; fi
 
 source $HOME/.bitcoin/bitcoin.conf >$dn 2>&1
 if [ -z $rpcuser ] ; then

@@ -26,8 +26,8 @@ q|Q) exit 0 ;; p|P|M|m) back2main ;;
 y)
 unset file && local file="$HOME/parmanode/bre/.env"
 bre_docker_stop
-sudo gsed -i "/BTCEXP_BITCOIND_USER/c\BTCEXP_BITCOIND_USER=$rpcuser" "$file"
-sudo gsed -i "/BTCEXP_BITCOIND_PASS/c\BTCEXP_BITCOIND_PASS=$rpcpassword" "$file"
+$xsudo gsed -i "/BTCEXP_BITCOIND_USER/c\BTCEXP_BITCOIND_USER=$rpcuser" "$file"
+$xsudo gsed -i "/BTCEXP_BITCOIND_PASS/c\BTCEXP_BITCOIND_PASS=$rpcpassword" "$file"
 bre_docker_start
 break
 ;;
@@ -64,8 +64,8 @@ q|Q) exit 0 ;; p|P|M|m) back2main ;;
 y)
 unset file && local file="$HOME/parmanode/btc-rpc-explorer/.env"
 stop_bre
-sudo gsed -i "/BTCEXP_BITCOIND_USER/c\BTCEXP_BITCOIND_USER=$rpcuser" $file 
-sudo gsed -i "/BTCEXP_BITCOIND_PASS/c\BTCEXP_BITCOIND_PASS=$rpcpassword" $file
+$xsudo gsed -i "/BTCEXP_BITCOIND_USER/c\BTCEXP_BITCOIND_USER=$rpcuser" $file 
+$xsudo gsed -i "/BTCEXP_BITCOIND_PASS/c\BTCEXP_BITCOIND_PASS=$rpcpassword" $file
 restart_bre
 break
 ;;
@@ -103,8 +103,8 @@ q|Q) exit 0 ;; p|P|M|m) back2main ;;
 y)
 unset file && local file="$HOME/.lnd/lnd.conf"
 stop_lnd
-sudo gsed -i "/bitcoind.rpcpass/c\bitcoind.rpcpass=$rpcpassword" $file 
-sudo gsed -i "/bitcoind.rpcuser/c\bitcoind.rpcuser=$rpcuser" $file
+$xsudo gsed -i "/bitcoind.rpcpass/c\bitcoind.rpcpass=$rpcpassword" $file 
+$xsudo gsed -i "/bitcoind.rpcuser/c\bitcoind.rpcuser=$rpcuser" $file
 start_lnd
 break
 ;;
@@ -142,8 +142,8 @@ q|Q) exit 0 ;; p|P|M|m) back2main ;;
 y)
 unset file && local file="$HOME/.nbxplorer/Main/settings.config"
 stop_btcpay
-sudo gsed -i "/btc.rpc.user/c\btc.rpc.user=$rpcuser" $file
-sudo gsed -i "/btc.rpc.password/c\btc.rpc.password=$rpcpassword" $file
+$xsudo gsed -i "/btc.rpc.user/c\btc.rpc.user=$rpcuser" $file
+$xsudo gsed -i "/btc.rpc.password/c\btc.rpc.password=$rpcpassword" $file
 start_btcpay
 break
 ;;
@@ -181,7 +181,7 @@ y)
 unset file && local file="$HOME/.electrs/config.toml"
 if grep -q "electrs-end" $ic ; then stop_electrs ; fi
 if grep -q "electrsdkr-end" $ic ; then stop_electrs ; fi
-sudo gsed -i  "/auth/c\auth = \"$rpcuser:$rpcpassword\"" $file
+$xsudo gsed -i  "/auth/c\auth = \"$rpcuser:$rpcpassword\"" $file
 if grep -q "electrs-end" $ic ; then start_electrs ; fi
 if grep -q "electrsdkr-end" $ic ; then docker_start_electrs ; fi
 break
@@ -219,8 +219,8 @@ q|Q) exit 0 ;; p|P|M|m) back2main ;;
 y)
 unset file && local file=$fc
 stop_fulcrum
-sudo gsed -i "/rpcuser/c\rpcuser = $rpcuser" $file
-sudo gsed -i "/rpcpassword/c\rpcpassword = $rpcpassword" $file
+$xsudo gsed -i "/rpcuser/c\rpcuser = $rpcuser" $file
+$xsudo gsed -i "/rpcpassword/c\rpcpassword = $rpcpassword" $file
 start_fulcrum
 break
 ;;
@@ -257,7 +257,7 @@ q|Q) exit 0 ;; p|P|M|m) back2main ;;
 y)
 unset file && local file="$HOME/.sparrow/config"
 set_terminal ; enter_continue "Please ensure Sparrow has been shut down before continuing." 
-sudo gsed -i "/coreAuth\"/c\    \"coreAuth\": \"$rpcuser:$rpcpassword\"," $file
+$xsudo gsed -i "/coreAuth\"/c\    \"coreAuth\": \"$rpcuser:$rpcpassword\"," $file
 break
 ;;
 n)
@@ -293,8 +293,8 @@ q|Q) exit 0 ;; p|P|M|m) back2main ;;
 y)
 unset file && local file="$hp/mempool/docker/docker-compose.yml"
 stop_mempool
-sudo gsed -i "/CORE_RPC_USERNAME/c\      CORE_RPC_USERNAME: \"$rpcuser\"" $file #docker compose file, indentation is criticial
-sudo gsed -i "/CORE_RPC_PASSWORD/c\      CORE_RPC_PASSWORD: \"$rpcpassword\"" $file
+$xsudo gsed -i "/CORE_RPC_USERNAME/c\      CORE_RPC_USERNAME: \"$rpcuser\"" $file #docker compose file, indentation is criticial
+$xsudo gsed -i "/CORE_RPC_PASSWORD/c\      CORE_RPC_PASSWORD: \"$rpcpassword\"" $file
 start_mempool
 break
 ;;
@@ -331,8 +331,8 @@ q|Q) exit 0 ;; p|P|M|m) back2main ;;
 y)
 unset file && local file="$hp/public_pool/.env"
 stop_public_pool
-sudo gsed -i "/BITCOIN_RPC_USER=/c\BITCOIN_RPC_USER=$rpcuser" $file
-sudo gsed -i "/BITCOIN_RPC_PASSWORD=/c\BITCOIN_RPC_PASSWORD=$rpcpassword" $file
+$xsudo gsed -i "/BITCOIN_RPC_USER=/c\BITCOIN_RPC_USER=$rpcuser" $file
+$xsudo gsed -i "/BITCOIN_RPC_PASSWORD=/c\BITCOIN_RPC_PASSWORD=$rpcpassword" $file
 start_public_pool
 break
 ;;
@@ -369,7 +369,7 @@ q|Q) exit 0 ;; p|P|M|m) back2main ;;
 y)
 unset file && local file="$hp/electrumx/electrumx.conf"
 stop_electrumx
-sudo gsed -i "/DAEMON_URL/c\DAEMON_URL = http = http:\/\/$rpcuser:$rpcpassword@127.0.0.1:8332/" $file
+$xsudo gsed -i "/DAEMON_URL/c\DAEMON_URL = http = http:\/\/$rpcuser:$rpcpassword@127.0.0.1:8332/" $file
 start_electrumx
 break
 ;;
