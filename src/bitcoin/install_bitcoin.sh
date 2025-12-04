@@ -104,10 +104,12 @@ compile_bitcoin || return 1
 # Download bitcoin software & verify
 if [[ $bitcoin_compile == "false" ]] ; then
 download_bitcoin || return 1
+debug
 fi
 
 #setup bitcoin.conf
 make_bitcoin_conf || { sww && return 1 ; }
+debug
 [[ $btcdockerchoice == "yes" ]] || { menu_bitcoin_tor || { sww && return 1 ; } ; }
 #make a script that service file will use
 if [[ $OS == "Linux" && $btcpayinstallsbitcoin != "true" && $btcdockerchoice != "yes" ]] ; then
@@ -117,15 +119,18 @@ fi
 #make service file - this allows automatic start up after a reboot
 if [[ $OS == "Linux" && $btcpayinstallsbitcoin != "true" ]] ; then 
     make_bitcoind_service_file
+    debug
 fi
 
 if [[ $btcpayinstallsbitcoin != "true" ]] ; then
 sudo chown -R $USER: $HOME/.bitcoin/ 
+debug
 fi
 
 if [[ $btcpayinstallsbitcoin != "true"  && $btcdockerchoice != "yes" ]] ; then
 #setting password. Managing behaviour of called function with variable and arguments.
 unset skip
+debug
 if [[ $version == self ]] && grep -q "rpcuser=" $bc ; then skip="true" ; else skip="false" 
 fi
 case $skip in
@@ -134,7 +139,9 @@ export dontstartbitcoin="true" && set_rpc_authentication "s" "install" && unset 
 ;;
 esac
 
+debug
 please_wait && start_bitcoin
+debug
 fi #end not btcpainstallsbitcoin
 
 if [[ $btcpayinstallsbitcoin == "true" ]] || [[ $btcpay_combo == "true" ]] ; then
@@ -154,10 +161,11 @@ return 0
 fi
 
 set_terminal
-
+debug
 if [[ $OS == "Linux" ]] ; then
-
+debug
     if ! which bitcoind >$dn ; then
+    debug
         enter_continue "Something went wrong. Bitcoin did not install correctly."
         install_failure "Bitcoin"
         log "bitcoin" "no binaries. install failure."
@@ -176,7 +184,7 @@ if [[ $OS == "Linux" ]] ; then
 "
     read choice ; case $choice in y) sudo rm -rf $hp/bitcoin_github ;; esac
     fi
-
+debug
 set_terminal 
 success "Bitcoin should have started syncing. Note, it should also continue to sync 
     after a reboot, or you can start Bitcoin from the Parmanode Bitcoin menu at
