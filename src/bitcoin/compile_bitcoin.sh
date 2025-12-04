@@ -24,7 +24,7 @@ elif [[ $clienchoice == "core" ]] ; then
 
 fi
 
-
+debug "newcompile: $newcompile"
 
 #to reduce errors on screen, making temporary git variables...
     export GIT_AUTHOR_NAME="Temporary Parmanode"
@@ -316,9 +316,10 @@ cmake -GNinja \
       ..
 ninja -j $(nproc)
 sudo ninja install
-
+debug
 fi
 symlinks_for_bitcoin_binaries >$dn 2>&1
+debug
 }
 
 function bitcoin_compile_dependencies { debugf
