@@ -139,11 +139,13 @@ rm $hp/bitcoin/bitcoin.conf
 # "installs" bitcoin and sets to writing to only root for security. Read/execute for group and others. 
 # makes target directories if they don't exist
 # "install" is just a glorified copy command
-$xsudo install -m 0755 -o $USER -g $USER -t /usr/local/bin $hp/bitcoin/bin/* 2>$pvlog
-debug "$(whoami)"
+if [[ $parmaview == 1 ]] ; then
+move_bitcoin_binaries.sh
+else
+sudo install -m 0755 -o $USER -g $USER -t /usr/local/bin $hp/bitcoin/bin/* 2>$pvlog
+
+fi
 rm -rf $hp/bitcoin/bin
-debug
 rm -rf $dp/temp >$dn 2>&1
-debug
 fi
 }
