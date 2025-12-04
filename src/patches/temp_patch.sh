@@ -102,7 +102,7 @@ test -f $hc || touch $dp/hide_commands.conf
 ! test -d $dp/parmaview >$dn 2>&1 && mkdir -p $dp/parmaview >$dn 2>&1
 ! test -f $pvlog >$dn 2>&1 && touch $pvlog
 [[ $OS == "Linux" ]] && ! $xsudo test -d /usr/local/bin/parmanode >$dn 2>&1 && { $xsudo mkdir -p /usr/local/bin/parmanode ; $xsudo chown $USER:$USER /usr/local/bin/parmanode ; }
-if [[ $OS == "Linux" ]] && $xsudo test -d /usr/local/bin/parmanode && grep -q "bitcon-end" $ic ; then
+if [[ $OS == "Linux" ]] && $xsudo test -d /usr/local/bin/parmanode && grep -q "bitcoin-end" $ic ; then
     $xsudo mv /usr/local/bin/*bitcoin* /usr/local/bin/parmanode/ || debug "mv"
     symlinks_for_bitcoin_binaries || debug "sfbb"
 else
