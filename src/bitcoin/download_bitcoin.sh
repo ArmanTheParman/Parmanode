@@ -49,7 +49,7 @@ if [[ $VERIFY != off ]] ; then
   verify_bitcoin || return 1
 fi
 
-unpack_bitcoin || return 1 # see code for the function below
+unpack_bitcoin >> $pvlog || return 1 # see code for the function below
 
 return 0     
 }
@@ -111,6 +111,7 @@ if find $hp/bitcoin/ -type f -name "*.zip" 2>$dn | grep -q . >$dn 2>&1 ; then #f
 unzip bitcoin*.zip
 fi
 
+debug 
 
 if [[ $OS == "Mac" ]] ; then
 
@@ -127,7 +128,7 @@ if [[ $OS == "Linux" ]] ; then
 set_terminal
 mkdir -p $dp/temp/ >$dn 2>&1
 tar -xf bitcoin-* -C $dp/temp/ >$dn 2>&1
-
+debug
 # Move bitcoin program files to new directory.
 # All binaries go to $HOME/parmanode/bitcoin.
 mv $dp/temp/bit*/* $hp/bitcoin/
@@ -139,7 +140,7 @@ rm $hp/bitcoin/bitcoin.conf
 # makes target directories if they don't exist
 # "install" is just a glorified copy command
 sudo install -m 0755 -o $(whoami) -g $(whoami) -t /usr/local/bin $hp/bitcoin/bin/*
-
+debug
 sudo rm -rf $hp/bitcoin/bin
 sudo rm -rf $dp/temp >$dn 2>&1
 fi
