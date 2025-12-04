@@ -1,6 +1,6 @@
 function enter_continue {
 
-if [[ $parmaview = 1 ]] ; then enter_cont="" ; echo "enter_continue skipped: $1" | tee -a $pvlog >$dn 2>&1 ; return 0 ; fi
+if [[ $parmaview = 1 ]] ; then echo "enter_continue skipped: $1" | tee -a $pvlog >$dn 2>&1 ; return 0 ; fi
 
 if [[ $1 -gt 0 ]] 2>$dn ; then 
     echo -e "${yellow}Hit ${cyan}<enter>${yellow} to continue.$orange\n"  
