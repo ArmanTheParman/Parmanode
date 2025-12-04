@@ -1,5 +1,5 @@
 function patch_10 { debugf
-
+return 0
 udev_patch  #then change udev function too.
 make_mount_check_script #fixed any glitches by remaking it
 openssh_patch
@@ -15,6 +15,7 @@ while [[ $(sudo grep -E "^ControlPort 9051" $torrc | wc -l) -gt 1 ]] ; do
     done < <(sudo cat $torrc)
 done
 
+rm $temp
 while [[ $(sudo grep -E "^CookieAuthentication 1" $torrc | wc -l) -gt 1 ]] ; do
     temp=$(mktemp) ; count=0
     while IFS= read -r x ; do
@@ -22,6 +23,7 @@ while [[ $(sudo grep -E "^CookieAuthentication 1" $torrc | wc -l) -gt 1 ]] ; do
        echo "$x" >> $temp
     done < <(sudo cat $torrc)
 done
+rm $temp
 
 while [[ $(sudo grep -E "^CookieAuthFileGroupReadable 1" $torrc | wc -l) -gt 1 ]] ; do 
     temp=$(mktemp) ; count=0
@@ -30,6 +32,7 @@ while [[ $(sudo grep -E "^CookieAuthFileGroupReadable 1" $torrc | wc -l) -gt 1 ]
        echo "$x" >> $temp
     done < <(sudo cat $torrc)
 done
+rm $temp
 
 while [[ $(sudo grep -E "^DataDirectoryGroupReadable 1" $torrc | wc -l) -gt 1 ]] ; do 
     temp=$(mktemp) ; count=0
@@ -38,6 +41,7 @@ while [[ $(sudo grep -E "^DataDirectoryGroupReadable 1" $torrc | wc -l) -gt 1 ]]
        echo "$x" >> $temp
     done < <(sudo cat $torrc)
 done
+rm $temp
 
 
 
