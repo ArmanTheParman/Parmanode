@@ -6,6 +6,9 @@ set_terminal ; echo -e "
     node data will look different to the publicly available data on Mempool Space or
     BTC RPC Explorer, as those nodes do not filter ordinals.
 
+    It's totally fine to use a public service for estimating fees - that part of
+    Bitcoining doesn't need to be self-sovereign; think about it.
+
 ########################################################################################
 "
 enter_continue

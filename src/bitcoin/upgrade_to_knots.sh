@@ -12,9 +12,9 @@ yesorno "
     modified.
 
     Bitcoin will work just like before, but your node will not rely spam
-    from mempool to mempool, and if you are running on clearnet (options
-    1 or 4 from the bitcoin tor menu), then your node will be counted and
-    you'll contribute to sending a message.
+    from mempool to mempool, and if you are running on clearnet (normal 
+    internet) then your node will be counted and you'll contribute towards
+    sending a message.
 
     To read a collection of Parman's war Tweets, please visit this link
     which is the beginning of a chain of Tweets I put in my Twitter Highlights
@@ -42,7 +42,7 @@ parmanode_conf_remove "bitcoin_choice"
 parmanode_conf_add "bitcoin_choice=knots"
 verify_bitcoin || return 1
 $xsudo mkdir -p /usr/local/bin/bitcoin_old
-$xsudo mv /usr/local/bin/*bitcoin* /usr/local/bin/bitcoin_old/
+$xsudo mv /usr/local/bin/parmanode/*bitcoin* /usr/local/bin/bitcoin_old/
 unpack_bitcoin || return 1
 start_bitcoin
 Success "Bitcoin has been upgraded to Knots."

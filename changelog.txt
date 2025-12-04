@@ -1,3 +1,11 @@
+Version 3.68.0
+     -Improvements to generic Bitcoin installation to any Docker container.
+     -Refactoring to move bitcoin binaries from /usr/local/bin to /usr/local/bin/parmanode
+     -When installing bitcoin, or if already installed, symlinks from /usr/local/bin/bitcoin* to /usr/local/bin/parmanode/bitcoin* are made
+     -Updating guides about where bitcoin binaries are
+     -Extra Parmashell functions, ulb and ulbp
+     -Some merging of functions into same files, a bit of clean up.
+     -Some tidying up of old code, quoting variables
 Version 3.67.13
      -electrs docker compile error fixed
 Version 3.67.12

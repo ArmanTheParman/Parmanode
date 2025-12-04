@@ -41,14 +41,14 @@ q|Q) exit 0 ;; p|P|M|m) back2main ;; "") break ;; *) invalid ;;
 esac
 done
 
-if [[ ! -f /usr/local/bin/bitcoind && ! -f /usr/local/bin/bitcoin-cli ]] ; then
+if [[ ! -f /usr/local/bin/parmanode/bitcoind && ! -f /usr/local/bin/parmanode/bitcoin-cli ]] ; then
 while true ; do
 set_terminal ; echo -e "
 ########################################################################################
 
     Parmanode has not detected bitcoind and bitcoin-cli in the expected directory:
 $green
-        /usr/local/bin
+        /usr/local/bin/parmanode
 $orange
     Please open a new terminal window and move those binary files (and others like
     bitcoin-qt and bitcoin-tx if you have them) to the above directory.
@@ -71,7 +71,7 @@ while true ; do
 set_terminal ; echo -e "
 ########################################################################################
 
-    Parmanode has detected Bitcoin binary files in$green /usr/local/bin$orange
+    Parmanode has detected Bitcoin binary files in$green /usr/local/parmanode/$orange
 
     If these are not the files you are intending to use, then open a new terminal and
     move your target binaries to this location. You need the files:
@@ -80,7 +80,7 @@ $green
         & $green
         bitcoin-cli
    $orange 
-    in the directory /usr/local/bin
+    in the directory /usr/local/bin/parmanode
 
     Once that is done, hit$pink <enter>$orange to continue the wizard.
 
@@ -219,7 +219,7 @@ text2="
     ${cyan}The same is true for $paranode_drive/fulcrum_db$orange"
 fi
 
-elif [[ $drive == internal ]] ; then ###############
+elif [[ $drive == "internal" ]] ; then ###############
 default="$HOME/.bitcoin"
 else ###############
 announce "an error has occured. No drive variable found. Caution. Control-c

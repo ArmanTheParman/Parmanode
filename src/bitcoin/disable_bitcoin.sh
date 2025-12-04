@@ -4,22 +4,22 @@ function toggle_disable_bitcoin { debugf
 if grep -q "disable_bitcoin=true" $pc ; then
 
     if grep -q btccombo $ic ; then
-        docker exec -u root btcpay bash -c "chmod +x /usr/local/bin/bitcoin*" && \
-        gsed -i "/disable_bitcoin=true/d" $pc && \
+        docker exec -u root btcpay bash -c "chmod +x /usr/local/bin/*bitcoin*" 
+        gsed -i "/disable_bitcoin=true/d" $pc 
         success "Bitcoin Enabled" 
         return 0
     fi
 
     if [[ $OS == "Mac" ]] ; then 
-        $xsudo chmod +x /Applications/Bitcoin-Qt.app && \
-        gsed -i "/disable_bitcoin=true/d" $pc && \
+        $xsudo chmod +x /Applications/Bitcoin-Qt.app/Contents/MacOS/Bitcon-Qt
+        gsed -i "/disable_bitcoin=true/d" $pc 
         success "Bitcoin Enabled" 
         return 0
     fi
 
     if [[ $OS == "Linux" ]] ; then 
-        $xsudo chmod +x /usr/local/bin/bitcoin* && \
-        gsed -i "/disable_bitcoin=true/d" $pc && \
+        $xsudo chmod +x /usr/local/bin/*bitcoin*
+        gsed -i "/disable_bitcoin=true/d" $pc 
         success "Bitcoin Enabled" 
         return 0
     fi
@@ -40,22 +40,22 @@ else
     done
 
     if grep -q btccombo $ic ; then
-        docker exec -u root btcpay bash -c "chmod -x /usr/local/bin/bitcoin*" && \
-        echo "disable_bitcoin=true" >> $pc && \
+        docker exec -u root btcpay bash -c "chmod -x /usr/local/bin/*bitcoin*" 
+        echo "disable_bitcoin=true" >> $pc
         success "Bitcoin Disabled" 
         return 0
     fi
 
     if [[ $OS == "Mac" ]] ; then 
-        $xsudo chmod -x /Applications/Bitcoin-Qt.app && \
-        echo "disable_bitcoin=true" >> $pc && \
+        $xsudo chmod -x /Applications/Bitcoin-Qt.app/Contents/MacOS/Bitcoin-Qt
+        echo "disable_bitcoin=true" >> $pc 
         success "Bitcoin Disabled" 
         return 0
     fi
 
     if [[ $OS == "Linux" ]] ; then 
-        $xsudo chmod -x /usr/local/bin/bitcoin* && \
-        echo "disable_bitcoin=true" >> $pc && \
+        $xsudo chmod -x /usr/local/bin/*bitcoin*
+        echo "disable_bitcoin=true" >> $pc 
         success "Bitcoin Disabled" 
         return 0    
     fi

@@ -67,6 +67,4 @@ if [[ -e $hp/electrumx/electrumx.conf ]] ; then
 export electrumx_rpcuser="$(cat $hp/electrumx/electrumx.conf | grep DAEMON_URL | cut -d : -f 2 | cut -d / -f 3)"
 export electrumx_rpcpassword="$(cat $hp/electrumx/electrumx.conf | grep DAEMON_URL | cut -d : -f 3 | cut -d @ -f 1)"
 fi
-
-
 }

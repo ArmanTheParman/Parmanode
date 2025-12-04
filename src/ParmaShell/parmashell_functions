@@ -59,7 +59,7 @@ read
 
 function RP { capslock ; rp ; }
 
-if [[ $(uname) == Darwin ]] ; then
+if [[ $(uname) == "Darwin" ]] ; then
 function en { cd /usr/local/etc/nginx ; a ; }
 function enc { cd /usr/local/etc/nginx/conf.d ; a ; }
 function et { cd /usr/local/etc/tor ; a ; }
@@ -90,6 +90,8 @@ function srv { cd /srv/ ; }
 function vl { cd /var/log ; a ; }
 function vlt { cd /var/lib/tor ; a ; }
 function vln { cd /var/log/nginx ; a ; }
+function ulb { cd /usr/local/bin ; a ; }
+function ulbp { ulb ; cd parmanode ; a ; }
 fi
 
 

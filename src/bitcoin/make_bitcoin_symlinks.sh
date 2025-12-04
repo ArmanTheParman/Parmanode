@@ -5,6 +5,14 @@ while true ; do
 
 if [[ $btcpayinstallsbitcoin == "true" ]] ; then return 0 ; fi
 
+if [[ $OS == "Linux" ]] ; then
+
+    #binaries will go into /usr/local/bin/parmanode - this is not a root owned directory
+    #symlinks to binaries will go in /usr/local/bin, a root owned directory; this is the default path of make install for bitcoin.
+    rm -rf /usr/local/bin/*bitcoin*
+
+    symlinks_for_bitcoin_binaries
+
 if [[ $OS == "Linux" && $drive == "internal" ]] ; then
     return 0 
     #no symlink needed
@@ -71,4 +79,15 @@ fi #end btcdockerchoice
 
 set_terminal
 return 0
+}
+
+function symlinks_for_bitcoin_binaries {
+[[ $OS == "Linux" ]] || return 1
+sudo ln -s  /usr/local/bin/parmanode/bitcoin-cli /usr/local/bin/bitcoin-cli >$dn 2>&1
+sudo ln -s  /usr/local/bin/parmanode/bitcoind /usr/local/bin/bitcoind >$dn 2>&1
+sudo ln -s  /usr/local/bin/parmanode/bitcoin-qt /usr/local/bin/bitcoin-qt >$dn 2>&1
+sudo ln -s  /usr/local/bin/parmanode/bitcoin-tx /usr/local/bin/bitcoin-tx >$dn 2>&1
+sudo ln -s  /usr/local/bin/parmanode/bitcoin-util /usr/local/bin/bitcoin-util >$dn 2>&1
+sudo ln -s  /usr/local/bin/parmanode/bitcoin-wallet /usr/local/bin/bitcoin-wallet >$dn 2>&1
+sudo ln -s  /usr/local/bin/parmanode/test-bitcoin /usr/local/bin/test-bitcoin >$dn 2>&1
 }

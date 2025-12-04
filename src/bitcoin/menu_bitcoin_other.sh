@@ -5,7 +5,7 @@ set_terminal
 source ~/.parmanode/parmanode.conf >$dn #get drive variable
 
 unset running output1 output2 
-if [[ $OS == Mac ]] ; then
+if [[ $OS == "Mac" ]] ; then
     if pgrep Bitcoin-Q >$dn ; then running="true" ; else running="false" ; fi
 else
     if ! ps -x | grep bitcoind | grep -q "bitcoin.conf" >$dn 2>&1 ; then running="false" ; fi

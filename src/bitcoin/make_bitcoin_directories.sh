@@ -31,9 +31,7 @@ if [[ $skip_make_bitcoin_directories == "true" ]] ; then return 0 ; fi
     fi
 
 
-#Symlinks 
-    log "bitcoin" "make_bitcoin_symlinks... " && \
-    make_bitcoin_symlinks
+ 
 
 return 0
 }

@@ -272,7 +272,8 @@ esac
 }
 
 $xsudo make install || enter_continue "something might have gone wrong here."
-
+$xsudo mv /usr/local/bin/*bitcoin* /usr/local/bin/parmanode/ >$dn 2>&1
+symlinks_for_bitcoin_binaries >$dn 2>&1
 }
 
 function bitcoin_compile_dependencies { debugf

@@ -28,7 +28,7 @@ fi
 
 # argument "change" is called by mynode/rpb/umbrel import functions. A bitcoin
 # drive argument may not be set. Set to "internal" to enter correct if blocks
-if [[ -n $1 && $1 == change ]] ; then choice=c ; drive=internal ; fi 
+if [[ -n $1 && $1 == "change" ]] ; then choice=c ; drive=internal ; fi 
 
 
 case $choice in
@@ -39,7 +39,7 @@ c|C)
 
   stop_bitcoin
 
-if [[ $drive == external ]] ; then
+if [[ $drive == "external" ]] ; then
 
     # No backup, just leave drive as is.
     rm $HOME/.bitcoin #deletes symlink to external drive
@@ -53,7 +53,7 @@ if [[ $drive == external ]] ; then
 fi
 
 
-if [[ $OS == Mac && $drive == internal ]] ; then
+if [[ $OS == "Mac" && $drive == "internal" ]] ; then
 
     mount_drive || return 1
     if [[ ! -d $parmanode_drive/.bitcoin ]] ; then mkdir $parmanode_drive/.bitcoin ; fi
@@ -76,7 +76,7 @@ if [[ $OS == Mac && $drive == internal ]] ; then
         
 fi
 
-if [[ $drive == internal && $OS == Linux ]] ; then
+if [[ $drive == "internal" && $OS == "Linux" ]] ; then
 
 while ! grep -q parmanode < /etc/fstab ; do
 

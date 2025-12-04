@@ -53,7 +53,7 @@ set_terminal
 docker exec btcpay bitcoin-cli --version
 enter_continue
 continue
-elif [[ $OS == Linux ]] ; then
+elif [[ $OS == "Linux" ]] ; then
 set_terminal
 /usr/local/bin/bitcoin-cli -version
 enter_continue
@@ -67,12 +67,12 @@ set_terminal
 docker exec btcpay bitcoin-cli -getinfo
 enter_continue
 continue
-elif [[ $OS == Linux ]] ; then
+elif [[ $OS == "Linux" ]] ; then
 set_terminal
 /usr/local/bin/bitcoin-cli -getinfo
 enter_continue
 continue
-elif [[ $OS == Mac ]] ; then no_mac ; continue 
+elif [[ $OS == "Mac" ]] ; then no_mac ; continue 
 fi
 ;;
 
@@ -82,12 +82,12 @@ set_terminal
 docker exec btcpay bitcoin-cli -netinfo
 enter_continue
 continue
-elif [[ $OS == Linux ]] ; then
+elif [[ $OS == "Linux" ]] ; then
 set_terminal
 /usr/local/bin/bitcoin-cli -netinfo
 enter_continue
 continue
-elif [[ $OS == Mac ]] ; then no_mac ; continue 
+elif [[ $OS == "Mac" ]] ; then no_mac ; continue 
 else announce "some error - Linux nor Mac detected." ; continue
 fi
 ;;
@@ -101,19 +101,19 @@ set_terminal
 docker exec btcpay bitcoin-cli getblockhash $block
 enter_continue
 continue
-elif [[ $OS == Linux ]] ; then
+elif [[ $OS == "Linux" ]] ; then
 set_terminal
 /usr/local/bin/bitcoin-cli getblockhash $block
 enter_continue
 continue
-elif [[ $OS == Mac ]] ; then no_mac ; continue 
+elif [[ $OS == "Mac" ]] ; then no_mac ; continue 
 else announce "some error - Linux nor Mac detected." ; continue
 fi
 ;;   
 
 gbi)  
 
-if [[ $OS == Mac ]] ; then
+if [[ $OS == "Mac" ]] ; then
 curl -s --user $rpcuser:$rpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblockchaininfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
 enter_continue
 continue
@@ -125,7 +125,7 @@ fi
     ;;
 
 gdi)  
-if [[ $OS == Mac ]] ; then
+if [[ $OS == "Mac" ]] ; then
 curl -s --user $rpcuser:$rpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getdeploymentinfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
 enter_continue
 continue
@@ -138,7 +138,7 @@ fi
     ;;
 gd)  
 
-if [[ $OS == Mac ]] ; then
+if [[ $OS == "Mac" ]] ; then
 curl -s --user $rpcuser:$rpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getdifficulty", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
 enter_continue
 continue
@@ -151,7 +151,7 @@ fi
     ;;
 gmi)  
 
-if [[ $OS == Mac ]] ; then
+if [[ $OS == "Mac" ]] ; then
 curl -s --user $rpcuser:$rpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getmempoolinfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
 enter_continue
 continue
@@ -178,7 +178,7 @@ enter_continue ; jump $enter_cont
 
 please_wait
 
-if [[ $OS == Mac ]] ; then
+if [[ $OS == "Mac" ]] ; then
 curl -s --user $rpcuser:$rpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "gettxoutsetinfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
 enter_continue
 continue
@@ -189,7 +189,7 @@ fi
     continue
     ;;
 gpi)
-if [[ $OS == Mac ]] ; then
+if [[ $OS == "Mac" ]] ; then
 curl -s --user $rpcuser:$rpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getpeerinfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
 enter_continue
 continue
@@ -201,7 +201,7 @@ fi
     ;;
 
 gcc)
-if [[ $OS == Mac ]] ; then
+if [[ $OS == "Mac" ]] ; then
 curl -s --user $rpcuser:$rpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getconnectioncount", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
 enter_continue
 continue
@@ -227,7 +227,7 @@ if [[ $combomenu == "true" ]] ; then
     docker exec btcpay bitcoin-cli verifymessage "$address" "$signature" "$message" 
     enter_continue
     continue
-elif [[ $OS == Linux ]] ; then
+elif [[ $OS == "Linux" ]] ; then
     set_terminal
     read -p "Please paste in the ADDRESS and hit <enter> :" address
     echo ""
@@ -239,7 +239,7 @@ elif [[ $OS == Linux ]] ; then
     bitcoin-cli verifymessage "$address" "$signature" "$message" 
     enter_continue
     continue
-elif [[ $OS == Mac ]] ; then no_mac ; continue 
+elif [[ $OS == "Mac" ]] ; then no_mac ; continue 
 else announce "some error - Linux nor Mac detected." ; continue
 fi
 ;;

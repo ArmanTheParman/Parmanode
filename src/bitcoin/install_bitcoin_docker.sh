@@ -102,24 +102,26 @@ rpcallowip=172.0.0.0/8
 rpcservertimeout=120" | tee $tmp/dockerbitcoin.conf >$dn 2>&1
 
 
-if [[ $username == root ]] ; then
+if [[ $username == "root" ]] ; then
 thedir="/root"
 else
+docker exec -u root $dockername /bin/bash -c "useradd -m $username"
 thedir="/home/$username"
 fi
 
-if [[ $2 == parmabox ]] ; then
+docker exec -u root $dockername /bin/bash -c "apt-get update -y ; apt-get install sudo gnugpg -y"
+
+if [[ $2 == "parmabox" ]] ; then
 thedir="/home/parman"
 dockername=parmabox
 username=parman
 fi
-
 docker exec -u $username $dockername /bin/bash -c "mkdir -p $thedir/.bitcoin 2>$dn"
 docker cp $tmp/dockerbitcoin.conf $dockername:$thedir/.bitcoin/bitcoin.conf >$dn 2>&1
 
 #Download bitcoin 
 export bitcoin_compile="false"
-export version="27.2"
+export version=$coreversion
 cd && rm -rf $tmp/bitcoin && mkdir -p $tmp/bitcoin && cd $tmp/bitcoin
 while true ; do
 clear
@@ -167,8 +169,8 @@ rm -rf $tmp/bitcoin
 if [[ $1 != "silent" ]] ; then
 success "Bitcoin has been installed in the $dockername container.
 
-    The username and password is$cyan 'parman'$orange and$cyan 'parman'.$orange You can
-    modify the bitcoin.conf file to change it.
+    The bitcoin rpc username and password is$cyan 'parman'$orange and$cyan 'parman'.$orange 
+    You can modify the bitcoin.conf file to change it.
     
     The prune value is 0. If you want to prune, set a value in 
     bitcoin.conf like this, in MB (550 is the minimum):
