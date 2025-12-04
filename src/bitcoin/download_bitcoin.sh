@@ -140,7 +140,7 @@ rm $hp/bitcoin/bitcoin.conf
 # makes target directories if they don't exist
 # "install" is just a glorified copy command
 sudo install -m 0755 -o $USER -g $USER -t /usr/local/bin $hp/bitcoin/bin/*
-debug "$(whoami)
+debug "$(whoami)"
 sudo rm -rf $hp/bitcoin/bin
 sudo rm -rf $dp/temp >$dn 2>&1
 fi
