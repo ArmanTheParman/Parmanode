@@ -15,34 +15,29 @@ fi
 #debug "before patch sequence - patch value is $patch"
 
 case $patch in #case 0 is lase "*"
-1) 
-debug "case1"
-patch_2 ; patch_3 ; patch_4 ; patch_5 ; patch_6 ; patch_7 ; patch_8 ; patch_9 ;; #patch 2 to last
-2)
-debug "case2"
-patch_3 ; patch_4 ; patch_5 ; patch_6 ; patch_7 ; patch_8 ; patch_9 ;; #patch 3 to last
-3)
-debug "case3"
-patch_4 ; patch_5 ; patch_6 ; patch_7 ; patch_8 ; patch_9 ;;
+#1,2,3 removed, very unlikely cases now
 4)
 debug "case4"
-patch_5 ; patch_6; patch_7 ; patch_8 ; patch_9 ;;
+patch_5 ; patch_6; patch_7 ; patch_8 ; patch_9 ; patch_10 ;;
 5)
 debug "case5"
-patch_6 ; patch_7 ; patch_8 ; patch_9 ;;
+patch_6 ; patch_7 ; patch_8 ; patch_9 ; patch_10 ;;
 6)
 debug "case6"
-patch_7 ; patch_8 ; patch_9 ;;
+patch_7 ; patch_8 ; patch_9 ; patch_10 ;;
 7)
 debug "case7"
-patch_8 ; patch_9 ;;
+patch_8 ; patch_9 ; patch_10 ;;
 8)
-patch_9 ;
-return 0 ;;
+patch_9 ; patch_10
+;;
 9)
+patch_10 
+;;
+10)
 return 0;;
 *) 
-patch_1 ; patch_2 ; patch_3 ; patch_4 ; patch_5 ; patch_6 ; patch_7 ; patch_8 ; patch_9 ;;
+patch_1 ; patch_2 ; patch_3 ; patch_4 ; patch_5 ; patch_6 ; patch_7 ; patch_8 ; patch_9 ; patch_10 ;;
 esac
 debug "end apply_patches :)"
 }
@@ -50,7 +45,7 @@ debug "end apply_patches :)"
 
 function cleanup_parmanode_service {
 
-if [[ $OS == Linux ]] && [[ -e /etc/systemd/system/parmanode.service ]] ; then
+if [[ $OS == "Linux" ]] && [[ -e /etc/systemd/system/parmanode.service ]] ; then
 sudo systemctl stop parmanode.service >$dn 2>&1
 sudo systemctl disable parmanode.service >$dn 2>&1
 sudo rm /etc/systemd/system/parmanode.service >$dn 2>&1
@@ -58,7 +53,7 @@ sudo systemctl daemon-reload >$dn 2>&1
 parmanode_conf_remove "parmanode_service="
 rm $dp/parmanode_script.sh >$dn 2>&1
 fi
-if [[ $OS == Mac ]] ; then
+if [[ $OS == "Mac" ]] ; then
 parmanode_conf_remove "tor_script=done"
 rm $dp/tor_script.sh >$dn 2>&1
 fi
