@@ -18,7 +18,7 @@ fi
 if [[ $(sudo grep -E "^CookieAuthentication 1" $torrc | wc -l) -gt 1 ]] ; then
     temp=$(mktemp) ; count=0
     while IFS= read -r x ; do
-       if [[ $x =~ ^CookieAuthentication 1 ]] ; then continue ; fi
+       if [[ $x =~ ^CookieAuthentication 1 ]] ; then continue ; fi ; fi
        echo "$x" >> $temp
     done < <(sudo cat $torrc)
 fi
@@ -26,7 +26,7 @@ fi
 if [[ $(sudo grep -E "^CookieAuthFileGroupReadable 1" $torrc | wc -l) -gt 1 ]] ; then
     temp=$(mktemp) ; count=0
     while IFS= read -r x ; do
-       if [[ $x =~ ^CookieAuthFileGroupReadable 1 ]] ; then continue ; fi
+       if [[ $x =~ ^CookieAuthFileGroupReadable 1 ]] ; then continue ; fi ; fi
        echo "$x" >> $temp
     done < <(sudo cat $torrc)
 fi
@@ -34,7 +34,7 @@ fi
 if [[ $(sudo grep -E "^DataDirectoryGroupReadable 1" $torrc | wc -l) -gt 1 ]] ; then
     temp=$(mktemp) ; count=0
     while IFS= read -r x ; do
-       if [[ $x =~ ^DataDirectoryGroupReadable 1 ]] ; then continue ; fi
+       if [[ $x =~ ^DataDirectoryGroupReadable 1 ]] ; then continue ; fi ; fi
        echo "$x" >> $temp
     done < <(sudo cat $torrc)
 fi
