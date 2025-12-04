@@ -8,6 +8,7 @@ Version 3.68.0
      -Some merging of functions into same files, a bit of clean up.
      -Some tidying up of old code, quoting variables
      -Beginning adding code to prepare for parmaview. Adding in stages. Background changes, users will not notice.
+     -Fixed a torrc bug, some potentially duplicated entries were causing issues
 Version 3.67.13
      -electrs docker compile error fixed
 Version 3.67.12
