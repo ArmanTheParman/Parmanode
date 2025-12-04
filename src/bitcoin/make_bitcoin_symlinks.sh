@@ -12,6 +12,7 @@ if [[ $OS == "Linux" ]] ; then
     rm -rf /usr/local/bin/*bitcoin*
 
     symlinks_for_bitcoin_binaries
+fi
 
 if [[ $OS == "Linux" && $drive == "internal" ]] ; then
     return 0 
@@ -36,7 +37,7 @@ if [[ $OS == "Mac" && $drive == "internal" ]] ; then
     cd $HOME/Library/"Application Support"/ ; rm -rf  Bitcoin
     cd $HOME/Library/"Application Support"/ && ln -s $HOME/.bitcoin Bitcoin 
     break
-    fi
+fi
 
 if [[ $OS == "Mac" && $drive == "external" ]] ; then
     cd $HOME/Library/Application\ Support/ >$dn 2>&1 && rm -rf Bitcoin >$dn 2>&1 
@@ -44,7 +45,7 @@ if [[ $OS == "Mac" && $drive == "external" ]] ; then
     cd $HOME/Library/Application\ Support/ && ln -s /Volumes/parmanode/.bitcoin Bitcoin && \
     cd $HOME && ln -s $parmanode_drive/.bitcoin .bitcoin 
     break
-    fi
+fi
 done
 
 if [[ $btcdockerchoice != "yes" && $btcpayinstallsbitcoin != "true" ]] ; then
