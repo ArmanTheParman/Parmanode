@@ -105,6 +105,8 @@ test -f $hc || touch $dp/hide_commands.conf
 if [[ $OS == "Linux" ]] && $xsudo test -d /usr/local/bin/parmanode && grep -q "bitcon-end" $ic ; then
     $xsudo mv /usr/local/bin/*bitcoin* /usr/local/bin/parmanode/ || debug "mv"
     symlinks_for_bitcoin_binaries || debug "sfbb"
+else
+debug "$xsudo, sudo"
 fi
 
 
