@@ -145,7 +145,7 @@ else
 sudo install -m 0755 -o $USER -g $USER -t /usr/local/bin $hp/bitcoin/bin/* 2>$pvlog
 
 fi
-rm -rf $hp/bitcoin/bin
-rm -rf $dp/temp >$dn 2>&1
+#rm -rf $hp/bitcoin/bin
+#rm -rf $dp/temp >$dn 2>&1
 fi
 }
