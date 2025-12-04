@@ -2,7 +2,7 @@ function compile_bitcoin { debugf
 [[ $version == "self" ]] && return 0 
 [[ $bitcoin_compile == "false" ]] && return 0 
 
-if [[ $clienchoice == "knots" ]] ; then
+if [[ $clientchoice == "knots" ]] ; then
 
     if [[ $knotsversion -lt 29 ]] ; then 
         newcompile="false"
@@ -14,7 +14,7 @@ elif [[ $clientchoice == "deis" ]] ; then
 
     newcompile="false"
 
-elif [[ $clienchoice == "core" ]] ; then
+elif [[ $clientchoice == "core" ]] ; then
 
     if [[ $version -lt 29 ]] ; then 
         newcompile="false"
@@ -125,6 +125,7 @@ break ;;
 esac
 done
 ##############################################################################################################
+debug
 if [[ $newcompile == "false" ]] ; then 
 debug
     ./autogen.sh || { enter_continue "autogen.sh failed - this is normal if compiling versions greater than 28" ; }
@@ -302,9 +303,9 @@ esac
 $xsudo make install || enter_continue "something might have gone wrong here."
 $xsudo mv /usr/local/bin/*bitcoin* /usr/local/bin/parmanode/ >$dn 2>&1
 fi
-
+debug "306, nc= $newcompile"
 if [[ $newcompile == "true" ]] ; then
-
+debug
 [[ $gui == "yes" ]] && gui=ON
 [[ $gui == "no" ]] && gui=OFF
 
