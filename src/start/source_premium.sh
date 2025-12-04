@@ -32,7 +32,7 @@ function source_premium {
     [[ -e $dp/.parmanpremium_enabled ]] && [[ -e $pp/parmanpremium ]] && for file in $pp/parmanpremium/src/*.sh ; do
 	    source $file
 	done
-    [[ -e $dp/.parmaview_enabled ]] && [[ -e $pp/parmaview ]] && for file in $pp/parmanpremium/src/*.sh ; do
+    [[ -e $dp/.parmaview_enabled ]] && [[ -e $pp/parmaview ]] && for file in $pp/parmaview/src/*.sh ; do
 	    source $file
 	done
 #custom
