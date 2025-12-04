@@ -376,6 +376,6 @@ $xsudo apt-get install -y libqt5core5a       || { [[ $parmaview != 1 ]] && enter
 $xsudo apt-get install -y libqt5dbus5        || { [[ $parmaview != 1 ]] && enter_continue "Something went wrong with libqt5dbus5.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
 $xsudo apt-get install -y qttools5-dev       || { [[ $parmaview != 1 ]] && enter_continue "Something went wrong with qttools5-dev.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
 $xsudo apt-get install -y libqt5widgets5     || { [[ $parmaview != 1 ]] && enter_continue "Something went wrong with libqt5widgets5.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
-
+return 0
 fi
 }
