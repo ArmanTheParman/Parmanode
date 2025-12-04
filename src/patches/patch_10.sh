@@ -1,5 +1,4 @@
 function patch_10 { debugf
-return 0
 udev_patch  #then change udev function too.
 make_mount_check_script #fixed any glitches by remaking it
 openssh_patch

@@ -33,6 +33,7 @@ patch_9 ; patch_10
 ;;
 9)
 patch_10 
+debug "patch 10 done"
 ;;
 10)
 return 0;;
