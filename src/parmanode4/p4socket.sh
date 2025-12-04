@@ -2,7 +2,7 @@
 function p4socket {
     count=0
     while [[ $count -lt 10 ]] ; do
-    printf "%s\n" "$@" | socat - UNIX-DGRAM:$p4socket && return 0
+    printf "%s\n" "$@" | socat - UNIX-DGRAM:$p4socketfile && return 0
     sleep 0.2
     let count++
     done
@@ -11,7 +11,7 @@ function p4socket {
 
 function p4socketlines { #for tailing
 while IFS= read -r line; do
-    printf "%s\n" "$line" | socat - UNIX-DGRAM:$p4socket && continue
+    printf "%s\n" "$line" | socat - UNIX-DGRAM:$p4socketfile && continue
     p4socket "$line"
 done
 }
@@ -26,5 +26,5 @@ function p4signal {
         printf "%s" "$data"
     done
     printf "###ParmaViewSigEnd###\n"
-    } > $p4socket
+    } > $p4socketfile
 }
