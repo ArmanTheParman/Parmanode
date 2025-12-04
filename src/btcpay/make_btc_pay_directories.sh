@@ -24,7 +24,7 @@ $cyan
 choose xpmq ; read choice 
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
-q|Q) exit ;; p|P|a) return 1 ;; m|M) back2main ;;
+q|Q) exit ;; p|P|a|m|M) back2main ;;
 
 d)
     sudo rm -rf $HOME/.btcpayserver 
@@ -71,7 +71,7 @@ $cyan
 choose xpmq ; read choice 
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
-q|Q) exit ;; p|P|a) return 1 ;; m|M) back2main ;;
+q|Q) exit ;; p|P|a|m|M) back2main ;;
 
 d)
     sudo rm -rf $HOME/.nbxplorer 

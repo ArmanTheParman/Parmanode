@@ -99,7 +99,7 @@ jump $choice
 case $choice in 
 m|M) back2main ;;
     q|Q|QUIT|Quit|quit) exit 0 ;; 
-    a|A|p|P) return 1 ;; 
+    a|A|p|P) back2main ;; 
     o|O) break ;;
     yolo|YOLO|Yolo) apply_prune_bitcoin_conf ; return 0 ;; 
     *) invalid ;; 
