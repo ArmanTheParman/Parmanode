@@ -2,7 +2,7 @@
 function p4socket {
     count=0
     while [[ $count -lt 10 ]] ; do
-    printf "%s\n" "$@" | socat - UNIX-DGRAM:/usr/local/bin/parmanode/parmanode.sock && return 0
+    printf "%s\n" "$@" | socat - UNIX-DGRAM:$p4socket && return 0
     sleep 0.2
     let count++
     done
@@ -11,12 +11,13 @@ function p4socket {
 
 function p4socketlines { #for tailing
 while IFS= read -r line; do
-    printf "%s\n" "$line" | socat - UNIX-DGRAM:/usr/local/bin/parmanode/parmanode.sock && continue
+    printf "%s\n" "$line" | socat - UNIX-DGRAM:$p4socket && continue
     p4socket "$line"
 done
 }
 
 function p4signal {
+    #This function may not be required
     {
     printf "###ParmaViewSigStart###\n"
     # delimeter is \0 (null), so new lines are captured in the variable.
@@ -25,5 +26,5 @@ function p4signal {
         printf "%s" "$data"
     done
     printf "###ParmaViewSigEnd###\n"
-    } > $parmanode_unix_socket
+    } > $p4socket
 }

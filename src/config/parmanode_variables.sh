@@ -69,6 +69,8 @@ export parmaviewdir="$macprefix/var/www/parmaview"
 export parmanode_cert_dir="$macprefix/etc/ssl/parmanode"
 export p4="$dp/p4.json"
 export pvlog="$dp/parmaview/parmaview.log"
+export p4socket="/tmp/parmanode.sock"
+export p4websocket="/usr/local/bin/parmanode/parmanode_ws"
 
 if [[ -z $dn ]] ; then echo "some problem with dn variable" ; read ; fi ##debug
 
