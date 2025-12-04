@@ -7,6 +7,8 @@
 # drive isn't mounted - otherwise it may start syncing to the internal drive.
 
 function make_mount_check_script {
+[[ $OS == "Mac" ]] && return 1
+
 file=$dp/scripts/mount_check.sh
 rm $file 
 echo "#!/bin/bash
@@ -43,7 +45,7 @@ else
 fi" > $file 2>$dn
 
 # Sets permission of the new file, mount_check.sh
-sudo chown $(whoami):$(whoami) $file 
+sudo chown $USER:$USER $file 
 # Makes file executable
 sudo chmod +x $file
 }
