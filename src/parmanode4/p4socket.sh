@@ -8,10 +8,10 @@ function p4socket {
     done
 }
 
-
 function p4socketlines { #for tailing
 while IFS= read -r line; do
-    printf "%s\n" "$line" | socat - UNIX-DGRAM:/usr/local/bin/parmanode/parmanode.sock
+    printf "%s\n" "$line" | socat - UNIX-DGRAM:/usr/local/bin/parmanode/parmanode.sock && continue
+    p4socket "$line"
 done
 }
 
