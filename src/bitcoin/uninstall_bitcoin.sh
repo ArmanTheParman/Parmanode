@@ -1,8 +1,8 @@
 #stop bitcoin
 #delete .bitcoin (proper drive or symlink, leave hdd alone)
 #delete $HOME/parmanode/bitcoin
-#delete binary files in /usr/local/bin (rm *bitcoin*)
-#delete bitcoin from install.conf
+#delete binary files in /usr/local/bin/parmanode (rm *bitcoin*)
+#delete bitcoin from installed.conf
 #remove prune choice from parmanode.conf
 function uninstall_bitcoin { debugf
 if [[ $1 != "btcpay_first" ]]; then 
@@ -76,7 +76,7 @@ stop_bitcoin
 
 #remove bitcoin directories and symlinks
 if [[ $OS == "Linux" ]] ; then remove_bitcoin_directories_linux 
-debug "after remove bitcoin dir linux"
+debug 
 fi
 
 if [[ $OS == "Mac" ]] ; then 
@@ -85,7 +85,7 @@ if [[ $OS == "Mac" ]] ; then
 fi
 
 # Remove binaries
-$xsudo rm /usr/local/bin/*bitcoin* 2>$dn
+rm /usr/local/bin/parmanode/*bitcoin* 2>$dn
 
 #Modify config file
 installed_config_remove "bitcoin"
