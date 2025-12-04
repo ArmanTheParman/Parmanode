@@ -2,6 +2,30 @@ function compile_bitcoin { debugf
 [[ $version == "self" ]] && return 0 
 [[ $bitcoin_compile == "false" ]] && return 0 
 
+if [[ $clienchoice == "knots" ]] ; then
+
+    if [[ $knotsversion -lt 29 ]] ; then 
+        newcompile="false"
+    else
+        newcompile="true"
+    fi 
+
+elif [[ $clientchoice == "deis" ]] ; then
+
+    newcompile="false"
+
+elif [[ $clienchoice == "core" ]] ; then
+
+    if [[ $version -lt 29 ]] ; then 
+        newcompile="false"
+    else
+        newcompile="true"
+    fi 
+
+fi
+
+
+
 #to reduce errors on screen, making temporary git variables...
     export GIT_AUTHOR_NAME="Temporary Parmanode"
     export GIT_AUTHOR_EMAIL="parman@parmanode.parman"
@@ -70,10 +94,9 @@ fi
     unset export GIT_COMMITTER_NAME
     unset export GIT_COMMITTER_EMAIL
 
-#after version 28, this breaks. autogen no longer used.
-./autogen.sh || { enter_continue "Something seems to have gone wrong. Proceed with caution." ; }
 
-[[ $clientchoice == "deis" ]] || while true ; do
+
+! [[ $clientchoice == "deis" ]] && while true ; do
 set_terminal ; echo -e "
 ########################################################################################
 
@@ -101,6 +124,9 @@ break ;;
 *) invalid ;;
 esac
 done
+##############################################################################################################
+if [[ $newcompile == "false" ]] ; then 
+    ./autogen.sh || { enter_continue "autogen.sh failed - this is normal if compiling versions greater than 28" ; }
 
 while true ; do
 clear ; echo -e "
@@ -146,6 +172,7 @@ esac
 done
 
 set_terminal
+
 
 ./configure --with-gui=$gui --enable-wallet --with-incompatible-bdb --with-utils $options || {
 echo -e "
@@ -273,6 +300,24 @@ esac
 
 $xsudo make install || enter_continue "something might have gone wrong here."
 $xsudo mv /usr/local/bin/*bitcoin* /usr/local/bin/parmanode/ >$dn 2>&1
+fi
+
+if [[ $newcompile == "true" ]] ; then
+
+[[ $gui == "yes" ]] && gui=ON
+[[ $gui == "no" ]] && gui=OFF
+
+mkdir build
+cd build
+cmake -GNinja \
+      -DCMAKE_BUILD_TYPE=Release \
+      -DBUILD_GUI=$gui \
+      -DCMAKE_INSTALL_PREFIX=/usr/local \
+      ..
+ninja
+sudo ninja install
+
+fi
 symlinks_for_bitcoin_binaries >$dn 2>&1
 }
 
@@ -294,6 +339,7 @@ $xsudo apt-get install -y bsdmainutils      || { [[ $parmaview != 1 ]] && enter_
 $xsudo apt-get install -y build-essential   || { [[ $parmaview != 1 ]] && enter_continue "Something went wrong with build-essential.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
 $xsudo apt-get install -y autotools-dev     || { [[ $parmaview != 1 ]] && enter_continue "Something went wrong with autotools-dev.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
 $xsudo apt-get install -y pkg-config        || { [[ $parmaview != 1 ]] && enter_continue "Something went wrong with pkg-config.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+$xsudo apt-get install -y ninja-build       || { [[ $parmaview != 1 ]] && enter_continue "Something went wrong with ninja-build.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
 $xsudo apt-get install -y python3           || { [[ $parmaview != 1 ]] && enter_continue "Something went wrong with python3.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
 $xsudo apt-get install -y patch             || { [[ $parmaview != 1 ]] && enter_continue "Something went wrong with patch.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
 $xsudo apt-get install -y autoconf          || { [[ $parmaview != 1 ]] && enter_continue "Something went wrong with autoconf.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }

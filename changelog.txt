@@ -1,4 +1,5 @@
 Version 3.68.0
+     -Compile commands changed for Knots/Core version above 28. Scripts adjusted.
      -Improvements to generic Bitcoin installation to any Docker container.
      -Refactoring to move bitcoin binaries from /usr/local/bin to /usr/local/bin/parmanode
      -When installing bitcoin, or if already installed, symlinks from /usr/local/bin/bitcoin* to /usr/local/bin/parmanode/bitcoin* are made
