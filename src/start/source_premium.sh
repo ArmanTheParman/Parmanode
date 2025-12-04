@@ -32,6 +32,9 @@ function source_premium {
     [[ -e $dp/.parmanpremium_enabled ]] && [[ -e $pp/parmanpremium ]] && for file in $pp/parmanpremium/src/*.sh ; do
 	    source $file
 	done
+    [[ -e $dp/.parmaview_enabled ]] && [[ -e $pp/parmaview ]] && for file in $pp/parmanpremium/src/*.sh ; do
+	    source $file
+	done
 #custom
     if ! test -f $dp/donotsourceparmadrive ; then
 		[[ -e $pp/parmadrive ]] && for file in $pp/parmadrive/parmadrive/src/*.sh ; do

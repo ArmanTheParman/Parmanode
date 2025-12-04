@@ -9,3 +9,13 @@ function p4signal {
     printf "###ParmaViewSigEnd###\n"
     } > $parmanode_unix_socket
 }
+
+function p4socket {
+    printf "%s\n" "$@" | socat - UNIX-DGRAM:/usr/local/bin/parmanode/parmanode.sock
+}
+
+function p4socketlines { #for tailing
+while IFS= read -r line; do
+    printf "%s\n" "$line" | socat - UNIX-DGRAM:/usr/local/bin/parmanode/parmanode.sock
+done
+}

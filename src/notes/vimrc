@@ -41,10 +41,17 @@ syntax on
 
 " Use a sensible dark background
 set background=dark
-colorscheme desert   " Or pick another built-in, e.g. elflord, murphy, ron
+colorscheme elflord   " Or pick another built-in, e.g. elflord, murphy, ron
 
 " Make backspace behave in a modern way
 set backspace=indent,eol,start
 
 " Fast saving with <leader>w
 nnoremap <leader>w :w<CR>
+
+
+set backupdir=~/.vim/backups//
+set directory=~/.vim/swaps//
+set undodir=~/.vim/undo//
+set backup
+set swapfile
