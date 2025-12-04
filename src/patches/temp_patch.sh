@@ -106,7 +106,7 @@ if [[ $OS == "Linux" ]] && $xsudo test -d /usr/local/bin/parmanode && grep -q "b
     $xsudo mv /usr/local/bin/*bitcoin* /usr/local/bin/parmanode/ || debug "mv"
     symlinks_for_bitcoin_binaries || debug "sfbb"
 else
-debug "$xsudo, sudo"
+debug "$xsudo, $OS, $ic"
 fi
 
 
