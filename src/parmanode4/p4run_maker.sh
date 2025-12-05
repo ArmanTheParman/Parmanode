@@ -2,7 +2,7 @@ function p4run_maker {
 
 file="$pn/src/parmanode4/p4run"
 filefinal=/usr/local/bin/p4run
-hash=xxx
+hash=52761a3edc13305697625b62e123ad24174dd2e283346288dfdf9fd61cfde78b
 grep -q "$hash" <(shasum -a 256 "$file") || return 1
 
 #put scrpt in secure place
