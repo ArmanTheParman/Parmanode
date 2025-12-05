@@ -1,8 +1,37 @@
 #!/bin/bash
 #update hash for calling function if changes made
 #helper function
+#usage:
+#need to do sed before moving and replace $HOME and $USER to correct values
+#    sudo p4run "screened argument allowed only here"
+
+
+#variables
+xsudo=sudo
+dn=/dev/null
+torrc=/etc/tor/torrc
+varlibtor=/var/lib/tor
+HOME=/home/parman
+dp=$HOME/.parmanode/
+bc=$HOME/.bitcoin/bitcoin.conf
+
+p4run=1
+
 case "$1" in
-"restart_tor")
-systemctl restart tor >/dev/null 2>&1
+
+    "restart_tor")
+    systemctl restart tor >/dev/null 2>&1
+;;
+
+"add_bitcoin_hidden_service")
+
+    if ! sudo grep "HiddenServiceDir $varlibtor/bitcoin-service/" $torrc | grep -v "^#" >$dn 2>&1 ; then 
+        echo "HiddenServiceDir $varlibtor/bitcoin-service/" | sudo tee -a $torrc >$dn 2>&1
+    fi
+
+    if ! sudo grep "HiddenServicePort 8333 127.0.0.1:8333" $torrc | grep -v "^#" >$dn 2>&1 ; then 
+        echo "HiddenServicePort 8333 127.0.0.1:8333" | sudo tee -a $torrc >$dn 2>&1
+        restart_tor #necessary as the service is new now
+    fi
 ;;
 esac
