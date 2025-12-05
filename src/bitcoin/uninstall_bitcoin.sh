@@ -87,7 +87,7 @@ fi
 
 # Remove binaries
 debug
-rm /usr/local/bin/parmanode/*bitcoin* 2>$dn
+rm -rf /usr/local/bin/parmanode/*bitcoin* 2>$dn
 debug
 #Modify config file
 installed_config_remove "bitcoin"
