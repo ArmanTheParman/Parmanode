@@ -1,7 +1,7 @@
 function info_add_drive {
 
 ########################################################################################
-if [[ $1 == menu ]] ; then
+if [[ $1 == "menu" ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
     Please note that if you are importing an Umbrel drive, this is not the function

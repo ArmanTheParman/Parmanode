@@ -3,7 +3,7 @@
 function detect_drive {
 rm_after_before
 unset disk
-if [[ $1 != menu ]] ; then
+if [[ $1 != "menu" ]] ; then
 if ! echo $@ | grep -q brief ; then
 set_terminal ; echo -e "$pink
 ########################################################################################
@@ -49,14 +49,14 @@ esac
 fi
 
 while true ; do
-if [[ $(uname) == Linux ]] ; then
+if [[ $(uname) == "Linux" ]] ; then
     if sudo lsblk -o LABEL | grep parmanode ; then
     announce "Sorry, but Parmanode detects that a drive with a label parmanode is" \
     "still physically connected to the computer. Please remove it and try again.
     hit$cyan control-c to quit.$orange" 
     continue 
     else break ; fi 
-elif [[ $(uname) == Darwin ]] ; then
+elif [[ $(uname) == "Darwin" ]] ; then
     if diskutil list | grep parmanode ; then
     announce "Sorry, but Parmanode detects that a drive with a label parmanode is" \
     "still physically connected to the computer. Please remove it and try again.
@@ -169,13 +169,13 @@ case $choice in a) back2main ;; esac
 continue 
 fi
 
-if [[ $OS == Mac ]] ; then
+if [[ $OS == "Mac" ]] ; then
     export disk=$(diff -U0 $HOME/.parmanode/before $HOME/.parmanode/after | grep -v 'synthesized'| grep -Eo 'dev/disk.+' | cut -d ' ' -f1) 
     if [[ -z $disk ]] ; then announce "Error detecting drive. Aborting." ; return 1 ; fi
     break
 fi
 
-if [[ $OS == Linux ]] ; then
+if [[ $OS == "Linux" ]] ; then
 
     if [[ -e $dp/before ]] && ! diff -q $dp/before $dp/after >$dn 2>&1 ; then
       export disk=$(diff -y $HOME/.parmanode/before $HOME/.parmanode/after | tail -n1 | grep -E '^\s' | grep -oE '/dev/\S+' | cut -d : -f 1 | xargs)
