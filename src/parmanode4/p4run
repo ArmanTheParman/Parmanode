@@ -20,13 +20,6 @@ p4run=1
 
 case "$1" in
 
-"restart_tor")
-    systemctl restart tor >/dev/null 2>&1
-;;
-"start_tor")
-    systemctl start tor >/dev/null 2>&1
-;;
-
 "add_bitcoin_hidden_service")
 
     if ! sudo grep "HiddenServiceDir $varlibtor/bitcoin-service/" $torrc | grep -v "^#" >$dn 2>&1 ; then 

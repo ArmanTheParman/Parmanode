@@ -14,6 +14,15 @@ echo "$USER ALL=(root) NOPASSWD: systemctl restart bitcoind.service" | sudo tee 
 echo "$USER ALL=(root) NOPASSWD: systemctl start bitcoind" | sudo tee -a /etc/sudoers.d/parmanode
 echo "$USER ALL=(root) NOPASSWD: systemctl stop bitcoind" | sudo tee -a /etc/sudoers.d/parmanode
 echo "$USER ALL=(root) NOPASSWD: systemctl restart bitcoind" | sudo tee -a /etc/sudoers.d/parmanode
+
+#Tor commands
+echo "$USER ALL=(root) NOPASSWD: systemctl start tor.service" | sudo tee -a /etc/sudoers.d/parmanode
+echo "$USER ALL=(root) NOPASSWD: systemctl stop tor.service" | sudo tee -a /etc/sudoers.d/parmanode
+echo "$USER ALL=(root) NOPASSWD: systemctl restart tor.service" | sudo tee -a /etc/sudoers.d/parmanode
+echo "$USER ALL=(root) NOPASSWD: systemctl start tor" | sudo tee -a /etc/sudoers.d/parmanode
+echo "$USER ALL=(root) NOPASSWD: systemctl stop tor" | sudo tee -a /etc/sudoers.d/parmanode
+echo "$USER ALL=(root) NOPASSWD: systemctl restart tor" | sudo tee -a /etc/sudoers.d/parmanode
+
 return 0
 }
 

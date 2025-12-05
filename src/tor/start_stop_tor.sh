@@ -1,6 +1,5 @@
 function start_tor {
 if [[ $OS == "Linux" ]] ; then
-if [[ $parmavew == 1 ]] ; then p4run "start_tor" ; return 0 ; fi
 sudo systemctl start tor >$dn
 fi
 if [[ $OS == "Mac" ]] ; then
@@ -19,7 +18,6 @@ fi
 
 function restart_tor {
 if [[ $OS == "Linux" ]] ; then
-if [[ $parmavew == 1 ]] ; then p4run "restart_tor" ; return 0 ; fi
 sudo systemctl restart tor >$dn
 fi
 if [[ $OS == "Mac" ]] ; then
