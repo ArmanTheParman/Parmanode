@@ -279,6 +279,7 @@ exit 0
 bitcoin|Bitcoin|BITCOIN)
 if [[ $bitcoinmenu == 1 ]] ; then
 uninstall_bitcoin
+debug
 menu_main
 fi
 ;;
