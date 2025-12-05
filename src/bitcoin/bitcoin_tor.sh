@@ -48,11 +48,14 @@ if [[ $1 == "torandclearnet" ]] ; then
     fi
     echo "listenonion=1" | $xsudo tee -a $bc >$dn 2>&1
     get_onion_address_variable "bitcoin"
-        count=0 ; while [[ $btcpayinstallsbitcoin != "true" && -z $ONION_ADDR && $count -lt 4 ]] ; do
-        sleep 3
+    count=0 
+
+        while [[ $btcpayinstallsbitcoin != "true" && -z $ONION_ADDR && $count -lt 4 ]] ; do
+        sleep 1.5
         get_onion_address_variable "bitcoin"
         count=$((count + 1))
-    done 
+        done 
+
     [[ -z $ONION_ADDR ]] && sww "Some issue with getting onion address. Try later or switch to no Tor." && return 1
     echo "externalip=$ONION_ADDR" | $xsudo tee -a $bc >$dn 2>&1
     $xsudo gsed -i "/discover=/d" $bc
@@ -71,11 +74,12 @@ if [[ $1 == "toronly" ]] ; then
     else
         echo "onion=127.0.0.1:9050" | $xsudo tee -a $bc >$dn 2>&1
     fi
-        count=0 ; while [[ $btcpayinstallsbitcoin != "true" && -z $ONION_ADDR && $count -lt 4 ]] ; do
-        restart_tor
-        sleep 3
-        get_onion_address_variable "bitcoin"
-        count=$((count + 1))
+        count=0 
+        while [[ $btcpayinstallsbitcoin != "true" && -z $ONION_ADDR && $count -lt 4 ]] ; do
+            restart_tor
+            get_onion_address_variable  "bitcoin" 
+            sleep 1.5
+            count=$((count + 1))
         done 
 
     get_onion_address_variable "bitcoin"

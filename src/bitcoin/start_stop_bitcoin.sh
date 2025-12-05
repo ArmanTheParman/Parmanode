@@ -33,7 +33,7 @@ fi
 
 if [[ $OS == "Linux" ]] ; then 
     if grep -q "drive=external" $pc ; then mount_drive ; fi 
-    $xsudo systemctl start bitcoind.service
+    sudo systemctl start bitcoind.service
     sleep 0.5
 fi                 
 
@@ -71,7 +71,7 @@ return 0
 fi
 
 if [[ $OS == "Linux" ]] ; then 
-$xsudo systemctl stop bitcoind.service  >/dev/null
+sudo systemctl stop bitcoind.service  >/dev/null
 sleep 0.5
 return 0
 fi
