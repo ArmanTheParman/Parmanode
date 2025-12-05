@@ -1,4 +1,5 @@
 #!/bin/bash
+exit 0
 #update hash for calling function if changes made
 #helper function
 #usage:
