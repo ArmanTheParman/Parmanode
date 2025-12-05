@@ -73,7 +73,7 @@ fi
 fi
 
 stop_bitcoin
-
+debug
 #remove bitcoin directories and symlinks
 if [[ $OS == "Linux" ]] ; then remove_bitcoin_directories_linux 
 debug 
@@ -82,9 +82,11 @@ fi
 if [[ $OS == "Mac" ]] ; then 
     remove_bitcoin_directories_mac uninstall
     $xsudo rm -rf /Applications/Bitcoin-QT.app >$dn 2>&1
+    debug
 fi
 
 # Remove binaries
+debug
 rm /usr/local/bin/parmanode/*bitcoin* 2>$dn
 debug
 #Modify config file
