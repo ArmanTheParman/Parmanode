@@ -86,7 +86,7 @@ fi
 
 # Remove binaries
 rm /usr/local/bin/parmanode/*bitcoin* 2>$dn
-
+debug
 #Modify config file
 installed_config_remove "bitcoin"
 installed_config_remove "bitcoin-start"
@@ -101,19 +101,19 @@ parmanode_conf_remove "bitcoin_choice"
 parmanode_conf_remove "BTCIP"
 parmanode_conf_remove "disable_bitcoin"
 parmanode_conf_remove "bitcoin_ordinalspatch"
-
+debug
 unset drive prune_value bitcoin_choice UUID BTCIP rpcuser rpcpassword btc_authentication format_choice skip_formatting justFormat driveproblem
 print_bitcoin_variables "after unset"
 #Remove service file for Linux only
 $xsudo rm /etc/systemd/system/bitcoind.service >$dn 2>&1
 $xsudo systemctl daemon-reload >$dn 2>&1
-
+debug
 set_terminal
 if [[ $combo != "true" && $combo != "btcpay_first" ]] ; then
 [[ $1 != "silent" ]] && success "Bitcoin" "being uninstalled"
 return 0
 fi
-
+debug
 if [[ $combo == "true" ]] ; then
 uninstall_btcpay combo
 #then come back there to finish
@@ -122,7 +122,7 @@ installed_config_remove "btccombo"
 unset combo
 return 0
 fi
-
+debug
 if [[ $combo == "btcpay_first" ]] ; then
 return 0
 fi
