@@ -3,7 +3,7 @@ if [[ $1 == "bitcoin" ]] || [[ -z $1 ]] ; then
 export ONION_ADDR="$(sudo cat $varlibtor/bitcoin-service/hostname 2>$dn)"
 fi
 
-if [[ $1 == "bitcoinRPC" ]] || [[ -z $1 ]] ; then
+if [[ $1 == "bitcoinRPC" ]] ; then
 export ONION_ADDR_BITCOINRPC="$(sudo cat $varlibtor/bitcoinRPC-service/hostname 2>$dn)"
 fi
 

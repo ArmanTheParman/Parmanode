@@ -23,13 +23,18 @@ if [[ ! -e $torrc ]] ; then $xsudo touch $torrc >$dn 2>&1 ; fi
 enable_tor_general
 
 
-if ! sudo grep "HiddenServiceDir $varlibtor/bitcoin-service/" $torrc | grep -v "^#" >$dn 2>&1 ; then 
-    echo "HiddenServiceDir $varlibtor/bitcoin-service/" | $xsudo tee -a $torrc >$dn 2>&1
-fi
+if [[ $parmaview == 1 ]] ; then p4run "add_bitcoin_hidden_service"
+else {
 
-if ! sudo grep "HiddenServicePort 8333 127.0.0.1:8333" $torrc | grep -v "^#" >$dn 2>&1 ; then 
-    echo "HiddenServicePort 8333 127.0.0.1:8333" | $xsudo tee -a $torrc >$dn 2>&1
-    restart_tor #necessary as the service is new now
+    if ! sudo grep "HiddenServiceDir $varlibtor/bitcoin-service/" $torrc | grep -v "^#" >$dn 2>&1 ; then 
+        echo "HiddenServiceDir $varlibtor/bitcoin-service/" | sudo tee -a $torrc >$dn 2>&1
+    fi
+
+    if ! sudo grep "HiddenServicePort 8333 127.0.0.1:8333" $torrc | grep -v "^#" >$dn 2>&1 ; then 
+        echo "HiddenServicePort 8333 127.0.0.1:8333" | sudo tee -a $torrc >$dn 2>&1
+        restart_tor #necessary as the service is new now
+    fi
+}
 fi
 
 # discover=0 (dont advertise clearnet IP) ; if not set, default is 1

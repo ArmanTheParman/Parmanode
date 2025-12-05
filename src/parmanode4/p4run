@@ -1,0 +1,8 @@
+#!/bin/bash
+#update hash for calling function if changes made
+#helper function
+case "$1" in
+"restart_tor")
+systemctl restart tor >/dev/null 2>&1
+;;
+esac
