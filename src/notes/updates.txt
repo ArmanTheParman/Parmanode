@@ -1,0 +1,3 @@
+sign p4run and patches with gpg key and place in restricted dir.
+Specific file names necessary
+make sure patchs are numbered and entered into parmanode.conf
