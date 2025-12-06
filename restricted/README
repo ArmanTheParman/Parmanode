@@ -1,0 +1,2 @@
+Files here will be signed by Parman to avoid malicious injections.
+Parmanode will check the signature before moving files to restricted directories on your system.

@@ -4,50 +4,20 @@ make_mount_check_script #fixed any glitches by remaking it
 openssh_patch
 sudo chmod 440 /etc/sudoers.d/parmanode_extend_sudo_timeout
 
-#remove duplicates in torrc, makes it crap its pants.
-
-sudo cp $torrc $torrc.bak
-
-temp=$(mktemp) 
-while [[ $(sudo grep -E "^ControlPort 9051" $torrc | wc -l) -gt 1 ]] ; do
-    count=0
-    while IFS= read -r x ; do
-       if [[ $x =~ ^ControlPort[[:space:]]9051 ]] ; then let count++ ; if [[ $count == 2 ]] ; then continue ; fi ; fi
-       echo "$x" >> $temp
-    done < <(sudo cat $torrc)
-sudo mv $temp $torrc
-done
-
-temp=$(mktemp) 
-while [[ $(sudo grep -E "^CookieAuthentication 1" $torrc | wc -l) -gt 1 ]] ; do
-    export temp=$(mktemp) ; count=0
-    while IFS= read -r x ; do
-       if [[ $x =~ ^CookieAuthentication[[:space:]]1 ]] ; then let count++ ; if [[ $count == 2 ]] ; then continue ; fi ; fi
-       echo "$x" >> $temp
-    done < <(sudo cat $torrc)
-sudo mv $temp $torrc
-done
-temp=$(mktemp) 
-while [[ $(sudo grep -E "^CookieAuthFileGroupReadable 1" $torrc | wc -l) -gt 1 ]] ; do 
-    export temp=$(mktemp) ; count=0
-    while IFS= read -r x ; do
-       if [[ $x =~ ^CookieAuthFileGroupReadable[[:space:]]1 ]] ; then let count++ ; if [[ $count == 2 ]] ; then continue ; fi ; fi
-       echo "$x" >> $temp
-    done < <(sudo cat $torrc)
-sudo mv $temp $torrc
-done
-temp=$(mktemp) 
-while [[ $(sudo grep -E "^DataDirectoryGroupReadable 1" $torrc | wc -l) -gt 1 ]] ; do 
-    export temp=$(mktemp) ; count=0
-    while IFS= read -r x ; do
-       if [[ $x =~ ^DataDirectoryGroupReadable[[:space:]]1 ]] ; then let count++ ; if [[ $count == 2 ]] ; then continue ; fi ; fi
-       echo "$x" >> $temp
-    done < <(sudo cat $torrc)
-sudo mv $temp $torrc
-done
-
-rm $temp 2>$dn
+fix_torrc
 
 parmanode_conf_remove "patch="
 parmanode_conf_add "patch=10"
+}
+
+
+function make_restricted_bucket {
+
+if ! sudo test -d /usr/local/parmanode && sudo mkdir -p /usr/local/parmanode
+
+#make script to move files into restricted location for sudoers to use
+   # check existing files in $pn/restriced, except README
+   # do signature verification, then copy bytes to new location (before releasing file descriptor).
+   # add sudoers command to run said script
+
 }

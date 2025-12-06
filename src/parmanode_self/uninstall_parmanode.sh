@@ -335,6 +335,9 @@ esac
 #remove share directory
 sudo rm -rf /usr/share/parmanode 2>$dn
 
+#remove restricted directory
+sudo rm -rf /usr/local/parmanode 2>$dn
+
 #remove sudoers entries
 sudo rm /etc/sudoers.d/*parmanode* >$dn 2>&1
 
