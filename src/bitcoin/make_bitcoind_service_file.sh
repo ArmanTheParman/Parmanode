@@ -70,8 +70,8 @@ WantedBy=multi-user.target
 
 #tee used instead of echo because redirection operator after sudo echo loses sudo privilages
 
-$xsudo systemctl daemon-reload 
-$xsudo systemctl disable bitcoind.service >$dn 2>&1
-$xsudo systemctl enable bitcoind.service >$dn 2>&1
+sudo systemctl daemon-reload 
+sudo systemctl disable bitcoind.service >$dn 2>&1
+sudo systemctl enable bitcoind.service >$dn 2>&1
 }
 
