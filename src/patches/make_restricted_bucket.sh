@@ -14,14 +14,14 @@ if ! grep -q d88f138fb707f53fb106895a6891b3615494ec9e3a509988ab02aad93aef4edc <(
     debug
     exit 1
 fi
-sudo gpg --no-default-keyring --keyring /usr/local/parmanode/parman.gpg --import /usr/local/parmanode/parman.asc
+sudo gpg --no-default-keyring --keyring /usr/local/parmanode/parman.gpg --import /usr/local/parmanode/parman.asc >$dn 2>&1
 debug
 #make script to move files into restricted location for sudoers to use
    # check existing files in $pn/restriced, except README
    # do signature verification, then copy bytes to new location (before releasing file descriptor).
    # add sudoers command to run said script
 
-cat <<EOF | sudo tee /usr/local/parmanode/patchrunner.sh >/dev/null
+cat <<EOF | sudo tee /usr/local/parmanode/patchrunner.sh >$dn
 #!/bin/bash
 
 while true ; do
@@ -32,7 +32,7 @@ while true ; do
 
    cp -f $pn/restricted/patch.sh{,.sig} /usr/local/parmanode/ >/dev/null 2>&1
 
-   if ! gpgv --keyring /usr/local/parmanode/parman.gpg /usr/local/parmanode/patch.sh.sig /usr/local/parmanode/patch.sh ; then
+   if ! gpgv --keyring /usr/local/parmanode/parman.gpg /usr/local/parmanode/patch.sh.sig /usr/local/parmanode/patch.sh >/dev/null 2>&1 ; then
       #files exist and key doesn't match - that's bad.
       rm /usr/local/parmanode/patch.sh{,.sig} >/dev/null 2>&1
       exit 1 
