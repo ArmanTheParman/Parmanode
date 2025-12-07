@@ -1,10 +1,10 @@
 #!/bin/bash
 exit 0
-#update hash for calling function if changes made
-#helper function
-#usage:
-#need to do sed before moving and replace $HOME and $USER to correct values
+# Parmaview helper function
+# Usage:
 #    sudo p4run "screened argument allowed only here"
+# Location
+# $pn/restricted --> /usr/local/parmanode/p4run (live)
 
 
 #variables
