@@ -1,5 +1,5 @@
 #!/bin/bash
-exit 0
+
 # Parmaview helper function
 # Usage:
 #    sudo p4run "screened argument allowed only here"
@@ -28,13 +28,13 @@ case "$1" in
 
     if ! sudo grep "HiddenServicePort 8333 127.0.0.1:8333" $torrc | grep -v "^#" >$dn 2>&1 ; then 
         echo "HiddenServicePort 8333 127.0.0.1:8333" | sudo tee -a $torrc >$dn 2>&1
-        restart_tor #necessary as the service is new now
+        systemctl restart tor #necessary as the service is new now
     fi
 ;;
 
 "get_onion_address_variable")
 
-    if [[ $2 == "bitcoin" ]] || ; then
+    if [[ "$2" == "bitcoin" ]] ; then
     export ONION_ADDR="$(sudo cat $varlibtor/bitcoin-service/hostname 2>$dn)"
     fi
 ;;
