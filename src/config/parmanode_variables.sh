@@ -128,4 +128,7 @@ export xsudo=""
 else
 export xsudo=sudo
 fi
+
+#Temporarily adjust path
+export PATH=$PATH:/usr/local/parmanode:/usr/local/bin/parmanode/
 }
