@@ -56,7 +56,7 @@ fi
 function stop_bitcoin { debugf
 #for docker (no systemctl, use tmux)
 if [[ -e /.dockerenv ]] ; then
-pn_tmux "pkill bitcoind >/dev/null" "stopping_bitcoin"
+pn_tmux "pkill bitcoind >/dev/null" "stopping_bitcoin" >$dn
 sleep 0.5
 return 0
 fi
