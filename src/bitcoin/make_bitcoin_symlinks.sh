@@ -82,7 +82,7 @@ set_terminal
 return 0
 }
 
-function symlinks_for_bitcoin_binaries {
+function symlinks_for_bitcoin_binaries { debugf
 [[ $OS == "Linux" ]] || return 1
 sudo ln -s  /usr/local/bin/parmanode/bitcoin-cli /usr/local/bin/bitcoin-cli >$dn 2>&1
 sudo ln -s  /usr/local/bin/parmanode/bitcoind /usr/local/bin/bitcoind >$dn 2>&1
