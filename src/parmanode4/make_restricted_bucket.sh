@@ -11,16 +11,17 @@ sudo cp $pn/src/keys/parman.asc /usr/local/parmanode/
 if ! grep -q d88f138fb707f53fb106895a6891b3615494ec9e3a509988ab02aad93aef4edc <(shasum -a 256 /usr/local/parmanode/parman.asc) ; then 
     sudo rm -f /usr/local/parmanode/parman.asc >/dev/null 2>&1                      
     sww "error with parman's pubkey. exiting." 
+    debug
     exit 1
 fi
 sudo gpg --no-default-keyring --keyring /usr/local/parmanode/parman.gpg --import /usr/local/parmanode/parman.asc
-
+debug
 #make script to move files into restricted location for sudoers to use
    # check existing files in $pn/restriced, except README
    # do signature verification, then copy bytes to new location (before releasing file descriptor).
    # add sudoers command to run said script
 
-cat <<EOF | tee /usr/local/parmanode/patchrunner.sh
+cat <<EOF | sudo tee /usr/local/parmanode/patchrunner.sh >/dev/null
 #!/bin/bash
 
 while true ; do
