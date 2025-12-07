@@ -18,7 +18,7 @@ if [[ $OS == "Linux" ]] ; then
     export knotsversion="29.2"
     versions["knotsversion"]="$knotsversion"
 
-    export knotsdate="20251010"
+    export knotsdate="20251110"
     versions["knotsdate"]="$knotsdate"
 
     export knotstag="v${knotsversion}.knots${knotsdate}"
@@ -37,7 +37,7 @@ else
     export knotsversion="29.2"
     versions["knotsversion"]="$knotsversion"
 
-    export knotsdate="20251010"
+    export knotsdate="20251110"
     versions["knotsdate"]="$knotsdate"
 
     export knotsmajor="29.x"
