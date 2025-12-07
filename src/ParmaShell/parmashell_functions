@@ -92,6 +92,7 @@ function vlt { cd /var/lib/tor ; a ; }
 function vln { cd /var/log/nginx ; a ; }
 function ulb { cd /usr/local/bin ; a ; }
 function ulbp { ulb ; cd parmanode ; a ; }
+function ulp { cd /usr/local/parmanode ; a; }
 fi
 
 

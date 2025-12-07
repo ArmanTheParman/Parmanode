@@ -40,7 +40,7 @@ case "$1" in
 ;;
 
 "bitcoin_binary_symlinks")
-
+    sudo mkdir -p /usr/local/bin/parmanode/
     sudo ln -s  /usr/local/bin/parmanode/bitcoin-cli /usr/local/bin/bitcoin-cli >$dn 2>&1
     sudo ln -s  /usr/local/bin/parmanode/bitcoind /usr/local/bin/bitcoind >$dn 2>&1
     sudo ln -s  /usr/local/bin/parmanode/bitcoin-qt /usr/local/bin/bitcoin-qt >$dn 2>&1
