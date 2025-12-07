@@ -71,6 +71,7 @@ export p4="$dp/p4.json"
 export pvlog="$dp/parmaview/parmaview.log"
 export p4socketfile="/tmp/parmanode.sock"
 export p4websocketfile="/usr/local/bin/parmanode/parmanode_ws"
+export socketbacklog="/usr/local/bin/parmanode/socketbacklog"
 
 if [[ -z $dn ]] ; then echo "some problem with dn variable" ; read ; fi ##debug
 
