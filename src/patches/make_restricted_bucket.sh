@@ -32,7 +32,7 @@ while true ; do
 
    cp -f $pn/restricted/patch.sh{,.sig} /usr/local/parmanode/ >/dev/null 2>&1
 
-   if ! gpgv --keyring /usr/local/parmanode/parman.gpg --verify /usr/local/parmanode/patch.sh.sig /usr/local/parmanode/patch.sh ; then
+   if ! gpgv --keyring /usr/local/parmanode/parman.gpg /usr/local/parmanode/patch.sh.sig /usr/local/parmanode/patch.sh ; then
       #files exist and key doesn't match - that's bad.
       rm /usr/local/parmanode/patch.sh{,.sig} >/dev/null 2>&1
       exit 1 
