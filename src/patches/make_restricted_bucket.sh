@@ -57,7 +57,7 @@ while true ; do
    chown root:$(id -gn) "\$filefinal"
    chmod 710 "\$filefinal"
 
-   if ! gpgv --keyring /usr/local/parmanode/parman.gpg --verify \$filefinal.sig \$filefinal ; then
+   if ! gpgv --keyring /usr/local/parmanode/parman.gpg \$filefinal.sig \$filefinal ; then
       rm \$filefinal{,.sig} >/dev/null 2>&1
       exit 1
    else
