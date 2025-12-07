@@ -36,6 +36,7 @@ else {
     fi
 }
 fi
+debug
 
 # discover=0 (dont advertise clearnet IP) ; if not set, default is 1
 
