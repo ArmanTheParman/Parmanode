@@ -3,9 +3,10 @@ udev_patch  #then change udev function too.
 make_mount_check_script #fixed any glitches by remaking it
 openssh_patch
 sudo chmod 440 /etc/sudoers.d/parmanode_extend_sudo_timeout
-echo "pUSER=$(whoami)" | tee -a $pc >$dn 2>&1
+if ! grep -q pUSER $pc ; then
+    echo "pUSER=$(whoami)" | tee -a $pc >$dn 2>&1
+fi
 fix_torrc
-
 sudoers_patch
 make_restricted_bucket
 parmanode_conf_remove "patch="
