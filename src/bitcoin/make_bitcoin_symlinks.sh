@@ -84,6 +84,9 @@ return 0
 
 function symlinks_for_bitcoin_binaries { debugf
 [[ $OS == "Linux" ]] || return 1
+
+if [[ $parmaview == 1 ]] ; then p4run "bitcoin_binary_symlinks" ; return 0 ; fi
+
 sudo ln -s  /usr/local/bin/parmanode/bitcoin-cli /usr/local/bin/bitcoin-cli >$dn 2>&1
 sudo ln -s  /usr/local/bin/parmanode/bitcoind /usr/local/bin/bitcoind >$dn 2>&1
 sudo ln -s  /usr/local/bin/parmanode/bitcoin-qt /usr/local/bin/bitcoin-qt >$dn 2>&1
