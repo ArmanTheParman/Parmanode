@@ -70,8 +70,8 @@ export parmanode_cert_dir="$macprefix/etc/ssl/parmanode"
 export p4="$dp/p4.json"
 export pvlog="$dp/parmaview/parmaview.log"
 export p4socketfile="/tmp/parmanode.sock"
-export p4websocketfile="/usr/local/bin/parmanode/parmanode_ws"
-export socketbacklog="/usr/local/bin/parmanode/socketbacklog"
+export p4websocketfile="/opt/parmanode/parmanode_ws"
+export socketbacklog="/opt/parmanode/socketbacklog"
 
 if [[ -z $dn ]] ; then echo "some problem with dn variable" ; read ; fi ##debug
 
