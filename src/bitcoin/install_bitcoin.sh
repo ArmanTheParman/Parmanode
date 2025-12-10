@@ -1,8 +1,8 @@
 function install_bitcoin {
 debugfile "Entering install bitcoin. \nbitcoin_choice=$bitcoin_choice bitcoin_compile=$bitcoin_compile btcpayinstallsbitcoin=$btcpayinstallsbitcoin\nenv...\n"
 
-if grep -q bitcoin-end $ic ; then announce "Bitcoin already installed" ; jump $enter_cont ; return 1 ; fi
-if grep -q bitcoin-start $ic ; then announce "Bitcoin partially installed" ; jump $enter_cont ; uninstall_bitcoin silent ; fi
+if grep -q bitcoin-end $ic ; then announce "Bitcoin already installed" ; jump $enter_cont ; p4socket "Bitcoin already installed" ; return 1 ; fi
+if grep -q bitcoin-start $ic ; then announce "Bitcoin partially installed" ; jump $enter_cont ; p4socket "Removing partial installation" ; uninstall_bitcoin silent ; fi
 
 # if installing bitcoin inside a docker container, then using btcpayinstallsbitcoin="true"
 # if installing bitcoin and btcpay together in docker (initiated by a bitcoin install), then using btcdockerchoice="yes"
@@ -70,6 +70,8 @@ debug "after version"
 
 unset importdrive
 
+p4socket "Preparing Drive"
+
 choose_and_prepare_drive "Bitcoin" || return 1 # the argument "Bitcoin" is added as this function is also
                                              # called by a fulcrum installation, and electrs.
                                              # drive=internal or drive=external exported and added to parmanode.conf
@@ -92,6 +94,8 @@ prune_choice || return 1  ; debug
     # the drive choice just made by the user. 
     # Use variable later for setting bitcoin.conf
 
+p4socket "Making directories"
+
 make_bitcoin_directories || return 1
     # make bitcoin directories in appropriate locations
     # installed.conf entry gets made when parmanode/bitcoin directory gets made.
@@ -101,14 +105,15 @@ make_bitcoin_symlinks || return 1
 #compile bitcoin if chosen
 compile_bitcoin || return 1
 
-
 # Download bitcoin software & verify
 if [[ $bitcoin_compile == "false" ]] ; then
+p4socket "Downloading Bitcoin"
 download_bitcoin || return 1
 debug
 fi
 
 #setup bitcoin.conf
+p4socket "Making bitcoin.conf"
 make_bitcoin_conf || { sww && return 1 ; }
 debug
 [[ $btcdockerchoice == "yes" ]] || { menu_bitcoin_tor || { sww && return 1 ; } ; }
@@ -119,6 +124,7 @@ fi
 
 #make service file - this allows automatic start up after a reboot
 if [[ $OS == "Linux" && $btcpayinstallsbitcoin != "true" ]] ; then 
+    p4socket "Makeing service file"
     make_bitcoind_service_file
     debug
 fi
@@ -167,6 +173,7 @@ if [[ $OS == "Linux" ]] ; then
 debug
     if ! which bitcoind >$dn ; then
     debug
+        p4socket "Install Failure"
         enter_continue "Something went wrong. Bitcoin did not install correctly."
         install_failure "Bitcoin"
         log "bitcoin" "no binaries. install failure."
@@ -187,6 +194,7 @@ debug
     fi
 debug
 set_terminal 
+p4socket "Install Success"
 success "Bitcoin should have started syncing. Note, it should also continue to sync 
     after a reboot, or you can start Bitcoin from the Parmanode Bitcoin menu at
     any time.

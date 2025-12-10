@@ -34,6 +34,8 @@ debug "newcompile: $newcompile"
 
 bitcoin_compile_dependencies || return 1
 
+p4socket "Downloading Bitcoin code from GitHub"
+
 #for later when mac is supported
 [[ $OS == "Mac" ]] && brew install berkeley-db@4
 
@@ -95,7 +97,6 @@ fi
     unset export GIT_COMMITTER_EMAIL
 
 
-
 ! [[ $clientchoice == "deis" ]] && while true ; do
 set_terminal ; echo -e "
 ########################################################################################
@@ -126,6 +127,9 @@ esac
 done
 ##############################################################################################################
 debug
+
+p4socket "Compiling"
+
 if [[ $newcompile == "false" ]] ; then 
 debug
     ./autogen.sh || { enter_continue "autogen.sh failed - this is normal if compiling versions greater than 28" ; }
@@ -303,7 +307,9 @@ esac
 $xsudo make install || enter_continue "something might have gone wrong here."
 $xsudo mv /usr/local/bin/*bitcoin* /usr/local/bin/parmanode/ >$dn 2>&1
 fi
-debug "306, nc= $newcompile"
+
+#end newcompile=false
+
 if [[ $newcompile == "true" ]] ; then
 debug
 [[ $gui == "yes" ]] && gui=ON
@@ -320,13 +326,15 @@ ninja -j $(nproc)
 sudo ninja install
 debug
 fi
+#end newcopile=true
+
 symlinks_for_bitcoin_binaries >$dn 2>&1
 debug
 }
 
 function bitcoin_compile_dependencies { debugf
 [[ $parmaview == 1 ]] && enter_cont="i" #running with parmaview will ignore errors
-
+p4socket "Installing Bitcoin dependencies"
 if [[ -z $1 ]] ; then 
 set_terminal ; echo -e "${pink}Upgrading, and installing dependencies to compile bitcoin...$orange"
 $xsudo apt-get update -y && export APT_UPDATE="true"
