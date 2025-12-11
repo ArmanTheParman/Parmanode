@@ -1,3 +1,5 @@
+Version 3.68.2
+     -Bitcoin Core version bug fix
 Version 3.68.1
      -Knots date: 20251110
 Version 3.68.0
