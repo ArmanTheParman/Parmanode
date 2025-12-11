@@ -63,6 +63,7 @@ while true ; do
 debug "versions... knotsbitcoin: $knotsbitcoin, knotsmajor: $knotsmajor, core version: $version"
 	     if [[ $chip == "armv7l" || $chip == "armv8l" ]] ; then 		#32 bit Pi4
                 [[ $bip110 == "true" ]] && announce "Sorry, BIP110 Knots is not availble for your computer's particular CPU." && return 1
+
                 if [[ $knotsbitcoin == "true" ]] ; then 
                     curl -fsLO https://bitcoinknots.org/files/$knotsmajor/$knotsversion.knots$knotsdate/bitcoin-$knotsversion.knots$knotsdate-arm-linux-gnueabihf.$knotsextension && break 
                     curl -fsLO https://bitcoinknots.org/files/$knotsmajor/$knotsversion.knots$knotsdate/bitcoin-$knotsversion.knots$knotsdate-arm-linux-gnueabihf.$knotsextension && break

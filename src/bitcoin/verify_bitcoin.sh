@@ -6,14 +6,21 @@ if [[ $SKIPVERIFY == "true" ]] ; then return 0 ; fi
 cd $HOME/parmanode/bitcoin
 set_terminal 46 120
 debug "bitcoin_choice, $bitcoin_choice; bitcoin_combo, $bitcoin_combo"
-if grep -q "bitcoin_choice=knots" $pc || [[ $bitcoin_choice == "knots" ]] ; then
-    debug
-    curl -fsLO https://bitcoinknots.org/files/$knotsmajor/$knotsversion.knots$knotsdate/SHA256SUMS 
-    curl -fsLO https://bitcoinknots.org/files/$knotsmajor/$knotsversion.knots$knotsdate/SHA256SUMS.asc
+if [[ $bip110 == "true" ]] ; then
+        curl -fsLO https://github.com/dathonohm/guix.sigs/blob/bip110/29.2.knots20251110%2Bbip110-v0.1rc1/luke-jr/all.SHA256SUMS
+        curl -fsLO https://github.com/dathonohm/guix.sigs/blob/bip110/29.2.knots20251110%2Bbip110-v0.1rc1/luke-jr/all.SHA256SUMS.asc
 else
-    debug
-    curl -fsLO https://bitcoincore.org/bin/bitcoin-core-$version/SHA256SUMS 
-    curl -fsLO https://bitcoincore.org/bin/bitcoin-core-$version/SHA256SUMS.asc 
+
+    if grep -q "bitcoin_choice=knots" $pc || [[ $bitcoin_choice == "knots" ]] ; then
+        debug
+        curl -fsLO https://bitcoinknots.org/files/$knotsmajor/$knotsversion.knots$knotsdate/SHA256SUMS 
+        curl -fsLO https://bitcoinknots.org/files/$knotsmajor/$knotsversion.knots$knotsdate/SHA256SUMS.asc
+    else
+        debug
+        curl -fsLO https://bitcoincore.org/bin/bitcoin-core-$version/SHA256SUMS 
+        curl -fsLO https://bitcoincore.org/bin/bitcoin-core-$version/SHA256SUMS.asc 
+    fi
+
 fi
 
 if ! which gpg >$dn  && [[ $OS == "Mac" ]] ; then install_gpg4mac ; fi
@@ -21,7 +28,7 @@ if ! which gpg >$dn  && [[ $OS == "Mac" ]] ; then install_gpg4mac ; fi
 #ignore-missing option not available on shasum
 if which sha256sum >$dn ; then
     debug "Using sha256sum"
-    if ! sha256sum --check SHA256SUMS 2>$dn | grep -q ": OK" ; then 
+    if ! sha256sum --check *SHA256SUMS 2>$dn | grep -q ": OK" ; then 
     sww "${orange}Checksum failed. Aborting. Sometimes this happens for unexplainable reasons. 
     Try uninstalling the partial Bitcoin installation and try again. (Error code VBS256S)
     
@@ -37,7 +44,7 @@ $cyan        $hp/bitcoin $orange
                                          version: $version, 
                                          btcpay_combo: $btcpay_combo" ; case $enter_cont in yolo) true ;; *) return 1 ;; esac ; fi
 else
-    if ! shasum -a 256 --check SHA256SUMS 2>$dn | grep -q ": OK" ; then
+    if ! shasum -a 256 --check *SHA256SUMS 2>$dn | grep -q ": OK" ; then
     sww "${orange}Checksum failed. Aborting. Sometimes this happens for unexplainable reasons. 
     Try uninstalling the partial Bitcoin installation and try again. (Error code VBSS256)
     
@@ -61,7 +68,7 @@ gpg --keyserver hkps://keyserver.ubuntu.com --recv-keys E777299FC265DD04793070EB
 curl https://raw.githubusercontent.com/bitcoin-core/guix.sigs/main/builder-keys/laanwj.gpg | gpg --import >$dn 2>&1
 curl https://raw.githubusercontent.com/bitcoin-core/guix.sigs/main/builder-keys/Emzy.gpg | gpg --import >$dn 2>&1
 
-    if gpg --verify --status-fd 1 SHA256SUMS.asc 2>&1 | grep -iq GOOD
+    if gpg --verify --status-fd 1 *SHA256SUMS.asc 2>&1 | grep -iq GOOD
     then
         debug
         echo -e "\nGPG verification of the SHA256SUMS file$green passed$orange.\n"
