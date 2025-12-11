@@ -1,4 +1,5 @@
 Version 3.69.0
+     -Bitcoin Knots BIP110 edition
      -Parmanode restricted bucket for more secure updates
      -Parman public key in restricted bucked
      -p4run helper script in restricted bucket
