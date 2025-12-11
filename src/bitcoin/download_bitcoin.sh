@@ -60,7 +60,7 @@ function download_bitcoin_getfiles { debugf
 #arm64 (m3)
 # ARM Pi4 support. If not, checks for 64 bit x86.
 while true ; do
-
+debug "versions... knotsbitcoin: $knotsbitcoin, knotsmajor: $knotsmajor, core version: $version"
 	     if [[ $chip == "armv7l" || $chip == "armv8l" ]] ; then 		#32 bit Pi4
                 [[ $knotsbitcoin == "true" ]] &&  { curl -fsLO https://bitcoinknots.org/files/$knotsmajor/$knotsversion.knots$knotsdate/bitcoin-$knotsversion.knots$knotsdate-arm-linux-gnueabihf.$knotsextension && break ; } ||
                 { curl -fsLO https://bitcoinknots.org/files/$knotsmajor/$knotsversion.knots$knotsdate/bitcoin-$knotsversion.knots$knotsdate-arm-linux-gnueabihf.$knotsextension && break ; }

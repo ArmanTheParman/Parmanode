@@ -25,7 +25,7 @@ if which sha256sum >$dn ; then
     sww "${orange}Checksum failed. Aborting. Sometimes this happens for unexplainable reasons. 
     Try uninstalling the partial Bitcoin installation and try again. (Error code VBS256S)
     
-    Below is the contents of $hp/bitcoin/parmanode/ where the files should have been downloaded:$red
+    Below is the contents of $hp/bitcoin/ where the files should have been downloaded:$red
     
 $(ls -lah $hp/bitcoin/ | gsed -n '4,$p' | awk '{print "    "$9" .........."$5}')$orange 
 
