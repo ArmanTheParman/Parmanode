@@ -3,6 +3,7 @@ Version 3.69.0
      -Parman public key in restricted bucked
      -p4run helper script in restricted bucket
      -sudoers patch for reduced password requests for specific trusted commands (eg restarting bitcoin, p4fun, and patchrunner)
+     -small bitcoin Core install bug fixed
 Version 3.68.1
      -Knots date: 20251110
 Version 3.68.0
