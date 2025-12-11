@@ -173,7 +173,6 @@ export version="$knotsmajor-knots" ; return 0 ;;
 export bip110="true"
 export bitcoin_compile="false"
 export version="$knotsmajor-knots" ; return 0 ;;
-;;
 *)
 invalid ;;
 esac
