@@ -64,14 +64,14 @@ fi
 #needs to be first...
 if grep -q btccombo $ic ; then
 pn_tmux "
-docker exec -it btcpay pkill bitcoind >/dev/null
+docker exec -it btcpay pkill bitcoind 2>/dev/null
 " "stopping_bitcoin"
 sleep 0.5
 return 0
 fi
 
 if [[ $OS == "Linux" ]] ; then 
-sudo systemctl stop bitcoind.service  >/dev/null
+sudo systemctl stop bitcoind.service  2>/dev/null
 sleep 0.5
 return 0
 fi
