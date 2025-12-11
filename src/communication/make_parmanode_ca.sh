@@ -1,13 +1,13 @@
 function make_parmanode_ca {
 
+#variablize the path
+local filepath="$parmanode_cert_dir/ca"
+
 #exit if key exists
 if sudo test -f "$filepath/ca.key" ; then return 0 ; fi
 
 #exit if no nginx
 if ! sudo which nginx >$dn 2>&1 ; then sww "Can't run certificate authority script if Nginx isn't installed. Skipping." && return 1 ; fi
-
-#variablize the path
-local filepath="$parmanode_cert_dir/ca"
 
 #check which user nginx runs as
 if id www-data >$dn 2>&1 ; then group="www-data"
