@@ -62,6 +62,7 @@ function download_bitcoin_getfiles { debugf
 while true ; do
 debug "versions... knotsbitcoin: $knotsbitcoin, knotsmajor: $knotsmajor, core version: $version"
 	     if [[ $chip == "armv7l" || $chip == "armv8l" ]] ; then 		#32 bit Pi4
+                [[ $bip110 == "true" ]] && announce "Sorry, BIP110 Knots is not availble for your computer's particular CPU." && return 1
                 if [[ $knotsbitcoin == "true" ]] ; then 
                     curl -fsLO https://bitcoinknots.org/files/$knotsmajor/$knotsversion.knots$knotsdate/bitcoin-$knotsversion.knots$knotsdate-arm-linux-gnueabihf.$knotsextension && break 
                     curl -fsLO https://bitcoinknots.org/files/$knotsmajor/$knotsversion.knots$knotsdate/bitcoin-$knotsversion.knots$knotsdate-arm-linux-gnueabihf.$knotsextension && break
@@ -73,6 +74,12 @@ debug "versions... knotsbitcoin: $knotsbitcoin, knotsmajor: $knotsmajor, core ve
 	     if [[ $chip == "aarch64" && $OS == "Linux" ]] ; then 				
 
             if [[ $( file /bin/bash | cut -d " " -f 3 ) == "64-bit" ]] ; then
+
+                if [[ $bip110 == "true" ]] ; then
+                    curl -fsLO https://github.com/dathonohm/bitcoin/releases/download/v29.2.knots20251110%2Bbip110-v0.1rc1/bitcoin-29.2.knots20251110+bip110-v0.1rc1-aarch64-linux-gnu.tar.gz
+                    break
+                fi
+            
                 if [[ $knotsbitcoin == "true" ]] ; then 
                     curl -fsLO https://bitcoinknots.org/files/$knotsmajor/$knotsversion.knots$knotsdate/bitcoin-$knotsversion.knots$knotsdate-aarch64-linux-gnu.$knotsextension && break 
                     curl -fsLO https://bitcoinknots.org/files/$knotsmajor/$knotsversion.knots$knotsdate/bitcoin-$knotsversion.knots$knotsdate-aarch64-linux-gnu.$knotsextension && break 
@@ -89,8 +96,13 @@ debug "versions... knotsbitcoin: $knotsbitcoin, knotsmajor: $knotsmajor, core ve
             fi
          fi
 
- 	     if [[ $chip == "x86_64" && $OS == "Linux" ]] ; then 
-                debug "x86"
+ 	     if [[ $chip == "x86_64" && $OS == "Linux" ]] ; then debug "x86"
+
+                if [[ $bip110 == "true" ]] ; then
+                    curl -fsLO https://github.com/dathonohm/bitcoin/releases/download/v29.2.knots20251110%2Bbip110-v0.1rc1/bitcoin-29.2.knots20251110+bip110-v0.1rc1-x86_64-linux-gnu.tar.gz
+                    break
+                fi
+
                 if [[ $knotsbitcoin == "true" ]] ; then 
                     curl -fsLO https://bitcoinknots.org/files/$knotsmajor/$knotsversion.knots$knotsdate/bitcoin-$knotsversion.knots$knotsdate-x86_64-linux-gnu.$knotsextension && break 
                     curl -fsLO https://bitcoinknots.org/files/$knotsmajor/$knotsversion.knots$knotsdate/bitcoin-$knotsversion.knots$knotsdate-x86_64-linux-gnu.$knotsextension && break 
@@ -99,8 +111,16 @@ debug "versions... knotsbitcoin: $knotsbitcoin, knotsmajor: $knotsmajor, core ve
                 fi
          fi
 
-         if [[ ($chip == "arm64" && $OS == "Mac") || ( $chip == "aarch64" && $OS == "Mac") ]] ; then
+         if [[ ($chip == "arm64" && $OS == "Mac") || ( $chip == "aarch64" && $OS == "Mac") ]] ; then debug "arm64 mac"
+
+            if [[ $bip110 == "true" ]] ; then
+                curl -fsLO https://github.com/dathonohm/bitcoin/releases/download/v29.2.knots20251110%2Bbip110-v0.1rc1/bitcoin-29.2.knots20251110+bip110-v0.1rc1-x86_64-apple-darwin.zip
+                break
+            fi
+
             if [[ $knotsbitcoin == "true" ]] ; then 
+        
+            
                 curl -fsLO https://bitcoinknots.org/files/$knotsmajor/$knotsversion.knots$knotsdate/bitcoin-$knotsversion.knots$knotsdate-arm64-apple-darwin.$knotsextension && break 
                 curl -fsLO https://bitcoinknots.org/files/$knotsmajor/$knotsversion.knots$knotsdate/bitcoin-$knotsversion.knots$knotsdate-arm64-apple-darwin.$knotsextension && break 
             else
@@ -108,7 +128,13 @@ debug "versions... knotsbitcoin: $knotsbitcoin, knotsmajor: $knotsmajor, core ve
             fi
          fi
 
-         if [[ $chip == "x86_64" && $OS == "Mac" ]] ; then
+         if [[ $chip == "x86_64" && $OS == "Mac" ]] ; then debug "x86_64 Mac"
+
+                if [[ $bip110 == "true" ]] ; then
+                    curl -fsLO https://github.com/dathonohm/bitcoin/releases/download/v29.2.knots20251110%2Bbip110-v0.1rc1/bitcoin-29.2.knots20251110+bip110-v0.1rc1-x86_64-apple-darwin.zip
+                    break
+                fi         
+         
             if [[ $knotsbitcoin == "true" ]] ; then 
                 curl -fsLO https://bitcoinknots.org/files/$knotsmajor/$knotsversion.knots$knotsdate/bitcoin-$knotsversion.knots$knotsdate-x86_64-apple-darwin.$knotsextension && break
                 curl -fsLO https://bitcoinknots.org/files/$knotsmajor/$knotsversion.knots$knotsdate/bitcoin-$knotsversion.knots$knotsdate-x86_64-apple-darwin.$knotsextension && break 

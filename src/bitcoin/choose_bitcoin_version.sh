@@ -133,6 +133,8 @@ $cyan
      3)$orange     Pre-compile Bitcoin KNOTS, v28.1 (March 5, 2025)
 $cyan
      4)$orange     Guided compile Bitcoin KNOTS, v28.1 (March 5, 2025)
+$cyan
+     5)$orange     BIP110 version of Knots $pink (new)$orange
 
 
 ########################################################################################################################
@@ -168,8 +170,10 @@ export knotstag="v${knotsversion}.knots${knotsdate}"
 export bitcoin_compile="false" 
 export version="$knotsmajor-knots" ; return 0 ;;
 5)
-export bitcoin_compile="true"
-export version="28.x-knots" ; return 0 ;;
+export bip110="true"
+export bitcoin_compile="false"
+export version="$knotsmajor-knots" ; return 0 ;;
+;;
 *)
 invalid ;;
 esac
