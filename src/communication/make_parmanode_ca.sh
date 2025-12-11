@@ -20,7 +20,7 @@ fi
 
 sudo mkdir -p "$filepath"
 sudo chmod 700 "$filepath"
-sudo openssl req -x509 -newkey rsa:4096 -nodes -keyout "$filepath/ca.key" -out "$filepath/ca.crt" -days 36500 -sha256  -subj "/CN=ParmanodeRootCA" 2>>$dp/error.log
+sudo openssl req -x509 -newkey rsa:4096 -nodes -keyout "$filepath/ca.key" -out "$filepath/ca.crt" -days 36500 -sha256  -subj "/CN=ParmanodeRootCA" 2>>$errorlog
 sudo chmod 640 "$filepath/ca.key"
 sudo chown "root:$group" "$filepath/ca.key"
 }

@@ -4,7 +4,7 @@ function make_parmanode_cert {
 local filepath="/etc/ssl/parmanode/"
 
 sudo openssl req -new -newkey rsa:2048 -nodes -keyout "$filepath/parmanode.local.key" \
-                 -out "$filepath/parmanode.local.csr" -subj "/CN=$(hostname).local" 2>>$dp/error.log || return 1
+                 -out "$filepath/parmanode.local.csr" -subj "/CN=$(hostname).local" 2>>$errorlog || return 1
 
 cat <<EOF | sudo tee /etc/ssl/parmanode/parmanode.ext >$dn
 authorityKeyIdentifier=keyid,issuer

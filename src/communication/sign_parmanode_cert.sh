@@ -52,7 +52,7 @@ $green
         -extfile /etc/ssl/parmanode/parmanode.ext
         -out $key/.crt 
         -days 36500 -sha256 
-        2>>$dp/error.log 
+        2>>$errorlog 
 $orange
    Go ahead?
    $green 
@@ -83,7 +83,7 @@ clear
         -extfile "/etc/ssl/parmanode/parmanode.ext" \
         -out "$key.crt" \
         -days 36500 -sha256 \
-        2>>"$dp/error.log" || { sww && return 1 ; }
+        2>>"$errorlog" || { sww && return 1 ; }
 
 sudo chmod 640 "$parmanode_cert_dir/parmanode.local.crt"
 success "The key has been signed."
