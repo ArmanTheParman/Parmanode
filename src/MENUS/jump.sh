@@ -4,6 +4,13 @@ case $1 in
 q|quit|exit) exit ;;
 m|main) back2main ;;
 
+gp)
+clear
+cd $pn 
+git pull
+invlid_flag=set
+;;
+
 b)
 clear
 menu_bitcoin
