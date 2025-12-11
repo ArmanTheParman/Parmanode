@@ -30,7 +30,7 @@ export btcdockerchoice=no
 export bitcoin_compile="false"
 break
 ;;
-old|k|"")
+old|k|""|110)
 
 if [[ $choice == "old" ]] ; then #choose old knots...
     export knotsversion=28.1 && export knotsdate=20250305 && knotsmajor=28.x && knotsextension="zip" && coreexternsion="tar.gz"
