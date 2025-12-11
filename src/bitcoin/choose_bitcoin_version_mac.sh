@@ -9,6 +9,8 @@ set_terminal  ; echo -e "
 
             $cyan    k)$orange    Bitcoin Knots version $knotsversion (MacOS 13+) 
 
+            $cyan  110)$orange    Bitcoin Knots BIP110 edition $pink(new)
+
             $cyan  old)$orange    Bitcoin Knots version 28.1 (for older Macs) 
 
             $cyan  bqt)$orange    Bitcoin Core QT version $version  
@@ -29,11 +31,13 @@ export bitcoin_compile="false"
 break
 ;;
 old|k|"")
+
 if [[ $choice == "old" ]] ; then #choose old knots...
     export knotsversion=28.1 && export knotsdate=20250305 && knotsmajor=28.x && knotsextension="zip" && coreexternsion="tar.gz"
     export btcdockerchoice=no
     export bitcoin_compile="false"
 else #choose new knots...
+    [[ $choice == "110" ]] && export bip110="true"
     [[ $MacOSVersion_major -gt "12" ]] || { yesorno "You need Mac Version 13 or greater to run this newer version of Knots. 
         Your system is:
 $blue
