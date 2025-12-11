@@ -100,7 +100,7 @@ debug "versions... knotsbitcoin: $knotsbitcoin, knotsmajor: $knotsmajor, core ve
          fi
 
          if [[ ($chip == "arm64" && $OS == "Mac") || ( $chip == "aarch64" && $OS == "Mac") ]] ; then
-            if [[ $knotsbitcoin == "true" ]] 
+            if [[ $knotsbitcoin == "true" ]] ; then 
                 curl -fsLO https://bitcoinknots.org/files/$knotsmajor/$knotsversion.knots$knotsdate/bitcoin-$knotsversion.knots$knotsdate-arm64-apple-darwin.$knotsextension && break 
                 curl -fsLO https://bitcoinknots.org/files/$knotsmajor/$knotsversion.knots$knotsdate/bitcoin-$knotsversion.knots$knotsdate-arm64-apple-darwin.$knotsextension && break 
             else
