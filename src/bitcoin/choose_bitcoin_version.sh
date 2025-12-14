@@ -6,7 +6,7 @@ if [[ $version == "self" ]] ; then return 0 ; fi
 if [[ $OS == "Mac" && ! $btcdockerchoice == "yes" ]] ; then return 0 ; fi
 
 [[ $btcpayinstallsbitcoin != "true" ]] && [[ $btcdockerchoice == "yes" ]] && return 0
-
+debug
 while true ; do
 set_terminal 32 120 ; echo -e "$orange
 ########################################################################################################################$green
@@ -98,9 +98,9 @@ return 0
 fi
 ;;
 parmaview)
-
+echo "clientchoice - $clientchoicee" >> $pvlog
 export clientchoice="$(jq -r .bitcoin.clientchoice $p4)"
-[[ -z $clientchoice ]] && return 1
+[[ -z $clientchoice ]] && { debug ; return 1 ; }
 
 parmanode_conf_add "bitcoin_choice=$clientchoice"
 
@@ -143,6 +143,7 @@ choose "xpmq" && read choice
 jump $choice || { invalid ; continue ; } ; set_terminal
 
 parmanode_conf_add "bitcoin_choice=knots"
+debug
 export bitcoin_choice="knots"
 export knotsbitcoin="true"
 

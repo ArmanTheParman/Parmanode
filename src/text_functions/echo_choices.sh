@@ -174,7 +174,7 @@ return 0
 function announce {
 
 [[ $parmaview == 1 ]] && { echo "$*" >> $pvlog ; } && { export enter_cont="" ; return 0 ; }
-
+debug
 set_terminal 42 ; echo -e "
 ########################################################################################
 
@@ -189,8 +189,9 @@ echo -e "    $2
 ########################################################################################
 "
 fi
-if [[ $2 == enter || $3 == enter ]] ; then return 0 ; else enter_continue ; return 0 ; fi
+if [[ $2 == "enter" || $3 == "enter" ]] ; then return 0 ; else enter_continue ; return 0 ; fi
 }
+
 function announce_blue {
 set_terminal 42 ; echo -e "$blue
 ########################################################################################

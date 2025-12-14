@@ -58,7 +58,9 @@ announce "So you want to install Bitcoin - nice one. May I take to this opportun
 
     https://armantheparman.com/6reasonsnode $orange
     "
+debug
 jump $enter_cont
+debug
 fi
 
 set_terminal
