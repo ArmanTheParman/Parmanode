@@ -3,7 +3,6 @@ if [[ $verify == "skip" ]] ; then return 0 ; fi #skipverify argument set in parm
 if [[ $bitcoin_compile = "true" ]] ; then return 0 ; fi
 if [[ $SKIPVERIFY == "true" ]] ; then return 0 ; fi
 
-p4socket "#install_bitcoin#Verifying"
 
 cd $HOME/parmanode/bitcoin
 set_terminal 46 120
@@ -24,6 +23,8 @@ else
     fi
 
 fi
+
+p4socket "#install_bitcoin#Verifying"
 
 if ! which gpg >$dn  && [[ $OS == "Mac" ]] ; then install_gpg4mac ; fi
 
