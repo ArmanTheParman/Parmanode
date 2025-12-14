@@ -110,7 +110,7 @@ if [[ $clientchoice == "deis" ]] ; then
     return 0
 fi
 
-return 0
+break
 ;;
 
 *)
