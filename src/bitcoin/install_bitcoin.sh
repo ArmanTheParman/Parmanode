@@ -94,7 +94,7 @@ prune_choice || return 1  ; debug
     # the drive choice just made by the user. 
     # Use variable later for setting bitcoin.conf
 
-p4socket "Making directories"
+p4socket "#bitcoin_install#Making directories"
 
 make_bitcoin_directories || return 1
     # make bitcoin directories in appropriate locations
@@ -107,7 +107,7 @@ compile_bitcoin || return 1
 
 # Download bitcoin software & verify
 if [[ $bitcoin_compile == "false" ]] ; then
-p4socket "Downloading Bitcoin"
+p4socket "#install_bitcoin#Downloading"
 download_bitcoin || return 1
 debug
 fi
@@ -124,7 +124,7 @@ fi
 
 #make service file - this allows automatic start up after a reboot
 if [[ $OS == "Linux" && $btcpayinstallsbitcoin != "true" ]] ; then 
-    p4socket "Makeing service file"
+    p4socket "Making service file"
     make_bitcoind_service_file
     debug
 fi

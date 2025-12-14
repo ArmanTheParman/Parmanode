@@ -34,7 +34,7 @@ class Event:
             """make final data and leave sig blank"""
             self.data_final= json.dumps({"id": self.id,"pubkey": self.pubkey, "created_at": self.created_at, "kind": self.kind, "tags": self.tags,"content": self.content, "sig": self.sig}, ensure_ascii=False, indent=4)
         elif sig is not None and id is not None:
-            """makeing event from presigned data"""
+            """making event from presigned data"""
             self.data_final= json.dumps({"id": self.id,"pubkey": self.pubkey, "created_at": self.created_at, "kind": self.kind, "tags": self.tags,"content": self.content, "sig": self.sig}, ensure_ascii=False, indent=4)
             
         """make event, and add signature"""

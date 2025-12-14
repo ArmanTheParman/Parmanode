@@ -34,7 +34,7 @@ debug "newcompile: $newcompile"
 
 bitcoin_compile_dependencies || return 1
 
-p4socket "Downloading Bitcoin code from GitHub"
+p4socket "#install_bitcoin#Downloading Bitcoin code from GitHub"
 
 #for later when mac is supported
 [[ $OS == "Mac" ]] && brew install berkeley-db@4
@@ -128,7 +128,7 @@ done
 ##############################################################################################################
 debug
 
-p4socket "Compiling"
+p4socket "#install_bitcoin#Compiling"
 
 if [[ $newcompile == "false" ]] ; then 
 debug
@@ -334,7 +334,7 @@ debug
 
 function bitcoin_compile_dependencies { debugf
 [[ $parmaview == 1 ]] && enter_cont="i" #running with parmaview will ignore errors
-p4socket "Installing Bitcoin dependencies"
+p4socket "#install_bitcoin#Installing Bitcoin dependencies"
 if [[ -z $1 ]] ; then 
 set_terminal ; echo -e "${pink}Upgrading, and installing dependencies to compile bitcoin...$orange"
 $xsudo apt-get update -y && export APT_UPDATE="true"
