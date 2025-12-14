@@ -66,7 +66,7 @@ yesorno "Are you sure you want to run Core?$red The 5 developers in charge$orang
     Knots is the way.
 
     Really go ahead with Core?" || continue 
-
+debug
 export clientchoice="core"
 break
 ;;
@@ -180,7 +180,7 @@ done
 
 
 # if Knots and Deis, function has already exited. For Core...
-
+debug
 while true ; do
 set_terminal 40 120 ; echo -e "
 ########################################################################################################################

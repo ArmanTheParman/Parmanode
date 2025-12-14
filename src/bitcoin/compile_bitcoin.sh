@@ -33,7 +33,7 @@ debug "newcompile: $newcompile"
     export GIT_COMMITTER_EMAIL="parman@parmanode.parman"
 
 bitcoin_compile_dependencies || return 1
-
+debug
 p4socket "#install_bitcoin#Downloading Bitcoin code from GitHub"
 
 #for later when mac is supported
