@@ -221,7 +221,7 @@ if [[ $parmaview == 1 ]] ; then
     if [[ $(jq -r .bitcoin.ordinals_patch $p4) == "true" ]] ; then 
         export choice=nospam 
     else 
-        if [[ $(jq -r .bitcoin.bitcoin_compile $p4) == "true" ]] ; then export choice=pre 
+        if [[ $(jq -r .bitcoin.bitcoin_compile $p4) == "false" ]] ; then export choice=pre 
         else  export choice=hfsp
         fi
     fi 
@@ -234,20 +234,20 @@ q|Q) exit 0 ;; p|P) return 1 ;; m|M) back2main ;;
 
 pre)
 debug
-parmanode_conf_add "bitcoin_choice=precompiled"
+export clientchoice=core
 export bitcoin_compile="false" ; return 0 
 ;;
 
 hfsp) 
 debug
-parmanode_conf_add "bitcoin_choice=compiled"
-export bitcoin_compile="true" ; return 0 
-;;
 
+export bitcoin_compile="true" ; return 0 
+export clientchoice=core
+;;
 nospam)
 debug
-parmanode_conf_add "bitcoin_choice=compiled"
 parmanode_conf_add "bitcoin_ordinalspatch=true"
+export clientchoice=core
 export bitcoin_compile="true" ; export ordinals_patch="true" ; return 0 
 ;;
 
