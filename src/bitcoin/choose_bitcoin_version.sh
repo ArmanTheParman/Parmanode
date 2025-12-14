@@ -146,12 +146,26 @@ parmanode_conf_add "bitcoin_choice=knots"
 export bitcoin_choice="knots"
 export knotsbitcoin="true"
 
-[[ $parmaview == 1 ]] && {
-    [[ "$(jq -r .bitcoin.bitcoin_compile $p4)" == "false" ]] && [[ -n $knotsversion ]] && [[ "$(jq -r .bitcoin.version $p4)" == "$knotsversion" ]] && choice=1
-    [[ "$(jq -r .bitcoin.bitcoin_compile $p4)" == "true" ]] && [[ -n $knotsversion ]] && [[ "$(jq -r .bitcoin.version $p4)" == "$knotsversion" ]] && choice=2
-    [[ "$(jq -r .bitcoin.bitcoin_compile $p4)" == "true" ]] && [[ "$(jq -r .bitcoin.version $p4)" == "28.1" ]] && choice=3
-    [[ "$(jq -r .bitcoin.bitcoin_compile $p4)" == "false" ]] && [[ "$(jq -r .bitcoin.version $p4)" == "28.1" ]] && choice=4
-}
+if [[ $parmaview == 1 ]] ; then 
+    if [[ "$(jq -r .bitcoin.bitcoin_compile $p4)" == "false" ]] ; then 
+        if [[ -n $knotsversion ]] ; then 
+            if [[ "$(jq -r .bitcoin.version $p4)" == "$knotsversion" ]] ; then choice=1 
+            fi
+        fi
+    fi
+
+    if [[ "$(jq -r .bitcoin.version $p4)" == "28.1" ]] ; then choice=4
+    fi
+
+    if [[ "$(jq -r .bitcoin.bitcoin_compile $p4)" == "true" ]] ; then 
+        if [[ -n $knotsversion ]] ; then 
+           if [[ "$(jq -r .bitcoin.version $p4)" == "$knotsversion" ]] ; then choice=2
+           fi
+        fi
+        if [[ "$(jq -r .bitcoin.version $p4)" == "28.1" ]] ; then choice=3
+        fi
+    fi
+fi
 
 case $choice in
 q|Q) exit 0 ;; p|P) return 1 ;; m|M) back2main ;;
