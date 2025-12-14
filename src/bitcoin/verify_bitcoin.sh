@@ -74,7 +74,7 @@ curl https://raw.githubusercontent.com/bitcoin-core/guix.sigs/main/builder-keys/
     then
         debug
         echo -e "\nGPG verification of the SHA256SUMS file$green passed$orange.\n"
-        [[ $btcpayinstallsbitcoin == "true" ]] || enter_continue 5
+        [[ $parmaview != 1 ]] && { [[ $btcpayinstallsbitcoin == "true" ]] || enter_continue 5 ; }
     else 
         debug 
         sww "GPG verification$red failed$orange. Aborting.\n
