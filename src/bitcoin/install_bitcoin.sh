@@ -70,7 +70,7 @@ debug "after version"
 
 unset importdrive
 
-p4socket "Preparing Drive"
+p4socket "#install_bitcoin#Preparing Drive"
 
 choose_and_prepare_drive "Bitcoin" || return 1 # the argument "Bitcoin" is added as this function is also
                                              # called by a fulcrum installation, and electrs.
@@ -113,7 +113,7 @@ debug
 fi
 
 #setup bitcoin.conf
-p4socket "Making bitcoin.conf"
+p4socket "#install_bitcoin#Making bitcoin.conf"
 make_bitcoin_conf || { sww && return 1 ; }
 debug
 [[ $btcdockerchoice == "yes" ]] || { menu_bitcoin_tor || { sww && return 1 ; } ; }
@@ -124,7 +124,7 @@ fi
 
 #make service file - this allows automatic start up after a reboot
 if [[ $OS == "Linux" && $btcpayinstallsbitcoin != "true" ]] ; then 
-    p4socket "Making service file"
+    p4socket "#install_bitcoin#Making service file"
     make_bitcoind_service_file
     debug
 fi
@@ -194,7 +194,7 @@ debug
     fi
 debug
 set_terminal 
-p4socket "Install Success"
+p4socket "#install_bitcoin#Install Success"
 success "Bitcoin should have started syncing. Note, it should also continue to sync 
     after a reboot, or you can start Bitcoin from the Parmanode Bitcoin menu at
     any time.
