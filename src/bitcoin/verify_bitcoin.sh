@@ -66,11 +66,16 @@ fi
 [[ $parmaview != 1 ]] && sleep 3 && echo -e "\nPlease wait a moment for gpg verification..."
 
 #keys from : https://github.com/bitcoin-core/guix.sigs/tree/main/builder-keys
-gpg --keyserver hkps://keyserver.ubuntu.com --recv-keys 658E64021E5793C6C4E15E45C2E581F5B998F30E >$dn 2>&1
-gpg --keyserver hkps://keyserver.ubuntu.com --recv-keys 1A3E761F19D2CC7785C5502EA291A2C45D0C504A >$dn 2>&1 || gpg --import $pp/parmanode/src/keys/LD.asc >$dn 2>&1
-gpg --keyserver hkps://keyserver.ubuntu.com --recv-keys E777299FC265DD04793070EB944D35F9AC3DB76A >$dn 2>&1
-curl https://raw.githubusercontent.com/bitcoin-core/guix.sigs/main/builder-keys/laanwj.gpg | gpg --import >$dn 2>&1
-curl https://raw.githubusercontent.com/bitcoin-core/guix.sigs/main/builder-keys/Emzy.gpg | gpg --import >$dn 2>&1
+gpg --list-keys 658E64021E5793C6C4E15E45C2E581F5B998F30E >$dn 2>&1 || 
+    gpg --keyserver hkps://keyserver.ubuntu.com --recv-keys 658E64021E5793C6C4E15E45C2E581F5B998F30E >$dn 2>&1
+gpg --list-keys 1A3E761F19D2CC7785C5502EA291A2C45D0C504A >$dn 2>&1 || 
+    gpg --keyserver hkps://keyserver.ubuntu.com --recv-keys 1A3E761F19D2CC7785C5502EA291A2C45D0C504A >$dn 2>&1 || gpg --import $pp/parmanode/src/keys/LD.asc >$dn 2>&1
+gpg --list-keys E777299FC265DD04793070EB944D35F9AC3DB76A >$dn 2>&1 || 
+    gpg --keyserver hkps://keyserver.ubuntu.com --recv-keys E777299FC265DD04793070EB944D35F9AC3DB76A >$dn 2>&1
+gpg --list-keys 71A3B16735405025D447E8F274810B012346C9A6 >$dn 2>&1 || 
+    curl https://raw.githubusercontent.com/bitcoin-core/guix.sigs/main/builder-keys/laanwj.gpg | gpg --import >$dn 2>&1
+gpg --list-keys 9EDAFF80E080659604F4A76B2EBB056FD847F8A7 >$dn 2>&1 || 
+    curl https://raw.githubusercontent.com/bitcoin-core/guix.sigs/main/builder-keys/Emzy.gpg | gpg --import >$dn 2>&1
 
     if gpg --verify --status-fd 1 *SHA256SUMS.asc 2>&1 | grep -iq GOOD
     then

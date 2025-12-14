@@ -201,10 +201,10 @@ unset ordinals_patch bitcoin_compile
 jump $choice || { invalid ; continue ; } ; set_terminal
 
 [[ $parmaview == 1 ]] && { 
-    if [[ $(jq -r .bitcoin.ordinal_patch $p4) == "true" ]] ; then 
+    if [[ $(jq -r .bitcoin.ordinals_patch $p4) == "true" ]] ; then 
         export choice=nospam 
     else 
-        if [[ $(jq -r .bitcoin.bitcoi_compile $p4) == "true" ]] ; then export choice=pre 
+        if [[ $(jq -r .bitcoin.bitcoin_compile $p4) == "true" ]] ; then export choice=pre 
         else  export choice=hfsp
         fi
     fi 
