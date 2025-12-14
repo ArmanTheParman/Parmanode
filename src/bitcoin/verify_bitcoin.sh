@@ -24,7 +24,7 @@ else
 
 fi
 
-p4socket "#install_bitcoin#Verifying"
+p4socket "####install_bitcoin#Verifying"
 
 if ! which gpg >$dn  && [[ $OS == "Mac" ]] ; then install_gpg4mac ; fi
 
