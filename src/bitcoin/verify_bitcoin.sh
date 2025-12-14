@@ -31,6 +31,7 @@ if ! which gpg >$dn  && [[ $OS == "Mac" ]] ; then install_gpg4mac ; fi
 if which sha256sum >$dn ; then
     debug "Using sha256sum"
     if ! sha256sum --check *SHA256SUMS 2>$dn | grep -q ": OK" ; then 
+    debug
     sww "${orange}Checksum failed. Aborting. Sometimes this happens for unexplainable reasons. 
     Try uninstalling the partial Bitcoin installation and try again. (Error code VBS256S)
     
@@ -47,6 +48,7 @@ $cyan        $hp/bitcoin $orange
                                          btcpay_combo: $btcpay_combo" ; case $enter_cont in yolo) true ;; *) return 1 ;; esac ; fi
 else
     if ! shasum -a 256 --check *SHA256SUMS 2>$dn | grep -q ": OK" ; then
+    debug
     sww "${orange}Checksum failed. Aborting. Sometimes this happens for unexplainable reasons. 
     Try uninstalling the partial Bitcoin installation and try again. (Error code VBSS256)
     
@@ -83,4 +85,6 @@ curl https://raw.githubusercontent.com/bitcoin-core/guix.sigs/main/builder-keys/
         \r    for you to manually check." 
         case $enter_cont in yolo) return 0 ;; *) return 1 ;; esac 
     fi
+
+return 0 #necessary
 }
