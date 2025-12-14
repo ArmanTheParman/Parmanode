@@ -147,8 +147,8 @@ export bitcoin_choice="knots"
 export knotsbitcoin="true"
 
 [[ $parmaview == 1 ]] && {
-    [[ "$(jq -r .bitcoin.bitcoin_compile $p4)" == "false" ]] && [[ "$(jq -r .bitcoin.version $p4)" == "$knotsversion" ]] && choice=1
-    [[ "$(jq -r .bitcoin.bitcoin_compile $p4)" == "true" ]] && [[ "$(jq -r .bitcoin.version $p4)" == "$knotsversion" ]] && choice=2
+    [[ "$(jq -r .bitcoin.bitcoin_compile $p4)" == "false" ]] && [[ -n $knotsversion ]] && [[ "$(jq -r .bitcoin.version $p4)" == "$knotsversion" ]] && choice=1
+    [[ "$(jq -r .bitcoin.bitcoin_compile $p4)" == "true" ]] && [[ -n $knotsversion ]] && [[ "$(jq -r .bitcoin.version $p4)" == "$knotsversion" ]] && choice=2
     [[ "$(jq -r .bitcoin.bitcoin_compile $p4)" == "true" ]] && [[ "$(jq -r .bitcoin.version $p4)" == "28.1" ]] && choice=3
     [[ "$(jq -r .bitcoin.bitcoin_compile $p4)" == "false" ]] && [[ "$(jq -r .bitcoin.version $p4)" == "28.1" ]] && choice=4
 }
