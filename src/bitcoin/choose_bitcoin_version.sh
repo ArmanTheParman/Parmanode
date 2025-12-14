@@ -155,7 +155,7 @@ if [[ $parmaview == 1 ]] ; then
         fi
     fi
 
-    if [[ "$(jq -r .bitcoin.version $p4)" == "28.1" ]] ; then choice=4
+    if [[ "$(jq -r .bitcoin.version $p4)" == "28.1" ]] ; then choice=3
     fi
 
     if [[ "$(jq -r .bitcoin.bitcoin_compile $p4)" == "true" ]] ; then 
@@ -163,7 +163,7 @@ if [[ $parmaview == 1 ]] ; then
            if [[ "$(jq -r .bitcoin.version $p4)" == "$knotsversion" ]] ; then choice=2
            fi
         fi
-        if [[ "$(jq -r .bitcoin.version $p4)" == "28.1" ]] ; then choice=3
+        if [[ "$(jq -r .bitcoin.version $p4)" == "28.1" ]] ; then choice=4
         fi
     fi
 fi
@@ -176,14 +176,15 @@ version="$knotsmajor-knots" ; return 0 ;;
 2)
 export bitcoin_compile="true"
 export version="$knotsmajor-knots" ; return 0 ;;
-3)
+3|4)
 export knotsversion="28.1"
 export knotsdate="20250305"
 export knotsmajor="28.x"
 #probably redundant
 export knotstag="v${knotsversion}.knots${knotsdate}"
-export bitcoin_compile="false" 
-export version="$knotsmajor-knots" ; return 0 ;;
+export version="$knotsmajor-knots" ; 
+if [[ $choice == "3" ]] ; then export bitcoin_compile="false" ; else bitcoin_compile="true" ; fi
+return 0 ;;
 5)
 export bip110="true"
 export bitcoin_compile="false"
