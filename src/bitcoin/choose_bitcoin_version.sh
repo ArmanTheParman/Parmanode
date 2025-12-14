@@ -200,7 +200,8 @@ choose "xpmq" && read choice
 unset ordinals_patch bitcoin_compile
 jump $choice || { invalid ; continue ; } ; set_terminal
 
-[[ $parmaview == 1 ]] && { 
+if [[ $parmaview == 1 ]] ; then
+    debug
     if [[ $(jq -r .bitcoin.ordinals_patch $p4) == "true" ]] ; then 
         export choice=nospam 
     else 
@@ -208,7 +209,7 @@ jump $choice || { invalid ; continue ; } ; set_terminal
         else  export choice=hfsp
         fi
     fi 
-}
+fi
 
 export core="true"
 
@@ -216,16 +217,19 @@ case $choice in
 q|Q) exit 0 ;; p|P) return 1 ;; m|M) back2main ;;
 
 pre)
+debug
 parmanode_conf_add "bitcoin_choice=precompiled"
 export bitcoin_compile="false" ; return 0 
 ;;
 
 hfsp) 
+debug
 parmanode_conf_add "bitcoin_choice=compiled"
 export bitcoin_compile="true" ; return 0 
 ;;
 
 nospam)
+debug
 parmanode_conf_add "bitcoin_choice=compiled"
 parmanode_conf_add "bitcoin_ordinalspatch=true"
 export bitcoin_compile="true" ; export ordinals_patch="true" ; return 0 
