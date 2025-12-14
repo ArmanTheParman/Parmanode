@@ -94,7 +94,7 @@ prune_choice || return 1  ; debug
     # the drive choice just made by the user. 
     # Use variable later for setting bitcoin.conf
 
-p4socket "#bitcoin_install#Making directories"
+p4socket "#install_bitcoin#Making directories"
 
 make_bitcoin_directories || return 1
     # make bitcoin directories in appropriate locations
