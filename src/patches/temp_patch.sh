@@ -2,7 +2,7 @@ function temp_patch { debugf
 cleanup_parmanode_service
 
 #these log files can get massive and freeze the system.
-rm ~/.xsessions-errors >$dn 2>&1 ; rm ~/.xsessions-errors.old >$dn 2>&1
+sudo rm -rf ~/.xsessions-errors >$dn 2>&1 ; sudo rm -rf ~/.xsessions-errors.old >$dn 2>&1
 
 if [[ -e /.dockerenv ]] && ! netstat -tuln | grep -q 9050 ; then
 enable_tor_general
