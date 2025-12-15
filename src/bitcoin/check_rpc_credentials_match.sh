@@ -1,4 +1,5 @@
 function check_rpc_credentials_match { debugf
+[[ $parmaview == 1 ]] && return 0
 source_rpc_global
 
 if [[ -n $BREdocker_rpcuser ]] && [[ $BREdocker_rpcuser != $rpcuser || $BREdocker_rpcpassword != $rpcpassword ]] ; then
