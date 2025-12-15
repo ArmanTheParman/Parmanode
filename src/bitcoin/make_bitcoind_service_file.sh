@@ -71,9 +71,9 @@ WantedBy=multi-user.target
 " | tee $file >$dn || enter_continue "Failed to write bitcoind.service file"
 
 if [[ $1 == "setup" ]] ; then
-    sudo mv $file /usr/local/parmanode/bitcoin.service
-    sudo chown root:root /usr/local/parmanode/bitcoin.service
-    sudo chmod 655 /usr/local/parmanode/bitcoin.service
+    sudo mv $file /usr/local/parmanode/bitcoind.service
+    sudo chown root:root /usr/local/parmanode/bitcoind.service
+    sudo chmod 655 /usr/local/parmanode/bitcoind.service
 else
     sudo mv $file sudo tee /etc/systemd/system/bitcoind.service 
 fi
