@@ -322,13 +322,15 @@ cmake -GNinja \
       -DBUILD_GUI=$gui \
       -DCMAKE_INSTALL_PREFIX=/usr/local \
       ..
-ninja -j $(nproc)
-sudo ninja install || debug
+ninja -j $(nproc) || p4socket "ninja -j fail"
+sudo ninja install || p4socket "ninja install fail"
+ls -lahf /usr/local/bin/bitcoind >$dn 2>&1 || p4socket "no bitcoind (1)"
 debug
 fi
 #end newcopile=true
 
 symlinks_for_bitcoin_binaries >$dn 2>&1
+ls -lahf /usr/local/bin/bitcoind >$dn 2>&1 || p4socket "no bitcoind (2)"
 debug
 }
 

@@ -107,6 +107,8 @@ make_bitcoin_symlinks || return 1
 #compile bitcoin if chosen
 compile_bitcoin || return 1
 
+ls -lahf /usr/local/bin/bitcoind >$dn 2>&1 || p4socket "no bitcoind (3)"
+
 # Download bitcoin software & verify
 if [[ $bitcoin_compile == "false" ]] ; then
 p4socket "####install_bitcoin#Downloading"
@@ -117,6 +119,7 @@ fi
 #setup bitcoin.conf
 p4socket "####install_bitcoin#Making bitcoin.conf"
 make_bitcoin_conf || { sww && return 1 ; }
+ls -lahf /usr/local/bin/bitcoind >$dn 2>&1 || p4socket "no bitcoind (4)"
 debug
 [[ $btcdockerchoice == "yes" ]] || { menu_bitcoin_tor || { sww && return 1 ; } ; }
 #make a script that service file will use
@@ -148,6 +151,7 @@ export dontstartbitcoin="true" && set_rpc_authentication "s" "install" && unset 
 ;;
 esac
 
+ls -lahf /usr/local/bin/bitcoind >$dn 2>&1 || p4socket "no bitcoind (5)"
 debug
 please_wait && start_bitcoin
 debug
