@@ -323,7 +323,7 @@ cmake -GNinja \
       -DCMAKE_INSTALL_PREFIX=/usr/local \
       ..
 ninja -j $(nproc)
-sudo ninja install
+sudo ninja install || debug
 debug
 fi
 #end newcopile=true
