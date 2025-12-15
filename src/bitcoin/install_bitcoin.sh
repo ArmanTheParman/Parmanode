@@ -175,10 +175,10 @@ if [[ $OS == "Linux" ]] ; then
 debug
     if ! which bitcoind >$dn ; then
     debug
-        p4socket "Install Failure"
+        
+        p4socket "####Install_bitcoin#Install Failure"
         enter_continue "Something went wrong. Bitcoin did not install correctly."
         install_failure "Bitcoin"
-        log "bitcoin" "no binaries. install failure."
         unset importdrive
         return 1 
     fi
