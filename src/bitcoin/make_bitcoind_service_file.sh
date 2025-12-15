@@ -75,7 +75,7 @@ if [[ $1 == "setup" ]] ; then
     sudo chown root:root /usr/local/parmanode/bitcoind.service
     sudo chmod 655 /usr/local/parmanode/bitcoind.service
 else
-    sudo mv $file sudo tee /etc/systemd/system/bitcoind.service 
+    sudo mv $file sudo /etc/systemd/system/bitcoind.service 
 fi
 
 sudo systemctl daemon-reload 
