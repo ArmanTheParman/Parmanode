@@ -5,6 +5,8 @@
 function make_bitcoind_service_file { debugf
 if [[ $btcpayinstallsbitcoin == "true" ]] ; then return 0 ; fi
 
+file=$(mktemp)
+
 echo "[Unit]
 Description=Bitcoin daemon
 After=network-online.target
@@ -66,9 +68,15 @@ MemoryDenyWriteExecute=true
 
 [Install]
 WantedBy=multi-user.target
-" | $xsudo tee /etc/systemd/system/bitcoind.service >$dn || enter_continue "Failed to write bitcoind.service file"
+" | tee $file >$dn || enter_continue "Failed to write bitcoind.service file"
 
-#tee used instead of echo because redirection operator after sudo echo loses sudo privilages
+if [[ $1 == "setup" ]] ; then
+    sudo mv $file /usr/local/parmanode/bitcoin.service
+    sudo chown root:root /usr/local/parmanode/bitcoin.service
+    sudo chmod 655 /usr/local/parmanode/bitcoin.service
+else
+    sudo mv $file sudo tee /etc/systemd/system/bitcoind.service 
+fi
 
 sudo systemctl daemon-reload 
 sudo systemctl disable bitcoind.service >$dn 2>&1

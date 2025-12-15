@@ -19,6 +19,7 @@ $USER ALL=(root) NOPASSWD: $(which systemctl) stop bitcoind
 $USER ALL=(root) NOPASSWD: $(which systemctl) restart bitcoind
 $USER ALL=(root) NOPASSWD: $(which systemctl) disable bitcoind.service
 $USER ALL=(root) NOPASSWD: $(which systemctl) enable bitcoind.service
+$USER ALL=(root) NOPASSWD: $(which cp) -f /usr/local/parmanode/bitcoin.service /etc/systemd/system/
 #Tor commands
 $USER ALL=(root) NOPASSWD: $(which systemctl) start tor.service
 $USER ALL=(root) NOPASSWD: $(which systemctl) stop tor.service 
@@ -33,6 +34,7 @@ $USER ALL=(root) NOPASSWD: $(which systemctl) restart electrs.service
 $USER ALL=(root) NOPASSWD: $(which systemctl) start electrs
 $USER ALL=(root) NOPASSWD: $(which systemctl) stop electrs 
 $USER ALL=(root) NOPASSWD: $(which systemctl) restart electrs
+$USER ALL=(root) NOPASSWD: $(which cp) -f /usr/local/parmanode/electrs.service /etc/systemd/system/
 #btcpay commands
 $USER ALL=(root) NOPASSWD: $(which systemctl) start btcpay.service
 $USER ALL=(root) NOPASSWD: $(which systemctl) stop btcpay.service 
@@ -40,6 +42,7 @@ $USER ALL=(root) NOPASSWD: $(which systemctl) restart btcpay.service
 $USER ALL=(root) NOPASSWD: $(which systemctl) start btcpay 
 $USER ALL=(root) NOPASSWD: $(which systemctl) stop btcpay 
 $USER ALL=(root) NOPASSWD: $(which systemctl) restart btcpay
+$USER ALL=(root) NOPASSWD: $(which cp) -f /usr/local/parmanode/btcpay.service /etc/systemd/system/
 #Socat commands
 $USER ALL=(root) NOPASSWD: $(which systemctl) start socat.service
 $USER ALL=(root) NOPASSWD: $(which systemctl) stop socat.service 
@@ -47,6 +50,7 @@ $USER ALL=(root) NOPASSWD: $(which systemctl) restart socat.service
 $USER ALL=(root) NOPASSWD: $(which systemctl) start socat
 $USER ALL=(root) NOPASSWD: $(which systemctl) stop socat
 $USER ALL=(root) NOPASSWD: $(which systemctl) restart socat
+$USER ALL=(root) NOPASSWD: $(which cp) -f /usr/local/parmanode/socat.service /etc/systemd/system/
 #LND commands
 $USER ALL=(root) NOPASSWD: $(which systemctl) start lnd.service
 $USER ALL=(root) NOPASSWD: $(which systemctl) stop lnd.service 
@@ -54,6 +58,7 @@ $USER ALL=(root) NOPASSWD: $(which systemctl) restart lnd.service
 $USER ALL=(root) NOPASSWD: $(which systemctl) start lnd 
 $USER ALL=(root) NOPASSWD: $(which systemctl) stop lnd 
 $USER ALL=(root) NOPASSWD: $(which systemctl) restart lnd
+$USER ALL=(root) NOPASSWD: $(which cp) -f /usr/local/parmanode/lnd.service /etc/systemd/system/
 #Nginx commands
 $USER ALL=(root) NOPASSWD: $(which systemctl) start nginx.service
 $USER ALL=(root) NOPASSWD: $(which systemctl) stop nginx.service 
@@ -68,6 +73,7 @@ $USER ALL=(root) NOPASSWD: $(which systemctl) restart btcrpcexplorer.service
 $USER ALL=(root) NOPASSWD: $(which systemctl) start btcrpcexplorer
 $USER ALL=(root) NOPASSWD: $(which systemctl) stop btcrpcexplorer
 $USER ALL=(root) NOPASSWD: $(which systemctl) restart btcrpcexplorer
+$USER ALL=(root) NOPASSWD: $(which cp) -f /usr/local/parmanode/btcrpcexplorer.service /etc/systemd/system/
 #Fulcrum commands
 $USER ALL=(root) NOPASSWD: $(which systemctl) start fulcrum.service
 $USER ALL=(root) NOPASSWD: $(which systemctl) stop fulcrum.service 
@@ -75,6 +81,7 @@ $USER ALL=(root) NOPASSWD: $(which systemctl) restart fulcrum.service
 $USER ALL=(root) NOPASSWD: $(which systemctl) start fulcrum
 $USER ALL=(root) NOPASSWD: $(which systemctl) stop fulcrum
 $USER ALL=(root) NOPASSWD: $(which systemctl) restart fulcrum
+$USER ALL=(root) NOPASSWD: $(which cp) -f /usr/local/parmanode/fulcrum.service /etc/systemd/system/
 #Electrumx commands
 $USER ALL=(root) NOPASSWD: $(which systemctl) start electrumx.service
 $USER ALL=(root) NOPASSWD: $(which systemctl) stop electrumx.service 
@@ -82,6 +89,7 @@ $USER ALL=(root) NOPASSWD: $(which systemctl) restart electrumx.service
 $USER ALL=(root) NOPASSWD: $(which systemctl) start electrumx
 $USER ALL=(root) NOPASSWD: $(which systemctl) stop electrumx
 $USER ALL=(root) NOPASSWD: $(which systemctl) restart electrumx
+$USER ALL=(root) NOPASSWD: $(which cp) -f /usr/local/parmanode/electrumx.service /etc/systemd/system/
 #Systemctl commands
 $USER ALL=(root) NOPASSWD: $(which systemctl) daemon-reload
 " | sudo tee /etc/sudoers.d/parmanode >$dn 2>&1
