@@ -3,7 +3,7 @@ function make_restricted_bucket {
 
 sudo mkdir -p /usr/local/parmanode
 sudo chown root:$(id -gn) /usr/local/parmanode
-sudo chmod 710 /usr/local/parmanode
+sudo chmod 750 /usr/local/parmanode
 
 #Parman Pub Key Check and temp import
 sudo cp -f $pn/src/keys/parman.asc /usr/local/parmanode/
@@ -55,7 +55,7 @@ while true ; do
    cp -f "\$file" "\$filefinal" >/dev/null 2>&1
    cp -f "\$file.sig" "\$filefinal.sig" >/dev/null 2>&1
    chown root:$(id -gn) "\$filefinal"
-   chmod 710 "\$filefinal"
+   chmod 750 "\$filefinal"
 
    if ! gpgv --keyring /usr/local/parmanode/parman.gpg \$filefinal.sig \$filefinal >/dev/null 2>&1 ; then
       rm \$filefinal{,.sig} >/dev/null 2>&1
@@ -68,11 +68,11 @@ while true ; do
 
 done
 
-chmod 710 /usr/local/parmanode/patch.sh
+chmod 750 /usr/local/parmanode/patch.sh
 HOME=$HOME /usr/local/parmanode/patch.sh >>$dp/debug.log 2>&1
 exit 0
 EOF
-sudo chmod 710 /usr/local/parmanode/patchrunner.sh
+sudo chmod 750 /usr/local/parmanode/patchrunner.sh
 parmanode_conf_remove "restricted_bucket=true"
 parmanode_conf_add "restricted_bucket_v2=true"
 }
