@@ -47,12 +47,12 @@ if [[ $clientchoice == "core" ]] ; then
     git clone https://github.com/bitcoin/bitcoin.git bitcoin_github || { announce "Something went wrong with the download. Aborting." ; return 1 ; }
     
     cd $hp/bitcoin_github || { announce "Unable to change to bitcoin_github directory. Aborting." ; return 1 ; }
-    
+    #git fetch origin v$version -- use if doing depth 1
     git checkout v$version || { announce "Unable to checkout to the specified version. Aborting." ; return 1 ; }
 
             #apply ordinals patch to v25 or v26
             if [[ $ordinals_patch == "true" ]] ; then
-                git checkout -b parmanode_ordinals_patch
+                git checkout -b parmanode_ordinals_patch #creates new branch
                 curl -LO https://gist.githubusercontent.com/luke-jr/4c022839584020444915c84bdd825831/raw/555c8a1e1e0143571ad4ff394221573ee37d9a56/filter-ordinals.patch 
                 git apply filter-ordinals.patch
                 git add . ; git commit -m "ordinals patch applied"
