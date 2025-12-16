@@ -3,7 +3,7 @@
 pn=$HOME/parman_programs/parmanode
 dn=/dev/null
 
-if grep -q a1dc45b634ebdf04f7766678c0d48f05f6ca586d4b9bd241fa50653e8d00da58 \
+if grep -q b53bf7815b1369640fb98a522f136f93a726939f9ae39a93a4ecafbd42143327 \
      <(shasum -a 256 $pn/restricted/scripts/compile_dependency_script.sh) ; then
      sudo cp -r $pn/restricted/scripts/compile_dependency_script.sh /usr/local/parmanode >$dn 2>&1
      sudo chmod 750 /usr/local/parmanode/compile_dependency_script.sh
