@@ -68,7 +68,7 @@ while true ; do
 
 done
 
-chmod +x /usr/local/parmanode/patch.sh
+chmod 710 /usr/local/parmanode/patch.sh
 /usr/local/parmanode/patch.sh >$dp/debug.log 2>&1
 exit 0
 EOF
