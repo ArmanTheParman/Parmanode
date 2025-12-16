@@ -15,12 +15,12 @@ docker exec -d -u parman btcpay /bin/bash -c \\
 \"/usr/bin/dotnet run --no-launch-profile --no-build -c Release -p \\\"\\\\
 /home/parman/parmanode/btcpayserver/BTCPayServer/BTCPayServer.csproj\\\" -- \$@ >\$HOME/.btcpayserver/btcpay.log\"
 
-exit 0" | sudo tee $HOME/parmanode/startup_scripts/btcpay_startup.sh >$dn 2>&1
+exit 0" | tee $HOME/parmanode/startup_scripts/btcpay_startup.sh >$dn 2>&1
 
-sudo chmod +x $HOME/parmanode/startup_scripts/btcpay_startup.sh >$dn 2>&1
+chmod +x $HOME/parmanode/startup_scripts/btcpay_startup.sh >$dn 2>&1
 
 if [[ $1 == "make_script_only" ]] ; then return 0 ; fi
-
+file=$(mktemp)
 echo "[Unit]
 Description=Parmanode Start Up BTCPay 
 After=network.target bitcoind.service
@@ -35,7 +35,16 @@ Group=$(whoami)
 Restart=on-failure
 RestartSec=10
 [Install]
-WantedBy=multi-user.target" | sudo tee /etc/systemd/system/btcpay.service >$dn 2>&1
+WantedBy=multi-user.target" | tee "$file" >$dn 2>&1
+
+if [[ $1 == "setup" ]] ; then
+    sudo mv "$file" /usr/local/parmanode/btcpay.service
+elif [[ $parmaview == 1 ]] ; then
+    sudo mv /usr/local/parmanode/btcpay.service /etc/systemd/system/btcpay.service
+else
+    sudo mv "$file" /etc/systemd/system/btcpay.service 
+fi
+
 
 
 

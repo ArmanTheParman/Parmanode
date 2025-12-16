@@ -25,10 +25,5 @@ choose() #This will allow choose xpmq && read choice , to skip the blocking read
 choose_bitcoin_version()
     #access jq variables and set parmanode variables accordingly.
     
-bitcoin_compile_dependencies()
-    [[ $parmaview == 1 ]] && enter_cont="i" #running with parmaview will ignore errors
-    sudo apt-get install -y make              || { [[ $parmaview != 1 ]] && enter_continue "Something went wrong with make.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
-    ...etc
-
 bitcoin_compile()
     made changes so there are no pauses or questions
