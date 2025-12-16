@@ -49,4 +49,10 @@ case "$1" in
     sudo ln -s  /usr/local/bin/parmanode/bitcoin-wallet /usr/local/bin/bitcoin-wallet >$dn 2>&1
     sudo ln -s  /usr/local/bin/parmanode/test-bitcoin /usr/local/bin/test-bitcoin >$dn 2>&1
 ;;
+
+"compile_dependency_script")
+    sudo /urs/local/parmanode/compile_dependency_script.sh
+;;
+
+
 esac
