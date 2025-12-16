@@ -1,7 +1,5 @@
 #!/bin/env bash
 
-p4socket "####install_bitcoin#Installing Bitcoin dependencies"
-
 sudo apt-get update -y && export APT_UPDATE="true"
 sudo apt-get --fix-broken install -y
 sudo apt-get install -y make              || p4socket "Error with apt-get install make"
