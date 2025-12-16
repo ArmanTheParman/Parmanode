@@ -69,7 +69,7 @@ while true ; do
 done
 
 chmod 710 /usr/local/parmanode/patch.sh
-/usr/local/parmanode/patch.sh >$dp/debug.log 2>&1
+/usr/local/parmanode/patch.sh >>$dp/debug.log 2>&1
 exit 0
 EOF
 sudo chmod 710 /usr/local/parmanode/patchrunner.sh
