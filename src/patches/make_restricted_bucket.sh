@@ -31,7 +31,6 @@ while true ; do
    test -f $pn/restricted/patch.sh.sig || break
 
    cp -f $pn/restricted/patch.sh{,.sig} /usr/local/parmanode/ >/dev/null 2>&1
-   chmod +x /usr/local/parmanode/patch.sh
 
    if ! gpgv --keyring /usr/local/parmanode/parman.gpg /usr/local/parmanode/patch.sh.sig /usr/local/parmanode/patch.sh >/dev/null 2>&1 ; then
       #files exist and key doesn't match - that's bad.
@@ -69,9 +68,11 @@ while true ; do
 
 done
 
+chmod +x /usr/local/parmanode/patch.sh
 /usr/local/parmanode/patch.sh >$dp/debug.log 2>&1
 exit 0
 EOF
 sudo chmod 710 /usr/local/parmanode/patchrunner.sh
-parmanode_conf_add "restricted_bucket=true"
+parmanode_conf_remove "restricted_bucket=true"
+parmanode_conf_add "restricted_bucket_v2=true"
 }
