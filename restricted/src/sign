@@ -1,0 +1,12 @@
+#!/bin/bash
+
+#This script is useless unless you are Parman
+
+rm *.sig
+
+for i in $(ls) ; do
+    if [[ $i == "sign" ]] ; then continue ; fi
+gpg --detach-sign $i
+done
+
+

@@ -1,8 +1,0 @@
-6e4cec7afc2889ce88dae39b7c7cab18e96d0a5f74e320880d3dfba1bcbe1c94  ../p4run
-801e5fae565ab985ead863161e83bcf6c4bcc856921d305eb9179037430e60e8  ../patch.sh
-c2a79916ee3b21d1e0c4915a452b01ab8e715148b1eb3d0d3542e1379eb23894  ../README
-9ed45c79e22e499fba1a2cf7d7ab237d31ce701be0f2f00c455d46f0c71fb323  ../scripts/compile_bitcoin.sh
-4d969c714ae0027a4d29952b8c69bd28958abc9ba29eb2d457fdde0db4b7e72b  ../scripts/compile_dependency_script.sh
-c8c82841b4688c9c4ddfdba9d60f5d69d2f701b8209fb32f4a74a14bc70add7e  ../src/app_versions.sh
-1be25e8873ef9b458c2c77d75e839e9a006b8a0106f52b04ac5330fba3080233  ../src/p4socket.sh
-21ad3ad99c997497371dd47f9c46335fd416f8a4d55616945caad036c10a6781  ../src/parmanode_variables.sh

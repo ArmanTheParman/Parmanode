@@ -1,0 +1,11 @@
+#!/bin/bash
+
+#This script is useless unless you are Parman
+
+rm {*.sig,SHA256SUMS} >/dev/null 2>&1
+
+gpg --detach-sign README
+gpg --detach-sign p4run
+gpg --detach-sign patch.sh
+
+
