@@ -16,8 +16,6 @@ HOME=/home/parman
 dp=$HOME/.parmanode/
 bc=$HOME/.bitcoin/bitcoin.conf
 
-p4run=1
-
 case "$1" in
 
 "add_bitcoin_hidden_service")
