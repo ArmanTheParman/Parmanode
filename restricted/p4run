@@ -8,7 +8,6 @@
 
 
 #variables
-xsudo=sudo
 dn=/dev/null
 torrc=/etc/tor/torrc
 varlibtor=/var/lib/tor
@@ -20,12 +19,12 @@ case "$1" in
 
 "add_bitcoin_hidden_service")
 
-    if ! sudo grep "HiddenServiceDir $varlibtor/bitcoin-service/" $torrc | grep -v "^#" >$dn 2>&1 ; then 
-        echo "HiddenServiceDir $varlibtor/bitcoin-service/" | sudo tee -a $torrc >$dn 2>&1
+    if ! grep "HiddenServiceDir $varlibtor/bitcoin-service/" $torrc | grep -v "^#" >$dn 2>&1 ; then 
+        echo "HiddenServiceDir $varlibtor/bitcoin-service/" | tee -a $torrc >$dn 2>&1
     fi
 
-    if ! sudo grep "HiddenServicePort 8333 127.0.0.1:8333" $torrc | grep -v "^#" >$dn 2>&1 ; then 
-        echo "HiddenServicePort 8333 127.0.0.1:8333" | sudo tee -a $torrc >$dn 2>&1
+    if ! grep "HiddenServicePort 8333 127.0.0.1:8333" $torrc | grep -v "^#" >$dn 2>&1 ; then 
+        echo "HiddenServicePort 8333 127.0.0.1:8333" | tee -a $torrc >$dn 2>&1
         systemctl restart tor #necessary as the service is new now
     fi
 ;;
@@ -33,23 +32,23 @@ case "$1" in
 "get_onion_address_variable")
 
     if [[ "$2" == "bitcoin" ]] ; then
-    export ONION_ADDR="$(sudo cat $varlibtor/bitcoin-service/hostname 2>$dn)"
+    export ONION_ADDR="$(cat $varlibtor/bitcoin-service/hostname 2>$dn)"
     fi
 ;;
 
 "bitcoin_binary_symlinks")
-    sudo mkdir -p /usr/local/bin/parmanode/
-    sudo ln -s  /usr/local/bin/parmanode/bitcoin-cli /usr/local/bin/bitcoin-cli >$dn 2>&1
-    sudo ln -s  /usr/local/bin/parmanode/bitcoind /usr/local/bin/bitcoind >$dn 2>&1
-    sudo ln -s  /usr/local/bin/parmanode/bitcoin-qt /usr/local/bin/bitcoin-qt >$dn 2>&1
-    sudo ln -s  /usr/local/bin/parmanode/bitcoin-tx /usr/local/bin/bitcoin-tx >$dn 2>&1
-    sudo ln -s  /usr/local/bin/parmanode/bitcoin-util /usr/local/bin/bitcoin-util >$dn 2>&1
-    sudo ln -s  /usr/local/bin/parmanode/bitcoin-wallet /usr/local/bin/bitcoin-wallet >$dn 2>&1
-    sudo ln -s  /usr/local/bin/parmanode/test-bitcoin /usr/local/bin/test-bitcoin >$dn 2>&1
+    mkdir -p /usr/local/bin/parmanode/
+    ln -s  /usr/local/bin/parmanode/bitcoin-cli /usr/local/bin/bitcoin-cli >$dn 2>&1
+    ln -s  /usr/local/bin/parmanode/bitcoind /usr/local/bin/bitcoind >$dn 2>&1
+    ln -s  /usr/local/bin/parmanode/bitcoin-qt /usr/local/bin/bitcoin-qt >$dn 2>&1
+    ln -s  /usr/local/bin/parmanode/bitcoin-tx /usr/local/bin/bitcoin-tx >$dn 2>&1
+    ln -s  /usr/local/bin/parmanode/bitcoin-util /usr/local/bin/bitcoin-util >$dn 2>&1
+    ln -s  /usr/local/bin/parmanode/bitcoin-wallet /usr/local/bin/bitcoin-wallet >$dn 2>&1
+    ln -s  /usr/local/bin/parmanode/test-bitcoin /usr/local/bin/test-bitcoin >$dn 2>&1
 ;;
 
 "compile_dependency_script")
-    sudo /urs/local/parmanode/compile_dependency_script.sh
+    /urs/local/parmanode/compile_dependency_script.sh
 ;;
 
 
