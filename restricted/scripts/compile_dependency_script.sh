@@ -1,7 +1,10 @@
 #!/bin/env bash
 
-sudo apt-get update -y && export APT_UPDATE="true"
+source /usr/local/parmanode/src/p4socket.sh
+
+sudo apt-get update -y 
 sudo apt-get --fix-broken install -y
+
 sudo apt-get install -y make              || p4socket "Error with apt-get install make"
 sudo apt-get install -y automake          || p4socket "Error with apt-get install automake"
 sudo apt-get install -y cmake             || p4socket "Error with apt-get install cmake"
@@ -31,8 +34,7 @@ sudo apt-get install -y libminiupnpc-dev  || p4socket "Error with apt-get instal
 sudo apt-get install -y libprotobuf-dev   || p4socket "Error with apt-get install libprotobuf-dev"
 sudo apt-get install -y protobuf-compiler || p4socket "Error with apt-get install protobuf-compiler"
 
-if [[ $GUI == "no" ]] ; then exit 0 ; fi
-
+#GUI
 sudo apt-get install -y qtchooser 
 sudo apt-get install -y qtbase5-dev-tools
 sudo apt-get install -y qtcreator          || p4socket "Error with qtcreator"

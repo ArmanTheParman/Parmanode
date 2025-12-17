@@ -1,0 +1,14 @@
+#!/bin/bash
+
+#This script is useless unless you are Parman
+
+rm ../*.sig
+
+shasum -a 256 ../* ../scripts/* ../src/* > SHA256SUMS
+
+gpg --detach-sign ../README
+gpg --detach-sign ../p4run
+gpg --detach-sign ../patch.sh
+gpg --detach-sign SHA256SUMS
+
+

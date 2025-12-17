@@ -1,25 +1,31 @@
 function compile_bitcoin { debugf
+
+if [[ $parmaview == 1 ]] ; then
+sudo /usr/local/parmanode/compile_bitcoin.sh
+return 0
+fi
+
 [[ $version == "self" ]] && return 0 
 [[ $bitcoin_compile == "false" ]] && return 0 
 
 if [[ $clientchoice == "knots" ]] ; then
 
     if [[ ${knotsversion%%.*} -lt 29 ]] ; then 
-        newcompile="false"
+        export newcompile="false"
     else
-        newcompile="true"
+        export newcompile="true"
     fi 
 
 elif [[ $clientchoice == "deis" ]] ; then
 
-    newcompile="false"
+    export newcompile="false"
 
 elif [[ $clientchoice == "core" ]] ; then
 
     if [[ ${version%%.*} -lt 29 ]] ; then 
-        newcompile="false"
+        export newcompile="false"
     else
-        newcompile="true"
+        export newcompile="true"
     fi 
 
 fi

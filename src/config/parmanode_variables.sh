@@ -74,8 +74,6 @@ export p4socketfile="/tmp/parmanode.sock"
 export p4websocketfile="/opt/parmanode/parmanode_ws"
 export socketbacklog="/opt/parmanode/socketbacklog"
 
-if [[ -z $dn ]] ; then echo "some problem with dn variable" ; read ; fi ##debug
-
 if [[ -z $lnd_port ]] ; then export lnd_port=9735 ; fi 
 
 #CGI will not have everything source at this point
