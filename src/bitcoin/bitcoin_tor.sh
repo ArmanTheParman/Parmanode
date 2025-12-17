@@ -23,7 +23,7 @@ if [[ ! -e $torrc ]] ; then $xsudo touch $torrc >$dn 2>&1 ; fi
 enable_tor_general
 
 
-if [[ $parmaview == 1 ]] ; then sudo p4run "add_bitcoin_hidden_service"
+if [[ $parmaview == 1 ]] ; then sudo /usr/local/parmanode/p4run "add_bitcoin_hidden_service"
 else {
 
     if ! sudo grep "HiddenServiceDir $varlibtor/bitcoin-service/" $torrc | grep -v "^#" >$dn 2>&1 ; then 
