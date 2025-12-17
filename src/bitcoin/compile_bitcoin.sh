@@ -44,11 +44,15 @@ cd $hp || { enter_continue "Can't change directory. Aborting." ; return 1 ; }
 [[ -e $hp/bitcoin_github ]] && $xsudo rm -rf $hp/bitcoin_github >$dn 2>&1
 
 if [[ $clientchoice == "core" ]] ; then  
+    if [[ -e "$hp/bitcoin_github" ]] ; then 
+        cd $hp/bitcoin_github ; git fetch ; git pull ; git checkout v$version ; git pull 
+    else 
     git clone https://github.com/bitcoin/bitcoin.git bitcoin_github || { announce "Something went wrong with the download. Aborting." ; return 1 ; }
     
     cd $hp/bitcoin_github || { announce "Unable to change to bitcoin_github directory. Aborting." ; return 1 ; }
     #git fetch origin v$version -- use if doing depth 1
     git checkout v$version || { announce "Unable to checkout to the specified version. Aborting." ; return 1 ; }
+    fi
 
             #apply ordinals patch to v25 or v26
             if [[ $ordinals_patch == "true" ]] ; then
