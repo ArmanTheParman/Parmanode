@@ -1,7 +1,7 @@
 function compile_bitcoin { debugf
 
 if [[ $parmaview == 1 ]] ; then
-sudo /usr/local/parmanode/compile_bitcoin.sh
+sudo /usr/local/parmanode/scripts/compile_bitcoin.sh
 return 0
 fi
 
@@ -348,7 +348,7 @@ function bitcoin_compile_dependencies { debugf
 
 p4socket "####install_bitcoin#Installing Bitcoin dependencies"
 
-if [[ $parmaview == 1 ]] ; then sudo /usr/local/parmanode/compile_dependency_script.sh ; return 0 ; fi
+if [[ $parmaview == 1 ]] ; then sudo /usr/local/parmanode/scripts/compile_dependency_script.sh ; return 0 ; fi
 
 if [[ -z $1 ]] ; then 
 set_terminal ; echo -e "${pink}Upgrading, and installing dependencies to compile bitcoin...$orange"
