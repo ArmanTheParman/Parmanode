@@ -24,49 +24,34 @@ debug
 cat <<EOF | sudo tee /usr/local/parmanode/patchrunner.sh >$dn
 #!/bin/bash
 
-while true ; do
+sudo mkdir -p /usr/local/parmanode/{src,scripts}
 
-   # These files must exist
-   test -f $pn/restricted/patch.sh || break
-   test -f $pn/restricted/patch.sh.sig || break
+for dir in "$pn/restricted" "$pn/restricted/src" "$pn/restricted/scripts" ; do
+     cd \$dir || exit 1
 
-   cp -f $pn/restricted/patch.sh{,.sig} /usr/local/parmanode/ >/dev/null 2>&1
+     for x in * ; do
+         if [[ \$x =~ README ]] ; then continue ; fi
+         if [[ \$x =~ ^sign$ ]] ; then continue ; fi
+         if [[ \$x =~ \.sig$ ]] ; then continue ; fi
 
-   if ! gpgv --keyring /usr/local/parmanode/parman.gpg /usr/local/parmanode/patch.sh.sig /usr/local/parmanode/patch.sh >/dev/null 2>&1 ; then
-      #files exist and key doesn't match - that's bad.
-      rm /usr/local/parmanode/patch.sh{,.sig} >/dev/null 2>&1
-      exit 1 
-   else
-      # run patch at the end
-      break
-   fi
+         if test -d \$dir/\$x ; then continue ; fi #skip directory verification
 
-break
+         if ! gpgv --keyring /usr/local/parmanode/parman.gpg "\$x.sig" "\$x" >$dn 2>&1 ; then exit 1 ; fi
+
+         if [[ \$dir =~ src$ ]] ; then
+               sudo cp -r "\$dir/\$x" "/usr/local/parmanode/src/\$x" >$dn 2>&1
+               sudo chmod 750 "/usr/local/parmanode/src/\$x"
+            elif [[ \$dir =~ scripts$ ]] ; then
+               sudo cp -r "\$dir/\$x" "/usr/local/parmanode/scripts/\$x" >$dn 2>&1
+               sudo chmod 750 "/usr/local/parmanode/scripts/\$x"
+            else
+               sudo cp -r "\$dir/\$x" "/usr/local/parmanode/\$x" >$dn 2>&1
+               sudo chmod 750 "/usr/local/parmanode/\$x"
+         fi
+
+     done
 done
 
-while true ; do
-
-   file="$pn/restricted/p4run"
-   filefinal=/usr/local/parmanode/p4run
-
-   test -f \$file || break
-   test -f \$file.sig || break
-
-   cp -f "\$file" "\$filefinal" >/dev/null 2>&1
-   cp -f "\$file.sig" "\$filefinal.sig" >/dev/null 2>&1
-   chown root:$(id -gn) "\$filefinal"
-   chmod 750 "\$filefinal"
-
-   if ! gpgv --keyring /usr/local/parmanode/parman.gpg \$filefinal.sig \$filefinal >/dev/null 2>&1 ; then
-      rm \$filefinal{,.sig} >/dev/null 2>&1
-      exit 1
-   else
-      break   
-   fi
-
-   break
-
-done
 
 chmod 750 /usr/local/parmanode/patch.sh
 HOME=$HOME /usr/local/parmanode/patch.sh >>$dp/debug.log 2>&1
