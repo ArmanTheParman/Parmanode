@@ -25,17 +25,17 @@ cat <<EOF | sudo tee /usr/local/parmanode/patchrunner.sh >$dn
 #!/bin/bash
 
 for dir in "$pn/restricted" "$pn/restricted/src" "$pn/restricted/scripts" ; do
-     cd \$dir|| exit 1
+     cd \$dir || exit 1
+
      for x in * ; do
-     if [[ \$x =~ README ]] ; then continue
-     if [[ \$x =~ ^sign$ ]] ; then continue
-     if [[ \$x =~ \.sig$ ]] ; then continue
+         if [[ \$x =~ README ]] ; then continue
+         if [[ \$x =~ ^sign$ ]] ; then continue
+         if [[ \$x =~ \.sig$ ]] ; then continue
 
-     if ! gpgv --keyring /usr/local/parmanode/parman.gpg "\$x.sig" "\$x" >$dn 2>&1 ; then exit 1 ; fi
+         if ! gpgv --keyring /usr/local/parmanode/parman.gpg "\$x.sig" "\$x" >$dn 2>&1 ; then exit 1 ; fi
 
-     sudo cp -r "\$dir/\$x" "/usr/local/parmanode/" >$dn 2>&1
-     sudo chmod 750 "/usr/local/parmanode/\$x"
-
+         sudo cp -r "\$dir/\$x" "/usr/local/parmanode/" >$dn 2>&1
+         sudo chmod 750 "/usr/local/parmanode/\$x"
      done
 done
 
