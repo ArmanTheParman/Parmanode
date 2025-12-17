@@ -1,5 +1,5 @@
 
-function make_restricted_bucket {
+function make_restricted_bucket2 {
 
 sudo mkdir -p /usr/local/parmanode
 sudo chown root:$(id -gn) /usr/local/parmanode
