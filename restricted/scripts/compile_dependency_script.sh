@@ -39,7 +39,6 @@ sudo apt-get install -y qtcreator          || p4socket "Error with qtcreator"
 sudo apt-get install -y qtbase5-dev        || p4socket "Error with qtbase5-dev"
 sudo apt-get install -y qt5-qmake          || p4socket "Error with qmake"
 sudo apt-get install -y qttools5-dev-tools || p4socket "Error with qttols5-dev-tools"
-sudo apt-get install -y qt5-default      
 sudo apt-get install -y qtchooser          || p4socket "Error with qtchooser"
 sudo apt-get install -y libqt5gui5         || p4socket "Error with libqt5gui5"
 sudo apt-get install -y libqt5core5a       || p4socket "Error with libqt5core5a"

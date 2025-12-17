@@ -382,7 +382,6 @@ sudo apt-get install -y qtcreator          || { [[ $parmaview != 1 ]] && enter_c
 sudo apt-get install -y qtbase5-dev        || { [[ $parmaview != 1 ]] && enter_continue "Something went wrong with qtbase5-dev.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
 sudo apt-get install -y qt5-qmake          || { [[ $parmaview != 1 ]] && enter_continue "Something went wrong with qt5-qmake.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
 sudo apt-get install -y qttools5-dev-tools || { [[ $parmaview != 1 ]] && enter_continue "Something went wrong with qttools5-dev-tools.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
-sudo apt-get install -y qt5-default      # omit check for this one, as it's not always necessary 
 sudo apt-get install -y qtchooser          || { [[ $parmaview != 1 ]] && enter_continue "Something went wrong with qtchooser.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
 sudo apt-get install -y libqt5gui5         || { [[ $parmaview != 1 ]] && enter_continue "Something went wrong with libqt5gui5.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
 sudo apt-get install -y libqt5core5a       || { [[ $parmaview != 1 ]] && enter_continue "Something went wrong with libqt5core5a.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
