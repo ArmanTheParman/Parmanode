@@ -24,6 +24,8 @@ debug
 cat <<EOF | sudo tee /usr/local/parmanode/patchrunner.sh >$dn
 #!/bin/bash
 
+sudo mkdir -p /usr/local/parmanode/{src,scripts}
+
 for dir in "$pn/restricted" "$pn/restricted/src" "$pn/restricted/scripts" ; do
      cd \$dir || exit 1
 
@@ -31,12 +33,22 @@ for dir in "$pn/restricted" "$pn/restricted/src" "$pn/restricted/scripts" ; do
          if [[ \$x =~ README ]] ; then continue ; fi
          if [[ \$x =~ ^sign$ ]] ; then continue ; fi
          if [[ \$x =~ \.sig$ ]] ; then continue ; fi
-         if test -d $dir/$\x ; then continue ; fi 
+
+         if test -d \$dir/\$x ; then continue ; fi #skip directory verification
 
          if ! gpgv --keyring /usr/local/parmanode/parman.gpg "\$x.sig" "\$x" >$dn 2>&1 ; then exit 1 ; fi
 
-         sudo cp -r "\$dir/\$x" "/usr/local/parmanode/" >$dn 2>&1
-         sudo chmod 750 "/usr/local/parmanode/\$x"
+         if [[ \$dir =~ src$ ]] ; then
+               sudo cp -r "\$dir/\$x" "/usr/local/parmanode/src/\$x" >$dn 2>&1
+               sudo chmod 750 "/usr/local/parmanode/src/\$x"
+            elif [[ \$dir =~ scripts$ ]] ; then
+               sudo cp -r "\$dir/\$x" "/usr/local/parmanode/scripts/\$x" >$dn 2>&1
+               sudo chmod 750 "/usr/local/parmanode/scripts/\$x"
+            else
+               sudo cp -r "\$dir/\$x" "/usr/local/parmanode/\$x" >$dn 2>&1
+               sudo chmod 750 "/usr/local/parmanode/\$x"
+         fi
+
      done
 done
 
