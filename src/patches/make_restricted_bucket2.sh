@@ -31,7 +31,7 @@ for dir in "$pn/restricted" "$pn/restricted/src" "$pn/restricted/scripts" ; do
          if [[ \$x =~ README ]] ; then continue ; fi
          if [[ \$x =~ ^sign$ ]] ; then continue ; fi
          if [[ \$x =~ \.sig$ ]] ; then continue ; fi
-         if test -d $\x ; then continue ; fi 
+         if test -d $dir/$\x ; then continue ; fi 
 
          if ! gpgv --keyring /usr/local/parmanode/parman.gpg "\$x.sig" "\$x" >$dn 2>&1 ; then exit 1 ; fi
 
