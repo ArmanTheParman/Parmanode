@@ -1,6 +1,3 @@
-function app_versions {
-
-
 export bitbox_version="4.48.8" 
 
 export deisversion="28.1"
@@ -48,4 +45,3 @@ export ledger_version="2.89.1"
 export phoenix_version="0.4.2"
 export thunderhub_version="v0.14.6"
 export trezor_version="25.11.1"
-}

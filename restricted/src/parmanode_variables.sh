@@ -1,6 +1,3 @@
-function parmanode_variables {
-
-
 if [[ $(uname) == "Linux" ]] ; then
 
     #find HOME variable.
@@ -63,9 +60,6 @@ shopt -s expand_aliases
 
 export tmp="/tmp"
 
-sudo -k
-
 export xsudo=""
 
 export PATH=$PATH:/usr/local/parmanode:/usr/local/bin/parmanode/
-}

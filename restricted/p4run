@@ -14,9 +14,7 @@ varlibtor=/var/lib/tor
 
 
 #find HOME variable.
-for x in $(ls /home/) ; do
-    if sudo test -d /home/$x/.parmanode ; then HOME="/home/$x" ; break ; fi
-done
+source /usr/local/parmanode/src/home.sh
 
 dp=$HOME/.parmanode/
 bc=$HOME/.bitcoin/bitcoin.conf
@@ -36,7 +34,7 @@ case "$1" in
 ;;
 
 "get_onion_address_variable")
-
+    #necessary to call the script with an assignment to ONION_ADDR
     if [[ "$2" == "bitcoin" ]] ; then
     cat $varlibtor/bitcoin-service/hostname 2>$dn
     fi
@@ -81,4 +79,11 @@ case "$1" in
 
 "bitcoin_tor")
     /usr/local/parmanode/scripts/bitcoin_tor.sh "$2" "$3"
+;;
+"rpcbind")
+[[ -e $bc ]] && ! grep -q "rpcbind=0.0.0.0" $bc >$dn 2>&1 && echo "rpcbind=0.0.0.0" | tee -a $bc >$dn 2>&1
+;;
+
+
+
 esac

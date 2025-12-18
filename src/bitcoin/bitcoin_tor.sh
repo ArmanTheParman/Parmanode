@@ -18,74 +18,69 @@ enable_tor_general
 
 sudo /usr/local/parmanode/p4run "add_bitcoin_hidden_service"
         restart_tor #necessary as the service is new now
-
 fi
-
 debug
 
 # NOTES # discover=0 (dont advertise clearnet IP) ; if not set, default is 1
 
 if [[ $1 == "torandclearnet" ]] ; then
     if grep -q btcpaycombo-end $ic ; then
-        echo "onion=host.docker.internal:9050" | sudo tee -a $bc >$dn 2>&1
+        sudo /usr/local/parmanode/p4run "bitcoin_tor" "host_docker_internal"
     else
         sudo /usr/local/parmanode/p4run "bitcoin_tor" "localhost_onion"
     fi
-    echo "listenonion=1" | $xsudo tee -a $bc >$dn 2>&1
-    get_onion_address_variable "bitcoin"
+    sudo /usr/local/parmanode/p4run "bitcoin_tor" "listen_onion"
+    export ONION_ADDR=$(sudo /usr/local/parmanode/p4run "get_onion_address_variable" "bitcoin")
     count=0 
 
         while [[ $btcpayinstallsbitcoin != "true" && -z $ONION_ADDR && $count -lt 4 ]] ; do
         sleep 1.5
-        get_onion_address_variable "bitcoin"
+        export ONION_ADDR=$(sudo /usr/local/parmanode/p4run "get_onion_address_variable" "bitcoin")
         count=$((count + 1))
         done 
 
     [[ -z $ONION_ADDR ]] && sww "Some issue with getting onion address. Try later or switch to no Tor." && return 1
-    echo "externalip=$ONION_ADDR" | $xsudo tee -a $bc >$dn 2>&1
-    $xsudo gsed -i "/discover=/d" $bc
+    sudo /usr/local/parmanode/p4run "bitcoin_tor" "externalip" "$ONION_ADDR"
     parmanode_conf_remove "bitcoin_tor_status"
     parmanode_conf_add "bitcoin_tor_status=torandclearnet"
     fi
 
 if [[ $1 == "toronly" ]] ; then
-    $xsudo gsed -i "/onion=/d" $bc
-    grep -q "discover=0" $bc || echo "discover=0" | $xsudo tee -a $bc >$dn 2>&1
-    echo "listenonion=1" | $xsudo tee -a $bc >$dn 2>&1
-    echo "onlynet=onion" | $xsudo tee -a $bc >$dn 2>&1 #new, disallows outward clearnet connections
+    sudo /usr/local/parmanode/p4run "bitcoin_tor" "discover0"
+    sudo /usr/local/parmanode/p4run "bitcoin_tor" "listenonion=1"
+    sudo /usr/local/parmanode/p4run "bitcoin_tor" "onlynet=onion" #new, disallows outward clearnet connections
 
     if grep -q btcpaycombo-end $ic ; then
-        echo "onion=host.docker.internal:9050" | $xsudo tee -a $bc >$dn 2>&1
+        sudo /usr/local/parmanode/p4run "bitcoin_tor" "host_docker_internal"
     else
-        echo "onion=127.0.0.1:9050" | $xsudo tee -a $bc >$dn 2>&1
+        sudo /usr/local/parmanode/p4run "bitcoin_tor" "localhost_onion"
     fi
-        count=0 
-        while [[ $btcpayinstallsbitcoin != "true" && -z $ONION_ADDR && $count -lt 4 ]] ; do
-            restart_tor
-            get_onion_address_variable  "bitcoin" 
-            sleep 1.5
-            count=$((count + 1))
-        done 
 
-    get_onion_address_variable "bitcoin"
+    count=0 
+    while [[ $btcpayinstallsbitcoin != "true" && -z $ONION_ADDR && $count -lt 4 ]] ; do
+        restart_tor
+        export ONION_ADDR=$(sudo /usr/local/parmanode/p4run "get_onion_address_variable" "bitcoin")
+        sleep 1.5
+        count=$((count + 1))
+    done 
 
     [[ -z $ONION_ADDR ]] && sww "Some issue with getting onion address. Try later or switch to no Tor." && return 1
-    echo "externalip=$ONION_ADDR" | $xsudo tee -a $bc >$dn 2>&1
+    sudo /usr/local/parmanode/p4run "bitcoin_tor" "externalip" "$ONION_ADDR"
     parmanode_conf_remove "bitcoin_tor_status"
     parmanode_conf_add "bitcoin_tor_status=toronly"
-    add_rpcbind 
+    sudo /usr/local/parmanode/p4run "rpcbind"
     fi
 
 if [[ $2 == "onlyout" ]] ; then
-    $xsudo gsed -i "/onlynet/d" $bc
-    $xsudo gsed -i "/listenonion=1/d" $bc
-    echo "listen=0" | $xsudo tee -a $bc >$dn 2>&1
-    $xsudo gsed -i -E '/^bind=/d' $bc
-    $xsudo gsed -i "/externalip/d" $bc >$dn 2>&1
-    sudo grep -q "discover=0" $bc || echo "discover=0" | $xsudo tee -a $bc >$dn 2>&1
+    sudo /usr/local/parmanode/p4run "bitcoin_tor" "remove_onlynet"
+    sudo /usr/local/parmanode/p4run "bitcoin_tor" "remove_listenonion"
+    sudo /usr/local/parmanode/p4run "bitcoin_tor" "listen=0"
+    sudo /usr/local/parmanode/p4run "bitcoin_tor" "remove_bind"
+    sudo /usr/local/parmanode/p4run "bitcoin_tor" "remove_externalip"
+    sudo /usr/local/parmanode/p4run "bitcoin_tor" "discover0"
     parmanode_conf_remove "bitcoin_tor_status"
     parmanode_conf_add "bitcoin_tor_status=onlyout"
-    add_rpcbind 
+    sudo /usr/local/parmanode/p4run "rpcbind"
     fi
 
 restart_tor
@@ -98,36 +93,30 @@ set_terminal
 
 if [[ $exit_early == "true" ]] ; then return 0 ; fi
 
-
-unset $ONION_ADDR
 please_wait
-get_onion_address_variable "bitcoin"
-while [[ -z $ONION_ADDR ]] ; do
-[[ -z $install_bitcoin_variable ]] && get_onion_address_variable "bitcoin"
-sleep 1.5
-count=$((1 + count))
-if [[ $count -gt 4 ]] ; then return 1 ; fi
-done
+[[ -z $ONION_ADDR ]] && export ONION_ADDR=$(sudo /usr/local/parmanode/p4run "get_onion_address_variable" "bitcoin")
+    while [[ -z $ONION_ADDR ]] ; do
+        [[ -z $install_bitcoin_variable ]] && export ONION_ADDR=$(sudo /usr/local/parmanode/p4run "get_onion_address_variable" "bitcoin")
+        sleep 1.5
+        count=$((1 + count))
+        if [[ $count -gt 4 ]] ; then return 1 ; fi
+    done
 
-########################################################################################
+sudo /usr/local/parmanode/p4run "rpcbind" #modifications might inadvertently delete rpcbind
+
+############### ###############
 #Need the Onion address
 #Bitcoind stopping - start it up inside this function later
 
 if [[ $install != "bitcoin" ]] ; then
     restart_tor
     stop_bitcoin
-fi
-    add_rpcbind #modifications might inadvertently delete rpcbind
-    
-if [[ $install != "bitcoin" ]] ; then
     start_bitcoin
 fi
 
-########################################################################################
-
-
 }
 
+########################################################################################
 function bitcoin_tor_remove { debugf
 
 stop_bitcoin

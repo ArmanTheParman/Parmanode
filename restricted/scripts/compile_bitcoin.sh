@@ -2,8 +2,8 @@
 
 # CALL THIS FUNCTION FROM COMPILE_BITCOIN FUNCTION
 
-source /usr/local/parmanode/src/parmanode_variables.sh ; parmanode_variables
-source /usr/local/parmanode/src/app_versions.sh ; app_versions
+source /usr/local/parmanode/src/parmanode_variables.sh 
+source /usr/local/parmanode/src/app_versions.sh 
 source /usr/local/parmanode/src/p4socket.sh
 source /usr/local/parmanode/src/debug.sh
 debug
