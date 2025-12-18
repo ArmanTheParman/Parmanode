@@ -131,7 +131,6 @@ break
 #prune_choice || return 1
 #make_bitcoin_directories
 #make_bitcoin_conf
-#make_mount_check_script
 #make_bitcoind_service_file
 ;;
 
@@ -157,7 +156,6 @@ replace_bitcoin_conf || return 1
 message_move #move files before continuing
 
 #functions needed from install_bitcoin:
-#make_mount_check_script
 #make_bitcoind_service_file
 #set_rpc_authentication (if rpcuser not set)
 install_bitcoin
@@ -174,7 +172,6 @@ replace_bitcoin_conf || return 1
 message_move #move files before continuing
 
 #functions needed from install_bitcoin:
-#make_mount_check_script
 #make_bitcoind_service_file
 #set_rpc_authentication (if rpcuser not set)
 install_bitcoin
@@ -191,7 +188,6 @@ menu_migrate parmy || return 1 # drive is detected, fstab added, directories mad
 dir_not_found #?
 
 #functions needed from install_bitcoin:
-#make_mount_check_script
 #make_bitcoind_service_file
 #set_rpc_authentication (if rpcuser not set)
 install_bitcoin

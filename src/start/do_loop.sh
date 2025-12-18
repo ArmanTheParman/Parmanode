@@ -1,31 +1,29 @@
 function do_loop {
 
-#deactivate virtual environments that may have been left active from an non-graceful shutdown
+# Deactivate virtual environments that may have been left active from an non-graceful shutdown
 deactivate >/dev/null 2>&1
 
-#test bash version here, excluding first run on a new install, 
-#otherwise source will fail if an old bash is used. Exits if < version 5
-[[ -e "$HOME/.parmanode/.new_install" ]] || { 
+# Test bash version here (but not if its' the first run on a new install)
+# Otherwise sourcing will fail if an old bash is used. 
+if ! [[ -e "$HOME/.parmanode/.new_install" ]] ; then 
     source "$(find "$HOME/parman_programs/parmanode/src/" -name "*bash_version_test.sh")"
-    bash_version_test 
-}
+    bash_version_test #exits if test fails (< version 5)
+fi
 
-# source all the modules. Exclude executable scripts which aren't modules. Modules
-# are bits of codes saved elseshere. They are "sourced" to load the code into memory.
+# Source all the modules in /src. Exclude executable scripts which aren't modules. 
+# For those learning - Modules are bits of code saved elseshere. They are "sourced" to load the code into memory.
 
-	for file in $HOME/parman_programs/parmanode/src/*/*.sh ; do #for every file that ends in .sh, up to a directory
-	#length of 1, attach its name to the variable "file" then run the code below, 
-	#looping so each file gets sourced.
+	for file in $HOME/parman_programs/parmanode/src/*/*.sh ; do 
+            # For those learning - For every file that ends in .sh, up to one extra directory depth,
+            # attach its name to the variable "file" then run the code below, looping so each file gets sourced.
         if [[ -e "$HOME/.parmanode/.new_install" ]] ; then
-            #suppress errors on new install, because some machines may not have all dependencies yet, and errors will 
-            #be meaningless and distracting
             source $file 2>/dev/null
         else
-            source $file #"source" or also represented by "." means to run the code in the file.
-            #They doesn't need #!/bin/bash (or variations) statements inside, because it is being called by 
-            # this program.  
+            source $file 
+            # "source" or also represented by "." means to run the code in the file.
+            # Doesn't need #!/bin/bash (or variations) statements inside, because it is being called by this program.  
         fi
-	done #ends the loop
+	done 
 
 
 gsed_symlink #linux only

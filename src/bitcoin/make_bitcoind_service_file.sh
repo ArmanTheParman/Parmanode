@@ -82,7 +82,6 @@ else #for regular bitcoin install using backend parmanode
 fi
 
 sudo systemctl daemon-reload 
-sudo systemctl disable bitcoind.service >$dn 2>&1
 sudo systemctl enable bitcoind.service >$dn 2>&1
 }
 

@@ -52,7 +52,6 @@ fi
 
 
 sudo systemctl stop btcpay.service 2>$dn
-sudo systemctl disable btcpay.service 2>$dn
 sudo systemctl daemon-reload 2>$dn
 sudo systemctl enable btcpay.service 2>$dn
 sudo systemctl start btcpay.service 2>$dn
