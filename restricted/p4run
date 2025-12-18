@@ -48,7 +48,7 @@ case "$1" in
 ;;
 
 "compile_dependency_script")
-    /urs/local/parmanode/compile_dependency_script.sh
+    /usr/local/parmanode/scripts/compile_dependency_script.sh
 ;;
 
 
