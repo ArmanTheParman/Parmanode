@@ -1,3 +1,6 @@
+Version 3.70.0
+     -Development of restricted bucket further
+     -lock file removal wizard for Bitcoin
 Version 3.69.0
      -Bitcoin Knots BIP110 edition
      -Parmanode restricted bucket for more secure updates
