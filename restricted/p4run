@@ -63,6 +63,19 @@ case "$1" in
 "compile_bitcoin")
     /usr/local/parmanode/scripts/compile_bitcoin.sh
 ;;
-
-
+"move_bitcoind_service_file")
+    cp -r /usr/local/parmanode/service/bitcoind.service /etc/systemd/system/bitcoind.service
+;;
+"move_btcpay_service_file")
+    cp -r /usr/local/parmanode/service/btcpay.service /etc/systemd/system/btcpay.service
+;;
+"move_electrs_service_file")
+    cp -r /usr/local/parmanode/service/electrs.service /etc/systemd/system/electrs.service
+;;
+"move_fulcrum_service_file")
+    cp -r /usr/local/parmanode/service/fulcrum.service /etc/systemd/system/fulcrum.service
+;;
+"move_electrumx_service_file")
+    cp -r /usr/local/parmanode/service/electrumx.service /etc/systemd/system/electrumx.service
+;;
 esac

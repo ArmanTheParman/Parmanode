@@ -76,7 +76,7 @@ if [[ $1 == "setup" ]] ; then #for parmanode installation
     sudo mv "$file" /usr/local/parmanode/service/bitcoind.service
     return 0
 elif [[ $parmaview == 1 ]] ; then #for parmaview method of bitcoin install
-    sudo cp -r /usr/local/parmanode/service/bitcoind.service /etc/systemd/system/bitcoind.service
+    sudo /usr/local/parmanode/p4run "move_bitcoind_service_file"
 else #for regular bitcoin install using backend parmanode
     sudo mv "$file" /etc/systemd/system/bitcoind.service 
 fi

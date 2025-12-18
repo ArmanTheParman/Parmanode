@@ -38,7 +38,7 @@ if [[ $1 == "setup" ]] ; then
     sudo mv "$file" /usr/local/parmanode/service/electrs.service
     return 0
 elif [[ $parmaview == 1 ]] ; then
-    sudo mv /usr/local/parmanode/service/electrs.service /etc/systemd/system/
+    sudo /usr/local/parmanode/p4run "move_electrs_service_file"
 else
     sudo mv "$file" /etc/systemd/system/electrs.service 
 fi

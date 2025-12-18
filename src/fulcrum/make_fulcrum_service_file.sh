@@ -29,7 +29,7 @@ if [[ $1 == "setup" ]] ; then
     sudo mv "$file" /usr/local/parmanode/service/fulcrum.service
     return 0
 elif [[ $parmaview == 1 ]] ; then
-    sudo mv /usr/local/parmanode/service/fulcrum.service /etc/systemd/system/fulcrum.service
+    sudo /usr/local/parmanode/p4run "move_fulcrum_service_file"
 else
     sudo mv "$file" /etc/systemd/system/fulcrum.service
 fi    

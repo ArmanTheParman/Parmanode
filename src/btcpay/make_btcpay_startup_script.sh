@@ -43,7 +43,7 @@ if [[ $1 == "setup" ]] ; then
     sudo mv "$file" /usr/local/parmanode/service/btcpay.service
     return 0
 elif [[ $parmaview == 1 ]] ; then
-    sudo mv /usr/local/parmanode/service/btcpay.service /etc/systemd/system/btcpay.service
+    sudo /usr/local/parmanode/p4run "move_btcpay_service_file"
 else
     sudo mv "$file" /etc/systemd/system/btcpay.service 
 fi
