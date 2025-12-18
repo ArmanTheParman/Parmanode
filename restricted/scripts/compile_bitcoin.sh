@@ -34,9 +34,7 @@ source /usr/local/parmanode/src/p4socket.sh
     export GIT_COMMITTER_NAME="Parmanode Committer"
     export GIT_COMMITTER_EMAIL="parman@parmanode.parman"
 
-echo "Client choice is $clientchoice\nHit x to do compile dependency script"
-read choice -n1 -t 5
-if [[ $choice == "x" ]] ; then
+if [[ $nd != "true" ]] ; then
 /usr/local/parmanode/scripts/bitcoin_compile_dependency_script.sh
 fi
 

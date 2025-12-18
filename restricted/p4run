@@ -2,7 +2,7 @@
 
 # Parmaview helper function
 # Usage:
-#    sudo /usr/local/parmanode/p4run "screened argument allowed only here"
+#    sudo -E /usr/local/parmanode/p4run "screened argument allowed only here"
 # Location
 # $pn/restricted --> /usr/local/parmanode/p4run (live)
 
