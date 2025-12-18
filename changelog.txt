@@ -3,7 +3,7 @@ Version 3.69.0
      -Parmanode restricted bucket for more secure updates
      -Parman public key in restricted bucked
      -p4run helper script in restricted bucket
-     -sudoers patch for reduced password requests for specific trusted commands (eg restarting bitcoin, p4fun, and patchrunner)
+     -sudoers patch for reduced password requests for specific trusted commands (eg restarting bitcoin, p4run, and patchrunner)
      -small bitcoin Core install bug fixed
 Version 3.68.2
      -Bitcoin Core version bug fix

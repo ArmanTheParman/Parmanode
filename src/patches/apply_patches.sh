@@ -47,9 +47,7 @@ debug "patch 10 done"
 patch_1 ; patch_2 ; patch_3 ; patch_4 ; patch_5 ; patch_6 ; patch_7 ; patch_8 ; patch_9 ; patch_10 ;;
 esac
 
-sudo /usr/local/parmanode/patchrunner.sh
 sudo rm $pn/debug.log >$dn 2>&1 # remove in Feb
-debug "end patchrunner"
 }
 
 

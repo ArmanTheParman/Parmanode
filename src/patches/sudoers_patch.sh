@@ -7,7 +7,7 @@ sudo chmod 440 /etc/sudoers.d/parmanode
 
 echo "
 #Parmanode Secure Patch Runner
-$USER ALL=(root) NOPASSWD: /usr/local/parmanode/patchrunner.sh
+$USER ALL=(root) NOPASSWD: /usr/local/parmanode/scripts/patchrunner.sh
 #Parmaview helper
 $USER ALL=(root) NOPASSWD: /usr/local/parmanode/p4run *
 #Bitcoin commands
