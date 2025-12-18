@@ -26,10 +26,10 @@ WantedBy=multi-user.target
 if [[ $1 == "setup" ]] ; then
     sudo chown root:root "$file"
     sudo chmod 644 "$file"
-    sudo mv "$file" /usr/local/parmanode/fulcrum.service
+    sudo mv "$file" /usr/local/parmanode/service/fulcrum.service
     return 0
 elif [[ $parmaview == 1 ]] ; then
-    sudo mv /usr/local/parmanode/fulcrum.service /etc/systemd/system/fulcrum.service
+    sudo mv /usr/local/parmanode/service/fulcrum.service /etc/systemd/system/fulcrum.service
 else
     sudo mv "$file" /etc/systemd/system/fulcrum.service
 fi    

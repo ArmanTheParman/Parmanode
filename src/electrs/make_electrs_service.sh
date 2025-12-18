@@ -35,10 +35,10 @@ WantedBy=multi-user.target" | tee "$file" >$dn 2>&1
 if [[ $1 == "setup" ]] ; then
     sudo chown root:root "$file"
     sudo chmod 644 "$file"
-    sudo mv "$file" /usr/local/parmanode/electrs.service
+    sudo mv "$file" /usr/local/parmanode/service/electrs.service
     return 0
 elif [[ $parmaview == 1 ]] ; then
-    sudo mv /usr/local/parmanode/electrs.service /etc/systemd/system/
+    sudo mv /usr/local/parmanode/service/electrs.service /etc/systemd/system/
 else
     sudo mv "$file" /etc/systemd/system/electrs.service 
 fi

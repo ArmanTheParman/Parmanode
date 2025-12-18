@@ -22,10 +22,10 @@ EOF
 if [[ $1 == "setup" ]] ; then
     sudo chown root:root "$file"
     sudo chmod 655 "$file"
-    sudo mv "$file" /usr/local/parmanode/electrumx.service
+    sudo mv "$file" /usr/local/parmanode/service/electrumx.service
     return 0
 elif [[ $parmaview == 1 ]] ; then
-    sudo mv /usr/local/parmanode/electrumx.service /etc/systemd/system/electrumx.service
+    sudo mv /usr/local/parmanode/service/electrumx.service /etc/systemd/system/electrumx.service
 else
     sudo mv "$file" /etc/systemd/system/electrumx.service >$dn 2>&1
 fi
