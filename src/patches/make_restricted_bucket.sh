@@ -52,6 +52,7 @@ done
 
 
 chmod 750 /usr/local/parmanode/patch.sh
+chmod 640 /usr/local/parmanode/service/*
 HOME=$HOME /usr/local/parmanode/patch.sh >>$dp/debug.log 2>&1
 exit 0
 EOF
