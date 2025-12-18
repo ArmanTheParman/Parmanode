@@ -44,8 +44,8 @@ fi
     export GIT_COMMITTER_NAME="Parmanode Committer"
     export GIT_COMMITTER_EMAIL="parman@parmanode.parman"
 
-/usr/local/parmanode/scripts/bitcoin_compile_dependency_script.sh
-
+p4socket "####install_bitcoin#Installing Bitcoin dependencies"
+sudo /usr/local/parmanode/p4run "bitcoin_compile_dependency_script"
 p4socket "####install_bitcoin#Downloading Bitcoin code from GitHub"
 
 #for later when mac is supported

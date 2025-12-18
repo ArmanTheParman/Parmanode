@@ -29,7 +29,7 @@ fi
 
 if [[ $parmaview == 1 ]] ; then
 debug "calling bitcoin compile dependencies from parmanode view"
-sudo /usr/local/parmanode/scripts/compile_bitcoin.sh
+sudo /usr/local/parmanode/p4run "compile bitcoin" || debug "call to compile script failed"
 return 0
 fi
 
@@ -349,9 +349,6 @@ debug
 
 function bitcoin_compile_dependencies { debugf
 
-p4socket "####install_bitcoin#Installing Bitcoin dependencies"
-
-if [[ $parmaview == 1 ]] ; then sudo /usr/local/parmanode/scripts/bitcoin_compile_dependency_script.sh ; return 0 ; fi
 
 if [[ -z $1 ]] ; then 
 set_terminal ; echo -e "${pink}Upgrading, and installing dependencies to compile bitcoin...$orange"

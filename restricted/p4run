@@ -60,6 +60,9 @@ case "$1" in
 "bitcoin_compile_dependency_script")
     /usr/local/parmanode/scripts/bitcoin_compile_dependency_script.sh
 ;;
+"compile_bitcoin")
+    /usr/local/parmanode/scripts/compile_bitcoin.sh
+;;
 
 
 esac
