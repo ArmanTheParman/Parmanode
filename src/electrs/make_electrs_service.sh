@@ -36,6 +36,7 @@ if [[ $1 == "setup" ]] ; then
     sudo chown root:root "$file"
     sudo chmod 644 "$file"
     sudo mv "$file" /usr/local/parmanode/electrs.service
+    return 0
 elif [[ $parmaview == 1 ]] ; then
     sudo mv /usr/local/parmanode/electrs.service /etc/systemd/system/
 else

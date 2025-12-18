@@ -20,7 +20,10 @@ WantedBy=multi-user.target
 EOF
 
 if [[ $1 == "setup" ]] ; then
+    sudo chown root:root "$file"
+    sudo chmod 655 "$file"
     sudo mv "$file" /usr/local/parmanode/electrumx.service
+    return 0
 elif [[ $parmaview == 1 ]] ; then
     sudo mv /usr/local/parmanode/electrumx.service /etc/systemd/system/electrumx.service
 else
