@@ -1,30 +1,32 @@
 #!/bin/env bash
 
+# CALL THIS FUNCTION FROM COMPILE_BITCOIN FUNCTION
+
 source /usr/local/parmanode/src/p4socket.sh
 
-[[ $bitcoin_compile == "false" ]] && exit 0
+# [[ $bitcoin_compile == "false" ]] && exit 0
 
-if [[ $clientchoice == "knots" ]] ; then
+# if [[ $clientchoice == "knots" ]] ; then
 
-    if [[ ${knotsversion%%.*} -lt 29 ]] ; then 
-        newcompile="false"
-    else
-        newcompile="true"
-    fi 
+#     if [[ ${knotsversion%%.*} -lt 29 ]] ; then 
+#         newcompile="false"
+#     else
+#         newcompile="true"
+#     fi 
 
-elif [[ $clientchoice == "deis" ]] ; then
+# elif [[ $clientchoice == "deis" ]] ; then
 
-    newcompile="false"
+#     newcompile="false"
 
-elif [[ $clientchoice == "core" ]] ; then
+# elif [[ $clientchoice == "core" ]] ; then
 
-    if [[ ${version%%.*} -lt 29 ]] ; then 
-        newcompile="false"
-    else
-        newcompile="true"
-    fi 
+#     if [[ ${version%%.*} -lt 29 ]] ; then 
+#         newcompile="false"
+#     else
+#         newcompile="true"
+#     fi 
 
-fi
+# fi
 
 #to reduce errors on screen, making temporary git variables...
     export GIT_AUTHOR_NAME="Temporary Parmanode"
@@ -32,7 +34,11 @@ fi
     export GIT_COMMITTER_NAME="Parmanode Committer"
     export GIT_COMMITTER_EMAIL="parman@parmanode.parman"
 
+echo "Client choice is $clientchoice\nHit x to do compile dependency script"
+read choice -n1 -t 5
+if [[ $choice == "x" ]] ; then
 /usr/local/parmanode/scripts/bitcoin_compile_dependency_script.sh
+fi
 
 p4socket "####install_bitcoin#Downloading Bitcoin code from GitHub"
 

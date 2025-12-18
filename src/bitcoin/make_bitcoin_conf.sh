@@ -1,6 +1,6 @@
 function make_bitcoin_conf { debugf
 
-if [[ $1 == prune ]] ; then export prune=$2 ; fi #assumes arguments are "prune" "[0-9].*"
+if [[ $1 == "prune" ]] ; then export prune=$2 ; fi #assumes arguments are "prune" "[0-9].*"
 
 #Parmanode default config settings. Can be changed.
 #Create a bitcoin.conf file in data directory.
@@ -85,17 +85,16 @@ $orange
 ########################################################################################
 "
 choose "xpmq" && read choice
+jump $choice 
 else
 choice=o
 fi
-jump $choice 
 
-[[ $parmaview == 1 ]] && {
-
-    cp -rf $HOME/.bitcoin/bitcoin.conf  $HOME/.bitcoin/bitcoin.conf_PN4_backup 
-    choice=o 
-}
-
+if [[ $parmaview == 1 ]] ; then
+    cp -f $HOME/.bitcoin/bitcoin.conf  $HOME/.bitcoin/bitcoin.conf_PN4_backup 
+    export choice=o 
+fi
+debug
 case $choice in 
 m|M) back2main ;;
     q|Q|QUIT|Quit|quit) exit 0 ;; 
@@ -106,9 +105,8 @@ m|M) back2main ;;
 esac 
 done ; fi
 
-$xsudo cp $tmp/bitcoin.conf $file && log "bitcoin" "bitcoin conf made"  
-debug "Bitcoin conf copied from tmp
-$(cat $HOME/.bitcoin/bitcoin.conf)"
+$xsudo cp $tmp/bitcoin.conf $file 
+debug "Bitcoin conf copied from tmp\n$(cat $HOME/.bitcoin/bitcoin.conf)"
 
 $xsudo chown -R $USER:$(id -gn) $file
 

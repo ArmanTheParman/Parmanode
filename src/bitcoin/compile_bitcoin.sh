@@ -1,9 +1,6 @@
 function compile_bitcoin { debugf
 
-if [[ $parmaview == 1 ]] ; then
-sudo /usr/local/parmanode/scripts/compile_bitcoin.sh
-return 0
-fi
+
 
 [[ $version == "self" ]] && return 0 
 [[ $bitcoin_compile == "false" ]] && return 0 
@@ -28,6 +25,11 @@ elif [[ $clientchoice == "core" ]] ; then
         export newcompile="true"
     fi 
 
+fi
+
+if [[ $parmaview == 1 ]] ; then
+sudo /usr/local/parmanode/scripts/compile_bitcoin.sh
+return 0
 fi
 
 debug "newcompile: $newcompile"

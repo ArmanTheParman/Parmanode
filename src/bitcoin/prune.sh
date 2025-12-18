@@ -8,7 +8,7 @@ if [[ $1 == "umbrel" ]] ; then export prune=0 ; file="$mount_point/.bitcoin/bitc
 #source prune value from parmanode.conf
 
 if [[ -z $prune ]] ; then
-source $HOME/.parmanode/parmanode.conf >$dn 2>&1
+source $pc >$dn 2>&1
 fi
 
 #check if prune_value set. If not, calls function to set it. 
