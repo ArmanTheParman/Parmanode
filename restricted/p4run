@@ -32,7 +32,7 @@ case "$1" in
 "get_onion_address_variable")
 
     if [[ "$2" == "bitcoin" ]] ; then
-    export ONION_ADDR="$(cat $varlibtor/bitcoin-service/hostname 2>$dn)"
+    cat $varlibtor/bitcoin-service/hostname 2>$dn
     fi
 ;;
 
@@ -45,6 +45,9 @@ case "$1" in
     ln -s  /usr/local/bin/parmanode/bitcoin-util /usr/local/bin/bitcoin-util >$dn 2>&1
     ln -s  /usr/local/bin/parmanode/bitcoin-wallet /usr/local/bin/bitcoin-wallet >$dn 2>&1
     ln -s  /usr/local/bin/parmanode/test-bitcoin /usr/local/bin/test-bitcoin >$dn 2>&1
+;;
+delete_bitcoin_files)
+    rm -rf /usr/local/bin/*bitcoin*
 ;;
 
 "bitcoin_compile_dependency_script")

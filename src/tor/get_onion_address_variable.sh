@@ -1,7 +1,12 @@
 function get_onion_address_variable {
 if [[ $1 == "bitcoin" ]] || [[ -z $1 ]] ; then
-[[ $parmaview == 1 ]] && { sudo /usr/local/parmanode/p4run "get_onion_address_variable" "bitcoin" ; return 0 ; }
-export ONION_ADDR="$(sudo cat $varlibtor/bitcoin-service/hostname 2>$dn)"
+
+    if [[ $parmaview == 1 ]] ; then 
+        export ONION_ADDR="$(sudo /usr/local/parmanode/p4run "get_onion_address_variable" "bitcoin")" 
+        return 0 
+    fi
+
+    export ONION_ADDR="$(sudo cat $varlibtor/bitcoin-service/hostname 2>$dn)"
 fi
 
 if [[ $1 == "bitcoinRPC" ]] ; then

@@ -7,9 +7,13 @@ if [[ $btcpayinstallsbitcoin == "true" ]] ; then return 0 ; fi
 
 if [[ $OS == "Linux" ]] ; then
 
-    #binaries will go into /usr/local/bin/parmanode - this is not a root owned directory
+    #binaries will go into /usr/local/bin/parmanode
     #symlinks to binaries will go in /usr/local/bin, a root owned directory; this is the default path of make install for bitcoin.
-    rm -rf /usr/local/bin/*bitcoin*
+    if [[ $parmaview == 1 ]] ; then
+        sudo /usr/local/parmanode/p4run "delete_bitcoin_files"
+    else 
+        sudo rm -rf /usr/local/bin/*bitcoin*
+    fi
 
     symlinks_for_bitcoin_binaries
 fi
