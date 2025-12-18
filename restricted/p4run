@@ -46,7 +46,8 @@ case "$1" in
     ln -s  /usr/local/bin/parmanode/bitcoin-wallet /usr/local/bin/bitcoin-wallet >$dn 2>&1
     ln -s  /usr/local/bin/parmanode/test-bitcoin /usr/local/bin/test-bitcoin >$dn 2>&1
 ;;
-delete_bitcoin_files)
+
+"delete_bitcoin_files")
     rm -rf /usr/local/bin/*bitcoin*
 ;;
 
