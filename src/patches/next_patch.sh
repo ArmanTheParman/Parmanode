@@ -1,6 +1,7 @@
 function next_patch { debugf
 
-sudo /usr/local/parmanode/scripts/patchrunner.sh >$dn 2>&1
+make_restricted_bucket
+
 #for patch 11
 make_bitcoind_service_file "setup"
 make_electrs_service "setup"
