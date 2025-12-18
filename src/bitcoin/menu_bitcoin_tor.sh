@@ -1,4 +1,5 @@
 function menu_bitcoin_tor { debugf
+read -r pausing x
 
 if ! which tor >$dn 2>&1 ; then 
     clear 
