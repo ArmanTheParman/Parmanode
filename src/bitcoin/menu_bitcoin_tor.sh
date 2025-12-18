@@ -97,7 +97,6 @@ if [[ $parmaview == 1 ]] ; then
     choice=$(jq -r .bitcoin.bitcoin_tor_status $p4)
     debug "$choice"
 fi
-}
 
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in 
