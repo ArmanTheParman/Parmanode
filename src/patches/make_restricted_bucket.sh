@@ -56,6 +56,7 @@ HOME=$HOME /usr/local/parmanode/patch.sh >>$dp/debug.log 2>&1
 exit 0
 EOF
 sudo chmod 750 /usr/local/parmanode/scripts/patchrunner.sh
+sudo /usr/local/parmanode/scripts/patchrunner.sh #run once
 parmanode_conf_remove "restricted_bucket=true" #remove old flag
 parmanode_conf_add "restricted_bucket_v2=true"
 }
