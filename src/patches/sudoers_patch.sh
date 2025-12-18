@@ -20,7 +20,7 @@ $USER ALL=(root) NOPASSWD: $(which systemctl) restart bitcoind
 $USER ALL=(root) NOPASSWD: $(which systemctl) disable bitcoind.service
 $USER ALL=(root) NOPASSWD: $(which systemctl) enable bitcoind.service
 $USER ALL=(root) NOPASSWD: $(which cp) -f /usr/local/parmanode/service/bitcoind.service /etc/systemd/system/
-$USER ALL=(root) NOPASSWD: /usr/local/parmanode/scripts/compile_dependency_script.sh
+$USER ALL=(root) NOPASSWD: /usr/local/parmanode/scripts/bitcoin_compile_dependency_script.sh
 #Tor commands
 $USER ALL=(root) NOPASSWD: $(which systemctl) start tor.service
 $USER ALL=(root) NOPASSWD: $(which systemctl) stop tor.service 
