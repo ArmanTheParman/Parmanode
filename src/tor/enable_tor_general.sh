@@ -14,7 +14,7 @@ if [[ ! -e $torrc ]] || ! sudo grep -q "# Additions by Parmanode" $torrc ; then
 touch $torrc >$dn 2>&1
 
 sudo gsed -i -E "/# Additions by Parmanode/d" $torrc >$dn 2>&1
-sudo gsed -i -E "/^ControlPort/d" $torrc >$dn 2>&1
+sudo gsed -i -E "/^ControlPort 9051/d" $torrc >$dn 2>&1
 sudo gsed -i -E "/^CookieAuthentication 1/d" $torrc >$dn 2>&1
 sudo gsed -i -E "/^CookieAuthFileGroupReadable 1/d" $torrc >$dn 2>&1
 sudo gsed -i -E "/^DataDirectoryGroupReadable 1/d" $torrc >$dn 2>&1
