@@ -107,19 +107,19 @@ if [[ $newcompile == "false" ]] ; then
 
 debug
 
-./autogen.sh || p4socket "autogen.sh failed - this is normal if compiling versions greater than 28" 
+sudo ./autogen.sh || p4socket "autogen.sh failed - this is normal if compiling versions greater than 28" 
 
 
-./configure --with-gui=yes --enable-wallet --with-incompatible-bdb --with-utils || p4socket "configure failed"
+sudo ./configure --with-gui=yes --enable-wallet --with-incompatible-bdb --with-utils || p4socket "configure failed"
 
 #compile
-make -j $(nproc) || p4socket  "Something went wrong with make." 
+sudo make -j $(nproc) || p4socket  "Something went wrong with make." 
 
-make -j $(nproc) check | p4socket "make check failed"
+sudo make -j $(nproc) check | p4socket "make check failed"
 
-make install || p4socket "something went wrong with make install"
+sudo make install || p4socket "something went wrong with make install"
 
-mv /usr/local/bin/*bitcoin* /usr/local/bin/parmanode/ >$dn 2>&1 || p4socket "moving binaries failed"
+sudo mv /usr/local/bin/*bitcoin* /usr/local/bin/parmanode/ >$dn 2>&1 || p4socket "moving binaries failed"
 fi
 
 #end newcompile=false
@@ -130,23 +130,23 @@ gui=ON
 
 mkdir build
 cd build
-cmake -GNinja \
+sudo cmake -GNinja \
       -DCMAKE_BUILD_TYPE=Release \
       -DBUILD_GUI=$gui \
       -DCMAKE_INSTALL_PREFIX=/usr/local \
       ..
 
-ninja -j $(nproc) || p4socket "ninja -j fail"
-ninja install || p4socket "ninja install fail"
+sudo ninja -j $(nproc) || p4socket "ninja -j fail"
+sudo ninja install || p4socket "ninja install fail"
 
-ls -lahf /usr/local/bin/bitcoind >$dn 2>&1 || p4socket "no bitcoind (1)"
+sudo ls -lahf /usr/local/bin/bitcoind >$dn 2>&1 || p4socket "no bitcoind (1)"
 debug
 fi
 #end newcopile=true
 
-/usr/local/parmanode/p4run "bitcoin_binary_symlinks" 
+sudo /usr/local/parmanode/p4run "bitcoin_binary_symlinks" 
 
-ls -lahf /usr/local/bin/bitcoind >$dn 2>&1 || p4socket "no bitcoind (2)"
+sudo ls -lahf /usr/local/bin/bitcoind >$dn 2>&1 || p4socket "no bitcoind (2)"
 
 debug
 exit 0
