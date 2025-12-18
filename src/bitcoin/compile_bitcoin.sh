@@ -28,7 +28,7 @@ elif [[ $clientchoice == "core" ]] ; then
 fi
 
 if [[ $parmaview == 1 ]] ; then
-debug "calling bitcoin compile dependencies from parmanode view"
+debug "calling bitcoin compile script..."
 sudo /usr/local/parmanode/p4run "compile bitcoin" || debug "call to compile script failed"
 return 0
 fi
