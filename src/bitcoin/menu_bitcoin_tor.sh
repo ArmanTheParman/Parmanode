@@ -44,7 +44,7 @@ else
 fi
 
 
-if $xsudo cat $macprefix/var/lib/tor/bitcoin-service/hostname >$dn && [[ $showtor == "true" ]] ; then 
+if $xsudo cat $macprefix/var/lib/tor/bitcoin-service/hostname >$dn 2>&1 && [[ $showtor == "true" ]] ; then 
 get_onion_address_variable bitcoin 
 tortext="
 $bright_blue    Onion adress: $ONION_ADDR
@@ -93,9 +93,10 @@ $tortext"
 
 choose "xpmq" && read choice
 
-[[ $parmaview == 1 ]] && {
+if [[ $parmaview == 1 ]] ; then
     choice=$(jq -r .bitcoin.bitcoin_tor_status $p4)
     debug "$choice"
+fi
 }
 
 jump $choice || { invalid ; continue ; } ; set_terminal
