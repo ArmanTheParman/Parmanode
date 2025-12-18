@@ -1,5 +1,5 @@
 function compile_bitcoin { debugf
-
+debug "regular compile bitcoin function called"
 
 
 [[ $version == "self" ]] && return 0 
@@ -28,6 +28,7 @@ elif [[ $clientchoice == "core" ]] ; then
 fi
 
 if [[ $parmaview == 1 ]] ; then
+debug "calling bitcoin compile dependencies from parmanode view"
 sudo /usr/local/parmanode/scripts/compile_bitcoin.sh
 return 0
 fi

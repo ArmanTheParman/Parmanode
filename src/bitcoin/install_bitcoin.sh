@@ -106,7 +106,7 @@ make_bitcoin_symlinks || return 1
 
 #compile bitcoin if chosen
 compile_bitcoin || return 1
-
+debug
 ls -lahf /usr/local/bin/bitcoind >$dn 2>&1 || p4socket "no bitcoind (3)"
 
 # Download bitcoin software & verify

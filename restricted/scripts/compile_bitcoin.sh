@@ -2,11 +2,12 @@
 
 # CALL THIS FUNCTION FROM COMPILE_BITCOIN FUNCTION
 
-source /usr/local/parmanode/src/p4socket.sh
 source /usr/local/parmanode/src/parmanode_variables.sh ; parmanode_variables
 source /usr/local/parmanode/src/app_versions.sh ; app_versions
-echo "p4 is $p4"
-read
+source /usr/local/parmanode/src/p4socket.sh
+source /usr/local/parmanode/src/debug.sh
+debug
+
 clientchoice=$(jq -r '.bitcoin.clientchoice' $p4)
 bitcoin_compile=$(jq -r '.bitcoin.bitcoin_compile' $p4)
 version=$(jq -r '.bitcoin.version' $p4)
