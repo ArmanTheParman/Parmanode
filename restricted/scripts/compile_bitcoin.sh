@@ -3,30 +3,37 @@
 # CALL THIS FUNCTION FROM COMPILE_BITCOIN FUNCTION
 
 source /usr/local/parmanode/src/p4socket.sh
+source /usr/local/parmanode/src/parmanode_variables.sh ; parmanode_variables
+source /usr/local/parmanode/src/app_versions.sh ; app_versions
+clientchoice=$(jq -r '.bitcoin.clientchoice' $p4)
+bitcoin_compile=$(jq -r '.bitcoin.bitcoin_compile' $p4)
+version=$(jq -r '.bitcoin.version' $p4)
+ordinals_patch=$(jq -r '.bitcoin.ordinals_patch' $p4)
 
-# [[ $bitcoin_compile == "false" ]] && exit 0
 
-# if [[ $clientchoice == "knots" ]] ; then
+[[ $bitcoin_compile == "false" ]] && exit 0
 
-#     if [[ ${knotsversion%%.*} -lt 29 ]] ; then 
-#         newcompile="false"
-#     else
-#         newcompile="true"
-#     fi 
+if [[ $clientchoice == "knots" ]] ; then
 
-# elif [[ $clientchoice == "deis" ]] ; then
+    if [[ ${knotsversion%%.*} -lt 29 ]] ; then 
+        newcompile="false"
+    else
+        newcompile="true"
+    fi 
 
-#     newcompile="false"
+elif [[ $clientchoice == "deis" ]] ; then
 
-# elif [[ $clientchoice == "core" ]] ; then
+    newcompile="false"
 
-#     if [[ ${version%%.*} -lt 29 ]] ; then 
-#         newcompile="false"
-#     else
-#         newcompile="true"
-#     fi 
+elif [[ $clientchoice == "core" ]] ; then
 
-# fi
+    if [[ ${version%%.*} -lt 29 ]] ; then 
+        newcompile="false"
+    else
+        newcompile="true"
+    fi 
+
+fi
 
 #to reduce errors on screen, making temporary git variables...
     export GIT_AUTHOR_NAME="Temporary Parmanode"
@@ -34,9 +41,7 @@ source /usr/local/parmanode/src/p4socket.sh
     export GIT_COMMITTER_NAME="Parmanode Committer"
     export GIT_COMMITTER_EMAIL="parman@parmanode.parman"
 
-if [[ $nd != "true" ]] ; then
 /usr/local/parmanode/scripts/bitcoin_compile_dependency_script.sh
-fi
 
 p4socket "####install_bitcoin#Downloading Bitcoin code from GitHub"
 

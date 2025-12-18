@@ -1,11 +1,25 @@
 function parmanode_variables {
 
+
 if [[ $(uname) == "Linux" ]] ; then
+
+    #find HOME variable.
+    for x in $(ls /home/) ; do
+        if sudo test -d /home/$x/.parmanode ; then HOME="/home/$x" ; break ; fi
+    done
+
     export OS="Linux" 
     export macprefix=""
     export torrc="/etc/tor/torrc"
     export varlibtor="/var/lib/tor"
+
 elif [[ $(uname) == "Darwin" ]] ; then
+
+    #find HOME variable.
+    for x in $(ls /users/) ; do
+        if sudo test -d /users/$x/.parmanode ; then HOME="/users/$x" ; break ; fi
+    done
+
     export OS="Mac"
     export macprefix="$(brew --prefix 2>/dev/null)" 
       if [[ -z $macprefix ]] ; then export macprefix="/usr/local" ; fi
