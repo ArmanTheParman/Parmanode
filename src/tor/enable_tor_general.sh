@@ -1,8 +1,4 @@
 function enable_tor_general {
-
-#exit if done before
-if sudo grep -qEi "# Additions by Parmanode" $torrc >$dn 2>&1 ; then return 0 ; fi
-
 #install tor if needed
 if ! which tor >$dn 2>&1 ; then install_tor ; fi
 
@@ -10,8 +6,7 @@ if ! which tor >$dn 2>&1 ; then install_tor ; fi
 [[ $OS == "Linux" ]] && sudo usermod -a -G debian-tor $USER >$dn 2>&1
 
 #add control port
-if [[ ! -e $torrc ]] || ! sudo grep -q "# Additions by Parmanode" $torrc ; then 
-touch $torrc >$dn 2>&1
+! sudo test -f $torrc || sudo touch $torrc >$dn 2>&1
 
 sudo gsed -i -E "/# Additions by Parmanode/d" $torrc >$dn 2>&1
 sudo gsed -i -E "/^ControlPort 9051/d" $torrc >$dn 2>&1
