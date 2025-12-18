@@ -78,4 +78,7 @@ case "$1" in
 "move_electrumx_service_file")
     cp -r /usr/local/parmanode/service/electrumx.service /etc/systemd/system/electrumx.service
 ;;
+
+"bitcoin_tor")
+    /usr/local/parmanode/scripts/bitcoin_tor.sh "$2" "$3"
 esac

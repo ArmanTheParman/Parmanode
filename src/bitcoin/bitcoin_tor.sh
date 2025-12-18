@@ -1,51 +1,35 @@
 function bitcoin_tor { debugf
 
 #start fresh
-$xsudo gsed -i "/discover=/d" $bc >$dn 2>&1
-$xsudo gsed -i "/onion/d" $bc
-$xsudo gsed -i -E "/^bind=/d" $bc
-$xsudo gsed -i "/onlynet/d" $bc
-$xsudo gsed -i "/listenonion=1/d" $bc
-$xsudo gsed -i "/listen=0/d" $bc
-$xsudo gsed -i "/externalip=/d" $bc >$dn 2>&1
-$xsudo gsed -i -E "/^\s*$/d" $bc >$dn 2>&1
+sudo /usr/local/parmanode/p4run "bitcoin_tor"
 
 if [[ $1 == "clearnet" ]] ; then
-    $xsudo gsed -i "/onion=/d" $bc
-    local exit_early="true" #no need to get onion address
-fi
-
-install_tor
-
-if [[ ! -e $varlibtor ]] ; then mkdir -p $varlibtor >$dn 2>&1 ; fi
-if [[ ! -e $torrc ]] ; then $xsudo touch $torrc >$dn 2>&1 ; fi
-
+    local exit_early="true" # No need to get onion address, but still need 
+                            # to check for restart tor/bitcoin to clear settings if not called 
+                            # from bitcoin_install()
+else
+install_tor #should be installed already, since have added Tor as a dependency to Parmanode.
 enable_tor_general
 
-
-if [[ $parmaview == 1 ]] ; then sudo /usr/local/parmanode/p4run "add_bitcoin_hidden_service"
-else {
-
-    if ! sudo grep "HiddenServiceDir $varlibtor/bitcoin-service/" $torrc | grep -v "^#" >$dn 2>&1 ; then 
-        echo "HiddenServiceDir $varlibtor/bitcoin-service/" | sudo tee -a $torrc >$dn 2>&1
+    #probably redundant
+    if [[ $OS == "Mac" ]] ; then
+        if [[ ! -e $varlibtor ]] ; then mkdir -p $varlibtor >$dn 2>&1 ; fi
     fi
 
-    if ! sudo grep "HiddenServicePort 8333 127.0.0.1:8333" $torrc | grep -v "^#" >$dn 2>&1 ; then 
-        echo "HiddenServicePort 8333 127.0.0.1:8333" | sudo tee -a $torrc >$dn 2>&1
+sudo /usr/local/parmanode/p4run "add_bitcoin_hidden_service"
         restart_tor #necessary as the service is new now
-    fi
-}
+
 fi
+
 debug
 
-# discover=0 (dont advertise clearnet IP) ; if not set, default is 1
+# NOTES # discover=0 (dont advertise clearnet IP) ; if not set, default is 1
 
 if [[ $1 == "torandclearnet" ]] ; then
-    $xsudo gsed -i "/onion=/d" $bc
     if grep -q btcpaycombo-end $ic ; then
-        echo "onion=host.docker.internal:9050" | $xsudo tee -a $bc >$dn 2>&1
+        echo "onion=host.docker.internal:9050" | sudo tee -a $bc >$dn 2>&1
     else
-        echo "onion=127.0.0.1:9050" | $xsudo tee -a $bc >$dn 2>&1
+        sudo /usr/local/parmanode/p4run "bitcoin_tor" "localhost_onion"
     fi
     echo "listenonion=1" | $xsudo tee -a $bc >$dn 2>&1
     get_onion_address_variable "bitcoin"
@@ -105,7 +89,7 @@ if [[ $2 == "onlyout" ]] ; then
     fi
 
 restart_tor
-if [[ -z $install_bitcoin_variable ]] ; then
+if [[ -z $install_bitcoin_variable ]] ; then #if this is not called by bitcoin install, then restart bitcoin
 stop_bitcoin
 start_bitcoin
 fi
@@ -200,7 +184,7 @@ fi
 if grep -q "discover=1" $bc ; then
     parmanode_conf_remove "bitcoin_tor_status="
     parmanode_conf_add "bitcoin_tor_status=tc"
-    if grep -q externalip= $bc ; then #if externalip exists, must be onion, else break to unkown 
+    if grep -q externalip= $bc ; then #if externalip exists, must be onion, else break to unknown 
          if ! cat $bc | grep externalip= | grep -q onion ; then break ; fi 
     fi
     return 0
