@@ -1,5 +1,5 @@
 
-function make_restricted_bucket {
+function make_restricted_bucket { debugf
 
 sudo mkdir -p /usr/local/parmanode/{src,scripts,service,keys}
 sudo chown root:$(id -gn) /usr/local/parmanode/{src,scripts,service,keys}
@@ -56,7 +56,7 @@ HOME=$HOME /usr/local/parmanode/patch.sh >>$dp/debug.log 2>&1
 exit 0
 EOF
 sudo chmod 750 /usr/local/parmanode/scripts/patchrunner.sh
-sudo -E /usr/local/parmanode/scripts/patchrunner.sh #run once
+sudo /usr/local/parmanode/scripts/patchrunner.sh #run once
 parmanode_conf_remove "restricted_bucket=true" #remove old flag
 parmanode_conf_add "restricted_bucket_v2=true"
 }

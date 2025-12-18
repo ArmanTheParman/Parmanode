@@ -2,7 +2,7 @@ function get_onion_address_variable {
 if [[ $1 == "bitcoin" ]] || [[ -z $1 ]] ; then
 
     if [[ $parmaview == 1 ]] ; then 
-        export ONION_ADDR="$(sudo -E /usr/local/parmanode/p4run "get_onion_address_variable" "bitcoin")" 
+        export ONION_ADDR="$(sudo /usr/local/parmanode/p4run "get_onion_address_variable" "bitcoin")" 
         return 0 
     fi
 

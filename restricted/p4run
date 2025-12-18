@@ -2,7 +2,7 @@
 
 # Parmaview helper function
 # Usage:
-#    sudo -E /usr/local/parmanode/p4run "screened argument allowed only here"
+#    sudo /usr/local/parmanode/p4run "screened argument allowed only here"
 # Location
 # $pn/restricted --> /usr/local/parmanode/p4run (live)
 
@@ -11,7 +11,13 @@
 dn=/dev/null
 torrc=/etc/tor/torrc
 varlibtor=/var/lib/tor
-HOME=/home/parman
+
+
+#find HOME variable.
+for x in $(ls /home/) ; do
+    if sudo test -d /home/$x/.parmanode ; then HOME="/home/$x" ; break ; fi
+done
+
 dp=$HOME/.parmanode/
 bc=$HOME/.bitcoin/bitcoin.conf
 
