@@ -34,7 +34,7 @@ for dir in "$pn/restricted" "$pn/restricted/src" "$pn/restricted/scripts" ; do
 
          if test -d \$dir/\$x ; then continue ; fi #skip directory verification
 
-         if ! gpgv --keyring /usr/local/parmanode/parman.gpg "\$x.sig" "\$x" >$dn 2>&1 ; then exit 1 ; fi
+         if ! gpgv --keyring /usr/local/parmanode/keys/parman.gpg "\$x.sig" "\$x" >$dn 2>&1 ; then exit 1 ; fi
 
          if [[ \$dir =~ src$ ]] ; then
                sudo cp -r "\$dir/\$x" "/usr/local/parmanode/src/\$x" >$dn 2>&1
