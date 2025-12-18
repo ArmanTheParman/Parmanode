@@ -28,6 +28,8 @@ elif [[ $clientchoice == "core" ]] ; then
 fi
 
 if [[ $parmaview == 1 ]] ; then
+echo -e "PRE-script: Client choice is: $clientchoice"
+read
 sudo /usr/local/parmanode/scripts/compile_bitcoin.sh
 return 0
 fi
