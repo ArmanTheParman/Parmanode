@@ -29,6 +29,23 @@ elif [[ $(uname) == "Darwin" ]] ; then
 fi
 
 export dn="/dev/null"
+export pdc="$HOME/.parmanode/parmadrive.conf"
+export pd=$parmanode_drive
+export dp="$HOME/.parmanode"
+export hp="$HOME/parmanode"
+export pp="$HOME/parman_programs"
+export pn="$pp/parmanode"
+export db="$HOME/.bitcoin"
+export bc="$db/bitcoin.conf"
+export fc="$HOME/.fulcrum/fulcrum.conf"
+export hm="$dp/hide_messages.conf"
+export hc="$dp/hide_commands.conf"
+export pc="$dp/parmanode.conf"
+export ic="$dp/installed.conf"
+export oc="$dp/overview.conf"
+export nk="$dp/.nostr_keys/nostr_keys.txt"
+export nkd="$dp/.nostr_keys"
+export dn="/dev/null"
 export ndebug="$dp/.new_debug.log"
 export nginxconf="$macprefix/etc/nginx/nginx.conf"
 export parmaviewnginx="$macprefix/etc/nginx/conf.d/parmaview.conf"
