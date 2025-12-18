@@ -12,6 +12,13 @@ if ! which tor >$dn 2>&1 ; then install_tor ; fi
 #add control port
 if [[ ! -e $torrc ]] || ! sudo grep -q "# Additions by Parmanode" $torrc ; then 
 touch $torrc >$dn 2>&1
+
+sudo gsed -i -E "/# Additions by Parmanode/d" $torrc >$dn 2>&1
+sudo gsed -i -E "/^ControlPort/d" $torrc >$dn 2>&1
+sudo gsed -i -E "/^CookieAuthentication 1/d" $torrc >$dn 2>&1
+sudo gsed -i -E "/^CookieAuthFileGroupReadable 1/d" $torrc >$dn 2>&1
+sudo gsed -i -E "/^DataDirectoryGroupReadable 1/d" $torrc >$dn 2>&1
+
 cat << EOF | sudo tee -a $torrc >$dn
 
 # Additions by Parmanode...

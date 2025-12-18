@@ -148,7 +148,6 @@ function bitcoin_tor_remove { debugf
 
 stop_bitcoin
 #delete...
-$xsudo gsed -i  "/# Additions by Parmanode/d" $macprefix/etc/tor/torrc
 $xsudo gsed -i  "/bitcoin-service/d"          $macprefix/etc/tor/torrc
 $xsudo gsed -i  "/127.0.0.1:8333/d"           $macprefix/etc/tor/torrc
 $xsudo gsed -i  "/onion/d"                    $bc 

@@ -38,9 +38,7 @@ fi
 log "tor-server" "Beginning tor-server install"
 installed_conf_add "tor-server-start"
 
-if ! sudo cat /etc/tor/torrc | grep "# Additions by Parmanode..." >$dn 2>&1 ; then
-echo "# Additions by Parmanode..." | sudo tee -a /etc/tor/torrc >$dn 2>&1
-fi
+enable_tor_general
 
 echo "HiddenServiceDir /var/lib/tor/tor-server/" | sudo tee -a /etc/tor/torrc >$dn 2>&1
 echo "HiddenServicePort 7001 127.0.0.1:7001" | sudo tee -a /etc/tor/torrc >$dn 2>&1

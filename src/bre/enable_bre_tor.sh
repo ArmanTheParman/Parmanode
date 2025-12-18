@@ -14,10 +14,6 @@ please_wait
 
 if ! id | grep -q "debian-tor" ; then sudo usermod -aG debian-tor $USER >$dn 2>&1 ; fi
 
-if ! sudo cat $torrc | grep "# Additions by Parmanode..." >$dn 2>&1 ; then
-echo "# Additions by Parmanode..." | sudo tee -a $torrc >$dn 2>&1
-fi
-
 enable_tor_general
 
 # if there's this search string, that doesn't start with #, then...
