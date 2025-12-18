@@ -23,6 +23,4 @@ CookieAuthFileGroupReadable 1
 DataDirectoryGroupReadable 1
 
 EOF
-fi
-
 }
