@@ -14,7 +14,7 @@ if [[ $(uname) == "Darwin" ]] ; then
 fi
 
 while [[ $# -gt 0 ]] ; do
-case $1 in "") break ;;
+case $1 in 
 
 "startfresh")
 gsed -i "/discover=/d"     $bc >$dn 2>&1
@@ -121,7 +121,6 @@ EOF
 shift
 ;;
 
-
-
-
+"") break ;;
 esac
+done
