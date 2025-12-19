@@ -1,25 +1,12 @@
-function enable_tor_general {
+function enable_tor_general { debugf
 #install tor if needed
-which tor >$dn 2>&1 || install_tor 
-! sudo test -f $torrc || sudo touch $torrc >$dn 2>&1
+    which tor >$dn 2>&1 || install_tor #uses p4run (needed only for Linux)
 
-#add debian-tor, doesn't hurt
-[[ $OS == "Linux" ]] && sudo usermod -a -G debian-tor $USER >$dn 2>&1
+#probably redundant, silently fails via parmaview
+    ! sudo test -f $torrc || sudo touch $torrc >$dn 2>&1 
+    #add debian-tor, doesn't hurt, silently fails via parmaview
+    [[ $OS == "Linux" ]] && sudo usermod -a -G debian-tor $USER >$dn 2>&1
 
-#clear potential duplicates
-sudo gsed -i -E "/# Additions by Parmanode/d" $torrc >$dn 2>&1
-sudo gsed -i -E "/^ControlPort 9051/d" $torrc >$dn 2>&1
-sudo gsed -i -E "/^CookieAuthentication 1/d" $torrc >$dn 2>&1
-sudo gsed -i -E "/^CookieAuthFileGroupReadable 1/d" $torrc >$dn 2>&1
-sudo gsed -i -E "/^DataDirectoryGroupReadable 1/d" $torrc >$dn 2>&1
-
-cat << EOF | sudo tee -a $torrc >$dn
-
-# Additions by Parmanode...
-ControlPort 9051
-CookieAuthentication 1
-CookieAuthFileGroupReadable 1
-DataDirectoryGroupReadable 1
-
-EOF
+#clear potential duplicates, and add "# Additions by Parmanode..."
+    sudo /usr/local/parmanode/p4run "tor" "tor_additions_by_parmanode"
 }

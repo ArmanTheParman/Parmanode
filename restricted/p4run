@@ -76,9 +76,11 @@ case "$1" in
 "move_electrumx_service_file")
     cp -r /usr/local/parmanode/service/electrumx.service /etc/systemd/system/electrumx.service
 ;;
-
-"bitcoin_tor")
-    /usr/local/parmanode/scripts/bitcoin_tor.sh "$2" "$3"
+"install_tor")
+    if [[ $(uname) == "Linux" ]] ; then sudo apt-get install tor -y  ; fi
+;;
+"bitcoin_tor"|"tor")
+    /usr/local/parmanode/scripts/tor.sh "$2" "$3"
 ;;
 "rpcbind")
 [[ -e $bc ]] && ! grep -q "rpcbind=0.0.0.0" $bc >$dn 2>&1 && echo "rpcbind=0.0.0.0" | tee -a $bc >$dn 2>&1

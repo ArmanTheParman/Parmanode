@@ -6,8 +6,16 @@ dn=/dev/null
 #source /usr/local/parmanode/src/p4socket.sh
 #source /usr/local/parmanode/src/debug.sh
 
+if [[ $(uname) == "Darwin" ]] ; then 
+    export macprefix="$(brew --prefix 2>/dev/null)" 
+    if [[ -z $macprefix ]] ; then export macprefix="/usr/local" ; fi
+    export torrc="$macprefix/etc/tor/torrc"
+    export varlibtor="$macprefix/var/lib/tor"
+fi
+
 while [[ $# -gt 0 ]] ; do
-case $1 in
+case $1 in "") break ;;
+
 "startfresh")
 gsed -i "/discover=/d"     $bc >$dn 2>&1
 gsed -i "/onion/d"         $bc >$dn 2>&1
@@ -82,14 +90,38 @@ shift
     gsed -i "/externalip/d" $bc >$dn 2>&1
     shift
 ;;
+
 "remove_bitcoin_hidden_service")
-gsed -i  "/bitcoin-service/d"          $macprefix/etc/tor/torrc >$dn 2>&1
-gsed -i  "/127.0.0.1:8333/d"           $macprefix/etc/tor/torrc >$dn 2>&1
-gsed -i  "/onion/d"                    $bc  >$dn 2>&1
-echo "listenonion=0" | tee -a $bc >$dn 2>&1
-gsed -i  "/bind=127.0.0.1/d"           $bc >$dn 2>&1
-gsed -i  "/onlynet/d"                  $bc >$dn 2>&1
+    gsed -i  "/bitcoin-service/d"          $macprefix/etc/tor/torrc >$dn 2>&1
+    gsed -i  "/127.0.0.1:8333/d"           $macprefix/etc/tor/torrc >$dn 2>&1
+    gsed -i  "/onion/d"                    $bc  >$dn 2>&1
+    echo "listenonion=0" | tee -a $bc >$dn 2>&1
+    gsed -i  "/bind=127.0.0.1/d"           $bc >$dn 2>&1
+    gsed -i  "/onlynet/d"                  $bc >$dn 2>&1
+    shift
+;;
+
+"tor_additions_by_parmanode")
+
+gsed -i -E "/# Additions by Parmanode/d" $torrc >$dn 2>&1
+gsed -i -E "/^ControlPort 9051/d" $torrc >$dn 2>&1
+gsed -i -E "/^CookieAuthentication 1/d" $torrc >$dn 2>&1
+gsed -i -E "/^CookieAuthFileGroupReadable 1/d" $torrc >$dn 2>&1
+gsed -i -E "/^DataDirectoryGroupReadable 1/d" $torrc >$dn 2>&1
+
+cat << EOF | sudo tee -a $torrc >$dn
+
+# Additions by Parmanode...
+ControlPort 9051
+CookieAuthentication 1
+CookieAuthFileGroupReadable 1
+DataDirectoryGroupReadable 1
+
+EOF
 shift
 ;;
+
+
+
 
 esac

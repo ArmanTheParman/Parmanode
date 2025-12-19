@@ -20,12 +20,10 @@ case $choice in Q|q|Quit|QUIT) exit 0 ;; p|P) return 1 ;; *) true ;; esac
 fi
 set_terminal
 
-if [[ $OS == "Linux" ]] ; then  sudo apt-get install tor -y ; fi
-
-if [[ $OS == "Mac" ]] ; then
-
+if [[ $OS == "Linux" ]] ; then  
+    sudo /usr/local/parmanode/p4run "install_tor"
+else
     brew_check || return 1
-
     brew install tor && brew services start tor 
 fi
 
