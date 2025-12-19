@@ -1,7 +1,7 @@
 function bitcoin_tor { debugf
 
 #start fresh
-sudo /usr/local/parmanode/p4run "bitcoin_tor"
+sudo /usr/local/parmanode/p4run "bitcoin_tor" "startfresh"
 
 if [[ $1 == "clearnet" ]] ; then
     local exit_early="true" # No need to get onion address, but still need 
@@ -46,9 +46,7 @@ if [[ $1 == "torandclearnet" ]] ; then
     fi
 
 if [[ $1 == "toronly" ]] ; then
-    sudo /usr/local/parmanode/p4run "bitcoin_tor" "discover0"
-    sudo /usr/local/parmanode/p4run "bitcoin_tor" "listenonion=1"
-    sudo /usr/local/parmanode/p4run "bitcoin_tor" "onlynet=onion" #new, disallows outward clearnet connections
+    sudo /usr/local/parmanode/p4run "bitcoin_tor" "toronly"
 
     if grep -q btcpaycombo-end $ic ; then
         sudo /usr/local/parmanode/p4run "bitcoin_tor" "host_docker_internal"
@@ -72,12 +70,7 @@ if [[ $1 == "toronly" ]] ; then
     fi
 
 if [[ $2 == "onlyout" ]] ; then
-    sudo /usr/local/parmanode/p4run "bitcoin_tor" "remove_onlynet"
-    sudo /usr/local/parmanode/p4run "bitcoin_tor" "remove_listenonion"
-    sudo /usr/local/parmanode/p4run "bitcoin_tor" "listen=0"
-    sudo /usr/local/parmanode/p4run "bitcoin_tor" "remove_bind"
-    sudo /usr/local/parmanode/p4run "bitcoin_tor" "remove_externalip"
-    sudo /usr/local/parmanode/p4run "bitcoin_tor" "discover0"
+    sudo /usr/local/parmanode/p4run "bitcoin_tor" "onlyout"
     parmanode_conf_remove "bitcoin_tor_status"
     parmanode_conf_add "bitcoin_tor_status=onlyout"
     sudo /usr/local/parmanode/p4run "rpcbind"
@@ -117,20 +110,12 @@ fi
 }
 
 ########################################################################################
+
 function bitcoin_tor_remove { debugf
 
 stop_bitcoin
-#delete...
-$xsudo gsed -i  "/bitcoin-service/d"          $macprefix/etc/tor/torrc
-$xsudo gsed -i  "/127.0.0.1:8333/d"           $macprefix/etc/tor/torrc
-$xsudo gsed -i  "/onion/d"                    $bc 
-echo "listenonion=0" | $xsudo tee -a $bc >$dn 2>&1
-$xsudo gsed -i  "/bind=127.0.0.1/d"           $bc
-$xsudo gsed -i  "/onlynet/d"                  $bc
-
-
-add_rpcbind #adds 0.0.0.0
-
+sudo /usr/local/parmanode/p4run "bitcoin_tor" "remove_bitcoin_hidden_service"
+sudo /usr/local/parmanode/p4run "rpcbind" #modifications might inadvertently delete rpcbind
 rm $HOME/.bitcoin/onion* >$dn 2>&1
 start_bitcoin
 set_terminal
@@ -163,8 +148,8 @@ fi
 if grep -q "bind=127.0.0.1" $bc ; then
     parmanode_conf_remove "bitcoin_tor_status="
     parmanode_conf_add "bitcoin_tor_status=t"
-    if grep -q externalip= $db/bitcoin.conf ; then #if externalip exists, must be onion, else break to unkown
-         if ! cat $db/bitcoin.conf | grep externalip= | grep -q onion ; then break ; fi 
+    if grep -q externalip= $bc ; then #if externalip exists, must be onion, else break to unkown
+         if ! cat $bc | grep externalip= | grep -q onion ; then break ; fi 
     fi
     return 0
 fi
