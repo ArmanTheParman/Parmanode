@@ -55,3 +55,5 @@ gsed -i -E "/^\s*$/d"      $bc >$dn 2>&1
 "remove_externalip")
     gsed -i "/externalip/d" $bc >$dn 2>&1
 ;;
+
+esac
