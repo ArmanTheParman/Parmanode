@@ -4,6 +4,12 @@ case $1 in
 q|quit|exit) exit ;;
 m|main) back2main ;;
 
+clearlogs|cleardebug)
+cd $dp
+rm *log* >$dn 2>&1
+invalid_flag=set
+;;
+
 gp)
 clear
 cd $pn 
