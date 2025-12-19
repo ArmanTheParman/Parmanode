@@ -57,6 +57,7 @@ shift
 "externalip")
     echo "externalip=$2" | tee -a $bc >$dn 2>&1
     shift
+    shift
 ;;
 "discover0")
     echo "discover=0" | tee -a $bc >$dn 2>&1
