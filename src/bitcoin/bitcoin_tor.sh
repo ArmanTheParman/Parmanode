@@ -47,26 +47,30 @@ if [[ $1 == "torandclearnet" ]] ; then
 
 if [[ $1 == "toronly" ]] ; then
     sudo /usr/local/parmanode/p4run "bitcoin_tor" "toronly"
-
+debug
     if grep -q btcpaycombo-end $ic ; then
         sudo /usr/local/parmanode/p4run "bitcoin_tor" "host_docker_internal"
     else
+        debug
         sudo /usr/local/parmanode/p4run "bitcoin_tor" "localhost_onion"
     fi
-
+debug
     count=0 
     while [[ $btcpayinstallsbitcoin != "true" && -z $ONION_ADDR && $count -lt 4 ]] ; do
         restart_tor
         export ONION_ADDR=$(sudo /usr/local/parmanode/p4run "get_onion_address_variable" "bitcoin")
         sleep 1.5
         count=$((count + 1))
+        debug
     done 
+debug
 
     [[ -z $ONION_ADDR ]] && sww "Some issue with getting onion address. Try later or switch to no Tor." && return 1
     sudo /usr/local/parmanode/p4run "bitcoin_tor" "externalip" "$ONION_ADDR"
     parmanode_conf_remove "bitcoin_tor_status"
     parmanode_conf_add "bitcoin_tor_status=toronly"
     sudo /usr/local/parmanode/p4run "rpcbind"
+    debug
     fi
 
 if [[ $2 == "onlyout" ]] ; then
