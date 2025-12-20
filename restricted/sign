@@ -8,4 +8,8 @@ gpg --detach-sign README
 gpg --detach-sign p4run
 gpg --detach-sign patch.sh
 
+cd $HOME/parman_programs/parmanode/restricted/scripts/ 
+$HOME/parman_programs/parmanode/restricted/scripts/sign 
 
+cd $HOME/parman_programs/parmanode/restricted/src/ 
+$HOME/parman_programs/parmanode/restricted/src/sign 
