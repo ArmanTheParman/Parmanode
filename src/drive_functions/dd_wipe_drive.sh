@@ -119,7 +119,7 @@ please_wait
 
 if [[ $OS == "Linux" ]] ; then
     remove_parmanode_fstab # don't want multiple parmanode entries in fstab
-
+    debug
     # the yes command prints the string over and over, and given to the dd command
     # The wiping will involved 1 megabyte x 250 times (as per variables below) and the string will
     # be writting in the space. Wiping the entire drive like this takes too long.

@@ -10,6 +10,12 @@ echo "
 $USER ALL=(root) NOPASSWD: /usr/local/parmanode/scripts/patchrunner.sh
 #Parmaview helper
 $USER ALL=(root) NOPASSWD: /usr/local/parmanode/p4run *
+#System Commands
+$USER ALL=(root) NOPASSWD: $(which systemctl) daemon-reload
+$USER ALL=(root) NOPASSWD: $(which blkid)
+$USER ALL=(root) NOPASSWD: $(which lsblk)
+$USER ALL=(root) NOPASSWD: $(which mountpoint)
+$USER ALL=(root) NOPASSWD: $(which partprobe)
 #Bitcoin commands
 $USER ALL=(root) NOPASSWD: $(which systemctl) start bitcoind.service
 $USER ALL=(root) NOPASSWD: $(which systemctl) stop bitcoind.service
@@ -67,6 +73,7 @@ $USER ALL=(root) NOPASSWD: $(which systemctl) restart nginx.service
 $USER ALL=(root) NOPASSWD: $(which systemctl) start nginx
 $USER ALL=(root) NOPASSWD: $(which systemctl) stop nginx 
 $USER ALL=(root) NOPASSWD: $(which systemctl) restart nginx
+$USER ALL=(root) NOPASSWD: $(which nginx) -t
 #BTCrpcexplorer commands
 $USER ALL=(root) NOPASSWD: $(which systemctl) start btcrpcexplorer.service
 $USER ALL=(root) NOPASSWD: $(which systemctl) stop btcrpcexplorer.service 
@@ -91,8 +98,6 @@ $USER ALL=(root) NOPASSWD: $(which systemctl) start electrumx
 $USER ALL=(root) NOPASSWD: $(which systemctl) stop electrumx
 $USER ALL=(root) NOPASSWD: $(which systemctl) restart electrumx
 $USER ALL=(root) NOPASSWD: $(which cp) -f /usr/local/parmanode/service/electrumx.service /etc/systemd/system/
-#Systemctl commands
-$USER ALL=(root) NOPASSWD: $(which systemctl) daemon-reload
 " | sudo tee /etc/sudoers.d/parmanode >$dn 2>&1
 return 0
 }

@@ -29,5 +29,6 @@ fi
 }
 
 function remove_parmanode_fstab {
+[[ $parmaview == 1 ]] && { sudo /usr/local/parmanode/p4run "remove_parmanode_fstab" ; return $? ; }
 sudo gsed -i "/parmanode/d" /etc/fstab
 }

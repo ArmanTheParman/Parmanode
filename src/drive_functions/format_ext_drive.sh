@@ -33,7 +33,7 @@ fi
 unmount   # Need drive not to be mounted in order to wipe and format.
           # Should unmount RAID too
 
-if [[ $1 != Bitcoin && $1 != justFormat ]] ; then
+if [[ $1 != "Bitcoin" && $1 != "justFormat" && $parmaview != 1 ]] ; then
     dd_wipe_drive  
 fi
 
@@ -65,13 +65,14 @@ fi
 
 if [[ $OS == "Linux" ]] ; then
 
-        if [[ $raid != "true" ]] ; then partition_drive 
+        if [[ $raid != "true" ]] ; then 
+        partition_drive 
         debug "after partition drive"
         fi
 
         # The following function is redundant, but added in case the dd function (which
         # calls this function earlier is discarded). 
-        remove_parmanode_fstab
+        remove_parmanode_fstab #(parmaview handled inside function)
         
         # Remove partition number (order of these two lines matters)
             disk=$(echo $disk | sed 's/p[0-9]$//') #remove the partition number for nvme format
@@ -79,9 +80,13 @@ if [[ $OS == "Linux" ]] ; then
             debug "disk is now $disk, after removing partition number"
 
         # Formats the drive and labels it "parmanode" - uses standard linux type, ext4
-        sudo mkfs.ext4 -F -L "parmanode" $disk || sww "(\$disk is $diks)"
-        sudo tune2fs -m 1 $disk >$dn 2>&1
-        sudo blkid >$dn ; sleep 1 #need to refresh
+        if [[ $parmaview != 1 ]] ; then
+            sudo mkfs.ext4 -F -L "parmanode" $disk || sww "(\$disk is $disk)"
+            sudo tune2fs -m 1 $disk >$dn 2>&1
+            sudo blkid >$dn ; sleep 1 #need to refresh
+        else
+            sudo /usr/local/parmanode/p4run "format_ext_drive"
+        fi
 
         #Extract the *NEW* UUID of the disk and write to config file.
         get_UUID || return 1

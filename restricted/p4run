@@ -89,5 +89,13 @@ case "$1" in
 "unmount")
    /usr/local/parmanode/scripts/drives.sh "unmount"
 ;;
+"fdisk")
+   /usr/local/parmanode/scripts/drives.sh "fdisk" "$2"
+;;
+"remove_parmanode_fstab")
+   gsed -i "/parmanode/d" /etc/fstab
+;;
+"format_ext_drive")
+   /usr/local/parmanode/scripts/drives.sh "format_ext_drive"
 
 esac
