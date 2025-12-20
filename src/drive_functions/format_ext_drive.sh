@@ -22,7 +22,7 @@ fi ; unset justFormat
 
 
 if [[ $raid != "true" ]] ; then
-    [[ $parmaview != 1]] &&  { detect_drive || return 1 ; } #alternative (better) way to get $disk variable, and exported.
+    [[ $parmaview != 1 ]] &&  { detect_drive || return 1 ; } #alternative (better) way to get $disk variable, and exported.
 else
 announce "Please make sure the RAID drive you want to use is mounted now.
     Open a new terminal to do that if you need, and$pink ONLY proceed here
