@@ -87,7 +87,7 @@ case "$1" in
 ;;
 
 "unmount")
-   /usr/local/parmanode/src/scripts/drives.sh "unmount"
+   /usr/local/parmanode/scripts/drives.sh "unmount"
 ;;
 
 esac
