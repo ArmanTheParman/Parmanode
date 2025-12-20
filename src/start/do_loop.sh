@@ -29,7 +29,6 @@ fi
 gsed_symlink #linux only
 
 parmanode_variables $@ #CANNOT USE CUSTOM DEBUG FUNCTION BEFORE THIS"
-test -f $hm || touch $hm
 
 source_premium
 
@@ -94,7 +93,6 @@ fi #end btcpayinstallsbitcoin
 
 #Health check
 parmanode1_fix
-debug
 #prompts every 20 times parmanode is run (reducing load up time of Parmanode)
 [[ $premium == 1 ]] || if [[ $rp_count == 1 || $((rp_count % 20 )) == 0 ]] ; then
    #environment checks
@@ -105,41 +103,37 @@ fi
 ########################################################################################
 ########################################################################################
 [[ $premium == 1 ]] || apply_patches
-debug
 #Add Parmashell (do after patches)
 [[ $premium == 1 ]] || install_parmashell 
 # get version, and suggest user to update if old.
-debug
 [[ $btcpayinstallsbitcoin == "true" ]] || update_version_info 
 if [[ $exit_loop == "false" ]] ; then return 0 ; fi
 
 # set "trap" conditions; currently makes sure user's terminal reverts to default colours
 # when they exit.
 clean_exit 
-
 if [[ $enter_cont == "d" ]] ; then unset debug ; fi
 # before the screen is cleared.
 custom_startup $@
 if [[ $btcpayinstallsbitcoin == "true" ]] ; then install_bitcoin ; exit ; fi
-
+debug
 #message of the day
 [[ $premium == 1 ]] || if [[ $1 != "menu" ]] && [[ ! $debug == 1 ]] ; then
-#rossisfree 
-#vncishere
-########################################################################################
-########################################################################################
-motd
+    motd
+    debug
 fi
 #Commands that refresh data
 pn_tmux "$dp/scripts/update_external_IP2.sh" "checking_external_IP"
+debug
 test_8333_reachable
+debug
 jump $1
 
 #
 make_parmanode_ssh_keys
-
+debug
 recommend_bre_uninstall
-
+debug
 # This is the main program, which is a menu that loops.
 #Parminer borrows do_loop function, but don't go to parmanode menu
 [[ $premium == 1 ]] || menu_main

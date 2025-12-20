@@ -2,8 +2,10 @@ function motd {
 
 # For later    zenity --info --title="MOTD" --text="Message" --width=400 --height=100
 
-if [[ -f $HOME/.parmanode/hide_messages.conf ]] ; then
-. $HOME/.parmanode/hide_messages.conf >$dn
+if [[ -f $hm ]] ; then
+. $hm >$dn
+else
+touch $hm
 fi
 
 if grep -q "hide_censorship=1" $hm ; then

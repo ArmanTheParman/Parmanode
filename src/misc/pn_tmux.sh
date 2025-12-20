@@ -8,7 +8,7 @@ fi
 
 which tmux >$dn 2>&1 || install_tmux 
 
-TMUX2=$TMUX ; unset TMUX ; clear
+TMUX2=$TMUX ; unset TMUX ; 
 
 if echo "$(tmux ls 2>/dev/null)" | grep -q $tmuxname ; then sww "TMUX session $tmuxname already exists. Exiting." ; return 1 ; fi
 

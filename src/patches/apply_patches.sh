@@ -5,12 +5,9 @@ function apply_patches { debugf
 temp_patch
 suggest_tor
 make_parmanode_tor_service  #makes parmanode tor onion address ; put in next patch
-debug
 hello
-debug
 #make sure debug file doesn't get too big
 truncatedebuglog
-debug
 if ! cat $bashrc 2>$dn | grep -q "parmashell_functions" ; then
 echo "function rp { cd $HOME/parman_programs/parmanode ; ./run_parmanode.sh \$@ ; }" | sudo tee -a $bashrc >$dn 2>&1
 fi
@@ -45,7 +42,9 @@ debug "patch 10 done"
 patch_1 ; patch_2 ; patch_3 ; patch_4 ; patch_5 ; patch_6 ; patch_7 ; patch_8 ; patch_9 ; patch_10 ;;
 esac
 
+if test -f $pn/debug.log ; then
 sudo rm $pn/debug.log >$dn 2>&1 # remove in Feb
+fi
 }
 
 
@@ -54,7 +53,7 @@ if [[ $btcpayinstallsbitcoin == "true" ]] ; then return 0 ; fi
 if [[ $btcdockerchoice == "yes" ]] ; then return 0 ; fi
 
 if which tor >$dn 2>&1 ; then return 0 ; fi
-if cat $hm 2>$dn | grep -q "no_tor=1" ; then return 0 ; fi
+if grep -q "no_tor=1" $hm 2>$dn ; then return 0 ; fi
 
 while true ; do
 set_terminal ; echo -e "
