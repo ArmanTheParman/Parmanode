@@ -86,6 +86,8 @@ case "$1" in
 [[ -e $bc ]] && ! grep -q "rpcbind=0.0.0.0" $bc >$dn 2>&1 && echo "rpcbind=0.0.0.0" | tee -a $bc >$dn 2>&1
 ;;
 
-
+"unmount")
+   /usr/local/parmanode/src/scripts/drives.sh "unmount"
+;;
 
 esac

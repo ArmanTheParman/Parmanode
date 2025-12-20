@@ -60,6 +60,7 @@ pvcustom)
     installed_conf_add "bitcoin-start"
     export drive="custom" ; parmanode_conf_add "drive=custom"
     export bitcoin_drive_import="true" #used later to avoid format prompt.
+    export skip_formatting="true"
     return 0
 ;;
 ext)

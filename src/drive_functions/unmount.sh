@@ -1,5 +1,11 @@
 function unmount {
 set_terminal
+
+[[ $parmaview == 1 ]] && {
+    sudo /usr/local/parmanode/p4run "unmount"
+    return $?
+}
+
 please_wait
 
 if [[ $OS == "Linux" ]] ; then

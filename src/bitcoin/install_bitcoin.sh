@@ -68,8 +68,6 @@ set_terminal
 #choose version
 choose_bitcoin_version || return 1 #no_compile variable set for macs here.
 
-debug "after version"
-
 unset importdrive
 
 p4socket "####install_bitcoin#Preparing Drive"

@@ -1,4 +1,5 @@
 function format_warnings {
+
 while true ; do
 set_terminal
 if [[ $OS == "Linux" ]] ; then

@@ -29,6 +29,7 @@ function st { clear ; printf '\e[8;40;140t' ; }
 function .. { cd .. ; a ; }
 function pp { cd $HOME/parman_programs/ ; a ; }
 function pn { cd $HOME/parman_programs/parmanode/ ; a ; }
+function pnr { cd $HOME/parman_programs/parmanode/restricted ; a ; }
 function hp { cd $HOME/parmanode ; a ; }
 function pl { pp ; cd ParmanodL ; a ; }
 function d { cd $HOME/Desktop && a ; }

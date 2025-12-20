@@ -1,7 +1,7 @@
 function format_ext_drive {
 debug " in format_ext_drive, sf = $skip_formatting"
 
-if [[ $skip_formatting == "true" || $bitcoin_drive_import == "true" ]] ; then return 0 ; fi
+if [[ $drive == "custom" || $skip_formatting == "true" || $bitcoin_drive_import == "true" ]] ; then return 0 ; fi
 debug "bypassed skip_formatting exit"
 
 #quit if internal drive chosen
@@ -14,15 +14,15 @@ debug "passed internal drive choice"
 
 
 #Check if external drive selected for other programs, and warn user.
-if [[ $justFormat != "true" ]] ; then
-    format_warnings #skip_formatting can be changed here
+if ! [[ $justFormat == "true" ]] ; then
+    [[ $parmaview != 1 ]] && format_warnings #skip_formatting can be changed here
     if [[ $skip_formatting == "true" ]] ; then return 0 ; fi
 fi ; unset justFormat
 
 
 
 if [[ $raid != "true" ]] ; then
-detect_drive || return 1 #alternative (better) way to get $disk variable, and exported.
+    [[ $parmaview != 1]] &&  { detect_drive || return 1 ; } #alternative (better) way to get $disk variable, and exported.
 else
 announce "Please make sure the RAID drive you want to use is mounted now.
     Open a new terminal to do that if you need, and$pink ONLY proceed here
