@@ -1,7 +1,8 @@
 function intro {
 
-set_terminal
 [[ -f $HOME/.parmanode/hide_messages.conf ]] && ! grep -q "message_intro=1" $hm && while true ; do
+debug
+set_terminal
 echo -e "$orange
 ########################################################################################
 

@@ -5,6 +5,7 @@ fi
 
 #$message_instructions value comes from sourcing. This is a bit too roundabout; I'll change this later.
 if [[ ${message_instructions} != "1" ]] ; then 
+debug
 set_terminal ; echo -e "
 ########################################################################################$cyan
                                Parmanode Instructions$orange
@@ -77,6 +78,5 @@ hide_messages_add "instructions" "1" ; set_terminal
 ;;
 esac
 fi
-set_terminal
 return 0
 }

@@ -1,50 +1,28 @@
 function temp_patch { debugf
-cleanup_parmanode_service
 
 #these log files can get massive and freeze the system.
-sudo rm -rf ~/.xsessions-errors >$dn 2>&1 ; sudo rm -rf ~/.xsessions-errors.old >$dn 2>&1
-
-if [[ -e /.dockerenv ]] && ! netstat -tuln | grep -q 9050 ; then
-enable_tor_general
-fi
-
-#put in patch 10 later
-test -f $dp/.udev_patch || {
-    udev_patch && touch $dp/.udev_patch
-}
-
-#Docker containers sometimes won't have $USER variable set...
-if [[ -e /.dockerenv && -z $USER ]] ; then
-    USER=$(whoami) >$dn 2>&1
-    echo "USER=$USER ##added by Parmanode" | $xsudo tee -a $HOME/.bashrc >$dn 2>&1
+rm -rf ~/.xsessions-errors >$dn 2>&1 ; rm -rf ~/.xsessions-errors.old >$dn 2>&1
+debug
+if [[ /.dockerenv ]] ; then
+    if ! netstat -tuln | grep -q 9050 ; then enable_tor_general ; fi
+    #Docker containers sometimes won't have $USER variable set...
+    if [[ -z $USER ]] ; then
+        USER=$(whoami) >$dn 2>&1
+        echo "USER=$USER ##added by Parmanode" | $xsudo tee -a $HOME/.bashrc >$dn 2>&1
+    fi
 fi
 
 #delete Nov 2026
 rm -rf $dp/temp >$dn 2>&1
 
-#keep checking in case user declines
-which tmux >$dn 2>&1 || tmux_patch
-
-#leave in temp patch because a single time patch may fail, as docker needs to be running
-
-if [[ $OS == "Linux" ]] && cat $ic 2>$dn | grep -q "electrs" && ! cat $ic 2>$dn | grep -q "electrsdkr" && ! cat /etc/systemd/system/electrs.service 2>$dn | grep -q "StandardOutput" ; then
-please_wait
-echo -e "${green}Once off, adjusting electrs service file real quick\n$orange"
-$xsudo gsed -i '/\[Install\]/i\
-# Logging\nStandardOutput=append:/home/parman/.electrs/run_electrs.log\nStandardError=append:/home/parman/.electrs/run_electrs.log\n' /etc/systemd/system/electrs.service  >$dn 2>&1
-$xsudo systemctl daemon-reload >$dn 2>&1
-$xsudo systemctl restart electrs >$dn 2>&1
-fi
-
-if ! cat $bashrc 2>$dn | grep -q "parmashell" ; then
+if ! grep -q "parmashell" $bashrc 2>$dn ; then
 uninstall_parmashell silent ; install_parmashell
 fi
 
 #Leave until Mac has a non-docker fulcrum option
-if [[ $OS == "Mac" ]] && cat $ic 2>$dn | grep -q "fulcrum-end" ; then
-$xsudo gsed -i 's/fulcrum-end/fulcrumdkr-end/' $ic >$dn 2>&1 
-$xsudo gsed -i 's/fulcrum-start/fulcrumdkr-start/' $ic >$dn 2>&1 
-log "fulcrum" "changed fulcrum-end to fulcrumdkr-end" 
+if [[ $OS == "Mac" ]] && grep -q "fulcrum-end" $ic 2>$dn ; then
+gsed -i 's/fulcrum-end/fulcrumdkr-end/' $ic >$dn 2>&1 
+gsed -i 's/fulcrum-start/fulcrumdkr-start/' $ic >$dn 2>&1 
 fi
 
 # The string "; tlsextradomain" as part of a comment is misinterpreted in a sed command to be
@@ -53,28 +31,8 @@ if [[ -e $HOME/.lnd/lnd.conf ]] && ! grep -q "version 3.47.4" $HOME/.lnd/lnd.con
     $xsudo gsed -i 's/^.*tlsextradomain.*domains.*$/; The tlsextradomain and tls extraip are used to specify additional domains/' $HOME/.lnd/lnd.conf >$dn 2>&1
     $xsudo gsed -i 's/^; LND.*from version.*$/; LND conf configuration, message added by Parmanode, from version 3.47.4/' $HOME/.lnd/lnd.conf >$dn 2>&1
 fi
-
-#make part of installation later
-#having many keys in the .ssh directory causes issues with ssh-agent
-mkdir -p $HOME/.ssh/extra_keys >$dn 2>&1
-$xsudo mv ~/.ssh/*-key* $HOME/.ssh/extra_keys/ >$dn 2>&1
-[[ -f ~/.ssh/config ]] && 
-! grep -q 'extra_keys' ~/.ssh/config && 
-$xsudo gsed -E -i 's|^IdentityFile ~/.ssh/(.*-key)$|IdentityFile ~/.ssh/extra_keys/\1|' ~/.ssh/config >$dn 2>&1
-
-
-#introduce a scripts directory. Needs some refactoring --- add to patch function later
-test -d $dp/scripts || mkdir -p $dp/scripts >$dn 2>&1
-
-mv $dp/update_external_IP2.sh $dp/scripts >$dn 2>&1 #mac and linux ok
-
-if test -f $dp/update_script.sh ; then
-    mv $dp/update_script.sh $dp/scripts/update_script.sh >$dn 2>&1
-    debug "tmp is $tmp"
-    $xsudo cp /etc/crontab $tmp/crontab && $xsudo gsed -i 's/parmanode\/update_script.sh/parmanode\/scripts\/update_script.sh/' /$tmp/crontab >$dn 2>&1
-    $xsudo mv $tmp/crontab /etc/crontab >$dn 2>&1
-fi
-
+debug
+#remove June 2026
 if [[ $OS == "Linux" ]] && test -f $dp/mount_check.sh  ; then
 
     mv $dp/mount_check.sh $dp/scripts/mount_check.sh >$dn 2>&1 
@@ -93,9 +51,8 @@ if [[ $OS == "Linux" ]] && test -f $dp/mount_check.sh  ; then
     $xsudo systemctl daemon-reload
     fi
 
-fi # end linux
+fi 
 
-# would be good to have a run once function, I might make that later and add this in:
 test -f $hc || touch $dp/hide_commands.conf
 
 #prepare for parmaview
@@ -110,8 +67,6 @@ if [[ $OS == "Linux" ]] && $xsudo test -d /usr/local/bin/parmanode &&
 else
 debug "$xsudo, $OS, $ic"
 fi
-
-
 
 #debug temppatchend
 }
@@ -144,9 +99,6 @@ fi
 if [[ $OS == "Mac" ]] && [[ $(arch) == "arm64" ]] ; then
 softwareupdate --install-rosetta --agree-to-license || true
 fi
-
-
-
 }
 
 function remove_tor_log_patch { debugf

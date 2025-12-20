@@ -57,9 +57,7 @@ parmanode_conf_add # With no argument after the function, this will create a
 if [[ ! -e $ic ]] ; then touch $ic ; fi
 # Load config variables
 source $HOME/.parmanode/parmanode.conf >$dn 2>&1 
-
 check_installed_programs
-
 #add to run count
 [[ $premium == 1 ]] || rp_counter
 test_internet_connected || exit
@@ -73,7 +71,6 @@ fi
 
 #test for dependencies and install.
 [[ $OS == "Linux" ]] && parmanode_dependencies 
-
 if [[ $btcpayinstallsbitcoin != "true" ]] ; then
 
     if [[ -e "$HOME/.parmanode/.new_install" ]] ; then
@@ -97,6 +94,7 @@ fi #end btcpayinstallsbitcoin
 
 #Health check
 parmanode1_fix
+debug
 #prompts every 20 times parmanode is run (reducing load up time of Parmanode)
 [[ $premium == 1 ]] || if [[ $rp_count == 1 || $((rp_count % 20 )) == 0 ]] ; then
    #environment checks
@@ -107,10 +105,11 @@ fi
 ########################################################################################
 ########################################################################################
 [[ $premium == 1 ]] || apply_patches
+debug
 #Add Parmashell (do after patches)
 [[ $premium == 1 ]] || install_parmashell 
 # get version, and suggest user to update if old.
-
+debug
 [[ $btcpayinstallsbitcoin == "true" ]] || update_version_info 
 if [[ $exit_loop == "false" ]] ; then return 0 ; fi
 

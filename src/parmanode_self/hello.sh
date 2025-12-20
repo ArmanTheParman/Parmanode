@@ -34,7 +34,7 @@ else
 file="/var/lib/tor/parmanode-service/hostname"
 fi
 
-if ! cat $pc 2>$dn | grep -q "parmanode_service=" ; then
+if ! grep -q "parmanode_service=" $pc ; then
 
     if sudo test -e "$file" >$dn 2>&1 ; then
         #onion address for parmanode-service

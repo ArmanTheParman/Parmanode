@@ -16,15 +16,6 @@ elif [[ $OS == "Mac" ]] ; then
     }
 fi
 
-#nginx 
-
-if ! sudo which nginx >$dn 2>&1 ; then
-installed_config_remove "nginx-"
-gsed -i '/nginx-/d' $ic
-else
-installed_config_add "nginx-end"
-fi
-
 #docker
 
 if { [[ $(uname) == "Darwin" ]] && which docker >$dn       ; } ||

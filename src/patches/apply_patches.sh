@@ -3,9 +3,7 @@ function apply_patches { debugf
 #patch=n
 #get $patch from parmanode.conf
 temp_patch
-debug
 suggest_tor
-debug
 make_parmanode_tor_service  #makes parmanode tor onion address ; put in next patch
 debug
 hello
@@ -50,24 +48,6 @@ esac
 sudo rm $pn/debug.log >$dn 2>&1 # remove in Feb
 }
 
-
-function cleanup_parmanode_service {
-
-if [[ $OS == "Linux" ]] && [[ -e /etc/systemd/system/parmanode.service ]] ; then
-sudo systemctl stop parmanode.service >$dn 2>&1
-sudo systemctl disable parmanode.service >$dn 2>&1
-sudo rm /etc/systemd/system/parmanode.service >$dn 2>&1
-sudo systemctl daemon-reload >$dn 2>&1
-parmanode_conf_remove "parmanode_service="
-rm $dp/parmanode_script.sh >$dn 2>&1
-fi
-if [[ $OS == "Mac" ]] ; then
-parmanode_conf_remove "tor_script=done"
-rm $dp/tor_script.sh >$dn 2>&1
-fi
-
-
-}
 
 function suggest_tor {
 if [[ $btcpayinstallsbitcoin == "true" ]] ; then return 0 ; fi
