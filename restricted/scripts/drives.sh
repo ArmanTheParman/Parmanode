@@ -21,7 +21,7 @@ shift
 # Create a new GPT partition table and a single partition on the drive
 # interestingly, you can plonk a redirection in the middle of a heredoc like this:
 
-sudo fdisk "$disk_no_number" <<EOF >$dn 
+fdisk "$disk_no_number" <<EOF >$dn 
 g
 w
 EOF
@@ -40,7 +40,7 @@ shift
 ;;
 
 "add_to_fstab")
-   echo "UUID=$2 /media/$3/parmanode $4 defaults,nofail,noatime,x-systemd.device-timeout=20s 0 2" | sudo tee -a /etc/fstab > $dn 
+   echo "UUID=$2 /media/$3/parmanode $4 defaults,nofail,noatime,x-systemd.device-timeout=20s 0 2" | tee -a /etc/fstab >> /tmp/debug.log
    shift 4
 ;;
 
