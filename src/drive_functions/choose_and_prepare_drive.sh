@@ -92,7 +92,7 @@ if [[ $1 == "Bitcoin" ]] ; then
                       export drive="external"
                       parmanode_conf_add "drive=external" 
                       installed_conf_add "bitcoin-start" 
-                      if test -d $pd/.bitcoin ; then export skip_formatting="true" ; fi #no need to scare the user with formatting choice
+                      if mountpoint $pd >$dn 2>&1 && test -d $pd/.bitcoin ; then export skip_formatting="true" ; fi #no need to scare the user with formatting choice
                                                                                         #if they already have a bitcoin directory detectable on the 
                                                                                         #external drive.
                       return 0 
