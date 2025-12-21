@@ -103,7 +103,7 @@ if [[ $OS == "Linux" ]] ; then
             sudo mount /media/$USER/parmanode # anticipates that fstab entry exists
         fi
 
-        if ! mountpoint $parmanode_drive >$dn ; then announce "Drive didn't mount. There may be problems." ; fi
+        if ! mountpoint $parmanode_drive >$dn ; then announce "Drive didn't mount. There may be problems." ; [[ $parmaview == 1 ]] && return 1 ; fi
         sudo chown -R $USER:$(id -gn) $parmanode_drive 
         sudo partprobe 2>$dn
 
