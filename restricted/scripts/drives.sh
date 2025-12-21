@@ -40,7 +40,7 @@ shift
 ;;
 
 "add_to_fstab")
-   echo "UUID=$2 /media/$3/parmanode $4 defaults,nofail,noatime,x-systemd.device-timeout=20s 0 2" | tee -a /etc/fstab >> /tmp/debug.log
+   echo "UUID=$2 /media/$3/parmanode $4 defaults,nofail,noatime,x-systemd.device-timeout=20s 0 2" | tee -a /etc/fstab >> /tmp/debug.log 2>&1
    shift 4
 ;;
 
