@@ -32,7 +32,9 @@ return 0
 fi
 
 if [[ $OS == "Linux" ]] ; then 
+    debug
     if grep -q "drive=external" $pc ; then mount_drive ; fi 
+    debug
     sudo systemctl start bitcoind.service
     sleep 0.5
 fi                 

@@ -18,11 +18,16 @@ fi
 
 if [[ $OS == "Linux" ]] ; then
 
+        if [[ $parmaview == 1 ]] ; then
+            sudo /usr/local/parmanode/p4run "mount_parmanode" #anticipates that fstab entry exists
+			return $?
+        fi
+
 while true ; do
     #if mounted, exit 
 	    if mountpoint -q "/media/$USER/parmanode" ; then
 			return 0
-			fi
+		fi
 
     # If function didn't return 0, try mounting with label, then UUID, then loop.
 
