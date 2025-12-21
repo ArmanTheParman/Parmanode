@@ -12,11 +12,11 @@ $USER ALL=(root) NOPASSWD: /usr/local/parmanode/scripts/patchrunner.sh
 $USER ALL=(root) NOPASSWD: /usr/local/parmanode/p4run *
 #System Commands
 $USER ALL=(root) NOPASSWD: $(which systemctl) daemon-reload
-$USER ALL=(root) NOPASSWD: $(which blkid)
-$USER ALL=(root) NOPASSWD: $(which blkid) -o export /dev/*
+$USER ALL=(root) NOPASSWD: $(sudo which blkid)
+$USER ALL=(root) NOPASSWD: $(sudo which blkid) -o export /dev/*
 $USER ALL=(root) NOPASSWD: $(which lsblk)
 $USER ALL=(root) NOPASSWD: $(which mountpoint)
-$USER ALL=(root) NOPASSWD: $(which partprobe)
+$USER ALL=(root) NOPASSWD: $(sudo which partprobe)
 #Bitcoin commands
 $USER ALL=(root) NOPASSWD: $(which systemctl) start bitcoind.service
 $USER ALL=(root) NOPASSWD: $(which systemctl) stop bitcoind.service
@@ -74,7 +74,7 @@ $USER ALL=(root) NOPASSWD: $(which systemctl) restart nginx.service
 $USER ALL=(root) NOPASSWD: $(which systemctl) start nginx
 $USER ALL=(root) NOPASSWD: $(which systemctl) stop nginx 
 $USER ALL=(root) NOPASSWD: $(which systemctl) restart nginx
-$USER ALL=(root) NOPASSWD: $(which nginx) -t
+$USER ALL=(root) NOPASSWD: $(which sudo nginx) -t
 #BTCrpcexplorer commands
 $USER ALL=(root) NOPASSWD: $(which systemctl) start btcrpcexplorer.service
 $USER ALL=(root) NOPASSWD: $(which systemctl) stop btcrpcexplorer.service 
