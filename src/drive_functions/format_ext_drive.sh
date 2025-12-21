@@ -64,6 +64,8 @@ if [[ $OS == "Mac" ]] ; then
 fi
 
 if [[ $OS == "Linux" ]] ; then
+        
+        [[ $parmaview == 1 ]] && export disk=$(jq -r '.bitcoin.driveName' $p4)
 
         if [[ $raid != "true" ]] ; then 
         partition_drive 
