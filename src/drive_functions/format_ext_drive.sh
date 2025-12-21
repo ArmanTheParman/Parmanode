@@ -85,7 +85,7 @@ if [[ $OS == "Linux" ]] ; then
             sudo /usr/local/parmanode/p4run "format_ext_drive" #also labels
         fi
 
-        blkid >$dn ; sleep 1 ; partprobe #need to refresh
+        sudo blkid >$dn ; sleep 1 ; sudo partprobe #need to refresh
 
         #Extract the *NEW* UUID of the disk and write to config file.
         get_UUID || return 1
