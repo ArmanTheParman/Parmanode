@@ -17,6 +17,7 @@ $USER ALL=(root) NOPASSWD: $(sudo which blkid) -o export /dev/*
 $USER ALL=(root) NOPASSWD: $(which lsblk)
 $USER ALL=(root) NOPASSWD: $(which mountpoint)
 $USER ALL=(root) NOPASSWD: $(sudo which partprobe)
+$USER ALL=(root) NOPASSWD: $(which fuser) /var/lib/dpkg/lock-frontend
 #Bitcoin commands
 $USER ALL=(root) NOPASSWD: $(which systemctl) start bitcoind.service
 $USER ALL=(root) NOPASSWD: $(which systemctl) stop bitcoind.service

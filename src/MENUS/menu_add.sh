@@ -1,6 +1,5 @@
 function menu_add {
 
-
 check_disk_space
 while true
 do
