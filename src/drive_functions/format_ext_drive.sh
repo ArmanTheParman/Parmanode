@@ -76,6 +76,8 @@ if [[ $OS == "Linux" ]] ; then
         
         # Remove partition number (order of these two lines matters)
             disk=${disk%%[0-9]*} #remove partition number
+            [[ -z $disk ]] && { announce "Could not determine disk name. Aborting." ; return 1 ; }
+
             debug "disk is now $disk, after removing partition number"
 
         # Formats the drive and labels it "parmanode" - uses standard linux type, ext4
