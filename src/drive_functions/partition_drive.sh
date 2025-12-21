@@ -2,12 +2,13 @@ function partition_drive {
 
 if   [[ $1 == "parmanodl" ]] ; then 
      export disk_no_number=sda 
-else export disk_no_number="${disk%%[0-9]*}"
+else 
+     export disk_no_number="${disk%%[0-9]*}"
 fi
 
 if [[ $parmaview == 1 ]] ; then
     export disk_no_number="${driveName%%[0-9]*}"
-if
+fi
 
 debug "in partition, disk excluding number is $disk_no_number"
 
@@ -15,13 +16,14 @@ if [ ! -e "$disk_no_number" ] ; then #eg if /dev/sda doesn't exist
     set_terminal
     echo "Drive $disk does not exist. Exiting."
     enter_continue
-    exit 1
+    return 1
 fi
 
 [[ $parmaview == 1 ]] && { sudo /usr/local/parmanode/p4run "fdisk" "$disk_no_number" ; return $? ; }
 
 # Create a new GPT partition table and a single partition on the drive
 # interestingly, you can plonk a redirection in the middle of a heredoc like this:
+
 sudo fdisk "$disk_no_number" <<EOF >$dn || enter_continue
 g
 w
