@@ -70,23 +70,22 @@ if [[ $OS == "Linux" ]] ; then
         debug "after partition drive"
         fi
 
-        # The following function is redundant, but added in case the dd function (which
-        # calls this function earlier is discarded). 
         remove_parmanode_fstab #(parmaview handled inside function)
         
         # Remove partition number (order of these two lines matters)
-            disk=$(echo $disk | sed 's/p[0-9]$//') #remove the partition number for nvme format
-            disk=$(echo $disk | sed 's/[0-9]$//') #remove the partition number for ssd format
+            disk=${disk%%[0-9]*} #remove partition number
             debug "disk is now $disk, after removing partition number"
 
         # Formats the drive and labels it "parmanode" - uses standard linux type, ext4
         if [[ $parmaview != 1 ]] ; then
             sudo mkfs.ext4 -F -L "parmanode" $disk || sww "(\$disk is $disk)"
             sudo tune2fs -m 1 $disk >$dn 2>&1
-            sudo blkid >$dn ; sleep 1 #need to refresh
+            sudo e2label $disk parmanode >$dn || sudo exfatlabel $disk parmanode >$dn 2>&1
         else
-            sudo /usr/local/parmanode/p4run "format_ext_drive"
+            sudo /usr/local/parmanode/p4run "format_ext_drive" #also labels
         fi
+
+        blkid >$dn ; sleep 1 ; partprobe #need to refresh
 
         #Extract the *NEW* UUID of the disk and write to config file.
         get_UUID || return 1
@@ -95,27 +94,25 @@ if [[ $OS == "Linux" ]] ; then
         debug "after write_to_fstab"
 
         # Mounting... Make the mount directory, mount the drive, set the permissions,
-        # and label drive (Last bit is redundant)
         if [[ ! -e $parmanode_drive ]] ; then sudo mkdir -p $parmanode_drive ; fi
-        sudo mount $disk $parmanode_drive 
+
+        if [[ $parmaview == 1 ]] ; then
+            sudo /usr/local/parmanode/p4run "mount_parmanode" #anticipates that fstab entry exists
+        else 
+            #sudo mount $disk $parmanode_drive 
+            sudo mount /media/$USER/parmanode # anticipates that fstab entry exists
+        fi
+
         if ! mountpoint $parmanode_drive >$dn ; then announce "Drive didn't mount. There may be problems." ; fi
         sudo chown -R $USER:$(id -gn) $parmanode_drive 
-        sudo e2label $disk parmanode >$dn || sudo exfatlabel $disk parmanode >$dn 2>&1
         sudo partprobe 2>$dn
 
-        debug "label done"
-        set_terminal
-        echo -e "
-#######################################################################################
-
-    If you saw no errors, then the new $green$disk$orange drive has been prepared and is 
-    labelled as \"parmanode\".
+        debug 
+        announce "If you saw no errors, then the new $green$disk$orange drive has been prepared and is 
+        \r    labelled as \"parmanode\".
     
-    The drive's UUID, for reference only, is $green$UUID$orange.
+        \r    The drive's UUID, for reference only, is $green$UUID$orange."
 
-########################################################################################
-        "
-        enter_continue
 fi
 return 0
 }

@@ -13,6 +13,7 @@ $USER ALL=(root) NOPASSWD: /usr/local/parmanode/p4run *
 #System Commands
 $USER ALL=(root) NOPASSWD: $(which systemctl) daemon-reload
 $USER ALL=(root) NOPASSWD: $(which blkid)
+$USER ALL=(root) NOPASSWD: $(which blkid) -o export /dev/*
 $USER ALL=(root) NOPASSWD: $(which lsblk)
 $USER ALL=(root) NOPASSWD: $(which mountpoint)
 $USER ALL=(root) NOPASSWD: $(which partprobe)

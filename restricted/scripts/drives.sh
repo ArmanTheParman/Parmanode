@@ -14,8 +14,8 @@ case $1 in
         umount "$thedrive"[0-9]* >$dn 2>&1
         umount "$thedrive" >$dn 2>&1
     fi
-    shift
-    ;;
+shift
+;;
 
 "fdisk")
 # Create a new GPT partition table and a single partition on the drive
@@ -25,10 +25,8 @@ sudo fdisk "$disk_no_number" <<EOF >$dn
 g
 w
 EOF
-sleep 2
-
-shift
-shift
+sleep 1.5
+shift 2
 ;;
 
 "format_ext_drive")
@@ -36,9 +34,14 @@ shift
     [[ -z $disk ]] && exit 1
     mkfs.ext4 -F -L "parmanode" $disk 
     tune2fs -m 1 $disk >$dn 2>&1
-    blkid >$dn ; sleep 1 ; partprobe #need to refresh
+    e2label $disk parmanode >$dn || exfatlabel $disk parmanode >$dn 
 
 shift
+;;
+
+"add_to_fstab")
+   echo "UUID=$2 /media/$3/parmanode $4 defaults,nofail,noatime,x-systemd.device-timeout=20s 0 2" | sudo tee -a /etc/fstab > $dn 
+   shift 4
 ;;
 
 esac

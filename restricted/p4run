@@ -13,7 +13,7 @@ torrc=/etc/tor/torrc
 varlibtor=/var/lib/tor
 
 
-#find HOME variable.
+#find HOME and USER variable.
 source /usr/local/parmanode/src/home.sh
 
 dp=$HOME/.parmanode/
@@ -97,5 +97,13 @@ case "$1" in
 ;;
 "format_ext_drive")
    /usr/local/parmanode/scripts/drives.sh "format_ext_drive"
+;;
+
+"add_to_fstab")
+   /usr/local/parmanode/scripts/drives.sh "add_to_fstab" "$UUID" "$USER" "$TYPE"
+;;
+"mount_parmanode")
+   mount /media/$USER/parmanode #calls entry in fstab
+;;
 
 esac
