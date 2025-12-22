@@ -9,7 +9,7 @@ echo "
 #Parmanode Secure Patch Runner
 $USER ALL=(root) NOPASSWD: /usr/local/parmanode/scripts/patchrunner.sh
 #Parmaview helper
-$USER ALL=(root) NOPASSWD: /usr/local/parmanode/p4run *
+$USER ALL=(root) NOPASSWD: /usr/local/parmanode/p4run
 #System Commands
 $USER ALL=(root) NOPASSWD: $(which systemctl) daemon-reload
 $USER ALL=(root) NOPASSWD: $(sudo which blkid)
