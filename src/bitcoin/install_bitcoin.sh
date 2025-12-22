@@ -120,10 +120,6 @@ make_bitcoin_conf || { sww && return 1 ; }
 ls -lahf /usr/local/bin/bitcoind >$dn 2>&1 || p4socket "no bitcoind (4)"
 debug
 [[ $btcdockerchoice == "yes" ]] || { menu_bitcoin_tor || { sww && return 1 ; } ; }
-#make a script that service file will use
-if [[ $OS == "Linux" && $btcpayinstallsbitcoin != "true" && $btcdockerchoice != "yes" ]] ; then
-    make_mount_check_script #don't remove for these non standard installs
-fi
 
 #make service file - this allows automatic start up after a reboot
 if [[ $OS == "Linux" && $btcpayinstallsbitcoin != "true" ]] ; then 

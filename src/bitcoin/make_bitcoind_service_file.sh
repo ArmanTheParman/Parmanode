@@ -68,7 +68,7 @@ MemoryDenyWriteExecute=true
 
 [Install]
 WantedBy=multi-user.target
-" | tee "$file" >$dn || enter_continue "Failed to write bitcoind.service file"
+" | tee "$file" >$dn 
 
 if [[ $1 == "setup" ]] ; then #for parmanode installation
     sudo chown root:root "$file"
