@@ -6,8 +6,6 @@
 # Location
 # $pn/restricted --> /usr/local/parmanode/p4run (live)
 
-echo "ARGV: $(printf '%q ' "$@")" >> p4run.log 2>&1
-
 #variables
 dn=/dev/null
 torrc=/etc/tor/torrc
@@ -101,7 +99,7 @@ case "$1" in
 ;;
 
 "add_to_fstab")
-   /usr/local/parmanode/scripts/drives.sh "add_to_fstab" "$UUID" "$USER" "$TYPE"
+   /usr/local/parmanode/scripts/drives.sh "add_to_fstab" "$2" "$3" "$4"
 ;;
 "mount_parmanode")
    mount /media/$USER/parmanode #calls entry in fstab
