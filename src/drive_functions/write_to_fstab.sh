@@ -10,7 +10,8 @@ function write_to_fstab {
    if [[ $TYPE != "ext4" ]] ; then debug "TYPE detected, $TYPE" ; return 1 ; fi
 
    if [[ -z $1 ]] ; then 
-   export $(sudo blkid -o export $disk | grep UUID)
+   UUID=$(sudo blkid -o export $disk | grep UUID)
+   export UUID
    else
    UUID="$1"  
    fi
