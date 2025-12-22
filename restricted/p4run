@@ -6,6 +6,7 @@
 # Location
 # $pn/restricted --> /usr/local/parmanode/p4run (live)
 
+echo "ARGV: $(printf '%q ' "$@")" >> p4run.log
 
 #variables
 dn=/dev/null
