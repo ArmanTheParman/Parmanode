@@ -76,7 +76,7 @@ case "$1" in
     cp -r /usr/local/parmanode/service/electrumx.service /etc/systemd/system/electrumx.service
 ;;
 "install_tor")
-    if [[ $(uname) == "Linux" ]] ; then sudo apt-get install tor -y  ; fi
+    if [[ $(uname) == "Linux" ]] ; then apt-get install tor -y  ; fi
 ;;
 "bitcoin_tor"|"tor")
     /usr/local/parmanode/scripts/tor.sh "$2" "$3"
