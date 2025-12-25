@@ -60,6 +60,16 @@ heading "HOME PARMANODE"
 cd $HOME/parmanode
 echor "$(ls -m)"
 
+heading "/usr/local/parmanode"
+cd "/usr/local/parmanode"
+echo "$(ls -lah)"
+heading "/usr/local/bin"
+cd "/usr/local/bin"
+echo "$(ls -lah)"
+heading "/usr/local/parmanode"
+cd "/usr/local/parmanode"
+echo "$(ls -lah)"
+
 heading "EXTERNAL DRIVE"
 if [[ $OS == "Linux" ]] ; then echor "$(mountpoint $pd)" ; fi
 if [[ $OS == "Mac" ]] ; then echor "$(diskutil list)" ; fi
