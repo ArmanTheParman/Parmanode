@@ -362,7 +362,7 @@ set_terminal ; echo -e "
 ########################################################################################
 
     A ParmaAirGap Zero is a low powered Pi Zero single board computer that has no Wifi or
-    BlueTooth capability, with necessary software to function as an AirGapped Bitcoin 
+    Bluetooth capability, with necessary software to function as an AirGapped Bitcoin 
     computer - Similar to a SeedSigner but with more functionality. Similar to a
     ParmAirGap but much less powerful, slower, and cheaper.
 $bright_blue
