@@ -4,7 +4,7 @@ file=$dp/versions.json
 
 declare -A versions
 
-export bitbox_version="4.48.8"  #careful, some patches don't have Mac versions, and some are zips with .pp not dmgs.
+export bitbox_version="4.49.0"  #careful, some patches don't have Mac versions, and some are zips with .pp not dmgs.
 versions["bitbox_version"]="$bitbox_version"
 
 export deisversion="28.1"
