@@ -7,22 +7,22 @@ while true ; do set_terminal ; echo -e "
 
 
 $cyan
-      (c)   $red           How to CONNECT your mobile lightning wallet to your node
+      c)   $red           How to CONNECT your mobile lightning wallet to your node
                        eg Zeus wallet
 $cyan
-      (pw)$orange             Change LND wallet password 
+      pw)$orange             Change LND wallet password 
 $cyan      
-      (ep)$orange             Edit password.txt which auto-unlocks wallet
+      ep)$orange             Edit password.txt which auto-unlocks wallet
 $cyan
-      (ul)      $orange       Unlock Wallet
+      ul)      $orange       Unlock Wallet
 $cyan
-      (wb)           $orange  Wallet balance
+      wb)           $orange  Wallet balance
 $cyan
-      (cb)$orange             Channels' balance
+      cb)$orange             Channels' balance
 $cyan
-      (delete)  $orange       Delete existing wallet and its files (macaroons, channel.db)
+      delete)  $orange       Delete existing wallet and its files (macaroons, channel.db)
 $cyan
-      (create)        $orange Create an LND wallet (or restore a wallet with seed)
+      create)        $orange Create an LND wallet (or restore a wallet with seed)
 $orange
 
 
@@ -71,7 +71,7 @@ q|Q) exit ;; p|P|x) return 1 ;; m|M) back2main ;;
 esac
 done
 
-nano $HOME/.lnd/password.txt #litd uses symlink
+sudo nano $HOME/.lnd/password.txt #litd uses symlink
 set_terminal ; please_wait
 return 0
 ;;
