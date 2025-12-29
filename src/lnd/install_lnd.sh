@@ -6,23 +6,23 @@ unset remote_user remote_pass ipcore
 if grep -q "litd" $ic ; then announce "Can't install LND if you have LITD" ; return 1 ; fi
 
 #new version of lnd not ready, it's buggy so far.
-while false ; do 
+while true ; do 
 announce "which version of LND do you want?
 
 $cyan                             1)$orange           v0.18.5
 
 $cyan                             2)$orange           v0.19.3
-
-$cyan                             3)$orange           v0.20.0
 "
+#$cyan                             3)$orange           v0.20.0
+#"
 lndchoice=$enter_cont
+#3)
+#export lndversion="v0.20.0-beta" ; break ;;
 case $lndchoice in
 1)
 export lndversion="v0.18.5-beta" ; break ;;
 2)
 export lndversion="v0.19.3-beta" ; break ;;
-3)
-export lndversion="v0.20.0-beta" ; break ;;
 *)
 invalid ;;
 esac
@@ -30,7 +30,7 @@ done
 
 bitcoin_choice_with_lnd || return 1
 
-if [[ $bitcoin_choice_with_lnd == local ]] ; then
+if [[ $bitcoin_choice_with_lnd == "local" ]] ; then
 grep -q bitcoin-end $HOME/.parmanode/installed.conf || { announce "Must install Bitcoin first. Aborting." && return 1 ; }
 fi
 

@@ -62,7 +62,7 @@ fi
 start_lnd
 success "The password has been changed"
 announce "${blinkon}IMPORTANT!!${blinkoff}$orange
-To enable auto-unlocking of the wallet when LND starts, please
+    To enable auto-unlocking of the wallet when LND starts, please
     edit the$cyan password.txt$orange file yourself, or use the Parmanode menu to
     select to change it there. If you edit the file, you'll see the old password
     written there; don't be alarmed, change it to the new one."

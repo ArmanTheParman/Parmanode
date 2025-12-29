@@ -62,13 +62,15 @@ echor "$(ls -m)"
 
 heading "/usr/local/parmanode"
 cd "/usr/local/parmanode"
-echo "$(ls -lah)"
+echo "$(sudo ls -lah)"
+
 heading "/usr/local/bin"
 cd "/usr/local/bin"
-echo "$(ls -lah)"
+echo "$(sudo ls -lah)"
+
 heading "/usr/local/parmanode"
 cd "/usr/local/parmanode"
-echo "$(ls -lah)"
+echo "$(sudo ls -lah)"
 
 heading "EXTERNAL DRIVE"
 if [[ $OS == "Linux" ]] ; then echor "$(mountpoint $pd)" ; fi
