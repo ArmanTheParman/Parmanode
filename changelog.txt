@@ -1,5 +1,6 @@
 Version 3.69.1
      -BitBox app update
+     -BIP 110 RC2
 Version 3.69.0
      -Bitcoin Knots BIP110 edition
      -Parmanode restricted bucket for more secure updates
