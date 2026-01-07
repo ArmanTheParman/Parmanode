@@ -115,7 +115,7 @@ $cyan
             2)$orange     v3.2.1
 $red
             3)$red     Pre-release (can be buggy, but cutting edge, not recommended)
-
+$orange
 ########################################################################################
 "
 choose xpmq ; read choice 
