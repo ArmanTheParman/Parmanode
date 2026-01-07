@@ -26,9 +26,15 @@ if ! grep "bitcoin-end" $ic >$dn ; then
 fi
 
 if [[ $debug != 1 && -z $configure_bitcoin_self ]] && ! grep -q "rpcuser" $bc ; then
-    announce "Please set a username and password in Bitcoin conf. You can do that from the
-    \r    Parmanode-Bitcoin menu. Aborting. " 
-    return 1 
+    announce "Please set a username and password in the bitcoin.conf file. You can do that from the
+    \r    Parmanode-Bitcoin menu. Hit <enter> to abort.
+    
+    \r    Or, type 'yolo' and <enter> to proceed with caution. Do edit
+    \r    the Fulcrum conf file yourself later to make sure the username/password matches
+    \r    the bitcoin.conf file." 
+    [[ $enter_cont != "yolo" ]] && return 1 
+    export rpcuser="parman"
+    export rpcpassword="parman"
 fi
 
 [[ -z $configure_bitcoin_self ]] && { check_bitcoin_not_pruned || return 1 ; }
