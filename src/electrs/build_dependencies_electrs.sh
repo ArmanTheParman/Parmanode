@@ -8,6 +8,7 @@ sudo apt-get --fix-broken install -y 2>&1
 if ! which jq >$dn ; then sudo apt-get install -y jq ; fi
 if ! which clang >$dn ; then sudo apt-get install -y clang ; fi
 if ! which cmake >$dn ; then sudo apt-get install -y cmake ; fi
+if ! which llvm-config >$dn ; then sudo apt-get install -y llvm-dev libclang-dev ; fi
 
 if ! dpkg -l >$dn | grep build-essential ; then sudo apt-get install -y build-essential ; fi 
 
@@ -40,7 +41,6 @@ debug "end if linux in build dependencies"
 
 if [[ $OS == Mac ]] ; then
 brew update ; brew upgrade
-
 if ! which automake   > $dn 2>&1 ; then brew install automake   ; fi
 if ! which libtool    > $dn 2>&1 ; then brew install libtool    ; fi
 if ! which pkg-config > $dn 2>&1 ; then brew install pkg-config ; fi
