@@ -30,11 +30,6 @@ m|M) back2main ;; q|Q) exit 0 ;; p|P) return 1 ;; n|N|NO|no|No) return 1 ;; y|Y|
 esac
 done
 
-sudo apt-get install -y ca-certificates 
-sudo install -m 0755 -d /etc/apt/keyrings >$dn 2>&1
-sudo rm -f /etc/apt/keyrings/docker* >$dn 2>&1
-sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
-sudo chmod a+r /etc/apt/keyrings/docker.asc
 
 # Docker recommends uninstall first...
     sudo apt-get purge docker docker-engine docker.io containerd runc docker-ce \

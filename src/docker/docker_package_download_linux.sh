@@ -4,7 +4,9 @@ sudo apt-get update -y
 sudo apt-get install ca-certificates curl gnupg -y
 
 sudo install -m 0755 -d /etc/apt/keyrings
+sudo rm /etc/apt/keyrings/docker.gpg >$dn 2>&1
 . /etc/os-release #get ID
+[[ $ID =~ mint ]] && export ID=ubuntu
 curl -fsSL https://download.docker.com/linux/$ID/gpg | sudo gpg --yes --dearmor -o /etc/apt/keyrings/docker.gpg
 
 sudo chmod a+r /etc/apt/keyrings/docker.gpg
