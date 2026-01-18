@@ -28,15 +28,18 @@ echo -e "
 "
 enter_continue
 clear
-if grep -q "btccombo" $ic ; then
-docker exec btcpay bitcoind --reindex
-docker exec btcpay bitcoin-cli stop
-docker exec -d btcpay bitcoind 
-elif [[ $OS == "Linux" ]] ; then
-sudo bitcoind --reindex
-stop_bitcoin
-start_bitcoin
-fi
+
+    if grep -q "btccombo" $ic ; then
+    docker exec btcpay bitcoind --reindex
+    docker exec btcpay bitcoin-cli stop
+    docker exec -d btcpay bitcoind 
+    enter_continue "The re-indexing is done."
+    elif [[ $OS == "Linux" ]] ; then
+    sudo bitcoind --reindex
+    stop_bitcoin
+    start_bitcoin
+    enter_continue "The re-indexing is done."
+    fi
 
 fi
 
