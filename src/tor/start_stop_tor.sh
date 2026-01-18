@@ -17,6 +17,9 @@ fi
 }
 
 function restart_tor {
+
+if [[ $parmantorhelp == "true" ]] ; then return 0 ; fi
+
 if [[ $OS == "Linux" ]] ; then
 sudo systemctl restart tor >$dn
 fi
