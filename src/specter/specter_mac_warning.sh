@@ -17,5 +17,7 @@ jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 m|M) back2main ;; q|Q|QUIT|Quit|quit) exit 0 ;; p|P|x|X) return 1 ;; *) return 0 ;;
 esac
+else
+return 0
 fi
 }
