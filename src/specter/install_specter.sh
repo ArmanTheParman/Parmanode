@@ -1,6 +1,6 @@
 function install_specter {
 
-if [[ SOS == "Linux" ]] ; then
+if [[ $OS == "Linux" ]] ; then
 if [[ $(uname -m) == "aarch64" || $(uname -m) == "armv7l" ]] ; then 
     set_terminal
     echo "Parmanode has detected you are running a computer with an ARM chip,"
