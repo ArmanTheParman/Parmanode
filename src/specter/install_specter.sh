@@ -1,15 +1,14 @@
 function install_specter {
 
-if [[ $OS == "Linux" ]] ; then
-if [[ $(uname -m) == "aarch64" || $(uname -m) == "armv7l" ]] ; then 
-    set_terminal
-    echo "Parmanode has detected you are running a computer with an ARM chip,"
-    echo "possibly a Raspberry Pi. Unfortunately, Specter is not available"
-    echo "using Parmanode for Pi's. Maybe one day." 
-    enter_continue
-    return 1
-    fi
-    fi
+if [[ $OS == "Linux" ]] && [[ $(uname -m) == "aarch64" || $(uname -m) == "armv7l" ]] ; then 
+        set_terminal
+        echo "Parmanode has detected you are running a computer with an ARM chip,"
+        echo "possibly a Raspberry Pi. Unfortunately, Specter is not available"
+        echo "using Parmanode for Pi's. Maybe one day." 
+        enter_continue
+        return 1
+fi
+
 sned_sats
 if [[ -e $HOME/.specter ]] ; then
 while true ; do
