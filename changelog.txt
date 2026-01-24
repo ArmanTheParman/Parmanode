@@ -1,6 +1,8 @@
 Version 3.70.0
      -Development of restricted bucket further
      -lock file removal wizard for Bitcoin
+Version 3.69.2
+     -BIP 110 RC3
 Version 3.69.1
      -BitBox app update
      -LND install bug fix, and password change fix

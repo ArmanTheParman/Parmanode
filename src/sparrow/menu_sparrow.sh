@@ -33,7 +33,7 @@ set_terminal ; echo -en "
 
 $green
                   start) $orange         Start Sparrow 
-$red
+$cyan
                      mm) $orange         Manage node connection...
 $shortcut$cyan
                      sc) $orange         View/Edit config file (scv for vim)
