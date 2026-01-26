@@ -62,21 +62,15 @@ unpack_specter
 installed_conf_add "specter-end"
 
 if [[ $OS == "Linux" ]] ; then
-set_terminal ; echo "
-########################################################################################
-
-                                S U C C E S S ! !
-    
-    Specter has been installed. 
+set_terminal
+success "Specter has been installed. 
     
     The executable is in $HOME/parmanode/specter as an \"AppImage\" and 
     executable permissions have been enabled.
 
     You can run it from there, or run Specter from the Parmanode menu. Please don't
-    move the file.
+    move the file."
 
-########################################################################################
-"
 enter_continue ; jump $enter_cont
 return 0
 fi
