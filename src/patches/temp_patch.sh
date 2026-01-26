@@ -1,5 +1,6 @@
 function temp_patch { debugf
 cleanup_parmanode_service
+sudo rm $pn/debug.log >$dn 2>&1
 
 #these log files can get massive and freeze the system.
 sudo rm -rf ~/.xsessions-errors >$dn 2>&1 ; sudo rm -rf ~/.xsessions-errors.old >$dn 2>&1
