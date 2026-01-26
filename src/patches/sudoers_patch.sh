@@ -1,4 +1,5 @@
 function sudoers_patch {
+if [[ $OS == "Mac" ]] ; then return 0 ; fi
 if [[ $USER == "root" ]] ; then return 1 ; fi
 
 file=/etc/sudoers.d/parmanode

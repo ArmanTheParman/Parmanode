@@ -47,7 +47,9 @@ debug "patch 10 done"
 patch_1 ; patch_2 ; patch_3 ; patch_4 ; patch_5 ; patch_6 ; patch_7 ; patch_8 ; patch_9 ; patch_10 ;;
 esac
 
+if [[ $OS == "Linux" ]] ; then
 sudo /usr/local/parmanode/patchrunner.sh
+fi
 debug "end patchrunner"
 }
 

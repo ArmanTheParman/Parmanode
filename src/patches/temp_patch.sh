@@ -8,11 +8,6 @@ if [[ -e /.dockerenv ]] && ! netstat -tuln | grep -q 9050 ; then
 enable_tor_general
 fi
 
-#put in patch 10 later
-test -f $dp/.udev_patch || {
-    udev_patch && touch $dp/.udev_patch
-}
-
 #Docker containers sometimes won't have $USER variable set...
 if [[ -e /.dockerenv && -z $USER ]] ; then
     USER=$(whoami) >$dn 2>&1
