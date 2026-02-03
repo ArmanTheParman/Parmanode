@@ -23,11 +23,11 @@ source $pc >$dn
 
 if [[ -z $bip110choice ]] ; then
     #should only run once, becauuse bip110choice will be set here.
-    bitcoin-cli --version |& grep -q bip110 && bip110choice="BIP_110_live"
-    bitcoin-cli --version |& grep bip110 | grep -q "rc1" && bip110choice="BIP_110_rc1"
-    bitcoin-cli --version |& grep bip110 | grep -q "rc2" && bip110choice="BIP_110_rc2"
-    bitcoin-cli --version |& grep bip110 | grep -q "rc3" && bip110choice="BIP_110_rc3"
-        if [[ -z $bip110choice ]] ; then bip110choice="no BIP 110" 
+    bitcoin-cli --version |& grep -q bip110 && bip110choice="BIP110live"
+    bitcoin-cli --version |& grep bip110 | grep -q "rc1" && bip110choice="BIP110rc1"
+    bitcoin-cli --version |& grep bip110 | grep -q "rc2" && bip110choice="BIP110rc2"
+    bitcoin-cli --version |& grep bip110 | grep -q "rc3" && bip110choice="BIP110rc3"
+        if [[ -z $bip110choice ]] ; then bip110choice="no_BIP110" 
         fi
     echo "bip110choice=$bip110choice" >> $pc
 fi
@@ -120,7 +120,7 @@ if [[ $OS != "Mac" ]] ; then
         \r    Please run Knots instead to send them a message to get their head out of their arses.$orange"
     show_knots="$red BITCOIN CORE $yellow(Node, and JPEG relay client)$red"
     else
-        show_knots="$green              BITCOIN KNOTS $bip110choice"
+        show_knots="$green      BITCOIN KNOTS $bip110choice"
         unset upgradetoknots
     fi
 else
