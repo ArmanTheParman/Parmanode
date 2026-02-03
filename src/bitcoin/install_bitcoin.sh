@@ -218,7 +218,6 @@ installed_conf_add "bitcoin-end"
     #Just in case - what? again? Anyway, I'll leave it.
     $xsudo chown -R $USER:$USER $parmanode_drive>$dn 2>&1
 
-    enter_continue
     return 0
 fi
 
