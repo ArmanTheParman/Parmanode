@@ -103,6 +103,7 @@ parmanode_conf_remove "bitcoin_choice"
 parmanode_conf_remove "BTCIP"
 parmanode_conf_remove "disable_bitcoin"
 parmanode_conf_remove "bitcoin_ordinalspatch"
+parmanode_conf_remove "bip110choice"
 debug
 unset drive prune_value bitcoin_choice UUID BTCIP rpcuser rpcpassword btc_authentication format_choice skip_formatting justFormat driveproblem
 print_bitcoin_variables "after unset"
