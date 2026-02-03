@@ -1,3 +1,5 @@
+Version 3.69.3
+     -BIP 110 live
 Version 3.69.2
      -BIP 110 RC3
 Version 3.69.1
