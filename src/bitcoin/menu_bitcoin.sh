@@ -120,7 +120,7 @@ if [[ $OS != "Mac" ]] ; then
         \r    Please run Knots instead to send them a message to get their head out of their arses.$orange"
     show_knots="$red BITCOIN CORE $yellow(Node, and JPEG relay client)$red"
     else
-        show_knots="$green      BITCOIN KNOTS $bip110choice"
+        show_knots="$green      BITCOIN KNOTS $$blue$bip110choice$green"
         unset upgradetoknots
     fi
 else
