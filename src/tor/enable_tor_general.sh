@@ -16,13 +16,11 @@ if ! which tor >$dn 2>&1 ; then install_tor ; fi
 if [[ ! -e $torrc ]] || ! sudo grep -q "# Additions by Parmanode" $torrc ; then 
 touch $torrc >$dn 2>&1
 cat << EOF | sudo tee -a $torrc >$dn
-
 # Additions by Parmanode...
 ControlPort 9051
 CookieAuthentication 1
 CookieAuthFileGroupReadable 1
 DataDirectoryGroupReadable 1
-
 EOF
 fi
 
