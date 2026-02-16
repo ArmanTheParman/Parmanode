@@ -20,7 +20,7 @@ install_tor
 if [[ ! -e $varlibtor ]] ; then mkdir -p $varlibtor >$dn 2>&1 ; fi
 if [[ ! -e $torrc ]] ; then $xsudo touch $torrc >$dn 2>&1 ; fi
 
-enable_tor_general
+if ! $xsudo grep "Additions by Parmanode" $torrc ; then enable_tor_general ; fi
 
 
 if [[ $parmaview == 1 ]] ; then p4run "add_bitcoin_hidden_service"
@@ -148,7 +148,6 @@ function bitcoin_tor_remove { debugf
 
 stop_bitcoin
 #delete...
-$xsudo gsed -i  "/# Additions by Parmanode/d" $macprefix/etc/tor/torrc
 $xsudo gsed -i  "/bitcoin-service/d"          $macprefix/etc/tor/torrc
 $xsudo gsed -i  "/127.0.0.1:8333/d"           $macprefix/etc/tor/torrc
 $xsudo gsed -i  "/onion/d"                    $bc 

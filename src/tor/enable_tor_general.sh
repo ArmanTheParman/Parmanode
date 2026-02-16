@@ -24,3 +24,13 @@ EOF
 fi
 
 }
+
+function remove_tor_general {
+
+$xsudo gsed -i "/# Additions by Parmanode/d" $torrc >$dn 2>&1
+$xsudo gsed -i "/ControlPort 9051/d" $torrc >$dn 2>&1
+$xsudo gsed -i "/CookieAuthentication 1/d" $torrc >$dn 2>&1
+$xsudo gsed -i "/CookieAuthFileGroupReadable 1/d" $torrc >$dn 2>&1
+$xsudo gsed -i "/DataDirectoryGroupReadable 1/d" $torrc >$dn 2>&1
+
+}
