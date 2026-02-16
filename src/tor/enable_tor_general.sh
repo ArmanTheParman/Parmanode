@@ -3,6 +3,9 @@ function enable_tor_general {
 #exit if done before
 if sudo grep -qEi "# Additions by Parmanode" $torrc >$dn 2>&1 ; then return 0 ; fi
 
+#Match tor general additions in order, excluding heading (redundant)
+if $xsudo grep -Pzq "ControlPort 9051\nCookieAuthentication 1\nCookieAuthFileGroupReadable 1\nDataDirectoryGroupReadable 1" $torrc >$dn 2>&1 ; then return 0 ; fi
+
 #install tor if needed
 if ! which tor >$dn 2>&1 ; then install_tor ; fi
 
