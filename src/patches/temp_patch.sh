@@ -107,7 +107,10 @@ else
 debug "$xsudo, $OS, $ic"
 fi
 
-
+if [[ $($xsudo grep -c "Additions by Parmanode" $torrc 2>$dn) -gt 1 ]] ; then
+    remove_tor_general
+    enable_tor_general
+fi
 
 #debug temppatchend
 }
@@ -115,7 +118,7 @@ fi
 
 #changing becuase redirection to a log file directly is disfunctional with Fulcrum. Need to do it via script.
 function fulcrum_service_patch { debugf 
-if [[ $OS == Mac ]] ; then return 0 ; fi
+if [[ $OS == "Mac" ]] ; then return 0 ; fi
 
 local file="/etc/systemd/system/fulcrum.service"
 if $xsudo test -f $file >$dn 2>&1 && cat $file 2>$dn | grep -q "fulcrum.log" ; then 

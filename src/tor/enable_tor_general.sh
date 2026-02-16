@@ -23,7 +23,6 @@ CookieAuthFileGroupReadable 1
 DataDirectoryGroupReadable 1
 EOF
 fi
-
 }
 
 function remove_tor_general {
