@@ -1,7 +1,7 @@
 function install_electrs {
 
 if  grep -q electrs-end $ic ; then announce "Electrs already installed" ; jump $enter_cont ; return 0 ; fi
-if  grep -q electrs-start $ic ; then announce "Electrs partially installed" ; jump $enter_cont ; unintsll_electrs ; return 0 ; fi
+if  grep -q electrs-start $ic ; then announce "Electrs partially installed" ; jump $enter_cont ; unintsall_electrs ; return 0 ; fi
 
 export skipformatting="true"
 export install_electrs_docker_variable="false"
@@ -22,7 +22,7 @@ fi
 if [[ $OS == "Linux" ]] && ! which socat >$dn 2>&1 ; then 
     sudo apt-get update -y && export APT_UPDATE="true"
     sudo apt install socat -y 
-elif [[ $OS == Mac ]] && ! which socat >$dn 2>&1 ; then 
+elif [[ $OS == "Mac" ]] && ! which socat >$dn 2>&1 ; then 
     brew_check || return 1 
     brew install socat 
 fi

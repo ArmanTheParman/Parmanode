@@ -1,5 +1,5 @@
 function make_electrs_service {
-if [[ $OS == Mac ]] ; then return ; fi
+if [[ $OS == "Mac" ]] ; then return ; fi
 file=$(mktemp)
 echo "
 [Unit]

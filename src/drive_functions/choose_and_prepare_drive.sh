@@ -1,6 +1,6 @@
 function choose_and_prepare_drive {
 if [[ $version == "self" ]] ; then return 0 ; fi
-# Expect argument, either Bitcoin or Fulcrum or Electrs or Electrumx or nostr for $1
+# Expect argument, either Bitcoin or Fulcrum or Electrs or Electrumx or nostr or eps for $1
 # chooses between internal and external drive
 # Should have called the function "choose_and_prepare_drive, without "parmanode" - fix later"
 
@@ -107,6 +107,9 @@ if [[ $1 == "Fulcrum" ]] ; then export drive_fulcrum="external"
 if [[ $1 == "Electrs" ]] ; then export drive_electrs="external"
         parmanode_conf_add "drive_electrs=external" ; return 0 ; fi
 
+if [[ $1 == "eps" ]] ; then export drive_eps="external"
+        parmanode_conf_add "drive_eps=external" ; return 0 ; fi
+
 if [[ $1 == "Electrumx" ]] ; then export drive_electrumx="external"
         parmanode_conf_add "drive_electrumx=external" ; return 0 ; fi
 
@@ -130,6 +133,9 @@ i | I)
                fi
         if [[ $1 == "Electrs" ]] ; then export drive_electrs="internal" 
                parmanode_conf_add "drive_electrs=internal"
+               fi
+        if [[ $1 == "eps" ]] ; then export drive_eps="internal" 
+               parmanode_conf_add "drive_=internal"
                fi
         if [[ $1 == "Electrumx" ]] ; then export drive_electrumx="internal"
                 parmanode_conf_add "drive_electrumx=internal" ; fi
