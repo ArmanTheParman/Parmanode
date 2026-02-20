@@ -47,7 +47,7 @@ export dontstartbitcoin="true" ; check_rpc_bitcoin ; unset dontstartbitcoin
 download_eps || { log "eps" "download_eps failed" ; return 1 ; } ; debug "download done"
 
 #remove old certs (in case they were copied from backup), then make new certs
-rm $HOME/parmanode/eps/*.pem > $dn 2>&1
+rm $hp/eps/*.pem > $dn 2>&1
 make_ssl_certificates "eps" || announce "SSL certificate generation failed. Proceed with caution."  ; debug "check ssl certs done"
 
 #prepare drives. #drive_electrs= variable set.
@@ -81,6 +81,14 @@ fi
 ########################################################################################################################
 ########################################################################################################################
     #make_eps_config ; debug "config done"
+mv $hp/eps/config.ini_sample $hp/eps/config.ini
+gsed -i "s|.*rpc_user =.*|rpc_user = $rpcuser|g" $hp/eps/config.ini
+gsed -i "s|.*rpc_password =.*|rpc_password = $rpcpassword|g" $hp/eps/config.ini
+gsed -i "s|.*host =.*|host = 0.0.0.0|g" $hp/eps/config.ini
+gsed -i "s|.*port =.*|port = 50009|g" $hp/eps/config.ini
+gsed -i "s|.*certfile =.*|certfile = $hp/eps/cert.pem|g" $hp/eps/config.ini
+gsed -i "s|.*keyfile =.*|keyfile = $hp/eps/cert.pem|g" $hp/eps/config.ini
+
 ########################################################################################################################
 ########################################################################################################################
 
