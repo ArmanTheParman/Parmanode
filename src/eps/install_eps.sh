@@ -16,18 +16,13 @@ grep -q "bitcoin-end" $ic || { announce "Must install Bitcoin first. Aborting." 
 sned_sats
 fi
 
-if [[ $OS == "Linux" ]] && ! which socat >$dn 2>&1 ; then 
-    sudo apt-get update -y && export APT_UPDATE="true"
-    sudo apt install socat -y 
-
-elif [[ $OS == "Mac" ]] && ! which socat >$dn 2>&1 ; then 
-    brew_check || return 1 
-    brew install socat 
-fi
-
 if [[ $OS == "Linux" ]] ; then
 make_socat_service_eps
 fi
+
+#
+eps_dependencies || { log "eps" "dependencies failed" ; return 1 ; } ; debug "dependencies done"
+
 
 # check Bitcoin settings
 unset rpcuser rpcpassword prune server
@@ -44,8 +39,6 @@ if [[ ! -e $bc && $debug != 1 ]] ; then
 announce "Couldn't detect bitcoin.conf - Aborting."
 return 1 
 fi
-
-if ! which jq >$dn ; then install_jq ; fi
 
 check_server_1 || return 1
 
