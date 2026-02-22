@@ -8,6 +8,6 @@ function download_eps {
     tar -xzf eps-v0.2.4.tar.gz --strip-components=1
     echo "$green"
     echo "Installing EPS with PIP3..."
-    pip3 install --user . || { sww && yesorno "exit?" && return 1 ; }
+    { pip3 install --user . || pip3 install --user . --break-system-packages ; } || { sww && yesorno "exit?" && return 1 ; }
     return 0    
 }
