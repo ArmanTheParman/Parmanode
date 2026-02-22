@@ -6,7 +6,7 @@ if [[ $OS == "Mac" ]] ; then nomac ; return 1 ;fi
 
 if  grep -q eps-end $ic ; then announce "EPS already installed" ; jump $enter_cont ; return 0 ; fi
 if  grep -q eps-start $ic ; then announce "EPS partially installed" ; jump $enter_cont ; uninstall_eps; return 0 ; fi
-
+debug
 export skipformatting="true"
 
 source $pc $ic >$dn 2>&1
@@ -15,14 +15,14 @@ if [[ $debug != 1 ]] ; then
 grep -q "bitcoin-end" $ic || { announce "Must install Bitcoin first. Aborting." && return 1 ; }
 sned_sats
 fi
-
+debug
 if [[ $OS == "Linux" ]] ; then
 make_socat_service_eps
 fi
 
 #
 eps_dependencies || { log "eps" "dependencies failed" ; return 1 ; } ; debug "dependencies done"
-
+debug
 
 # check Bitcoin settings
 unset rpcuser rpcpassword prune server
@@ -34,7 +34,7 @@ echo -e "The$cyan bitcoin.conf$orange file could not be detected. Can happen if 
 supposed to sync to the external drive and it is not connected and mounted.
 Hit$cyan <enter>$orange to try again once you connect the drive."
 fi
-
+debug
 if [[ ! -e $bc && $debug != 1 ]] ; then
 announce "Couldn't detect bitcoin.conf - Aborting."
 return 1 
@@ -45,7 +45,7 @@ check_server_1 || return 1
 export dontstartbitcoin="true" ; check_rpc_bitcoin ; unset dontstartbitcoin
 
 download_eps || { log "eps" "download_eps failed" ; return 1 ; } ; debug "download done"
-
+debug
 #remove old certs (in case they were copied from backup), then make new certs
 rm $hp/eps/*.pem > $dn 2>&1
 make_ssl_certificates "eps" || announce "SSL certificate generation failed. Proceed with caution."  ; debug "check ssl certs done"
@@ -55,7 +55,7 @@ choose_and_prepare_drive "eps" || return 1
 
 #get drive variables for fulcrum, electrumx, and bitcoin
 source $pc >$dn
-
+debug
 if [[ $drive_eps == "external" ]] ; then
 
       if [[ -d $pd/eps_db ]] ; then 
@@ -70,7 +70,8 @@ if [[ $drive_eps == "external" ]] ; then
 fi
 
 prepare_drive_eps || { log "eps" "prepare_drive_eps failed" ; return 1 ; } 
-        debug "prepare drive done"
+
+debug "prepare drive done"
 
 #if it exists, test inside function
 if [[ $drive_eps == "internal" ]] ; then
@@ -84,7 +85,7 @@ if [[ $OS == "Linux" ]] ; then make_eps_service ; debug "service file done" ; fi
 installed_config_add "eps-end" 
 
 eps_tor
-
+debug
 success "Electrum Personal Server has been installed"
 
 isbitcoinrunning
@@ -92,5 +93,6 @@ isbitcoinrunning
 if [[ $bitcoinrunning == "false" ]] ; then
 yesorno "Want Parmanode to start Bitcoin for you?" && start_bitcoin 
 fi
-
+debug
+return 0
 }
