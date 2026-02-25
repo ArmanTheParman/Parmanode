@@ -1,16 +1,15 @@
 function docker_package_download_linux {
 
-sudo apt-get update -y 
+sudo apt-get update -y && export APT_UPDATE="true"
 sudo apt-get install ca-certificates curl gnupg -y
 
 sudo install -m 0755 -d /etc/apt/keyrings
-sudo rm /etc/apt/keyrings/docker.gpg >$dn 2>&1
-. /etc/os-release #get ID
-[[ $ID =~ mint ]] && export ID=ubuntu
-curl -fsSL https://download.docker.com/linux/$ID/gpg | sudo gpg --yes --dearmor -o /etc/apt/keyrings/docker.gpg
 
-sudo chmod a+r /etc/apt/keyrings/docker.gpg
-sudo apt-get update -y && export APT_UPDATE="true"
+
+sudo rm /etc/apt/keyrings/docker.gpg >$dn 2>&1
+source /etc/os-release #get ID
+[[ $ID =~ mint ]] && export ID=ubuntu
+
 
 #modified instruction from official Docker guide to include Linuxmint conversion
 
@@ -33,21 +32,30 @@ source /etc/os-release && debug "&& debug, ID is $ID after source os-release"
 
 debug "ID is $ID"
 
-  echo "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/$ID \
-  "$(echo "$VCequivalent")" stable" | \
-  sudo tee /etc/apt/sources.list.d/docker.list >$dn 
-
-#fix ubuntu label to debian if needed:
-   debug "2nd, ID is $ID"
-   if [[ $ID == "debian" ]] ; then 
-       sudo sed -i 's/ubuntu/debian/g' /etc/apt/sources.list.d/docker.list >> $dp/sed.log 2>&1
-   fi
+if sudo grep -q "trixie" /etc/os-release ; then 
+    docker_for_trixie || return 1
+else
+    curl -fsSL https://download.docker.com/linux/$ID/gpg | sudo gpg --yes --dearmor -o /etc/apt/keyrings/docker.gpg
+    sudo chmod a+r /etc/apt/keyrings/docker.gpg
+    echo "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/$ID \
+    "$(echo "$VCequivalent")" stable" | \
+    sudo tee /etc/apt/sources.list.d/docker.list >$dn 
+    #fix ubuntu label to debian if needed:
+    debug "2nd, ID is $ID"
+    if [[ $ID == "debian" ]] ; then 
+        sudo sed -i 's/ubuntu/debian/g' /etc/apt/sources.list.d/docker.list >> $dp/sed.log 2>&1
+    fi
+fi
 
 sudo apt-get update -y && export APT_UPDATE="true"
 
 installed_config_add "docker-start" 
+
 counter=0 ; while [[ $counter -le 1 ]] ; do
-sudo apt-get install containerd.io docker-ce docker-ce-cli docker-buildx-plugin docker-compose-plugin docker-compose -y 
+    #docker-compose (without -plugin) is the old standalone v1 Python package.
+    #sudo apt-get install containerd.io docker-ce docker-ce-cli docker-buildx-plugin docker-compose-plugin docker-compose -y 
+    #removing docker-compose - watch for bugs
+sudo apt-get install containerd.io docker-ce docker-ce-cli docker-buildx-plugin docker-compose-plugin -y
 exit_status=$?
 if [ $exit_status != 0 ] ; then
 echo -e "\n\nAn error at this stage is sometimes fixed by repeating the command. 
