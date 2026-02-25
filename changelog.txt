@@ -1,4 +1,6 @@
 Version 3.69.4
+     -Fixed Debian Trixie Docker bug
+Version 3.69.4
      -BIP 110 v0.3
      -torrc bug fix
 Version 3.69.3
