@@ -44,6 +44,8 @@ fi
 
 set_terminal
 
+[[ $OS == "Linux" ]] && sudo apt-get update -y && sudo apt-get install libfuse2 -y
+
 specter_mac_warning || return 1 
 
 specter_make_dir && installed_conf_add "specter-start"

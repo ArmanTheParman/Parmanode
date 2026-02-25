@@ -1,5 +1,6 @@
 Version 3.69.4
      -Fixed Debian Trixie Docker bug
+     -Specter libfuse2 dependency added, fuse3 doesn't work
 Version 3.69.4
      -BIP 110 v0.3
      -torrc bug fix
