@@ -70,8 +70,7 @@ success "Specter has been installed.
 
     You can run it from there, or run Specter from the Parmanode menu. Please don't
     move the file."
-
-enter_continue ; jump $enter_cont
+jump $enter_cont
 return 0
 fi
 
