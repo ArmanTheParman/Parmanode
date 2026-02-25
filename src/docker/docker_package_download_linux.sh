@@ -33,6 +33,7 @@ source /etc/os-release && debug "&& debug, ID is $ID after source os-release"
 debug "ID is $ID"
 
 if sudo grep -q "trixie" /etc/os-release ; then 
+    sudo rm /etc/apt/sources.list.d/docker.list /etc/apt/keyrings/docker.gpg >$dn 2>&1
     docker_for_trixie || return 1
 else
     curl -fsSL https://download.docker.com/linux/$ID/gpg | sudo gpg --yes --dearmor -o /etc/apt/keyrings/docker.gpg
