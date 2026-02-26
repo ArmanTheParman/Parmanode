@@ -32,7 +32,6 @@ if [[ $OS == "Linux" ]] ; then
     export knotsextension_alt="zip"
     export coreexternsion_alt="zip"
     
-#    export bip110rc="rc3"
 
 else 
     export knotsversion="29.3"

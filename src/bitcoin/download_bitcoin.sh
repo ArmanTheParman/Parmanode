@@ -61,6 +61,7 @@ function download_bitcoin_getfiles { debugf
 # ARM Pi4 support. If not, checks for 64 bit x86.
 while true ; do
 debug "versions... knotsbitcoin: $knotsbitcoin, knotsmajor: $knotsmajor, core version: $version"
+
 	     if [[ $chip == "armv7l" || $chip == "armv8l" ]] ; then 		#32 bit Pi4
                 [[ $bip110 == "true" ]] && announce "Sorry, BIP110 Knots is not availble for your computer's particular CPU." && return 1
 
@@ -72,12 +73,12 @@ debug "versions... knotsbitcoin: $knotsbitcoin, knotsmajor: $knotsmajor, core ve
                 fi
          fi
 
-	     if [[ $chip == "aarch64" && $OS == "Linux" ]] ; then 				
+	     if [[ $chip == "aarch64" && $OS == "Linux" ]] ; then #64 bit Pi
 
             if [[ $( file /bin/bash | cut -d " " -f 3 ) == "64-bit" ]] ; then
 
                 if [[ $bip110 == "true" ]] ; then
-                    curl -fsLO https://github.com/dathonohm/bitcoin/releases/download/v29.3.knots20260210%2Bbip110-v0.3$bip110rc/bitcoin-29.3.knots20260210+bip110-v0.3$bip110rc-aarch64-linux-gnu-tar.gz
+                    curl -fsLO https://github.com/dathonohm/bitcoin/releases/download/v29.3.knots20260210%2Bbip110-v0.3/bitcoin-29.3.knots20260210+bip110-v0.3-aarch64-linux-gnu.tar.gz
                     break
                 fi
             
@@ -100,7 +101,7 @@ debug "versions... knotsbitcoin: $knotsbitcoin, knotsmajor: $knotsmajor, core ve
  	     if [[ $chip == "x86_64" && $OS == "Linux" ]] ; then debug "x86"
 
                 if [[ $bip110 == "true" ]] ; then
-                    curl -fsLO https://github.com/dathonohm/bitcoin/releases/download/v29.3.knots20260210%2Bbip110-v0.3$bip110rc/bitcoin-29.3.knots20260210+bip110-v0.3$bip110rc-x86_64-linux-gnu.tar.gz
+                    curl -fsLO https://github.com/dathonohm/bitcoin/releases/download/v29.3.knots20260210%2Bbip110-v0.3/bitcoin-29.3.knots20260210+bip110-v0.3-x86_64-linux-gnu.tar.gz
                     break
                 fi
 
