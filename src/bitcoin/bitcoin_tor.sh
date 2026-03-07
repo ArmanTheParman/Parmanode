@@ -20,7 +20,7 @@ install_tor
 if [[ ! -e $varlibtor ]] ; then mkdir -p $varlibtor >$dn 2>&1 ; fi
 if [[ ! -e $torrc ]] ; then $xsudo touch $torrc >$dn 2>&1 ; fi
 
-if ! $xsudo grep "Additions by Parmanode" $torrc ; then enable_tor_general ; fi
+if ! $xsudo grep -q "Additions by Parmanode" $torrc ; then enable_tor_general ; fi
 
 
 if [[ $parmaview == 1 ]] ; then p4run "add_bitcoin_hidden_service"
