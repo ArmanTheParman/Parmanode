@@ -38,7 +38,7 @@ fi
 log "tor-server" "Beginning tor-server install"
 installed_conf_add "tor-server-start"
 
-if ! sudo cat /etc/tor/torrc | grep "# Additions by Parmanode..." >$dn 2>&1 ; then
+if ! sudo cat /etc/tor/torrc | grep -q "# Additions by Parmanode..." >$dn 2>&1 ; then
 echo "# Additions by Parmanode..." | sudo tee -a /etc/tor/torrc >$dn 2>&1
 fi
 

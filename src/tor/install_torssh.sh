@@ -56,7 +56,7 @@ fi
 if ! which tor >$dn 2>&1 ; then install_tor ; fi
 
 # edit torrc...
-if ! sudo cat $torrc | grep "# Additions by Parmanode..." >$dn 2>&1 ; then
+if ! sudo cat $torrc | grep -q "# Additions by Parmanode..." >$dn 2>&1 ; then
 echo "# Additions by Parmanode..." | sudo tee -a $torrc >$dn 2>&1
 fi
 

@@ -107,7 +107,7 @@ else
 debug "$xsudo, $OS, $ic"
 fi
 
-if [[ $($xsudo grep -c "Additions by Parmanode" $torrc 2>$dn) -gt 1 ]] ; then
+if [[ $($xsudo grep -cq "Additions by Parmanode" $torrc 2>$dn) -gt 1 ]] ; then
     remove_tor_general
     enable_tor_general
 fi

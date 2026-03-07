@@ -14,7 +14,7 @@ please_wait
 
 if ! id | grep -q "debian-tor" ; then sudo usermod -aG debian-tor $USER >$dn 2>&1 ; fi
 
-if ! $xsudo grep "Additions by Parmanode" $torrc >$dn 2>&1 ; then
+if ! $xsudo grep -q "Additions by Parmanode" $torrc >$dn 2>&1 ; then
 echo "# Additions by Parmanode..." | sudo tee -a $torrc >$dn 2>&1
 fi
 
