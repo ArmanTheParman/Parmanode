@@ -78,23 +78,24 @@ if grep -q parmaraid-end $ic ; then
     raid="${green}disassembled${blue}"
     raidstatus=disassembled
     fi
-raidmenu="\n            RAID is:      $raid"
-unset mountmenu mount2 mounted2
+    raidmenu="\n            RAID is:      $raid"
+    unset mountmenu mount2 mounted2
 else
-unset raidmenu raid raidstatus
+    unset raidmenu raid raidstatus
 fi
 
-if sudo mountpoint -q /srv/proton_drive ; then proton="Proton Drive:$green MOUNTED$yellow  \033[40G /srv/proton_drive"
-else
-proton="Proton Drive:$red NOT MOUNTED$blue"
-fi
+if sudo test /etc/systemd/system/rclone-proton.service ; then #means rclone installed
 
-#### delete later
-# if [[ $debug == 1 ]] ; then
-#     raidmenuchoice="$orange
-#                           pr)$cyan           ParmaRaid Menu"
-# raidmenu="\n            RAID is: $raid"
-# fi
+    proton_legend="$orange
+                          up)$cyan           Unmount Proton
+                          "
+
+    if sudo mountpoint -q /srv/proton_drive ; then 
+        proton="Proton Drive:$green MOUNTED$yellow  \033[40G /srv/proton_drive"
+    else
+        proton="Proton Drive:$red NOT MOUNTED$blue"
+    fi
+fi
 
 clear
 echo -e "$blue
@@ -122,9 +123,7 @@ $orange
                           db)$cyan           Why stop Docker and bitcoin?...
 $orange
                           mp)$cyan           Mount Proton
-$orange
-                          up)$cyan           Unmount Proton
-
+$proton_legend
 $blue
 ########################################################################################
 "
