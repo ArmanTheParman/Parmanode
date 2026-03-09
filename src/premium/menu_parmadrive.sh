@@ -84,7 +84,7 @@ else
     unset raidmenu raid raidstatus
 fi
 
-if sudo test /etc/systemd/system/rclone-proton.service ; then #means rclone installed
+if sudo test -f /etc/systemd/system/rclone-proton.service ; then #means rclone installed
 
     proton_legend="$orange
                           up)$cyan           Unmount Proton
