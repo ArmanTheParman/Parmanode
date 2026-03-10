@@ -87,6 +87,8 @@ fi
 if sudo test -f /etc/systemd/system/rclone-proton.service ; then #means rclone installed
 
     proton_legend="$orange
+                          mp)$cyan           Mount Proton
+    $orange
                           up)$cyan           Unmount Proton
                           "
 
@@ -121,8 +123,6 @@ $orange
                         lock)$cyan           Lock drive(s)
 $orange
                           db)$cyan           Why stop Docker and bitcoin?...
-$orange
-                          mp)$cyan           Mount Proton
 $proton_legend
 $blue
 ########################################################################################
