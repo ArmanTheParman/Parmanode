@@ -351,6 +351,7 @@ echo -e "
 ########################################################################################
 "
 enter_continue ; jump $enter_cont
+clear #necessary 
 nano $HOME/.bitcoin/bitcoin.conf
 continue
 ;;
@@ -362,6 +363,7 @@ fi
 
 vbc|bcv)
 vim_warning
+clear #necessary
 vim $HOME/.bitcoin/bitcoin.conf
 ;;
 
