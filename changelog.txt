@@ -1,3 +1,5 @@
+Version 3.69.5
+     -ParmaScale, premium app, now free
 Version 3.69.4
      -Fixed Debian Trixie Docker bug
      -Specter libfuse2 dependency added, fuse3 doesn't work

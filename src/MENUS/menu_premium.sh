@@ -7,7 +7,7 @@ if ! grep -q "parmaplex-end" $ic ; then plex="\n#$orange              plex)$blue
 fi
 [[ ! -e $pp/parmasql ]]   &&          parmasql="\n#$orange              psql)$blue        ParmaSQL                                                   #
 #                                                                                      #"
-[[ ! -e $pp/parmascale ]] &&          parmascale="\n#$orange             scale)$blue        ParmaScale                                                 #
+[[ ! -e $pp/parmascale ]] &&          parmascale="\n#$orange             scale)$blue        ParmaScale $green (NOW FREE) $blue                                    #
 #                                                                                      #"
 [[ ! -e $pp/parminer ]] &&          parminer="\n#$orange                pm)$blue        ParMiner                                                   #
 #                                                                                      #"
