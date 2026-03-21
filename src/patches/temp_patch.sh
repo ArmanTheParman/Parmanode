@@ -71,7 +71,7 @@ if test -f $dp/update_script.sh ; then
     $xsudo mv $tmp/crontab /etc/crontab >$dn 2>&1
 fi
 
-if [[ $OS == "Linux" ]] && test -f $dp/mount_check.sh  ; then
+if [[ $OS == "Linux" ]] && test -f $dp/mount_check.sh >$dn 2>&1 ; then
 
     mv $dp/mount_check.sh $dp/scripts/mount_check.sh >$dn 2>&1 
         #rewrite paths in existing service files
