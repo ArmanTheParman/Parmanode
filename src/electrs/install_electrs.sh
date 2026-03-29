@@ -169,7 +169,7 @@ success "electrs" "being installed"
 
 isbitcoinrunning
 
-if [[ $bitcoinrunning == "false" ]] ; then
+if ! grep -q "disable_bitcoin=true" $pc && [[ $bitcoinrunning == "false" ]] ; then
 yesorno "Want Parmanode to start Bitcoin for you?" && start_bitcoin 
 fi
 
