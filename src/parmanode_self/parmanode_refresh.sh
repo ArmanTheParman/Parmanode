@@ -13,8 +13,17 @@ cd $pn
 git config pull.rebase false >$dn 2>&1
 if ! git config user.email >$dn 2>&1 ; then git config user.email sample@parmanode.com ; fi
 if ! git config user.name  >$dn 2>&1 ; then git config user.name ParmanodeUser ; fi
-success "The Parmanode script directory has been refreshed"
-announce "Parmanode will quit now so the changes take effect. Please restart again." ; clear
-exit 0
+
+if [[ $1 == "update" ]] ; then
+    success "Parmanode has been updated. Exiting now so the changes take effect. 
+    Please start Parmanode again."
+    clear
+    exit 0
+else
+    success "The Parmanode script directory has been refreshed. 
+    Parmanode will quit now so the changes take effect. Please restart again." 
+    clear
+    exit 0
+fi
 
 }
