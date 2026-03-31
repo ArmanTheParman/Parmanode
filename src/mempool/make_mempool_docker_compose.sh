@@ -2,13 +2,15 @@ function make_mempool_docker_compose {
 source $bc >$dn 2>&1
 file="$tmp/docker-compose.yml"
 
-if [[ $OS == Linux ]] ; then
+if [[ $OS == "Linux" ]] ; then
   mariadb_data="./data"
   mysql_data="./mysql_data"
-elif [[ $OS == Mac ]] ; then
+elif [[ $OS == "Mac" ]] ; then
   mariadb_data="mariadb_data"
   mysql_data="mysql_data"
 fi
+
+if [[ -z $docker_bridge ]] ; then XXX=$IP ; else XXX=$docker_bridge ; fi
 
 cat << EOF | tee $file >$dn 2>&1
 networks:
@@ -32,9 +34,9 @@ services:
   api:
     environment:
       MEMPOOL_BACKEND: "none"
-      CORE_RPC_HOST: "$IP"
+      CORE_RPC_HOST: "$XXX"
       CORE_RPC_PORT: "8332"
-      ELECTRUM_HOST: "$IP"
+      ELECTRUM_HOST: "$XXX"
       ELECTRUM_PORT: "50005"
       ELECTRUM_TLS_ENABLED: "false"
 EOF

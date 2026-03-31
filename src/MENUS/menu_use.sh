@@ -1,7 +1,6 @@
 function menu_use {
 
 while true ; do
-unset count
 unset raidapp
 unset bitcoinapp fulcrumapp fulcrumdkrapp btcpayapp torapp lndapp sparrowapp rtlapp electrumapp 
 unset torserverapp specterapp btcrpcexplorerapp electrsapp lnbitsapp trezorapp bitboxapp
@@ -10,6 +9,8 @@ unset electrsdkrapp torbapp qbittorrentapp mempoolapp torsshapp public_poolapp n
 unset electrumxapp thunderhubapp websiteapp lnddockerapp nostrrelay litdapp parmacloudapp
 unset parmanostrapp btcrecoverapp joinmarketapp greenapp parman_booksapp X11app phoenixapp
 unset parminerapp parmanasapp parmascaleapp vaultwardenapp veracryptapp parmadeskapp i2papp albyapp
+
+source $pc # resets usecount, which counts installed programs
 
 set_terminal 40 88
 echo -e "
@@ -29,11 +30,11 @@ if grep -q "parmanas-end" $ic ; then
                        echo -e "                   $cyan       pnas)$blue       ParmaNas$orange" ; parmanasapp=1 ; count=$((count +1)) ; fi
 if grep -q "parmascale-end" $ic ; then
                        echo -e "                   $cyan       scale)$blue      ParmaScale$orange" ; parmascaleapp=1 ; count=$((count +1)) ; fi
-if [[ -e $pp/parminer ]] ; then 
+if [[ -e "$pp/parminer" ]] ; then 
                        echo -e "                   $cyan       pm)$blue         ParMiner$orange" ; parminerapp=1 ; count=$((count +1)) ; fi
-if [[ -e $pp/datum ]] ; then 
+if [[ -e "$pp/datum" ]] ; then 
                        echo -e "                   $cyan       dt)$blue         Datum$orange" ; datumapp=1 ; count=$((count +1)) ; fi
-if [[ -e $pp/uddns ]] ; then 
+if [[ -e "$pp/uddns" ]] ; then 
                        echo -e "                   $cyan       ud)$blue         UDDNS$orange" ; uddnsapp=1 ; count=$((count +1)) ; fi
 if  grep -q "parmasync-end" $ic ; then
                        echo -e "                        $cyan  sync)$blue       ParmaSync$orange" ; parmasyncapp=1 ; count=$((count +1)) ; fi

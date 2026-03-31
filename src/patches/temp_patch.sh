@@ -112,6 +112,19 @@ if [[ $($xsudo grep -cq "Additions by Parmanode" $torrc 2>$dn) -gt 1 ]] ; then
     enable_tor_general
 fi
 
+#Remove in 2027 (code added to install_mempool function Version 3.69.5+)
+
+    if [[ -z $docker_bridge ]] && $pc && docker ps >$dn 2>&1 ; then
+        export docker_bridge=$(docker network inspect bridge | jq -r '.[0].IPAM.Config[0].Gateway')
+        if [[ $docker_bridge =~ ^[0-9] ]] ; then #check if value is valid
+            echo "docker_bridge=$docker_bridge" | tee -a $pc >$dn 2>&1
+            sudo gsed -i "s/ CORE_RPC_HOST.*\$/ CORE_RPC_HOST: \"$docker_bridge\"/" $mempoolconf >$dn 2>&1
+            sudo gsed -i "s/ ELECTRUM_HOST.*\$/ ELECTRUM_HOST: \"$docker_bridge\"/" $mempoolconf >$dn 2>&1
+        else
+        unset docker_bridge 
+        fi
+    fi
+
 #debug temppatchend
 }
 
