@@ -114,7 +114,7 @@ fi
 
 #Remove in 2027 (code added to install_mempool function Version 3.69.5+)
 
-    if [[ -z $docker_bridge ]] && $pc && docker ps >$dn 2>&1 ; then
+    if [[ -z $docker_bridge ]] && docker ps >$dn 2>&1 ; then
         export docker_bridge=$(docker network inspect bridge | jq -r '.[0].IPAM.Config[0].Gateway')
         if [[ $docker_bridge =~ ^[0-9] ]] ; then #check if value is valid
             echo "docker_bridge=$docker_bridge" | tee -a $pc >$dn 2>&1
