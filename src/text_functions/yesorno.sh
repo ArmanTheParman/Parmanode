@@ -103,6 +103,7 @@ case $choice in
 q|Q) exit ;; m|M) back2main ;;
 "$y") return 0 ;;
 "$n") return 1 ;;
+"noooo") export noooo="true" ; return 1 ;;
 *)
 invalid
 ;;

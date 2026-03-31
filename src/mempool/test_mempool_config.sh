@@ -54,6 +54,23 @@ export mc_count=$((mc_count + 1 ))
 #space before ELECTRUM is necessary
 confIP=$(grep " ELECTRUM_HOST:" $mempoolconf | cut -d \" -f2 )
 
+if ! grep -q "test_IP_vs_docker_bridge_for_electrum=off" $hm && [[ "$confIP" == "$IP" ]] ; then
+
+    if yesorno "Would you like Parmanode to change the mempool backend IP address 
+    currently set to $confIP to your Docker Bridge IP 
+    address $docker_bridge? --$green This is recommended and may improve performance.$orange
+    
+    Type$red noooo$orange to hide this suggestion in the future." ; then
+
+        sudo gsed -i "s/ CORE_RPC_HOST.*\$/ CORE_RPC_HOST: \"$XXX\"/" $mempoolconf >$dn 2>&1
+        enter_continue "IP changed"
+        export restart_mempool="true"
+    else
+        echo "test_IP_vs_docker_bridge_for_electrum=off" | tee -a $hm >$dn 2>&1
+    fi 
+    return 0
+fi
+
 if [[ "$confIP" != "$IP" && "$confIP" != "$docker_bridge" ]] ; then
 
 export mc_count=$((mc_count + 1))
@@ -83,7 +100,7 @@ q|Q) exit ;; p|Q) return 1 ;; m|M) back2main ;;
 fix)
 sudo gsed -i "s/ ELECTRUM_HOST.*\$/ ELECTRUM_HOST: \"$XXX\"/" $mempoolconf >$dn 2>&1
 enter_continue "Electrum IP changed"
-restart_mempool="true"
+export restart_mempool="true"
 break
 ;;
 n)
@@ -135,7 +152,7 @@ q|Q) exit ;; p|Q) return 1 ;; m|M) back2main ;;
 fix)
 sudo gsed -i "s/ CORE_RPC_USERNAME.*\$/ CORE_RPC_USERNAME: \"$rpcuser\"/" $mempoolconf >$dn 2>&1
 enter_continue "Username updated"
-restart_mempool="true"
+export restart_mempool="true"
 break
 ;;
 n)
@@ -189,7 +206,7 @@ q|Q) exit ;; p|Q) return 1 ;; m|M) back2main ;;
 fix)
 sudo gsed -i "s/ CORE_RPC_PASSWORD.*\$/ CORE_RPC_PASSWORD: \"$rpcpassword\"/" $mempoolconf >$dn 2>&1
 enter_continue "Password updated"
-restart_mempool="true"
+export restart_mempool="true"
 break
 ;;
 n)
@@ -213,6 +230,24 @@ fi
 function check_core_rpc_host_mempool {
 #space before CORE is necessary
 confIP=$(grep " CORE_RPC_HOST:" $mempoolconf | cut -d \" -f2 )
+
+if ! grep -q "test_IP_vs_docker_bridge_for_bitcoin=off" $hm && [[ "$confIP" == "$IP" ]] ; then
+
+    if yesorno "Would you like Parmanode to change the mempool backend IP address 
+    currently set to $confIP to your Docker Bridge IP 
+    address $docker_bridge? --$green This is recommended and may improve performance.$orange
+
+    Type$red noooo$orange to hide this suggestion in the future." ; then
+
+        sudo gsed -i "s/ CORE_RPC_HOST.*\$/ CORE_RPC_HOST: \"$XXX\"/" $mempoolconf >$dn 2>&1
+        enter_continue "IP changed"
+        export restart_mempool="true"
+    else
+        echo "test_IP_vs_docker_bridge_for_bitcoin=off" | tee -a $hm >$dn 2>&1
+    fi 
+    return 0
+fi
+
 if [[ "$confIP" != "$IP" && "$confIP" != "$docker_bridge" ]] ; then
 export mc_count=$((mc_count + 1))
 if [[ $mc_count -gt 1 ]] ; then export onemorething_this="$onemorething" ; else unset onemorething_this ; fi
