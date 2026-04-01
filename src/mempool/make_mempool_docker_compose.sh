@@ -5,12 +5,12 @@ file="$tmp/docker-compose.yml"
 if [[ $OS == "Linux" ]] ; then
   mariadb_data="./data"
   mysql_data="./mysql_data"
+  if [[ -z $docker_bridge ]] ; then XXX=$IP ; else XXX=$docker_bridge ; fi
 elif [[ $OS == "Mac" ]] ; then
   mariadb_data="mariadb_data"
   mysql_data="mysql_data"
+  XXX="$IP" 
 fi
-
-if [[ -z $docker_bridge ]] ; then XXX=$IP ; else XXX=$docker_bridge ; fi
 
 cat << EOF | tee $file >$dn 2>&1
 networks:

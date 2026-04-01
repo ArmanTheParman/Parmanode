@@ -118,10 +118,8 @@ fi
         export docker_bridge=$(docker network inspect bridge | jq -r '.[0].IPAM.Config[0].Gateway')
         if [[ $docker_bridge =~ ^[0-9] ]] ; then #check if value is valid
             echo "docker_bridge=$docker_bridge" | tee -a $pc >$dn 2>&1
-            sudo gsed -i "s/ CORE_RPC_HOST.*\$/ CORE_RPC_HOST: \"$docker_bridge\"/" $mempoolconf >$dn 2>&1
-            sudo gsed -i "s/ ELECTRUM_HOST.*\$/ ELECTRUM_HOST: \"$docker_bridge\"/" $mempoolconf >$dn 2>&1
-        else
-        unset docker_bridge 
+            [[ $OS == "Linux" ]] && sudo gsed -i "s/ CORE_RPC_HOST.*\$/ CORE_RPC_HOST: \"$docker_bridge\"/" $mempoolconf >$dn 2>&1
+            [[ $OS == "Linux" ]] && sudo gsed -i "s/ ELECTRUM_HOST.*\$/ ELECTRUM_HOST: \"$docker_bridge\"/" $mempoolconf >$dn 2>&1
         fi
     fi
 

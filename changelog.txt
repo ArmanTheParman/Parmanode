@@ -1,3 +1,6 @@
+Version 3.69.7
+     -Mempool log menu improvement
+     -Reversal of IP changes in last update on Macs only
 Version 3.69.6
      -Mempool IP changed to Docker Bridge
 Version 3.69.5

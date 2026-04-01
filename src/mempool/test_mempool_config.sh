@@ -9,7 +9,7 @@ function test_mempool_config {
 export mc_count=0
 export onemorething="\n$red    One more thing...$orange\n"
 export file="$hp/mempool/docker/docker-compose.yml"
-if [[ -n $docker_bridge && $confIP != $docker_bridge ]] ; then export XXX=$docker_bridge ; else export XXX=$IP ; fi
+if [[ -n $docker_bridge && $confIP != $docker_bridge ]] && [[ $OS == "Linux" ]] ; then export XXX=$docker_bridge ; else export XXX=$IP ; fi
 
 if grep MEMPOOL_BACKEND $file | grep -q "none" ; then
 
@@ -41,6 +41,16 @@ else
         fi
 fi
 
+if [[ $OS == "Mac" ]] && sudo grep -q "$docker_bridge" $mempoolconf; then
+    announce "Parmanode has detected a change in your mempool configuration from a previous 
+    update (related to the Docker Bridge IP) which causes issues on Macs. 
+    The change will be reversed."
+
+    sudo gsed -i "s/$docker_bridge/$IP/" $mempoolconf >$dn 2>&1
+    enter_continue "DONE" "5"
+    $restart_mempool="true"
+fi
+
 if [[ $restart_mempool == "true" ]] ; then
 restart_mempool
 sleep 3
@@ -54,7 +64,7 @@ export mc_count=$((mc_count + 1 ))
 #space before ELECTRUM is necessary
 confIP=$(grep " ELECTRUM_HOST:" $mempoolconf | cut -d \" -f2 )
 
-if ! grep -q "test_IP_vs_docker_bridge_for_electrum=off" $hm && [[ "$confIP" == "$IP" ]] ; then
+if ! grep -q "test_IP_vs_docker_bridge_for_electrum=off" $hm && [[ "$confIP" == "$IP" ]] && [[ $OS == "Linux" ]] ; then
 
     if yesorno "Would you like Parmanode to change the mempool backend IP address 
     currently set to $confIP to your Docker Bridge IP 
@@ -231,7 +241,7 @@ function check_core_rpc_host_mempool {
 #space before CORE is necessary
 confIP=$(grep " CORE_RPC_HOST:" $mempoolconf | cut -d \" -f2 )
 
-if ! grep -q "test_IP_vs_docker_bridge_for_bitcoin=off" $hm && [[ "$confIP" == "$IP" ]] ; then
+if ! grep -q "test_IP_vs_docker_bridge_for_bitcoin=off" $hm && [[ "$confIP" == "$IP" ]] && [[ $OS == "Linux" ]] ; then
 
     if yesorno "Would you like Parmanode to change the mempool backend IP address 
     currently set to $confIP to your Docker Bridge IP 
