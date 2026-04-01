@@ -167,10 +167,13 @@ log)
 while true ; do
 announce "Choosee api$cyan (1)$orange, db$cyan (2)$orange, or web$cyan (3)$orange.
     
-    Hit 'q' to exit the log."
+    Hit 'q' to exit the log in the next screen, or p to go back now."
     jump $enter_cont
     NODAEMON="true"
     case $enter_cont in
+    p)
+    break
+    ;;
     1|api)
         pn_tmux "docker logs docker-api-1 2>&1 | less" ; unset NODAEMON ; break
         ;;
