@@ -339,7 +339,7 @@ make_bitcoin_conf refresh && gsed -i '/bitcoiin_tor_status/d' $pc >$dn 2>&1 && s
 continue
 ;;
 
-bc|BC)
+bc|BC|conf)
 echo -e "
 ########################################################################################
     
@@ -361,7 +361,7 @@ upgrade_to_knots
 fi
 ;;
 
-vbc|bcv)
+vbc|bcv|confv|vconf)
 vim_warning
 clear #necessary
 vim $HOME/.bitcoin/bitcoin.conf
