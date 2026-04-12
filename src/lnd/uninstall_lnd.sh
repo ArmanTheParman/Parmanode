@@ -52,6 +52,8 @@ done
 
 sudo rm /etc/systemd/system/lnd.service
 sudo rm -rf $HOME/parmanode/lnd 
+sudo rm /usr/local/bin/{lnd,lncli} >$dn 2>&1
+
 parmanode_conf_remove "bitcoin_choice_with_lnd"
 parmanode_conf_remove "lnd_port"
 parmanode_conf_remove "LNDIP"
