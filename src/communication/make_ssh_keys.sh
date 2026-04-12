@@ -214,6 +214,12 @@ ssh-keygen -t rsa -b 4096 -f ~/.ssh/extra_keys/parmasyncsshfs-key -N "" -C "$USE
 sudo cp ~/.ssh/extra_keys/parmasyncsshfs-key* /root/.ssh/extra_keys/
 sudo chown root:root /root/.ssh/extra_keys/parmasyncsshfs-key*
 }
+function make_parmaview_ssh_keys { debugf
+sudo test -f ~/.ssh/extra_keys/parmaview-key && return 0
+ssh-keygen -t rsa -b 4096 -f ~/.ssh/extra_keys/parmaview-key -N "" -C "$USER parmaview"
+sudo cp ~/.ssh/extra_keys/parmaview-key* /root/.ssh/extra_keys/
+sudo chown root:root /root/.ssh/extra_keys/parmaparmaview-key*
+}
 
 function make_all_ssh_keys { debugf
 #No longer used
