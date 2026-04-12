@@ -1,5 +1,6 @@
 
 function make_restricted_bucket { debugf
+if [[ $OS == "Mac" ]] ; then return 0 ; fi
 
 sudo mkdir -p /usr/local/parmanode/{src,scripts,service,keys}
 sudo chown root:$(id -gn) /usr/local/parmanode/{src,scripts,service,keys}

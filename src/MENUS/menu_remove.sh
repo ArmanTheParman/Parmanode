@@ -683,8 +683,12 @@ uninstall_parmaplex
 menu_main
 fi
 ;;
-
-
+scale)
+if [[ $parmascalemenu == 1 ]] ; then
+uninstall_parmascale
+menu_main
+fi
+;;
 *)
 	invalid
 	continue

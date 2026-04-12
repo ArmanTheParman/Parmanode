@@ -1,5 +1,8 @@
 function menu_bitcoin { debugf
 
+
+
+
 if ! grep -qE "bitcoin-end" $ic ; then return 0 ; fi
 
 export debuglogfile="$HOME/.bitcoin/debug.log" 
@@ -17,6 +20,19 @@ if ! grep -q "bitcoin-end" $HOME/.parmanode/installed.conf >$dn 2>&1 ; then retu
 while true ; do
 unset output1 output2 choice external8333 bitcoin_tor_status
 source $pc >$dn
+
+if [[ -z $bip110choice ]] ; then
+    #should only run once, becauuse bip110choice will be set here.
+    bitcoin-cli --version |& grep -q bip110 && bip110choice="BIP110live"
+    bitcoin-cli --version |& grep bip110 | grep -q "rc1" && bip110choice="BIP110rc1" && announce "Please note that there is a new BIP110 release. \n    Get it by uninstalling Bitcoin and installing again."
+    bitcoin-cli --version |& grep bip110 | grep -q "rc2" && bip110choice="BIP110rc2" && announce "Please note that there is a new BIP110 release. \n    Get it by uninstalling Bitcoin and installing again."
+    bitcoin-cli --version |& grep bip110 | grep -q "rc3" && bip110choice="BIP110rc3" && announce "Please note that there is a new BIP110 release. \n    Get it by uninstalling Bitcoin and installing again."
+        if [[ -z $bip110choice ]] ; then bip110choice="no_BIP110" && unset updatesuggest
+        fi
+    echo "bip110choice=$bip110choice" >> $pc
+fi
+
+
 
 #Might bring this back later, causing too much confustion
 # grep -q hide_port_8333 $hm || {
@@ -106,7 +122,7 @@ if [[ $OS != "Mac" ]] ; then
         \r    Please run Knots instead to send them a message to get their head out of their arses.$orange"
     show_knots="$red BITCOIN CORE $yellow(Node, and JPEG relay client)$red"
     else
-        show_knots="$green              BITCOIN KNOTS"
+        show_knots="$green      BITCOIN KNOTS $blue$bip110choice$green"
         unset upgradetoknots
     fi
 else
@@ -120,6 +136,7 @@ onionRPC="\n$blue    Bitcoin RPC onion address: \n\n    $ONION_ADDR_BITCOINRPC:8
 else
 unset onionRPC ONION_ADDR_BITCOINRPC
 fi
+
 
 echo -en "
 ####################################################################################################$cyan
@@ -323,7 +340,7 @@ make_bitcoin_conf refresh && gsed -i '/bitcoiin_tor_status/d' $pc >$dn 2>&1 && s
 continue
 ;;
 
-bc|BC)
+bc|BC|conf)
 echo -e "
 ########################################################################################
     
@@ -335,6 +352,7 @@ echo -e "
 ########################################################################################
 "
 enter_continue ; jump $enter_cont
+clear #necessary 
 nano $HOME/.bitcoin/bitcoin.conf
 continue
 ;;
@@ -344,8 +362,9 @@ upgrade_to_knots
 fi
 ;;
 
-vbc|bcv)
+vbc|bcv|confv|vconf)
 vim_warning
+clear #necessary
 vim $HOME/.bitcoin/bitcoin.conf
 ;;
 

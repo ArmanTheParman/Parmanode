@@ -52,15 +52,16 @@ fi
 set_terminal ; echo -en "
 ########################################################################################
 
-    The version of Parmanode you are running is$red not up to date$orange. Would you like to
-    update Parmanode now? 
-$green
-                y)         Yes
-     $orange           
-                n)         No 
-$au_message
-    The apps you have already installed will not be changed.
+    The version of Parmanode you are running is$blue not up to date$orange. Would you like to
+    update Parmanode now? (takes a few seconds)
 
+$green
+                                 y)         Yes
+     $red
+                                 n)         No 
+$au_message
+
+    The apps you have already installed will not be changed.
 
     Latest Avaliavble:   $cyan$latest_version$orange
     Your Version:        $red$version$orange

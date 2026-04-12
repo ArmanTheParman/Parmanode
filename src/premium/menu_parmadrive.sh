@@ -12,7 +12,7 @@ if [[ -n $RAIDLUKSUUID ]] ; then
 fi
 
 if [[ $DOCKERMOUNT == "external" ]] ; then
-makesuredocker="Make sure all docker containers are stopped"
+makesuredocker="Make sure all Docker containers are stopped"
 fi
 
 function swwd {
@@ -78,23 +78,26 @@ if grep -q parmaraid-end $ic ; then
     raid="${green}disassembled${blue}"
     raidstatus=disassembled
     fi
-raidmenu="\n            RAID is:      $raid"
-unset mountmenu mount2 mounted2
+    raidmenu="\n            RAID is:      $raid"
+    unset mountmenu mount2 mounted2
 else
-unset raidmenu raid raidstatus
+    unset raidmenu raid raidstatus
 fi
 
-if sudo mountpoint -q /srv/proton_drive ; then proton="Proton Drive:$green MOUNTED$yellow  \033[40G /srv/proton_drive"
-else
-proton="Proton Drive:$red NOT MOUNTED$blue"
-fi
+if sudo test -f /etc/systemd/system/rclone-proton.service ; then #means rclone installed
 
-#### delete later
-# if [[ $debug == 1 ]] ; then
-#     raidmenuchoice="$orange
-#                           pr)$cyan           ParmaRaid Menu"
-# raidmenu="\n            RAID is: $raid"
-# fi
+    proton_legend="$orange
+                          mp)$cyan           Mount Proton
+    $orange
+                          up)$cyan           Unmount Proton
+                          "
+
+    if sudo mountpoint -q /srv/proton_drive ; then 
+        proton="Proton Drive:$green MOUNTED$yellow  \033[40G /srv/proton_drive"
+    else
+        proton="Proton Drive:$red NOT MOUNTED$blue"
+    fi
+fi
 
 clear
 echo -e "$blue
@@ -120,11 +123,7 @@ $orange
                         lock)$cyan           Lock drive(s)
 $orange
                           db)$cyan           Why stop Docker and bitcoin?...
-$orange
-                          mp)$cyan           Mount Proton
-$orange
-                          up)$cyan           Unmount Proton
-
+$proton_legend
 $blue
 ########################################################################################
 "
@@ -186,7 +185,7 @@ fi
 
 mount|mm)
 [[ -n $raidmenu ]] &&  { 
-    [[ $(docker ps | wc -l) -gt 1 ]] && { sww "Make sure that Docker is fully stopped before mounting" ; case $enter_cont in yolo) true ;; *) continue ;; esac ; }
+    check_docker_not_running || continue
     sudo mount /srv/parmadrive || { swwd ; continue ;}
     sudo mount /var/lib/docker 
     continue
@@ -195,7 +194,7 @@ mount|mm)
 [[ -z $PARMADRIVE2DEVUUID ]] && {
     [[ $mounted == "mounted" ]] && announce_blue "Already mounted" && continue
     [[ $locked1 == "locked" ]] && announce_blue "Can't mount a locked drive" && continue
-    [[ $(docker ps | wc -l) -gt 1 ]] && { sww "Make sure that Docker is fully stopped before mounting" ; case $enter_cont in yolo) true ;; *) continue ;; esac ; }
+    check_docker_not_running || continue
     sudo mount /srv/parmadrive || swwd #specify the mountpoint only as it is in fstab
     continue
 }
@@ -203,7 +202,7 @@ mount|mm)
 if yesorno_blue "Drive 1 or 2" "1" "ParmaDrive1" "2" "ParmaDrive2" ; then
     [[ $mounted == "mounted" ]] && announce_blue "Already mounted" && continue
     [[ $locked1 == "locked" ]] && announce_blue "Can't mount a locked drive" && continue
-    [[ $(docker ps | wc -l) -gt 1 ]] && { sww "Make sure that Docker is fully stopped before mounting" ; case $enter_cont in yolo) true ;; *) continue ;; esac ; }
+    check_docker_not_running || continue
     sudo mount /srv/parmadrive || swwd #specify the mountpoint only as it is in fstab
 else
     [[ $mounted2 == "mounted" ]] && announce_blue "Already mounted" && continue
@@ -225,7 +224,7 @@ if docker ps >$dn 2>&1 || bitcoin-cli --version ; then
 fi
 
 [[ -n $raidmenu ]] && { 
-    [[ $(docker ps 2>$dn | wc -l) -gt 1 ]] && docker ps >$dn 2>&1 && { sww "Make sure that Docker is fully stopped before unmounting. yolo to ignore." ; case $enter_cont in yolo) true ;; *) continue ;; esac ; }
+    check_docker_not_running || continue
     pgrep bitcoin >$dn && { sww "Make sure that bitcoin is fully stopped before unmounting"             ; case $enter_cont in yolo) true ;; *) continue ;; esac ; }
     sudo umount /var/lib/docker
     sudo umount /srv/parmadrive || { swwd ; continue ; } 
@@ -234,7 +233,7 @@ fi
     
 [[ -z $PARMADRIVE2DEVUUID ]] && {
     [[ $mounted != "mounted" ]] && announce_blue "Can't unmount a drive that isn't mounted." && continue
-    [[ $(docker ps 2>$dn | wc -l) -gt 1 ]] && { sww "Make sure that Docker is fully stopped before unmounting. yolo to ignore." ; case $enter_cont in yolo) true ;; *) continue ;; esac ; }
+    check_docker_not_running || continue
     pgrep bitcoin >$dn && { sww "Make sure that bitcoin is fully stopped before unmounting"             ; case $enter_cont in yolo) true ;; *) continue ;; esac ; }
     sudo umount /srv/parmadrive || swwd
     continue
@@ -242,7 +241,7 @@ fi
 
 if yesorno_blue "Drive 1 or 2" "1" "ParmaDrive1" "2" "ParmaDrive2" ; then
 [[ $mounted != "mounted" ]] && announce_blue "Can't unmount a drive that isn't mounted." && continue
-    [[ $(docker ps 2>$dn | wc -l) -gt 1 ]] && { sww "Make sure that Docker is fully stopped before unmounting. yolo to ignore." ; case $enter_cont in yolo) true ;; *) continue ;; esac ; }
+    check_docker_not_running || continue
     pgrep bitcoin >$dn && { sww "Make sure that bitcoin is fully stopped before unmounting"             ; case $enter_cont in yolo) true ;; *) continue ;; esac ; }
     sudo umount /srv/parmadrive || swwd
 else
@@ -338,5 +337,20 @@ invalid
 ;;
 esac
 done
+
+}
+
+
+function check_docker_not_running {
+
+source $pdc
+if [[ -n $DOCKERMOUNT && $DOCKERMOUNT == "internal" ]] ; then return 0 ; fi #don't exit if external or variable not set (old version)
+
+
+if [[ $(docker ps | wc -l) -gt 1 ]] ; then
+    sww "Make sure that Docker is fully stopped before mounting. Type yolo to ignore." 
+    case $enter_cont in yolo) return 0 ;; *) return 1 ;; esac 
+fi
+
 
 }

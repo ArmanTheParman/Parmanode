@@ -1,6 +1,7 @@
 function menu_docker {
 
-if [[ $OS == "Mac" ]] ; then no_mac ; return 1 ; fi
+if [[ $OS == "Mac" ]] ; then announce "This Docker menu is only available on Linux systems.
+    Please manage Docker from the Mac Docker Desktop application." ; return 1 ; fi
 if ! grep -q "docker-end" $ic ; then return 0 ; fi
 
 if [[ -f $dp/parmadrive.conf ]] ; then

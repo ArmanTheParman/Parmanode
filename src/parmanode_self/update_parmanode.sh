@@ -51,8 +51,8 @@ fi
 
 # above checks done without exiting, update can proceed.
 
-if [[ $1 == refresh ]] ; then
-parmanode_refresh
+if [[ $1 == "refresh" ]] ; then
+parmanode_refresh update
 return 0
 fi
 

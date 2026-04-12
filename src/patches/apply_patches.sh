@@ -45,6 +45,12 @@ esac
 if test -f $pn/debug.log ; then
 sudo rm $pn/debug.log >$dn 2>&1 # remove in Feb
 fi
+
+#Patchrunner needs testing
+    # if [[ $OS == "Linux" ]] ; then
+    # sudo /usr/local/parmanode/patchrunner.sh
+    # fi
+    # debug "end patchrunner"
 }
 
 

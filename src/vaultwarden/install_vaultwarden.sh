@@ -28,6 +28,7 @@ installed_config_add "vaultwarden-start"
 vaultwarden_tor
 make_ssl_certificates vaultwarden
 make_vaultwarden_nginx
+restart_nginx
 
 docker run -d \
       --name vaultwarden \

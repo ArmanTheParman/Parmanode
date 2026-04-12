@@ -29,6 +29,8 @@ fi
 gsed_symlink #linux only
 
 parmanode_variables $@ #CANNOT USE CUSTOM DEBUG FUNCTION BEFORE THIS"
+test -d $dp || mkdir -p $dp
+test -f $hm || touch $hm
 
 source_premium
 

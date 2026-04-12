@@ -1,6 +1,18 @@
-Version 3.70.0
-     -Development of restricted bucket further
-     -lock file removal wizard for Bitcoin
+Version 3.69.7
+     -Mempool log menu improvement
+     -Reversal of IP changes in last update on Macs only
+Version 3.69.6
+     -Mempool IP changed to Docker Bridge
+Version 3.69.5
+     -ParmaScale, premium app, now free
+Version 3.69.4
+     -Fixed Debian Trixie Docker bug
+     -Specter libfuse2 dependency added, fuse3 doesn't work
+Version 3.69.4
+     -BIP 110 v0.3
+     -torrc bug fix
+Version 3.69.3
+     -BIP 110 live
 Version 3.69.2
      -BIP 110 RC3
 Version 3.69.1

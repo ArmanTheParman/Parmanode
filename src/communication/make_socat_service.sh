@@ -19,3 +19,25 @@ sudo systemctl daemon-reload >$dn 2>&1
 sudo systemctl enable socat.service >$dn 2>&1
 sudo systemctl start socat.service >$dn 2>&1
 }
+
+function make_socat_service_eps {
+#renamed and changed from make_socat_service listen. Two step forward not needed.
+echo "[Unit]
+Description=Socat SSL to TCP Forwarding Service
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/socat OPENSSL-LISTEN:50010,reuseaddr,fork,cert=$HOME/.eps/cert.pem,key=$HOME/.eps/key.pem,verify=0 TCP:127.0.0.1:50009
+Restart=on-failure
+RestartSec=10
+KillMode=process
+
+[Install]
+WantedBy=multi-user.target
+" | sudo tee /etc/systemd/system/socat-eps.service >$dn 2>&1
+
+sudo systemctl daemon-reload >$dn 2>&1
+sudo systemctl enable socat-eps.service >$dn 2>&1
+sudo systemctl start socat-eps.service >$dn 2>&1
+}

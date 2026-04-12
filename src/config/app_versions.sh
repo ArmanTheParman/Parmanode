@@ -15,10 +15,10 @@ versions["coreversion"]="$coreversion"
 
 if [[ $OS == "Linux" ]] ; then
 
-    export knotsversion="29.2"
+    export knotsversion="29.3"
     versions["knotsversion"]="$knotsversion"
 
-    export knotsdate="20251110"
+    export knotsdate="20260210"
     versions["knotsdate"]="$knotsdate"
 
     export knotstag="v${knotsversion}.knots${knotsdate}"
@@ -31,13 +31,13 @@ if [[ $OS == "Linux" ]] ; then
     export coreexternsion="tar.gz"
     export knotsextension_alt="zip"
     export coreexternsion_alt="zip"
-
+    
 
 else 
-    export knotsversion="29.2"
+    export knotsversion="29.3"
     versions["knotsversion"]="$knotsversion"
 
-    export knotsdate="20251110"
+    export knotsdate="20260210"
     versions["knotsdate"]="$knotsdate"
 
     export knotsmajor="29.x"

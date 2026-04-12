@@ -143,20 +143,20 @@ IdentityFile ~/.ssh/extra_keys/uddns-key
 IdentitiesOnly yes" | sudo tee -a ~/.ssh/config >$dn
 }
 
-function make_parmascale_ssh_keys { debugf
+function make_parmascale_ssh_keys { 
+return 0
+    # sudo test -f $HOME/.ssh/extra_keys/parmascale-key.pub && return 1 # 1 is logically success here for the calling function
 
-sudo test -f $HOME/.ssh/extra_keys/parmascale-key.pub && return 1 # 1 is logically success here for the calling function
+    # mkdir -p ~/.ssh/extra_keys
+    # ssh-keygen -t rsa -b 4096 -f $HOME/.ssh/extra_keys/parmascale-key -N "" -C "$USER parmascale"
 
-mkdir -p ~/.ssh/extra_keys
-ssh-keygen -t rsa -b 4096 -f $HOME/.ssh/extra_keys/parmascale-key -N "" -C "$USER parmascale"
-
-grep -q "github-parmascale" ~/.ssh/config >$dn 2>&1 || 
-echo "
-Host github-parmascale
-HostName github.com
-User git
-IdentityFile ~/.ssh/extra_keys/parmascale-key
-IdentitiesOnly yes" | sudo tee -a ~/.ssh/config >$dn
+    # grep -q "github-parmascale" ~/.ssh/config >$dn 2>&1 || 
+    # echo "
+    # Host github-parmascale
+    # HostName github.com
+    # User git
+    # IdentityFile ~/.ssh/extra_keys/parmascale-key
+    # IdentitiesOnly yes" | sudo tee -a ~/.ssh/config >$dn
 }
 
 function make_parmasql_ssh_keys { debugf

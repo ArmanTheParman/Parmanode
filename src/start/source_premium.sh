@@ -11,7 +11,8 @@ function source_premium {
     [[ -e $dp/.uddns_enabled ]] && [[ -e $pp/uddns ]] && for file in $pp/uddns/src/*.sh ; do
 	    source $file
 	done
-    [[ -e $dp/.parmascale_enabled ]] && [[ -e $pp/parmascale ]] && for file in $pp/parmascale/src/*.sh ; do
+	#ParmaScale is now free
+    [[ -e $pp/parmascale ]] && for file in $pp/parmascale/src/*.sh ; do
 	    source $file
 	done
     [[ -e $dp/.parmacloud_enabled ]] && [[ -e $pp/parmacloud ]] && for file in $pp/parmacloud/src/*.sh ; do

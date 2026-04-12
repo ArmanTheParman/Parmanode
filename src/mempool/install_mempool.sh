@@ -23,12 +23,22 @@ if [[ $mbackend == 1 && $txindex != 1 ]] ; then clear ; echo -e "
     Sorry,$cyan txindex=1$orange needs to be in the bitcoin.conf file for Mempool to work.
     Type $red 'yolo'$orange and$cyan <enter>$orange to ignore warning, otherwise aborting."
     read choice
-    if [[ $choice != yolo ]] ; then debug "not yolo" ; return 1 ; fi
+    if [[ $choice != "yolo" ]] ; then debug "not yolo" ; return 1 ; fi
 fi
 
 if [[ $mbackend == 1 && $server != 1 ]] ; then 
     check_server_1 || return 1
 fi
+
+if [[ -z $docker_bridge ]] ; then
+    export docker_bridge=$(docker network inspect bridge | jq -r '.[0].IPAM.Config[0].Gateway')
+    if [[ $docker_bridge =~ ^[0-9] ]] ; then #check if value is valid
+        echo "docker_bridge=$docker_bridge" | tee -a $pc >$dn 2>&1
+    else
+    unset docker_bridge 
+    fi
+fi
+
 
 # INTRO 
 {
@@ -58,25 +68,20 @@ docker compose up -d || debug "compose up didn't work"
 #Final check to make sure the docker gatway IP is included in bitcoin.conf
 if docker ps >$dn 2>&1 ; then
 
-string="$(docker network inspect docker_PM_network | grep Gateway | awk '{print $2}' | tr -d ' ' | tr -d \" | cut -d \. -f 1)"
-debug "string is $string"
-
-if [[ $string != 172 ]] ; then #would be unusualy for it not to be 172
+if ! [[ $docker_bridge =~ ^172 ]] ; then #would be unusualy for it not to be 172
 
         if ! docker network inspect docker_PM_netowrk >$dn 2>&1 ; then 
         announce "some problem with starting the container. Aborting. Please let Parman know to fix."
         return 1
         fi
 
-    stringIP="$(docker network inspect docker_PM_network | grep Gateway | awk '{print $2}' | tr -d ' ' | tr -d \" )"
-
-    if [[ -n $stringIP ]] ; then
+    if [[ -n $docker_bridge ]] ; then
       cp $bc $dp/backup_bitcoin.conf 
-      echo rpcallowip="$stringIP"/16 | sudo tee -a $bc >$dn 2>&1
+      echo rpcallowip="$docker_bridge"/16 | sudo tee -a $bc >$dn 2>&1
     fi
     
-    if [[ $OS == Linux ]] ; then sudo systemctl restart bitcoind.service 
-    elif [[ $OS == Mac ]] ; then stop_bitcoin ; start_bitcoin
+    if [[ $OS == "Linux" ]] ; then sudo systemctl restart bitcoind.service 
+    elif [[ $OS == "Mac" ]] ; then stop_bitcoin ; start_bitcoin
     fi
 
     announce "An unusual IP address for the Docker Gateway was detected 
@@ -109,12 +114,10 @@ set_terminal ; echo -e "
 
     Which version of Mempool would you like?
 
-$cyan
-            1)$orange     v3.0
-$cyan
-            2)$orange     v3.2.1
+$green
+            1)$orange     v3.2.1
 $red
-            3)$red     Pre-release (can be buggy, but cutting edge, not recommended)
+            2)$red     Pre-release (can be buggy, but cutting edge, not recommended)
 $orange
 ########################################################################################
 "
@@ -122,13 +125,10 @@ choose xpmq ; read choice
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
-1)
-export memversion="--branch v3.0 --single-branch"
-break ;;
-2)
+1|"")
 export memversion="--branch v3.2.1 --single-branch"
 break ;;
-3)
+2)
 export memversion="--depth 1"
 break ;;
 *)

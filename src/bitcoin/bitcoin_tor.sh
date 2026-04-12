@@ -7,9 +7,18 @@ if [[ $1 == "clearnet" ]] ; then
     local exit_early="true" # No need to get onion address, but still need 
                             # to check for restart tor/bitcoin to clear settings if not called 
                             # from bitcoin_install()
+    $xsudo gsed -i "/onion=/d" $bc
 else
 install_tor #should be installed already, since have added Tor as a dependency to Parmanode.
 enable_tor_general
+fi
+
+install_tor
+
+if [[ ! -e $varlibtor ]] ; then mkdir -p $varlibtor >$dn 2>&1 ; fi
+if [[ ! -e $torrc ]] ; then $xsudo touch $torrc >$dn 2>&1 ; fi
+
+if ! $xsudo grep -q "Additions by Parmanode" $torrc ; then enable_tor_general ; fi
 
     #probably redundant
     if [[ $OS == "Mac" ]] ; then
@@ -118,8 +127,20 @@ fi
 function bitcoin_tor_remove { debugf
 
 stop_bitcoin
-sudo /usr/local/parmanode/p4run "bitcoin_tor" "remove_bitcoin_hidden_service"
-sudo /usr/local/parmanode/p4run "rpcbind" #modifications might inadvertently delete rpcbind
+if grep -q "parmaview-end" $ic ; then
+    sudo /usr/local/parmanode/p4run "bitcoin_tor" "remove_bitcoin_hidden_service"
+    sudo /usr/local/parmanode/p4run "rpcbind" #modifications might inadvertently delete rpcbind
+else
+    #delete...
+    $xsudo gsed -i  "/bitcoin-service/d"          $macprefix/etc/tor/torrc
+    $xsudo gsed -i  "/127.0.0.1:8333/d"           $macprefix/etc/tor/torrc
+    $xsudo gsed -i  "/onion/d"                    $bc 
+    echo "listenonion=0" | $xsudo tee -a $bc >$dn 2>&1
+    $xsudo gsed -i  "/bind=127.0.0.1/d"           $bc
+    $xsudo gsed -i  "/onlynet/d"                  $bc
+    add_rpcbind #adds 0.0.0.0
+fi
+
 rm $HOME/.bitcoin/onion* >$dn 2>&1
 start_bitcoin
 set_terminal

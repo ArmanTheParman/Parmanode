@@ -14,7 +14,9 @@ please_wait
 
 if ! id | grep -q "debian-tor" ; then sudo usermod -aG debian-tor $USER >$dn 2>&1 ; fi
 
+if ! $xsudo grep -q "Additions by Parmanode" $torrc >$dn 2>&1 ; then
 enable_tor_general
+fi
 
 # if there's this search string, that doesn't start with #, then...
 if ! sudo grep "HiddenServiceDir $varlibtor/bre-service/" $torrc | grep -v "^#" >$dn 2>&1 ; then 
