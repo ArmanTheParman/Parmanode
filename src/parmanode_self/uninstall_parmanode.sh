@@ -38,27 +38,32 @@ set_terminal
 else 
 set_terminal
 fi #ends if bitcoin installed/unsinstalled
+debug
 
 if grep -q "fulcrum" $ic 
 then uninstall_fulcrum #both linux & mac, confirmations inside functions
 set_terminal
 fi
+debug
 
 if grep -q "btcpay" $ic 
 then uninstall_btcpay # confirmation inside function, linux and mac.
 set_terminal
 fi
+debug
 
 if grep -q "electrum-" $ic
 then
 uninstall_electrum
 set_terminal
 fi
+debug
 
 if grep -q "lnd" $ic ; then
 uninstall_lnd
 set_terminal
 fi
+debug
 
 
 if grep -q "rtl" $ic
@@ -66,159 +71,212 @@ then
 uninstall_rtl #Confirmation inside function
 set_terminal
 fi
+debug
 
 if grep -q "sparrow" $ic
 then
 uninstall_sparrow
 set_terminal
 fi
+debug
 
 if grep -q "tor-server" $ic
 then
 uninstall_tor_webserver
 set_terminal
 fi
+debug
 
 if grep -q "specter" $ic
 then
 uninstall_specter
 set_terminal
 fi
+debug
 
 if grep -q "electrs-" $ic
 then
 uninstall_electrs
 set_terminal
 fi
+debug
 
 if grep -q "btcrpcexplorer" $ic
 then
 uninstall_btcrpcexplorer
 set_terminal
 fi
+debug
 
 if grep -q "parmanshell" $ic
 then
 uninstall_parmanshell
 set_terminal
 fi
+debug
 
 if grep -q "X11" $ic
 then
 uninstall_X11
 set_terminal
 fi
+debug
 
 if [[ -e "$hp/parman_books" ]] ; then
 yesorno "Remove Parman_Books?" && rm -rf $hp/parman_books
 set_terminal
 fi
+debug
 
 if grep -q "green" $ic ; then
 uninstall_green
 set_terminal
 fi
+debug
 
 if grep -q "joinmarket" $ic ; then
 uninstall_joinmarket
 set_terminal
 fi
+debug
 
 if grep -q "btcrecover" $ic ; then
 uninstall_btcrecover
 set_terminal
 fi
+debug
 
 if grep -q "parmanostr" $ic ; then
 uninstall_parmanostr
 set_terminal
 fi
+debug
 
 if grep -q "nextclour" $ic ; then
 uninstall_nextcloud
 set_terminal
 fi
+debug
+
 if grep -q "litd" $ic ; then
 uninstall_litd
 set_terminal
 fi
+debuh
 
 if grep -q "nostrrelay" $ic ; then
 uninstall_nostrrelay
 set_terminal
 fi
+debug
+
 if grep -q "litd" $ic ; then
 uninstall_litd
 set_terminal
 fi
+debug
+
 if grep -q "parmaweb" $ic ; then
 uninstall_parmaweb
 set_terminal
 fi
+debug
+
 if grep -q "thunderhub" $ic ; then
 uninstall_thunderhub
 set_terminal
 fi
+debug
+
 if grep -q "electrumx" $ic ; then
 uninstall_electrumx
 set_terminal
 fi
+debug
+
 if grep -q "public_pool" $ic ; then
 uninstall_public_pool
 set_terminal
 fi
+debug
+
 if grep -q "torssh" $ic ; then
 uninstall_torssh
 set_terminal
 fi
+debug
+
 if grep -q "mempool" $ic ; then
 uninstall_mempool
 set_terminal
 fi
+debug
+
 if grep -q "qbittorrent" $ic ; then
 uninstall_qbittorrent
 set_terminal
 fi
+debug
+
 if grep -q "torb" $ic ; then
 uninstall_torbrowser
 set_terminal
 fi
+debug
+
 if grep -q "torrelay" $ic ; then
 uninstall_torrelay
 set_terminal
 fi
+debug
+
 if grep -q "pihole" $ic ; then
 uninstall_pihole
 set_terminal
 fi
+debug
+
 if grep -q "anydesk" $ic ; then
 uninstall_anydesk
 set_terminal
 fi
+debug
+
 if grep -q "parmabox" $ic ; then
 uninstall_parmabox
 set_terminal
 fi
+debug
+
 if grep -q "ledger" $ic ; then
 uninstall_ledger
 set_terminal
 fi
+debug
+
 if grep -q "bitbox" $ic ; then
 uninstall_bitbox
 set_terminal
 fi
+debug
+
 if grep -q "trezor" $ic ; then
 uninstall_trezor
 set_terminal
 fi
+debug
+
 if grep -q "lnbits" $ic ; then
 uninstall_lnbits
 set_terminal
 fi
+debug
+
 if grep -q "vaultwarden" $ic ; then
 uninstall_vaultwarden
 set_terminal
 fi
+debug
 
 
 
@@ -227,34 +285,49 @@ if grep -q "parmascale" $ic ; then
 uninstall_parmascale
 set_terminal
 fi
+debug
+
 if grep -q "parmanas" $ic ; then
 uninstall_parmanas
 set_terminal
 fi
+debug
+
 if grep -q "uddns" $ic ; then
 uninstall_uddns
 set_terminal
 fi
+debug
+
 if grep -q "parminer" $ic ; then
 uninstall_parminer
 set_terminal
 fi
+debug
+
 if grep -q "parmacloud" $ic ; then
 uninstall_parmacloud
 set_terminal
 fi
+debug
+
 if grep -q "parmaswap" $ic ; then
 uninstall_parmaswap
 set_terminal
 fi
+debug
+
 if grep -q "datum" $ic ; then
 uninstall_datum
 set_terminal
 fi
+debug
+
 if grep -q "parmasync" $ic ; then
 uninstall_parmasync
 set_terminal
 fi
+debug
 
 set_terminal
 if [[ $debug == 0 ]] ; then 
@@ -307,6 +380,7 @@ autoupdate off
 
 cleanup_bashrc_zshrc
 
+debug
 set_terminal ; echo -e "
 ########################################################################################
 

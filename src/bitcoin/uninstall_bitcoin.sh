@@ -108,7 +108,7 @@ debug
 unset drive prune_value bitcoin_choice UUID BTCIP rpcuser rpcpassword btc_authentication format_choice skip_formatting justFormat driveproblem
 print_bitcoin_variables "after unset"
 #Remove service file for Linux only
-rm /etc/systemd/system/bitcoind.service >$dn 2>&1
+sudo rm /etc/systemd/system/bitcoind.service >$dn 2>&1
 sudo systemctl daemon-reload >$dn 2>&1
 
 set_terminal
