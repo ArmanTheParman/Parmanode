@@ -335,8 +335,13 @@ set_terminal
 fi
 debug
 
+if grep -q "parmaview" $ic ; then
+uninstall_parmaview
 set_terminal
-if [[ $debug == 0 ]] ; then 
+fi
+debug
+
+set_terminal
 while true ; do
 clear
 echo -e "
@@ -352,10 +357,10 @@ case $choice in
 m|M) back2main ;; q|Q) exit ;; p|P) return 1 ;; "") break ;; *) invalid ;; 
 esac
 done
-unset choice
-fi
 
-#check other programs are installed in later versions.
+unset choice
+
+# /opt/parmanode directory shall remain
 
 if [[ $OS == "Linux" ]] ; then
 
