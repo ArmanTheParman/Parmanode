@@ -11,14 +11,9 @@ if [[ $1 == "clearnet" ]] ; then
 else
 install_tor #should be installed already, since have added Tor as a dependency to Parmanode.
 enable_tor_general
-fi
-
-install_tor
 
 if [[ ! -e $varlibtor ]] ; then mkdir -p $varlibtor >$dn 2>&1 ; fi
 if [[ ! -e $torrc ]] ; then $xsudo touch $torrc >$dn 2>&1 ; fi
-
-if ! $xsudo grep -q "Additions by Parmanode" $torrc ; then enable_tor_general ; fi
 
     #probably redundant
     if [[ $OS == "Mac" ]] ; then
@@ -28,7 +23,6 @@ if ! $xsudo grep -q "Additions by Parmanode" $torrc ; then enable_tor_general ; 
 sudo /usr/local/parmanode/p4run "add_bitcoin_hidden_service"
         restart_tor #necessary as the service is new now
 fi
-debug
 
 # NOTES # discover=0 (dont advertise clearnet IP) ; if not set, default is 1
 
