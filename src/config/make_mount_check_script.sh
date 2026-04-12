@@ -10,7 +10,7 @@ function make_mount_check_script {
 [[ $OS == "Mac" ]] && return 1
 
 file=$dp/scripts/mount_check.sh
-rm $file 
+rm $file >$dn 2>&1
 echo "#!/bin/bash
 
 source \$HOME/.parmanode/parmanode.conf
