@@ -281,6 +281,12 @@ debug
 
 
 #### Premium apps
+if grep -q "parmasql" $ic ; then
+uninstall_parmasql
+set_terminal
+fi
+debug
+
 if grep -q "parmascale" $ic ; then
 uninstall_parmascale
 set_terminal
