@@ -73,29 +73,21 @@ else #no arguments specified
     #change target from default (optional)
     while true ; do
 
-if [[ -f "$keysigned" ]] ; then
+        announce "The signature will be saved to$green $keysigned $orange.
+        \r    Hit <enter> to continue.
+        \r    Type a path and enter, to save elsewhere. 
+        \r    ${red}x$orange and <enter> to abort."
 
-    if yesorno "Sign the parmanode.local key made with parmanode? Even if your computer's
-        \r    hostname is not 'parmanode' it should be fine, and parmanode uses the native 
-        \r    hostname of the system embedded in the parmanode.local key." ; then
-    else
-        while true ; do
-            announce "OK, go ahead and type in the full path to your key to sign. 
-            \r    x to abort.
-            \r    s to skip signing."
-            case $enter_cont in 
-                x) return 1 ;; 
-                s) keysigned="/dev/null" ; break ;; 
-                *)
-                    yesorno "Use $enter_continue?" || continue
-                    key="$enter_cont"
-                    keysigned="$key.crt"
-                    break
-                    ;;
-            esac
-        done
-    fi
-    
+        case $enter_cont in 
+             x) return 1 ;; 
+            "") break ;;
+             *)
+                yesorno "Use $enter_continue?" || continue
+                keysigned="$enter_cont"
+                break ;;
+        esac
+    done
+
 fi #end argument check
 
 #check files exist again now that choices are final.
@@ -103,11 +95,13 @@ fi #end argument check
     sudo test -f "$CA_PUBKEY" || { sww "Public key file not found at $CA_PUBKEY. Aborting." && return 1 ; }
     sudo test -f "$key" || { sww "Key file to sign not found at $key. Aborting." && return 1 ; }
     if [[ -f "$keysigned" ]] ; then
-            yesorno "Sign the $key? A signature for it already exists and will be overwritten.
+            yesorno "Sign the $key? A signature at this file path already exists and will 
+            \r    be overwritten.
+
             \r    Continue?" || return 1
     fi
 
-# confirmation deprecated with while false
+# confirmation deprecated with "while false"
 while false ; do
 clear ; echo -e "
 ########################################################################################
