@@ -11,7 +11,7 @@ function sign_cert_with_ca {
 if [[ -n $1 ]] ; then #argument(s) specified
         
     case $1 in
-        "default") true ;; #use default variables from above
+        "default") true ;;
                 *) 
                     RESTRICTED="$1" 
                     
@@ -102,6 +102,10 @@ fi #end argument check
     sudo test -f "$RESTRICTED" || { sww "Private key file not found at $RESTRICTED. Aborting." && return 1 ; }
     sudo test -f "$CA_PUBKEY" || { sww "Public key file not found at $CA_PUBKEY. Aborting." && return 1 ; }
     sudo test -f "$key" || { sww "Key file to sign not found at $key. Aborting." && return 1 ; }
+    if [[ -f "$keysigned" ]] ; then
+            yesorno "Sign the $key? A signature for it already exists and will be overwritten.
+            \r    Continue?" || return 1
+    fi
 
 # confirmation deprecated with while false
 while false ; do
