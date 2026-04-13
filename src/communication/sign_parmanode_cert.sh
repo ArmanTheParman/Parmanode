@@ -1,43 +1,110 @@
-function sign_parmanode_cert {
+# USAGE: sign_cert_with_ca prvkey pubkey target
 
-while true ; do
-    announce "If you have a certificate authority private key and wish to sign 
-    \r    a certificate for your server, type in the full path and hit <enter>.
+function sign_cert_with_ca {
 
-    \r    Otherwise hit <enter> alone to use /etc/ssl/parmanode/ca/ca.key
-    \r    or x and <enter> to abort" 
-    case $enter_cont in "") enter_cont="/etc/ssl/parmanode/ca/ca.key" ;; x) return 1 ;; esac
-    yesorno "You chose $enter_cont. Continue?" || continue
-    local RESTRICTED="$enter_cont"
+#default variables    
+    RESTRICTED=$parmanode_ca 
+    CA_PUBKEY=$parmanode_ca_pubkey
+    key="$parmanode_cert_dir/parmanode.local"
+    keysigned="$key.crt"
 
-    announce "Now type in the full path of the public key, typically called, ca.crt
-    \r    and hit <enter>.
+if [[ -n $1 ]] ; then #argument(s) specified
         
-    \r    Otherwise hit <enter> alone to use /etc/ssl/parmanode/ca/ca.crt
-    \r    or x and <enter> to abort."
-    case $enter_cont in "") enter_cont="/etc/ssl/parmanode/ca/ca.crt" ;; x) return 1 ;; esac
-    yesorno "You typed $enter_cont. Continue?" || continue
-    local CA_PUBKEY="$enter_cont"
-    break
+    case $1 in
+        "default") true ;; #use default variables from above
+                *) 
+                    RESTRICTED="$1" 
+                    
+                    [[ -z $2 ]] || { sww "No public key specified. Aborting." && return 1 ; }
+                    CA_PUBKEY="$2"
 
-done
+                    [[ -z $3 ]] || { sww "No target to sign specified. Aborting." && return 1 ; }
+                    key="$3"
+                    keysigned="$key.crt"
+                    ;;
+    esac 
+    
+    #all three variables specified, now check that they exist
+        sudo test -f "$RESTRICTED" || { sww "Private key file not found at $RESTRICTED. Aborting." && return 1 ; }
+        sudo test -f "$CA_PUBKEY" || { sww "Public key file not found at $CA_PUBKEY. Aborting." && return 1 ; }
+        sudo test -f "$key" || { sww "Key file to sign not found at $key. Aborting." && return 1 ; }
 
-if yesorno "Sign the parmanode.local key made with parmanode? Even if your computer's
-    hostname is not 'parmanode' it should be fine, and parmanode uses the native 
-    hostname of the system embedded in the parmanode.local key." ; then
-    local key="$parmanode_cert_dir/parmanode.local"
-else
-    while true ; do
-         announce "OK, go ahead and type in the full path to your key to sign. x to abort."
-         case $x in "") return 1 ; esac
-         yesorno "Use $enter_continue?" || continue
-         break
+else #no arguments specified
+
+    #change Private key from default (optional)
+    while true ; do 
+
+        announce "If you have a certificate authority private key and wish to sign 
+        \r    a certificate for your server, type in the full path of the key
+        \r    and hit <enter>.
+
+        \r    Otherwise hit <enter> alone to use$green $RESTRICTED $orange
+        \r    or$red x$orange and <enter> to abort" 
+
+        case $enter_cont in 
+            "") true ;;
+             x) return 1 ;; 
+             *) yesorno "You chose $enter_cont. Continue?" || continue
+                RESTRICTED="$enter_cont" 
+                ;;
+        esac
+        break
     done
-    local key="$enter_cont"
-fi
+    
+    #change public key from default (optional)
+    while true ; do
 
+        announce "Now type in the full path of the public key, typically called, ca.crt
+        \r    and hit <enter>.
+            
+        \r    Otherwise hit <enter> alone to use$green $CA_PUBKEY$orange
+        \r    or$red x$orange and <enter> to abort."
 
-while true ; do
+        case $enter_cont in 
+            "") true ;;
+             x) return 1 ;; 
+             *) yesorno "You typed $enter_cont. Continue?" || continue
+                CA_PUBKEY="$enter_cont"
+                ;;
+        esac
+        break
+    done
+
+    #change target from default (optional)
+    while true ; do
+
+if [[ -f "$keysigned" ]] ; then
+
+    if yesorno "Sign the parmanode.local key made with parmanode? Even if your computer's
+        \r    hostname is not 'parmanode' it should be fine, and parmanode uses the native 
+        \r    hostname of the system embedded in the parmanode.local key." ; then
+    else
+        while true ; do
+            announce "OK, go ahead and type in the full path to your key to sign. 
+            \r    x to abort.
+            \r    s to skip signing."
+            case $enter_cont in 
+                x) return 1 ;; 
+                s) keysigned="/dev/null" ; break ;; 
+                *)
+                    yesorno "Use $enter_continue?" || continue
+                    key="$enter_cont"
+                    keysigned="$key.crt"
+                    break
+                    ;;
+            esac
+        done
+    fi
+    
+fi #end argument check
+
+#check files exist again now that choices are final.
+    sudo test -f "$RESTRICTED" || { sww "Private key file not found at $RESTRICTED. Aborting." && return 1 ; }
+    sudo test -f "$CA_PUBKEY" || { sww "Public key file not found at $CA_PUBKEY. Aborting." && return 1 ; }
+    sudo test -f "$key" || { sww "Key file to sign not found at $key. Aborting." && return 1 ; }
+
+# confirmation deprecated with while false
+while false ; do
 clear ; echo -e "
 ########################################################################################
 
@@ -45,12 +112,12 @@ clear ; echo -e "
     going.
 $green
     sudo openssl x509 -req 
-        -in $key.csr
+        -in $key
         -CA $CA_PUBKEY
         -CAkey $RESTRICTED
         -CAcreateserial 
         -extfile /etc/ssl/parmanode/parmanode.ext
-        -out $key/.crt 
+        -out $keysigned
         -days 36500 -sha256 
         2>>$errorlog 
 $orange
@@ -76,17 +143,17 @@ done
 clear
 
     sudo openssl x509 -req \
-        -in "$key.csr" \
+        -in "$key" \
         -CA "$CA_PUBKEY" \
         -CAkey "$RESTRICTED" \
         -CAcreateserial \
         -extfile "/etc/ssl/parmanode/parmanode.ext" \
-        -out "$key.crt" \
+        -out "$keysigned" \
         -days 36500 -sha256 \
         2>>"$errorlog" || { sww && return 1 ; }
 
 sudo chmod 640 "$parmanode_cert_dir/parmanode.local.crt"
-success "The key has been signed."
+success "The key  has been signed."
 }
 
 

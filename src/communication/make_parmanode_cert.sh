@@ -1,10 +1,16 @@
 function make_parmanode_cert {
 
-#variablize the path
-local filepath="/etc/ssl/parmanode/"
+#variablize the files 
+    local keydir="/etc/ssl/parmanode/"
+    local keyfile="$keydir/parmanode.local.key"
+    local csrfile="$keydir/parmanode.local.csr"
 
-sudo openssl req -new -newkey rsa:2048 -nodes -keyout "$filepath/parmanode.local.key" \
-                 -out "$filepath/parmanode.local.csr" -subj "/CN=$(hostname).local" 2>>$errorlog || return 1
+if [[ -e "$keyfile" ]] ; then
+    yesorno "Key file already exists. Do you want to overwrite it?" || return 1
+fi
+
+sudo openssl req -new -newkey rsa:2048 -nodes -keyout "$keyfile" \
+                 -out "$csrfile" -subj "/CN=$(hostname).local" 2>>$errorlog || return 1
 
 cat <<EOF | sudo tee /etc/ssl/parmanode/parmanode.ext >$dn
 authorityKeyIdentifier=keyid,issuer

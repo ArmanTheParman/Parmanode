@@ -54,6 +54,8 @@ export errorlog="$dp/error.log"
 export p4socketfile="/tmp/parmanode.sock"
 export p4websocketfile="/opt/parmanode/parmanode_ws"
 export socketbacklog="/opt/parmanode/socketbacklog"
+export parmanode_ca="$macprefix/etc/ssl/parmanode/ca/ca.key"
+export parmanode_ca_pubkey="$macprefix/etc/ssl/parmanode/ca/ca.crt"
 
 # Enable alias expansion in non-interactive shells
 shopt -s expand_aliases
