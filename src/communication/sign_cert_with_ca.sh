@@ -89,7 +89,8 @@ fi #end argument check
     sudo test -f "$RESTRICTED" || { sww "Private key file not found at $RESTRICTED. Aborting." && return 1 ; }
     sudo test -f "$CA_PUBKEY" || { sww "Public key file not found at $CA_PUBKEY. Aborting." && return 1 ; }
     sudo test -f "$key" || { sww "Key file to sign not found at $key. Aborting." && return 1 ; }
-    keysigned="${keysigned%\.csr}.crt" #ensure .crt extension
+    keysigned=${keysigned%.crt} #remove extension and put back later
+    keysigned="${keysigned%\.csr}.crt" # remove csr and ensure .crt extension
 
     if [[ -f "$keysigned" ]] ; then
             yesorno "Sign the $key? A signature at this file path already exists and will 
@@ -99,7 +100,7 @@ fi #end argument check
     fi
 
 # confirmation deprecated with "while false"
-while false ; do
+while true ; do
 clear ; echo -e "
 ########################################################################################
 
@@ -147,8 +148,8 @@ clear
         -days 36500 -sha256 \
         2>>"$errorlog" || { sww && return 1 ; }
 
-sudo chmod 640 "$parmanode_cert_dir/parmanode.local.crt"
-success "The key  has been signed."
+sudo chmod 640 "$keysigned"
+success "The key has been signed.\n    Signature file: $blue$keysigned$orange"
 }
 
 
