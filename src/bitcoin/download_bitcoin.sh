@@ -1,6 +1,5 @@
 function download_bitcoin { debugf
 #not required for installation/setup of system outsite docker.
-if ! [[ $debug == 1 ]] ; then return 0 ; fi
 
 if [[ $btcpay_combo == "true" ]] || [[ $btcdockerchoice == yes ]] ; then return 0 ; fi
 if [[ $bitcoin_compile == "true" ]] ; then return 0 ; fi
