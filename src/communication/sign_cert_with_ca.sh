@@ -5,7 +5,7 @@ function sign_cert_with_ca {
 #default variables    
     RESTRICTED=$parmanode_ca 
     CA_PUBKEY=$parmanode_ca_pubkey
-    key="$parmanode_cert_dir/parmanode.local"
+    key="$parmanode_cert_dir/parmanode.local.csr"
     keysigned="$key.crt"
 
 if [[ -n $1 ]] ; then #argument(s) specified
@@ -24,11 +24,6 @@ if [[ -n $1 ]] ; then #argument(s) specified
                     ;;
     esac 
     
-    #all three variables specified, now check that they exist
-        sudo test -f "$RESTRICTED" || { sww "Private key file not found at $RESTRICTED. Aborting." && return 1 ; }
-        sudo test -f "$CA_PUBKEY" || { sww "Public key file not found at $CA_PUBKEY. Aborting." && return 1 ; }
-        sudo test -f "$key" || { sww "Key file to sign not found at $key. Aborting." && return 1 ; }
-
 else #no arguments specified
 
     #change Private key from default (optional)
@@ -94,6 +89,7 @@ fi #end argument check
     sudo test -f "$RESTRICTED" || { sww "Private key file not found at $RESTRICTED. Aborting." && return 1 ; }
     sudo test -f "$CA_PUBKEY" || { sww "Public key file not found at $CA_PUBKEY. Aborting." && return 1 ; }
     sudo test -f "$key" || { sww "Key file to sign not found at $key. Aborting." && return 1 ; }
+
     if [[ -f "$keysigned" ]] ; then
             yesorno "Sign the $key? A signature at this file path already exists and will 
             \r    be overwritten.
