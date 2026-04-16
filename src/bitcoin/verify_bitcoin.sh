@@ -8,8 +8,8 @@ cd $HOME/parmanode/bitcoin
 set_terminal 46 120
 debug "bitcoin_choice, $bitcoin_choice; bitcoin_combo, $bitcoin_combo"
 if [[ $bip110 == "true" ]] ; then
-        curl -fsLO https://github.com/dathonohm/bitcoin/releases/download/v29.3.knots20260210%2Bbip110-v0.3/SHA256SUMS
-        curl -fsLO https://github.com/dathonohm/bitcoin/releases/download/v29.3.knots20260210%2Bbip110-v0.3/SHA256SUMS.asc
+        curl -fsLO https://github.com/dathonohm/bitcoin/releases/download/v29.3.knots20260210%2Bbip110-v0.4.1/SHA256SUMS
+        curl -fsLO https://github.com/dathonohm/bitcoin/releases/download/v29.3.knots20260210%2Bbip110-v0.4.1/SHA256SUMS.asc
 else
 
     if grep -q "bitcoin_choice=knots" $pc || [[ $bitcoin_choice == "knots" ]] ; then
