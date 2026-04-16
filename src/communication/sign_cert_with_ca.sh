@@ -93,8 +93,8 @@ fi #end argument check
     keysigned="${keysigned%\.csr}.crt" # remove csr and ensure .crt extension
 
     if [[ -f "$keysigned" ]] ; then
-            yesorno "Sign the $key? A signature at this file path already exists and will 
-            \r    be overwritten.
+            yesorno "Sign the $key? 
+            \r    A signature at this file path already exists and will be overwritten.
 
             \r    Continue?" || return 1
     fi
