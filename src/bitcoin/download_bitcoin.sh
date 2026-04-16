@@ -78,7 +78,7 @@ debug "versions... knotsbitcoin: $knotsbitcoin, knotsmajor: $knotsmajor, core ve
             if [[ $( file /bin/bash | cut -d " " -f 3 ) == "64-bit" ]] ; then
 
                 if [[ $bip110 == "true" ]] ; then
-                    curl -fsLO https://github.com/dathonohm/bitcoin/releases/download/v29.3.knots20260210%2Bbip110-v0.3/bitcoin-29.3.knots20260210+bip110-v0.3-aarch64-linux-gnu.tar.gz
+                    curl -fsLO https://github.com/dathonohm/bitcoin/releases/download/v29.3.knots20260210%2Bbip110-v0.4.1/bitcoin-29.3.knots20260210+bip110-v0.4.1-aarch64-linux-gnu.tar.gz
                     break
                 fi
             
@@ -101,7 +101,7 @@ debug "versions... knotsbitcoin: $knotsbitcoin, knotsmajor: $knotsmajor, core ve
  	     if [[ $chip == "x86_64" && $OS == "Linux" ]] ; then debug "x86"
 
                 if [[ $bip110 == "true" ]] ; then
-                    curl -fsLO https://github.com/dathonohm/bitcoin/releases/download/v29.3.knots20260210%2Bbip110-v0.3/bitcoin-29.3.knots20260210+bip110-v0.3-x86_64-linux-gnu.tar.gz
+                    curl -fsLO https://github.com/dathonohm/bitcoin/releases/download/v29.3.knots20260210%2Bbip110-v0.4.1/bitcoin-29.3.knots20260210+bip110-v0.4.1-x86_64-linux-gnu.tar.gz
                     break
                 fi
 
@@ -116,7 +116,7 @@ debug "versions... knotsbitcoin: $knotsbitcoin, knotsmajor: $knotsmajor, core ve
          if [[ ($chip == "arm64" && $OS == "Mac") || ( $chip == "aarch64" && $OS == "Mac") ]] ; then debug "arm64 mac"
 
             if [[ $bip110 == "true" ]] ; then
-                curl -fsLO https://github.com/dathonohm/bitcoin/releases/download/v29.3.knots20260210%2Bbip110-v0.3/bitcoin-29.3.knots20260210+bip110-v0.3-arm64-apple-darwin.zip
+                curl -fsLO https://github.com/dathonohm/bitcoin/releases/download/v29.3.knots20260210%2Bbip110-v0.4.1/bitcoin-29.3.knots20260210+bip110-v0.4.1-arm64-apple-darwin.zip
                 break
             fi
 
@@ -133,7 +133,7 @@ debug "versions... knotsbitcoin: $knotsbitcoin, knotsmajor: $knotsmajor, core ve
          if [[ $chip == "x86_64" && $OS == "Mac" ]] ; then debug "x86_64 Mac"
 
                 if [[ $bip110 == "true" ]] ; then
-                    curl -fsLO https://github.com/dathonohm/bitcoin/releases/download/v29.3.knots20260210%2Bbip110-v0.3/bitcoin-29.3.knots20260210+bip110-v0.3-x86_64-apple-darwin.zip 
+                    curl -fsLO https://github.com/dathonohm/bitcoin/releases/download/v29.3.knots20260210%2Bbip110-v0.4.1/bitcoin-29.3.knots20260210+bip110-v0.4.1-x86_64-apple-darwin.zip 
                     break
                 fi         
          
