@@ -6,7 +6,7 @@ function sign_cert_with_ca {
     RESTRICTED=$parmanode_ca 
     CA_PUBKEY=$parmanode_ca_pubkey
     key="$parmanode_cert_dir/parmanode.local.csr"
-    keysigned="$key.crt"
+    keysigned="${key%\.csr}.crt"
 
 if [[ -n $1 ]] ; then #argument(s) specified
         
@@ -20,7 +20,7 @@ if [[ -n $1 ]] ; then #argument(s) specified
 
                     [[ -z $3 ]] || { sww "No target to sign specified. Aborting." && return 1 ; }
                     key="$3"
-                    keysigned="$key.crt"
+                    keysigned="${key%\.csr}.crt"
                     ;;
     esac 
     
@@ -68,7 +68,7 @@ else #no arguments specified
     #change target from default (optional)
     while true ; do
 
-        announce "The signature will be saved to$green $keysigned $orange.
+        announce "The signature will be saved to$green "${key%\.csr}.crt" $orange.
         \r    Hit <enter> to continue.
         \r    Type a path and enter, to save elsewhere. 
         \r    ${red}x$orange and <enter> to abort."
@@ -89,6 +89,7 @@ fi #end argument check
     sudo test -f "$RESTRICTED" || { sww "Private key file not found at $RESTRICTED. Aborting." && return 1 ; }
     sudo test -f "$CA_PUBKEY" || { sww "Public key file not found at $CA_PUBKEY. Aborting." && return 1 ; }
     sudo test -f "$key" || { sww "Key file to sign not found at $key. Aborting." && return 1 ; }
+    keysigned="${keysigned%\.csr}.crt" #ensure .crt extension
 
     if [[ -f "$keysigned" ]] ; then
             yesorno "Sign the $key? A signature at this file path already exists and will 
