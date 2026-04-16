@@ -74,6 +74,8 @@ export p4socketfile="/tmp/parmanode.sock"
 export p4websocketfile="/opt/parmanode/parmanode_ws"
 export socketbacklog="/opt/parmanode/socketbacklog"
 export mempoolconf="$hp/mempool/docker/docker-compose.yml"
+export parmanode_ca="$macprefix/etc/ssl/parmanode/ca/ca.key"
+export parmanode_ca_pubkey="$macprefix/etc/ssl/parmanode/ca/ca.crt"
 
 if [[ -z $lnd_port ]] ; then export lnd_port=9735 ; fi 
 
