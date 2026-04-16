@@ -11,9 +11,10 @@ if [[ $btcpayinstallsbitcoin != "true" ]] ; then
 if [[ $bitcoin_choice == "knots" ]] ; then printversion=$knotsversion ; else printversion=$version; fi
 #currently will never execute, deis is only compiled
 if [[ $clientchoice == "deis" ]] ; then printversion="Deis v${deisversion}" ; fi
-set_terminal
-echo -e "
-########################################################################################
+
+
+if [[ $debug == 1 ]] ; then
+announce "
 
 
     The current version of Bitcoin that will be installed is $printversion 
@@ -34,10 +35,9 @@ $cyan
                       https://armantheparman.com/gpg-articles 
 $orange
 
-########################################################################################
 "
-enter_continue
-jump $enter_cont
+fi
+
 fi
 
 set_terminal ; echo "Downloading Bitcoin files to $HOME/parmanode/bitcoin ..."
