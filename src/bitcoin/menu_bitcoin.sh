@@ -83,11 +83,12 @@ output2="                   Sync'ing to the $drive drive"
          output1="                   Bitcoin is$red NOT running$orange -- choose \"start\" to run"
          output2="                   Will sync to the $drive drive"
     fi
-
+privacystatus="                   P2P privacy setting: $red$bitcoin_tor_status$orange (change in tor menu)"
 else
 output1="                   Bitcoin is$red NOT running$orange -- choose \"start\" to run"
 
 output2="                   Will sync to the $drive drive"
+privacystatus=""
 fi                         
 
 
@@ -146,12 +147,13 @@ echo -en "
 
 
 "
-echo -e "       $output1"
-echo ""
-echo -e "       $output2"
-echo ""
-echo -e "       $output4"
-echo -e ""
+echo -e "       $output1
+
+       $output2
+       $privacystatus
+       $output4
+"
+
 if ! ( [[ $bitcoinrunning == "true" ]] && pgrep bitcoin-qt >$dn 2>&1 ) ; then
 echo -e "
 $green
@@ -179,6 +181,7 @@ echo -e "$output3$red                   disable)$orange      Disable Bitcoin tog
                    delete)$orange       Delete blockchain data and start over $cyan
                    upd)$orange          Update Bitcoin wizard $cyan
                    tips)$orange         Tips by Parman ...  $btcman $cyan
+                   wiz)$orange          Bitcoin won't start, try this manaeuver...$cyan
                    disable)$orange      Toggle on/off (for when manually copying blocks)$cyan
                    o)$orange            OTHER...
 
@@ -424,6 +427,9 @@ bitcoin_tips
 disable)
 toggle_disable_bitcoin
 ;;
+wiz)
+delete_locks_bitcoin
+;;
 "")
 continue ;;
 *)
@@ -524,4 +530,18 @@ $orange
 "
 
 
+}
+function delete_locks_bitcoin { debugf
+
+yesorno "This will delete any LOCK files in your Bitcoin data directory.
+    
+    This may help if Bitcoin is not starting. Sometime it's due to 
+    stale lock files being present, and not have been automatically 
+    cleaned up due to an non-graceful shutdown.
+    
+    Proceed?" || return 1
+
+stop_bitcoin
+find $HOME/.bitcoin/ -type f -iname "*LOCK" -exec rm -f {} \;
+enter_continue "Lock files deleted. You can now try starting Bitcoin again."
 }
