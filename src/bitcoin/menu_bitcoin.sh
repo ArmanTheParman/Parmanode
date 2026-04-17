@@ -100,7 +100,7 @@ if [[ $OS == "Linux" && $bitcoinrunning == "true" ]] && pgrep bitcoin-qt >$dn 2>
 output3="$red                   qtstop)$orange       Stop Bitcoin Qt \n"
 fi
 
-output4="                   Bitcoin Data Usage: $red$(du -shL $HOME/.bitcoin | cut -f1)"$orange
+output4="                   Bitcoin Data Usage:  $red$(du -shL $HOME/.bitcoin | cut -f1)"$orange
 
 if [[ -z $drive ]] ; then unset output2 ; fi
 
