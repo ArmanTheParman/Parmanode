@@ -83,11 +83,12 @@ output2="                   Sync'ing to the $drive drive"
          output1="                   Bitcoin is$red NOT running$orange -- choose \"start\" to run"
          output2="                   Will sync to the $drive drive"
     fi
-
+privacystatus="P2P privacy status: $red$bitcoin_tor_status$orange (change in tor menu)"
 else
 output1="                   Bitcoin is$red NOT running$orange -- choose \"start\" to run"
 
 output2="                   Will sync to the $drive drive"
+privacystatus=""
 fi                         
 
 
