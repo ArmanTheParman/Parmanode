@@ -83,7 +83,7 @@ output2="                   Sync'ing to the $drive drive"
          output1="                   Bitcoin is$red NOT running$orange -- choose \"start\" to run"
          output2="                   Will sync to the $drive drive"
     fi
-privacystatus="P2P privacy status: $red$bitcoin_tor_status$orange (change in tor menu)"
+privacystatus="                   P2P privacy status: $red$bitcoin_tor_status$orange (change in tor menu)"
 else
 output1="                   Bitcoin is$red NOT running$orange -- choose \"start\" to run"
 
@@ -147,12 +147,13 @@ echo -en "
 
 
 "
-echo -e "       $output1"
-echo ""
-echo -e "       $output2"
-echo ""
-echo -e "       $output4"
-echo -e ""
+echo -e "       $output1
+
+       $output2
+       $privacystatus
+       $output4
+"
+
 if ! ( [[ $bitcoinrunning == "true" ]] && pgrep bitcoin-qt >$dn 2>&1 ) ; then
 echo -e "
 $green
