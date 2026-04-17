@@ -102,14 +102,18 @@ jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in 
 m|M) back2main ;; Q|q|quit|QUIT|Quit) exit 0 ;; p|P) return 1 ;;
 "1"|torandclearnet)
-    bitcoin_tor "torandclearnet" 
+    parmanode_conf_remove "bitcoin_tor_status"
+    parmanode_conf_add "bitcoin_tor_status=torandclearnet" 
 #    check_bitcoin_tor_status #sets status in parmanode.conf #delete this function later
+    torandclearnet
     remove_bitcoin_i2p
     if [[ $install == "bitcoin" ]] ; then return 0 ; fi
     return 0 ;;
 
 "2"|toronly)
     bitcoin_tor "toronly" 
+    parmanode_conf_remove "bitcoin_tor_status"
+    parmanode_conf_add "bitcoin_tor_status=toronly"
 #    check_bitcoin_tor_status
     remove_bitcoin_i2p
     if [[ $install == "bitcoin" ]] ; then return 0 ; fi
@@ -117,6 +121,8 @@ m|M) back2main ;; Q|q|quit|QUIT|Quit) exit 0 ;; p|P) return 1 ;;
 
 "3"|onlyout)
     bitcoin_tor "toronly" "onlyout" #both $1 and $2 needed
+    parmanode_conf_remove "bitcoin_tor_status"
+    parmanode_conf_add "bitcoin_tor_status=onlyout"
 #    check_bitcoin_tor_status
     remove_bitcoin_i2p
     if [[ $install == "bitcoin" ]] ; then return 0 ; fi
@@ -160,6 +166,7 @@ m|M) back2main ;; Q|q|quit|QUIT|Quit) exit 0 ;; p|P) return 1 ;;
     bitcoin_tor_remove
     remove_bitcoin_i2p # to avoid duplications
     parmanode_conf_remove "bitcoin_tor_status"
+    parmanode_conf_add "bitcoin_tor_status=i2ponlyout"
 #    check_bitcoin_tor_status
     bitcoin_i2p 
     $xsudo gsed -i "/discover=/d" $bc >$dn 2>&1
@@ -168,8 +175,6 @@ m|M) back2main ;; Q|q|quit|QUIT|Quit) exit 0 ;; p|P) return 1 ;;
     $xsudo gsed -i "/listen=/d" $bc >$dn 2>&1
     echo "listen=0" | $xsudo tee -a $bc >$dn 2>&1
     echo "discover=0" | $xsudo tee -a $bc >$dn 2>&1
-    parmanode_conf_remove "bitcoin_tor_status"
-    parmanode_conf_add "bitcoin_tor_status=i2ponlyout"
     if [[ $install == "bitcoin" ]] ; then return 0 ; fi
     return 0 ;;
 
