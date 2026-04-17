@@ -105,7 +105,6 @@ m|M) back2main ;; Q|q|quit|QUIT|Quit) exit 0 ;; p|P) return 1 ;;
     parmanode_conf_remove "bitcoin_tor_status"
     parmanode_conf_add "bitcoin_tor_status=torandclearnet" 
 #    check_bitcoin_tor_status #sets status in parmanode.conf #delete this function later
-    torandclearnet
     remove_bitcoin_i2p
     if [[ $install == "bitcoin" ]] ; then return 0 ; fi
     return 0 ;;
