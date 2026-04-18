@@ -3,7 +3,7 @@ function temp_patch { debugf
 sudo rm $pn/debug.log >$dn 2>&1
 
 #these log files can get massive and freeze the system.
-sudo rm -rf ~/.xsessions-errors >$dn 2>&1 ; sudo rm -rf ~/.xsessions-errors.old >$dn 2>&1
+sudo rm -rf ~/.xsessions-errors* >$dn 2>&1 
 
 if [[ -e /.dockerenv ]] && ! netstat -tuln | grep -q 9050 ; then
 enable_tor_general
@@ -107,9 +107,16 @@ fi
         fi
     fi
 
+#Fix /dev/null - sometimes due to typo, /dev/null permission can be changed.
+#Considering adding this patch; not sure yet.
+    #   sudo chmod 0666 /dev/null
+
+
+
 #debug temppatchend
 }
 
+##############################################################################################################
 
 #changing becuase redirection to a log file directly is disfunctional with Fulcrum. Need to do it via script.
 function fulcrum_service_patch { debugf 
