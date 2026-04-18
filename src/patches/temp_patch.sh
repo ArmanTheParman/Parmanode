@@ -123,9 +123,16 @@ fi
         fi
     fi
 
+#Fix /dev/null - sometimes due to typo, /dev/null permission can be changed.
+#Considering adding this patch; not sure yet.
+    #   sudo chmod 0666 /dev/null
+
+
+
 #debug temppatchend
 }
 
+##############################################################################################################
 
 #changing becuase redirection to a log file directly is disfunctional with Fulcrum. Need to do it via script.
 function fulcrum_service_patch { debugf 
