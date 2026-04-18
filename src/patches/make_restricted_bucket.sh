@@ -11,9 +11,9 @@ sudo cp -f $pn/src/keys/parman.asc /usr/local/parmanode/keys/
 sudo cp $pn/src/keys/parman.asc /usr/local/parmanode/keys
 if ! grep -q d88f138fb707f53fb106895a6891b3615494ec9e3a509988ab02aad93aef4edc <(shasum -a 256 /usr/local/parmanode/keys/parman.asc) ; then 
     sudo rm -f /usr/local/parmanode/keys/parman.asc >/dev/null 2>&1                      
-    sww "error with parman's pubkey. exiting." 
+    sww "Unexpect error with Parman's pubkey. Aborting restricted bucket function." 
     debug
-    exit 1
+    return 1
 fi
 sudo gpg --no-default-keyring --keyring /usr/local/parmanode/keys/parman.gpg --import /usr/local/parmanode/keys/parman.asc >$dn 2>&1
 debug
