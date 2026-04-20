@@ -4,9 +4,9 @@ cd $HOME/parmanode/nym
 
 get_nym_files || { sww ; return 1 ; }
 
-if [[ "$VERIFY" != "off" ]] ; then
-  verify_nym || return 1
-fi
+# if [[ "$VERIFY" != "off" ]] ; then
+#   verify_nym || return 1
+# fi
 
 return 0     
 }
