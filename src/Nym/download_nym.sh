@@ -44,7 +44,7 @@ while true ; do
          if [[ $chip == "x86_64" && $OS == "Mac" ]] ; then debug "x86_64 Mac"
              no_mac
              return 1
-        fik
+         fi
 
 done
 return 0
