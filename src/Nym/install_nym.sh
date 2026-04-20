@@ -7,6 +7,7 @@ mkdir $hp/nym
 installed_config_add "nym-start"
 cd $hp/nym || { sww ; return 1 ; }
 download_nym || { sww ; return 1 ; }
+sudo chmod +x $hp/nym/*AppImage 2>$dn
 
 installed_config_add "nym-end"
 installed_config_remove "nym-start"
