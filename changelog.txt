@@ -1,3 +1,5 @@
+Version 3.69.9
+     -Update to Nym VPN
 Version 3.69.8
      -BIP 110 v0.4.1
 Version 3.69.7
