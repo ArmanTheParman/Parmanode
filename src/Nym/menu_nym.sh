@@ -2,7 +2,7 @@ function menu_nym {
 
 while true ; do
 set_terminal
-echo "$orange
+echo -e "$orange
 ########################################################################################$cyan
                                   NYM VPN MENU$orange
 
