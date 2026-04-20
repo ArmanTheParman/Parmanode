@@ -18,10 +18,10 @@ n) return 1 ;;
 *) invalid ;;
 esac
 done
-set_terminal
 
+set_terminal
 stop_nym 2>$dn
-sudo apt remove --purge nym-vpn
+sudo apt remove --purge nym-vpn >$dn 2>&1
 rm -rf $hp/nym
 installed_config_remove "nym-"
 success "Nym VPN removed"

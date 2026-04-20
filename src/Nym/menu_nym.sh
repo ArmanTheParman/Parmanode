@@ -1,8 +1,6 @@
 function menu_nym {
-    announce "Use the Start menu to find Nym and run it that way."
-    return 0
 
-#beginnings of a menu, but the idea  was abandoned, seems pointless for Nym.
+while true ; do
 set_terminal
 echo "$orange
 ########################################################################################$cyan
@@ -11,15 +9,20 @@ echo "$orange
 
 
 $cyan
-            s)                 Start
+            start)$orange               Start
 $cyan
-            st)                Stop
-$cyan
-            str)               Store Account (enter mnemonic)
-$cyan
-$cyan
-$cyan
+             stop)$orange               Stop
+
 
 ########################################################################################"
 choose xpmq ;  read choice 
+jump $choice || { invliad ; continue ; }
+case $choice in
+q|Q|QUIT|Quit) exit 0 ;;
+p|P) menu_use ;; 
+m|M) back2main ;;
+start) start_nym ;;
+stop) stop_nym ;;
+esac
+done
 }
