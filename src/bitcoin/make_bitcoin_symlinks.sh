@@ -97,5 +97,5 @@ sudo ln -s  /usr/local/bin/parmanode/bitcoin-qt /usr/local/bin/bitcoin-qt >$dn 2
 sudo ln -s  /usr/local/bin/parmanode/bitcoin-tx /usr/local/bin/bitcoin-tx >$dn 2>&1
 sudo ln -s  /usr/local/bin/parmanode/bitcoin-util /usr/local/bin/bitcoin-util >$dn 2>&1
 sudo ln -s  /usr/local/bin/parmanode/bitcoin-wallet /usr/local/bin/bitcoin-wallet >$dn 2>&1
-sudo ln -s  /usr/local/bin/parmanode/test-bitcoin /usr/local/bin/test-bitcoin >$dn 2>&1
+sudo ln -s  /usr/local/bin/parmanode/test_bitcoin /usr/local/bin/test_bitcoin >$dn 2>&1
 }

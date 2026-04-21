@@ -111,7 +111,10 @@ fi
 #Considering adding this patch; not sure yet.
     #   sudo chmod 0666 /dev/null
 
-
+if sudo test -L /usr/local/bin/test-bitcoin ; then
+    sudo rm /usr/local/bin/test-bitcoin 
+    sudo ln -s /usr/local/bin/parmanode/test_bitcoin /usr/local/bin/test_bitcoin
+fi
 
 #debug temppatchend
 }
