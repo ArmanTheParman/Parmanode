@@ -52,9 +52,29 @@ for dir in "$pn/restricted" "$pn/restricted/src" "$pn/restricted/scripts" ; do
 done
 
 
-chmod 750 /usr/local/parmanode/patch.sh
-chmod 640 /usr/local/parmanode/service/*
-HOME=$HOME /usr/local/parmanode/patch.sh
+   file="$pn/restricted/p4run"
+   filefinal=/usr/local/parmanode/p4run
+
+   test -f \$file || break
+   test -f \$file.sig || break
+
+   cp -f "\$file" "\$filefinal" >/dev/null 2>&1
+   cp -f "\$file.sig" "\$filefinal.sig" >/dev/null 2>&1
+   chown root:$(id -gn) "\$filefinal"
+   chmod 710 "\$filefinal"
+
+   if ! gpgv --keyring /usr/local/parmanode/parman.gpg \$filefinal.sig \$filefinal >/dev/null 2>&1 ; then
+      rm \$filefinal{,.sig} >/dev/null 2>&1
+      exit 1
+   else
+      break   
+   fi
+
+   break
+
+done
+
+/usr/local/parmanode/patch.sh >/dev/null 2>&1
 exit 0
 EOF
 sudo chmod 750 /usr/local/parmanode/scripts/patchrunner.sh
