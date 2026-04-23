@@ -59,8 +59,8 @@ done
 /usr/local/parmanode/patch.sh >/dev/null 2>&1
 exit 0
 EOF
-sudo chmod 750 /usr/local/parmanode/scripts/patchrunner.sh #should exist in sudoers
-sudo /usr/local/parmanode/scripts/patchrunner.sh #run once
+sudo chmod 750 /usr/local/parmanode/scripts/patchrunner.sh >$dn 2>&1 #should exist in sudoers
+sudo /usr/local/parmanode/scripts/patchrunner.sh >$dn 2>&1 #run once
 parmanode_conf_remove "restricted_bucket=true" #remove old flag
 parmanode_conf_add "restricted_bucket_v2=true"
 }
