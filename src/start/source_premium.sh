@@ -36,7 +36,7 @@ function source_premium {
     [[ -e $dp/.parmaview_enabled ]] && [[ -e $pp/parmaview ]] && for file in $pp/parmaview/src/*.sh ; do
 	    source $file
 	done
-	[[ -e $pp/special/src ]] && for file in $pp/special/src*.sh ; do
+	[[ -e $pp/special/src ]] && for file in $pp/special/src/*.sh ; do
 	    source $file
 	done
 #custom
