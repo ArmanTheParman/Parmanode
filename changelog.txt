@@ -1,3 +1,9 @@
+Version 3.69.10
+     -electrs v0.11.1
+     -fulcrum v2.1
+     -BTCPay 2.3.9
+     -Thunderhub v0.15.5
+     -Trezor Suite v26.4.2
 Version 3.69.9
      -Update to Nym VPN
 Version 3.69.8
