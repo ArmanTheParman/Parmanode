@@ -52,25 +52,25 @@ fi
 
 export btcpay_standard_version=2.0.3
    versions["btcpay_standard_version"]="$btcpay_standard_version"
-export btcpay_newer_version=2.2.1
+export btcpay_newer_version=2.3.9
    versions["btcpay_newer_version"]="$btcpay_newer_version"
 export litdversion="v0.12.5-alpha"
    versions["litdversion"]="$litdversion"
 export core_lightning_version="25.09.3"
    versions["core_lightning_version"]="$core_lightning_version"
-export electrsversion="v0.11.0"
+export electrsversion="v0.11.1"
    versions["electrsversion"]="$electrsversion"
 export fulcrum_version="2.0.0"
    versions["fulcrum_version"]="$fulcrum_version"
-export green_version="2.0.12"
+export green_version="3.2.0"
    versions["green_version"]="$green_version"
 export ledger_version="2.89.1"
    versions["ledger_version"]="$ledger_version"
 export phoenix_version="0.4.2"
    versions["phoenix_version"]="$phoenix_version"
-export thunderhub_version="v0.14.6"
+export thunderhub_version="v0.15.5"
    versions["thunderhub_version"]="$thunderhub_version"
-export trezor_version="25.11.1"
+export trezor_version="26.4.2"
    versions["trezor_version"]="$trezor_version"
 
 if [[ $1 == "build" ]] ; then
