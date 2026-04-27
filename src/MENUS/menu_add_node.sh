@@ -37,7 +37,7 @@ if [[ -n $btcpay_n ]]          ; then echo -e  "$btcpay_n"; fi
 if [[ -n $fulcrum_n ]]         ; then echo  -e "$fulcrum_n"; fi
 if [[ -n $fulcrumdkr_n ]]         ; then echo  -e "$fulcrumdkr_n"; fi
 echo -e "#                                                                                      #
-#$green Installed...                                                                  $orange     #
+#$green Installed...                                                                  $orange       #
 #                                                                                      #"
 if [[ -n $bitcoin_i ]]         ; then echo  -e "$bitcoin_i"; fi
 if [[ -n $electrs_i ]]         ; then echo   -e "$electrs_i"; fi
