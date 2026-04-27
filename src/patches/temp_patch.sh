@@ -123,6 +123,12 @@ fi
         fi
     fi
 
+#Make symlink
+if test -f $hp/electrum/*AppImage && ! test -L $hp/electrum/electrum ; then
+    ln -s $hp/electrum/*AppImage $hp/electrum/electrum
+fi   
+
+
 #Fix /dev/null - sometimes due to typo, /dev/null permission can be changed.
 #Considering adding this patch; not sure yet.
     #   sudo chmod 0666 /dev/null

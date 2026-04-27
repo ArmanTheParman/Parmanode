@@ -44,6 +44,11 @@ installed_conf_add "electrum-start"
 download_electrum #Mac users choose if python install here , but disabled after unable to get Electrum
                   #to recognise libsecp256k1 on Mac, even after installing and adding to PATH.
 
+#Make a symlink
+if test -f $hp/electrum/*AppImage ; then #works only on Linux
+    ln -s $hp/electrum/*AppImage $hp/electrum/electrum
+fi            
+
 if [[ $python_install == "true" ]] ; then
     which python3 >$dn 2>&1 || { announce "Your system doesn't have python3, aborting installation." ; return 1 ; } 
     electrum_dependencies ||  { announce "Something went wrong. Aborting Electrum installation." ; return 1 ; } 
