@@ -63,7 +63,7 @@ if [[ -n $parmadesk_i ]]             ; then echo -e  "$parmadesk_i"; fi
 #if [[ -n $public_pool_i ]]   ; then echo -e  "$public_pool_i"; fi
 
 echo -e "#                                                                                      #
-#$red Failed installs (need to uninstall)...$orange                                               #
+#$red List of failed installs (need to uninstall)...$orange                                               #
 #                                                                                      #"
 if [[ -n $parmashell_p ]]      ; then echo  -e "$pink$parmashell_p$orange"; fi 
 if [[ -n $parmanostr_p ]]      ; then echo  -e "$pink$parmanostr_p$orange"; fi

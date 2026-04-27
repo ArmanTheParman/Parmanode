@@ -53,7 +53,7 @@ if [[ -n $fulcrum_i ]]         ; then echo  -e "$fulcrum_i"; fi
 if [[ -n $fulcrumdkr_i ]]      ; then echo  -e "$fulcrumdkr_i"; fi
 if [[ -n $litd_i ]]            ; then echo  -e "$litd_i"; fi
 echo -e "#                                                                                      #
-#$red Failed installs (need to uninstall)...                                         $orange      #
+#$red List of failed installs (need to uninstall)...                                         $orange      #
 #                                                                                      #"
 if [[ -n $bitcoin_p ]]         ; then echo -e "$pink$bitcoin_p$orange"; fi
 if [[ -n $electrs_p ]]         ; then echo -e "$pink$electrs_p$orange"; fi

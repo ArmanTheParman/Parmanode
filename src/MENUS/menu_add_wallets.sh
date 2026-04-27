@@ -46,7 +46,7 @@ if [[ -n $btcrecover_i ]]      ; then echo -e  "$btcrecover_i"; fi
 if [[ -n $joinmarket_i ]]      ; then echo -e  "$joinmarket_i"; fi
 if [[ -n $alby_i ]]      ; then echo -e  "$alby_i"; fi
 echo -e "#                                                                                      #
-#$red Failed installs (need to uninstall)...                                              $orange #
+#$red List of failed installs (need to uninstall)...                                              $orange #
 #                                                                                      #"
 if [[ -n $sparrow_p ]]         ; then echo -e "$pink$sparrow_p$orange"; fi
 if [[ -n $electrum_p ]]        ; then echo -e "$pink$electrum_p$orange"; fi
