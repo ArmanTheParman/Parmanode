@@ -37,7 +37,7 @@ if [[ -n $btcpay_n ]]          ; then echo -e  "$btcpay_n"; fi
 if [[ -n $fulcrum_n ]]         ; then echo  -e "$fulcrum_n"; fi
 if [[ -n $fulcrumdkr_n ]]         ; then echo  -e "$fulcrumdkr_n"; fi
 echo -e "#                                                                                      #
-#$green Installed...                                                                  $orange       #
+#$green Installed...                                                                  $orange     #
 #                                                                                      #"
 if [[ -n $bitcoin_i ]]         ; then echo  -e "$bitcoin_i"; fi
 if [[ -n $electrs_i ]]         ; then echo   -e "$electrs_i"; fi
@@ -53,7 +53,7 @@ if [[ -n $fulcrum_i ]]         ; then echo  -e "$fulcrum_i"; fi
 if [[ -n $fulcrumdkr_i ]]      ; then echo  -e "$fulcrumdkr_i"; fi
 if [[ -n $litd_i ]]            ; then echo  -e "$litd_i"; fi
 echo -e "#                                                                                      #
-#$red List of failed installs (need to uninstall)...                                         $orange      #
+#$red List of failed installs (need to uninstall)...                               $orange        #
 #                                                                                      #"
 if [[ -n $bitcoin_p ]]         ; then echo -e "$pink$bitcoin_p$orange"; fi
 if [[ -n $electrs_p ]]         ; then echo -e "$pink$electrs_p$orange"; fi
