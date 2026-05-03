@@ -215,6 +215,10 @@ if grep -q "lnbits" $ic ; then
 uninstall_lnbits
 set_terminal
 fi
+if grep -q "parmaview" $ic ; then
+uninstall_parmaview
+set_terminal
+fi
 if grep -q "vaultwarden" $ic ; then
 uninstall_vaultwarden
 set_terminal
