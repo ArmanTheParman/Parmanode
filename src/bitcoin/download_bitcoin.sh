@@ -183,7 +183,11 @@ rm $hp/bitcoin/bitcoin.conf
 # "installs" bitcoin and sets to writing to only root for security. Read/execute for group and others. 
 # makes target directories if they don't exist
 # "install" is just a glorified copy command
-install -m 0755 -o $USER -g $USER -t /usr/local/bin/parmanode $hp/bitcoin/bin/* 2>$pvlog
+
+install -m 0755 -o $USER -g $USER -t /usr/local/bin/parmanode $hp/bitcoin/bin/* 2>$pvlog || { 
+       sww "Unable to copy bitcoin binaries to target location. Exiting install." 
+       return 1 
+       }
 
 rm -rf $hp/bitcoin/bin
 rm -rf $dp/temp >$dn 2>&1

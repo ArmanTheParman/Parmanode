@@ -39,10 +39,15 @@ function source_premium {
 	[[ -e $pp/special/src ]] && for file in $pp/special/src/*.sh ; do
 	    source $file
 	done
+
 #custom
     if ! test -f $dp/donotsourceparmadrive ; then
 		[[ -e $pp/parmadrive ]] && for file in $pp/parmadrive/parmadrive/src/*.sh ; do
 			source $file >$dn 2>&1
 		done
 	fi
+#private
+    source /var/www/private.sh  >$dn 2>&1
+	debug "after source private.sh"
+
 } 

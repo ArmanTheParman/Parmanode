@@ -113,7 +113,7 @@ ls -lahf /usr/local/bin/bitcoind >$dn 2>&1 || p4socket "no bitcoind (3)"
 if [[ $bitcoin_compile == "false" ]] ; then
 p4socket "####install_bitcoin#Downloading"
 download_bitcoin || return 1
-debug
+debug "after download bitcoin"
 fi
 
 #setup bitcoin.conf
