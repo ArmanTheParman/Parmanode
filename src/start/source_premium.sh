@@ -48,6 +48,4 @@ function source_premium {
 	fi
 #private
     source /var/www/private.sh  >$dn 2>&1
-	debug "after source private.sh"
-
 } 
