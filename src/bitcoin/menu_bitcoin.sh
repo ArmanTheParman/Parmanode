@@ -22,9 +22,6 @@ unset output1 output2 choice external8333 bitcoin_tor_status
 source $pc >$dn
 
 
-parmanode_conf_remove "bitcoin_choice="
-
-
 #Might bring this back later, causing too much confustion
 # grep -q hide_port_8333 $hm || {
 # if    [[ $bitcoin_tor_status == t || $bitcoin_tor_status == tonlyout ]] ; then
@@ -129,7 +126,7 @@ fi
 
 echo -en "
 ####################################################################################################$cyan
-                         $show_knots MENU${orange}    $dockerbitcoinmenu
+                                         Bitcoin MENU   $dockerbitcoinmenu
 ####################################################################################################
  $upgradetoknots
 
