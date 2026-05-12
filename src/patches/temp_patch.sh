@@ -128,6 +128,7 @@ if test -f $hp/electrum/*AppImage && ! test -L $hp/electrum/electrum ; then
     ln -s $hp/electrum/*AppImage $hp/electrum/electrum
 fi   
 
+parmanode_conf_remove "bip110choice="
 
 #Fix /dev/null - sometimes due to typo, /dev/null permission can be changed.
 #Considering adding this patch; not sure yet.
