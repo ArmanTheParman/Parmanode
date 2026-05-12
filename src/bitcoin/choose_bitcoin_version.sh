@@ -17,7 +17,7 @@ $cyan
 
 
 $green
-<enter>  or  k)     ${orange}Bitcoin Knots (default, filters spam)$blue
+<enter>  or  k)     ${orange}Bitcoin Knots BIP110 (default, filters spam)$blue
                     Maintained by Luke Dashjr
 $yellow
          knutz)     ${orange}Bitcoin Deis (forks Core client v28.1 with filter ordinals patch)$blue
@@ -133,8 +133,6 @@ $cyan
      3)$orange     Pre-compile Bitcoin KNOTS, v28.1 (March 5, 2025)
 $cyan
      4)$orange     Guided compile Bitcoin KNOTS, v28.1 (March 5, 2025)
-$cyan
-     5)$orange     BIP110 version of Knots $pink (new)$orange
 
 
 ########################################################################################################################
@@ -185,10 +183,7 @@ export knotstag="v${knotsversion}.knots${knotsdate}"
 export version="$knotsmajor-knots" ; 
 if [[ $choice == "3" ]] ; then export bitcoin_compile="false" ; else bitcoin_compile="true" ; fi
 return 0 ;;
-5)
-export bip110="true"
-export bitcoin_compile="false"
-export version="$knotsmajor-knots" ; return 0 ;;
+
 *)
 invalid ;;
 esac
