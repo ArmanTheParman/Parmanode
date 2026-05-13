@@ -8,6 +8,5 @@ announce "${green}TL;DR = Fee estimate might not be accurate$orange
     But no need to care... It is my opinion that it's totally fine to use a public 
     service: Do you really need to trustlessly estimate fees?"
 
-enter_continue
 jump $enter_cont
 }

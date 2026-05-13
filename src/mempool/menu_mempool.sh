@@ -42,7 +42,7 @@ get_onion_address_variable mempool
 tor_mempool_status="${green}enabled$orange"
 tor_mempool="true"
 get_onion_address_variable "mempool" || enter_continue "couldn't get mempool tor address"
-output_tor=" Tor Access: $bright_blue    
+output_tor="    Tor Access: $bright_blue    
 
     http://$ONION_ADDR_MEM:8280 $orange   
     " 
@@ -97,9 +97,10 @@ $cyan
 $cyan    http://127.0.0.1:818${green}0 $orange
     Address available on computers sharing your router:
 $cyan    https://$IP:818${green}1 $orange
-
+$red
     Note that port 8080 is for http (unencrypted), and 8181 is for https (encrypted 
-    with self-signed certificates).
+    with self-signed certificates). Also, Tor access is encrypted even thought it's
+    over http.
 
 $output_tor
 ########################################################################################
