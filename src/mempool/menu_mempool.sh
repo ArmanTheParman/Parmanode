@@ -64,7 +64,7 @@ fi
 
 test_mempool_config || return 1
 
-set_terminal 45 88 ; echo -e "
+set_terminal 47 88 ; echo -e "
 ########################################################################################$cyan
                                     Mempool Menu            $orange                   
 ########################################################################################
@@ -94,9 +94,12 @@ $cyan
     ACCESS MEMPOOL:
     
     Address only available on this computer's browser: 
-$cyan    http://127.0.0.1:8180 $orange
+$cyan    http://127.0.0.1:818${green}0 $orange
     Address available on computers sharing your router:
-$cyan    http://$IP:8180 $orange
+$cyan    https://$IP:818${green}1 $orange
+
+    Note that port 8080 is for http (unencrypted), and 8181 is for https (encrypted 
+    with self-signed certificates).
 
 $output_tor
 ########################################################################################
