@@ -28,6 +28,7 @@ cd $hp/mempool/docker && docker compose down
 cd $hp && sudo rm -rf $hp/mempool
 sudo gsed -i "/mempool-service/d" $macprefix/etc/tor/torrc 
 sudo gsed -i "/127.0.0.1:8180/d" $macprefix/etc/tor/torrc 
+sudo rm $macprefix/etc/nginx/conf.d/mempool.conf >$dn 2>&1
 installed_config_remove "mempool-"
 success "Mempool" "being uninstalled"
 
