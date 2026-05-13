@@ -1,3 +1,5 @@
+Version 3.69.11
+     -SSL/HTTPS access for Mempool added
 Version 3.69.10
      -Bitcoin Knots has BIP110 now
      -electrs v0.11.1
