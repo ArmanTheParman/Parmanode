@@ -10,7 +10,7 @@ server {
     ssl_certificate_key $hp/mempool/key.pem;
 
     location / {
-        proxy_pass http://localhost:8180;
+        proxy_pass http://127.0.0.1:8180;
         proxy_http_version 1.1;
         proxy_set_header Host \$host:\$server_port;
         proxy_set_header X-Real-IP \$remote_addr;
