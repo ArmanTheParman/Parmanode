@@ -101,7 +101,7 @@ $red
     Note that port 8080 is for http (unencrypted), and 8181 is for https (encrypted 
     with self-signed certificates). Also, Tor access is encrypted even thought it's
     over http.
-
+$orange
 $output_tor
 ########################################################################################
 "
