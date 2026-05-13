@@ -65,6 +65,9 @@ fi
 cd $hp/mempool/docker 
 docker compose up -d || debug "compose up didn't work"
 
+make_ssl_certificates "mempool"
+make_mempool_nginx
+
 #Final check to make sure the docker gatway IP is included in bitcoin.conf
 if docker ps >$dn 2>&1 ; then
 
