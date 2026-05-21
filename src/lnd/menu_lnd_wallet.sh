@@ -23,6 +23,8 @@ $cyan
       delete)  $orange       Delete existing wallet and its files (macaroons, channel.db)
 $cyan
       create)        $orange Create an LND wallet (or restore a wallet with seed)
+$cyan
+      pay)           $orange Send an LND payment
 $orange
 
 
@@ -106,6 +108,24 @@ return 0
 
 c|C)
 connect_mobile_wallet
+;;
+
+pay|PAY|Pay)
+announce "Please paste your lightning invoice to pay"
+invoice="$enter_cont"
+jump "$invoice" || { invalid ; continue ; } ; set_terminal
+
+    case $invoice in
+    ""|x) clear ; continue ;;
+    *)
+    if grep -q "lnddocker" $ic ; then
+        docker exec lnd lncli payinvoice "$invoice"
+    else
+        lncli payinvoice "$invoice"
+    fi
+    enter_continue 
+    ;;
+    esac
 ;;
 
 *) invalid
