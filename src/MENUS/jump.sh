@@ -4,6 +4,11 @@ case $1 in
 q|quit|exit) exit ;;
 m|main) back2main ;;
 
+qr)
+qrcapture
+invalid_flag=set
+;;
+
 gp)
 clear
 cd $pn 
