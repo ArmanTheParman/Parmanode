@@ -56,7 +56,7 @@ else
     echo "$result"
     enter_continue
 fi
-
+debug
 }
 
 
@@ -97,5 +97,5 @@ case $enter_cont in
     *)
         ;;
 esac
-
+debug
 }
