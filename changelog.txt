@@ -1,6 +1,8 @@
+Version 3.69.12
+     -Pay LND invoice from LND menu
+     -qr and qri shortcut to capture qr video ro qr image
 Version 3.69.11
      -SSL/HTTPS access for Mempool added
-     -Pay LND invoice from LND menu
 Version 3.69.10
      -Bitcoin Knots has BIP110 now
      -electrs v0.11.1
