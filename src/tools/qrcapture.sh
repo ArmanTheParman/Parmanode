@@ -5,7 +5,7 @@ sudo apt-get -y install zbar-tools #fswebcam
 
 #usage
     #zbarcam --raw | head -n 1 > qr_output.txt
-
+    #result=$(zbarimg --raw /tmp/qr.jpg)
 }
 
 function qrcapture {
@@ -16,11 +16,22 @@ if ! which zbarcam >$dn 2>&1 ; then
    install_qrcapture
 fi
 
-result=$(zbarcam --raw | head -n 1) 
+fifo="$tmp/qr_fifo"
+rm -f "$fifo"
+mkfifo "$fifo"
+
+zbarcam --raw > "$fifo" &
+pid=$!
+
+IFS= read -r result < "$fifo"
+
+kill "$pid" 2>/dev/null
+rm -f "$fifo"
 
 if [[ -z $1 ]] ; then
     
     announce "QR code results:
+
 $green
 $result
 $orange
