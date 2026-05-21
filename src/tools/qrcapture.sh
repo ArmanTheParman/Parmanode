@@ -39,7 +39,7 @@ $orange
     You have options...
 
           <enter>    Do nothing and move on (you can copy now to clipboard)
-          f)         Save restuls to ~/Desktop/qrresult.txt
+          f)         Save results to ~/Desktop/qrresult.txt
 "
 case $enter_cont in
     f)
@@ -74,8 +74,10 @@ if [[ ! -f $filename ]] ; then
     announce "File not found. Please try again."
     return 1
 fi
-result=$(zbarimg --raw "$filename")
-
+result=$(zbarimg --raw "$filename" 2>$dn) || {
+    announce "No QR code found, or zbarimg failed."
+    return 1
+}
 announce "QR code results:
 
 $green
@@ -85,7 +87,7 @@ $orange
     You have options...
 
           <enter>    Do nothing and move on (you can copy now to clipboard)
-          f)         Save restuls to ~/Desktop/qrresult.txt
+          f)         Save results to ~/Desktop/qrresult.txt
 "
 case $enter_cont in
     f)
