@@ -8,6 +8,10 @@ qr)
 qrcapture
 invalid_flag=set
 ;;
+qri)
+qrcapture_image
+invalid_flag=set
+;;
 
 gp)
 clear
