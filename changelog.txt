@@ -1,6 +1,7 @@
 Version 3.69.12
      -Pay LND invoice from LND menu
      -qr and qri shortcut to capture qr video ro qr image
+     -Sparrow v2.5.0
 Version 3.69.11
      -SSL/HTTPS access for Mempool added
 Version 3.69.10
