@@ -14,7 +14,7 @@ $cyan
                     info)$orange          Info fo DIY QR codes
 $cyan
                     pub)$orange           QR of your computer's SSH pubkey
-
+$cyan
                     mm)$orange            Make a QR of entered text
 
 
