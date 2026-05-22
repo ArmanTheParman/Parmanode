@@ -8,12 +8,14 @@ qr)
 qrcapture
 invalid_flag=set
 ;;
+
 qri)
 qrcapture_image
 invalid_flag=set
 ;;
 
 qre)
+debug in qre
 which qrencode >$dn || install_qrencode 
 menu_qrencode
 invalid_flag=set
