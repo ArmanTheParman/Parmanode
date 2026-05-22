@@ -13,6 +13,12 @@ qrcapture_image
 invalid_flag=set
 ;;
 
+qre)
+which qrencode >$dn || install_qrencode 
+menu_qrencode
+invalid_flag=set
+;;
+
 gp)
 clear
 cd $pn 
