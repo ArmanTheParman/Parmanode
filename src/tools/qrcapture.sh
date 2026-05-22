@@ -38,8 +38,8 @@ $orange
 
     You have options...
 
-          <enter>    Do nothing and move on (you can copy now to clipboard)
-          f)         Save results to ~/Desktop/qrresult.txt
+$cyan          <enter>$orange    Do nothing and move on (you can copy now to clipboard)
+$cyan          f)$orange         Save results to ~/Desktop/qrresult.txt
 "
 case $enter_cont in
     f)
@@ -86,8 +86,8 @@ $orange
 
     You have options...
 
-          <enter>    Do nothing and move on (you can copy now to clipboard)
-          f)         Save results to ~/Desktop/qrresult.txt
+$cyan          <enter>$orange    Do nothing and move on (you can copy now to clipboard)
+$cyan          f)$orange         Save results to ~/Desktop/qrresult.txt
 "
 case $enter_cont in
     f)
