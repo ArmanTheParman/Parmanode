@@ -7,11 +7,8 @@ set_terminal ; echo -en "
 ########################################################################################
 
 
-                       ${pink}QREncode is installed on your system.
-
-
 $cyan
-                    info)$orange          Info fo DIY QR codes
+                    info)$orange          Info for DIY QR codes
 $cyan
                     pub)$orange           QR of your computer's SSH pubkey
 $cyan
