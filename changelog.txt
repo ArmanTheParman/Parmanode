@@ -3,6 +3,7 @@ Version 3.69.12
      -qr and qri shortcut to capture qr video ro qr image
      -update to qrencode menu to make QR with entered text
      -Sparrow v2.5.0
+     -C Lightning v26.04.1
 Version 3.69.11
      -SSL/HTTPS access for Mempool added
 Version 3.69.10

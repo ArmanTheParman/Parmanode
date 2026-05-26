@@ -71,7 +71,7 @@ else
   git clone https://github.com/ElementsProject/lightning.git core_lightning
   cd core_lightning
 fi
-  git checkout v24.11.1
+  git checkout v26.04.1
 }
 
 
