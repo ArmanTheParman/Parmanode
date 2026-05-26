@@ -115,8 +115,8 @@ announce "Parmanode isn't configured to support Core Lightning, but it can insta
     stages, as it downloads files and compiles from source.
 
     There won't be any menus in Parmanode, you'll need to interact with it by the 
-    command line or other means. Core Lightning may be implemende within Parmanode in 
-    the future." 
+    command line or other means. Core Lightning may be implemented fully within Parmanode 
+    in the future." 
 ;;
 
 *)
