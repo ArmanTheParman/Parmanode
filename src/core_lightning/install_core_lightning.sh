@@ -28,13 +28,21 @@ mkdir $HOME/.lightning/ >$dn 2>&1
 
 make_core_lightning_config
 
+make_core_lightning_service
+
 success "Core Lightning should now be installed. You can start it from the command line with
     ${green}
         lightningd
     $orange
     And to stop it...$red
     
-        lightning-cli stop$orange"
+        lightning-cli stop$orange
+
+     Or you can use the service file:
+
+     sudo systemctl start core-lightning.service
+     sudo systemctl stop core-lightning.service
+     "
     
 }
 
@@ -146,3 +154,36 @@ sudo cp -R ./usr/bin/* /usr/bin/ || enter_continue
 sudo cp -R ./usr/share/* /usr/share/ || enter_continue 
 sudo cp -R ./usr/libexec/* /usr/libexec/ || enter_continue
 } 
+
+function make_core_lightning_service {
+cat<<EOF | sudo tee /etc/systemd/system/core-lightning.service
+[Unit]
+Description=Core Lightning daemon
+Wants=bitcoind.service
+After=bitcoind.service network-online.target
+Wants=network-online.target
+
+[Service]
+User=$USER
+Group=$USER
+Type=simple
+ExecStart=$hp/core_lightning/lightningd --conf=$HOME/.lightning/config
+Restart=on-failure
+RestartSec=10
+TimeoutStopSec=600
+
+# optional hardening
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full
+ProtectHome=false
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+sudo systemctl daemon-reload
+sudo systemctl enable core-lightning.service
+sudo systemctl start core-lightning.service
+return 0
+}
