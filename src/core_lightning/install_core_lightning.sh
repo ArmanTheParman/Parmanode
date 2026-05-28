@@ -40,6 +40,7 @@ success "Core Lightning should now be installed. You can start it from the comma
 
 
 function core_lightning_dependencies {
+version="$core_lightning_vesion"
 
 announce "${green}Will install Core Lightning dependencies and setup 
     virtual environment...$orange"
@@ -62,6 +63,8 @@ pip3 install poetry mako grpcio-tools pytest || { enter_continue "something went
 }
 
 function download_core_lightning {
+version="$core_lightning_vesion"
+
 if [[ -e $HOME/parmanode/core_lightning ]] ; then
   cd $hp/core_lightning
   git pull
@@ -76,6 +79,8 @@ fi
 
 
 function compile_core_lightning {
+version="$core_lightning_vesion"
+
 announce "${green}Will start compiling Core Lightning; This will take a while.$orange"
 ./configure | tee $dp/.clightning_build.log 
 cpus=$(nproc)
@@ -88,6 +93,7 @@ enter_continue "make install command successful."
 }
 
 function make_core_lightning_config {
+version="$core_lightning_vesion"
 
 announce "${green}Will make Core Lightning configuration file.$orange"
 
@@ -121,6 +127,7 @@ fi
 }
 
 function core_lightning_binaries {
+version="$core_lightning_vesion"
 
 mkdir $hp/core_lightning || enter_continue
 cd $hp/core_lightning || enter_continue
@@ -136,5 +143,4 @@ sudo mkdir -p /usr/bin /usr/share /usr/libexec
 sudo cp -R ./usr/bin/* /usr/bin/ || enter_continue
 sudo cp -R ./usr/share/* /usr/share/ || enter_continue 
 sudo cp -R ./usr/libexec/* /usr/libexec/ || enter_continue
-
 } 
