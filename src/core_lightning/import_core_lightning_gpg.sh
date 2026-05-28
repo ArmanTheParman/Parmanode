@@ -381,5 +381,5 @@ WbpLtWthb3i2rtZ3uJOCwNU7Ox85KZM6PBtG5Ejca//fTd3db1IXtlEoP/e/U+4a
 QznVUtGh4KrZeCBwGi4h6MYZYulcdIXW0RoPSFPsI267MfsG/Q==
 =pwe9
 -----END PGP PUBLIC KEY BLOCK-----" | gpg --import
-
+return 0
 }
