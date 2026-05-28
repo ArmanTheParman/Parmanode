@@ -30,6 +30,8 @@ make_core_lightning_config
 
 make_core_lightning_service
 
+lightning-cli createrune >$dn 2>&1
+
 success "Core Lightning should now be installed. 
 
     It should start automatically. Commands to know: 
@@ -187,3 +189,13 @@ sudo systemctl enable core-lightning.service
 sudo systemctl start core-lightning.service
 return 0
 }
+
+
+#lightning-cli showrunes
+
+#connecting zeus to clightning:
+   # give a name
+   # choose Clightning REST
+   # url is onion address, no port
+   # port is 3778
+   # rune is extracted from : lightning-cli showrunes
