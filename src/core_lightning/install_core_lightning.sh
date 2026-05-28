@@ -39,9 +39,10 @@ success "Core Lightning should now be installed. You can start it from the comma
         lightning-cli stop$orange
 
      Or you can use the service file:
-
-     sudo systemctl start core-lightning.service
-     sudo systemctl stop core-lightning.service
+$green
+         sudo systemctl start core-lightning.service
+$red
+         sudo systemctl stop core-lightning.service $orange
      "
     
 }
