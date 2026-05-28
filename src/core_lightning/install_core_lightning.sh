@@ -1,6 +1,6 @@
 
 function install_core_lightning {
-version="$core_lightning_vesion"
+version="$core_lightning_version"
 
 if [[ $OS == "Darwin" ]] ; then no_mac ; return 1 ; fi
 
@@ -40,7 +40,7 @@ success "Core Lightning should now be installed. You can start it from the comma
 
 
 function core_lightning_dependencies {
-version="$core_lightning_vesion"
+version="$core_lightning_version"
 
 announce "${green}Will install Core Lightning dependencies and setup 
     virtual environment...$orange"
@@ -63,7 +63,7 @@ pip3 install poetry mako grpcio-tools pytest || { enter_continue "something went
 }
 
 function download_core_lightning {
-version="$core_lightning_vesion"
+version="$core_lightning_version"
 
 if [[ -e $HOME/parmanode/core_lightning ]] ; then
   cd $hp/core_lightning
@@ -79,7 +79,7 @@ fi
 
 
 function compile_core_lightning {
-version="$core_lightning_vesion"
+version="$core_lightning_version"
 
 announce "${green}Will start compiling Core Lightning; This will take a while.$orange"
 ./configure | tee $dp/.clightning_build.log 
@@ -93,7 +93,7 @@ enter_continue "make install command successful."
 }
 
 function make_core_lightning_config {
-version="$core_lightning_vesion"
+version="$core_lightning_version"
 
 announce "${green}Will make Core Lightning configuration file.$orange"
 
@@ -127,7 +127,7 @@ fi
 }
 
 function core_lightning_binaries {
-version="$core_lightning_vesion"
+version="$core_lightning_version"
 
 mkdir $hp/core_lightning || enter_continue
 cd $hp/core_lightning || enter_continue
