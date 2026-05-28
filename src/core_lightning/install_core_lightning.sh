@@ -30,19 +30,15 @@ make_core_lightning_config
 
 make_core_lightning_service
 
-success "Core Lightning should now be installed. You can start it from the command line with
-    ${green}
-        lightningd
-    $orange
-    And to stop it...$red
-    
-        lightning-cli stop$orange
+success "Core Lightning should now be installed. 
 
-     Or you can use the service file:
+    It should start automatically. Commands to know: 
 $green
          sudo systemctl start core-lightning.service
 $red
-         sudo systemctl stop core-lightning.service $orange
+         sudo systemctl stop core-lightning.service 
+$cyan
+         sudo systemctl statuscore-lightning.service $orange
      "
     
 }
@@ -110,7 +106,7 @@ bitcoin__rpcport="$(cat $HOME/.bitcoin/bitcoin.conf | grep rpcport | cut -d = -f
 bitcoin__rpcport=${bitcoin__rpcport:-8332} #default
 
 cat <<EOF >> $HOME/.lightning/config
-daemon
+#daemon --don't use daemon if using systemd service file
 log-file=$HOME/.lightning/log
 network=bitcoin
 bitcoin-cli=$(which bitcoin-cli)
@@ -178,6 +174,9 @@ NoNewPrivileges=true
 PrivateTmp=true
 ProtectSystem=full
 ProtectHome=false
+
+StandardOutput=journal
+StandardError=journal
 
 [Install]
 WantedBy=multi-user.target
