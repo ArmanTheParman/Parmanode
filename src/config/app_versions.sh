@@ -74,6 +74,8 @@ export trezor_version="26.4.2"
    versions["trezor_version"]="$trezor_version"
 export sparrow_version="2.5.0"
    versions["sparrow_version"]="$sparrow_version"
+export core_lightning_version="26.04.1"
+   versions["core_lightning_version"]="$core_lightning_version"
 
 if [[ $1 == "build" ]] ; then
 

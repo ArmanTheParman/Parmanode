@@ -124,7 +124,7 @@ function core_lightning_binaries {
 
 mkdir $hp/core_lightning || enter_continue
 cd $hp/core_lightning || enter_continue
-curl -LO https://github.com/ElementsProject/lightning/releases/download/v$version/clightning-v24.11.1-Ubuntu-22.04-amd64.tar.xz
+curl -LO https://github.com/ElementsProject/lightning/releases/download/v$version/clightning-v$version-Ubuntu-22.04-amd64.tar.xz
 curl -LO https://github.com/ElementsProject/lightning/releases/download/v$version/SHA256SUMS
 curl -LO https://github.com/ElementsProject/lightning/releases/download/v$version/SHA256SUMS.asc
 
