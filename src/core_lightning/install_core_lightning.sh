@@ -95,7 +95,7 @@ enter_continue "make install command successful."
 function make_core_lightning_config {
 version="$core_lightning_version"
 
-announce "${green}Will make Core Lightning configuration file.$orange"
+announce "${green}Will make Core Lightning configuration file at $HOME/.lightning/config.$orange"
 
 bitcoin__rpcport="$(cat $HOME/.bitcoin/bitcoin.conf | grep rpcport | cut -d = -f 2)" #no hyphens in bash variables
 bitcoin__rpcport=${bitcoin__rpcport:-8332} #default
