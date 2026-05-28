@@ -126,7 +126,7 @@ mkdir $hp/core_lightning || enter_continue
 cd $hp/core_lightning || enter_continue
 curl -LO https://github.com/ElementsProject/lightning/releases/download/v$version/clightning-v$version-Ubuntu-22.04-amd64.tar.xz
 curl -LO https://github.com/ElementsProject/lightning/releases/download/v$version/SHA256SUMS-v$version
-curl -LO https://github.com/ElementsProject/lightning/releases/download/v$version/SHA256SUMS_v$version.asc
+curl -LO https://github.com/ElementsProject/lightning/releases/download/v$version/SHA256SUMS-v$version.asc
 
 import_core_lightning_gpg
 sha256sum --check SHA256SUMS --ignore-missing || { enter_continue "shasum check failed. Aborting" ; exit ; }
