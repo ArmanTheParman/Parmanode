@@ -168,7 +168,7 @@ Wants=network-online.target
 User=$USER
 Group=$USER
 Type=simple
-ExecStart=$hp/core_lightning/lightningd --conf=$HOME/.lightning/config
+ExecStart=/usr/bin/lightningd --conf=$HOME/.lightning/config
 Restart=on-failure
 RestartSec=10
 TimeoutStopSec=600
