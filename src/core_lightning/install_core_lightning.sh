@@ -105,7 +105,7 @@ announce "${green}Will make Core Lightning configuration file at $HOME/.lightnin
 bitcoin__rpcport="$(cat $HOME/.bitcoin/bitcoin.conf | grep rpcport | cut -d = -f 2)" #no hyphens in bash variables
 bitcoin__rpcport=${bitcoin__rpcport:-8332} #default
 
-cat <<EOF >> $HOME/.lightning/config
+cat <<EOF | tee $HOME/.lightning/config
 #daemon --don't use daemon if using systemd service file
 log-file=$HOME/.lightning/log
 network=bitcoin
