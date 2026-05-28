@@ -136,7 +136,7 @@ curl -LO https://github.com/ElementsProject/lightning/releases/download/v$versio
 curl -LO https://github.com/ElementsProject/lightning/releases/download/v$version/SHA256SUMS-v$version.asc
 
 import_core_lightning_gpg
-sha256sum --check SHA256SUMS --ignore-missing || { enter_continue "shasum check failed. Aborting" ; exit ; }
+sha256sum --check SHA256SUMS-v$version --ignore-missing || { enter_continue "shasum check failed. Aborting" ; exit ; }
 
 tar -xvf *xz
 sudo mkdir -p /usr/bin /usr/share /usr/libexec
