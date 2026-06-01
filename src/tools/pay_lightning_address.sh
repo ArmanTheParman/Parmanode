@@ -32,6 +32,7 @@ $green
 $INV
 $orange \n
 "
+if ! which qrencode >$dn 2>&1 ; then install_qrencode silent ; fi   
 qrencode -t ansiutf8 <<<$INV
 enter_continue
 }

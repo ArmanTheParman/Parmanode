@@ -10,7 +10,6 @@ echo -ne "
 
 $cyan          qr)$orange         capture a QR video stream, or file (use $green qri$orange)
 $cyan          spoofmac)$orange   Spoof your MAC address when connecting to internet 
-$cyan          pay)$orange        Generate a normal lightning invoice from a LN address
 $cyan          aip)$orange        See the IPs of all devices connected on your network
 $cyan          hn)$orange         Change host name (Linux)
 $cyan          svr)$orange        Screen Video Recording
@@ -42,9 +41,6 @@ q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
     ;;
     spoofmac)
     spoof_mac
-    ;;
-    pay)
-    pay_lightning_address
     ;;
     
    sr)

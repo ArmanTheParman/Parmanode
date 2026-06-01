@@ -25,6 +25,8 @@ $cyan
       create)        $orange Create an LND wallet (or restore a wallet with seed)
 $cyan
       pay)           $orange Send an LND payment
+$cyan          
+      addr)$orange           Generate a normal lightning invoice from a LN address
 $orange
 
 
@@ -127,6 +129,9 @@ jump "$invoice" || { invalid ; continue ; } ; set_terminal
     ;;
     esac
 ;;
+    addr)
+    pay_lightning_address
+    ;;
 
 *) invalid
 ;;
