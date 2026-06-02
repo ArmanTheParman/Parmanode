@@ -1,6 +1,6 @@
 
 function install_core_lightning {
-version="$core_lightning_vesion"
+version="$core_lightning_version"
 
 if [[ $OS == "Darwin" ]] ; then no_mac ; return 1 ; fi
 
@@ -28,18 +28,26 @@ mkdir $HOME/.lightning/ >$dn 2>&1
 
 make_core_lightning_config
 
-success "Core Lightning should now be installed. You can start it from the command line with
-    ${green}
-        lightningd
-    $orange
-    And to stop it...$red
-    
-        lightning-cli stop$orange"
+make_core_lightning_service
+
+lightning-cli createrune >$dn 2>&1
+
+success "Core Lightning should now be installed. 
+
+    It should start automatically. Commands to know: 
+$green
+         sudo systemctl start core-lightning.service
+$red
+         sudo systemctl stop core-lightning.service 
+$cyan
+         sudo systemctl statuscore-lightning.service $orange
+     "
     
 }
 
 
 function core_lightning_dependencies {
+version="$core_lightning_version"
 
 announce "${green}Will install Core Lightning dependencies and setup 
     virtual environment...$orange"
@@ -62,6 +70,8 @@ pip3 install poetry mako grpcio-tools pytest || { enter_continue "something went
 }
 
 function download_core_lightning {
+version="$core_lightning_version"
+
 if [[ -e $HOME/parmanode/core_lightning ]] ; then
   cd $hp/core_lightning
   git pull
@@ -71,11 +81,13 @@ else
   git clone https://github.com/ElementsProject/lightning.git core_lightning
   cd core_lightning
 fi
-  git checkout v24.11.1
+  git checkout v26.04.1
 }
 
 
 function compile_core_lightning {
+version="$core_lightning_version"
+
 announce "${green}Will start compiling Core Lightning; This will take a while.$orange"
 ./configure | tee $dp/.clightning_build.log 
 cpus=$(nproc)
@@ -88,14 +100,15 @@ enter_continue "make install command successful."
 }
 
 function make_core_lightning_config {
+version="$core_lightning_version"
 
-announce "${green}Will make Core Lightning configuration file.$orange"
+announce "${green}Will make Core Lightning configuration file at $HOME/.lightning/config.$orange"
 
 bitcoin__rpcport="$(cat $HOME/.bitcoin/bitcoin.conf | grep rpcport | cut -d = -f 2)" #no hyphens in bash variables
 bitcoin__rpcport=${bitcoin__rpcport:-8332} #default
 
-cat <<EOF >> $HOME/.lightning/config
-daemon
+cat <<EOF | tee $HOME/.lightning/config
+#daemon --don't use daemon if using systemd service file
 log-file=$HOME/.lightning/log
 network=bitcoin
 bitcoin-cli=$(which bitcoin-cli)
@@ -105,6 +118,8 @@ bitcoin-rpcpassword=$(cat $HOME/.bitcoin/bitcoin.conf | grep rpcpassword | cut -
 bitcoin-rpcconnect=127.0.0.1
 bitcoin-rpcport=$bitcoin__rpcport
 alias=BananaStand
+clnrest-port=3777
+clnrest-host=127.0.0.1
 #fee-base=MILLISATOSHI
 #fee-per-satoshi=MILLIONTHS
 #min-capacity-sat=SATOSHI
@@ -121,20 +136,66 @@ fi
 }
 
 function core_lightning_binaries {
+version="$core_lightning_version"
 
 mkdir $hp/core_lightning || enter_continue
 cd $hp/core_lightning || enter_continue
-curl -LO https://github.com/ElementsProject/lightning/releases/download/v$version/clightning-v24.11.1-Ubuntu-22.04-amd64.tar.xz
-curl -LO https://github.com/ElementsProject/lightning/releases/download/v$version/SHA256SUMS
-curl -LO https://github.com/ElementsProject/lightning/releases/download/v$version/SHA256SUMS.asc
+curl -LO https://github.com/ElementsProject/lightning/releases/download/v$version/clightning-v$version-Ubuntu-22.04-amd64.tar.xz
+curl -LO https://github.com/ElementsProject/lightning/releases/download/v$version/SHA256SUMS-v$version
+curl -LO https://github.com/ElementsProject/lightning/releases/download/v$version/SHA256SUMS-v$version.asc
 
-import_core_lightning_gpg || { announce "gpg check failed. Aborting" ; exit ; }
-sha256sum --check SHA256SUMS --ignore-missing || { announce "shasum check failed. Aborting" ; exit ; }
+import_core_lightning_gpg
+sha256sum --check SHA256SUMS-v$version --ignore-missing || { enter_continue "shasum check failed. Aborting" ; exit ; }
 
 tar -xvf *xz
 sudo mkdir -p /usr/bin /usr/share /usr/libexec
 sudo cp -R ./usr/bin/* /usr/bin/ || enter_continue
 sudo cp -R ./usr/share/* /usr/share/ || enter_continue 
 sudo cp -R ./usr/libexec/* /usr/libexec/ || enter_continue
-
 } 
+
+function make_core_lightning_service {
+cat<<EOF | sudo tee /etc/systemd/system/core-lightning.service
+[Unit]
+Description=Core Lightning daemon
+Wants=bitcoind.service
+After=bitcoind.service network-online.target
+Wants=network-online.target
+
+[Service]
+User=$USER
+Group=$USER
+Type=simple
+ExecStart=/usr/bin/lightningd --conf=$HOME/.lightning/config
+Restart=on-failure
+RestartSec=10
+TimeoutStopSec=600
+
+# optional hardening
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full
+ProtectHome=false
+
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+sudo systemctl daemon-reload
+sudo systemctl enable core-lightning.service
+sudo systemctl start core-lightning.service
+return 0
+}
+
+
+#lightning-cli showrunes
+
+#connecting zeus to clightning:
+   # give a name
+   # choose Clightning REST
+   # url is onion address, no port
+   # port is 3778
+   # rune is extracted from : lightning-cli showrunes

@@ -8,8 +8,8 @@ echo -ne "
 ####################################################################################################
 
 
+$cyan          qr)$orange         capture a QR video stream, or file (use $green qri$orange)
 $cyan          spoofmac)$orange   Spoof your MAC address when connecting to internet 
-$cyan          pay)$orange        Generate a normal lightning invoice from a LN address
 $cyan          aip)$orange        See the IPs of all devices connected on your network
 $cyan          hn)$orange         Change host name (Linux)
 $cyan          svr)$orange        Screen Video Recording
@@ -34,11 +34,13 @@ q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
     n|next)
     menu_tools2
     ;;
+    qr|qri)
+    announce "Note you can do qr or qri from almost anywhere in Parmanode, not just 
+    from the tools menu."
+    jump $choice
+    ;;
     spoofmac)
     spoof_mac
-    ;;
-    pay)
-    pay_lightning_address
     ;;
     
    sr)
@@ -132,7 +134,7 @@ $cyan              gc)$orange        RPC call test to LND (grpcurl)
 $cyan              rest)$orange      REST protocol test to LND (info only)
 $cyan              rf)$orange        Refresh Parmanode script directory              
 $cyan              pass)$orange      Change computer login/sudo password
-$cyan              qr)$orange        QRencode command line tool (Linux and Mac)
+$cyan              qre)$orange       QRencode command line tool (Linux and Mac)
 $cyan              uo)$orange        UTXOracle                                                    
 $cyan              lnf)$orange       Install Linux non-free packages and backports
 $cyan              ipt)$orange       IPTables menu 
@@ -206,7 +208,7 @@ yesorno "Are you sure you want to change your computer's password? If yes, you'l
 passwd && success "The password has been changed."
 ;;
 
-qr)
+qre)
 which qrencode >$dn || install_qrencode || continue
 menu_qrencode
 ;;

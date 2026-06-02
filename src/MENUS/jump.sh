@@ -4,6 +4,23 @@ case $1 in
 q|quit|exit) exit ;;
 m|main) back2main ;;
 
+qr)
+qrcapture
+invalid_flag=set
+;;
+
+qri)
+qrcapture_image
+invalid_flag=set
+;;
+
+qre)
+debug in qre
+which qrencode >$dn || install_qrencode 
+menu_qrencode
+invalid_flag=set
+;;
+
 gp)
 clear
 cd $pn 

@@ -7,13 +7,12 @@ set_terminal ; echo -en "
 ########################################################################################
 
 
-                       ${pink}QREncode is installed on your system.
-
-
 $cyan
-                    info)$orange          Info fo DIY QR codes
+                    info)$orange          Info for DIY QR codes
 $cyan
                     pub)$orange           QR of your computer's SSH pubkey
+$cyan
+                    mm)$orange            Make a QR of entered text
 
 
 ########################################################################################
@@ -27,6 +26,11 @@ pub)
 set_terminal 50 100
 echo "Public key..."
 qrencode -t ANSIUTF8 "$(cat ~/.ssh/id_rsa.pub)"
+enter_continue
+;;
+mm)
+announce "Please enter the text you want a QR code of."
+qrencode -t ANSIUTF8 "$enter_cont"
 enter_continue
 ;;
 

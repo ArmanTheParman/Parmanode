@@ -56,8 +56,6 @@ export btcpay_newer_version=2.3.9
    versions["btcpay_newer_version"]="$btcpay_newer_version"
 export litdversion="v0.12.5-alpha"
    versions["litdversion"]="$litdversion"
-export core_lightning_version="25.09.3"
-   versions["core_lightning_version"]="$core_lightning_version"
 export electrsversion="v0.11.1"
    versions["electrsversion"]="$electrsversion"
 export fulcrum_version="2.0.0"
@@ -72,6 +70,10 @@ export thunderhub_version="v0.15.5"
    versions["thunderhub_version"]="$thunderhub_version"
 export trezor_version="26.4.2"
    versions["trezor_version"]="$trezor_version"
+export sparrow_version="2.5.0"
+   versions["sparrow_version"]="$sparrow_version"
+export core_lightning_version="26.04.1"
+   versions["core_lightning_version"]="$core_lightning_version"
 
 if [[ $1 == "build" ]] ; then
 
