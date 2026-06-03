@@ -63,9 +63,9 @@ echo -e "#$cyan                            \033[27G psql)$blue             Parma
 elif grep -q "parmasql-start" $HOME/.parmanode/installed.conf ; then parmasqlmenu=1
 echo -e "#$cyan                            \033[27G psql)$blue             ParmaSQL               $red$blinkon(partial)$blinkoff$orange        \033[88G#" ; fi
 if grep -q "parmaplex-end" $HOME/.parmanode/installed.conf ; then parmaplexmenu=1
-echo -e "#$cyan                            \033[27G plex)$orange             ParmaPlex                              \033[88G#"
+echo -e "#$cyan                            \033[27G plex)$blue             ParmaPlex                              \033[88G#"
 elif grep -q "parmaplex-start" $HOME/.parmanode/installed.conf ; then parmaplexmenu=1
-echo -e "#$cyan                            \033[27G plex)$orange             ParmaPlex               $red$blinkon(partial)$blinkoff$orange        \033[88G#" ; fi
+echo -e "#$cyan                            \033[27G plex)$blue             ParmaPlex               $red$blinkon(partial)$blinkoff$orange        \033[88G#" ; fi
 if grep -q "bitcoin-end" $HOME/.parmanode/installed.conf ; then bitcoinmenu=1
 echo -e "#$cyan                            \033[27G bitcoin)$orange          Bitcoin                                \033[88G#"
 elif grep -q "bitcoin-start" $HOME/.parmanode/installed.conf ; then bitcoinmenu=1
