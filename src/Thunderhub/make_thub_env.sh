@@ -20,7 +20,7 @@ jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit 0 ;; p|P) return 1 ;; M|m) back2main ;; d|D) break ;;
 soy) 
-sudo gsed -i "/THEME='dark'/c\THEME='light'"  $file
+sudo gsed -i "/THEME='dark'/c\THEME='light'"  $envfile
 break ;;
 *) invalid ;;
 esac

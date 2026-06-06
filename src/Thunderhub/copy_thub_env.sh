@@ -84,6 +84,6 @@ ACCOUNT_CONFIG_PATH='/app/account_1.yaml'
 # PUBLIC_URL='app.example.com'
 # SSL_PORT=2900
 # SSL_SAVE=true
-" | sudo tee $file >$dn || { enter_continue "something went wrong" ; return 1 ; }
-sudo chown 0:0 $file
+" | sudo tee $envfile >$dn || { enter_continue "something went wrong" ; return 1 ; }
+sudo chown 0:0 $envfile
 }
