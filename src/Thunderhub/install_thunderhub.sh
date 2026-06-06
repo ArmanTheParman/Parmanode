@@ -25,7 +25,7 @@ fi #end if no xxd
 set_terminal
 export version="$thunderhub_version"
 # export file=$hp/thunderhub/.env 
-export file=$hp/thunderhub/.env.local #adding '.local' prevents overriding file when updating.
+export file="$hp/thunderhub/.env.local" #adding '.local' prevents overriding file when updating thunderhub.
 sned_sats
 ##### export LNDIP
 store_LND_container_IP
@@ -69,6 +69,11 @@ installed_conf_add "thunderhub-start"
 make_thub_env || { sww ; return 1 ; }
 make_thunderhub_account || { sww ; return 1 ; }
 build_thub || { sww ; return 1 ; }
+debug "check .env.local file exists:
+$cyan
+head -n 5 $hp/thunderhub/.env.local
+$orange
+"
 run_thub_docker || { sww ; return 1 ; }
 enable_tor_thunderhub 
 
