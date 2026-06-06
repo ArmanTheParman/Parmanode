@@ -48,7 +48,7 @@ return 1
 fi
 
 #make sure lightning installed 
-if ! grep -q "lnd-end" $ic >$dn 2>&1 && ! grep -q "lnddocker-end" $ic >$dn 2>&1 ; \
+if ! grep -q "lnd-end" $ic >$dn 2>&1 && ! grep -q "lnddocker-end" $ic >$dn 2>&1 && ! [[ $debug == 1 ]] ; \
 then
 announce "Please install LND first. Aborting."
 return 1
