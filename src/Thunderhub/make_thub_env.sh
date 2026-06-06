@@ -1,6 +1,6 @@
 function make_thub_env {
-copy_thub_env || return 1
-master_password_thub || return 1
+copy_thub_env || { sww ;return 1 ; }
+master_password_thub || { sww ;return 1 ; }
 thub_lnd
 
 while true ; do
