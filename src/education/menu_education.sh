@@ -21,9 +21,9 @@ $cyan
                     s)$orange        Separation of money and state (essay)
 $cyan
                     cs)$orange       Cool stuff ('Did you know?')
-
-$cyan               crypt)$orange    How to change drive encryption password for
-                         ParmAirGap computers.
+$cyan
+                    crypt)$orange    How to change drive encryption password for
+                              ParmAirGap computers.
 
 
 ########################################################################################
