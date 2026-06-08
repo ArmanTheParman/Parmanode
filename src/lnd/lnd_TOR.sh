@@ -1,7 +1,6 @@
 function lnd_tor {
 # arguments: only, both, off
-local file=$HOME/.lnd/lnd.conf
-debug "in lnd_tor"
+
 if ! grep -q "lnddocker" $ic && ! which tor >$dn ; then install_tor ; fi
 debug "1"
 #while stream isolation is enabled, the TOR proxy may not be skipped.
@@ -23,9 +22,9 @@ debug "in only"
 add_tor_lnd_conf
 #disable non-tor proxy traffic ...
 if grep -q "litd" $ic >$dn 2>&1 ; then
-sudo gsed -i "/listen=0.0.0.0:$lnd_port/c\lnd.listen=localhost:$lnd_port"  $file
+sudo gsed -i "/listen=0.0.0.0:$lnd_port/c\lnd.listen=localhost:$lnd_port" $lc
 else
-sudo gsed -i "/listen=0.0.0.0:$lnd_port/c\listen=localhost:$lnd_port"  $file
+sudo gsed -i "/listen=0.0.0.0:$lnd_port/c\listen=localhost:$lnd_port" $lc
 fi
 debug "end only"
 commentout_clearnet
@@ -37,9 +36,9 @@ debug "in off"
 
 #listens from all IPs
 if grep -q "litd" $ic >$dn 2>&1 ; then
-sudo gsed -i "/listen=localhost:$lnd_port/c\lnd.listen=0.0.0.0:$lnd_port"  $file
+sudo gsed -i "/listen=localhost:$lnd_port/c\lnd.listen=0.0.0.0:$lnd_port" $lc
 else
-sudo gsed -i "/listen=localhost:$lnd_port/c\listen=0.0.0.0:$lnd_port"  $file
+sudo gsed -i "/listen=localhost:$lnd_port/c\listen=0.0.0.0:$lnd_port" $lc
 fi
 debug "end off"
 uncomment_clearnet
@@ -51,19 +50,19 @@ add_tor_lnd_conf
 
 #listens from all IPs...
 if grep -q "litd" $ic >$dn 2>&1 ; then
-sudo gsed -i "/listen=localhost:$lnd_port/c\lnd.listen=0.0.0.0:$lnd_port"  $file
+sudo gsed -i "/listen=localhost:$lnd_port/c\lnd.listen=0.0.0.0:$lnd_port" $lc
 else
-sudo gsed -i "/listen=localhost:$lnd_port/c\listen=0.0.0.0:$lnd_port"  $file
+sudo gsed -i "/listen=localhost:$lnd_port/c\listen=0.0.0.0:$lnd_port" $lc
 fi
 uncomment_clearnet
 
 #opposite to tor-only, nonexistent when tor off...
 if grep -q "litd" $ic >$dn 2>&1 ; then
-sudo gsed -i "/tor.streamisolation=true/c\lnd.tor.streamisolation=false" $file
-sudo gsed -i "/tor.skip-proxy-for-clearnet-targets=false/c\lnd.tor.skip-proxy-for-clearnet-targets=true" $file 
+sudo gsed -i "/tor.streamisolation=true/c\lnd.tor.streamisolation=false" $lc
+sudo gsed -i "/tor.skip-proxy-for-clearnet-targets=false/c\lnd.tor.skip-proxy-for-clearnet-targets=true" $lc
 else
-sudo gsed -i "/tor.streamisolation=true/c\tor.streamisolation=false" $file 
-sudo gsed -i "/tor.skip-proxy-for-clearnet-targets=false/c\tor.skip-proxy-for-clearnet-targets=true" $file 
+sudo gsed -i "/tor.streamisolation=true/c\tor.streamisolation=false" $lc
+sudo gsed -i "/tor.skip-proxy-for-clearnet-targets=false/c\tor.skip-proxy-for-clearnet-targets=true" $lc
 fi
 debug "end both"
 ;;
@@ -87,11 +86,11 @@ fi
 
 function delete_tor_lnd_conf { 
 unset count
-while grep -q "Added by Parmanode (start)" $file ; do #while loop removes multiple occurrences 
-sudo gsed -i '/Added by Parmanode (start)/,/Added by Parmanode (end)/d' $file >$dn 2>&1
+while grep -q "Added by Parmanode (start)" $lc ; do #while loop removes multiple occurrences 
+sudo gsed -i '/Added by Parmanode (start)/,/Added by Parmanode (end)/d' $lc >$dn 2>&1
 count=$((1 + count))
 sleep 0.5
-if [[ $count -gt 5 ]] ; then announce "loop error when editing $file. Aborting." ; return 1 ; fi
+if [[ $count -gt 5 ]] ; then announce "loop error when editing $lc. Aborting." ; return 1 ; fi
 done
 }
 
@@ -108,7 +107,7 @@ lnd.tor.dns=soa.nodes.lightning.directory:53
 lnd.tor.active=1
 lnd.tor.skip-proxy-for-clearnet-targets=false
 
-; Added by Parmanode (end)" | tee -a $file >$dn 2>&1
+; Added by Parmanode (end)" | tee -a $lc >$dn 2>&1
 
 else 
 
@@ -124,24 +123,24 @@ tor.active=1
 ; activate split connectivity
 tor.skip-proxy-for-clearnet-targets=false
 
-; Added by Parmanode (end)" | tee -a $file >$dn 2>&1
+; Added by Parmanode (end)" | tee -a $lc >$dn 2>&1
 fi
 }
 
 function uncomment_clearnet {
 if grep -q "litd" $ic >$dn 2>&1 ; then
 
-sudo gsed -i '/^; lnd.tlsextraip=/s/^..//' $file
-sudo gsed -i '/^; lnd.externalip=/s/^..//' $file
-sudo gsed -i '/^; lnd.tlsextradomain=/s/^..//' $file
-sudo gsed -i '/^; lnd.externalhosts=/s/^..//' $file
+sudo gsed -i '/^; lnd.tlsextraip=/s/^..//' $lc
+sudo gsed -i '/^; lnd.externalip=/s/^..//' $lc
+sudo gsed -i '/^; lnd.tlsextradomain=/s/^..//' $lc
+sudo gsed -i '/^; lnd.externalhosts=/s/^..//' $lc
 
 else
 
-sudo gsed -i '/^; tlsextraip=/s/^..//' $file
-sudo gsed -i '/^; externalip=/s/^..//' $file
-sudo gsed -i '/^; tlsextradomain=/s/^..//' $file
-sudo gsed -i '/^; externalhosts=/s/^..//' $file
+sudo gsed -i '/^; tlsextraip=/s/^..//' $lc
+sudo gsed -i '/^; externalip=/s/^..//' $lc
+sudo gsed -i '/^; tlsextradomain=/s/^..//' $lc
+sudo gsed -i '/^; externalhosts=/s/^..//' $lc
 
 fi
 }
@@ -149,17 +148,17 @@ fi
 function commentout_clearnet {
 if grep -q "litd" $ic >$dn 2>&1 ; then
 
-sudo gsed -i '/^lnd.tlsextraip=/s/^/; /' $file
-sudo gsed -i '/^lnd.tlsextradomain=/s/^/; /' $file
-sudo gsed -i '/^lnd.externalip=/s/^/; /' $file
-sudo gsed -i '/^lnd.externalhosts=/s/^/; /' $file
+sudo gsed -i '/^lnd.tlsextraip=/s/^/; /' $lc
+sudo gsed -i '/^lnd.tlsextradomain=/s/^/; /' $lc
+sudo gsed -i '/^lnd.externalip=/s/^/; /' $lc
+sudo gsed -i '/^lnd.externalhosts=/s/^/; /' $lc
 
 else
 
-sudo gsed -i '/^tlsextraip=/s/^/; /' $file
-sudo gsed -i '/^tlsextradomain=/s/^/; /' $file
-sudo gsed -i '/^externalip=/s/^/; /' $file
-sudo gsed -i '/^externalhosts=/s/^/; /' $file
+sudo gsed -i '/^tlsextraip=/s/^/; /' $lc
+sudo gsed -i '/^tlsextradomain=/s/^/; /' $lc
+sudo gsed -i '/^externalip=/s/^/; /' $lc
+sudo gsed -i '/^externalhosts=/s/^/; /' $lc
 
 fi
 }
