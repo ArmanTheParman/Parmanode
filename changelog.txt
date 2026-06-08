@@ -1,6 +1,7 @@
 Version 3.69.14
      -fixed lnd conf file bug
      -restart LND bug fix
+     -education menu: tips for encryption password changing
 Version 3.69.13
      -Thunderhub bug fix
      -Tools option - Vim keybindings enabled for command line
