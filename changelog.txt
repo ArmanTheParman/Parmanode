@@ -1,5 +1,6 @@
 Version 3.69.13
      -Thunderhub bug fix
+     -Tools option - Vim keybindings enabled for command line
 Version 3.69.12
      -Pay LND invoice from LND menu
      -qr and qri shortcut to capture qr video ro qr image

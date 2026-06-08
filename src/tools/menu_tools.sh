@@ -140,6 +140,7 @@ $cyan              lnf)$orange       Install Linux non-free packages and backpor
 $cyan              ipt)$orange       IPTables menu 
 $cyan              grub)$orange      Install (or reinstall) GRUB bootloader 
 $cyan              ssh)$orange       Enable SSH server on Macs...
+$cyan              vim)$orange       Make command line work with vim (toggle on/off)
 
 $orange
 ########################################################################################
@@ -222,6 +223,15 @@ install_grub
 ;;
 ssh)
 enable_ssh_mac
+;;
+vim)
+if ! grep -q "#Make command line work as vim" $bashrc 2>$dn ; then
+echo -e "#Make command line work as vim\nset -o vi" | sudo tee -a $bashrc >$dn
+announce "Vim keybindings enabled for command line. To disable, select this option again."
+else
+gsed -i "/#Make command line work as vim/,+1d" $bashrc
+announce "Vim keybindings disabled for command line."
+fi
 ;;
 "")
 continue ;;
