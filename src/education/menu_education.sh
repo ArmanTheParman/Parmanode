@@ -23,7 +23,7 @@ $cyan
                     cs)$orange       Cool stuff ('Did you know?')
 
 $cyan               crypt)$orange    How to change drive encryption password for
-                                     ParmAirGap computers.
+                         ParmAirGap computers.
 
 
 ########################################################################################
