@@ -2,23 +2,23 @@ function lnd_tor {
 # arguments: only, both, off
 
 if ! grep -q "lnddocker" $ic && ! which tor >$dn ; then install_tor ; fi
-debug "1"
+
 #while stream isolation is enabled, the TOR proxy may not be skipped.
 
 enable_tor_general
 
 if [[ $1 != off ]] ; then
-debug inif
+
 lnd_tor_message || return 1
 fi
-debug afterif
+
 delete_tor_lnd_conf || return 1
 
-debug "before case "
+
 case $1 in
 
 only)
-debug "in only"
+
 add_tor_lnd_conf
 #disable non-tor proxy traffic ...
 if grep -q "litd" $ic >$dn 2>&1 ; then
@@ -26,12 +26,12 @@ sudo gsed -i "/listen=0.0.0.0:$lnd_port/c\lnd.listen=localhost:$lnd_port" $lc
 else
 sudo gsed -i "/listen=0.0.0.0:$lnd_port/c\listen=localhost:$lnd_port" $lc
 fi
-debug "end only"
+
 commentout_clearnet
 ;;
 
 off)
-debug "in off"
+
 #tor details removed higher up
 
 #listens from all IPs
@@ -40,12 +40,12 @@ sudo gsed -i "/listen=localhost:$lnd_port/c\lnd.listen=0.0.0.0:$lnd_port" $lc
 else
 sudo gsed -i "/listen=localhost:$lnd_port/c\listen=0.0.0.0:$lnd_port" $lc
 fi
-debug "end off"
+
 uncomment_clearnet
 ;;
 
 both)
-debug "in both"
+
 add_tor_lnd_conf
 
 #listens from all IPs...
@@ -64,7 +64,7 @@ else
 sudo gsed -i "/tor.streamisolation=true/c\tor.streamisolation=false" $lc
 sudo gsed -i "/tor.skip-proxy-for-clearnet-targets=false/c\tor.skip-proxy-for-clearnet-targets=true" $lc
 fi
-debug "end both"
+
 ;;
 
 *)

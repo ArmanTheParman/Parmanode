@@ -32,7 +32,7 @@ function restart_lnd {
 
     if grep -q "lnd-" $ic ; then
     check_rpc_bitcoin
-    systemctl restart lnd.service
+    sudo systemctl restart lnd.service
     return 0
     fi
 
