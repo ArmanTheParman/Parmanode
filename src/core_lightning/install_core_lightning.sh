@@ -196,6 +196,7 @@ return 0
 #connecting zeus to clightning:
    # give a name
    # choose Clightning REST
+   # choose "use tor"
    # url is onion address, no port
    # port is 3778
-   # rune is extracted from : lightning-cli showrunes
+   # rune is extracted from the command : lightning-cli showrunes
