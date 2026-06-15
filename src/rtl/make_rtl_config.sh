@@ -1,5 +1,5 @@
 function make_rtl_config {
-if [[ $OS != Mac ]] ; then
+if [[ $OS != "Mac" ]] ; then
 localhostaddr="127.0.0.1"
 else
 localhostaddr=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' lnd)
@@ -33,7 +33,7 @@ else
 node=$(cat <<EOF
   {
       "index": 1,
-      "lnNode": "Core Lightning Testnet # 1",
+      "lnNode": "Node 1",
       "lnImplementation": "CLN",
       "authentication": {
         "runePath": "/home/parman/.lightning/bitcoin/",
