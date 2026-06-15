@@ -32,7 +32,7 @@ node=$(cat <<EOF
       "lnNode": "Node 1",
       "lnImplementation": "$lnImplementation",
       "authentication": {
-        "runePath": "/home/parman/.lightning/bitcoin/",
+        "runePath": "/home/parman/.lightning/bitcoin/rune",
         "configPath": "$configpath"
       },
 EOF
