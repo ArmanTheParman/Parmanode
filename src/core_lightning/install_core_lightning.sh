@@ -116,7 +116,7 @@ bitcoin__rpcport="$(cat $HOME/.bitcoin/bitcoin.conf | grep rpcport | tail -n 1 |
 bitcoin__rpcport=${bitcoin__rpcport:-8332} #default
 
 if [[ -n $clnport ]] ; then
-clnport_text="announce-addr-discovered-port=$clnport"
+clnport_text="bind-addr=0.0.0.0:$clnport"
 fi
 
 announce-addr-discovered-port
