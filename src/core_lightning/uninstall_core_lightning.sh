@@ -1,6 +1,6 @@
 function uninstall_core_lightning {
 
-if [[ $OS == "Darwin" ]] ; then no_mac ; return 1 ; fi
+if [[ $OS == "Mac" ]] ; then no_mac ; return 1 ; fi
 
 yesorno "Are you sure you want to uninstall Core Lightning?" || exit
 

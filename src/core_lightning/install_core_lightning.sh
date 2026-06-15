@@ -2,7 +2,7 @@
 function install_core_lightning {
 version="$core_lightning_version"
 
-if [[ $OS == "Darwin" ]] ; then no_mac ; return 1 ; fi
+if [[ $OS == "Mac" ]] ; then no_mac ; return 1 ; fi
 
 check_port_9735 || return 1
 
