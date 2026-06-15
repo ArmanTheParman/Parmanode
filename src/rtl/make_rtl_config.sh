@@ -5,7 +5,32 @@ else
 localhostaddr=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' lnd)
 fi
 
-if ! grep -q "cln-end" $ic ; then
+if grep -q "cln-end" $ic ; then
+lnImplementation="CLN"
+rest=3777
+configpath="/home/parman/.lightning/config" #/home/parman is correct as it's internal to container, see run command
+if lightning-cli showrunes | jq .runes | grep -qF '[]' ; then
+LIGHTNING_RUNE=$(lightning-cli createrune | jq -r .rune)
+else
+LIGHTNING_RUNE=$(lightning-cli showrunes | jq -r '.runes[0].rune')
+fi
+
+cat <<EOF | sudo tee $HOME/.lightning/bitcoin/rune >$dn 2>&1
+LIGHTNING_RUNE="$LIGHTNING_RUNE"
+EOF
+
+node=$(cat <<EOF
+  {
+      "index": 1,
+      "lnNode": "Node 1",
+      "lnImplementation": "$lnImplementation",
+      "Authentication": {
+        "runePath": "/home/parman/.lightning/bitcoin/rune",
+        "configPath": "$configpath"
+      },
+EOF
+)
+else
 lnImplementation="LND"
 rest=8080
 configpath="/home/parman/.lnd/lnd.conf" #/home/parman is correct as it's internal to container, see run command
@@ -22,23 +47,7 @@ node=$(cat <<EOF
       },
 EOF
 )
-else
-lnImplementation="CLN"
-rest=3777
-configpath="/home/parman/.lightning/config" #/home/parman is correct as it's internal to container, see run command
-node=$(cat <<EOF
-  {
-      "index": 1,
-      "lnNode": "Node 1",
-      "lnImplementation": "$lnImplementation",
-      "authentication": {
-        "runePath": "/home/parman/.lightning/bitcoin/rune",
-        "configPath": "$configpath"
-      },
-EOF
-)
-fi    
-
+fi
 echo "  
 {
   \"multiPass\": \"$rtl_password\",
