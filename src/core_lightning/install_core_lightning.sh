@@ -115,10 +115,6 @@ announce "${green}Will make Core Lightning configuration file at $HOME/.lightnin
 bitcoin__rpcport="$(cat $HOME/.bitcoin/bitcoin.conf | grep rpcport | tail -n 1 | cut -d = -f 2)" #no hyphens in bash variables
 bitcoin__rpcport=${bitcoin__rpcport:-8332} #default
 
-if [[ -n $clnport ]] ; then
-clnport_text="bind-addr=0.0.0.0:$clnport"
-fi
-
 announce-addr-discovered-port
 cat <<EOF | tee $HOME/.lightning/config
 #daemon --don't use daemon if using systemd service file
@@ -136,13 +132,11 @@ clnrest-host=127.0.0.1
 #fee-base=MILLISATOSHI
 #fee-per-satoshi=MILLIONTHS
 #min-capacity-sat=SATOSHI
-$clnport_text
 EOF
 return 0
 }
 
 function check_port_9735 {
-if [[ -n $clnport ]] ; then return 0 ; fi
 
 if netstat -tulnp 2>/dev/null | grep -q :9735 ; then
     announce "Port 9735 seems to be in use, perhaps because of a lightning installation 
