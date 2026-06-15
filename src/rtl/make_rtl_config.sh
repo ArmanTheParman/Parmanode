@@ -5,17 +5,10 @@ else
 localhostaddr=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' lnd)
 fi
 
-if grep -q "cln-end" $ic ; then
-lnImplementation="CLN"
-rest=3777
-configpath="/home/parman/.lightning/config" #/home/parman is correct as it's internal to container, see run command
-else
+if ! grep -q "cln-end" $ic ; then
 lnImplementation="LND"
 rest=8080
 configpath="/home/parman/.lnd/lnd.conf" #/home/parman is correct as it's internal to container, see run command
-fi
-
-if ! grep -q "cln-end" $ic ; then
 node=$(cat <<EOF
     {
       "index": 1,
@@ -30,11 +23,14 @@ node=$(cat <<EOF
 EOF
 )
 else
+lnImplementation="CLN"
+rest=3777
+configpath="/home/parman/.lightning/config" #/home/parman is correct as it's internal to container, see run command
 node=$(cat <<EOF
   {
       "index": 1,
       "lnNode": "Node 1",
-      "lnImplementation": "CLN",
+      "lnImplementation": "$lnImplementation",
       "authentication": {
         "runePath": "/home/parman/.lightning/bitcoin/",
         "configPath": "$configpath"
