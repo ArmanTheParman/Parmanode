@@ -16,7 +16,7 @@ sudo systemctl stop core-lightning.service >$dn 2>&1
 sudo systemctl disable core-lightning.service >$dn 2>&1
 sudo rm /etc/systemd/system/core-lightning.service >$dn 2>&1
 sudo rm $HOME/.lightning >$dn 2>&1
-
+installed_conf_remove "cln-"
 success "Core Lightning Uninstalled"
 exit
 }

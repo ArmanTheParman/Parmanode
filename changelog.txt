@@ -1,3 +1,5 @@
+Version 3.69.15
+     -RTL can accept CLN not just RTL now
 Version 3.69.14
      -fixed lnd conf file bug
      -restart LND bug fix

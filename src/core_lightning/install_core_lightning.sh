@@ -15,6 +15,7 @@ if ! yesorno "Would you like to compile Core Lightning? (Alternative is to
 else
 
 core_lightning_dependencies || return 1
+installed_conf_add "cln-start"
 download_core_lightning || return 1
 compile_core_lightning || return 1
 deactivate #deactivate virtual environment
@@ -32,6 +33,8 @@ make_core_lightning_service
 
 lightning-cli createrune >$dn 2>&1
 
+installed_conf_add "cln-end"
+
 success "Core Lightning should now be installed. 
 
     It should start automatically. Commands to know: 
@@ -40,7 +43,12 @@ $green
 $red
          sudo systemctl stop core-lightning.service 
 $cyan
-         sudo systemctl statuscore-lightning.service $orange
+         sudo systemctl status core-lightning.service $orange
+
+$blinkon
+    BE CAREFUL NOT TO TYPE 'lightning' instead of 'core-lightning'     
+    AS THAT WILL TURN OFF THE GRAPHICAL INTERFACE AND YOU'LL GET
+    A BLACK SCREEN (LOSS OF PICTURE).$blinkoff $orange
      "
     
 }
@@ -104,7 +112,7 @@ version="$core_lightning_version"
 
 announce "${green}Will make Core Lightning configuration file at $HOME/.lightning/config.$orange"
 
-bitcoin__rpcport="$(cat $HOME/.bitcoin/bitcoin.conf | grep rpcport | cut -d = -f 2)" #no hyphens in bash variables
+bitcoin__rpcport="$(cat $HOME/.bitcoin/bitcoin.conf | grep rpcport | tail -n 1 | cut -d = -f 2)" #no hyphens in bash variables
 bitcoin__rpcport=${bitcoin__rpcport:-8332} #default
 
 cat <<EOF | tee $HOME/.lightning/config

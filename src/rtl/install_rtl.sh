@@ -12,7 +12,7 @@ return 1
 fi
 
 set_terminal
-if [[ $debug != 1 ]] && [[ $special != "core_lightning" ]] ; then
+if [[ $debug != 1 ]] && ! grep -q "cln-end" $ic ; then
 { lncli wallet accounts list >$dn 2>&1 || \
 docker exec lnd lncli wallet accounts list >$dn 2>&1 ; } || { echo -e "
 ########################################################################################
@@ -27,6 +27,16 @@ docker exec lnd lncli wallet accounts list >$dn 2>&1 ; } || { echo -e "
 
 ########################################################################################
 " && { enter_continue ; jump $enter_cont ; } && return 1 ; }
+else #if CLN installed, make sure it's running
+
+    while ! sudo systemctl is-active --quiet core-lightning.service ; do
+        enter_continue "Core Lightning is not running. Please start it in another window,
+        \r    and hit <enter>. Or hit q and <enter> to abort RTL installation."
+        [[ $enter_cont == "q" ]] && return 1
+    done
+
+    lightning-cli showrunes
+
 fi
 
 mkdir -p $HOME/parmanode/rtl $HOME/parmanode/startup_scripts/ 2>$dn

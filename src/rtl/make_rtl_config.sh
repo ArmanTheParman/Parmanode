@@ -4,6 +4,17 @@ localhostaddr="127.0.0.1"
 else
 localhostaddr=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' lnd)
 fi
+
+if ! grep -q "cln-end" $ic ; then
+lnImplementation="CLN"
+rest=3777
+configpath="/home/parman/.lightning/config" #/home/parman is correct as it's internal to container, see run command
+else
+lnImplementation="LND"
+rest=8080
+configpath="/home/parman/.lnd/lnd.conf" #/home/parman is correct as it's internal to container, see run command
+fi
+
 echo "  
 {
   \"multiPass\": \"$rlt_password\",
@@ -19,10 +30,10 @@ echo "
     {
       \"index\": 1,
       \"lnNode\": \"Node 1\",
-      \"lnImplementation\": \"LND\",
+      \"lnImplementation\": \"$lnImplementation\",
       \"Authentication\": {
        \"macaroonPath\": \"/home/parman/.lnd/data/chain/bitcoin/mainnet\",
-        \"configPath\": \"/home/parman/.lnd/lnd.conf\",
+        \"configPath\": \"$configpath\",
         \"swapMacaroonPath\": \"\",
         \"boltzMacaroonPath\": \"\"
       },
@@ -32,7 +43,7 @@ echo "
         \"themeColor\": \"PURPLE\",
         \"channelBackupPath\": \"\",
         \"logLevel\": \"ERROR\",
-        \"lnServerUrl\": \"https://$localhostaddr:8080\",
+        \"lnServerUrl\": \"https://$localhostaddr:$rest\",
         \"swapServerUrl\": \"https://$localhostaddr:8081\",
           \"boltzServerUrl\": \"https://$localhostaddr:9003\",
         \"fiatConversion\": false,
@@ -41,4 +52,5 @@ echo "
     }
   ]
 }" > $tmp/RTL-Config.json 2>$dn
+unset rest
 }

@@ -24,8 +24,11 @@ echo -e "
                                  RTL is$red NOT RUNNING$orange"
 fi
 
-if ! ps -x | grep lnd | grep bin >$dn 2>&1  && ! docker ps | grep -q lnd ; then echo -e "$red
-                WARNING: LND is not running. RTL won't funciton.$orange" ; fi
+if { grep -q "lnd-end" $ic || grep -q "lnddocker-end" $ic ; } && ! pgrep lnd >$dn 2>&1  && ! docker ps --format '{{.Names}}' | grep -qx lnd; then 
+#condition for litd and cln not included yet
+echo -e "$red
+                WARNING: LND is not running. RTL won't funciton.$orange" 
+fi
 
 echo -e "      
 
@@ -38,7 +41,7 @@ $cyan
 $cyan
       pw)$orange             Password Change
 $cyan
-      lnd)$orange            Reinstall RTL to reconnect with LND (need if LND reset)
+      r)$orange              Reinstall RTL (to reconnect with Lightning)
 $cyan
       t)$orange              Enable/Disable RTL access over Tor
 
@@ -81,7 +84,7 @@ rtl_password
 continue
 ;;
 
-lnd|LND|Lnd)
+r)
 reset_rtl_lnd
 continue
 ;;

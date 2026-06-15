@@ -60,7 +60,7 @@ $green
      $red
                                  n)         No 
 $au_message
-
+$orange
     The apps you have already installed will not be changed.
 
     Latest Avaliavble:   $cyan$latest_version$orange

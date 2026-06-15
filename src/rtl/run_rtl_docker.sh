@@ -2,7 +2,7 @@ function run_rtl_docker {
 
 if [[ $OS == Mac ]] ; then ports="-p 3000:3000" ; else ports="--network=host" ; fi
 
-if [[ $special == "core_lightning" ]] ; then 
+if grep -q "cln-end" $ic ; then 
 
     vs="-v $HOME/.lightning:/home/parman/.lightning"
 else
