@@ -6,6 +6,7 @@ while true ; do
 set_terminal
 
 #GET CLN VERSION
+cln_version=$(lightning-cli getinfo | jq -r .version)
 
 set_terminal 45 88 ; echo -e "
 ########################################################################################$cyan
