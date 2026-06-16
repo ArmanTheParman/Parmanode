@@ -135,6 +135,10 @@ clnrest-host=127.0.0.1
 #fee-base=MILLISATOSHI
 #fee-per-satoshi=MILLIONTHS
 #min-capacity-sat=SATOSHI
+
+#If LND running, port 9735 and maybe 9736 are in use. Need these...
+   #grpc-port=9738
+   #bind-addr=0.0.0.0:9737
 EOF
 return 0
 }
