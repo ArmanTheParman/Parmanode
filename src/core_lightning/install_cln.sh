@@ -45,8 +45,8 @@ fi
 
 mkdir $HOME/.lightning/ >$dn 2>&1
 
-make_core_lightning_config
-make_core_lightning_service
+make_cln_config
+make_cln_service
 lightning-cli createrune >$dn 2>&1
 installed_conf_add "cln-end"
 success "Core Lightning has been installed."
@@ -103,38 +103,6 @@ sudo make install | tee $dp/.clightning_build.log || { enter_continue "something
 enter_continue "make install command successful."
 }
 
-function make_core_lightning_config {
-
-bitcoin__rpcport="$(cat $HOME/.bitcoin/bitcoin.conf | grep rpcport | tail -n 1 | cut -d = -f 2)" #no hyphens in bash variables
-bitcoin__rpcport=${bitcoin__rpcport:-8332} #default
-
-random=$(dd if=/dev/urandom bs=1 count=50 2>/dev/null)
-aliasrand=$(echo "$random $(date)" | shasum -a 256 | sed -E 's/^(.{15}).*$/\1/')
-
-announce-addr-discovered-port
-cat <<EOF | tee $HOME/.lightning/config >$dn 2>&1
-#daemon --don't use daemon if using systemd service file
-log-file=$HOME/.lightning/log
-network=bitcoin
-bitcoin-cli=$(which bitcoin-cli)
-bitcoin-datadir=$HOME/.bitcoin
-bitcoin-rpcuser=$(cat $HOME/.bitcoin/bitcoin.conf | grep rpcuser | cut -d = -f 2)
-bitcoin-rpcpassword=$(cat $HOME/.bitcoin/bitcoin.conf | grep rpcpassword | cut -d = -f 2)
-bitcoin-rpcconnect=127.0.0.1
-bitcoin-rpcport=$bitcoin__rpcport
-alias=BananaStand_$aliasrand
-clnrest-port=3777
-clnrest-host=127.0.0.1
-#fee-base=MILLISATOSHI
-#fee-per-satoshi=MILLIONTHS
-#min-capacity-sat=SATOSHI
-
-#If LND running, port 9735 and maybe 9736 are in use. Need these...
-   #grpc-port=9738
-   #bind-addr=0.0.0.0:9737
-EOF
-return 0
-}
 
 function check_port_9735 {
 
@@ -165,42 +133,6 @@ sudo cp -R ./usr/bin/* /usr/bin/ || enter_continue
 sudo cp -R ./usr/share/* /usr/share/ || enter_continue 
 sudo cp -R ./usr/libexec/* /usr/libexec/ || enter_continue
 } 
-
-function make_core_lightning_service {
-cat<<EOF | sudo tee /etc/systemd/system/core-lightning.service
-[Unit]
-Description=Core Lightning daemon
-Wants=bitcoind.service
-After=bitcoind.service network-online.target
-Wants=network-online.target
-
-[Service]
-User=$USER
-Group=$USER
-Type=simple
-ExecStart=/usr/bin/lightningd --conf=$HOME/.lightning/config
-Restart=on-failure
-RestartSec=10
-TimeoutStopSec=600
-
-# optional hardening
-NoNewPrivileges=true
-PrivateTmp=true
-ProtectSystem=full
-ProtectHome=false
-
-StandardOutput=journal
-StandardError=journal
-
-[Install]
-WantedBy=multi-user.target
-EOF
-
-sudo systemctl daemon-reload
-sudo systemctl enable core-lightning.service
-sudo systemctl start core-lightning.service
-return 0
-}
 
 
 #lightning-cli showrunes
