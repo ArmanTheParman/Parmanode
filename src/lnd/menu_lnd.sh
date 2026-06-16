@@ -1,5 +1,5 @@
 function menu_lnd {
-if ! grep -q "lnd.*end" $ic && ! grep -q "litd-end" $ic ; then return 0 ; fi
+if ! grep -q "lnd.*end" $ic && ! grep -q "litd-end" $ic ; then return 1 ; fi
 
 if grep -q "lnd_nowallet=true" $pc ; then 
 announce "Please make sure to create a wallet first, otherwise LND won't work at all.
@@ -7,59 +7,15 @@ announce "Please make sure to create a wallet first, otherwise LND won't work at
 gsed -i '/lnd_nowallet=true/d' $pc 
 fi
 
-if grep -q "btccombo-end" $ic && ! grep -q "BTCIP" $pc && grep -q "127.0.0.1" $HOME/.lnd/lnd.conf ; then
-while true ; do
-set_terminal ; echo -e "
-########################################################################################
-
-    Parmanode has detected that LND is not configured to connect to Bitcoin 
-    (Docker) correctly. 
-    
-
-    You have options...
-
-$cyan
-        fix) $orange    Parmanode will adjust the lnd.conf file automatically and restart LND 
-$cyan
-        i)     $orange  Ignore and continue
-$cyan
-        rrr)  $orange   RRR, don't ask me again.
-
-########################################################################################
-"
-choose xpmq ; read choice 
-jump $choice || { invalid ; continue ; } ; set_terminal
-case $choice in
-q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
-rrr) 
-echo "btccombo-check" >> $hm
-break
-;;
-i)
-break
-;;
-fix)
-fix_BTC_addr_btccombo
-please_wait
-restart_lnd
-break
-;;
-"")
-continue ;;
-*)
-invalid
-;;
-esac
-done
-fi
+btccombo_check || return 1
 
 if grep -q "litd" $ic >$dn 2>&1 ; then 
 lndlitd="true" 
-LND=LITD
+isLND=LITD
 lndconf=lit.conf
 else 
 lndlitd="false" 
-LND=LND
+isLND=LND
 lndconf=lnd.conf
 fi
 
@@ -192,10 +148,10 @@ $menuDockerIP
 
 $cyan
       i)$orange              Important info $green
-      start)$orange          Start $LND $orange$inside_docker $red
-      stop)$orange           Stop $LND $orange$inside_docker $red
+      start)$orange          Start $isLND $orange$inside_docker $red
+      stop)$orange           Stop $isLND $orange$inside_docker $red
       disable)$orange        Toggle on/off (for when manually copying data)$cyan
-      rs)$orange             Restart $LND $inside_docker $cyan
+      rs)$orange             Restart $isLND $inside_docker $cyan
       mwt)$orange            Watchtower Service Menu$pink NEW $cyan
       log)$orange            Inspect LND logs $cyan
       conf)$orange           Inspect and edit $lndconf file (confv for vim) $cyan

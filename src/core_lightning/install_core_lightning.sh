@@ -140,8 +140,10 @@ function check_port_9735 {
 
 if netstat -tulnp 2>/dev/null | grep -q :9735 ; then
     announce "Port 9735 seems to be in use, perhaps because of a lightning installation 
-    \r    that exists. Please stop or uninstall that before trying again. Aborting."
-    return 1
+    \r    that exists. You can stop or uninstall that before trying again.
+    
+    \r    Type yolo and <enter> to install anyway, anything else to abort."
+    [[ $enter_cont == "yolo" ]] || return 1
 fi
 }
 

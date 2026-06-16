@@ -75,6 +75,7 @@ export p4websocketfile="/opt/parmanode/parmanode_ws"
 export socketbacklog="/opt/parmanode/socketbacklog"
 export mempoolconf="$hp/mempool/docker/docker-compose.yml"
 export lc="$HOME/.lnd/lnd.conf"
+export clnconf="$HOME/.lightning/config"
 
 if [[ -z $dn ]] ; then echo "some problem with dn variable" ; read ; fi ##debug
 
