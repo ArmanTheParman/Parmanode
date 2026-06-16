@@ -27,12 +27,12 @@ success "Homebrew uninstalled"
 fi
 
 if [[ $1 == "install_core_lightning" ]] ; then
-install_core_lightning
+install_cln
 exit
 fi
 
 if [[ $1 == "uninstall_core_lightning" ]] ; then
-uninstall_core_lightning
+uninstall_cln
 exit
 fi
 
