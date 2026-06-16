@@ -205,6 +205,7 @@ ulitd) menu_use litd ;;
 ult) menu_use lt ;;
 unext) menu_use next ;;
 uvc) menu_use vc ;;
+ucln) munu_use cln ;;
 
 
 ul|UL|Ul)

@@ -1,3 +1,5 @@
+Version 3.70.0
+     -C Lightning
 Version 3.69.15
      -RTL can accept CLN not just RTL now
 Version 3.69.14

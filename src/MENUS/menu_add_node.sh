@@ -31,8 +31,9 @@ if [[ -n $btcrpcexplorer_n ]]  ; then echo  -e "$btcrpcexplorer_n"; fi
 if [[ -n $mempool_n ]]         ; then echo -e  "$mempool_n"; fi
 if [[ -n $bre_n ]]             ; then echo  -e "$bre_n"; fi
 if [[ -n $lnd_n ]]             ; then echo  -e "$lnd_n"; fi
-if [[ -n $litd_n ]]             ; then echo  -e "$litd_n"; fi
 if [[ -n $lnddocker_n ]]       ; then echo  -e "$lnddocker_n"; fi
+if [[ -n $litd_n ]]             ; then echo  -e "$litd_n"; fi
+if [[ -n $cln_n ]]             ; then echo  -e "$cln_n"; fi
 if [[ -n $btcpay_n ]]          ; then echo -e  "$btcpay_n"; fi
 if [[ -n $fulcrum_n ]]         ; then echo  -e "$fulcrum_n"; fi
 if [[ -n $fulcrumdkr_n ]]         ; then echo  -e "$fulcrumdkr_n"; fi
@@ -48,10 +49,11 @@ if [[ -n $mempool_i ]]         ; then echo -e  "$mempool_i"; fi
 if [[ -n $bre_i ]]             ; then echo -e  "$bre_i"; fi
 if [[ -n $lnd_i ]]             ; then echo  -e "$lnd_i"; fi
 if [[ -n $lnddocker_i ]]       ; then echo  -e "$lnddocker_i"; fi
+if [[ -n $litd_i ]]            ; then echo  -e "$litd_i"; fi
+if [[ -n $cln_i ]]             ; then echo  -e "$cln_i"; fi
 if [[ -n $btcpay_i ]]          ; then echo  -e "$btcpay_i"; fi
 if [[ -n $fulcrum_i ]]         ; then echo  -e "$fulcrum_i"; fi
 if [[ -n $fulcrumdkr_i ]]      ; then echo  -e "$fulcrumdkr_i"; fi
-if [[ -n $litd_i ]]            ; then echo  -e "$litd_i"; fi
 echo -e "#                                                                                      #
 #$red List of failed installs (need to uninstall)...                               $orange        #
 #                                                                                      #"
@@ -64,10 +66,11 @@ if [[ -n $mempool_p ]]         ; then echo -e "$mempool_p"; fi
 if [[ -n $bre_p ]]             ; then echo -e "$pink$bre_p$orange"; fi
 if [[ -n $lnd_p ]]             ; then echo -e "$pink$lnd_p$orange"; fi
 if [[ -n $lnddocker_p ]]       ; then echo -e "$pink$lnddocker_p$orange"; fi
+if [[ -n $litd_p ]]            ; then echo -e "$pink$litd_p$orange"; fi
+if [[ -n $cln_p ]]             ; then echo -e "$pink$cln_p$orange"; fi
 if [[ -n $btcpay_p ]]          ; then echo -e "$pink$btcpay_p$orange"; fi
 if [[ -n $fulcrum_p ]]         ; then echo -e "$pink$fulcrum_p$orange"; fi
 if [[ -n $fulcrumdkr_p ]]      ; then echo -e "$pink$fulcrumdkr_p$orange"; fi
-if [[ -n $litd_p ]]            ; then echo -e "$pink$litd_p$orange"; fi
 echo "#                                                                                      #
 ########################################################################################
 "

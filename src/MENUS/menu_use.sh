@@ -92,6 +92,8 @@ if grep -q "parmanostr-end" $ic ; then parmanostrapp=1
 ### Lightning related 
 if grep -q "lnd-end" $ic ; then lndapp=1
                        echo -e "                        $cyan  l)$orange          LND " ; count=$((count +1)) ; fi
+if grep -q "cln-end" $ic ; then clnapp=1
+                       echo -e "                        $cyan  cln)$orange        C Lightning " ; count=$((count +1)) ; fi
 if grep -q "lnddocker-end" $ic ; then lnddockerapp=1
                        echo -e "                        $cyan  ld)$orange         LND (Docker) " ; count=$((count +1)) ; fi
 if grep -q "btcpay-end" $ic ; then btcpayapp=1
@@ -218,7 +220,16 @@ tor|TOR|t|T)
         invalid
     fi
     ;;
-
+cln|CLN|Cln|cl)
+    if [[ $clnapp == 1 ]] ; then
+    clear
+    please_wait
+      if [[ $OS == "Linux" ]] ; then menu_cln ; continue ; fi
+      if [[ $OS == "Mac" ]] ; then no_mac ; continue ; fi
+      if [[ -n $1 ]] ; then clear ; return 0 ; fi
+    else invalid 
+    fi
+;;
 lnd|LND|Lnd|L|l)
     if [[ $lndapp == 1 ]] ; then
     clear

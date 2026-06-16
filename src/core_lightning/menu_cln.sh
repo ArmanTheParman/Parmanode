@@ -1,4 +1,4 @@
-function menu_core_lightning {
+function menu_cln {
 
 if ! grep -q "cln-end" $ic ; then return 1 ; fi
 
