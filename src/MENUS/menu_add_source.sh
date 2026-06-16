@@ -612,7 +612,7 @@ unset phoenix_i phoenix_p phoenix_n
 if grep -q "phoenix-end" $HOME/.parmanode/installed.conf ; then 
   #installed
 phoenix_i="#                                      Phoenix Server                                  #"
-elif grep -q "X11-start" $HOME/.parmanode/installed.conf ; then 
+elif grep -q "phoenix-start" $HOME/.parmanode/installed.conf ; then 
    #partially installed
 phoenix_p="#                                      Phoenix Server                                  #"
 else
@@ -625,7 +625,7 @@ unset vaultwarden_i vaultwarden_p vaultwarden_n
 if grep -q "vaultwarden-end" $HOME/.parmanode/installed.conf ; then 
   #installed
 vaultwarden_i="#                                      VaultWarden                                     #"
-elif grep -q "X11-start" $HOME/.parmanode/installed.conf ; then 
+elif grep -q "-start" $HOME/.parmanode/installed.conf ; then 
    #partially installed
 vaultwarden_p="#                                      VaultWarden                                     #"
 else
@@ -638,7 +638,7 @@ unset parmasync_i parmasync_p parmasync_n
 if grep -q "parmasync-end" $HOME/.parmanode/installed.conf ; then 
   #installed
 parmasync_i="#                                      ParmaSync                                       #"
-elif grep -q "X11-start" $HOME/.parmanode/installed.conf ; then 
+elif grep -q "parmasync-start" $HOME/.parmanode/installed.conf ; then 
    #partially installed
 parmasync_p="#                                      ParmaSync                                       #"
 else
@@ -651,7 +651,7 @@ unset parmatwin_i parmatwin_p parmatwin_n
 if grep -q "parmatwin-end" $HOME/.parmanode/installed.conf ; then 
   #installed
 parmatwin_i="#                                      ParmaTwin                                       #"
-elif grep -q "X11-start" $HOME/.parmanode/installed.conf ; then 
+elif grep -q "parmatwin-start" $HOME/.parmanode/installed.conf ; then 
    #partially installed
 parmatwin_p="#                                      ParmaTwin                                       #"
 else
@@ -664,7 +664,7 @@ unset num_i nym_p nym_n
 if grep -q "nym-end" $HOME/.parmanode/installed.conf ; then 
   #installed
 nym_i="#                                      Nym VPN                                         #"
-elif grep -q "X11-start" $HOME/.parmanode/installed.conf ; then 
+elif grep -q "nym-start" $HOME/.parmanode/installed.conf ; then 
    #partially installed
 nym_p="#                                      Nym VPN                                         #"
 else
@@ -677,7 +677,7 @@ unset i2p_i i2p_p i2p_n
 if grep -q "i2p-end" $HOME/.parmanode/installed.conf ; then 
   #installed
 i2p_i="#                                      I2P                                             #"
-elif grep -q "X11-start" $HOME/.parmanode/installed.conf ; then 
+elif grep -q "i2p-start" $HOME/.parmanode/installed.conf ; then 
    #partially installed
 i2p_p="#                                      I2P                                             #"
 else
@@ -690,7 +690,7 @@ unset parmadesk_i parmadesk_p parmadesk_n
 if grep -q "parmadesk-end" $HOME/.parmanode/installed.conf ; then 
   #installed
 parmadesk_i="#                                      ParmaDesk VNC                                   #"
-elif grep -q "X11-start" $HOME/.parmanode/installed.conf ; then 
+elif grep -q "parmadesk-start" $HOME/.parmanode/installed.conf ; then 
    #partially installed
 parmadesk_p="#                                      ParmaDesk VNC                                   #"
 else
@@ -703,7 +703,7 @@ unset parmasql_i parmasql_p parmasql_n
 if grep -q "parmasql-end" $HOME/.parmanode/installed.conf ; then 
   #installed
 parmasql_i="#                                      ParmaSQL Database                               #"
-elif grep -q "X11-start" $HOME/.parmanode/installed.conf ; then 
+elif grep -q "parmasql-start" $HOME/.parmanode/installed.conf ; then 
    #partially installed
 parmasql_p="#                                      ParmaSQL Database                               #"
 else
@@ -711,18 +711,31 @@ else
 parmasql_n="#$cyan                             pd)   $orange       ParmaSQL Database                           #"
 fi
 
-
 #alby
 unset alby_i alby_p alby_n 
 if grep -q "alby-end" $HOME/.parmanode/installed.conf ; then 
   #installed
 alby_i="#                                      AlbyHub                                         #"
-elif grep -q "X11-start" $HOME/.parmanode/installed.conf ; then 
+elif grep -q "alby-start" $HOME/.parmanode/installed.conf ; then 
    #partially installed
 alby_p="#                                      AlbyHub                                         #"
 else
    #not installed
 alby_n="#$cyan                             alby) $orange       Alby (lightning wallet)                     #"
 alby_n="#$cyan                             alby) $orange       AlbyHub (for lightning wallets)             #"
+fi
+
+#cln
+unset cln_i cln_p cln_n 
+if grep -q "cln-end" $HOME/.parmanode/installed.conf ; then 
+  #installed
+cln_i="#                                      C Lightning                                         #"
+elif grep -q "cln-start" $HOME/.parmanode/installed.conf ; then 
+   #partially installed
+cln_p="#                                      C Lightning                                         #"
+else
+   #not installed
+cln_n="#$cyan                             cln) $orange       C Lightning                     #"
+cln_n="#$cyan                             cln) $orange       C Lightning             #"
 fi
 }

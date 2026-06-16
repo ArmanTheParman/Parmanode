@@ -4,6 +4,11 @@ version="$core_lightning_version"
 
 if [[ $OS == "Mac" ]] ; then no_mac ; return 1 ; fi
 
+if grep -q "lnd-" $ic || grep -q "lnddocker" $ic ; then
+  announce "Parmanode is not configured to install C Lightning if
+  \r    LND is already installed. Aborting." && return 1
+fi
+
 check_port_9735 || return 1
 
 if ! yesorno "Would you like to compile Core Lightning? (Alternative is to
@@ -11,48 +16,23 @@ if ! yesorno "Would you like to compile Core Lightning? (Alternative is to
     is great, but it takes longer and prone to failure." ; then
     
     core_lightning_binaries
-
 else
-
-core_lightning_dependencies || return 1
-installed_conf_add "cln-start"
-download_core_lightning || return 1
-compile_core_lightning || return 1
-deactivate #deactivate virtual environment
-
+    core_lightning_dependencies || return 1
+    installed_conf_add "cln-start"
+    download_core_lightning || return 1
+    compile_core_lightning || return 1
+    deactivate #deactivate virtual environment
 fi
 
 
-
-#make_core_lightning_directories
 mkdir $HOME/.lightning/ >$dn 2>&1
 
 make_core_lightning_config
-
 make_core_lightning_service
-
 lightning-cli createrune >$dn 2>&1
-
 installed_conf_add "cln-end"
-
-success "Core Lightning should now be installed. 
-
-    It should start automatically. Commands to know: 
-$green
-         sudo systemctl start core-lightning.service
-$red
-         sudo systemctl stop core-lightning.service 
-$cyan
-         sudo systemctl status core-lightning.service $orange
-
-$blinkon
-    BE CAREFUL NOT TO TYPE 'lightning' instead of 'core-lightning'     
-    AS THAT WILL TURN OFF THE GRAPHICAL INTERFACE AND YOU'LL GET
-    A BLACK SCREEN (LOSS OF PICTURE).$blinkoff $orange
-     "
-    
+success "Core Lightning has been installed."
 }
-
 
 function core_lightning_dependencies {
 version="$core_lightning_version"
@@ -78,7 +58,6 @@ pip3 install poetry mako grpcio-tools pytest || { enter_continue "something went
 }
 
 function download_core_lightning {
-version="$core_lightning_version"
 
 if [[ -e $HOME/parmanode/core_lightning ]] ; then
   cd $hp/core_lightning
@@ -89,12 +68,11 @@ else
   git clone https://github.com/ElementsProject/lightning.git core_lightning
   cd core_lightning
 fi
-  git checkout v26.04.1
+  git checkout v"$core_lightning_version" 
 }
 
 
 function compile_core_lightning {
-version="$core_lightning_version"
 
 announce "${green}Will start compiling Core Lightning; This will take a while.$orange"
 ./configure | tee $dp/.clightning_build.log 
@@ -108,7 +86,6 @@ enter_continue "make install command successful."
 }
 
 function make_core_lightning_config {
-version="$core_lightning_version"
 
 announce "${green}Will make Core Lightning configuration file at $HOME/.lightning/config.$orange"
 
@@ -164,7 +141,7 @@ curl -LO https://github.com/ElementsProject/lightning/releases/download/v$versio
 curl -LO https://github.com/ElementsProject/lightning/releases/download/v$version/SHA256SUMS-v$version.asc
 
 import_core_lightning_gpg
-sha256sum --check SHA256SUMS-v$version --ignore-missing || { enter_continue "shasum check failed. Aborting" ; exit ; }
+sha256sum --check SHA256SUMS-v$version --ignore-missing || { enter_continue "shasum check failed. Aborting" ; return 1 ; }
 
 tar -xvf *xz
 sudo mkdir -p /usr/bin /usr/share /usr/libexec
