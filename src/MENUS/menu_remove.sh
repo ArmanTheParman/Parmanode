@@ -97,7 +97,7 @@ echo -e "#$cyan                            \033[27G lnd)$orange              LND
 if grep -q "cln-end" $HOME/.parmanode/installed.conf ; then clnmenu=1
 echo -e "#$cyan                            \033[27G cln)$orange              C Lightning                            \033[88G#"
 elif grep -q "cln-start" $HOME/.parmanode/installed.conf ; then clnmenu=1
-echo -e "#$cyan                            \033[27G cln)$orange              C Lightning $red$blinkon(partial)$blinkoff$orange                           \033[88G#" ; fi
+echo -e "#$cyan                            \033[27G cln)$orange              C Lightning $red$blinkon(partial)$blinkoff$orange                   \033[88G#" ; fi
 if grep -q "mempool-end" $HOME/.parmanode/installed.conf ; then mempoolmenu=1
 echo -e "#$cyan                            \033[27G mem)$orange              Mempool                                \033[88G#"
 elif grep -q "mempool-start" $HOME/.parmanode/installed.conf ; then mempoolmenu=1
