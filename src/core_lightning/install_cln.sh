@@ -1,5 +1,5 @@
 
-function install_core_lightning {
+function install_cln {
 version="$core_lightning_version"
 
 if [[ $OS == "Mac" ]] ; then no_mac ; return 1 ; fi

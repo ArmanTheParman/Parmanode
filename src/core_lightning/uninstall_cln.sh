@@ -1,4 +1,4 @@
-function uninstall_core_lightning {
+function uninstall_cln {
 
 while true ; do
 set_terminal ; echo -e "
