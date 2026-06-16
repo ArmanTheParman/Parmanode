@@ -9,9 +9,9 @@ set_terminal
 cln_version=$(lightning-cli getinfo | jq -r .version)
 
 if systemctl is-active --quiet core-lightning ; then
-clnrunning="                               CLN is$green RUNNING"
+clnrunning="                                   CLN is$green RUNNING"
 else
-clnrunning="                               CLN is$red NOT RUNNING"
+clnrunning="                                   CLN is$red NOT RUNNING"
 fi
 
 set_terminal 45 88 ; echo -e "
