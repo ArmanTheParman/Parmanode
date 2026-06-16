@@ -29,8 +29,8 @@ fi
 
 check_port_9735 || return 1
 
-if ! yesorno "Would you like to compile Core Lightning? $cyan(The Alternative 
-    is to use pre-built official binaries and gpg verify them).$orange 
+if ! yesorno "Would you like to compile Core Lightning? $cyan(The Alternative is to use pre-built 
+    official binaries and gpg verify them).$orange 
     
     Compiling is great, but it takes longer and prone to failure." ; then
     core_lightning_binaries
