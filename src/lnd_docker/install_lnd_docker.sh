@@ -5,6 +5,8 @@ export lndversion="v0.17.3-beta"
 
 grep -q bitcoin-end $HOME/.parmanode/installed.conf || { announce "Must install Bitcoin first. Aborting." && return 1 ; }
 
+if grep -q "cln-" $ic ; then announce "Can't install LND if you have CLN"  ; return 1 ; fi
+
 please_wait
 
 installed_config_add "lnddocker-start" 
