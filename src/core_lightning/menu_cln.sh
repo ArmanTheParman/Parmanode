@@ -32,8 +32,9 @@ $cyan
                          log)$orange       See CLN logs in real time
 $cyan
                         conf)$orange       Edit config (confv for vim)
-
-
+$blue
+    CLN REST PORT: 3777
+$orange
 ########################################################################################
 "
 choose "xpmq" ; read choice 
