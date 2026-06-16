@@ -6,17 +6,19 @@ while true ; do
 set_terminal
 
 #GET CLN VERSION
-cln_version=$(lightning-cli getinfo | jq -r .version)
 
 if systemctl is-active --quiet core-lightning ; then
 clnrunning="                                   CLN is$green RUNNING"
+cln_version="-- "
+cln_version="                                CLN Menu$green -- $(lightning-cli getinfo | jq -r .version)$orange"
 else
 clnrunning="                                   CLN is$red NOT RUNNING"
+cln_version="                                       CLN Menu"
 fi
 
 set_terminal 45 88 ; echo -e "
 ########################################################################################$cyan
-                                CLN Menu$orange - $cln_version                               
+
 ########################################################################################$orange
 
 $clnrunning

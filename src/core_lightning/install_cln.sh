@@ -29,10 +29,10 @@ fi
 
 check_port_9735 || return 1
 
-if ! yesorno "Would you like to compile Core Lightning? (Alternative is to
-    use pre-built official binaries and gpg verify them.) Compiling
-    is great, but it takes longer and prone to failure." ; then
+if ! yesorno "Would you like to compile Core Lightning? $cyan(The Alternative 
+    is to use pre-built official binaries and gpg verify them).$orange 
     
+    Compiling is great, but it takes longer and prone to failure." ; then
     core_lightning_binaries
 else
     core_lightning_dependencies || return 1
@@ -105,8 +105,6 @@ enter_continue "make install command successful."
 
 function make_core_lightning_config {
 
-announce "${green}Will make Core Lightning configuration file at $HOME/.lightning/config.$orange"
-
 bitcoin__rpcport="$(cat $HOME/.bitcoin/bitcoin.conf | grep rpcport | tail -n 1 | cut -d = -f 2)" #no hyphens in bash variables
 bitcoin__rpcport=${bitcoin__rpcport:-8332} #default
 
@@ -114,7 +112,7 @@ random=$(dd if=/dev/urandom bs=1 count=50 2>/dev/null)
 aliasrand=$(echo "$random $(date)" | shasum -a 256 | sed -E 's/^(.{15}).*$/\1/')
 
 announce-addr-discovered-port
-cat <<EOF | tee $HOME/.lightning/config
+cat <<EOF | tee $HOME/.lightning/config >$dn 2>&1
 #daemon --don't use daemon if using systemd service file
 log-file=$HOME/.lightning/log
 network=bitcoin
