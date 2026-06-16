@@ -9,6 +9,24 @@ if grep -q "lnd-" $ic || grep -q "lnddocker" $ic ; then
   \r    LND is already installed. Aborting." && return 1
 fi
 
+systemctl is-active --quiet core-lightning && 
+if yesorno "It seems like you have installed C Lightning yourself without
+    the help of Parmanode, or using the old script in Parmanode from
+    the extras menu. To use this installation, C lightning needs to
+    be uninstalled.
+$cyan
+    Would you like to run the Parmanode uninstall script now to clean
+    up the old installation? 
+$orange
+    DO NOT DO THIS IF YOU MANUALLY INSTALLED C LIGHTNING, IT MAY NOT
+    WORK. JUST MANUALLY REMOVE ALL REMNANTS OF C LIGHTNING YOURSELF,
+    THEN RUN THIS INSTALL AGAIN." ; then
+    uninstall_cln || return 1
+    yesorno "Continue now to install C Lightning?" || return 1
+else
+    return 1
+fi
+
 check_port_9735 || return 1
 
 if ! yesorno "Would you like to compile Core Lightning? (Alternative is to

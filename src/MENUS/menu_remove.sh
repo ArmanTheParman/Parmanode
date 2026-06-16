@@ -324,6 +324,13 @@ menu_main
 fi
 ;;
 
+cln|CLN|CL)
+if [[ $clnmenu == 1 ]] ; then 
+uninstall_cln
+menu_main 
+fi
+;;
+
 lnd|LND|Lnd)
 if [[ $lndmenu == 1 ]] ; then 
 uninstall_lnd 

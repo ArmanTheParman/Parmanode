@@ -134,8 +134,6 @@ parmanode_conf_remove "bip110choice="
 #Considering adding this patch; not sure yet.
     #   sudo chmod 0666 /dev/null
 
-
-
 #debug temppatchend
 }
 

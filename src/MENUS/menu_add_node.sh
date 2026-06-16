@@ -123,7 +123,17 @@ q|Q) exit ;; p|P) menu_add ;; m|M) back2main ;;
 
        fi
        ;;
-    
+
+     cln|CLN)
+       if [[ -n $cln_n ]] ; then
+       
+         if [[ $OS == "Linux" ]] ; then install_cln ; menu_main ; fi 
+
+         if [[ $OS == "Mac" ]] ; then nomac ; continue ; fi
+
+       fi
+       ;;
+
     lnd|LND|Lnd)
        if [[ -n $lnd_n ]] ; then
 
