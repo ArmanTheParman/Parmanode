@@ -735,7 +735,7 @@ elif grep -q "cln-start" $HOME/.parmanode/installed.conf ; then
 cln_p="#                                      C Lightning                                         #"
 else
    #not installed
-cln_n="#$cyan                             cln) $orange       C Lightning                     #"
-cln_n="#$cyan                             cln) $orange       C Lightning             #"
+cln_n="#$cyan                              cln) $orange       C Lightning                                  #"
+cln_n="#$cyan                              cln) $orange       C Lightning                                  #"
 fi
 }
