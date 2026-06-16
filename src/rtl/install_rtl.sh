@@ -35,8 +35,6 @@ else #if CLN installed, make sure it's running
         [[ $enter_cont == "q" ]] && return 1
     done
 
-    lightning-cli showrunes
-
 fi
 
 mkdir -p $HOME/parmanode/rtl $HOME/parmanode/startup_scripts/ 2>$dn
