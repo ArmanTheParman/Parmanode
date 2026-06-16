@@ -4,7 +4,7 @@ while true ; do
 set_terminal ; echo -e "
 ########################################################################################
 $cyan
-                                 Uninstall electrs 
+                                 Uninstall C Lightning
 $orange
     Are you sure? (y) (n)
 
