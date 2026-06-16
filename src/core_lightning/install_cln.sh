@@ -55,9 +55,6 @@ success "Core Lightning has been installed."
 function core_lightning_dependencies {
 version="$core_lightning_version"
 
-announce "${green}Will install Core Lightning dependencies and setup 
-    virtual environment...$orange"
-
 
 sudo apt-get update -y && export APT_UPDATE="true"
 sudo apt-get install -y \
