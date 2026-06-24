@@ -5,13 +5,19 @@ q|quit|exit) exit ;;
 m|main) back2main ;;
 
 qr)
+if [[ $OS == "Mac" ]] ; then nomac 
+else
 qrcapture
 invalid_flag=set
+fi
 ;;
 
 qri)
+if [[ $OS == "Mac" ]] ; then nomac 
+else
 qrcapture_image
 invalid_flag=set
+fi
 ;;
 
 qre)

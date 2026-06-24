@@ -35,6 +35,7 @@ q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
     menu_tools2
     ;;
     qr|qri)
+    if [[ $OS == "Mac" ]] ; then nomac ; continue ; fi
     announce "Note you can do qr or qri from almost anywhere in Parmanode, not just 
     from the tools menu."
     jump $choice
