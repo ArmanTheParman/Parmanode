@@ -43,7 +43,7 @@ fi
 echo -en "
 # This file is managed by Parmanode.
 # Please do not edit this yourself, bad things can happen.
-# Parmanode changes this file dynamically depending on what is installd.
+# Parmanode changes this file dynamically depending on what is installed.
 
 stream {
 $upstream_electrs
