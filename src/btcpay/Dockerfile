@@ -7,6 +7,7 @@ ARG parmanID=1000
 ARG btcpay_version="v2.0.3"
 
 RUN apt-get update -y
+RUN apt-get update -y && apt-get install -y dotnet-sdk-8.0
 RUN apt-get install -y \
     wget gnupg sudo procps vim nano curl git expect \
     iproute2 less ca-certificates jq file tor tmux \
