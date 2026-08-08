@@ -1,3 +1,5 @@
+Version 3.70.3
+     -BTCPay Dockerfile userID error fixed
 Version 3.70.2
      -BTCPay Dockerfile needs SDK version 10
 Version 3.70.1

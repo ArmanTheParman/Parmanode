@@ -2,47 +2,58 @@ FROM mcr.microsoft.com/dotnet/sdk:10.0
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV TZ=America/New_York
+
 ARG parmanID=1000
 ARG btcpay_version="v2.0.3"
 
 RUN apt-get update -y
-RUN apt-get install -y wget gnupg sudo procps vim nano curl git expect iproute2 less ca-certificates jq file tor tmux
+RUN apt-get install -y \
+    wget gnupg sudo procps vim nano curl git expect \
+    iproute2 less ca-certificates jq file tor tmux \
+    postgresql postgresql-contrib
 
-#Make users and groups and directories
-RUN groupadd -r parman && useradd -m -g parman -u $parmanID parman 
+# Remove whichever built-in user owns the UID so Parmanode can use it.
+RUN existing_user="$(getent passwd ${parmanID} | cut -d: -f1)" && \
+    if [ -n "$existing_user" ]; then userdel -r "$existing_user" || true; fi && \
+    groupadd -r parman && \
+    useradd -m -g parman -u ${parmanID} parman
+
 RUN chown -R parman:parman /home/parman/
 RUN echo 'parman:parmanode' | chpasswd
 RUN usermod -aG sudo parman
-RUN echo "Defaults !fqdn" | tee -a /etc/sudoers
+RUN echo "Defaults !fqdn" >> /etc/sudoers
+
+# PostgreSQL access
+RUN usermod -aG parman postgres
 
 USER parman
 
 RUN mkdir -p /home/parman/parmanode
 RUN mkdir -p /home/parman/Downloads
 RUN mkdir -p /home/parman/parman_programs
-RUN cd /home/parman/parman_programs && git clone https://github.com/armantheparman/parmanode.git
-RUN cd /home/parman/ && mkdir .parmanode && cd .parmanode && touch installed.conf && touch parmanode.conf
+RUN mkdir -p /home/parman/.parmanode && \
+    touch /home/parman/.parmanode/installed.conf && \
+    touch /home/parman/.parmanode/parmanode.conf
 
-#BTCpay download
-RUN cd /home/parman/Downloads && wget https://packages.microsoft.com/config/ubuntu/22.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
+RUN cd /home/parman/parman_programs && \
+    git clone https://github.com/armantheparman/parmanode.git
 
-USER root
-RUN apt-get update -y && apt-get install apt-transport-https -y && apt-get update -y 
+# Install NBXplorer
+RUN cd /home/parman/parmanode && \
+    git clone https://github.com/dgarage/NBXplorer && \
+    cd NBXplorer && \
+    git checkout v2.5.26 && \
+    ./build.sh
 
-# Install postgres and make databases
-RUN apt-get install postgresql postgresql-contrib -y 
-USER postgres
-USER root
-RUN usermod -aG parman postgres 
-USER parman
+RUN mkdir -p /home/parman/.nbxplorer/Main
 
-# install NBX
-RUN cd ~/parmanode && git clone https://github.com/dgarage/NBXplorer
-RUN cd ~/parmanode/NBXplorer && git checkout v2.5.26 && chown -R parman ./* ; ./build.sh
-RUN mkdir -p ~/.nbxplorer/Main
+# Install BTCPay Server
+RUN cd /home/parman/parmanode && \
+    git clone https://github.com/btcpayserver/btcpayserver.git && \
+    cd btcpayserver && \
+    git checkout ${btcpay_version} && \
+    ./build.sh
 
-#install BTCpayserver
-RUN cd ~/parmanode && git clone https://github.com/btcpayserver/btcpayserver.git && cd btcpayserver && git checkout $btcpay_version && ./build.sh #Linuxversion
-RUN mkdir -p ~/.btcpayserver/Main 
+RUN mkdir -p /home/parman/.btcpayserver/Main
 
-CMD ["tail" , "-f", "/dev/null"]
+CMD ["tail", "-f", "/dev/null"]
