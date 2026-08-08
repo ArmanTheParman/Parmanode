@@ -15,7 +15,7 @@ versions["coreversion"]="$coreversion"
 
 if [[ $OS == "Linux" ]] ; then
 
-    export knotsversion="29.3"
+    export knotsversion="29.4"
     versions["knotsversion"]="$knotsversion"
 
     export knotsdate="20260508"
@@ -34,7 +34,7 @@ if [[ $OS == "Linux" ]] ; then
     
 
 else 
-    export knotsversion="29.3"
+    export knotsversion="29.4"
     versions["knotsversion"]="$knotsversion"
 
     export knotsdate="20260508"

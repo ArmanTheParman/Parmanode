@@ -1,3 +1,5 @@
+Version 3.70.5
+     -Knots 29.4
 Version 3.70.4
      -BTCPay Docker file needs both SDK 10 and 8
 Version 3.70.3
