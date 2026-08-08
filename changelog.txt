@@ -1,3 +1,5 @@
+Version 3.70.1
+     -Critical update to BTCPay added. Choices for versions removed from Parmanode.
 Version 3.70.0
      -C Lightning
 Version 3.69.15

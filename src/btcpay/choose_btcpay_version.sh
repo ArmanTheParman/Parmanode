@@ -4,7 +4,8 @@ standard_version="$btcpay_standard_version"
 newer_version="$btcpay_newer_version"
 
 while true ; do
-if [[ $btcpayinstallsbitcoin != "true" ]] ; then
+#if [[ $btcpayinstallsbitcoin != "true" ]] ; then
+if false ; then #removing version choice due to critical bug in BTCPay. Need to refactor this to be more clear later.
 set_terminal ; echo -e "
 ########################################################################################
 
@@ -36,7 +37,8 @@ $orange
 "
 choose xpmq ; read choice 
 jump $choice || { invalid ; continue ; } ; set_terminal
-else choice=hfsp 
+else 
+choice=hfsp 
 fi
 
 case $choice in

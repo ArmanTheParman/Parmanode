@@ -50,9 +50,9 @@ else
 
 fi
 
-export btcpay_standard_version=2.0.3
+export btcpay_standard_version=2.4.2 
    versions["btcpay_standard_version"]="$btcpay_standard_version"
-export btcpay_newer_version=2.3.9
+export btcpay_newer_version=2.4.2 #naming is bad - urgently done due to critical bug in BTCPay. Need to refactor this to be more clear later.
    versions["btcpay_newer_version"]="$btcpay_newer_version"
 export litdversion="v0.12.5-alpha"
    versions["litdversion"]="$litdversion"
