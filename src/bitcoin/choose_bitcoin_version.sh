@@ -184,9 +184,9 @@ set_terminal 40 120 ; echo -e "
 $cyan
           nospam)       ${orange}Guided compile Bitcoin CORE, v$version, (with FILTER-ORDINALS patch by Luke Dashjr)
 $cyan
-             pre)       ${orange}Pre-compiled Bitcoin CORE v$version, verified with gpg (with extra spam, don't do it)
+             pre)       ${orange}Pre-compiled Bitcoin CORE v$version, verified with gpg
 $cyan
-            hfsp)       ${orange}Guided compile Bitcoin CORE v$version (with extra spam, don't do it)
+            hfsp)       ${orange}Guided compile Bitcoin CORE v$version 
 
 $orange
 ########################################################################################################################
