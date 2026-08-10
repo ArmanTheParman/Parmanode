@@ -135,6 +135,34 @@ parmanode_conf_remove "bip110choice="
     #   sudo chmod 0666 /dev/null
 
 #debug temppatchend
+
+if [[ $bitcoin_choice == "knots" && $bitcoinismoney != "1" ]] ; then
+announce "$red
+    Type 'bitcoinismoney' to dismiss this message for good.
+    $orange
+    Bitcoin has forked. There is a BIP110 chain and the non-BIP110 chain.
+
+    Parmanode detected you are running Bitcoin Knots which currently supports the BIP110.
+    
+    If your choice is abandon BIP110, you can uninstall Knots and install Bitcoin Core 
+    version 29.3 using Parmanode.  
+    
+    Your Bitcoin data will remain intact, just select the data to go to the same drive 
+    when prompted during installation. The process is as follows:
+
+        1. main menu --> remove --> Bitcoin
+
+        2. main menu --> add --> Bitcoin --> choose Core, option c --> pre-compiled option (fastest)
+           or compile with a filter (slower)
+        
+        3. Wait for the the database to catch up with the network before transacting.
+    $red
+    Type 'bitcoinismoney' to dismiss this message for good.$orange
+    "
+    if [[ $enter_cont == "bitcoinismoney" ]] ; then
+        echo "bitcoinismoney=1" >> $hm
+    fi
+fi
 }
 
 ##############################################################################################################
