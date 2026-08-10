@@ -17,13 +17,13 @@ $cyan
 
 
 $green
-<enter>  or  k)     ${orange}Bitcoin Knots BIP110 (default, filters spam)$blue
+<enter>  or  k)     ${orange}Bitcoin Knots BIP110 $blue
                     Maintained by Luke Dashjr
 $yellow
          knutz)     ${orange}Bitcoin Deis (forks Core client v28.1 with filter ordinals patch)$blue
                     Maintained by Parman
 $red
-             c)     ${orange}Bitcoin Core (for spam enjooyers)
+             c)     ${orange}Bitcoin Core 
 $cyan
           info)     ${orange}Read how to compile yourself, and import the installation to Parmanode. You can come back to 
                     this menu after selecting this. 
@@ -50,22 +50,6 @@ parmanode_conf_add "bitcoin_choice=deis"
 export bitcoin_compile="true" ; deis="true" ; return 0
 ;;
 c)
-yesorno "Are you sure you want to run Core?$red The 5 developers in charge$orange are pushing through 
-    widely unpopular changes that make the defaults easier for spam to be relayed 
-    through your node, and they have marked for deprecation your ability to undo 
-    those default settings.
-
-    There is a war going on right now, we need to send a signal to them to stop this
-    madness. To read my public fights about this and get some background, 
-    you can visit: $cyan
-    
-
-    https://x.com/parman_the/status/1966540916530745816
-    $orange
-
-    Knots is the way.
-
-    Really go ahead with Core?" || continue 
 debug
 export clientchoice="core"
 break
