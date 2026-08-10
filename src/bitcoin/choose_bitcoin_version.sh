@@ -17,13 +17,13 @@ $cyan
 
 
 $green
-<enter>  or  k)     ${orange}Bitcoin Knots BIP110 $blue
+             c)     ${orange}Bitcoin Core 
+$yellow
+             k)     ${orange}Bitcoin Knots BIP110 $blue
                     Maintained by Luke Dashjr
 $yellow
          knutz)     ${orange}Bitcoin Deis (forks Core client v28.1 with filter ordinals patch)$blue
                     Maintained by Parman
-$red
-             c)     ${orange}Bitcoin Core 
 $cyan
           info)     ${orange}Read how to compile yourself, and import the installation to Parmanode. You can come back to 
                     this menu after selecting this. 
@@ -41,7 +41,7 @@ jump $choice || { invalid ; continue ; } ; set_terminal
 [[ $parmaview == 1 ]] && choice="parmaview"
 case $choice in
 q|Q) exit 0 ;; p|P) return 1 ;; m|M) back2main ;;
-k|"")
+k)
 export clientchoice="knots" ; break
 ;;
 knutz|d)
