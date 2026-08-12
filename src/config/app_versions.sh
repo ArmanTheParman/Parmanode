@@ -13,6 +13,9 @@ versions["deisversion"]="$deisversion"
 export coreversion="29.3"
 versions["coreversion"]="$coreversion"
 
+export specter_version="2.1.11"
+versions["specter_version"]="$specter_version"
+
 if [[ $OS == "Linux" ]] ; then
 
     export knotsversion="29.4"
