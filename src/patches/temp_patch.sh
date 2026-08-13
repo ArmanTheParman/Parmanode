@@ -254,8 +254,8 @@ function switchtocore {
 
 stop_bitcoin
 echo "drive=$drive" >> $dp/temp.conf
-uninstall_bitcoin
+uninstall_bitcoin silent
 export switchtocorevariable="true"
 install_bitcoin
-
+rm $dp/temp.conf >$dn 2>&1
 }
