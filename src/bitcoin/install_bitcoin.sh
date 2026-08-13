@@ -107,9 +107,7 @@ make_bitcoin_directories || return 1
     # make bitcoin directories in appropriate locations
     # installed.conf entry gets made when parmanode/bitcoin directory gets made.
 
-if [[ $switchtocorevariable != "true" ]] ; then
 make_bitcoin_symlinks || return 1
-fi
 
 #compile bitcoin if chosen
 compile_bitcoin || return 1
