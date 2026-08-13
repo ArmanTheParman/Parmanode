@@ -1,4 +1,7 @@
 function sned_sats {
+#deprecated
+return 0
+
 [[ $btcpay_combo == "true" ]] && return 0
 
 set_terminal
