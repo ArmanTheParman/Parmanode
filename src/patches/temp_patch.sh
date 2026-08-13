@@ -145,7 +145,7 @@ $red
     Bitcoin has forked. There is a BIP110 chain and the non-BIP110 chain.
 
     Parmanode detected you are running Bitcoin Knots which currently supports the 
-    BIP110.
+    BIP110 chain.
     
     Whatever bitcoin you have in self custody exists on both chains. If you
     spend coins on one chain, they remain put on the other. If you receive coins
