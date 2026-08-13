@@ -1,3 +1,5 @@
+Version 3.70.8
+     -Post fork, automated switch Knots to Core if user chooses
 Version 3.70.7
      -Specter update to v2.1.11
 Version 3.70.6
