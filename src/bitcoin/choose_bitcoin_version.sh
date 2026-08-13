@@ -10,7 +10,7 @@ debug
 while true ; do
 
 if [[ $switchtocorevariable == "true" ]] ; then
-   $choice=c 
+   choice=c 
 else
 
 set_terminal 32 120 ; echo -e "$orange
