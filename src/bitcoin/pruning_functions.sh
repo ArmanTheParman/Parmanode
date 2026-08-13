@@ -5,6 +5,15 @@
 function prune_choice { debugf
 if [[ $importdrive == "true" || $bitcoin_drive_import == "true" || $skip_prune_choice == "true" ]] ; then return 0 ; fi
 while true ; do
+
+  if [[ $switchtocorevariable == "true" ]] ; then 
+     #prune value extracted from previous bitcoin install.
+     [[ -n $prune_value ]] && export prune_value="$prune_value" && break
+     #just in case prune_value lost, make it 0 (no prune)
+     prune_value=0 
+     break
+  fi
+
 set_terminal
 if [[ $btcpayinstallsbitcoin != "true" && $btcdockerchoice != "yes" ]] || [[ $btcpay_combo == "true" ]] ; then
 echo -e "

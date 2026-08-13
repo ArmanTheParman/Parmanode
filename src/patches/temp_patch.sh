@@ -253,9 +253,11 @@ announce "
 function switchtocore {
 
 stop_bitcoin
-echo "drive=$drive" >> $dp/temp.conf
+echo "drive=$drive" >> $dp/temp.conf #save values in parmanode.conf that will be removed with uninstall, to spare user from selecting again.
+echo "prune_value=$prune_value" >> $dp/temp.conf
 uninstall_bitcoin silent
 export switchtocorevariable="true"
+source $dp/temp.conf
 install_bitcoin
 rm $dp/temp.conf >$dn 2>&1
 }
