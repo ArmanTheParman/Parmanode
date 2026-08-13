@@ -153,6 +153,9 @@ $red
     one chain to the other - each ledger doesn't communicate to the other. Which
     chain you interact with depends on which chain your wallet is connected to 
     when you read or write to the ledger (ie broadcast a transaction).
+
+    For example, if you move coins using a wallet connected to Knots, you will
+    move the coins on that chain only.
 $green
     You have choices:
 $cyan
