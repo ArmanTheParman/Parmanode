@@ -1,6 +1,6 @@
 function make_bitcoin_conf { debugf
 
-if [[ $1 == prune ]] ; then export prune=$2 ; fi #assumes arguments are "prune" "[0-9].*"
+if [[ $1 == "prune" ]] ; then export prune=$2 ; fi #assumes arguments are "prune" "[0-9].*"
 
 #Parmanode default config settings. Can be changed.
 #Create a bitcoin.conf file in data directory.
@@ -57,15 +57,15 @@ if [[ -e $HOME/.bitcoin/bitcoin.conf ]] ; then while true ; do
 
     if [[ $installer == "parmanodl" || $loop == "break" ]] ; then export prune=0 ; break ; fi #overwrites any existing conf file 
     
-    if [[ $btcpayinstallsbitcoin != "true" && $btcdockerchoice != "yes" ]] || [[ $btcpay_combo == "true" ]] ; then
+    if [[ $btcpayinstallsbitcoin != "true" && $btcdockerchoice != "yes" && $switchtocorevariable != "true" ]] || [[ $btcpay_combo == "true" ]] ; then
 
-if [[ $1 == "refresh" ]] ; then
-    yesorno "Would  you like to refresh your bitcoin.conf file to the Parmanode default?" || return 1
-    gsed -i '/prune_value=/d' $pc
-    unset prune_value
-    source $pc
-    break
-fi
+        if [[ $1 == "refresh" ]] ; then
+            yesorno "Would  you like to refresh your bitcoin.conf file to the Parmanode default?" || return 1
+            gsed -i '/prune_value=/d' $pc
+            unset prune_value
+            source $pc
+            break
+        fi
 
 set_terminal ; echo -e "
 ########################################################################################

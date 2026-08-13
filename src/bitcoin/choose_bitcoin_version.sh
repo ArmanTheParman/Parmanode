@@ -8,6 +8,11 @@ if [[ $OS == "Mac" && ! $btcdockerchoice == "yes" ]] ; then return 0 ; fi
 [[ $btcpayinstallsbitcoin != "true" ]] && [[ $btcdockerchoice == "yes" ]] && return 0
 debug
 while true ; do
+
+if [[ $switchtocorevariable == "true" ]] ; then
+   $choice=c 
+else
+
 set_terminal 32 120 ; echo -e "$orange
 ########################################################################################################################$green
                 THERE ARE SEVERAL WAYS TO INSTALL BITCOIN WITH PARMANODE. PLEASE CHOOSE WISELY ...$orange
@@ -23,7 +28,7 @@ $yellow
                     Maintained by Luke Dashjr
 $yellow
          knutz)     ${orange}Bitcoin Deis (forks Core client v28.1 with filter ordinals patch)$blue
-                    Maintained by Parman
+                    No longer maintained (for now) - please select with caution.
 $cyan
           info)     ${orange}Read how to compile yourself, and import the installation to Parmanode. You can come back to 
                     this menu after selecting this. 
@@ -37,6 +42,7 @@ $cyan
 ########################################################################################################################
 "
 choose "xpmq" && read choice #parmaview won't be blocked because choose() returns 1
+fi
 jump $choice || { invalid ; continue ; } ; set_terminal
 [[ $parmaview == 1 ]] && choice="parmaview"
 case $choice in
@@ -177,6 +183,11 @@ done
 # if Knots and Deis, function has already exited. For Core...
 debug
 while true ; do
+
+if [[ $switchtocorevariable == "true" ]] ; then
+     version="29.3" 
+fi
+
 set_terminal 40 120 ; echo -e "
 ########################################################################################################################
     More questions, sorry...

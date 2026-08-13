@@ -51,7 +51,7 @@ export install_bitcoin_variable="true" #don't use same name as function!
 # enter block if not btc_pay combo, ie regular install
 if ! [[ $btcpayinstallsbitcoin == "true" || $btcdockerchoice == "yes" ]] ; then
 
-announce "So you want to install Bitcoin - nice one. May I take to this opportunity 
+[[ $switchtocorevariable == "true" ]] || announce "So you want to install Bitcoin - nice one. May I take to this opportunity 
     to direct you to an essay I wrote about why it's important to run a node? 
     You might want to save this link for later...$cyan
 
@@ -86,23 +86,30 @@ debug "after format_ext_drive"
 
 if [[ $version == "self" ]] ; then break ; fi
 
-if [[ $OS == "Linux" && $drive == "external" ]] ; then
+if [[ $OS == "Linux" && $drive == "external" ]] && [[ $switchtocorevariable != "true" ]] ; then
     $xsudo chown -R $USER /media/$USER/parmanode >$dn 2>&1 \
     || log "bitcoin" "unable to execute chown in install_bitcoin function" 
 fi
+
+if [[ $switchtocorevariable != "true" ]] ; then
+    $xsudo chown -R $USER /media/$USER/parmanode >$dn 2>&1 \
+    || log "bitcoin" "unable to execute chown in install_bitcoin function" 
 
 prune_choice || return 1  ; debug 
     # set $prune_value. Doing this now as it is related to 
     # the drive choice just made by the user. 
     # Use variable later for setting bitcoin.conf
 
+fi
 p4socket "####install_bitcoin#Making directories"
 
 make_bitcoin_directories || return 1
     # make bitcoin directories in appropriate locations
     # installed.conf entry gets made when parmanode/bitcoin directory gets made.
 
+if [[ $switchtocorevariable != "true" ]] ; then
 make_bitcoin_symlinks || return 1
+fi
 
 #compile bitcoin if chosen
 compile_bitcoin || return 1
@@ -134,7 +141,7 @@ if [[ $OS == "Linux" && $btcpayinstallsbitcoin != "true" ]] ; then
     debug
 fi
 
-if [[ $btcpayinstallsbitcoin != "true" ]] ; then
+if [[ $btcpayinstallsbitcoin != "true" && $switchtocorevariable != "true" ]] ; then
 $xsudo chown -R $USER: $HOME/.bitcoin/ 
 debug
 fi
@@ -143,7 +150,7 @@ if [[ $btcpayinstallsbitcoin != "true"  && $btcdockerchoice != "yes" ]] ; then
 #setting password. Managing behaviour of called function with variable and arguments.
 unset skip
 debug
-if [[ $version == self ]] && grep -q "rpcuser=" $bc ; then skip="true" ; else skip="false" 
+if [[ $version == "self" ]] && grep -q "rpcuser=" $bc ; then skip="true" ; else skip="false" 
 fi
 case $skip in
 "false")

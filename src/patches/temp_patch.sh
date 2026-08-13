@@ -137,7 +137,9 @@ parmanode_conf_remove "bip110choice="
 #debug temppatchend
 
 if [[ $bitcoin_choice == "knots" && $bitcoinismoney != "1" ]] ; then
-announce "$red
+while true ; do
+announce "     $green                           FORK ALERT \n
+$red
     Type 'bitcoinismoney' to dismiss this message for good.
     $orange
     Bitcoin has forked. There is a BIP110 chain and the non-BIP110 chain.
@@ -145,25 +147,41 @@ announce "$red
     Parmanode detected you are running Bitcoin Knots which currently supports the 
     BIP110.
     
-    If your choice is abandon BIP110, you can uninstall Knots and install Bitcoin 
-    Core version 29.3 using Parmanode.  
-    
-    Your Bitcoin data will remain intact, just select the data to go to the same 
-    drive when prompted during installation. The process is as follows:
-
-        1. main menu --> remove --> Bitcoin
-
-        2. main menu --> add --> Bitcoin --> choose Core, option c --> pre-compiled 
-        option (fastest) or compile with a filter (slower)
-        
-        3. Wait for the the database to catch up with the network before 
-           transacting.
-    $red
-    Type 'bitcoinismoney' to dismiss this message for good.$orange
+    Whatever bitcoin you have in self custody exists on both chains. If you
+    spend coins on one chain, they remain put on the other. If you receive coins
+    on one chain, they will not appear on the other. You cannont move coins from
+    one chain to the other - each ledger doesn't communicate to the other. Which
+    chain you interact with depends on which chain your wallet is connected to 
+    when you read or write to the ledger (ie broadcast a transaction).
+$green
+    You have choices:
+$cyan
+         1)$orange Abandon BIP110 and switch to Bitcoin Core version 29.3 - let 
+            Parmanode do it for you now, it'll take a few minutes. First there
+            will be an uninstall wizard that runs, then an install wizard. Your
+            Bitcoin data will remain in place. 
+$cyan
+         2)$orange Keep BIP110 and continue to run Bitcoin Knots. Blocks are coming
+            in slow, but if you're not transacting, it won't matter much now. You
+            can manually switch to Bitcoin Core v29.3 anytime yourself. 
+            Instructions will be shown on the next screen.
+$orange
     "
-    if [[ $enter_cont == "bitcoinismoney" ]] ; then
-        echo "bitcoinismoney=1" >> $hm
-    fi
+case $enter_cont in
+
+q|Q) exit 0 ;; 
+1) switchtocore ; break ;; 
+2) bitcoinswitchinstructions ; break ;; 
+bitcoinismoney) true ; ;;  #break later
+*) echo -e "${red}Invalid entry, try again${orange}" ; continue ;; #continue avoids break later, don't remove it
+esac 
+
+if [[ $enter_cont == "bitcoinismoney" ]] ; then
+    echo "bitcoinismoney=1" >> $hm
+fi
+
+break
+done
 fi
 }
 
@@ -215,3 +233,29 @@ if [[ -n $needrestarttor ]] ; then restart_tor ; fi
 unset needrestarttor
 }
 
+
+function bitcoinswitchinstructions {
+
+announce " 
+    Your Bitcoin data will remain intact, just select the data to go to the same 
+    drive when prompted during installation. The process is as follows:
+
+        1. main menu --> remove --> Bitcoin
+
+        2. main menu --> add --> Bitcoin --> choose Core, option c --> pre-compiled 
+        option (fastest) or compile with a filter (slower)
+        
+        3. Wait for the the database to catch up with the network before 
+           transacting.
+"
+}
+
+function switchtocore {
+
+stop_bitcoin
+echo "drive=$drive" >> $dp/temp.conf
+uninstall_bitcoin
+export switchtocorevariable="true"
+install_bitcoin
+
+}

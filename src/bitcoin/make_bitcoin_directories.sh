@@ -12,10 +12,10 @@ if [[ $skip_make_bitcoin_directories == "true" ]] ; then return 0 ; fi
     mkdir -p $HOME/parmanode/bitcoin 
     installed_conf_add "bitcoin-start"    
 
-    if [[ $drive == "external" && $importdrive != "true" ]] ; then 
+    if [[ $drive == "external" && $importdrive != "true" && $switchtocorevariable != "true" ]] ; then 
     
         if [[ $OS == "Linux" ]] ; then
-            mkdir /media/$USER/parmanode/.bitcoin >$dn 2>&1 && \
+            mkdir -p /media/$USER/parmanode/.bitcoin >$dn 2>&1 && \
             $xsudo chown -R $USER:$(id -gn) $parmanode_drive >$dn 2>&1 \
             log "bitcoin" ".bitcoin dir made on ext drive" ; fi
 
@@ -25,13 +25,11 @@ if [[ $skip_make_bitcoin_directories == "true" ]] ; then return 0 ; fi
     fi
 
 
-    if [[ $drive == "internal" ]] ; then 
-            mkdir -p $HOME/.bitcoin >$dp/.temp 2>&1 && \
+    if [[ $drive == "internal" && $switchtocorevariable != "true" ]] ; then 
+            mkdir -p $HOME/.bitcoin  2>&1 && \
             log "bitcoin" ".bitcoin dir made on int drive" 
     fi
 
-
- 
 
 return 0
 }

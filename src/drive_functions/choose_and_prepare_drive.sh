@@ -16,6 +16,11 @@ local text_nostr="$yellow                np)    add a non-Parmanode external dri
 while true ; do
 if [[ $btcpayinstallsbitcoin != "true" || $btcpay_combo == "true" ]] ; then
 set_terminal
+if [[ $switchtocorevariable == "true" ]] ; then
+    source $dp/temp.conf
+    if [[ $drive == "external" ]] ; then choice=e ; fi
+    if [[ $drive == "internal" ]] ; then choice=i ; fi
+else
 echo -e "
 ########################################################################################
 
@@ -42,6 +47,7 @@ echo "##########################################################################
 "
 #echo statment about above options, previous menu, or quit.
 choose "xpmq" && read choice #user's choice stored in variable, choice
+fi
 jump $choice || { invalid ; continue ; } ; set_terminal
 
 [[ $parmaview == 1 ]] && {
@@ -91,7 +97,7 @@ if [[ $1 == "Bitcoin" ]] ; then
                       export drive="external"
                       parmanode_conf_add "drive=external" 
                       installed_conf_add "bitcoin-start" 
-                      if test -d $pd/.bitcoin ; then export skip_formatting="true" ; fi #no need to scare the user with formatting choice
+                      if [[ $switchtocorevariable == "true" ]] || [[ -d $pd/.bitcoin ]] ; then export skip_formatting="true" ; fi #no need to scare the user with formatting choice
                                                                                         #if they already have a bitcoin directory detectable on the 
                                                                                         #external drive.
                       return 0 
