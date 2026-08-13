@@ -147,15 +147,7 @@ $red
     Parmanode detected you are running Bitcoin Knots which currently supports the 
     BIP110 chain.
     
-    Whatever bitcoin you have in self custody exists on both chains. If you
-    spend coins on one chain, they remain put on the other. If you receive coins
-    on one chain, they will not appear on the other. You cannont move coins from
-    one chain to the other - each ledger doesn't communicate to the other. Which
-    chain you interact with depends on which chain your wallet is connected to 
-    when you read or write to the ledger (ie broadcast a transaction).
-
-    For example, if you move coins using a wallet connected to Knots, you will
-    move the coins on that chain only.
+    Whatever bitcoin you have in self custody exists on both chains. 
 $green
     You have choices:
 $cyan
