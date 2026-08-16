@@ -116,13 +116,13 @@ set_terminal 40 120 ; echo -e "
     More questions, sorry...
 
 $cyan
-     1)$orange     Pre-compiled Bitcoin KNOTS, v$knotsversion (recommended)
+     1)$orange     Pre-compiled Bitcoin KNOTS, v$knotsversion (syncs with BIP110 hard fork)
 $cyan
-     2)$orange     Guided compile Bitcoin KNOTS, v$knotsversion
+     2)$orange     Guided compile Bitcoin KNOTS, v$knotsversion (syncs with BIP110 hard fork)
 $cyan
-     3)$orange     Pre-compile Bitcoin KNOTS, v28.1 (March 5, 2025)
+     3)$orange     Pre-compile Bitcoin KNOTS, v28.1, March 5, 2025, (Doesn't sync with BIP110 fork)
 $cyan
-     4)$orange     Guided compile Bitcoin KNOTS, v28.1 (March 5, 2025)
+     4)$orange     Guided compile Bitcoin KNOTS, v28.1, March 5, 2025, (Doesn't sync with BIP110 fork)
 
 
 ########################################################################################################################
