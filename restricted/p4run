@@ -50,9 +50,9 @@ case "$1" in
     sudo ln -s  /usr/local/bin/parmanode/test_bitcoin /usr/local/bin/test_bitcoin >$dn 2>&1
 ;;
 
-bitcoin_service_file)
-    sudo mv "$servicefile" /etc/systemd/system/bitcoind.service 
+"bitcoin_service_file")
+    sudo mv "$2" /etc/systemd/system/bitcoind.service 
     echo "bitcoind.service file moved to /etc/systemd/system/bitcoind.service" >>$pvlog 2>&1
-    echo "service file is $servicefile" >>$pvlog 2>&1
+    echo "service file is $2" >>$pvlog 2>&1
 ;;
 esac
