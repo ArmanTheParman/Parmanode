@@ -625,7 +625,7 @@ unset vaultwarden_i vaultwarden_p vaultwarden_n
 if grep -q "vaultwarden-end" $HOME/.parmanode/installed.conf ; then 
   #installed
 vaultwarden_i="#                                      VaultWarden                                     #"
-elif grep -q "-start" $HOME/.parmanode/installed.conf ; then 
+elif grep -q "vaultwarden-start" $HOME/.parmanode/installed.conf ; then 
    #partially installed
 vaultwarden_p="#                                      VaultWarden                                     #"
 else
