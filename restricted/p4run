@@ -49,4 +49,8 @@ case "$1" in
     sudo ln -s  /usr/local/bin/parmanode/bitcoin-wallet /usr/local/bin/bitcoin-wallet >$dn 2>&1
     sudo ln -s  /usr/local/bin/parmanode/test_bitcoin /usr/local/bin/test_bitcoin >$dn 2>&1
 ;;
+
+bitcoin_service_file)
+    sudo mv "$servicefile" /etc/systemd/system/bitcoind.service 
+;;
 esac

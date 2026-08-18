@@ -5,7 +5,7 @@
 function make_bitcoind_service_file { debugf
 if [[ $btcpayinstallsbitcoin == "true" ]] ; then return 0 ; fi
 
-file=$(mktemp)
+servicefile=$(mktemp)
 
 echo "[Unit]
 Description=Bitcoin daemon
@@ -68,16 +68,17 @@ MemoryDenyWriteExecute=true
 
 [Install]
 WantedBy=multi-user.target
-" | tee "$file" >$dn || enter_continue "Failed to write bitcoind.service file"
+" | tee "$servicefile" >$dn || enter_continue "Failed to write bitcoind.service file"
 
 if [[ $1 == "setup" ]] ; then #for parmanode installation
-    sudo mv "$file" /usr/local/parmanode/bitcoind.service
+    sudo mv "$servicefile" /usr/local/parmanode/bitcoind.service
     sudo chown root:root /usr/local/parmanode/bitcoind.service
     sudo chmod 655 /usr/local/parmanode/bitcoind.service
 elif [[ $parmaview == 1 ]] ; then #for parmaview method of bitcoin install
-    sudo cp -r /usr/local/parmanode/bitcoind.service /etc/systemd/system/bitcoind.service
+    export servicefile
+    sudo /usr/local/parmanode/p4run "bitcoin_binary_symlinks"
 else #for regular bitcoin install using backend parmanode
-    sudo mv "$file" /etc/systemd/system/bitcoind.service 
+    sudo mv "$servicefile" /etc/systemd/system/bitcoind.service 
 fi
 
 sudo systemctl daemon-reload 
