@@ -52,5 +52,7 @@ case "$1" in
 
 bitcoin_service_file)
     sudo mv "$servicefile" /etc/systemd/system/bitcoind.service 
+    echo "bitcoind.service file moved to /etc/systemd/system/bitcoind.service" >>$pvlog 2>&1
+    echo "service file is $servicefile" >>$pvlog 2>&1
 ;;
 esac
