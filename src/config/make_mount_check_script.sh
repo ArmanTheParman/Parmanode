@@ -45,7 +45,7 @@ else
 fi" > $file 2>$dn
 
 # Sets permission of the new file, mount_check.sh
-sudo chown $USER:$USER $file 
+chown $USER:$USER $file 
 # Makes file executable
-sudo chmod +x $file
+chmod +x $file
 }
