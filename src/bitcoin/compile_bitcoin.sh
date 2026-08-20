@@ -98,7 +98,8 @@ fi
     unset export GIT_COMMITTER_EMAIL
 
 
-! [[ $clientchoice == "deis" ]] && while true ; do
+if ! [[ $clientchoice == "deis" ]] ; then 
+while true ; do
 set_terminal ; echo -e "
 ########################################################################################
 
@@ -126,6 +127,9 @@ break ;;
 *) invalid ;;
 esac
 done
+else
+bitcoin_compile_dependencies "GUI" || return 1
+fi
 ##############################################################################################################
 debug "after GUI choice. gui=$gui"
 
