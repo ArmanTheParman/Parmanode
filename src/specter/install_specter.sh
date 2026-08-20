@@ -9,7 +9,6 @@ if [[ $OS == "Linux" ]] && [[ $(uname -m) == "aarch64" || $(uname -m) == "armv7l
         return 1
 fi
 
-sned_sats
 if [[ -e $HOME/.specter ]] ; then
 while true ; do
 set_terminal
@@ -49,6 +48,8 @@ set_terminal
 specter_mac_warning || return 1 
 
 specter_make_dir && installed_conf_add "specter-start"
+
+
 
 download_specter || { log "specter" "error during download failed" ; return 1 ; }
 

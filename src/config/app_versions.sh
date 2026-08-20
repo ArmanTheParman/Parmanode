@@ -14,6 +14,17 @@ export coreversion="29.3"
 versions["coreversion"]="$coreversion"
 
 export specter_version="2.1.11"
+export specter_version_old="2.0.5"
+
+#check if debian 12 as latest version of sparrow doesn't support Debian 12
+if [[ $OS == "Linux" ]] ; then
+   source /etc/os-release
+   if echo $NAME | grep -qi "debian" && echo $VERSION_ID | grep -qE '^(12|11)$' ; then
+   export specter_version="$specter_version_old"
+   fi
+fi
+debug "app_version, check specter = $specter_version"
+
 versions["specter_version"]="$specter_version"
 
 if [[ $OS == "Linux" ]] ; then
