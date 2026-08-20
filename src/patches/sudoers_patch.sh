@@ -93,6 +93,9 @@ $USER ALL=(root) NOPASSWD: $(which systemctl) restart electrumx
 $USER ALL=(root) NOPASSWD: $(which cp) -f /usr/local/parmanode/electrumx.service /etc/systemd/system/
 #Systemctl commands
 $USER ALL=(root) NOPASSWD: $(which systemctl) daemon-reload
+#APT-get commands
+$USER ALL=(root) NOPASSWD: $(which apt-get) update -y
+$USER ALL=(root) NOPASSWD: $(which apt-get) --fix-broken install -y
 " | sudo tee /etc/sudoers.d/parmanode >$dn 2>&1
 return 0
 }

@@ -41,7 +41,7 @@ p4socket "####install_bitcoin#Downloading Bitcoin code from GitHub"
 
 cd $hp || { enter_continue "Can't change directory. Aborting." ; return 1 ; }
 
-[[ -e $hp/bitcoin_github ]] && $xsudo rm -rf $hp/bitcoin_github >$dn 2>&1
+[[ -e $hp/bitcoin_github ]] && rm -rf $hp/bitcoin_github >$dn 2>&1
 
 if [[ $clientchoice == "core" ]] ; then  
     git clone https://github.com/bitcoin/bitcoin.git bitcoin_github || { announce "Something went wrong with the download. Aborting." ; return 1 ; }
@@ -304,8 +304,9 @@ q|Q) exit 0 ;; p|P|M|m|x|X) back2main ;;
 esac
 }
 
-$xsudo make install || enter_continue "something might have gone wrong here."
-$xsudo mv /usr/local/bin/*bitcoin* /usr/local/bin/parmanode/ >$dn 2>&1
+make install || enter_continue "something might have gone wrong here."
+#p4run for parmaview becauser sudo mv will fail.
+sudo mv /usr/local/bin/*bitcoin* /usr/local/bin/parmanode/ >$dn 2>&1 || sudo /usr/local/parmanode/p4run "move_bitcoin_binaries"
 fi
 
 #end newcompile=false
@@ -323,7 +324,10 @@ cmake -GNinja \
       -DCMAKE_INSTALL_PREFIX=/usr/local \
       ..
 ninja -j $(nproc) || p4socket "ninja -j fail"
-sudo ninja install || p4socket "ninja install fail"
+
+
+
+{ sudo ninja install || sudo /usr/local/parmanode/p4run "bitcoin_ninja_install" ; } || p4socket "ninja install fail"
 ls -lahf /usr/local/bin/bitcoind >$dn 2>&1 || p4socket "no bitcoind (1)"
 debug
 fi
@@ -337,55 +341,60 @@ debug
 function bitcoin_compile_dependencies { debugf
 [[ $parmaview == 1 ]] && enter_cont="i" #running with parmaview will ignore errors
 p4socket "####install_bitcoin#Installing Bitcoin dependencies"
+
 if [[ -z $1 ]] ; then 
-set_terminal ; echo -e "${pink}Upgrading, and installing dependencies to compile bitcoin...$orange"
-$xsudo apt-get update -y && export APT_UPDATE="true"
-$xsudo apt-get --fix-broken install -y
-$xsudo apt-get install -y make              || { [[ $parmaview != 1 ]] && enter_continue "Something went wrong with make.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
-$xsudo apt-get install -y automake          || { [[ $parmaview != 1 ]] && enter_continue "Something went wrong with automake.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
-$xsudo apt-get install -y cmake             || { [[ $parmaview != 1 ]] && enter_continue "Something went wrong with cmake.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
-$xsudo apt-get install -y curl              || { [[ $parmaview != 1 ]] && enter_continue "Something went wrong with curl.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
-$xsudo apt-get install -y g++-multilib      
-$xsudo apt-get install -y libtool           || { [[ $parmaview != 1 ]] && enter_continue "Something went wrong with libtool.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
-$xsudo apt-get install -y binutils          || { [[ $parmaview != 1 ]] && enter_continue "Something went wrong with binutils.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
-$xsudo apt-get install -y bsdmainutils      || { [[ $parmaview != 1 ]] && enter_continue "Something went wrong with bsdmainutils.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
-$xsudo apt-get install -y build-essential   || { [[ $parmaview != 1 ]] && enter_continue "Something went wrong with build-essential.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
-$xsudo apt-get install -y autotools-dev     || { [[ $parmaview != 1 ]] && enter_continue "Something went wrong with autotools-dev.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
-$xsudo apt-get install -y pkg-config        || { [[ $parmaview != 1 ]] && enter_continue "Something went wrong with pkg-config.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
-$xsudo apt-get install -y ninja-build       || { [[ $parmaview != 1 ]] && enter_continue "Something went wrong with ninja-build.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
-$xsudo apt-get install -y python3           || { [[ $parmaview != 1 ]] && enter_continue "Something went wrong with python3.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
-$xsudo apt-get install -y patch             || { [[ $parmaview != 1 ]] && enter_continue "Something went wrong with patch.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
-$xsudo apt-get install -y autoconf          || { [[ $parmaview != 1 ]] && enter_continue "Something went wrong with autoconf.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
-$xsudo apt-get install -y libboost-all-dev  || { [[ $parmaview != 1 ]] && enter_continue "Something went wrong with libboost-all-dev.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
-$xsudo apt-get install -y imagemagick       || { [[ $parmaview != 1 ]] && enter_continue "Something went wrong with imagemagick.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
-$xsudo apt-get install -y librsvg2-bin      || { [[ $parmaview != 1 ]] && enter_continue "Something went wrong with librsvg2-bin.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
-$xsudo apt-get install -y libdb-dev         || { [[ $parmaview != 1 ]] && enter_continue "Something went wrong with libdb-dev.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
-$xsudo apt-get install -y libdb++-dev       || { [[ $parmaview != 1 ]] && enter_continue "Something went wrong with libdb++-dev.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
-$xsudo apt-get install -y libzmq3-dev       || { [[ $parmaview != 1 ]] && enter_continue "Something went wrong with libzmq3-dev.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
-$xsudo apt-get install -y libqrencode-dev   || { [[ $parmaview != 1 ]] && enter_continue "Something went wrong with libqrencode-dev.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
-$xsudo apt-get install -y libsqlite3-dev    || { [[ $parmaview != 1 ]] && enter_continue "Something went wrong with libsqlite3-dev.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
-$xsudo apt-get install -y libevent-dev      || { [[ $parmaview != 1 ]] && enter_continue "Something went wrong with libevent-dev.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
-$xsudo apt-get install -y libssl-dev        || { [[ $parmaview != 1 ]] && enter_continue "Something went wrong with libssl-dev.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
-$xsudo apt-get install -y libminiupnpc-dev  || { [[ $parmaview != 1 ]] && enter_continue "Something went wrong with libminiupnpc-dev.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
-$xsudo apt-get install -y libprotobuf-dev   || { [[ $parmaview != 1 ]] && enter_continue "Something went wrong with libprotobuf-dev.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
-$xsudo apt-get install -y protobuf-compiler || { [[ $parmaview != 1 ]] && enter_continue "Something went wrong with protobuf-compiler.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+    set_terminal ; echo -e "${pink}Upgrading, and installing dependencies to compile bitcoin...$orange"
+    #which is used to matach sudoers file for parmaview
+    sudo $(which apt-get) update -y && export APT_UPDATE="true"
+    xsudo $(which apt-get) --fix-broken install -y
+    if [[ $parmaview == 1 ]] ; then
+    /usr/local/parmanode/p4run "bitcoin_compile_dependencies" "$1"
+    else
+    sudo apt-get install -y make              || { enter_continue "Something went wrong with make.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+    sudo apt-get install -y automake          || { enter_continue "Something went wrong with automake.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+    sudo apt-get install -y cmake             || { enter_continue "Something went wrong with cmake.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+    sudo apt-get install -y curl              || { enter_continue "Something went wrong with curl.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+    sudo apt-get install -y g++-multilib      
+    sudo apt-get install -y libtool           || { enter_continue "Something went wrong with libtool.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+    sudo apt-get install -y binutils          || { enter_continue "Something went wrong with binutils.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+    sudo apt-get install -y bsdmainutils      || { enter_continue "Something went wrong with bsdmainutils.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+    sudo apt-get install -y build-essential   || { enter_continue "Something went wrong with build-essential.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+    sudo apt-get install -y autotools-dev     || { enter_continue "Something went wrong with autotools-dev.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+    sudo apt-get install -y pkg-config        || { enter_continue "Something went wrong with pkg-config.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+    sudo apt-get install -y ninja-build       || { enter_continue "Something went wrong with ninja-build.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+    sudo apt-get install -y python3           || { enter_continue "Something went wrong with python3.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+    sudo apt-get install -y patch             || { enter_continue "Something went wrong with patch.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+    sudo apt-get install -y autoconf          || { enter_continue "Something went wrong with autoconf.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+    sudo apt-get install -y libboost-all-dev  || { enter_continue "Something went wrong with libboost-all-dev.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+    sudo apt-get install -y imagemagick       || { enter_continue "Something went wrong with imagemagick.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+    sudo apt-get install -y librsvg2-bin      || { enter_continue "Something went wrong with librsvg2-bin.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+    sudo apt-get install -y libdb-dev         || { enter_continue "Something went wrong with libdb-dev.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+    sudo apt-get install -y libdb++-dev       || { enter_continue "Something went wrong with libdb++-dev.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+    sudo apt-get install -y libzmq3-dev       || { enter_continue "Something went wrong with libzmq3-dev.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+    sudo apt-get install -y libqrencode-dev   || { enter_continue "Something went wrong with libqrencode-dev.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+    sudo apt-get install -y libsqlite3-dev    || { enter_continue "Something went wrong with libsqlite3-dev.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+    sudo apt-get install -y libevent-dev      || { enter_continue "Something went wrong with libevent-dev.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+    sudo apt-get install -y libssl-dev        || { enter_continue "Something went wrong with libssl-dev.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+    sudo apt-get install -y libminiupnpc-dev  || { enter_continue "Something went wrong with libminiupnpc-dev.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+    sudo apt-get install -y libprotobuf-dev   || { enter_continue "Something went wrong with libprotobuf-dev.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+    sudo apt-get install -y protobuf-compiler || { enter_continue "Something went wrong with protobuf-compiler.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+    fi
 fi
 
 if [[ $1 == "GUI" ]] ; then
-$x
-$xsudo apt-get install -y qtchooser 
-$xsudo apt-get install -y qtbase5-dev-tools
-$xsudo apt-get install -y qtcreator          || { [[ $parmaview != 1 ]] && enter_continue "Something went wrong with qtcreator.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
-$xsudo apt-get install -y qtbase5-dev        || { [[ $parmaview != 1 ]] && enter_continue "Something went wrong with qtbase5-dev.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
-$xsudo apt-get install -y qt5-qmake          || { [[ $parmaview != 1 ]] && enter_continue "Something went wrong with qt5-qmake.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
-$xsudo apt-get install -y qttools5-dev-tools || { [[ $parmaview != 1 ]] && enter_continue "Something went wrong with qttools5-dev-tools.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
-$xsudo apt-get install -y qt5-default      # omit check for this one, as it's not always necessary 
-$xsudo apt-get install -y qtchooser          || { [[ $parmaview != 1 ]] && enter_continue "Something went wrong with qtchooser.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
-$xsudo apt-get install -y libqt5gui5         || { [[ $parmaview != 1 ]] && enter_continue "Something went wrong with libqt5gui5.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
-$xsudo apt-get install -y libqt5core5a       || { [[ $parmaview != 1 ]] && enter_continue "Something went wrong with libqt5core5a.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
-$xsudo apt-get install -y libqt5dbus5        || { [[ $parmaview != 1 ]] && enter_continue "Something went wrong with libqt5dbus5.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
-$xsudo apt-get install -y qttools5-dev       || { [[ $parmaview != 1 ]] && enter_continue "Something went wrong with qttools5-dev.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
-$xsudo apt-get install -y libqt5widgets5     || { [[ $parmaview != 1 ]] && enter_continue "Something went wrong with libqt5widgets5.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y qtchooser 
+sudo apt-get install -y qtbase5-dev-tools
+sudo apt-get install -y qtcreator          || { enter_continue "Something went wrong with qtcreator.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y qtbase5-dev        || { enter_continue "Something went wrong with qtbase5-dev.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y qt5-qmake          || { enter_continue "Something went wrong with qt5-qmake.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y qttools5-dev-tools || { enter_continue "Something went wrong with qttools5-dev-tools.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y qt5-default           # omit check for this one, as it's not always necessary 
+sudo apt-get install -y qtchooser          || { enter_continue "Something went wrong with qtchooser.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y libqt5gui5         || { enter_continue "Something went wrong with libqt5gui5.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y libqt5core5a       || { enter_continue "Something went wrong with libqt5core5a.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y libqt5dbus5        || { enter_continue "Something went wrong with libqt5dbus5.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y qttools5-dev       || { enter_continue "Something went wrong with qttools5-dev.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y libqt5widgets5     || { enter_continue "Something went wrong with libqt5widgets5.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
 return 0
 fi
 }

@@ -2,7 +2,7 @@
 
 # Parmaview helper function
 # Usage:
-#    sudo p4run "screened argument allowed only here"
+#    sudo /usr/local/parmanode/p4run "screened argument allowed only here"
 # Location
 # $pn/restricted --> /usr/local/parmanode/p4run (live)
 
@@ -52,7 +52,61 @@ case "$1" in
 
 "bitcoin_service_file")
     sudo mv "$2" /etc/systemd/system/bitcoind.service 
-    echo "bitcoind.service file moved to /etc/systemd/system/bitcoind.service" >>$pvlog 2>&1
-    echo "service file is $2" >>$pvlog 2>&1
 ;;
+
+move_bitcoin_binaries)
+    sudo mv /usr/local/bin/*bitcoin* /usr/local/bin/parmanode/ >$dn 2>&1
+;;  
+
+bitcoin_ninja_install)
+sudo ninja install >$dn 2>&1
+;;
+
+bitcoin_compile_dependencies)
+sudo apt-get install -y make 2>>$pvlog              
+sudo apt-get install -y automake 2>>$pvlog              
+sudo apt-get install -y cmake 2>>$pvlog                                     
+sudo apt-get install -y curl 2>>$pvlog                                      
+sudo apt-get install -y g++-multilib 2>>$pvlog                              
+sudo apt-get install -y libtool 2>>$pvlog                                   
+sudo apt-get install -y binutils 2>>$pvlog                                  
+sudo apt-get install -y bsdmainutils 2>>$pvlog                              
+sudo apt-get install -y build-essential 2>>$pvlog                           
+sudo apt-get install -y autotools-dev 2>>$pvlog                             
+sudo apt-get install -y pkg-config 2>>$pvlog                                
+sudo apt-get install -y ninja-build 2>>$pvlog                               
+sudo apt-get install -y python3 2>>$pvlog                                   
+sudo apt-get install -y patch 2>>$pvlog                                     
+sudo apt-get install -y autoconf 2>>$pvlog                                  
+sudo apt-get install -y libboost-all-dev 2>>$pvlog                          
+sudo apt-get install -y imagemagick 2>>$pvlog                               
+sudo apt-get install -y librsvg2-bin 2>>$pvlog                              
+sudo apt-get install -y libdb-dev 2>>$pvlog                                 
+sudo apt-get install -y libdb++-dev 2>>$pvlog                               
+sudo apt-get install -y libzmq3-dev 2>>$pvlog                               
+sudo apt-get install -y libqrencode-dev 2>>$pvlog                           
+sudo apt-get install -y libsqlite3-dev 2>>$pvlog                            
+sudo apt-get install -y libevent-dev 2>>$pvlog                              
+sudo apt-get install -y libssl-dev 2>>$pvlog                                
+sudo apt-get install -y libminiupnpc-dev 2>>$pvlog                          
+sudo apt-get install -y libprotobuf-dev 2>>$pvlog                           
+sudo apt-get install -y protobuf-compiler 2>>$pvlog                        
+if [[ $2 == "GUI" ]] ; then
+sudo apt-get install -y qtchooser 2>>$pvlog   
+sudo apt-get install -y qtbase5-dev-tools 2>>$pvlog  
+sudo apt-get install -y qtcreator 2>>$pvlog 
+sudo apt-get install -y qtbase5-dev 2>>$pvlog 
+sudo apt-get install -y qt5-qmake  2>>$pvlog 
+sudo apt-get install -y qttools5-dev-tools 2>>$pvlog
+sudo apt-get install -y qt5-default 2>>$pvlog 
+sudo apt-get install -y qtchooser  2>>$pvlog 
+sudo apt-get install -y libqt5gui5 2>>$pvlog 
+sudo apt-get install -y libqt5core5a  2>>$pvlog 
+sudo apt-get install -y libqt5dbus5  2>>$pvlog 
+sudo apt-get install -y qttools5-dev  2>>$pvlog  
+sudo apt-get install -y libqt5widgets5  2>>$pvlog  
+fi
+return 0
+;;
+
 esac
