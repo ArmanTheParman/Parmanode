@@ -346,7 +346,7 @@ if [[ -z $1 ]] ; then
     set_terminal ; echo -e "${pink}Upgrading, and installing dependencies to compile bitcoin...$orange"
     #which is used to matach sudoers file for parmaview
     sudo $(which apt-get) update -y && export APT_UPDATE="true"
-    xsudo $(which apt-get) --fix-broken install -y
+    sudo $(which apt-get) --fix-broken install -y
     if [[ $parmaview == 1 ]] ; then
     /usr/local/parmanode/p4run "bitcoin_compile_dependencies" "$1"
     else
@@ -397,4 +397,5 @@ sudo apt-get install -y qttools5-dev       || { enter_continue "Something went w
 sudo apt-get install -y libqt5widgets5     || { enter_continue "Something went wrong with libqt5widgets5.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
 return 0
 fi
+return 0
 }
