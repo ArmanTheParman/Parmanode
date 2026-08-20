@@ -27,7 +27,7 @@ $yellow
              k)     ${orange}Bitcoin Knots BIP110 $blue
                     Maintained by Luke Dashjr
 $yellow
-         knutz)     ${orange}Bitcoin Deis (forks Core client v28.1 with filter ordinals patch)$blue
+          deis)     ${orange}Bitcoin Deis (forks Core client v28.1 with filter ordinals patch)$blue
                     No longer maintained (for now) - please select with caution.
 $cyan
           info)     ${orange}Read how to compile yourself, and import the installation to Parmanode. You can come back to 
@@ -50,7 +50,7 @@ q|Q) exit 0 ;; p|P) return 1 ;; m|M) back2main ;;
 k)
 export clientchoice="knots" ; break
 ;;
-knutz|d)
+deis|d)
 export clientchoice="deis"
 parmanode_conf_add "bitcoin_choice=deis"
 export bitcoin_compile="true" ; deis="true" ; return 0
