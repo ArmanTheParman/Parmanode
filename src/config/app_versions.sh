@@ -23,7 +23,6 @@ if [[ $OS == "Linux" ]] ; then
    export specter_version="$specter_version_old"
    fi
 fi
-debug "app_version, check specter = $specter_version"
 
 versions["specter_version"]="$specter_version"
 
