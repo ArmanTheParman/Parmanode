@@ -131,8 +131,8 @@ debug
 p4socket "####install_bitcoin#Compiling"
 
 if [[ $newcompile == "false" ]] ; then 
-debug
-    ./autogen.sh || { enter_continue "autogen.sh failed - this is normal if compiling versions greater than 28" ; }
+debug "pre autogen"
+    ./autogen.sh | tee $tmp/autogen.log 2>&1 || { enter_continue "autogen.sh failed - this is normal if compiling versions greater than 28" ; }
 
 while true ; do
 clear ; echo -e "
@@ -180,7 +180,7 @@ done
 set_terminal
 
 
-./configure --with-gui=$gui --enable-wallet --with-incompatible-bdb --with-utils $options || {
+./configure --with-gui=$gui --enable-wallet --with-incompatible-bdb --with-utils $options >$tmp/configure_bitcoin || {
 echo -e "
 ########################################################################################
 
@@ -327,7 +327,7 @@ ninja -j $(nproc) || p4socket "ninja -j fail"
 
 
 
-{ sudo ninja install || sudo /usr/local/parmanode/p4run "bitcoin_ninja_install" ; } || p4socket "ninja install fail"
+{ $xsudo ninja install || sudo /usr/local/parmanode/p4run "bitcoin_ninja_install" ; } || p4socket "ninja install fail"
 ls -lahf /usr/local/bin/bitcoind >$dn 2>&1 || p4socket "no bitcoind (1)"
 debug
 fi
