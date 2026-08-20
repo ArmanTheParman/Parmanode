@@ -33,7 +33,8 @@ debug "newcompile: $newcompile"
     export GIT_COMMITTER_EMAIL="parman@parmanode.parman"
 
 bitcoin_compile_dependencies || return 1
-debug
+debug "after bitcoin_compile_dependencies"
+
 p4socket "####install_bitcoin#Downloading Bitcoin code from GitHub"
 
 #for later when mac is supported
@@ -126,7 +127,7 @@ break ;;
 esac
 done
 ##############################################################################################################
-debug
+debug "after GUI choice. gui=$gui"
 
 p4socket "####install_bitcoin#Compiling"
 
@@ -312,7 +313,7 @@ fi
 #end newcompile=false
 
 if [[ $newcompile == "true" ]] ; then
-debug
+debug "in newcompile"
 [[ $gui == "yes" ]] && gui=ON
 [[ $gui == "no" ]] && gui=OFF
 
@@ -329,13 +330,13 @@ ninja -j $(nproc) || p4socket "ninja -j fail"
 
 { $xsudo ninja install || sudo /usr/local/parmanode/p4run "bitcoin_ninja_install" ; } || p4socket "ninja install fail"
 ls -lahf /usr/local/bin/bitcoind >$dn 2>&1 || p4socket "no bitcoind (1)"
-debug
+debug "after ninja install"
 fi
 #end newcopile=true
 
 symlinks_for_bitcoin_binaries >$dn 2>&1
 ls -lahf /usr/local/bin/bitcoind >$dn 2>&1 || p4socket "no bitcoind (2)"
-debug
+debug "after testing for bitcoind in /usr/local/bin =\n $(ls -lahf /usr/local/bin/bintcoind)"
 }
 
 function bitcoin_compile_dependencies { debugf
