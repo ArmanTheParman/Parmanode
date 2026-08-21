@@ -171,7 +171,7 @@ echo -e "
     Hit y to accept, or n to try again.
 
 ########################################################################################
-" &| tee $tmp/parmaview_bitcoincompile_options.log
+" 2>&1 | tee $tmp/parmaview_bitcoincompile_options.log
     [[ $parmaview != 1 ]] && read choice
     [[ $parmaview == 1 ]] && choice=y
     
