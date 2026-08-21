@@ -348,7 +348,7 @@ function bitcoin_compile_dependencies { debugf
 p4socket "####install_bitcoin#Installing Bitcoin dependencies"
 
 set_terminal ; echo -e "${pink}Upgrading, and installing dependencies to compile bitcoin...$orange"
-#which is used to matach sudoers file for parmaview
+#'which' is used to matach sudoers file for parmaview
 sudo $(which apt-get) update -y && export APT_UPDATE="true"
 sudo $(which apt-get) --fix-broken install -y
 
