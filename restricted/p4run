@@ -92,6 +92,7 @@ sudo apt-get install -y libssl-dev 2>>$pvlog
 sudo apt-get install -y libminiupnpc-dev 2>>$pvlog                          
 sudo apt-get install -y libprotobuf-dev 2>>$pvlog                           
 sudo apt-get install -y protobuf-compiler 2>>$pvlog                        
+echo -e "\nnon-GUI section ran for bitcoin_compile_dependencies\n" >>$pvlog
 if [[ $2 == "GUI" ]] ; then
 sudo apt-get install -y qtchooser 2>>$pvlog   
 sudo apt-get install -y qtbase5-dev-tools 2>>$pvlog  

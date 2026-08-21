@@ -386,7 +386,7 @@ if [[ -z $1 ]] ; then
     fi
 fi
 
-if [[ $1 == "GUI" ]] ; then
+if [[ $1 == "GUI" ]] && [[ $parmaview != 1 ]] ; then
 sudo apt-get install -y qtchooser 
 sudo apt-get install -y qtbase5-dev-tools
 sudo apt-get install -y qtcreator          || { enter_continue "Something went wrong with qtcreator.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
