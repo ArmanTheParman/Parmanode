@@ -16,8 +16,9 @@ HOME=/home/parman
 dp=$HOME/.parmanode/
 bc=$HOME/.bitcoin/bitcoin.conf
 pvlog=$dp/parmaview/parmaview.log
-
 p4run=1
+
+echo "Entered p4run - $1 $2" >> /tmp/.p4run.log
 
 case "$1" in
 

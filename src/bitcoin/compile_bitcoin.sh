@@ -353,7 +353,8 @@ if [[ -z $1 ]] ; then
     sudo $(which apt-get) update -y && export APT_UPDATE="true"
     sudo $(which apt-get) --fix-broken install -y
     if [[ $parmaview == 1 ]] ; then
-    /usr/local/parmanode/p4run "bitcoin_compile_dependencies" "$1"
+    /usr/local/parmanode/p4run "bitcoin_compile_dependencies" "$1" 2>>$p4log
+    debug "After p4run - bitcoin_compile_dependencies, in compile_bitcoin"
     else
     sudo apt-get install -y make              || { enter_continue "Something went wrong with make.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
     sudo apt-get install -y automake          || { enter_continue "Something went wrong with automake.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
