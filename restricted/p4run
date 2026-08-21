@@ -15,6 +15,7 @@ varlibtor=/var/lib/tor
 HOME=/home/parman
 dp=$HOME/.parmanode/
 bc=$HOME/.bitcoin/bitcoin.conf
+pvlog=$dp/parmaview/parmaview.log
 
 p4run=1
 
