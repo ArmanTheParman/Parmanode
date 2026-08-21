@@ -138,7 +138,7 @@ p4socket "####install_bitcoin#Compiling"
 if [[ $newcompile == "false" ]] ; then 
 debug "pre autogen"
   ./autogen.sh 2>&1 | tee $tmp/autogen.log || { enter_continue "autogen.sh failed - this is normal if compiling versions greater than 28" ; }
-
+debug "after autogen"
 while true ; do
 clear ; echo -e "
 ########################################################################################
@@ -184,8 +184,9 @@ done
 
 set_terminal
 
-
+debug "before configure"
 ./configure --with-gui=$gui --enable-wallet --with-incompatible-bdb --with-utils $options >$tmp/configure_bitcoin || {
+debug "after configure"
 echo -e "
 ########################################################################################
 
@@ -257,7 +258,9 @@ echo "Running make command, please wait..."
 sleep 3
 
 #compile
+debug "before make - oldcompile version"
 make -j $j || enter_continue "Something might have gone wrong." 
+debug "after make"
 
 
 set_terminal
@@ -329,7 +332,7 @@ cmake -GNinja \
       -DCMAKE_INSTALL_PREFIX=/usr/local \
       ..
 ninja -j $(nproc) || p4socket "ninja -j fail"
-
+debug "after ninja"
 
 
 { $xsudo ninja install || sudo /usr/local/parmanode/p4run "bitcoin_ninja_install" ; } || p4socket "ninja install fail"
