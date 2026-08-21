@@ -347,15 +347,15 @@ function bitcoin_compile_dependencies { debugf
 [[ $parmaview == 1 ]] && enter_cont="i" #running with parmaview will ignore errors
 p4socket "####install_bitcoin#Installing Bitcoin dependencies"
 
-if [[ -z $1 ]] ; then 
-    set_terminal ; echo -e "${pink}Upgrading, and installing dependencies to compile bitcoin...$orange"
-    #which is used to matach sudoers file for parmaview
-    sudo $(which apt-get) update -y && export APT_UPDATE="true"
-    sudo $(which apt-get) --fix-broken install -y
-    if [[ $parmaview == 1 ]] ; then
+set_terminal ; echo -e "${pink}Upgrading, and installing dependencies to compile bitcoin...$orange"
+#which is used to matach sudoers file for parmaview
+sudo $(which apt-get) update -y && export APT_UPDATE="true"
+sudo $(which apt-get) --fix-broken install -y
+
+if [[ $parmaview == 1 ]] ; then
     /usr/local/parmanode/p4run "bitcoin_compile_dependencies" "$1" 2>>$p4log
     debug "After p4run - bitcoin_compile_dependencies, in compile_bitcoin"
-    else
+else
     sudo apt-get install -y make              || { enter_continue "Something went wrong with make.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
     sudo apt-get install -y automake          || { enter_continue "Something went wrong with automake.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
     sudo apt-get install -y cmake             || { enter_continue "Something went wrong with cmake.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
@@ -384,24 +384,24 @@ if [[ -z $1 ]] ; then
     sudo apt-get install -y libminiupnpc-dev  || { enter_continue "Something went wrong with libminiupnpc-dev.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
     sudo apt-get install -y libprotobuf-dev   || { enter_continue "Something went wrong with libprotobuf-dev.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
     sudo apt-get install -y protobuf-compiler || { enter_continue "Something went wrong with protobuf-compiler.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+
+    if [[ $1 == "GUI" ]] ; then
+    sudo apt-get install -y qtchooser 
+    sudo apt-get install -y qtbase5-dev-tools
+    sudo apt-get install -y qtcreator          || { enter_continue "Something went wrong with qtcreator.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+    sudo apt-get install -y qtbase5-dev        || { enter_continue "Something went wrong with qtbase5-dev.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+    sudo apt-get install -y qt5-qmake          || { enter_continue "Something went wrong with qt5-qmake.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+    sudo apt-get install -y qttools5-dev-tools || { enter_continue "Something went wrong with qttools5-dev-tools.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+    sudo apt-get install -y qt5-default           # omit check for this one, as it's not always necessary 
+    sudo apt-get install -y qtchooser          || { enter_continue "Something went wrong with qtchooser.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+    sudo apt-get install -y libqt5gui5         || { enter_continue "Something went wrong with libqt5gui5.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+    sudo apt-get install -y libqt5core5a       || { enter_continue "Something went wrong with libqt5core5a.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+    sudo apt-get install -y libqt5dbus5        || { enter_continue "Something went wrong with libqt5dbus5.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+    sudo apt-get install -y qttools5-dev       || { enter_continue "Something went wrong with qttools5-dev.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+    sudo apt-get install -y libqt5widgets5     || { enter_continue "Something went wrong with libqt5widgets5.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+    return 0
     fi
 fi
 
-if [[ $1 == "GUI" ]] && [[ $parmaview != 1 ]] ; then
-sudo apt-get install -y qtchooser 
-sudo apt-get install -y qtbase5-dev-tools
-sudo apt-get install -y qtcreator          || { enter_continue "Something went wrong with qtcreator.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
-sudo apt-get install -y qtbase5-dev        || { enter_continue "Something went wrong with qtbase5-dev.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
-sudo apt-get install -y qt5-qmake          || { enter_continue "Something went wrong with qt5-qmake.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
-sudo apt-get install -y qttools5-dev-tools || { enter_continue "Something went wrong with qttools5-dev-tools.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
-sudo apt-get install -y qt5-default           # omit check for this one, as it's not always necessary 
-sudo apt-get install -y qtchooser          || { enter_continue "Something went wrong with qtchooser.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
-sudo apt-get install -y libqt5gui5         || { enter_continue "Something went wrong with libqt5gui5.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
-sudo apt-get install -y libqt5core5a       || { enter_continue "Something went wrong with libqt5core5a.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
-sudo apt-get install -y libqt5dbus5        || { enter_continue "Something went wrong with libqt5dbus5.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
-sudo apt-get install -y qttools5-dev       || { enter_continue "Something went wrong with qttools5-dev.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
-sudo apt-get install -y libqt5widgets5     || { enter_continue "Something went wrong with libqt5widgets5.$green i$orange to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
-return 0
-fi
 return 0
 }
