@@ -137,7 +137,7 @@ p4socket "####install_bitcoin#Compiling"
 
 if [[ $newcompile == "false" ]] ; then 
 debug "pre autogen"
-  ./autogen.sh &| tee $tmp/autogen.log || { enter_continue "autogen.sh failed - this is normal if compiling versions greater than 28" ; }
+  ./autogen.sh 2>&1 | tee $tmp/autogen.log || { enter_continue "autogen.sh failed - this is normal if compiling versions greater than 28" ; }
 
 while true ; do
 clear ; echo -e "
