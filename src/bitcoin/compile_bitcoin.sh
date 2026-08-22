@@ -284,7 +284,7 @@ $orange
 
 [[ -n $j ]] && j=1
 
-$xsudo make -j $j check | tee $dp/bitcoin_compile_check.log
+make -j $j check |& tee $dp/bitcoin_compile_check.log
 
 echo -e "$orange
 ########################################################################################
@@ -312,15 +312,20 @@ q|Q) exit 0 ;; p|P|M|m|x|X) back2main ;;
 esac
 }
 
-make install || enter_continue "something might have gone wrong here."
+if [[ $parmaview == 1 ]] ; then
+sudo /usr/local/parmanode/p4run "sudomakeinstallbitcoingithub" 
+sudo /usr/local/parmanode/p4run "move_bitcoin_binaries"
+else
+sudo make install || enter_continue "something might have gone wrong here."
+fi
 #p4run for parmaview becauser sudo mv will fail.
-sudo mv /usr/local/bin/*bitcoin* /usr/local/bin/parmanode/ >$dn 2>&1 || sudo /usr/local/parmanode/p4run "move_bitcoin_binaries"
+sudo mv /usr/local/bin/*bitcoin* /usr/local/bin/parmanode/ >$dn 2>&1 
 fi
 
 #end newcompile=false
 
 if [[ $newcompile == "true" ]] ; then
-debug "in newcompile"
+debug "in newcompile before ninja"
 [[ $gui == "yes" ]] && gui=ON
 [[ $gui == "no" ]] && gui=OFF
 

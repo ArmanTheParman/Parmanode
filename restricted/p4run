@@ -54,6 +54,11 @@ case "$1" in
     sudo mv "$2" /etc/systemd/system/bitcoind.service 
 ;;
 
+sudomakeinstallbitcoingithub)
+cd $HOME/parmanode/bitcoin_github
+sudo make install
+;;
+
 move_bitcoin_binaries)
     sudo mv /usr/local/bin/*bitcoin* /usr/local/bin/parmanode/ >$dn 2>&1
 ;;  
