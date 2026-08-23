@@ -51,7 +51,7 @@ if [[ $clientchoice == "core" ]] ; then
     
     git checkout v$version || { announce "Unable to checkout to the specified version. Aborting." ; return 1 ; }
 
-            #apply ordinals patch to v25 or v26
+            #apply ordinals patch 
             if [[ $ordinals_patch == "true" ]] ; then
                 git checkout -b parmanode_ordinals_patch
                 curl -LO https://gist.githubusercontent.com/luke-jr/4c022839584020444915c84bdd825831/raw/555c8a1e1e0143571ad4ff394221573ee37d9a56/filter-ordinals.patch 

@@ -12,6 +12,7 @@ versions["deisversion"]="$deisversion"
 
 export coreversion="29.3"
 versions["coreversion"]="$coreversion"
+[[ $parmaview == 1 ]] && export ordinals_patch="true" #Parmaview will always filter ordinals
 
 export specter_version="2.1.11"
 export specter_version_old="2.0.5"

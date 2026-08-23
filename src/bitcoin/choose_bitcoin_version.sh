@@ -88,7 +88,7 @@ return 0
 fi
 ;;
 parmaview)
-echo "clientchoice - $clientchoicee" >> $pvlog
+echo "clientchoice - $clientchoice" >> $pvlog
 export clientchoice="$(jq -r .bitcoin.clientchoice $p4)"
 [[ -z $clientchoice ]] && { debug ; return 1 ; }
 
@@ -197,7 +197,7 @@ $cyan
 $cyan
              pre)       ${orange}Pre-compiled (faster) Bitcoin CORE v$version, verified with gpg
 $cyan
-            hfsp)       ${orange}Compile Bitcoin CORE v$version 
+            hfsp)       ${orange}Compile Bitcoin CORE v$version $red(with extra spam)$orange
 
 $orange
 ########################################################################################################################
