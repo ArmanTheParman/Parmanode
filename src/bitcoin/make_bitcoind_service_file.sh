@@ -75,8 +75,8 @@ if [[ $1 == "setup" ]] ; then #for parmanode installation
     sudo chown root:root /usr/local/parmanode/bitcoind.service
     sudo chmod 655 /usr/local/parmanode/bitcoind.service
 elif [[ $parmaview == 1 ]] ; then #for parmaview method of bitcoin install
-    export servicefile
     sudo /usr/local/parmanode/p4run "bitcoin_service_file" "$servicefile"  >>$pvlog 2>&1
+    echo "P4RUN USED TO MAKE BITCOIN SERVICE FILE" >>$pvlog
 else #for regular bitcoin install using backend parmanode
     sudo mv "$servicefile" /etc/systemd/system/bitcoind.service 
 fi
