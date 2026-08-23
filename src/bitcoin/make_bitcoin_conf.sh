@@ -115,6 +115,7 @@ $xsudo chown -R $USER:$(id -gn) $file
 # Here is where the prune choice is added to bitcoin.conf
 #currently only "umbre" is the supported argument
 apply_prune_bitcoin_conf "$@" 
+rm $tmp/bitcoin.conf
 }
 
 ########################################################################################
