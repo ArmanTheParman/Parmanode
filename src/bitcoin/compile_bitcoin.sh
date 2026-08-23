@@ -331,10 +331,11 @@ debug "in newcompile before ninja"
 
 mkdir build
 cd build
+if RDTS="true" ; then RDTS_option="-D RDTS_CONSENT=RUNTIME_WARN" ; fi #set in app_versions
 cmake -GNinja \
       -DCMAKE_BUILD_TYPE=Release \
       -DBUILD_GUI=$gui \
-      -DWITH_ZMQ=ON \
+      -DWITH_ZMQ=ON $RDTS_option \
       -DCMAKE_INSTALL_PREFIX=/usr/local \
       ..
 ninja -j $(nproc) || p4socket "ninja -j fail"
