@@ -123,7 +123,7 @@ apply_prune_bitcoin_conf "$@"
 
 function add_rpcbind {
 [[ -e $bc ]] && if ! grep -q "rpcbind=0.0.0.0" $bc >$dn 2>&1 ; then 
-echo "rpcbind=0.0.0.0" | $xsudo tee -a $bc >$dn 2>&1
+echo "rpcbind=0.0.0.0" | tee -a $bc >$dn 2>&1
 fi
 }
 
@@ -135,8 +135,8 @@ add_rpcbind
 
 #values below 172.16 are public internet reserved, and above are private networks
 [[ -e $bc ]] && if ! grep -q "rpcallowip=172.16" $bc ; then 
-    $xsudo gsed -i '/rpcallowip=172.*$/d' $bc
-    echo "rpcallowip=172.16.0.0/12"  | $xsudo tee -a $bc >$dn 2>&1
+    gsed -i '/rpcallowip=172.*$/d' $bc
+    echo "rpcallowip=172.16.0.0/12"  | tee -a $bc >$dn 2>&1
 fi
 
 }
