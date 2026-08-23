@@ -334,6 +334,7 @@ cd build
 cmake -GNinja \
       -DCMAKE_BUILD_TYPE=Release \
       -DBUILD_GUI=$gui \
+      -DWITH_ZMQ=ON \
       -DCMAKE_INSTALL_PREFIX=/usr/local \
       ..
 ninja -j $(nproc) || p4socket "ninja -j fail"
