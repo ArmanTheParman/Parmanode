@@ -31,6 +31,8 @@ gp)
 clear
 cd $pn 
 git pull
+announce "Parmanode has been updated with the 'git pull' command. Please restart Parmanode 
+    for the changes to take effect."
 invlid_flag=set
 ;;
 
