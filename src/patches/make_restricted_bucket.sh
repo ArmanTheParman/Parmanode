@@ -48,21 +48,22 @@ done
 while true ; do
 
    file="$pn/restricted/p4run"
-   filefinal=/usr/local/parmanode/p4run
+   file2="/usr/local/parmanode/p4run.tmp"
+   filefinal="/usr/local/parmanode/p4run"
 
    test -f \$file || break
    test -f \$file.sig || break
 
-   cp -f "\$file" "\$filefinal" >/dev/null 2>&1
+   cp -f "\$file" "\$file2" >/dev/null 2>&1
    cp -f "\$file.sig" "\$filefinal.sig" >/dev/null 2>&1
-   chown root:$(id -gn) "\$filefinal"
-   chmod 710 "\$filefinal"
+   chown root:$(id -gn) "\$file2"
+   chmod 710 "\$file2"
 
-   if ! gpgv --keyring /usr/local/parmanode/parman.gpg \$filefinal.sig \$filefinal >/dev/null 2>&1 ; then
-      rm \$filefinal{,.sig} >/dev/null 2>&1
+   if ! gpgv --keyring /usr/local/parmanode/parman.gpg \$filefinal.sig \$file2 >/dev/null 2>&1 ; then
+      rm \$file2 \$filefinal.sig >/dev/null 2>&1
       exit 1
    else
-      break   
+      mv \$file2 \$filefinal
    fi
 
    break
@@ -73,5 +74,6 @@ done
 exit 0
 EOF
 sudo chmod 710 /usr/local/parmanode/patchrunner.sh
-parmanode_conf_add "restricted_bucket=true"
+parmanode_conf_remove "restricted_bucket=true"
+parmanode_conf_add "restricted_bucket_0.0.2=true"
 }
