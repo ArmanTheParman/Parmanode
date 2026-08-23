@@ -510,15 +510,21 @@ $orange
 }
 function delete_locks_bitcoin { debugf
 
+yesorno "This will delete settings.json" && rm ~/.bitcoin/settings.json
+
+yesorno "This will delete banlist.json, fee_estimates.dat, mempool.dat and peers.dat" && rm ~/.bitcoin/*.dat
+
 yesorno "This will delete any LOCK files in your Bitcoin data directory.
     
     This may help if Bitcoin is not starting. Sometime it's due to 
     stale lock files being present, and not have been automatically 
     cleaned up due to an non-graceful shutdown.
     
-    Proceed?" || return 1
+    Proceed?" && { 
+    stop_bitcoin
+    find $HOME/.bitcoin/ -type f -iname "*LOCK" -exec rm -f {} \;
+    enter_continue "Lock files deleted. You can now try starting Bitcoin again."
+    }
 
-stop_bitcoin
-find $HOME/.bitcoin/ -type f -iname "*LOCK" -exec rm -f {} \;
-enter_continue "Lock files deleted. You can now try starting Bitcoin again."
+return 0
 }
