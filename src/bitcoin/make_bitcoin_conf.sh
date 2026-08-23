@@ -105,7 +105,8 @@ m|M) back2main ;;
 esac 
 done ; fi
 
-cp $tmp/bitcoin.conf $file && log "bitcoin" "bitcoin conf made"  
+[[ $parmaview == 1 ]] && echo "xsudo... $xsudo" >>$pvlog
+$xsudo cp $tmp/bitcoin.conf $file && log "bitcoin" "bitcoin conf made"  
 debug "Bitcoin conf copied from tmp
 $(cat $HOME/.bitcoin/bitcoin.conf)"
 
