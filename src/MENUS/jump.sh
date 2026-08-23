@@ -30,9 +30,12 @@ invalid_flag=set
 gp)
 clear
 cd $pn 
-git pull
+if git pull | grep -qi "Already up to date" ; then
+enter_continue
+else
 enter_continue "Parmanode has been updated with the 'git pull' command. Please restart Parmanode 
     for the changes to take effect."
+fi
 invlid_flag=set
 ;;
 
