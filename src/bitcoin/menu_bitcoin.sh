@@ -405,7 +405,7 @@ disable)
 toggle_disable_bitcoin
 ;;
 wiz)
-delete_locks_bitcoin
+delete_stuff_in_bitcoin
 ;;
 "")
 continue ;;
@@ -508,7 +508,7 @@ $orange
 
 
 }
-function delete_locks_bitcoin { debugf
+function delete_stuff_in_bitcoin { debugf
 
 yesorno "This will delete settings.json" && rm ~/.bitcoin/settings.json
 
