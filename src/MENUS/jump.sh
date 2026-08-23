@@ -33,7 +33,7 @@ cd $pn
 if git pull | grep -i "Already up to date" ; then
 enter_continue
 else
-enter_continue "Parmanode has been updated with the 'git pull' command. Please restart Parmanode 
+enter_continue "\nParmanode has been updated with the 'git pull' command. Please restart Parmanode 
     for the changes to take effect."
 fi
 invlid_flag=set
