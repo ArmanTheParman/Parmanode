@@ -8,7 +8,7 @@
 
 
 #variables
-xsudo=sudo
+local xsudo=sudo
 dn=/dev/null
 torrc=/etc/tor/torrc
 varlibtor=/var/lib/tor
