@@ -115,5 +115,9 @@ echo -e "\nGUI section ran for bitcoin_compile_dependencies\n" >>$pvlog
 fi
 return 0
 ;;
+chownparmanode)
+#$2 should be $USER from calling script
+sudo chown -R $2 /media/$2/parmanode 2>>$pvlog
+;;    
 
 esac

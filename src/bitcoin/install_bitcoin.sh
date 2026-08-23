@@ -87,20 +87,17 @@ debug "after format_ext_drive"
 if [[ $version == "self" ]] ; then break ; fi
 
 if [[ $OS == "Linux" && $drive == "external" ]] && [[ $switchtocorevariable != "true" ]] ; then
-    $xsudo chown -R $USER /media/$USER/parmanode >$dn 2>&1 \
-    || log "bitcoin" "unable to execute chown in install_bitcoin function" 
+    case $parmaview in
+    1) sudo /usr/local/parmanode/p4run "chownparmanode" "$USER" ;;
+    *) sudo chown -R $USER /media/$USER/parmanode >$dn 2>&1 || log "bitcoin" "unable to execute chown in install_bitcoin function" ;;
+    esac
 fi
-
-if [[ $switchtocorevariable != "true" ]] ; then
-    $xsudo chown -R $USER /media/$USER/parmanode >$dn 2>&1 \
-    || log "bitcoin" "unable to execute chown in install_bitcoin function" 
 
 prune_choice || return 1  ; debug 
     # set $prune_value. Doing this now as it is related to 
     # the drive choice just made by the user. 
     # Use variable later for setting bitcoin.conf
 
-fi
 p4socket "####install_bitcoin#Making directories"
 
 make_bitcoin_directories || return 1
@@ -219,9 +216,6 @@ success "Bitcoin should have started syncing. Note, it should also continue to s
     the drive to sleep; Power saving is usually on by default for laptops.$orange" 
 
 installed_conf_add "bitcoin-end"
-
-    #Just in case - what? again? Anyway, I'll leave it.
-    $xsudo chown -R $USER:$USER $parmanode_drive>$dn 2>&1
 
     return 0
 fi
