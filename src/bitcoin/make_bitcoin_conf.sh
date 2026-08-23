@@ -91,7 +91,6 @@ fi
 jump $choice 
 
 [[ $parmaview == 1 ]] && {
-
     cp -rf $HOME/.bitcoin/bitcoin.conf  $HOME/.bitcoin/bitcoin.conf_PN4_backup 
     choice=o 
 }
@@ -106,7 +105,7 @@ m|M) back2main ;;
 esac 
 done ; fi
 
-$xsudo cp $tmp/bitcoin.conf $file && log "bitcoin" "bitcoin conf made"  
+cp $tmp/bitcoin.conf $file && log "bitcoin" "bitcoin conf made"  
 debug "Bitcoin conf copied from tmp
 $(cat $HOME/.bitcoin/bitcoin.conf)"
 
