@@ -36,7 +36,7 @@ else
 enter_continue "\n\nParmanode has been updated with the 'git pull' command. Please restart Parmanode 
     for the changes to take effect."
 fi
-invlid_flag=set
+invalid_flag=set
 ;;
 
 b)
