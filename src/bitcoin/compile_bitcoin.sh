@@ -4,7 +4,7 @@ function compile_bitcoin { debugf
 
 if [[ $clientchoice == "knots" ]] ; then
 
-    if [[ $knotsversion -lt 29 ]] ; then 
+    if [[ ${knotsversion%%\.*} -lt 29 ]] ; then 
         newcompile="false"
     else
         newcompile="true"
@@ -16,7 +16,7 @@ elif [[ $clientchoice == "deis" ]] ; then
 
 elif [[ $clientchoice == "core" ]] ; then
 
-    if [[ $version -lt 29 ]] ; then 
+    if [[ ${version%%\.*} -lt 29 ]] ; then 
         newcompile="false"
     else
         newcompile="true"
