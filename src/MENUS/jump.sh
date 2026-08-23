@@ -30,7 +30,7 @@ invalid_flag=set
 gp)
 clear
 cd $pn 
-if git pull | grep -qi "Already up to date" ; then
+if git pull | grep -i "Already up to date" ; then
 enter_continue
 else
 enter_continue "Parmanode has been updated with the 'git pull' command. Please restart Parmanode 
