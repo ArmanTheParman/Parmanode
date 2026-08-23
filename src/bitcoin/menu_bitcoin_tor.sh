@@ -102,6 +102,7 @@ jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in 
 m|M) back2main ;; Q|q|quit|QUIT|Quit) exit 0 ;; p|P) return 1 ;;
 "1"|torandclearnet)
+    bitcoin_tor "torandclearnet"
     parmanode_conf_remove "bitcoin_tor_status"
     parmanode_conf_add "bitcoin_tor_status=torandclearnet" 
 #    check_bitcoin_tor_status #sets status in parmanode.conf #delete this function later
