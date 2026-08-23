@@ -179,6 +179,10 @@ fi
 break
 done
 fi
+
+if ! grep -qF "restricted_bucket_0.0.2=true" $pc ; then
+make_restricted_bucket
+fi
 }
 
 ##############################################################################################################
