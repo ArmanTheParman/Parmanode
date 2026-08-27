@@ -140,7 +140,6 @@ if [[ $OS == "Mac" || $computer_type == Pi ]] ; then
         export brerunning="false"
     fi
 fi
-
 }
 
 function isbtcpayrunning {
@@ -171,7 +170,6 @@ export mempoolrunning="true"
 else
 export mempoolrunning="false"
 fi
-
 }
 
 function isthunderhubrunning {
@@ -189,7 +187,6 @@ else
 export nostrrunning="false"
 fi
 }
-
 
 function isalbyrunning {
 if docker ps 2>$dn | grep -q "albyhub" ; then
@@ -212,5 +209,13 @@ if docker ps >$dn 2>&1 ; then
 export dockerrunning="true"
 else
 export dockerrunning="false"
+fi
+}
+
+function isi2prunning {
+if sudo systemctl status i2p.service --no-pager >$dn 2>&1 ; then
+export i2prunning="true"
+else
+export i2prunning="false"
 fi
 }
