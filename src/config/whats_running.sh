@@ -27,6 +27,8 @@ isvaultwardenrunning
 if [[ $vaultwardenrunning == "true" ]] ; then isrunning+=("vaultwarden") ; fi
 isdockerrunning
 if [[ $dockerrunning == "true" ]] ; then isrunning+=("docker") ; fi
+isi2prunning
+if [[ $i2prunning == "true" ]] ; then isrunning+=("i2p") ; fi
 
 arr_json=$(printf '%s\n' "${isrunning[@]}" | jq -R . | jq -s .)
 
