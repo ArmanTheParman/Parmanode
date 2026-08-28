@@ -46,7 +46,10 @@ docker_package_download_linux || return 1
     #installed_config_add "docker-end" 
 
 success "Docker" "installing."
-#newgrp docker >$dn 2>&1 ; sleep 1
+
+# newgrp should get docker group showing in id $USER command
+newgrp docker >$dn 2>&1 ; sleep 1
+
 if ! id | grep docker ; then
 while true ; do
 if [[ $preconfigure_parmadrive == "true" ]] ; then installed_config_add "docker-end" ; return 0 ; fi
@@ -81,7 +84,7 @@ esac
 done
 #if docker group added, make sure installed config reflects it.
 else 
-    if ! grep docker-end $HOME/.parmanode/installed.conf ; then
+    if ! grep docker-end $ic ; then
         installed_config_add "docker-end"
     fi
     return 0
