@@ -1,5 +1,5 @@
 function install_rtl {
-grep -q docker-end $ic || { announce "Must install Docker first.
+which docker >$dn 2>&1 || { announce "Must install Docker first.
 " \
 "Use menu: Add --> Other --> Docker). Aborting." && return 1 ; }
 
