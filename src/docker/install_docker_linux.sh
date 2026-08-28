@@ -46,6 +46,7 @@ docker_package_download_linux || return 1
     #installed_config_add "docker-end" 
 
 success "Docker" "installing."
+newgrp docker >$dn 2>&1 ; sleep 1
 if ! id | grep docker ; then
 while true ; do
 if [[ $preconfigure_parmadrive == "true" ]] ; then installed_config_add "docker-end" ; return 0 ; fi
