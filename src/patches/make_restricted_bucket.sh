@@ -74,6 +74,6 @@ done
 exit 0
 EOF
 sudo chmod 710 /usr/local/parmanode/patchrunner.sh
-parmanode_conf_remove "restricted_bucket=true"
-parmanode_conf_add "restricted_bucket_0.0.2=true"
+parmanode_conf_remove "restricted_bucket"
+parmanode_conf_add "restricted_bucket_0_0_2=true"
 }

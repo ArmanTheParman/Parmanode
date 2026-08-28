@@ -1,5 +1,7 @@
+Version 3.70.10
+     -Restricted bucket conf variable bug fix
 Version 3.70.9
-     - Bitcoin compile for versions >29 require ZMQ to be enabled for lightning to work
+     -Bitcoin compile for versions >29 require ZMQ to be enabled for lightning to work
 Version 3.70.8
      -Post fork, automated switch Knots to Core if user chooses
 Version 3.70.7

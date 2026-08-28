@@ -180,7 +180,7 @@ break
 done
 fi
 
-if ! grep -qF "restricted_bucket_0.0.2=true" $pc ; then
+if ! grep -qF "restricted_bucket_0_0_2=true" $pc ; then
 make_restricted_bucket
 fi
 }
