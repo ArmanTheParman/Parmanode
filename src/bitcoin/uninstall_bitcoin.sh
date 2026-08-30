@@ -12,7 +12,7 @@ combo=btcpay_first
 fi
 
 clear
-
+if [[ $parmaview != 1 ]] ; then
 if [[ $combo != "true" && $combo != "btcpay_first" ]] ; then
 if [[ $1 != "silent" ]] ; then
 while true
@@ -67,22 +67,24 @@ done
 
 if ! docker ps >$dn 2>&1 ; then
 announce "Docker doesn't seem to be running. Can't uninstall without that. Aborting."
+debug "docker not running"
 return 1
 fi
 
-fi
+fi #end combo == true
+
+fi #end parmaview check
 
 stop_bitcoin
-debug
+debug "after stop bitcoin"
+
 #remove bitcoin directories and symlinks
-if [[ $OS == "Linux" ]] ; then remove_bitcoin_directories_linux 
-debug 
-fi
+[[ $OS == "Linux" ]] && remove_bitcoin_directories_linux 
 
 if [[ $OS == "Mac" ]] ; then 
     remove_bitcoin_directories_mac uninstall
     $xsudo rm -rf /Applications/Bitcoin-QT.app >$dn 2>&1
-    debug
+    debug "after remove bitcoin directores and BitcoinQT for Mac"
 fi
 
 # Remove binaries

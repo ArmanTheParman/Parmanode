@@ -73,7 +73,13 @@ done
 /usr/local/parmanode/patch.sh >/dev/null 2>&1
 exit 0
 EOF
+
+parmanode_user="$(echo ${BASH_SOURCE[0]} | cut -d / -f3)"
+if [[ $parmanode_user != "root" ]] ; then
+   printf "%s" "$parmanode_user" | sudo tee /usr/local/parmanode/USER >/dev/null 2>&1
+fi
+
 sudo chmod 710 /usr/local/parmanode/patchrunner.sh
 parmanode_conf_remove "restricted_bucket"
-parmanode_conf_add "restricted_bucket_0_0_2=true"
+parmanode_conf_add "restricted_bucket_0_0_3=true"
 }

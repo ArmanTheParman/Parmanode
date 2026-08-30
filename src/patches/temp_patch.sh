@@ -104,8 +104,6 @@ if [[ $OS == "Linux" ]] && $xsudo test -d /usr/local/bin/parmanode &&
                            ! sudo test -f /usr/local/bin/parmanode/bitcoin-cli ; then
     $xsudo mv /usr/local/bin/*bitcoin* /usr/local/bin/parmanode/ >$dn 2>&1
     symlinks_for_bitcoin_binaries >$dn 2>&1
-else
-debug "$xsudo, $OS, $ic"
 fi
 
 if [[ $($xsudo grep -cq "Additions by Parmanode" $torrc 2>$dn) -gt 1 ]] ; then
@@ -180,7 +178,9 @@ break
 done
 fi
 
-if ! grep -qF "restricted_bucket_0_0_2=true" $pc ; then
+
+
+if ! grep -qF "restricted_bucket_0_0_3=true" $pc ; then
 make_restricted_bucket
 fi
 }
