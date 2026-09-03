@@ -11,10 +11,9 @@ else
 combo=btcpay_first
 fi
 
-[[ $parmaview == 1 ]] && echo "RAN uninstall_bitcoin" >>$pvlog
-
 clear
 if [[ $parmaview != 1 ]] ; then
+
 if [[ $combo != "true" && $combo != "btcpay_first" ]] ; then
 if [[ $1 != "silent" ]] ; then
 while true
@@ -67,11 +66,11 @@ esac
 done
 #Break point. Proceed to uninstall Bitcoin.
 
-if ! docker ps >$dn 2>&1 ; then
-announce "Docker doesn't seem to be running. Can't uninstall without that. Aborting."
-debug "docker not running"
-return 1
-fi
+    if ! docker ps >$dn 2>&1 ; then
+    announce "Docker doesn't seem to be running. Can't uninstall without that. Aborting."
+    debug "docker not running"
+    return 1
+    fi
 
 fi #end combo == true
 
@@ -81,9 +80,9 @@ stop_bitcoin
 debug "after stop bitcoin"
 
 #remove bitcoin directories and symlinks
-[[ $OS == "Linux" ]] && remove_bitcoin_directories_linux 
-
-if [[ $OS == "Mac" ]] ; then 
+if [[ $OS == "Linux" ]] ; then 
+    remove_bitcoin_directories_linux 
+else
     remove_bitcoin_directories_mac uninstall
     $xsudo rm -rf /Applications/Bitcoin-QT.app >$dn 2>&1
     debug "after remove bitcoin directores and BitcoinQT for Mac"
@@ -93,6 +92,7 @@ fi
 debug
 rm -rf /usr/local/bin/parmanode/*bitcoin* 2>$dn
 debug
+
 #Modify config file
 installed_config_remove "bitcoin"
 installed_config_remove "bitcoin-start"
@@ -108,13 +108,17 @@ parmanode_conf_remove "BTCIP"
 parmanode_conf_remove "disable_bitcoin"
 parmanode_conf_remove "bitcoin_ordinalspatch"
 parmanode_conf_remove "bip110choice"
+parmanode_conf_remove "bitcoin_tor_status"
+
 debug
 unset drive prune_value bitcoin_choice UUID BTCIP rpcuser rpcpassword btc_authentication format_choice skip_formatting justFormat driveproblem
 print_bitcoin_variables "after unset"
+
 #Remove service file for Linux only
-$xsudo rm /etc/systemd/system/bitcoind.service >$dn 2>&1
-$xsudo systemctl daemon-reload >$dn 2>&1
+sudo rm /etc/systemd/system/bitcoind.service >$dn 2>&1
+sudo systemctl daemon-reload >$dn 2>&1
 debug
+
 set_terminal
 if [[ $combo != "true" && $combo != "btcpay_first" ]] ; then
 [[ $1 != "silent" ]] && success "Bitcoin" "being uninstalled"

@@ -88,7 +88,7 @@ if [[ $version == "self" ]] ; then break ; fi
 
 if [[ $OS == "Linux" && $drive == "external" ]] && [[ $switchtocorevariable != "true" ]] ; then
     case $parmaview in
-    1) sudo /usr/local/parmanode/p4run "chownparmanode" "$USER" ;;
+    1) sudo /usr/local/parmanode/p4run "chownparmanode" ;;
     *) sudo chown -R $USER /media/$USER/parmanode >$dn 2>&1 || log "bitcoin" "unable to execute chown in install_bitcoin function" ;;
     esac
 fi

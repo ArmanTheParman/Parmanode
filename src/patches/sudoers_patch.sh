@@ -23,6 +23,7 @@ $USER ALL=(root) NOPASSWD: $(which systemctl) status bitcoind
 $USER ALL=(root) NOPASSWD: $(which systemctl) disable bitcoind.service
 $USER ALL=(root) NOPASSWD: $(which systemctl) enable bitcoind.service
 $USER ALL=(root) NOPASSWD: $(which cp) -f /usr/local/parmanode/bitcoind.service /etc/systemd/system/
+$USER ALL=(root) NOPASSWD: $(which rm) /etc/systemd/system/bitcoind.service
 #Tor commands
 $USER ALL=(root) NOPASSWD: $(which systemctl) start tor.service
 $USER ALL=(root) NOPASSWD: $(which systemctl) restart tor.service

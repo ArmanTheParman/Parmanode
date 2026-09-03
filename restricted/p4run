@@ -12,7 +12,7 @@ local xsudo=sudo
 dn=/dev/null
 torrc=/etc/tor/torrc
 varlibtor=/var/lib/tor
-HOME=/home/$(cat /usr/local/parmanode/USER)
+USER=$(cat /usr/local/parmanode/USER) ; HOME=/home/$USER
 dp=$HOME/.parmanode/
 bc=$HOME/.bitcoin/bitcoin.conf
 pvlog=$dp/parmaview/parmaview.log
@@ -116,14 +116,15 @@ fi
 return 0
 ;;
 chownparmanode)
-#$2 should be $USER from calling script
-sudo chown -R $2 /media/$2/parmanode 2>>$pvlog
+sudo chown -R $USER /media/$USER/parmanode 2>>$pvlog
 ;;    
 
 remove_bitcoin_directories)
-sudo rm -rf $HOME/parmanode/bitcoin >$dn 2>&1 
-sudo rm -rf $HOME/parmanode/bitcoinknots_github >$dn 2>&1 
-sudo rm -rf /usr/local/bin/*bitcoin* >$dn 2>&1
+sudo rm -rf $HOME/parmanode/bitcoin >$dn 2>>$p4log
+sudo rm -rf $HOME/parmanode/bitcoin_github >$dn 2>>$p4log
+sudo rm -rf $HOME/parmanode/bitcoinknots_github >$dn 2>>$p4log
+echo "RUNNING sudo rm -rf /usr/local/bin/*bitcoin*" >>$pvlog
+sudo rm -rf /usr/local/bin/*bitcoin* >$dn 2>>$p4log
 ;;
 
 esac

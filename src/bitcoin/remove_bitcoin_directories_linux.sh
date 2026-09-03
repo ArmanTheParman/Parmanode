@@ -1,8 +1,14 @@
 function remove_bitcoin_directories_linux { debugf
 if [[ $bitcoin_drive_import == "true" ]] ; then return 0 ; fi
 
+if [[ $parmaview == 1 ]] ; then
+    sudo /usr/local/parmanode/p4run "remove_bitcoin_directories" "$USER"
+    return 0
+fi
+
 #Remove Parmanode/bitcoin directory (installation files)
 $xsudo rm -rf $HOME/parmanode/bitcoin >$dn 2>&1 
+$xsudo rm -rf $HOME/parmanode/bitcoin_github >$dn 2>&1 
 $xsudo rm -rf $HOME/parmanode/bitcoinknots_github >$dn 2>&1 
 $xsudo rm -rf /usr/local/bin/*bitcoin* >$dn 2>&1
 if [[ $installer == "parmanodl" ]] ; then return 0 ; fi 
