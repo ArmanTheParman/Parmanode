@@ -75,8 +75,9 @@ exit 0
 EOF
 
 parmanode_user="$(echo ${BASH_SOURCE[0]} | cut -d / -f3)"
+debug parmanode_user $parmanode_user
 if [[ $parmanode_user != "root" ]] ; then
-   printf "%s" "$parmanode_user" | sudo tee /usr/local/parmanode/USER >/dev/null 2>&1
+   echo "$parmanode_user" | sudo tee /usr/local/parmanode/USER >/dev/null 2>&1
 fi
 
 sudo chmod 710 /usr/local/parmanode/patchrunner.sh
