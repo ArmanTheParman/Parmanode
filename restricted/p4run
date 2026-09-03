@@ -120,12 +120,12 @@ sudo chown -R $USER /media/$USER/parmanode 2>>$pvlog
 ;;    
 
 remove_bitcoin_directories)
-sudo rm -rf $HOME/parmanode/bitcoin >$dn 2>>$p4log
-sudo rm -rf $HOME/parmanode/bitcoin_github >$dn 2>>$p4log
-sudo rm -rf $HOME/parmanode/bitcoinknots_github >$dn 2>>$p4log
+sudo rm -rf $HOME/parmanode/bitcoin >$dn 2>>$pvlog
+sudo rm -rf $HOME/parmanode/bitcoin_github >$dn 2>>$pvlog
+sudo rm -rf $HOME/parmanode/bitcoinknots_github >$dn 2>>$pvlog
 echo "RUNNING sudo rm -rf /usr/local/bin/*bitcoin*" >>$pvlog
 echo "HOME is $HOME" >>$pvlog
-sudo rm -rf /usr/local/bin/*bitcoin* >$dn 2>>$p4log
+sudo rm -rf /usr/local/bin/*bitcoin* >$dn 2>>$pvlog
 ;;
 
 esac
