@@ -11,6 +11,8 @@ else
 combo=btcpay_first
 fi
 
+[[ $parmaview == 1 ]] && echo "RAN uninstall_bitcoin" >>$pvlog
+
 clear
 if [[ $parmaview != 1 ]] ; then
 if [[ $combo != "true" && $combo != "btcpay_first" ]] ; then
