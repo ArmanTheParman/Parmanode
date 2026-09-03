@@ -29,7 +29,7 @@ versions["specter_version"]="$specter_version"
 
 if [[ $OS == "Linux" ]] ; then
   
-    export knotsversion="29.4" && export RDTS="true"
+    export knotsversion="29.4.1" && export RDTS="true"
     versions["knotsversion"]="$knotsversion"
 
     export knotsdate="20260508"
@@ -48,7 +48,7 @@ if [[ $OS == "Linux" ]] ; then
     
 
 else 
-    export knotsversion="29.4" && export RDTS="true"
+    export knotsversion="29.4.1" && export RDTS="true"
     versions["knotsversion"]="$knotsversion"
 
     export knotsdate="20260508"
