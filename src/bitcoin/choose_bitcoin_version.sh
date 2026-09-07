@@ -193,9 +193,9 @@ set_terminal 40 120 ; echo -e "
     More questions, sorry...
 
 $cyan
-          nospam)       ${green}Compile (slower) Bitcoin CORE, v$version, (with FILTER-ORDINALS patch by Luke Dashjr)
+             pre)       ${green}Pre-compiled (faster) Bitcoin CORE v$version, verified with gpg
 $cyan
-             pre)       ${orange}Pre-compiled (faster) Bitcoin CORE v$version, verified with gpg
+          nospam)       ${orange}Compile (slower) Bitcoin CORE, v$version, (with FILTER-ORDINALS patch by Luke Dashjr)
 $cyan
             hfsp)       ${orange}Compile Bitcoin CORE v$version $red(with extra spam)$orange
 
@@ -222,7 +222,7 @@ export core="true"
 case $choice in
 q|Q) exit 0 ;; p|P) return 1 ;; m|M) back2main ;;
 
-pre)
+pre|"")
 debug
 export clientchoice=core
 export bitcoin_compile="false" ; return 0 
