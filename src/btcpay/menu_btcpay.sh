@@ -67,8 +67,8 @@ $green
              c)$orange            Connect BTCPay to LND $cyan
              conf)$orange         Config files ...  $cyan
              log)$orange          Logs ...  $cyan
-             br)$orange           Backup / Restore BTCPay data ...$red (new!) $cyan
-             up)$orange           Update BTCPay ... $red (new!) $cyan
+             br)$orange           Backup / Restore BTCPay data ... $cyan
+             up)$orange           Update BTCPay ... $cyan
              exp)$orange          Manage container $red (for experts) $orange $cyan
              pp)$orange           BTC ParmanPay - Online payment app, worldwide access $cyan
              search)$orange       Locate a string in your BTCPay database...

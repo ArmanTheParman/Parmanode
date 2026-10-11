@@ -1,5 +1,7 @@
 
 function p4socket {
+#To test, log in with inception, and run "parmaview=1 p4socket 'test message'"
+#See connected broswer console for the message.
 
 [[ $parmaview != 1 ]] && return 1
 

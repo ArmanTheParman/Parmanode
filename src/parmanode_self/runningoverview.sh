@@ -11,15 +11,6 @@ if grep -q "btccombo" $ic ; then
 return 0
 fi
 
-if [[ $OS == "Mac" ]] ; then #if docker container, then previous btccombo check takes care of it
-    if pgrep Bitcoin-Q >$dn ; then 
-    export bitcoinrunning="true"
-    else 
-    export bitcoinrunning="false"
-    fi
-    return 0
-fi
-
 if [[ $OS == "Linux" ]] ; then
 
     if ! ps -x | grep bitcoin | grep -q "bitcoin.conf" 2>$dn ; then 
@@ -43,6 +34,15 @@ if [[ $OS == "Linux" ]] ; then
     return 0
     fi
 
+fi
+
+if [[ $OS == "Mac" ]] ; then #if docker container, then previous btccombo check takes care of it
+    if pgrep Bitcoin-Q >$dn ; then 
+    export bitcoinrunning="true"
+    else 
+    export bitcoinrunning="false"
+    fi
+    return 0
 fi
 }
 
