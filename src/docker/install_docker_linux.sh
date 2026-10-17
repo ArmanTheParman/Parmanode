@@ -48,9 +48,9 @@ docker_package_download_linux || return 1
 success "Docker" "installing."
 
 # newgrp should get docker group showing in id $USER command
-newgrp docker >$dn 2>&1 ; sleep 1
+echo exit | newgrp docker >$dn 2>&1 ; sleep 1
 
-if ! id | grep docker ; then
+if ! id | grep -q docker ; then
 while true ; do
 if [[ $preconfigure_parmadrive == "true" ]] ; then installed_config_add "docker-end" ; return 0 ; fi
 set_terminal ; echo -e "$pink
