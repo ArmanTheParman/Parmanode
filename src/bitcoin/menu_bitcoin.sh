@@ -430,9 +430,6 @@ if [[ -n $height ]] ; then
 export running_text="-- height=$height"
 elif tail -n1 $HOME/.bitcoin/debug.log | grep -Eq 'Verification progress: .*$' ; then
 export running_text="$( tail -n1 $HOME/.bitcoin/debug.log | grep -Eo 'Verification progress: .*$')"
-elif tail -n2 $HOME/.bitcoin/debug.log | grep -q "thread start" ; then
-export running_text="$(tail -n2 $HOME/.bitcoin/debug.log | grep -Eo '\s.*$')" 
-#elif ... Waiting 300 seconds before querying DNS seeds
 else 
 export running_text="-- status ...type r to refresh, or see log"
 fi
