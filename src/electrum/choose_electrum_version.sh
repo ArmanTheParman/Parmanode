@@ -7,9 +7,9 @@ clear ; echo -e "
 $cyan
                                     1)$orange       4.4.4
 $cyan
-                                    2)$orange       4.6.2
+                                    2)$orange       4.8.3
 
-                                    3)$orange       custom
+                                    3)$orange       custom (you choose)
 
 ########################################################################################
 "
@@ -23,7 +23,7 @@ export electrum_version="4.4.4"
 break
 ;;
 2)
-export electrum_version="4.6.2"
+export electrum_version="4.8.3"
 break
 ;;
 3)
