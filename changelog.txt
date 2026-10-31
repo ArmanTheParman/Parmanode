@@ -1,3 +1,5 @@
+Version 3.70.12
+     -Knots version update
 Version 3.70.11
      -Sparrow 2.5.4
 Version 3.70.10
