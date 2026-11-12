@@ -13,6 +13,8 @@ announce "which version of LND do you want?
 $cyan                             1)$orange           v0.18.5
 
 $cyan                             2)$orange           v0.19.3
+
+$cyan                             3)$orange           v0.21.8
 "
 #$cyan                             3)$orange           v0.20.0
 #"
@@ -24,6 +26,8 @@ case $lndchoice in
 export lndversion="v0.18.5-beta" ; break ;;
 2)
 export lndversion="v0.19.3-beta" ; break ;;
+3)
+export lndversion="v0.21.8-beta" ; break ;;
 *)
 invalid ;;
 esac

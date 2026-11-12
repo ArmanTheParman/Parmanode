@@ -1,3 +1,5 @@
+Version 3.70.14
+     - LND v0.21.8
 Version 3.70.13
      -Electrum, Sparrow, Fulcrum, BTCPay, electrs, green wallet, phoenix wallet, Thunderhub, Trezor Suite updates 
 Version 3.70.12
