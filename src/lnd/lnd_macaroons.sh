@@ -50,7 +50,7 @@ $blinkon                   HIT 'QR' AND <ENTER> TO SHOW QR CODES $blinkoff $oran
 
 ########################################################################################
 "
-enter_continue ; jump $enter_cont
+enter_continue 
 
 if [[ $enter_cont == "QR" || $enter_cont == "qr" ]] ; then
 install_qrencode silent
