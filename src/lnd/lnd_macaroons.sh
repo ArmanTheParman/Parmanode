@@ -46,7 +46,7 @@ may also omit the 'allowinsecure=true' setting and see if your connection works
 without it.
 
 $red
-$blinkon                   HIT 'QR' AND <ENTER> TO SHOW QR CODES $blinkoff $orange
+                   HIT 'QR' AND <ENTER> TO SHOW QR CODES $orange
 
 ########################################################################################
 "
