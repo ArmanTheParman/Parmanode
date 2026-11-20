@@ -72,7 +72,7 @@ $cyan
 $cyan
                             c)     Show certthumbprint
 $cyan
-                            b)     Show BTC entry
+                            bb)     Show BTC entry
 $orange 
 
 ########################################################################################
@@ -107,7 +107,7 @@ $orange
 "
 enter_continue ; jump $enter_cont
 ;;
-b)
+bb)
 set_terminal 60 100 ; echo -e "
 ########################################################################################
    
